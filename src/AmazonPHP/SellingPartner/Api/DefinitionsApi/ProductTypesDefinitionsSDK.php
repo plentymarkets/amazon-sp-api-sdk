@@ -311,7 +311,7 @@ final class ProductTypesDefinitionsSDK
      * @throws \Plenty\AmazonPHP\SellingPartner\Exception\ApiException on non-2xx response
      * @throws \Plenty\AmazonPHP\SellingPartner\Exception\InvalidArgumentException
      */
-    public function searchDefinitionsProductTypes(AccessToken $accessToken, string $region, array $marketplace_ids, array $keywords = null, string $locale = null) : \Plenty\AmazonPHP\SellingPartner\Model\ProductTypesDefinitions\ProductTypeList
+    public function searchDefinitionsProductTypes(AccessToken $accessToken, string $region, array $marketplace_ids, array $keywords = null, ?string $locale = null) : \Plenty\AmazonPHP\SellingPartner\Model\ProductTypesDefinitions\ProductTypeList
     {
         $request = $this->searchDefinitionsProductTypesRequest($accessToken, $region, $marketplace_ids, $keywords, $locale);
 
@@ -407,7 +407,7 @@ final class ProductTypesDefinitionsSDK
      *
      * @throws \Plenty\AmazonPHP\SellingPartner\Exception\InvalidArgumentException
      */
-    public function searchDefinitionsProductTypesRequest(AccessToken $accessToken, string $region, array $marketplace_ids, array $keywords = null, string $locale = null) : RequestInterface
+    public function searchDefinitionsProductTypesRequest(AccessToken $accessToken, string $region, array $marketplace_ids, array $keywords = null, ?string $locale = null) : RequestInterface
     {
         // verify the required parameter 'marketplace_ids' is set
         if ($marketplace_ids === null || (\is_array($marketplace_ids) && \count($marketplace_ids) === 0)) {
