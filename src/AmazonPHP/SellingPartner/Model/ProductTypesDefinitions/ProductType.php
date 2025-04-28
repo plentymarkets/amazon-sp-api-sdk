@@ -251,19 +251,17 @@ class ProductType implements \ArrayAccess, \JsonSerializable, ModelInterface
     }
 
     /**
-     * @param string $displayName
-     *
-     * @return $this
+     * Gets display name.
      */
-    public function getDisplayName(string $displayName): self
+    public function getDisplayName(): string
     {
-        $this->container['display_name'] = $displayName;
-
-        return $this;
+        return $this->container['display_name'];
     }
 
     /**
-     * @param string $displayName
+     * Sets display name.
+     *
+     * @param string $displayName the display name of the Amazon product type
      *
      * @return $this
      */
