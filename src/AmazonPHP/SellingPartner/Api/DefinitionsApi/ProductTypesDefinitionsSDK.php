@@ -307,9 +307,10 @@ final class ProductTypesDefinitionsSDK
      * @param AccessToken $accessToken
      * @param string[] $marketplace_ids A comma-delimited list of Amazon marketplace identifiers for the request. (required)
      * @param string[] $keywords A comma-delimited list of keywords to search product types by. (optional)
+     * @param string|null $locale Locale for retrieving display labels and other presentation details. (optional))
      *
      * @throws \Plenty\AmazonPHP\SellingPartner\Exception\ApiException on non-2xx response
-     * @throws \Plenty\AmazonPHP\SellingPartner\Exception\InvalidArgumentException
+     * @throws \Plenty\AmazonPHP\SellingPartner\Exception\InvalidArgumentException|\JsonException
      */
     public function searchDefinitionsProductTypes(AccessToken $accessToken, string $region, array $marketplace_ids, array $keywords = null, ?string $locale = null) : \Plenty\AmazonPHP\SellingPartner\Model\ProductTypesDefinitions\ProductTypeList
     {
@@ -404,8 +405,9 @@ final class ProductTypesDefinitionsSDK
      * @param AccessToken $accessToken
      * @param string[] $marketplace_ids A comma-delimited list of Amazon marketplace identifiers for the request. (required)
      * @param string[] $keywords A comma-delimited list of keywords to search product types by. (optional)
+     * @param string|null $locale Locale for retrieving display labels and other presentation details. (optional))
      *
-     * @throws \Plenty\AmazonPHP\SellingPartner\Exception\InvalidArgumentException
+     * @throws \Plenty\AmazonPHP\SellingPartner\Exception\InvalidArgumentException|\JsonException
      */
     public function searchDefinitionsProductTypesRequest(AccessToken $accessToken, string $region, array $marketplace_ids, array $keywords = null, ?string $locale = null) : RequestInterface
     {
