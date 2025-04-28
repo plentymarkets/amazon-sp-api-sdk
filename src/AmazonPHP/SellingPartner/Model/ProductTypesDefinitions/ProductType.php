@@ -58,6 +58,7 @@ class ProductType implements \ArrayAccess, \JsonSerializable, ModelInterface
      */
     protected static /** [COMPAT] array */ $openAPITypes = [
         'name' => 'string',
+        'display_name' => 'string',
         'marketplace_ids' => 'string[]',
     ];
 
@@ -70,6 +71,7 @@ class ProductType implements \ArrayAccess, \JsonSerializable, ModelInterface
      */
     protected static /** [COMPAT] array */ $openAPIFormats = [
         'name' => null,
+        'display_name' => null,
         'marketplace_ids' => null,
     ];
 
@@ -81,6 +83,7 @@ class ProductType implements \ArrayAccess, \JsonSerializable, ModelInterface
      */
     protected static /** [COMPAT] array */ $attributeMap = [
         'name' => 'name',
+        'display_name' => 'displayName',
         'marketplace_ids' => 'marketplaceIds',
     ];
 
@@ -91,6 +94,7 @@ class ProductType implements \ArrayAccess, \JsonSerializable, ModelInterface
      */
     protected static /** [COMPAT] array */ $setters = [
         'name' => 'setName',
+        'display_name' => 'setDisplayName',
         'marketplace_ids' => 'setMarketplaceIds',
     ];
 
@@ -101,6 +105,7 @@ class ProductType implements \ArrayAccess, \JsonSerializable, ModelInterface
      */
     protected static /** [COMPAT] array */ $getters = [
         'name' => 'getName',
+        'display_name' => 'getDisplayName',
         'marketplace_ids' => 'getMarketplaceIds',
     ];
 
@@ -120,6 +125,7 @@ class ProductType implements \ArrayAccess, \JsonSerializable, ModelInterface
     public function __construct(array $data = null)
     {
         $this->container['name'] = $data['name'] ?? null;
+        $this->container['display_name'] = $data['display_name'] ?? null;
         $this->container['marketplace_ids'] = $data['marketplace_ids'] ?? null;
     }
 
@@ -240,6 +246,30 @@ class ProductType implements \ArrayAccess, \JsonSerializable, ModelInterface
     public function setName(string $name) : self
     {
         $this->container['name'] = $name;
+
+        return $this;
+    }
+
+    /**
+     * @param string $displayName
+     *
+     * @return $this
+     */
+    public function getDisplayName(string $displayName): self
+    {
+        $this->container['display_name'] = $displayName;
+
+        return $this;
+    }
+
+    /**
+     * @param string $displayName
+     *
+     * @return $this
+     */
+    public function setDisplayName(string $displayName): self
+    {
+        $this->container['display_name'] = $displayName;
 
         return $this;
     }
