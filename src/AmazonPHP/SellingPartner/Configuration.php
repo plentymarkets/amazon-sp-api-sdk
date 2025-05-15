@@ -20,7 +20,8 @@ class Configuration
     private Extensions $extensions;
     private string $lwaClientSecret;
     private string $lwaClientID;
-    
+    private UniqidGenerator $idGenerator;
+
     public function __construct(
         string $lwaClientID,
         string $lwaClientSecret,
