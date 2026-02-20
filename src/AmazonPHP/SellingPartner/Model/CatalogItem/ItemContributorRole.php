@@ -1,6 +1,6 @@
 <?php
 /**
- * ErrorList
+ * ItemContributorRole
  *
  * PHP version 7.4
  *
@@ -39,7 +39,7 @@ use \Plenty\AmazonPHP\SellingPartner\ModelInterface;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class ErrorList implements ModelInterface, ArrayAccess, \JsonSerializable
+class ItemContributorRole implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -48,7 +48,7 @@ class ErrorList implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static string $openAPIModelName = 'ErrorList';
+    protected static string $openAPIModelName = 'ItemContributorRole';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -56,7 +56,8 @@ class ErrorList implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static array $openAPITypes = [
-        'errors' => '\AmazonPHP\SellingPartner\Model\CatalogItem\Error[]'
+        'display_name' => 'string',
+        'value' => 'string'
     ];
 
     /**
@@ -67,7 +68,8 @@ class ErrorList implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static array $openAPIFormats = [
-        'errors' => null
+        'display_name' => null,
+        'value' => null
     ];
 
     /**
@@ -97,7 +99,8 @@ class ErrorList implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static array $attributeMap = [
-        'errors' => 'errors'
+        'display_name' => 'displayName',
+        'value' => 'value'
     ];
 
     /**
@@ -106,7 +109,8 @@ class ErrorList implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static array $setters = [
-        'errors' => 'setErrors'
+        'display_name' => 'setDisplayName',
+        'value' => 'setValue'
     ];
 
     /**
@@ -115,7 +119,8 @@ class ErrorList implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static array $getters = [
-        'errors' => 'getErrors'
+        'display_name' => 'getDisplayName',
+        'value' => 'getValue'
     ];
 
     /**
@@ -175,7 +180,8 @@ class ErrorList implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['errors'] = $data['errors'] ?? null;
+        $this->container['display_name'] = $data['display_name'] ?? null;
+        $this->container['value'] = $data['value'] ?? null;
     }
 
     /**
@@ -187,8 +193,8 @@ class ErrorList implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        if ($this->container['errors'] === null) {
-            $invalidProperties[] = "'errors' can't be null";
+        if ($this->container['value'] === null) {
+            $invalidProperties[] = "'value' can't be null";
         }
         return $invalidProperties;
     }
@@ -206,25 +212,49 @@ class ErrorList implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets errors
+     * Gets display_name
      *
-     * @return \Plenty\AmazonPHP\SellingPartner\Model\CatalogItem\Error[]
+     * @return string|null
      */
-    public function getErrors()
+    public function getDisplayName()
     {
-        return $this->container['errors'];
+        return $this->container['display_name'];
     }
 
     /**
-     * Sets errors
+     * Sets display_name
      *
-     * @param \Plenty\AmazonPHP\SellingPartner\Model\CatalogItem\Error[] $errors A list of error responses returned when a request is unsuccessful.
+     * @param string|null $display_name Display name of the role in the requested locale, such as `Author` or `Actor`.
      *
      * @return self
      */
-    public function setErrors($errors) : self
+    public function setDisplayName($display_name) : self
     {
-        $this->container['errors'] = $errors;
+        $this->container['display_name'] = $display_name;
+
+        return $this;
+    }
+
+    /**
+     * Gets value
+     *
+     * @return string
+     */
+    public function getValue()
+    {
+        return $this->container['value'];
+    }
+
+    /**
+     * Sets value
+     *
+     * @param string $value Role value for the Amazon catalog item, such as `author` or `actor`.
+     *
+     * @return self
+     */
+    public function setValue($value) : self
+    {
+        $this->container['value'] = $value;
 
         return $this;
     }

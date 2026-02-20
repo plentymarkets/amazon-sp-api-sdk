@@ -1,6 +1,6 @@
 <?php
 /**
- * ErrorList
+ * Dimensions
  *
  * PHP version 7.4
  *
@@ -39,7 +39,7 @@ use \Plenty\AmazonPHP\SellingPartner\ModelInterface;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class ErrorList implements ModelInterface, ArrayAccess, \JsonSerializable
+class Dimensions implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -48,7 +48,7 @@ class ErrorList implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static string $openAPIModelName = 'ErrorList';
+    protected static string $openAPIModelName = 'Dimensions';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -56,7 +56,10 @@ class ErrorList implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static array $openAPITypes = [
-        'errors' => '\AmazonPHP\SellingPartner\Model\CatalogItem\Error[]'
+        'height' => '\AmazonPHP\SellingPartner\Model\CatalogItem\Dimension',
+        'length' => '\AmazonPHP\SellingPartner\Model\CatalogItem\Dimension',
+        'weight' => '\AmazonPHP\SellingPartner\Model\CatalogItem\Dimension',
+        'width' => '\AmazonPHP\SellingPartner\Model\CatalogItem\Dimension'
     ];
 
     /**
@@ -67,7 +70,10 @@ class ErrorList implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static array $openAPIFormats = [
-        'errors' => null
+        'height' => null,
+        'length' => null,
+        'weight' => null,
+        'width' => null
     ];
 
     /**
@@ -97,7 +103,10 @@ class ErrorList implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static array $attributeMap = [
-        'errors' => 'errors'
+        'height' => 'height',
+        'length' => 'length',
+        'weight' => 'weight',
+        'width' => 'width'
     ];
 
     /**
@@ -106,7 +115,10 @@ class ErrorList implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static array $setters = [
-        'errors' => 'setErrors'
+        'height' => 'setHeight',
+        'length' => 'setLength',
+        'weight' => 'setWeight',
+        'width' => 'setWidth'
     ];
 
     /**
@@ -115,7 +127,10 @@ class ErrorList implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static array $getters = [
-        'errors' => 'getErrors'
+        'height' => 'getHeight',
+        'length' => 'getLength',
+        'weight' => 'getWeight',
+        'width' => 'getWidth'
     ];
 
     /**
@@ -175,7 +190,10 @@ class ErrorList implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['errors'] = $data['errors'] ?? null;
+        $this->container['height'] = $data['height'] ?? null;
+        $this->container['length'] = $data['length'] ?? null;
+        $this->container['weight'] = $data['weight'] ?? null;
+        $this->container['width'] = $data['width'] ?? null;
     }
 
     /**
@@ -187,9 +205,6 @@ class ErrorList implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        if ($this->container['errors'] === null) {
-            $invalidProperties[] = "'errors' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -206,25 +221,97 @@ class ErrorList implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets errors
+     * Gets height
      *
-     * @return \Plenty\AmazonPHP\SellingPartner\Model\CatalogItem\Error[]
+     * @return \Plenty\AmazonPHP\SellingPartner\Model\CatalogItem\Dimension|null
      */
-    public function getErrors()
+    public function getHeight()
     {
-        return $this->container['errors'];
+        return $this->container['height'];
     }
 
     /**
-     * Sets errors
+     * Sets height
      *
-     * @param \Plenty\AmazonPHP\SellingPartner\Model\CatalogItem\Error[] $errors A list of error responses returned when a request is unsuccessful.
+     * @param \Plenty\AmazonPHP\SellingPartner\Model\CatalogItem\Dimension|null $height height
      *
      * @return self
      */
-    public function setErrors($errors) : self
+    public function setHeight($height) : self
     {
-        $this->container['errors'] = $errors;
+        $this->container['height'] = $height;
+
+        return $this;
+    }
+
+    /**
+     * Gets length
+     *
+     * @return \Plenty\AmazonPHP\SellingPartner\Model\CatalogItem\Dimension|null
+     */
+    public function getLength()
+    {
+        return $this->container['length'];
+    }
+
+    /**
+     * Sets length
+     *
+     * @param \Plenty\AmazonPHP\SellingPartner\Model\CatalogItem\Dimension|null $length length
+     *
+     * @return self
+     */
+    public function setLength($length) : self
+    {
+        $this->container['length'] = $length;
+
+        return $this;
+    }
+
+    /**
+     * Gets weight
+     *
+     * @return \Plenty\AmazonPHP\SellingPartner\Model\CatalogItem\Dimension|null
+     */
+    public function getWeight()
+    {
+        return $this->container['weight'];
+    }
+
+    /**
+     * Sets weight
+     *
+     * @param \Plenty\AmazonPHP\SellingPartner\Model\CatalogItem\Dimension|null $weight weight
+     *
+     * @return self
+     */
+    public function setWeight($weight) : self
+    {
+        $this->container['weight'] = $weight;
+
+        return $this;
+    }
+
+    /**
+     * Gets width
+     *
+     * @return \Plenty\AmazonPHP\SellingPartner\Model\CatalogItem\Dimension|null
+     */
+    public function getWidth()
+    {
+        return $this->container['width'];
+    }
+
+    /**
+     * Sets width
+     *
+     * @param \Plenty\AmazonPHP\SellingPartner\Model\CatalogItem\Dimension|null $width width
+     *
+     * @return self
+     */
+    public function setWidth($width) : self
+    {
+        $this->container['width'] = $width;
 
         return $this;
     }

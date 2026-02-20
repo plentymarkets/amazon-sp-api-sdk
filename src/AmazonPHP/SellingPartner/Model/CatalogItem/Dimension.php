@@ -1,6 +1,6 @@
 <?php
 /**
- * ErrorList
+ * Dimension
  *
  * PHP version 7.4
  *
@@ -39,7 +39,7 @@ use \Plenty\AmazonPHP\SellingPartner\ModelInterface;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class ErrorList implements ModelInterface, ArrayAccess, \JsonSerializable
+class Dimension implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -48,7 +48,7 @@ class ErrorList implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static string $openAPIModelName = 'ErrorList';
+    protected static string $openAPIModelName = 'Dimension';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -56,7 +56,8 @@ class ErrorList implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static array $openAPITypes = [
-        'errors' => '\AmazonPHP\SellingPartner\Model\CatalogItem\Error[]'
+        'unit' => 'string',
+        'value' => 'float'
     ];
 
     /**
@@ -67,7 +68,8 @@ class ErrorList implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static array $openAPIFormats = [
-        'errors' => null
+        'unit' => null,
+        'value' => null
     ];
 
     /**
@@ -97,7 +99,8 @@ class ErrorList implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static array $attributeMap = [
-        'errors' => 'errors'
+        'unit' => 'unit',
+        'value' => 'value'
     ];
 
     /**
@@ -106,7 +109,8 @@ class ErrorList implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static array $setters = [
-        'errors' => 'setErrors'
+        'unit' => 'setUnit',
+        'value' => 'setValue'
     ];
 
     /**
@@ -115,7 +119,8 @@ class ErrorList implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static array $getters = [
-        'errors' => 'getErrors'
+        'unit' => 'getUnit',
+        'value' => 'getValue'
     ];
 
     /**
@@ -175,7 +180,8 @@ class ErrorList implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['errors'] = $data['errors'] ?? null;
+        $this->container['unit'] = $data['unit'] ?? null;
+        $this->container['value'] = $data['value'] ?? null;
     }
 
     /**
@@ -187,9 +193,6 @@ class ErrorList implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        if ($this->container['errors'] === null) {
-            $invalidProperties[] = "'errors' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -206,25 +209,49 @@ class ErrorList implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets errors
+     * Gets unit
      *
-     * @return \Plenty\AmazonPHP\SellingPartner\Model\CatalogItem\Error[]
+     * @return string|null
      */
-    public function getErrors()
+    public function getUnit()
     {
-        return $this->container['errors'];
+        return $this->container['unit'];
     }
 
     /**
-     * Sets errors
+     * Sets unit
      *
-     * @param \Plenty\AmazonPHP\SellingPartner\Model\CatalogItem\Error[] $errors A list of error responses returned when a request is unsuccessful.
+     * @param string|null $unit Unit of measurement for the dimension value.
      *
      * @return self
      */
-    public function setErrors($errors) : self
+    public function setUnit($unit) : self
     {
-        $this->container['errors'] = $errors;
+        $this->container['unit'] = $unit;
+
+        return $this;
+    }
+
+    /**
+     * Gets value
+     *
+     * @return float|null
+     */
+    public function getValue()
+    {
+        return $this->container['value'];
+    }
+
+    /**
+     * Sets value
+     *
+     * @param float|null $value Numeric value of the dimension.
+     *
+     * @return self
+     */
+    public function setValue($value) : self
+    {
+        $this->container['value'] = $value;
 
         return $this;
     }

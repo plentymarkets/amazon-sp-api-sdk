@@ -1,6 +1,6 @@
 <?php
 /**
- * ErrorList
+ * ItemDisplayGroupSalesRank
  *
  * PHP version 7.4
  *
@@ -39,7 +39,7 @@ use \Plenty\AmazonPHP\SellingPartner\ModelInterface;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class ErrorList implements ModelInterface, ArrayAccess, \JsonSerializable
+class ItemDisplayGroupSalesRank implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -48,7 +48,7 @@ class ErrorList implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static string $openAPIModelName = 'ErrorList';
+    protected static string $openAPIModelName = 'ItemDisplayGroupSalesRank';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -56,7 +56,10 @@ class ErrorList implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static array $openAPITypes = [
-        'errors' => '\AmazonPHP\SellingPartner\Model\CatalogItem\Error[]'
+        'website_display_group' => 'string',
+        'title' => 'string',
+        'link' => 'string',
+        'rank' => 'int'
     ];
 
     /**
@@ -67,7 +70,10 @@ class ErrorList implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static array $openAPIFormats = [
-        'errors' => null
+        'website_display_group' => null,
+        'title' => null,
+        'link' => null,
+        'rank' => null
     ];
 
     /**
@@ -97,7 +103,10 @@ class ErrorList implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static array $attributeMap = [
-        'errors' => 'errors'
+        'website_display_group' => 'websiteDisplayGroup',
+        'title' => 'title',
+        'link' => 'link',
+        'rank' => 'rank'
     ];
 
     /**
@@ -106,7 +115,10 @@ class ErrorList implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static array $setters = [
-        'errors' => 'setErrors'
+        'website_display_group' => 'setWebsiteDisplayGroup',
+        'title' => 'setTitle',
+        'link' => 'setLink',
+        'rank' => 'setRank'
     ];
 
     /**
@@ -115,7 +127,10 @@ class ErrorList implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static array $getters = [
-        'errors' => 'getErrors'
+        'website_display_group' => 'getWebsiteDisplayGroup',
+        'title' => 'getTitle',
+        'link' => 'getLink',
+        'rank' => 'getRank'
     ];
 
     /**
@@ -175,7 +190,10 @@ class ErrorList implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['errors'] = $data['errors'] ?? null;
+        $this->container['website_display_group'] = $data['website_display_group'] ?? null;
+        $this->container['title'] = $data['title'] ?? null;
+        $this->container['link'] = $data['link'] ?? null;
+        $this->container['rank'] = $data['rank'] ?? null;
     }
 
     /**
@@ -187,8 +205,14 @@ class ErrorList implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        if ($this->container['errors'] === null) {
-            $invalidProperties[] = "'errors' can't be null";
+        if ($this->container['website_display_group'] === null) {
+            $invalidProperties[] = "'website_display_group' can't be null";
+        }
+        if ($this->container['title'] === null) {
+            $invalidProperties[] = "'title' can't be null";
+        }
+        if ($this->container['rank'] === null) {
+            $invalidProperties[] = "'rank' can't be null";
         }
         return $invalidProperties;
     }
@@ -206,25 +230,97 @@ class ErrorList implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets errors
+     * Gets website_display_group
      *
-     * @return \Plenty\AmazonPHP\SellingPartner\Model\CatalogItem\Error[]
+     * @return string
      */
-    public function getErrors()
+    public function getWebsiteDisplayGroup()
     {
-        return $this->container['errors'];
+        return $this->container['website_display_group'];
     }
 
     /**
-     * Sets errors
+     * Sets website_display_group
      *
-     * @param \Plenty\AmazonPHP\SellingPartner\Model\CatalogItem\Error[] $errors A list of error responses returned when a request is unsuccessful.
+     * @param string $website_display_group Name of the website display group that is associated with the sales rank
      *
      * @return self
      */
-    public function setErrors($errors) : self
+    public function setWebsiteDisplayGroup($website_display_group) : self
     {
-        $this->container['errors'] = $errors;
+        $this->container['website_display_group'] = $website_display_group;
+
+        return $this;
+    }
+
+    /**
+     * Gets title
+     *
+     * @return string
+     */
+    public function getTitle()
+    {
+        return $this->container['title'];
+    }
+
+    /**
+     * Sets title
+     *
+     * @param string $title Name of the sales rank.
+     *
+     * @return self
+     */
+    public function setTitle($title) : self
+    {
+        $this->container['title'] = $title;
+
+        return $this;
+    }
+
+    /**
+     * Gets link
+     *
+     * @return string|null
+     */
+    public function getLink()
+    {
+        return $this->container['link'];
+    }
+
+    /**
+     * Sets link
+     *
+     * @param string|null $link Corresponding Amazon retail website URL for the sales rank.
+     *
+     * @return self
+     */
+    public function setLink($link) : self
+    {
+        $this->container['link'] = $link;
+
+        return $this;
+    }
+
+    /**
+     * Gets rank
+     *
+     * @return int
+     */
+    public function getRank()
+    {
+        return $this->container['rank'];
+    }
+
+    /**
+     * Sets rank
+     *
+     * @param int $rank Sales rank.
+     *
+     * @return self
+     */
+    public function setRank($rank) : self
+    {
+        $this->container['rank'] = $rank;
 
         return $this;
     }

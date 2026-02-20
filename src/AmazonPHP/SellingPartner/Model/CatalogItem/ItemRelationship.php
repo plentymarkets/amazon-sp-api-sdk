@@ -1,6 +1,6 @@
 <?php
 /**
- * ErrorList
+ * ItemRelationship
  *
  * PHP version 7.4
  *
@@ -39,7 +39,7 @@ use \Plenty\AmazonPHP\SellingPartner\ModelInterface;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class ErrorList implements ModelInterface, ArrayAccess, \JsonSerializable
+class ItemRelationship implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -48,7 +48,7 @@ class ErrorList implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static string $openAPIModelName = 'ErrorList';
+    protected static string $openAPIModelName = 'ItemRelationship';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -56,7 +56,10 @@ class ErrorList implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static array $openAPITypes = [
-        'errors' => '\AmazonPHP\SellingPartner\Model\CatalogItem\Error[]'
+        'child_asins' => 'string[]',
+        'parent_asins' => 'string[]',
+        'variation_theme' => '\AmazonPHP\SellingPartner\Model\CatalogItem\ItemVariationTheme',
+        'type' => 'string'
     ];
 
     /**
@@ -67,7 +70,10 @@ class ErrorList implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static array $openAPIFormats = [
-        'errors' => null
+        'child_asins' => null,
+        'parent_asins' => null,
+        'variation_theme' => null,
+        'type' => null
     ];
 
     /**
@@ -97,7 +103,10 @@ class ErrorList implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static array $attributeMap = [
-        'errors' => 'errors'
+        'child_asins' => 'childAsins',
+        'parent_asins' => 'parentAsins',
+        'variation_theme' => 'variationTheme',
+        'type' => 'type'
     ];
 
     /**
@@ -106,7 +115,10 @@ class ErrorList implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static array $setters = [
-        'errors' => 'setErrors'
+        'child_asins' => 'setChildAsins',
+        'parent_asins' => 'setParentAsins',
+        'variation_theme' => 'setVariationTheme',
+        'type' => 'setType'
     ];
 
     /**
@@ -115,7 +127,10 @@ class ErrorList implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static array $getters = [
-        'errors' => 'getErrors'
+        'child_asins' => 'getChildAsins',
+        'parent_asins' => 'getParentAsins',
+        'variation_theme' => 'getVariationTheme',
+        'type' => 'getType'
     ];
 
     /**
@@ -159,6 +174,21 @@ class ErrorList implements ModelInterface, ArrayAccess, \JsonSerializable
         return self::$openAPIModelName;
     }
 
+    const TYPE_VARIATION = 'VARIATION';
+    const TYPE_PACKAGE_HIERARCHY = 'PACKAGE_HIERARCHY';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getTypeAllowableValues() : array
+    {
+        return [
+            self::TYPE_VARIATION,
+            self::TYPE_PACKAGE_HIERARCHY,
+        ];
+    }
 
     /**
      * Associative array for storing property values
@@ -175,7 +205,10 @@ class ErrorList implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['errors'] = $data['errors'] ?? null;
+        $this->container['child_asins'] = $data['child_asins'] ?? null;
+        $this->container['parent_asins'] = $data['parent_asins'] ?? null;
+        $this->container['variation_theme'] = $data['variation_theme'] ?? null;
+        $this->container['type'] = $data['type'] ?? null;
     }
 
     /**
@@ -187,9 +220,18 @@ class ErrorList implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        if ($this->container['errors'] === null) {
-            $invalidProperties[] = "'errors' can't be null";
+        if ($this->container['type'] === null) {
+            $invalidProperties[] = "'type' can't be null";
         }
+        $allowedValues = $this->getTypeAllowableValues();
+        if (!is_null($this->container['type']) && !in_array($this->container['type'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'type', must be one of '%s'",
+                $this->container['type'],
+                implode("', '", $allowedValues)
+            );
+        }
+
         return $invalidProperties;
     }
 
@@ -206,25 +248,107 @@ class ErrorList implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets errors
+     * Gets child_asins
      *
-     * @return \Plenty\AmazonPHP\SellingPartner\Model\CatalogItem\Error[]
+     * @return string[]|null
      */
-    public function getErrors()
+    public function getChildAsins()
     {
-        return $this->container['errors'];
+        return $this->container['child_asins'];
     }
 
     /**
-     * Sets errors
+     * Sets child_asins
      *
-     * @param \Plenty\AmazonPHP\SellingPartner\Model\CatalogItem\Error[] $errors A list of error responses returned when a request is unsuccessful.
+     * @param string[]|null $child_asins ASINs of the related items that are children of this item.
      *
      * @return self
      */
-    public function setErrors($errors) : self
+    public function setChildAsins($child_asins) : self
     {
-        $this->container['errors'] = $errors;
+        $this->container['child_asins'] = $child_asins;
+
+        return $this;
+    }
+
+    /**
+     * Gets parent_asins
+     *
+     * @return string[]|null
+     */
+    public function getParentAsins()
+    {
+        return $this->container['parent_asins'];
+    }
+
+    /**
+     * Sets parent_asins
+     *
+     * @param string[]|null $parent_asins ASINs of the related items that are parents of this item.
+     *
+     * @return self
+     */
+    public function setParentAsins($parent_asins) : self
+    {
+        $this->container['parent_asins'] = $parent_asins;
+
+        return $this;
+    }
+
+    /**
+     * Gets variation_theme
+     *
+     * @return \Plenty\AmazonPHP\SellingPartner\Model\CatalogItem\ItemVariationTheme|null
+     */
+    public function getVariationTheme()
+    {
+        return $this->container['variation_theme'];
+    }
+
+    /**
+     * Sets variation_theme
+     *
+     * @param \Plenty\AmazonPHP\SellingPartner\Model\CatalogItem\ItemVariationTheme|null $variation_theme variation_theme
+     *
+     * @return self
+     */
+    public function setVariationTheme($variation_theme) : self
+    {
+        $this->container['variation_theme'] = $variation_theme;
+
+        return $this;
+    }
+
+    /**
+     * Gets type
+     *
+     * @return string
+     */
+    public function getType()
+    {
+        return $this->container['type'];
+    }
+
+    /**
+     * Sets type
+     *
+     * @param string $type Type of relationship.
+     *
+     * @return self
+     */
+    public function setType($type) : self
+    {
+        $allowedValues = $this->getTypeAllowableValues();
+        if (!in_array($type, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'type', must be one of '%s'",
+                    $type,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['type'] = $type;
 
         return $this;
     }

@@ -1,6 +1,6 @@
 <?php
 /**
- * ErrorList
+ * ItemContributor
  *
  * PHP version 7.4
  *
@@ -39,7 +39,7 @@ use \Plenty\AmazonPHP\SellingPartner\ModelInterface;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class ErrorList implements ModelInterface, ArrayAccess, \JsonSerializable
+class ItemContributor implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -48,7 +48,7 @@ class ErrorList implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static string $openAPIModelName = 'ErrorList';
+    protected static string $openAPIModelName = 'ItemContributor';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -56,7 +56,8 @@ class ErrorList implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static array $openAPITypes = [
-        'errors' => '\AmazonPHP\SellingPartner\Model\CatalogItem\Error[]'
+        'role' => '\AmazonPHP\SellingPartner\Model\CatalogItem\ItemContributorRole',
+        'value' => 'string'
     ];
 
     /**
@@ -67,7 +68,8 @@ class ErrorList implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static array $openAPIFormats = [
-        'errors' => null
+        'role' => null,
+        'value' => null
     ];
 
     /**
@@ -97,7 +99,8 @@ class ErrorList implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static array $attributeMap = [
-        'errors' => 'errors'
+        'role' => 'role',
+        'value' => 'value'
     ];
 
     /**
@@ -106,7 +109,8 @@ class ErrorList implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static array $setters = [
-        'errors' => 'setErrors'
+        'role' => 'setRole',
+        'value' => 'setValue'
     ];
 
     /**
@@ -115,7 +119,8 @@ class ErrorList implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static array $getters = [
-        'errors' => 'getErrors'
+        'role' => 'getRole',
+        'value' => 'getValue'
     ];
 
     /**
@@ -175,7 +180,8 @@ class ErrorList implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['errors'] = $data['errors'] ?? null;
+        $this->container['role'] = $data['role'] ?? null;
+        $this->container['value'] = $data['value'] ?? null;
     }
 
     /**
@@ -187,8 +193,11 @@ class ErrorList implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        if ($this->container['errors'] === null) {
-            $invalidProperties[] = "'errors' can't be null";
+        if ($this->container['role'] === null) {
+            $invalidProperties[] = "'role' can't be null";
+        }
+        if ($this->container['value'] === null) {
+            $invalidProperties[] = "'value' can't be null";
         }
         return $invalidProperties;
     }
@@ -206,25 +215,49 @@ class ErrorList implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets errors
+     * Gets role
      *
-     * @return \Plenty\AmazonPHP\SellingPartner\Model\CatalogItem\Error[]
+     * @return \Plenty\AmazonPHP\SellingPartner\Model\CatalogItem\ItemContributorRole
      */
-    public function getErrors()
+    public function getRole()
     {
-        return $this->container['errors'];
+        return $this->container['role'];
     }
 
     /**
-     * Sets errors
+     * Sets role
      *
-     * @param \Plenty\AmazonPHP\SellingPartner\Model\CatalogItem\Error[] $errors A list of error responses returned when a request is unsuccessful.
+     * @param \Plenty\AmazonPHP\SellingPartner\Model\CatalogItem\ItemContributorRole $role role
      *
      * @return self
      */
-    public function setErrors($errors) : self
+    public function setRole($role) : self
     {
-        $this->container['errors'] = $errors;
+        $this->container['role'] = $role;
+
+        return $this;
+    }
+
+    /**
+     * Gets value
+     *
+     * @return string
+     */
+    public function getValue()
+    {
+        return $this->container['value'];
+    }
+
+    /**
+     * Sets value
+     *
+     * @param string $value Name of the contributor, such as `Jane Austen`.
+     *
+     * @return self
+     */
+    public function setValue($value) : self
+    {
+        $this->container['value'] = $value;
 
         return $this;
     }

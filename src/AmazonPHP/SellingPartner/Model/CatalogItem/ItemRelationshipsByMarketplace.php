@@ -1,6 +1,6 @@
 <?php
 /**
- * ErrorList
+ * ItemRelationshipsByMarketplace
  *
  * PHP version 7.4
  *
@@ -39,7 +39,7 @@ use \Plenty\AmazonPHP\SellingPartner\ModelInterface;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class ErrorList implements ModelInterface, ArrayAccess, \JsonSerializable
+class ItemRelationshipsByMarketplace implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -48,7 +48,7 @@ class ErrorList implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static string $openAPIModelName = 'ErrorList';
+    protected static string $openAPIModelName = 'ItemRelationshipsByMarketplace';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -56,7 +56,8 @@ class ErrorList implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static array $openAPITypes = [
-        'errors' => '\AmazonPHP\SellingPartner\Model\CatalogItem\Error[]'
+        'marketplace_id' => 'string',
+        'relationships' => '\AmazonPHP\SellingPartner\Model\CatalogItem\ItemRelationship[]'
     ];
 
     /**
@@ -67,7 +68,8 @@ class ErrorList implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static array $openAPIFormats = [
-        'errors' => null
+        'marketplace_id' => null,
+        'relationships' => null
     ];
 
     /**
@@ -97,7 +99,8 @@ class ErrorList implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static array $attributeMap = [
-        'errors' => 'errors'
+        'marketplace_id' => 'marketplaceId',
+        'relationships' => 'relationships'
     ];
 
     /**
@@ -106,7 +109,8 @@ class ErrorList implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static array $setters = [
-        'errors' => 'setErrors'
+        'marketplace_id' => 'setMarketplaceId',
+        'relationships' => 'setRelationships'
     ];
 
     /**
@@ -115,7 +119,8 @@ class ErrorList implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static array $getters = [
-        'errors' => 'getErrors'
+        'marketplace_id' => 'getMarketplaceId',
+        'relationships' => 'getRelationships'
     ];
 
     /**
@@ -175,7 +180,8 @@ class ErrorList implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['errors'] = $data['errors'] ?? null;
+        $this->container['marketplace_id'] = $data['marketplace_id'] ?? null;
+        $this->container['relationships'] = $data['relationships'] ?? null;
     }
 
     /**
@@ -187,8 +193,11 @@ class ErrorList implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        if ($this->container['errors'] === null) {
-            $invalidProperties[] = "'errors' can't be null";
+        if ($this->container['marketplace_id'] === null) {
+            $invalidProperties[] = "'marketplace_id' can't be null";
+        }
+        if ($this->container['relationships'] === null) {
+            $invalidProperties[] = "'relationships' can't be null";
         }
         return $invalidProperties;
     }
@@ -206,25 +215,49 @@ class ErrorList implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets errors
+     * Gets marketplace_id
      *
-     * @return \Plenty\AmazonPHP\SellingPartner\Model\CatalogItem\Error[]
+     * @return string
      */
-    public function getErrors()
+    public function getMarketplaceId()
     {
-        return $this->container['errors'];
+        return $this->container['marketplace_id'];
     }
 
     /**
-     * Sets errors
+     * Sets marketplace_id
      *
-     * @param \Plenty\AmazonPHP\SellingPartner\Model\CatalogItem\Error[] $errors A list of error responses returned when a request is unsuccessful.
+     * @param string $marketplace_id Amazon marketplace identifier. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
      *
      * @return self
      */
-    public function setErrors($errors) : self
+    public function setMarketplaceId($marketplace_id) : self
     {
-        $this->container['errors'] = $errors;
+        $this->container['marketplace_id'] = $marketplace_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets relationships
+     *
+     * @return \Plenty\AmazonPHP\SellingPartner\Model\CatalogItem\ItemRelationship[]
+     */
+    public function getRelationships()
+    {
+        return $this->container['relationships'];
+    }
+
+    /**
+     * Sets relationships
+     *
+     * @param \Plenty\AmazonPHP\SellingPartner\Model\CatalogItem\ItemRelationship[] $relationships Relationships for the item.
+     *
+     * @return self
+     */
+    public function setRelationships($relationships) : self
+    {
+        $this->container['relationships'] = $relationships;
 
         return $this;
     }

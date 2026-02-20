@@ -1,6 +1,6 @@
 <?php
 /**
- * ErrorList
+ * ItemVariationTheme
  *
  * PHP version 7.4
  *
@@ -39,7 +39,7 @@ use \Plenty\AmazonPHP\SellingPartner\ModelInterface;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class ErrorList implements ModelInterface, ArrayAccess, \JsonSerializable
+class ItemVariationTheme implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -48,7 +48,7 @@ class ErrorList implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static string $openAPIModelName = 'ErrorList';
+    protected static string $openAPIModelName = 'ItemVariationTheme';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -56,7 +56,8 @@ class ErrorList implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static array $openAPITypes = [
-        'errors' => '\AmazonPHP\SellingPartner\Model\CatalogItem\Error[]'
+        'attributes' => 'string[]',
+        'theme' => 'string'
     ];
 
     /**
@@ -67,7 +68,8 @@ class ErrorList implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static array $openAPIFormats = [
-        'errors' => null
+        'attributes' => null,
+        'theme' => null
     ];
 
     /**
@@ -97,7 +99,8 @@ class ErrorList implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static array $attributeMap = [
-        'errors' => 'errors'
+        'attributes' => 'attributes',
+        'theme' => 'theme'
     ];
 
     /**
@@ -106,7 +109,8 @@ class ErrorList implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static array $setters = [
-        'errors' => 'setErrors'
+        'attributes' => 'setAttributes',
+        'theme' => 'setTheme'
     ];
 
     /**
@@ -115,7 +119,8 @@ class ErrorList implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static array $getters = [
-        'errors' => 'getErrors'
+        'attributes' => 'getAttributes',
+        'theme' => 'getTheme'
     ];
 
     /**
@@ -175,7 +180,8 @@ class ErrorList implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['errors'] = $data['errors'] ?? null;
+        $this->container['attributes'] = $data['attributes'] ?? null;
+        $this->container['theme'] = $data['theme'] ?? null;
     }
 
     /**
@@ -187,9 +193,6 @@ class ErrorList implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        if ($this->container['errors'] === null) {
-            $invalidProperties[] = "'errors' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -206,25 +209,49 @@ class ErrorList implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets errors
+     * Gets attributes
      *
-     * @return \Plenty\AmazonPHP\SellingPartner\Model\CatalogItem\Error[]
+     * @return string[]|null
      */
-    public function getErrors()
+    public function getAttributes()
     {
-        return $this->container['errors'];
+        return $this->container['attributes'];
     }
 
     /**
-     * Sets errors
+     * Sets attributes
      *
-     * @param \Plenty\AmazonPHP\SellingPartner\Model\CatalogItem\Error[] $errors A list of error responses returned when a request is unsuccessful.
+     * @param string[]|null $attributes Names of the Amazon catalog item attributes that are associated with the variation theme.
      *
      * @return self
      */
-    public function setErrors($errors) : self
+    public function setAttributes($attributes) : self
     {
-        $this->container['errors'] = $errors;
+        $this->container['attributes'] = $attributes;
+
+        return $this;
+    }
+
+    /**
+     * Gets theme
+     *
+     * @return string|null
+     */
+    public function getTheme()
+    {
+        return $this->container['theme'];
+    }
+
+    /**
+     * Sets theme
+     *
+     * @param string|null $theme Variation theme that indicates the combination of Amazon catalog item attributes that define the variation family.
+     *
+     * @return self
+     */
+    public function setTheme($theme) : self
+    {
+        $this->container['theme'] = $theme;
 
         return $this;
     }

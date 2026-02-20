@@ -1,6 +1,6 @@
 <?php
 /**
- * ErrorList
+ * ItemBrowseClassification
  *
  * PHP version 7.4
  *
@@ -39,7 +39,7 @@ use \Plenty\AmazonPHP\SellingPartner\ModelInterface;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class ErrorList implements ModelInterface, ArrayAccess, \JsonSerializable
+class ItemBrowseClassification implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -48,7 +48,7 @@ class ErrorList implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static string $openAPIModelName = 'ErrorList';
+    protected static string $openAPIModelName = 'ItemBrowseClassification';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -56,7 +56,9 @@ class ErrorList implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static array $openAPITypes = [
-        'errors' => '\AmazonPHP\SellingPartner\Model\CatalogItem\Error[]'
+        'display_name' => 'string',
+        'classification_id' => 'string',
+        'parent' => '\AmazonPHP\SellingPartner\Model\CatalogItem\ItemBrowseClassification'
     ];
 
     /**
@@ -67,7 +69,9 @@ class ErrorList implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static array $openAPIFormats = [
-        'errors' => null
+        'display_name' => null,
+        'classification_id' => null,
+        'parent' => null
     ];
 
     /**
@@ -97,7 +101,9 @@ class ErrorList implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static array $attributeMap = [
-        'errors' => 'errors'
+        'display_name' => 'displayName',
+        'classification_id' => 'classificationId',
+        'parent' => 'parent'
     ];
 
     /**
@@ -106,7 +112,9 @@ class ErrorList implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static array $setters = [
-        'errors' => 'setErrors'
+        'display_name' => 'setDisplayName',
+        'classification_id' => 'setClassificationId',
+        'parent' => 'setParent'
     ];
 
     /**
@@ -115,7 +123,9 @@ class ErrorList implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static array $getters = [
-        'errors' => 'getErrors'
+        'display_name' => 'getDisplayName',
+        'classification_id' => 'getClassificationId',
+        'parent' => 'getParent'
     ];
 
     /**
@@ -175,7 +185,9 @@ class ErrorList implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['errors'] = $data['errors'] ?? null;
+        $this->container['display_name'] = $data['display_name'] ?? null;
+        $this->container['classification_id'] = $data['classification_id'] ?? null;
+        $this->container['parent'] = $data['parent'] ?? null;
     }
 
     /**
@@ -187,8 +199,11 @@ class ErrorList implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        if ($this->container['errors'] === null) {
-            $invalidProperties[] = "'errors' can't be null";
+        if ($this->container['display_name'] === null) {
+            $invalidProperties[] = "'display_name' can't be null";
+        }
+        if ($this->container['classification_id'] === null) {
+            $invalidProperties[] = "'classification_id' can't be null";
         }
         return $invalidProperties;
     }
@@ -206,25 +221,73 @@ class ErrorList implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets errors
+     * Gets display_name
      *
-     * @return \Plenty\AmazonPHP\SellingPartner\Model\CatalogItem\Error[]
+     * @return string
      */
-    public function getErrors()
+    public function getDisplayName()
     {
-        return $this->container['errors'];
+        return $this->container['display_name'];
     }
 
     /**
-     * Sets errors
+     * Sets display_name
      *
-     * @param \Plenty\AmazonPHP\SellingPartner\Model\CatalogItem\Error[] $errors A list of error responses returned when a request is unsuccessful.
+     * @param string $display_name Display name for the classification.
      *
      * @return self
      */
-    public function setErrors($errors) : self
+    public function setDisplayName($display_name) : self
     {
-        $this->container['errors'] = $errors;
+        $this->container['display_name'] = $display_name;
+
+        return $this;
+    }
+
+    /**
+     * Gets classification_id
+     *
+     * @return string
+     */
+    public function getClassificationId()
+    {
+        return $this->container['classification_id'];
+    }
+
+    /**
+     * Sets classification_id
+     *
+     * @param string $classification_id Identifier of the classification.
+     *
+     * @return self
+     */
+    public function setClassificationId($classification_id) : self
+    {
+        $this->container['classification_id'] = $classification_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets parent
+     *
+     * @return \Plenty\AmazonPHP\SellingPartner\Model\CatalogItem\ItemBrowseClassification|null
+     */
+    public function getParent()
+    {
+        return $this->container['parent'];
+    }
+
+    /**
+     * Sets parent
+     *
+     * @param \Plenty\AmazonPHP\SellingPartner\Model\CatalogItem\ItemBrowseClassification|null $parent parent
+     *
+     * @return self
+     */
+    public function setParent($parent) : self
+    {
+        $this->container['parent'] = $parent;
 
         return $this;
     }
