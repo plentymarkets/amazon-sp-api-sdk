@@ -58,7 +58,7 @@ class ItemRelationship implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static array $openAPITypes = [
         'child_asins' => 'string[]',
         'parent_asins' => 'string[]',
-        'variation_theme' => '\AmazonPHP\SellingPartner\Model\CatalogItem\ItemVariationTheme',
+        'variation_theme' => '\Plenty\AmazonPHP\SellingPartner\Model\CatalogItem\ItemVariationTheme',
         'type' => 'string'
     ];
 

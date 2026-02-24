@@ -56,10 +56,10 @@ class Dimensions implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static array $openAPITypes = [
-        'height' => '\AmazonPHP\SellingPartner\Model\CatalogItem\Dimension',
-        'length' => '\AmazonPHP\SellingPartner\Model\CatalogItem\Dimension',
-        'weight' => '\AmazonPHP\SellingPartner\Model\CatalogItem\Dimension',
-        'width' => '\AmazonPHP\SellingPartner\Model\CatalogItem\Dimension'
+        'height' => '\Plenty\AmazonPHP\SellingPartner\Model\CatalogItem\Dimension',
+        'length' => '\Plenty\AmazonPHP\SellingPartner\Model\CatalogItem\Dimension',
+        'weight' => '\Plenty\AmazonPHP\SellingPartner\Model\CatalogItem\Dimension',
+        'width' => '\Plenty\AmazonPHP\SellingPartner\Model\CatalogItem\Dimension'
     ];
 
     /**

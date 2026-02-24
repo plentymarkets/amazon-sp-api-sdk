@@ -58,15 +58,15 @@ class Item implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static array $openAPITypes = [
         'asin' => 'string',
         'attributes' => 'array<string,mixed>',
-        'classifications' => '\AmazonPHP\SellingPartner\Model\CatalogItem\ItemBrowseClassificationsByMarketplace[]',
-        'dimensions' => '\AmazonPHP\SellingPartner\Model\CatalogItem\ItemDimensionsByMarketplace[]',
-        'identifiers' => '\AmazonPHP\SellingPartner\Model\CatalogItem\ItemIdentifiersByMarketplace[]',
-        'images' => '\AmazonPHP\SellingPartner\Model\CatalogItem\ItemImagesByMarketplace[]',
-        'product_types' => '\AmazonPHP\SellingPartner\Model\CatalogItem\ItemProductTypeByMarketplace[]',
-        'relationships' => '\AmazonPHP\SellingPartner\Model\CatalogItem\ItemRelationshipsByMarketplace[]',
-        'sales_ranks' => '\AmazonPHP\SellingPartner\Model\CatalogItem\ItemSalesRanksByMarketplace[]',
-        'summaries' => '\AmazonPHP\SellingPartner\Model\CatalogItem\ItemSummaryByMarketplace[]',
-        'vendor_details' => '\AmazonPHP\SellingPartner\Model\CatalogItem\ItemVendorDetailsByMarketplace[]'
+        'classifications' => '\Plenty\AmazonPHP\SellingPartner\Model\CatalogItem\ItemBrowseClassificationsByMarketplace[]',
+        'dimensions' => '\Plenty\AmazonPHP\SellingPartner\Model\CatalogItem\ItemDimensionsByMarketplace[]',
+        'identifiers' => '\Plenty\AmazonPHP\SellingPartner\Model\CatalogItem\ItemIdentifiersByMarketplace[]',
+        'images' => '\Plenty\AmazonPHP\SellingPartner\Model\CatalogItem\ItemImagesByMarketplace[]',
+        'product_types' => '\Plenty\AmazonPHP\SellingPartner\Model\CatalogItem\ItemProductTypeByMarketplace[]',
+        'relationships' => '\Plenty\AmazonPHP\SellingPartner\Model\CatalogItem\ItemRelationshipsByMarketplace[]',
+        'sales_ranks' => '\Plenty\AmazonPHP\SellingPartner\Model\CatalogItem\ItemSalesRanksByMarketplace[]',
+        'summaries' => '\Plenty\AmazonPHP\SellingPartner\Model\CatalogItem\ItemSummaryByMarketplace[]',
+        'vendor_details' => '\Plenty\AmazonPHP\SellingPartner\Model\CatalogItem\ItemVendorDetailsByMarketplace[]'
     ];
 
     /**

@@ -58,7 +58,7 @@ class ItemBrowseClassification implements ModelInterface, ArrayAccess, \JsonSeri
     protected static array $openAPITypes = [
         'display_name' => 'string',
         'classification_id' => 'string',
-        'parent' => '\AmazonPHP\SellingPartner\Model\CatalogItem\ItemBrowseClassification'
+        'parent' => '\Plenty\AmazonPHP\SellingPartner\Model\CatalogItem\ItemBrowseClassification'
     ];
 
     /**

@@ -57,8 +57,8 @@ class ItemDimensionsByMarketplace implements ModelInterface, ArrayAccess, \JsonS
       */
     protected static array $openAPITypes = [
         'marketplace_id' => 'string',
-        'item' => '\AmazonPHP\SellingPartner\Model\CatalogItem\Dimensions',
-        'package' => '\AmazonPHP\SellingPartner\Model\CatalogItem\Dimensions'
+        'item' => '\Plenty\AmazonPHP\SellingPartner\Model\CatalogItem\Dimensions',
+        'package' => '\Plenty\AmazonPHP\SellingPartner\Model\CatalogItem\Dimensions'
     ];
 
     /**

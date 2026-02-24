@@ -57,7 +57,7 @@ class ItemRelationshipsByMarketplace implements ModelInterface, ArrayAccess, \Js
       */
     protected static array $openAPITypes = [
         'marketplace_id' => 'string',
-        'relationships' => '\AmazonPHP\SellingPartner\Model\CatalogItem\ItemRelationship[]'
+        'relationships' => '\Plenty\AmazonPHP\SellingPartner\Model\CatalogItem\ItemRelationship[]'
     ];
 
     /**

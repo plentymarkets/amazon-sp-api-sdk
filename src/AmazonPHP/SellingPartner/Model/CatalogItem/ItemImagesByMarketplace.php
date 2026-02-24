@@ -57,7 +57,7 @@ class ItemImagesByMarketplace implements ModelInterface, ArrayAccess, \JsonSeria
       */
     protected static array $openAPITypes = [
         'marketplace_id' => 'string',
-        'images' => '\AmazonPHP\SellingPartner\Model\CatalogItem\ItemImage[]'
+        'images' => '\Plenty\AmazonPHP\SellingPartner\Model\CatalogItem\ItemImage[]'
     ];
 
     /**

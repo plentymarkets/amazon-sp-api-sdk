@@ -57,8 +57,8 @@ class ItemSalesRanksByMarketplace implements ModelInterface, ArrayAccess, \JsonS
       */
     protected static array $openAPITypes = [
         'marketplace_id' => 'string',
-        'classification_ranks' => '\AmazonPHP\SellingPartner\Model\CatalogItem\ItemClassificationSalesRank[]',
-        'display_group_ranks' => '\AmazonPHP\SellingPartner\Model\CatalogItem\ItemDisplayGroupSalesRank[]'
+        'classification_ranks' => '\Plenty\AmazonPHP\SellingPartner\Model\CatalogItem\ItemClassificationSalesRank[]',
+        'display_group_ranks' => '\Plenty\AmazonPHP\SellingPartner\Model\CatalogItem\ItemDisplayGroupSalesRank[]'
     ];
 
     /**

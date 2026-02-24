@@ -56,7 +56,7 @@ class ItemContributor implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static array $openAPITypes = [
-        'role' => '\AmazonPHP\SellingPartner\Model\CatalogItem\ItemContributorRole',
+        'role' => '\Plenty\AmazonPHP\SellingPartner\Model\CatalogItem\ItemContributorRole',
         'value' => 'string'
     ];
 

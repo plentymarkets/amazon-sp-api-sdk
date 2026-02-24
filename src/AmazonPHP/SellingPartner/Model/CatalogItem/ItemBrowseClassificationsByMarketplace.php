@@ -57,7 +57,7 @@ class ItemBrowseClassificationsByMarketplace implements ModelInterface, ArrayAcc
       */
     protected static array $openAPITypes = [
         'marketplace_id' => 'string',
-        'classifications' => '\AmazonPHP\SellingPartner\Model\CatalogItem\ItemBrowseClassification[]'
+        'classifications' => '\Plenty\AmazonPHP\SellingPartner\Model\CatalogItem\ItemBrowseClassification[]'
     ];
 
     /**

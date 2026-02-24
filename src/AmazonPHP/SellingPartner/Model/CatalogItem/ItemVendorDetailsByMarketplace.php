@@ -60,9 +60,9 @@ class ItemVendorDetailsByMarketplace implements ModelInterface, ArrayAccess, \Js
         'brand_code' => 'string',
         'manufacturer_code' => 'string',
         'manufacturer_code_parent' => 'string',
-        'product_category' => '\AmazonPHP\SellingPartner\Model\CatalogItem\ItemVendorDetailsCategory',
+        'product_category' => '\Plenty\AmazonPHP\SellingPartner\Model\CatalogItem\ItemVendorDetailsCategory',
         'product_group' => 'string',
-        'product_subcategory' => '\AmazonPHP\SellingPartner\Model\CatalogItem\ItemVendorDetailsCategory',
+        'product_subcategory' => '\Plenty\AmazonPHP\SellingPartner\Model\CatalogItem\ItemVendorDetailsCategory',
         'replenishment_category' => 'string'
     ];
 

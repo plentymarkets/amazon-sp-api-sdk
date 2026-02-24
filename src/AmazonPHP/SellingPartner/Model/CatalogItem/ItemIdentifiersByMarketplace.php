@@ -57,7 +57,7 @@ class ItemIdentifiersByMarketplace implements ModelInterface, ArrayAccess, \Json
       */
     protected static array $openAPITypes = [
         'marketplace_id' => 'string',
-        'identifiers' => '\AmazonPHP\SellingPartner\Model\CatalogItem\ItemIdentifier[]'
+        'identifiers' => '\Plenty\AmazonPHP\SellingPartner\Model\CatalogItem\ItemIdentifier[]'
     ];
 
     /**
