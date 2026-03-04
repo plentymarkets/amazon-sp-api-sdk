@@ -1,6 +1,6 @@
 <?php
 /**
- * ItemIdentifiersByMarketplace
+ * ItemDimensionsByMarketplace
  *
  * PHP version 7.4
  *
@@ -39,7 +39,7 @@ use \Plenty\AmazonPHP\SellingPartner\ModelInterface;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class ItemIdentifiersByMarketplace implements ModelInterface, ArrayAccess, \JsonSerializable
+class ItemDimensionsByMarketplace implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -48,7 +48,7 @@ class ItemIdentifiersByMarketplace implements ModelInterface, ArrayAccess, \Json
       *
       * @var string
       */
-    protected static string $openAPIModelName = 'ItemIdentifiersByMarketplace';
+    protected static string $openAPIModelName = 'ItemDimensionsByMarketplace';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,7 +57,8 @@ class ItemIdentifiersByMarketplace implements ModelInterface, ArrayAccess, \Json
       */
     protected static array $openAPITypes = [
         'marketplace_id' => 'string',
-        'identifiers' => '\Plenty\AmazonPHP\SellingPartner\Model\CatalogItem\ItemIdentifier[]'
+        'item' => '\Plenty\AmazonPHP\SellingPartner\Model\CatalogItem\Dimensions',
+        'package' => '\Plenty\AmazonPHP\SellingPartner\Model\CatalogItem\Dimensions'
     ];
 
     /**
@@ -69,7 +70,8 @@ class ItemIdentifiersByMarketplace implements ModelInterface, ArrayAccess, \Json
       */
     protected static array $openAPIFormats = [
         'marketplace_id' => null,
-        'identifiers' => null
+        'item' => null,
+        'package' => null
     ];
 
     /**
@@ -100,7 +102,8 @@ class ItemIdentifiersByMarketplace implements ModelInterface, ArrayAccess, \Json
      */
     protected static array $attributeMap = [
         'marketplace_id' => 'marketplaceId',
-        'identifiers' => 'identifiers'
+        'item' => 'item',
+        'package' => 'package'
     ];
 
     /**
@@ -110,7 +113,8 @@ class ItemIdentifiersByMarketplace implements ModelInterface, ArrayAccess, \Json
      */
     protected static array $setters = [
         'marketplace_id' => 'setMarketplaceId',
-        'identifiers' => 'setIdentifiers'
+        'item' => 'setItem',
+        'package' => 'setPackage'
     ];
 
     /**
@@ -120,7 +124,8 @@ class ItemIdentifiersByMarketplace implements ModelInterface, ArrayAccess, \Json
      */
     protected static array $getters = [
         'marketplace_id' => 'getMarketplaceId',
-        'identifiers' => 'getIdentifiers'
+        'item' => 'getItem',
+        'package' => 'getPackage'
     ];
 
     /**
@@ -181,7 +186,8 @@ class ItemIdentifiersByMarketplace implements ModelInterface, ArrayAccess, \Json
     public function __construct(array $data = null)
     {
         $this->container['marketplace_id'] = $data['marketplace_id'] ?? null;
-        $this->container['identifiers'] = $data['identifiers'] ?? null;
+        $this->container['item'] = $data['item'] ?? null;
+        $this->container['package'] = $data['package'] ?? null;
     }
 
     /**
@@ -195,9 +201,6 @@ class ItemIdentifiersByMarketplace implements ModelInterface, ArrayAccess, \Json
 
         if ($this->container['marketplace_id'] === null) {
             $invalidProperties[] = "'marketplace_id' can't be null";
-        }
-        if ($this->container['identifiers'] === null) {
-            $invalidProperties[] = "'identifiers' can't be null";
         }
         return $invalidProperties;
     }
@@ -227,7 +230,7 @@ class ItemIdentifiersByMarketplace implements ModelInterface, ArrayAccess, \Json
     /**
      * Sets marketplace_id
      *
-     * @param string $marketplace_id Amazon marketplace identifier. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).identifier.
+     * @param string $marketplace_id Amazon marketplace identifier. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
      *
      * @return self
      */
@@ -239,25 +242,49 @@ class ItemIdentifiersByMarketplace implements ModelInterface, ArrayAccess, \Json
     }
 
     /**
-     * Gets identifiers
+     * Gets item
      *
-     * @return \Plenty\AmazonPHP\SellingPartner\Model\CatalogItem\ItemIdentifier[]
+     * @return \Plenty\AmazonPHP\SellingPartner\Model\CatalogItem\Dimensions|null
      */
-    public function getIdentifiers()
+    public function getItem()
     {
-        return $this->container['identifiers'];
+        return $this->container['item'];
     }
 
     /**
-     * Sets identifiers
+     * Sets item
      *
-     * @param \Plenty\AmazonPHP\SellingPartner\Model\CatalogItem\ItemIdentifier[] $identifiers Identifiers associated with the item in the Amazon catalog for the indicated `marketplaceId`.
+     * @param \Plenty\AmazonPHP\SellingPartner\Model\CatalogItem\Dimensions|null $item item
      *
      * @return self
      */
-    public function setIdentifiers($identifiers) : self
+    public function setItem($item) : self
     {
-        $this->container['identifiers'] = $identifiers;
+        $this->container['item'] = $item;
+
+        return $this;
+    }
+
+    /**
+     * Gets package
+     *
+     * @return \Plenty\AmazonPHP\SellingPartner\Model\CatalogItem\Dimensions|null
+     */
+    public function getPackage()
+    {
+        return $this->container['package'];
+    }
+
+    /**
+     * Sets package
+     *
+     * @param \Plenty\AmazonPHP\SellingPartner\Model\CatalogItem\Dimensions|null $package package
+     *
+     * @return self
+     */
+    public function setPackage($package) : self
+    {
+        $this->container['package'] = $package;
 
         return $this;
     }

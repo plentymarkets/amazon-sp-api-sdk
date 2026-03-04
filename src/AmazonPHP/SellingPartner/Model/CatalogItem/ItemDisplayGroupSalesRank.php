@@ -1,6 +1,6 @@
 <?php
 /**
- * ItemIdentifiersByMarketplace
+ * ItemDisplayGroupSalesRank
  *
  * PHP version 7.4
  *
@@ -39,7 +39,7 @@ use \Plenty\AmazonPHP\SellingPartner\ModelInterface;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class ItemIdentifiersByMarketplace implements ModelInterface, ArrayAccess, \JsonSerializable
+class ItemDisplayGroupSalesRank implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -48,7 +48,7 @@ class ItemIdentifiersByMarketplace implements ModelInterface, ArrayAccess, \Json
       *
       * @var string
       */
-    protected static string $openAPIModelName = 'ItemIdentifiersByMarketplace';
+    protected static string $openAPIModelName = 'ItemDisplayGroupSalesRank';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -56,8 +56,10 @@ class ItemIdentifiersByMarketplace implements ModelInterface, ArrayAccess, \Json
       * @var string[]
       */
     protected static array $openAPITypes = [
-        'marketplace_id' => 'string',
-        'identifiers' => '\Plenty\AmazonPHP\SellingPartner\Model\CatalogItem\ItemIdentifier[]'
+        'website_display_group' => 'string',
+        'title' => 'string',
+        'link' => 'string',
+        'rank' => 'int'
     ];
 
     /**
@@ -68,8 +70,10 @@ class ItemIdentifiersByMarketplace implements ModelInterface, ArrayAccess, \Json
       * @psalm-var array<string, string|null>
       */
     protected static array $openAPIFormats = [
-        'marketplace_id' => null,
-        'identifiers' => null
+        'website_display_group' => null,
+        'title' => null,
+        'link' => null,
+        'rank' => null
     ];
 
     /**
@@ -99,8 +103,10 @@ class ItemIdentifiersByMarketplace implements ModelInterface, ArrayAccess, \Json
      * @var string[]
      */
     protected static array $attributeMap = [
-        'marketplace_id' => 'marketplaceId',
-        'identifiers' => 'identifiers'
+        'website_display_group' => 'websiteDisplayGroup',
+        'title' => 'title',
+        'link' => 'link',
+        'rank' => 'rank'
     ];
 
     /**
@@ -109,8 +115,10 @@ class ItemIdentifiersByMarketplace implements ModelInterface, ArrayAccess, \Json
      * @var string[]
      */
     protected static array $setters = [
-        'marketplace_id' => 'setMarketplaceId',
-        'identifiers' => 'setIdentifiers'
+        'website_display_group' => 'setWebsiteDisplayGroup',
+        'title' => 'setTitle',
+        'link' => 'setLink',
+        'rank' => 'setRank'
     ];
 
     /**
@@ -119,8 +127,10 @@ class ItemIdentifiersByMarketplace implements ModelInterface, ArrayAccess, \Json
      * @var string[]
      */
     protected static array $getters = [
-        'marketplace_id' => 'getMarketplaceId',
-        'identifiers' => 'getIdentifiers'
+        'website_display_group' => 'getWebsiteDisplayGroup',
+        'title' => 'getTitle',
+        'link' => 'getLink',
+        'rank' => 'getRank'
     ];
 
     /**
@@ -180,8 +190,10 @@ class ItemIdentifiersByMarketplace implements ModelInterface, ArrayAccess, \Json
      */
     public function __construct(array $data = null)
     {
-        $this->container['marketplace_id'] = $data['marketplace_id'] ?? null;
-        $this->container['identifiers'] = $data['identifiers'] ?? null;
+        $this->container['website_display_group'] = $data['website_display_group'] ?? null;
+        $this->container['title'] = $data['title'] ?? null;
+        $this->container['link'] = $data['link'] ?? null;
+        $this->container['rank'] = $data['rank'] ?? null;
     }
 
     /**
@@ -193,11 +205,14 @@ class ItemIdentifiersByMarketplace implements ModelInterface, ArrayAccess, \Json
     {
         $invalidProperties = [];
 
-        if ($this->container['marketplace_id'] === null) {
-            $invalidProperties[] = "'marketplace_id' can't be null";
+        if ($this->container['website_display_group'] === null) {
+            $invalidProperties[] = "'website_display_group' can't be null";
         }
-        if ($this->container['identifiers'] === null) {
-            $invalidProperties[] = "'identifiers' can't be null";
+        if ($this->container['title'] === null) {
+            $invalidProperties[] = "'title' can't be null";
+        }
+        if ($this->container['rank'] === null) {
+            $invalidProperties[] = "'rank' can't be null";
         }
         return $invalidProperties;
     }
@@ -215,49 +230,97 @@ class ItemIdentifiersByMarketplace implements ModelInterface, ArrayAccess, \Json
 
 
     /**
-     * Gets marketplace_id
+     * Gets website_display_group
      *
      * @return string
      */
-    public function getMarketplaceId()
+    public function getWebsiteDisplayGroup()
     {
-        return $this->container['marketplace_id'];
+        return $this->container['website_display_group'];
     }
 
     /**
-     * Sets marketplace_id
+     * Sets website_display_group
      *
-     * @param string $marketplace_id Amazon marketplace identifier. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).identifier.
+     * @param string $website_display_group Name of the website display group that is associated with the sales rank
      *
      * @return self
      */
-    public function setMarketplaceId($marketplace_id) : self
+    public function setWebsiteDisplayGroup($website_display_group) : self
     {
-        $this->container['marketplace_id'] = $marketplace_id;
+        $this->container['website_display_group'] = $website_display_group;
 
         return $this;
     }
 
     /**
-     * Gets identifiers
+     * Gets title
      *
-     * @return \Plenty\AmazonPHP\SellingPartner\Model\CatalogItem\ItemIdentifier[]
+     * @return string
      */
-    public function getIdentifiers()
+    public function getTitle()
     {
-        return $this->container['identifiers'];
+        return $this->container['title'];
     }
 
     /**
-     * Sets identifiers
+     * Sets title
      *
-     * @param \Plenty\AmazonPHP\SellingPartner\Model\CatalogItem\ItemIdentifier[] $identifiers Identifiers associated with the item in the Amazon catalog for the indicated `marketplaceId`.
+     * @param string $title Name of the sales rank.
      *
      * @return self
      */
-    public function setIdentifiers($identifiers) : self
+    public function setTitle($title) : self
     {
-        $this->container['identifiers'] = $identifiers;
+        $this->container['title'] = $title;
+
+        return $this;
+    }
+
+    /**
+     * Gets link
+     *
+     * @return string|null
+     */
+    public function getLink()
+    {
+        return $this->container['link'];
+    }
+
+    /**
+     * Sets link
+     *
+     * @param string|null $link Corresponding Amazon retail website URL for the sales rank.
+     *
+     * @return self
+     */
+    public function setLink($link) : self
+    {
+        $this->container['link'] = $link;
+
+        return $this;
+    }
+
+    /**
+     * Gets rank
+     *
+     * @return int
+     */
+    public function getRank()
+    {
+        return $this->container['rank'];
+    }
+
+    /**
+     * Sets rank
+     *
+     * @param int $rank Sales rank.
+     *
+     * @return self
+     */
+    public function setRank($rank) : self
+    {
+        $this->container['rank'] = $rank;
 
         return $this;
     }

@@ -1,6 +1,6 @@
 <?php
 /**
- * ItemIdentifiersByMarketplace
+ * ItemContributor
  *
  * PHP version 7.4
  *
@@ -39,7 +39,7 @@ use \Plenty\AmazonPHP\SellingPartner\ModelInterface;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class ItemIdentifiersByMarketplace implements ModelInterface, ArrayAccess, \JsonSerializable
+class ItemContributor implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -48,7 +48,7 @@ class ItemIdentifiersByMarketplace implements ModelInterface, ArrayAccess, \Json
       *
       * @var string
       */
-    protected static string $openAPIModelName = 'ItemIdentifiersByMarketplace';
+    protected static string $openAPIModelName = 'ItemContributor';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -56,8 +56,8 @@ class ItemIdentifiersByMarketplace implements ModelInterface, ArrayAccess, \Json
       * @var string[]
       */
     protected static array $openAPITypes = [
-        'marketplace_id' => 'string',
-        'identifiers' => '\Plenty\AmazonPHP\SellingPartner\Model\CatalogItem\ItemIdentifier[]'
+        'role' => '\Plenty\AmazonPHP\SellingPartner\Model\CatalogItem\ItemContributorRole',
+        'value' => 'string'
     ];
 
     /**
@@ -68,8 +68,8 @@ class ItemIdentifiersByMarketplace implements ModelInterface, ArrayAccess, \Json
       * @psalm-var array<string, string|null>
       */
     protected static array $openAPIFormats = [
-        'marketplace_id' => null,
-        'identifiers' => null
+        'role' => null,
+        'value' => null
     ];
 
     /**
@@ -99,8 +99,8 @@ class ItemIdentifiersByMarketplace implements ModelInterface, ArrayAccess, \Json
      * @var string[]
      */
     protected static array $attributeMap = [
-        'marketplace_id' => 'marketplaceId',
-        'identifiers' => 'identifiers'
+        'role' => 'role',
+        'value' => 'value'
     ];
 
     /**
@@ -109,8 +109,8 @@ class ItemIdentifiersByMarketplace implements ModelInterface, ArrayAccess, \Json
      * @var string[]
      */
     protected static array $setters = [
-        'marketplace_id' => 'setMarketplaceId',
-        'identifiers' => 'setIdentifiers'
+        'role' => 'setRole',
+        'value' => 'setValue'
     ];
 
     /**
@@ -119,8 +119,8 @@ class ItemIdentifiersByMarketplace implements ModelInterface, ArrayAccess, \Json
      * @var string[]
      */
     protected static array $getters = [
-        'marketplace_id' => 'getMarketplaceId',
-        'identifiers' => 'getIdentifiers'
+        'role' => 'getRole',
+        'value' => 'getValue'
     ];
 
     /**
@@ -180,8 +180,8 @@ class ItemIdentifiersByMarketplace implements ModelInterface, ArrayAccess, \Json
      */
     public function __construct(array $data = null)
     {
-        $this->container['marketplace_id'] = $data['marketplace_id'] ?? null;
-        $this->container['identifiers'] = $data['identifiers'] ?? null;
+        $this->container['role'] = $data['role'] ?? null;
+        $this->container['value'] = $data['value'] ?? null;
     }
 
     /**
@@ -193,11 +193,11 @@ class ItemIdentifiersByMarketplace implements ModelInterface, ArrayAccess, \Json
     {
         $invalidProperties = [];
 
-        if ($this->container['marketplace_id'] === null) {
-            $invalidProperties[] = "'marketplace_id' can't be null";
+        if ($this->container['role'] === null) {
+            $invalidProperties[] = "'role' can't be null";
         }
-        if ($this->container['identifiers'] === null) {
-            $invalidProperties[] = "'identifiers' can't be null";
+        if ($this->container['value'] === null) {
+            $invalidProperties[] = "'value' can't be null";
         }
         return $invalidProperties;
     }
@@ -215,49 +215,49 @@ class ItemIdentifiersByMarketplace implements ModelInterface, ArrayAccess, \Json
 
 
     /**
-     * Gets marketplace_id
+     * Gets role
      *
-     * @return string
+     * @return \Plenty\AmazonPHP\SellingPartner\Model\CatalogItem\ItemContributorRole
      */
-    public function getMarketplaceId()
+    public function getRole()
     {
-        return $this->container['marketplace_id'];
+        return $this->container['role'];
     }
 
     /**
-     * Sets marketplace_id
+     * Sets role
      *
-     * @param string $marketplace_id Amazon marketplace identifier. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).identifier.
+     * @param \Plenty\AmazonPHP\SellingPartner\Model\CatalogItem\ItemContributorRole $role role
      *
      * @return self
      */
-    public function setMarketplaceId($marketplace_id) : self
+    public function setRole($role) : self
     {
-        $this->container['marketplace_id'] = $marketplace_id;
+        $this->container['role'] = $role;
 
         return $this;
     }
 
     /**
-     * Gets identifiers
+     * Gets value
      *
-     * @return \Plenty\AmazonPHP\SellingPartner\Model\CatalogItem\ItemIdentifier[]
+     * @return string
      */
-    public function getIdentifiers()
+    public function getValue()
     {
-        return $this->container['identifiers'];
+        return $this->container['value'];
     }
 
     /**
-     * Sets identifiers
+     * Sets value
      *
-     * @param \Plenty\AmazonPHP\SellingPartner\Model\CatalogItem\ItemIdentifier[] $identifiers Identifiers associated with the item in the Amazon catalog for the indicated `marketplaceId`.
+     * @param string $value Name of the contributor, such as `Jane Austen`.
      *
      * @return self
      */
-    public function setIdentifiers($identifiers) : self
+    public function setValue($value) : self
     {
-        $this->container['identifiers'] = $identifiers;
+        $this->container['value'] = $value;
 
         return $this;
     }

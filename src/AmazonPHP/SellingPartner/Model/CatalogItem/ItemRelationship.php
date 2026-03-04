@@ -1,6 +1,6 @@
 <?php
 /**
- * ItemIdentifiersByMarketplace
+ * ItemRelationship
  *
  * PHP version 7.4
  *
@@ -39,7 +39,7 @@ use \Plenty\AmazonPHP\SellingPartner\ModelInterface;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class ItemIdentifiersByMarketplace implements ModelInterface, ArrayAccess, \JsonSerializable
+class ItemRelationship implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -48,7 +48,7 @@ class ItemIdentifiersByMarketplace implements ModelInterface, ArrayAccess, \Json
       *
       * @var string
       */
-    protected static string $openAPIModelName = 'ItemIdentifiersByMarketplace';
+    protected static string $openAPIModelName = 'ItemRelationship';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -56,8 +56,10 @@ class ItemIdentifiersByMarketplace implements ModelInterface, ArrayAccess, \Json
       * @var string[]
       */
     protected static array $openAPITypes = [
-        'marketplace_id' => 'string',
-        'identifiers' => '\Plenty\AmazonPHP\SellingPartner\Model\CatalogItem\ItemIdentifier[]'
+        'child_asins' => 'string[]',
+        'parent_asins' => 'string[]',
+        'variation_theme' => '\Plenty\AmazonPHP\SellingPartner\Model\CatalogItem\ItemVariationTheme',
+        'type' => 'string'
     ];
 
     /**
@@ -68,8 +70,10 @@ class ItemIdentifiersByMarketplace implements ModelInterface, ArrayAccess, \Json
       * @psalm-var array<string, string|null>
       */
     protected static array $openAPIFormats = [
-        'marketplace_id' => null,
-        'identifiers' => null
+        'child_asins' => null,
+        'parent_asins' => null,
+        'variation_theme' => null,
+        'type' => null
     ];
 
     /**
@@ -99,8 +103,10 @@ class ItemIdentifiersByMarketplace implements ModelInterface, ArrayAccess, \Json
      * @var string[]
      */
     protected static array $attributeMap = [
-        'marketplace_id' => 'marketplaceId',
-        'identifiers' => 'identifiers'
+        'child_asins' => 'childAsins',
+        'parent_asins' => 'parentAsins',
+        'variation_theme' => 'variationTheme',
+        'type' => 'type'
     ];
 
     /**
@@ -109,8 +115,10 @@ class ItemIdentifiersByMarketplace implements ModelInterface, ArrayAccess, \Json
      * @var string[]
      */
     protected static array $setters = [
-        'marketplace_id' => 'setMarketplaceId',
-        'identifiers' => 'setIdentifiers'
+        'child_asins' => 'setChildAsins',
+        'parent_asins' => 'setParentAsins',
+        'variation_theme' => 'setVariationTheme',
+        'type' => 'setType'
     ];
 
     /**
@@ -119,8 +127,10 @@ class ItemIdentifiersByMarketplace implements ModelInterface, ArrayAccess, \Json
      * @var string[]
      */
     protected static array $getters = [
-        'marketplace_id' => 'getMarketplaceId',
-        'identifiers' => 'getIdentifiers'
+        'child_asins' => 'getChildAsins',
+        'parent_asins' => 'getParentAsins',
+        'variation_theme' => 'getVariationTheme',
+        'type' => 'getType'
     ];
 
     /**
@@ -164,6 +174,21 @@ class ItemIdentifiersByMarketplace implements ModelInterface, ArrayAccess, \Json
         return self::$openAPIModelName;
     }
 
+    const TYPE_VARIATION = 'VARIATION';
+    const TYPE_PACKAGE_HIERARCHY = 'PACKAGE_HIERARCHY';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getTypeAllowableValues() : array
+    {
+        return [
+            self::TYPE_VARIATION,
+            self::TYPE_PACKAGE_HIERARCHY,
+        ];
+    }
 
     /**
      * Associative array for storing property values
@@ -180,8 +205,10 @@ class ItemIdentifiersByMarketplace implements ModelInterface, ArrayAccess, \Json
      */
     public function __construct(array $data = null)
     {
-        $this->container['marketplace_id'] = $data['marketplace_id'] ?? null;
-        $this->container['identifiers'] = $data['identifiers'] ?? null;
+        $this->container['child_asins'] = $data['child_asins'] ?? null;
+        $this->container['parent_asins'] = $data['parent_asins'] ?? null;
+        $this->container['variation_theme'] = $data['variation_theme'] ?? null;
+        $this->container['type'] = $data['type'] ?? null;
     }
 
     /**
@@ -193,12 +220,18 @@ class ItemIdentifiersByMarketplace implements ModelInterface, ArrayAccess, \Json
     {
         $invalidProperties = [];
 
-        if ($this->container['marketplace_id'] === null) {
-            $invalidProperties[] = "'marketplace_id' can't be null";
+        if ($this->container['type'] === null) {
+            $invalidProperties[] = "'type' can't be null";
         }
-        if ($this->container['identifiers'] === null) {
-            $invalidProperties[] = "'identifiers' can't be null";
+        $allowedValues = $this->getTypeAllowableValues();
+        if (!is_null($this->container['type']) && !in_array($this->container['type'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'type', must be one of '%s'",
+                $this->container['type'],
+                implode("', '", $allowedValues)
+            );
         }
+
         return $invalidProperties;
     }
 
@@ -215,49 +248,107 @@ class ItemIdentifiersByMarketplace implements ModelInterface, ArrayAccess, \Json
 
 
     /**
-     * Gets marketplace_id
+     * Gets child_asins
      *
-     * @return string
+     * @return string[]|null
      */
-    public function getMarketplaceId()
+    public function getChildAsins()
     {
-        return $this->container['marketplace_id'];
+        return $this->container['child_asins'];
     }
 
     /**
-     * Sets marketplace_id
+     * Sets child_asins
      *
-     * @param string $marketplace_id Amazon marketplace identifier. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).identifier.
+     * @param string[]|null $child_asins ASINs of the related items that are children of this item.
      *
      * @return self
      */
-    public function setMarketplaceId($marketplace_id) : self
+    public function setChildAsins($child_asins) : self
     {
-        $this->container['marketplace_id'] = $marketplace_id;
+        $this->container['child_asins'] = $child_asins;
 
         return $this;
     }
 
     /**
-     * Gets identifiers
+     * Gets parent_asins
      *
-     * @return \Plenty\AmazonPHP\SellingPartner\Model\CatalogItem\ItemIdentifier[]
+     * @return string[]|null
      */
-    public function getIdentifiers()
+    public function getParentAsins()
     {
-        return $this->container['identifiers'];
+        return $this->container['parent_asins'];
     }
 
     /**
-     * Sets identifiers
+     * Sets parent_asins
      *
-     * @param \Plenty\AmazonPHP\SellingPartner\Model\CatalogItem\ItemIdentifier[] $identifiers Identifiers associated with the item in the Amazon catalog for the indicated `marketplaceId`.
+     * @param string[]|null $parent_asins ASINs of the related items that are parents of this item.
      *
      * @return self
      */
-    public function setIdentifiers($identifiers) : self
+    public function setParentAsins($parent_asins) : self
     {
-        $this->container['identifiers'] = $identifiers;
+        $this->container['parent_asins'] = $parent_asins;
+
+        return $this;
+    }
+
+    /**
+     * Gets variation_theme
+     *
+     * @return \Plenty\AmazonPHP\SellingPartner\Model\CatalogItem\ItemVariationTheme|null
+     */
+    public function getVariationTheme()
+    {
+        return $this->container['variation_theme'];
+    }
+
+    /**
+     * Sets variation_theme
+     *
+     * @param \Plenty\AmazonPHP\SellingPartner\Model\CatalogItem\ItemVariationTheme|null $variation_theme variation_theme
+     *
+     * @return self
+     */
+    public function setVariationTheme($variation_theme) : self
+    {
+        $this->container['variation_theme'] = $variation_theme;
+
+        return $this;
+    }
+
+    /**
+     * Gets type
+     *
+     * @return string
+     */
+    public function getType()
+    {
+        return $this->container['type'];
+    }
+
+    /**
+     * Sets type
+     *
+     * @param string $type Type of relationship.
+     *
+     * @return self
+     */
+    public function setType($type) : self
+    {
+        $allowedValues = $this->getTypeAllowableValues();
+        if (!in_array($type, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'type', must be one of '%s'",
+                    $type,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['type'] = $type;
 
         return $this;
     }

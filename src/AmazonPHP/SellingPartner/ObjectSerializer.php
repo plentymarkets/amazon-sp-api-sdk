@@ -317,11 +317,16 @@ final class ObjectSerializer
 
         /** @psalm-suppress ParadoxicalCondition */
         if (\in_array($class, ['DateTime', 'DateTimeImmutable', 'bool', 'boolean', 'byte', 'double', 'float', 'int', 'integer', 'mixed', 'number', 'object', 'string', 'void'], true)) {
-            \settype($data, $class);
 
+            $validSetTypes = ['boolean', 'bool', 'integer', 'int', 'float', 'double', 'string', 'array', 'object', 'null'];
+
+            if (\in_array($class, $validSetTypes, true)) {
+                \settype($data, $class);
+            } elseif ($class === 'number') {
+                $data = (float) $data;
+            }
             return $data;
         }
-
         if ($class === '\SplFileObject') {
             // determine file name
             if (\array_key_exists('Content-Disposition', $httpHeaders) &&

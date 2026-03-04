@@ -1,6 +1,6 @@
 <?php
 /**
- * ItemIdentifiersByMarketplace
+ * Dimension
  *
  * PHP version 7.4
  *
@@ -39,7 +39,7 @@ use \Plenty\AmazonPHP\SellingPartner\ModelInterface;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class ItemIdentifiersByMarketplace implements ModelInterface, ArrayAccess, \JsonSerializable
+class Dimension implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -48,7 +48,7 @@ class ItemIdentifiersByMarketplace implements ModelInterface, ArrayAccess, \Json
       *
       * @var string
       */
-    protected static string $openAPIModelName = 'ItemIdentifiersByMarketplace';
+    protected static string $openAPIModelName = 'Dimension';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -56,8 +56,8 @@ class ItemIdentifiersByMarketplace implements ModelInterface, ArrayAccess, \Json
       * @var string[]
       */
     protected static array $openAPITypes = [
-        'marketplace_id' => 'string',
-        'identifiers' => '\Plenty\AmazonPHP\SellingPartner\Model\CatalogItem\ItemIdentifier[]'
+        'unit' => 'string',
+        'value' => 'float'
     ];
 
     /**
@@ -68,8 +68,8 @@ class ItemIdentifiersByMarketplace implements ModelInterface, ArrayAccess, \Json
       * @psalm-var array<string, string|null>
       */
     protected static array $openAPIFormats = [
-        'marketplace_id' => null,
-        'identifiers' => null
+        'unit' => null,
+        'value' => null
     ];
 
     /**
@@ -99,8 +99,8 @@ class ItemIdentifiersByMarketplace implements ModelInterface, ArrayAccess, \Json
      * @var string[]
      */
     protected static array $attributeMap = [
-        'marketplace_id' => 'marketplaceId',
-        'identifiers' => 'identifiers'
+        'unit' => 'unit',
+        'value' => 'value'
     ];
 
     /**
@@ -109,8 +109,8 @@ class ItemIdentifiersByMarketplace implements ModelInterface, ArrayAccess, \Json
      * @var string[]
      */
     protected static array $setters = [
-        'marketplace_id' => 'setMarketplaceId',
-        'identifiers' => 'setIdentifiers'
+        'unit' => 'setUnit',
+        'value' => 'setValue'
     ];
 
     /**
@@ -119,8 +119,8 @@ class ItemIdentifiersByMarketplace implements ModelInterface, ArrayAccess, \Json
      * @var string[]
      */
     protected static array $getters = [
-        'marketplace_id' => 'getMarketplaceId',
-        'identifiers' => 'getIdentifiers'
+        'unit' => 'getUnit',
+        'value' => 'getValue'
     ];
 
     /**
@@ -180,8 +180,8 @@ class ItemIdentifiersByMarketplace implements ModelInterface, ArrayAccess, \Json
      */
     public function __construct(array $data = null)
     {
-        $this->container['marketplace_id'] = $data['marketplace_id'] ?? null;
-        $this->container['identifiers'] = $data['identifiers'] ?? null;
+        $this->container['unit'] = $data['unit'] ?? null;
+        $this->container['value'] = $data['value'] ?? null;
     }
 
     /**
@@ -193,12 +193,6 @@ class ItemIdentifiersByMarketplace implements ModelInterface, ArrayAccess, \Json
     {
         $invalidProperties = [];
 
-        if ($this->container['marketplace_id'] === null) {
-            $invalidProperties[] = "'marketplace_id' can't be null";
-        }
-        if ($this->container['identifiers'] === null) {
-            $invalidProperties[] = "'identifiers' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -215,49 +209,49 @@ class ItemIdentifiersByMarketplace implements ModelInterface, ArrayAccess, \Json
 
 
     /**
-     * Gets marketplace_id
+     * Gets unit
      *
-     * @return string
+     * @return string|null
      */
-    public function getMarketplaceId()
+    public function getUnit()
     {
-        return $this->container['marketplace_id'];
+        return $this->container['unit'];
     }
 
     /**
-     * Sets marketplace_id
+     * Sets unit
      *
-     * @param string $marketplace_id Amazon marketplace identifier. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).identifier.
+     * @param string|null $unit Unit of measurement for the dimension value.
      *
      * @return self
      */
-    public function setMarketplaceId($marketplace_id) : self
+    public function setUnit($unit) : self
     {
-        $this->container['marketplace_id'] = $marketplace_id;
+        $this->container['unit'] = $unit;
 
         return $this;
     }
 
     /**
-     * Gets identifiers
+     * Gets value
      *
-     * @return \Plenty\AmazonPHP\SellingPartner\Model\CatalogItem\ItemIdentifier[]
+     * @return float|null
      */
-    public function getIdentifiers()
+    public function getValue()
     {
-        return $this->container['identifiers'];
+        return $this->container['value'];
     }
 
     /**
-     * Sets identifiers
+     * Sets value
      *
-     * @param \Plenty\AmazonPHP\SellingPartner\Model\CatalogItem\ItemIdentifier[] $identifiers Identifiers associated with the item in the Amazon catalog for the indicated `marketplaceId`.
+     * @param float|null $value Numeric value of the dimension.
      *
      * @return self
      */
-    public function setIdentifiers($identifiers) : self
+    public function setValue($value) : self
     {
-        $this->container['identifiers'] = $identifiers;
+        $this->container['value'] = $value;
 
         return $this;
     }

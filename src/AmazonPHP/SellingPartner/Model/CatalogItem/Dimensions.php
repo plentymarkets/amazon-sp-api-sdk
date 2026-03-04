@@ -1,6 +1,6 @@
 <?php
 /**
- * ItemIdentifiersByMarketplace
+ * Dimensions
  *
  * PHP version 7.4
  *
@@ -39,7 +39,7 @@ use \Plenty\AmazonPHP\SellingPartner\ModelInterface;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class ItemIdentifiersByMarketplace implements ModelInterface, ArrayAccess, \JsonSerializable
+class Dimensions implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -48,7 +48,7 @@ class ItemIdentifiersByMarketplace implements ModelInterface, ArrayAccess, \Json
       *
       * @var string
       */
-    protected static string $openAPIModelName = 'ItemIdentifiersByMarketplace';
+    protected static string $openAPIModelName = 'Dimensions';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -56,8 +56,10 @@ class ItemIdentifiersByMarketplace implements ModelInterface, ArrayAccess, \Json
       * @var string[]
       */
     protected static array $openAPITypes = [
-        'marketplace_id' => 'string',
-        'identifiers' => '\Plenty\AmazonPHP\SellingPartner\Model\CatalogItem\ItemIdentifier[]'
+        'height' => '\Plenty\AmazonPHP\SellingPartner\Model\CatalogItem\Dimension',
+        'length' => '\Plenty\AmazonPHP\SellingPartner\Model\CatalogItem\Dimension',
+        'weight' => '\Plenty\AmazonPHP\SellingPartner\Model\CatalogItem\Dimension',
+        'width' => '\Plenty\AmazonPHP\SellingPartner\Model\CatalogItem\Dimension'
     ];
 
     /**
@@ -68,8 +70,10 @@ class ItemIdentifiersByMarketplace implements ModelInterface, ArrayAccess, \Json
       * @psalm-var array<string, string|null>
       */
     protected static array $openAPIFormats = [
-        'marketplace_id' => null,
-        'identifiers' => null
+        'height' => null,
+        'length' => null,
+        'weight' => null,
+        'width' => null
     ];
 
     /**
@@ -99,8 +103,10 @@ class ItemIdentifiersByMarketplace implements ModelInterface, ArrayAccess, \Json
      * @var string[]
      */
     protected static array $attributeMap = [
-        'marketplace_id' => 'marketplaceId',
-        'identifiers' => 'identifiers'
+        'height' => 'height',
+        'length' => 'length',
+        'weight' => 'weight',
+        'width' => 'width'
     ];
 
     /**
@@ -109,8 +115,10 @@ class ItemIdentifiersByMarketplace implements ModelInterface, ArrayAccess, \Json
      * @var string[]
      */
     protected static array $setters = [
-        'marketplace_id' => 'setMarketplaceId',
-        'identifiers' => 'setIdentifiers'
+        'height' => 'setHeight',
+        'length' => 'setLength',
+        'weight' => 'setWeight',
+        'width' => 'setWidth'
     ];
 
     /**
@@ -119,8 +127,10 @@ class ItemIdentifiersByMarketplace implements ModelInterface, ArrayAccess, \Json
      * @var string[]
      */
     protected static array $getters = [
-        'marketplace_id' => 'getMarketplaceId',
-        'identifiers' => 'getIdentifiers'
+        'height' => 'getHeight',
+        'length' => 'getLength',
+        'weight' => 'getWeight',
+        'width' => 'getWidth'
     ];
 
     /**
@@ -180,8 +190,10 @@ class ItemIdentifiersByMarketplace implements ModelInterface, ArrayAccess, \Json
      */
     public function __construct(array $data = null)
     {
-        $this->container['marketplace_id'] = $data['marketplace_id'] ?? null;
-        $this->container['identifiers'] = $data['identifiers'] ?? null;
+        $this->container['height'] = $data['height'] ?? null;
+        $this->container['length'] = $data['length'] ?? null;
+        $this->container['weight'] = $data['weight'] ?? null;
+        $this->container['width'] = $data['width'] ?? null;
     }
 
     /**
@@ -193,12 +205,6 @@ class ItemIdentifiersByMarketplace implements ModelInterface, ArrayAccess, \Json
     {
         $invalidProperties = [];
 
-        if ($this->container['marketplace_id'] === null) {
-            $invalidProperties[] = "'marketplace_id' can't be null";
-        }
-        if ($this->container['identifiers'] === null) {
-            $invalidProperties[] = "'identifiers' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -215,49 +221,97 @@ class ItemIdentifiersByMarketplace implements ModelInterface, ArrayAccess, \Json
 
 
     /**
-     * Gets marketplace_id
+     * Gets height
      *
-     * @return string
+     * @return \Plenty\AmazonPHP\SellingPartner\Model\CatalogItem\Dimension|null
      */
-    public function getMarketplaceId()
+    public function getHeight()
     {
-        return $this->container['marketplace_id'];
+        return $this->container['height'];
     }
 
     /**
-     * Sets marketplace_id
+     * Sets height
      *
-     * @param string $marketplace_id Amazon marketplace identifier. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).identifier.
+     * @param \Plenty\AmazonPHP\SellingPartner\Model\CatalogItem\Dimension|null $height height
      *
      * @return self
      */
-    public function setMarketplaceId($marketplace_id) : self
+    public function setHeight($height) : self
     {
-        $this->container['marketplace_id'] = $marketplace_id;
+        $this->container['height'] = $height;
 
         return $this;
     }
 
     /**
-     * Gets identifiers
+     * Gets length
      *
-     * @return \Plenty\AmazonPHP\SellingPartner\Model\CatalogItem\ItemIdentifier[]
+     * @return \Plenty\AmazonPHP\SellingPartner\Model\CatalogItem\Dimension|null
      */
-    public function getIdentifiers()
+    public function getLength()
     {
-        return $this->container['identifiers'];
+        return $this->container['length'];
     }
 
     /**
-     * Sets identifiers
+     * Sets length
      *
-     * @param \Plenty\AmazonPHP\SellingPartner\Model\CatalogItem\ItemIdentifier[] $identifiers Identifiers associated with the item in the Amazon catalog for the indicated `marketplaceId`.
+     * @param \Plenty\AmazonPHP\SellingPartner\Model\CatalogItem\Dimension|null $length length
      *
      * @return self
      */
-    public function setIdentifiers($identifiers) : self
+    public function setLength($length) : self
     {
-        $this->container['identifiers'] = $identifiers;
+        $this->container['length'] = $length;
+
+        return $this;
+    }
+
+    /**
+     * Gets weight
+     *
+     * @return \Plenty\AmazonPHP\SellingPartner\Model\CatalogItem\Dimension|null
+     */
+    public function getWeight()
+    {
+        return $this->container['weight'];
+    }
+
+    /**
+     * Sets weight
+     *
+     * @param \Plenty\AmazonPHP\SellingPartner\Model\CatalogItem\Dimension|null $weight weight
+     *
+     * @return self
+     */
+    public function setWeight($weight) : self
+    {
+        $this->container['weight'] = $weight;
+
+        return $this;
+    }
+
+    /**
+     * Gets width
+     *
+     * @return \Plenty\AmazonPHP\SellingPartner\Model\CatalogItem\Dimension|null
+     */
+    public function getWidth()
+    {
+        return $this->container['width'];
+    }
+
+    /**
+     * Sets width
+     *
+     * @param \Plenty\AmazonPHP\SellingPartner\Model\CatalogItem\Dimension|null $width width
+     *
+     * @return self
+     */
+    public function setWidth($width) : self
+    {
+        $this->container['width'] = $width;
 
         return $this;
     }
