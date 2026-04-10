@@ -382,7 +382,7 @@ class MskuPrepDetail implements ModelInterface, ArrayAccess, \JsonSerializable, 
      * @return mixed|null
      */
     #[\ReturnTypeWillChange]
-    public function offsetGet($offset)
+    public function offsetGet($offset): mixed
     {
         return $this->container[$offset] ?? null;
     }

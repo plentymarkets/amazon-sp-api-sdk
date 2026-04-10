@@ -310,7 +310,7 @@ class Error implements ModelInterface, ArrayAccess, \JsonSerializable, \Stringab
      *
      * @return mixed|null
      */
-    public function offsetGet($offset)
+    public function offsetGet($offset): mixed
     {
         return $this->container[$offset] ?? null;
     }

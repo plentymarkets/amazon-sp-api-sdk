@@ -248,7 +248,7 @@ class SetPrepDetailsResponse implements ModelInterface, ArrayAccess, \JsonSerial
      * @return mixed|null
      */
     #[\ReturnTypeWillChange]
-    public function offsetGet($offset)
+    public function offsetGet($offset): mixed
     {
         return $this->container[$offset] ?? null;
     }

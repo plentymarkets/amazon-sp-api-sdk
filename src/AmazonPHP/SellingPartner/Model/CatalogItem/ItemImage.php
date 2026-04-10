@@ -396,7 +396,7 @@ class ItemImage implements ModelInterface, ArrayAccess, \JsonSerializable, \Stri
      *
      * @return mixed|null
      */
-    public function offsetGet($offset)
+    public function offsetGet($offset): mixed
     {
         return $this->container[$offset] ?? null;
     }
