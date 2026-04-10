@@ -40,7 +40,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class Carton implements \ArrayAccess, \JsonSerializable, ModelInterface
+class Carton implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -59,8 +59,8 @@ class Carton implements \ArrayAccess, \JsonSerializable, ModelInterface
     protected static /** [COMPAT] array */ $openAPITypes = [
         'carton_identifiers' => '\Plenty\AmazonPHP\SellingPartner\Model\VendorShipments\ContainerIdentification[]',
         'carton_sequence_number' => 'string',
-        'dimensions' => '\Plenty\AmazonPHP\SellingPartner\Model\VendorShipments\Dimensions',
-        'weight' => '\Plenty\AmazonPHP\SellingPartner\Model\VendorShipments\Weight',
+        'dimensions' => \Plenty\AmazonPHP\SellingPartner\Model\VendorShipments\Dimensions::class,
+        'weight' => \Plenty\AmazonPHP\SellingPartner\Model\VendorShipments\Weight::class,
         'tracking_number' => 'string',
         'items' => '\Plenty\AmazonPHP\SellingPartner\Model\VendorShipments\ContainerItem[]',
     ];
@@ -203,7 +203,7 @@ class Carton implements \ArrayAccess, \JsonSerializable, ModelInterface
      */
     public function __toString() : string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );

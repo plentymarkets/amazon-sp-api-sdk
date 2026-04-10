@@ -40,7 +40,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class OrderAddress implements \ArrayAccess, \JsonSerializable, ModelInterface
+class OrderAddress implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -58,7 +58,7 @@ class OrderAddress implements \ArrayAccess, \JsonSerializable, ModelInterface
      */
     protected static /** [COMPAT] array */ $openAPITypes = [
         'amazon_order_id' => 'string',
-        'shipping_address' => '\Plenty\AmazonPHP\SellingPartner\Model\Orders\Address',
+        'shipping_address' => \Plenty\AmazonPHP\SellingPartner\Model\Orders\Address::class,
     ];
 
     /**
@@ -179,7 +179,7 @@ class OrderAddress implements \ArrayAccess, \JsonSerializable, ModelInterface
      */
     public function __toString() : string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );

@@ -40,7 +40,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class OrderItemAcknowledgement implements \ArrayAccess, \JsonSerializable, ModelInterface
+class OrderItemAcknowledgement implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -70,7 +70,7 @@ class OrderItemAcknowledgement implements \ArrayAccess, \JsonSerializable, Model
      */
     protected static /** [COMPAT] array */ $openAPITypes = [
         'acknowledgement_code' => 'string',
-        'acknowledged_quantity' => '\Plenty\AmazonPHP\SellingPartner\Model\VendorOrders\ItemQuantity',
+        'acknowledged_quantity' => \Plenty\AmazonPHP\SellingPartner\Model\VendorOrders\ItemQuantity::class,
         'scheduled_ship_date' => '\DateTime',
         'scheduled_delivery_date' => '\DateTime',
         'rejection_reason' => 'string',
@@ -209,7 +209,7 @@ class OrderItemAcknowledgement implements \ArrayAccess, \JsonSerializable, Model
      */
     public function __toString() : string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );

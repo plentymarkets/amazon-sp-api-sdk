@@ -40,7 +40,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class SmallAndLightEnrollment implements \ArrayAccess, \JsonSerializable, ModelInterface
+class SmallAndLightEnrollment implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -59,7 +59,7 @@ class SmallAndLightEnrollment implements \ArrayAccess, \JsonSerializable, ModelI
     protected static /** [COMPAT] array */ $openAPITypes = [
         'marketplace_id' => 'string',
         'seller_sku' => 'string',
-        'status' => '\Plenty\AmazonPHP\SellingPartner\Model\FBASmallAndLight\SmallAndLightEnrollmentStatus',
+        'status' => \Plenty\AmazonPHP\SellingPartner\Model\FBASmallAndLight\SmallAndLightEnrollmentStatus::class,
     ];
 
     /**
@@ -185,7 +185,7 @@ class SmallAndLightEnrollment implements \ArrayAccess, \JsonSerializable, ModelI
      */
     public function __toString() : string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );

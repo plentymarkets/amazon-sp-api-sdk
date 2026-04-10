@@ -40,7 +40,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class CompetitivePricingType implements \ArrayAccess, \JsonSerializable, ModelInterface
+class CompetitivePricingType implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -59,7 +59,7 @@ class CompetitivePricingType implements \ArrayAccess, \JsonSerializable, ModelIn
     protected static /** [COMPAT] array */ $openAPITypes = [
         'competitive_prices' => '\Plenty\AmazonPHP\SellingPartner\Model\ProductPricing\CompetitivePriceType[]',
         'number_of_offer_listings' => '\Plenty\AmazonPHP\SellingPartner\Model\ProductPricing\OfferListingCountType[]',
-        'trade_in_value' => '\Plenty\AmazonPHP\SellingPartner\Model\ProductPricing\MoneyType',
+        'trade_in_value' => \Plenty\AmazonPHP\SellingPartner\Model\ProductPricing\MoneyType::class,
     ];
 
     /**
@@ -185,7 +185,7 @@ class CompetitivePricingType implements \ArrayAccess, \JsonSerializable, ModelIn
      */
     public function __toString() : string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );

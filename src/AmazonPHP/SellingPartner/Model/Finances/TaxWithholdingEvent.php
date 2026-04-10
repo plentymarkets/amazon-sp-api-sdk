@@ -40,7 +40,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class TaxWithholdingEvent implements \ArrayAccess, \JsonSerializable, ModelInterface
+class TaxWithholdingEvent implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -58,9 +58,9 @@ class TaxWithholdingEvent implements \ArrayAccess, \JsonSerializable, ModelInter
      */
     protected static /** [COMPAT] array */ $openAPITypes = [
         'posted_date' => '\DateTime',
-        'base_amount' => '\Plenty\AmazonPHP\SellingPartner\Model\Finances\Currency',
-        'withheld_amount' => '\Plenty\AmazonPHP\SellingPartner\Model\Finances\Currency',
-        'tax_withholding_period' => '\Plenty\AmazonPHP\SellingPartner\Model\Finances\TaxWithholdingPeriod',
+        'base_amount' => \Plenty\AmazonPHP\SellingPartner\Model\Finances\Currency::class,
+        'withheld_amount' => \Plenty\AmazonPHP\SellingPartner\Model\Finances\Currency::class,
+        'tax_withholding_period' => \Plenty\AmazonPHP\SellingPartner\Model\Finances\TaxWithholdingPeriod::class,
     ];
 
     /**
@@ -191,7 +191,7 @@ class TaxWithholdingEvent implements \ArrayAccess, \JsonSerializable, ModelInter
      */
     public function __toString() : string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );

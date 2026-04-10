@@ -141,7 +141,7 @@ final class VendorDirectFulfillmentOrdersSDK
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            '\Plenty\AmazonPHP\SellingPartner\Model\VendorDirectFulfillmentOrders\Order',
+            \Plenty\AmazonPHP\SellingPartner\Model\VendorDirectFulfillmentOrders\Order::class,
             []
         );
     }
@@ -336,7 +336,7 @@ final class VendorDirectFulfillmentOrdersSDK
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            '\Plenty\AmazonPHP\SellingPartner\Model\VendorDirectFulfillmentOrders\OrderList',
+            \Plenty\AmazonPHP\SellingPartner\Model\VendorDirectFulfillmentOrders\OrderList::class,
             []
         );
     }
@@ -601,7 +601,7 @@ final class VendorDirectFulfillmentOrdersSDK
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            '\Plenty\AmazonPHP\SellingPartner\Model\VendorDirectFulfillmentOrders\TransactionId',
+            \Plenty\AmazonPHP\SellingPartner\Model\VendorDirectFulfillmentOrders\TransactionId::class,
             []
         );
     }

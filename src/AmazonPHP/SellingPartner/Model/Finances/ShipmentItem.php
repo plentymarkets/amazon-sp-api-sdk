@@ -40,7 +40,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class ShipmentItem implements \ArrayAccess, \JsonSerializable, ModelInterface
+class ShipmentItem implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -68,8 +68,8 @@ class ShipmentItem implements \ArrayAccess, \JsonSerializable, ModelInterface
         'item_tax_withheld_list' => '\Plenty\AmazonPHP\SellingPartner\Model\Finances\TaxWithheldComponent[]',
         'promotion_list' => '\Plenty\AmazonPHP\SellingPartner\Model\Finances\Promotion[]',
         'promotion_adjustment_list' => '\Plenty\AmazonPHP\SellingPartner\Model\Finances\Promotion[]',
-        'cost_of_points_granted' => '\Plenty\AmazonPHP\SellingPartner\Model\Finances\Currency',
-        'cost_of_points_returned' => '\Plenty\AmazonPHP\SellingPartner\Model\Finances\Currency',
+        'cost_of_points_granted' => \Plenty\AmazonPHP\SellingPartner\Model\Finances\Currency::class,
+        'cost_of_points_returned' => \Plenty\AmazonPHP\SellingPartner\Model\Finances\Currency::class,
     ];
 
     /**
@@ -245,7 +245,7 @@ class ShipmentItem implements \ArrayAccess, \JsonSerializable, ModelInterface
      */
     public function __toString() : string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );

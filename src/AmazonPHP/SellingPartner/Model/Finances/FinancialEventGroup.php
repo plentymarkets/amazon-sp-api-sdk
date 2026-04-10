@@ -40,7 +40,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class FinancialEventGroup implements \ArrayAccess, \JsonSerializable, ModelInterface
+class FinancialEventGroup implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -60,12 +60,12 @@ class FinancialEventGroup implements \ArrayAccess, \JsonSerializable, ModelInter
         'financial_event_group_id' => 'string',
         'processing_status' => 'string',
         'fund_transfer_status' => 'string',
-        'original_total' => '\Plenty\AmazonPHP\SellingPartner\Model\Finances\Currency',
-        'converted_total' => '\Plenty\AmazonPHP\SellingPartner\Model\Finances\Currency',
+        'original_total' => \Plenty\AmazonPHP\SellingPartner\Model\Finances\Currency::class,
+        'converted_total' => \Plenty\AmazonPHP\SellingPartner\Model\Finances\Currency::class,
         'fund_transfer_date' => '\DateTime',
         'trace_id' => 'string',
         'account_tail' => 'string',
-        'beginning_balance' => '\Plenty\AmazonPHP\SellingPartner\Model\Finances\Currency',
+        'beginning_balance' => \Plenty\AmazonPHP\SellingPartner\Model\Finances\Currency::class,
         'financial_event_group_start' => '\DateTime',
         'financial_event_group_end' => '\DateTime',
     ];
@@ -233,7 +233,7 @@ class FinancialEventGroup implements \ArrayAccess, \JsonSerializable, ModelInter
      */
     public function __toString() : string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );

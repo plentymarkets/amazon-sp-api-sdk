@@ -40,7 +40,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class RemovalShipmentItem implements \ArrayAccess, \JsonSerializable, ModelInterface
+class RemovalShipmentItem implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -61,10 +61,10 @@ class RemovalShipmentItem implements \ArrayAccess, \JsonSerializable, ModelInter
         'tax_collection_model' => 'string',
         'fulfillment_network_sku' => 'string',
         'quantity' => 'int',
-        'revenue' => '\Plenty\AmazonPHP\SellingPartner\Model\Finances\Currency',
-        'fee_amount' => '\Plenty\AmazonPHP\SellingPartner\Model\Finances\Currency',
-        'tax_amount' => '\Plenty\AmazonPHP\SellingPartner\Model\Finances\Currency',
-        'tax_withheld' => '\Plenty\AmazonPHP\SellingPartner\Model\Finances\Currency',
+        'revenue' => \Plenty\AmazonPHP\SellingPartner\Model\Finances\Currency::class,
+        'fee_amount' => \Plenty\AmazonPHP\SellingPartner\Model\Finances\Currency::class,
+        'tax_amount' => \Plenty\AmazonPHP\SellingPartner\Model\Finances\Currency::class,
+        'tax_withheld' => \Plenty\AmazonPHP\SellingPartner\Model\Finances\Currency::class,
     ];
 
     /**
@@ -215,7 +215,7 @@ class RemovalShipmentItem implements \ArrayAccess, \JsonSerializable, ModelInter
      */
     public function __toString() : string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );

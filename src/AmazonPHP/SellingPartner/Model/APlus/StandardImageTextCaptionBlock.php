@@ -40,7 +40,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class StandardImageTextCaptionBlock implements \ArrayAccess, \JsonSerializable, ModelInterface
+class StandardImageTextCaptionBlock implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -57,8 +57,8 @@ class StandardImageTextCaptionBlock implements \ArrayAccess, \JsonSerializable, 
      * @var string[]
      */
     protected static /** [COMPAT] array */ $openAPITypes = [
-        'block' => '\Plenty\AmazonPHP\SellingPartner\Model\APlus\StandardImageTextBlock',
-        'caption' => '\Plenty\AmazonPHP\SellingPartner\Model\APlus\TextComponent',
+        'block' => \Plenty\AmazonPHP\SellingPartner\Model\APlus\StandardImageTextBlock::class,
+        'caption' => \Plenty\AmazonPHP\SellingPartner\Model\APlus\TextComponent::class,
     ];
 
     /**
@@ -179,7 +179,7 @@ class StandardImageTextCaptionBlock implements \ArrayAccess, \JsonSerializable, 
      */
     public function __toString() : string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );

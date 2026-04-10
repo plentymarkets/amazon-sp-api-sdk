@@ -40,7 +40,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class ContainerItem implements \ArrayAccess, \JsonSerializable, ModelInterface
+class ContainerItem implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -58,8 +58,8 @@ class ContainerItem implements \ArrayAccess, \JsonSerializable, ModelInterface
      */
     protected static /** [COMPAT] array */ $openAPITypes = [
         'quantity' => 'float',
-        'unit_price' => '\Plenty\AmazonPHP\SellingPartner\Model\Shipping\Currency',
-        'unit_weight' => '\Plenty\AmazonPHP\SellingPartner\Model\Shipping\Weight',
+        'unit_price' => \Plenty\AmazonPHP\SellingPartner\Model\Shipping\Currency::class,
+        'unit_weight' => \Plenty\AmazonPHP\SellingPartner\Model\Shipping\Weight::class,
         'title' => 'string',
     ];
 
@@ -191,7 +191,7 @@ class ContainerItem implements \ArrayAccess, \JsonSerializable, ModelInterface
      */
     public function __toString() : string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );

@@ -40,7 +40,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class StandardSingleImageSpecsDetailModule implements \ArrayAccess, \JsonSerializable, ModelInterface
+class StandardSingleImageSpecsDetailModule implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -57,14 +57,14 @@ class StandardSingleImageSpecsDetailModule implements \ArrayAccess, \JsonSeriali
      * @var string[]
      */
     protected static /** [COMPAT] array */ $openAPITypes = [
-        'headline' => '\Plenty\AmazonPHP\SellingPartner\Model\APlus\TextComponent',
-        'image' => '\Plenty\AmazonPHP\SellingPartner\Model\APlus\ImageComponent',
-        'description_headline' => '\Plenty\AmazonPHP\SellingPartner\Model\APlus\TextComponent',
-        'description_block1' => '\Plenty\AmazonPHP\SellingPartner\Model\APlus\StandardTextBlock',
-        'description_block2' => '\Plenty\AmazonPHP\SellingPartner\Model\APlus\StandardTextBlock',
-        'specification_headline' => '\Plenty\AmazonPHP\SellingPartner\Model\APlus\TextComponent',
-        'specification_list_block' => '\Plenty\AmazonPHP\SellingPartner\Model\APlus\StandardHeaderTextListBlock',
-        'specification_text_block' => '\Plenty\AmazonPHP\SellingPartner\Model\APlus\StandardTextBlock',
+        'headline' => \Plenty\AmazonPHP\SellingPartner\Model\APlus\TextComponent::class,
+        'image' => \Plenty\AmazonPHP\SellingPartner\Model\APlus\ImageComponent::class,
+        'description_headline' => \Plenty\AmazonPHP\SellingPartner\Model\APlus\TextComponent::class,
+        'description_block1' => \Plenty\AmazonPHP\SellingPartner\Model\APlus\StandardTextBlock::class,
+        'description_block2' => \Plenty\AmazonPHP\SellingPartner\Model\APlus\StandardTextBlock::class,
+        'specification_headline' => \Plenty\AmazonPHP\SellingPartner\Model\APlus\TextComponent::class,
+        'specification_list_block' => \Plenty\AmazonPHP\SellingPartner\Model\APlus\StandardHeaderTextListBlock::class,
+        'specification_text_block' => \Plenty\AmazonPHP\SellingPartner\Model\APlus\StandardTextBlock::class,
     ];
 
     /**
@@ -215,7 +215,7 @@ class StandardSingleImageSpecsDetailModule implements \ArrayAccess, \JsonSeriali
      */
     public function __toString() : string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );

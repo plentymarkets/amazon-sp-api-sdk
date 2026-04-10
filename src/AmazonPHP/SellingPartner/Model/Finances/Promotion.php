@@ -40,7 +40,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class Promotion implements \ArrayAccess, \JsonSerializable, ModelInterface
+class Promotion implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -59,7 +59,7 @@ class Promotion implements \ArrayAccess, \JsonSerializable, ModelInterface
     protected static /** [COMPAT] array */ $openAPITypes = [
         'promotion_type' => 'string',
         'promotion_id' => 'string',
-        'promotion_amount' => '\Plenty\AmazonPHP\SellingPartner\Model\Finances\Currency',
+        'promotion_amount' => \Plenty\AmazonPHP\SellingPartner\Model\Finances\Currency::class,
     ];
 
     /**
@@ -185,7 +185,7 @@ class Promotion implements \ArrayAccess, \JsonSerializable, ModelInterface
      */
     public function __toString() : string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );

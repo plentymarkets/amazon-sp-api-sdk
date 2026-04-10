@@ -40,7 +40,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class TransportDetailOutput implements \ArrayAccess, \JsonSerializable, ModelInterface
+class TransportDetailOutput implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -57,10 +57,10 @@ class TransportDetailOutput implements \ArrayAccess, \JsonSerializable, ModelInt
      * @var string[]
      */
     protected static /** [COMPAT] array */ $openAPITypes = [
-        'partnered_small_parcel_data' => '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound\PartneredSmallParcelDataOutput',
-        'non_partnered_small_parcel_data' => '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound\NonPartneredSmallParcelDataOutput',
-        'partnered_ltl_data' => '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound\PartneredLtlDataOutput',
-        'non_partnered_ltl_data' => '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound\NonPartneredLtlDataOutput',
+        'partnered_small_parcel_data' => \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound\PartneredSmallParcelDataOutput::class,
+        'non_partnered_small_parcel_data' => \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound\NonPartneredSmallParcelDataOutput::class,
+        'partnered_ltl_data' => \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound\PartneredLtlDataOutput::class,
+        'non_partnered_ltl_data' => \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound\NonPartneredLtlDataOutput::class,
     ];
 
     /**
@@ -191,7 +191,7 @@ class TransportDetailOutput implements \ArrayAccess, \JsonSerializable, ModelInt
      */
     public function __toString() : string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );

@@ -40,7 +40,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class StandardSingleSideImageModule implements \ArrayAccess, \JsonSerializable, ModelInterface
+class StandardSingleSideImageModule implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -57,8 +57,8 @@ class StandardSingleSideImageModule implements \ArrayAccess, \JsonSerializable, 
      * @var string[]
      */
     protected static /** [COMPAT] array */ $openAPITypes = [
-        'image_position_type' => '\Plenty\AmazonPHP\SellingPartner\Model\APlus\PositionType',
-        'block' => '\Plenty\AmazonPHP\SellingPartner\Model\APlus\StandardImageTextBlock',
+        'image_position_type' => \Plenty\AmazonPHP\SellingPartner\Model\APlus\PositionType::class,
+        'block' => \Plenty\AmazonPHP\SellingPartner\Model\APlus\StandardImageTextBlock::class,
     ];
 
     /**
@@ -179,7 +179,7 @@ class StandardSingleSideImageModule implements \ArrayAccess, \JsonSerializable, 
      */
     public function __toString() : string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );

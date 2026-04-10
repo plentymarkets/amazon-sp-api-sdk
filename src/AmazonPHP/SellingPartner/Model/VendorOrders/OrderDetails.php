@@ -40,7 +40,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class OrderDetails implements \ArrayAccess, \JsonSerializable, ModelInterface
+class OrderDetails implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -77,13 +77,13 @@ class OrderDetails implements \ArrayAccess, \JsonSerializable, ModelInterface
         'purchase_order_changed_date' => '\DateTime',
         'purchase_order_state_changed_date' => '\DateTime',
         'purchase_order_type' => 'string',
-        'import_details' => '\Plenty\AmazonPHP\SellingPartner\Model\VendorOrders\ImportDetails',
+        'import_details' => \Plenty\AmazonPHP\SellingPartner\Model\VendorOrders\ImportDetails::class,
         'deal_code' => 'string',
         'payment_method' => 'string',
-        'buying_party' => '\Plenty\AmazonPHP\SellingPartner\Model\VendorOrders\PartyIdentification',
-        'selling_party' => '\Plenty\AmazonPHP\SellingPartner\Model\VendorOrders\PartyIdentification',
-        'ship_to_party' => '\Plenty\AmazonPHP\SellingPartner\Model\VendorOrders\PartyIdentification',
-        'bill_to_party' => '\Plenty\AmazonPHP\SellingPartner\Model\VendorOrders\PartyIdentification',
+        'buying_party' => \Plenty\AmazonPHP\SellingPartner\Model\VendorOrders\PartyIdentification::class,
+        'selling_party' => \Plenty\AmazonPHP\SellingPartner\Model\VendorOrders\PartyIdentification::class,
+        'ship_to_party' => \Plenty\AmazonPHP\SellingPartner\Model\VendorOrders\PartyIdentification::class,
+        'bill_to_party' => \Plenty\AmazonPHP\SellingPartner\Model\VendorOrders\PartyIdentification::class,
         'ship_window' => 'string',
         'delivery_window' => 'string',
         'items' => '\Plenty\AmazonPHP\SellingPartner\Model\VendorOrders\OrderItem[]',
@@ -267,7 +267,7 @@ class OrderDetails implements \ArrayAccess, \JsonSerializable, ModelInterface
      */
     public function __toString() : string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );

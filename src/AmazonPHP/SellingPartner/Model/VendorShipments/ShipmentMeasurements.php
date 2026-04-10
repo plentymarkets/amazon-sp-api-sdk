@@ -40,7 +40,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class ShipmentMeasurements implements \ArrayAccess, \JsonSerializable, ModelInterface
+class ShipmentMeasurements implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -57,8 +57,8 @@ class ShipmentMeasurements implements \ArrayAccess, \JsonSerializable, ModelInte
      * @var string[]
      */
     protected static /** [COMPAT] array */ $openAPITypes = [
-        'gross_shipment_weight' => '\Plenty\AmazonPHP\SellingPartner\Model\VendorShipments\Weight',
-        'shipment_volume' => '\Plenty\AmazonPHP\SellingPartner\Model\VendorShipments\Volume',
+        'gross_shipment_weight' => \Plenty\AmazonPHP\SellingPartner\Model\VendorShipments\Weight::class,
+        'shipment_volume' => \Plenty\AmazonPHP\SellingPartner\Model\VendorShipments\Volume::class,
         'carton_count' => 'int',
         'pallet_count' => 'int',
     ];
@@ -191,7 +191,7 @@ class ShipmentMeasurements implements \ArrayAccess, \JsonSerializable, ModelInte
      */
     public function __toString() : string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );

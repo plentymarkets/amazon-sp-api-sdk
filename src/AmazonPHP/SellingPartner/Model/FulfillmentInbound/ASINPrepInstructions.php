@@ -40,7 +40,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class ASINPrepInstructions implements \ArrayAccess, \JsonSerializable, ModelInterface
+class ASINPrepInstructions implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -58,8 +58,8 @@ class ASINPrepInstructions implements \ArrayAccess, \JsonSerializable, ModelInte
      */
     protected static /** [COMPAT] array */ $openAPITypes = [
         'asin' => 'string',
-        'barcode_instruction' => '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound\BarcodeInstruction',
-        'prep_guidance' => '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound\PrepGuidance',
+        'barcode_instruction' => \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound\BarcodeInstruction::class,
+        'prep_guidance' => \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound\PrepGuidance::class,
         'prep_instruction_list' => '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound\PrepInstruction[]',
     ];
 
@@ -191,7 +191,7 @@ class ASINPrepInstructions implements \ArrayAccess, \JsonSerializable, ModelInte
      */
     public function __toString() : string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );

@@ -24,7 +24,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class MskuPrepDetail implements ModelInterface, ArrayAccess, \JsonSerializable
+class MskuPrepDetail implements ModelInterface, ArrayAccess, \JsonSerializable, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -41,11 +41,11 @@ class MskuPrepDetail implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static array $openAPITypes = [
-        'all_owners_constraint' => '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound2024\AllOwnersConstraint',
-        'label_owner_constraint' => '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound2024\OwnerConstraint',
+        'all_owners_constraint' => \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound2024\AllOwnersConstraint::class,
+        'label_owner_constraint' => \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound2024\OwnerConstraint::class,
         'msku' => 'string',
-        'prep_category' => '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound2024\PrepCategory',
-        'prep_owner_constraint' => '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound2024\OwnerConstraint',
+        'prep_category' => \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound2024\PrepCategory::class,
+        'prep_owner_constraint' => \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound2024\OwnerConstraint::class,
         'prep_types' => '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound2024\PrepType[]'
     ];
 
@@ -431,7 +431,7 @@ class MskuPrepDetail implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __toString() : string
     {
-        return json_encode(
+        return (string) json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );

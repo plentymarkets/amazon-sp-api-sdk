@@ -134,7 +134,7 @@ final class FulfillmentInboundSDK2024 implements FulfillmentInboundSDK2024Interf
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound2024\CancelInboundPlanResponse',
+            \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound2024\CancelInboundPlanResponse::class,
             []
         );
     }
@@ -335,7 +335,7 @@ final class FulfillmentInboundSDK2024 implements FulfillmentInboundSDK2024Interf
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound2024\CancelSelfShipAppointmentResponse',
+            \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound2024\CancelSelfShipAppointmentResponse::class,
             []
         );
     }
@@ -575,7 +575,7 @@ final class FulfillmentInboundSDK2024 implements FulfillmentInboundSDK2024Interf
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound2024\ConfirmDeliveryWindowOptionsResponse',
+            \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound2024\ConfirmDeliveryWindowOptionsResponse::class,
             []
         );
     }
@@ -831,7 +831,7 @@ final class FulfillmentInboundSDK2024 implements FulfillmentInboundSDK2024Interf
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound2024\ConfirmPackingOptionResponse',
+            \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound2024\ConfirmPackingOptionResponse::class,
             []
         );
     }
@@ -1055,7 +1055,7 @@ final class FulfillmentInboundSDK2024 implements FulfillmentInboundSDK2024Interf
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound2024\ConfirmPlacementOptionResponse',
+            \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound2024\ConfirmPlacementOptionResponse::class,
             []
         );
     }
@@ -1284,7 +1284,7 @@ final class FulfillmentInboundSDK2024 implements FulfillmentInboundSDK2024Interf
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound2024\ConfirmShipmentContentUpdatePreviewResponse',
+            \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound2024\ConfirmShipmentContentUpdatePreviewResponse::class,
             []
         );
     }
@@ -1535,7 +1535,7 @@ final class FulfillmentInboundSDK2024 implements FulfillmentInboundSDK2024Interf
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound2024\ConfirmTransportationOptionsResponse',
+            \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound2024\ConfirmTransportationOptionsResponse::class,
             []
         );
     }
@@ -1745,7 +1745,7 @@ final class FulfillmentInboundSDK2024 implements FulfillmentInboundSDK2024Interf
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound2024\CreateInboundPlanResponse',
+            \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound2024\CreateInboundPlanResponse::class,
             []
         );
     }
@@ -1931,7 +1931,7 @@ final class FulfillmentInboundSDK2024 implements FulfillmentInboundSDK2024Interf
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound2024\CreateMarketplaceItemLabelsResponse',
+            \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound2024\CreateMarketplaceItemLabelsResponse::class,
             []
         );
     }
@@ -2113,7 +2113,7 @@ final class FulfillmentInboundSDK2024 implements FulfillmentInboundSDK2024Interf
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound2024\GenerateDeliveryWindowOptionsResponse',
+            \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound2024\GenerateDeliveryWindowOptionsResponse::class,
             []
         );
     }
@@ -2340,7 +2340,7 @@ final class FulfillmentInboundSDK2024 implements FulfillmentInboundSDK2024Interf
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound2024\GeneratePackingOptionsResponse',
+            \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound2024\GeneratePackingOptionsResponse::class,
             []
         );
     }
@@ -2535,7 +2535,7 @@ final class FulfillmentInboundSDK2024 implements FulfillmentInboundSDK2024Interf
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound2024\GeneratePlacementOptionsResponse',
+            \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound2024\GeneratePlacementOptionsResponse::class,
             []
         );
     }
@@ -2752,7 +2752,7 @@ final class FulfillmentInboundSDK2024 implements FulfillmentInboundSDK2024Interf
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound2024\GenerateSelfShipAppointmentSlotsResponse',
+            \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound2024\GenerateSelfShipAppointmentSlotsResponse::class,
             []
         );
     }
@@ -2997,7 +2997,7 @@ final class FulfillmentInboundSDK2024 implements FulfillmentInboundSDK2024Interf
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound2024\GenerateShipmentContentUpdatePreviewsResponse',
+            \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound2024\GenerateShipmentContentUpdatePreviewsResponse::class,
             []
         );
     }
@@ -3236,7 +3236,7 @@ final class FulfillmentInboundSDK2024 implements FulfillmentInboundSDK2024Interf
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound2024\GenerateTransportationOptionsResponse',
+            \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound2024\GenerateTransportationOptionsResponse::class,
             []
         );
     }
@@ -3452,7 +3452,7 @@ final class FulfillmentInboundSDK2024 implements FulfillmentInboundSDK2024Interf
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound2024\GetDeliveryChallanDocumentResponse',
+            \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound2024\GetDeliveryChallanDocumentResponse::class,
             []
         );
     }
@@ -3673,7 +3673,7 @@ final class FulfillmentInboundSDK2024 implements FulfillmentInboundSDK2024Interf
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound2024\InboundOperationStatus',
+            \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound2024\InboundOperationStatus::class,
             []
         );
     }
@@ -3866,7 +3866,7 @@ final class FulfillmentInboundSDK2024 implements FulfillmentInboundSDK2024Interf
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound2024\InboundPlan',
+            \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound2024\InboundPlan::class,
             []
         );
     }
@@ -4068,7 +4068,7 @@ final class FulfillmentInboundSDK2024 implements FulfillmentInboundSDK2024Interf
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound2024\GetSelfShipAppointmentSlotsResponse',
+            \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound2024\GetSelfShipAppointmentSlotsResponse::class,
             []
         );
     }
@@ -4325,7 +4325,7 @@ final class FulfillmentInboundSDK2024 implements FulfillmentInboundSDK2024Interf
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound2024\Shipment',
+            \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound2024\Shipment::class,
             []
         );
     }
@@ -4554,7 +4554,7 @@ final class FulfillmentInboundSDK2024 implements FulfillmentInboundSDK2024Interf
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound2024\ContentUpdatePreview',
+            \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound2024\ContentUpdatePreview::class,
             []
         );
     }
@@ -4806,7 +4806,7 @@ final class FulfillmentInboundSDK2024 implements FulfillmentInboundSDK2024Interf
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound2024\ListDeliveryWindowOptionsResponse',
+            \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound2024\ListDeliveryWindowOptionsResponse::class,
             []
         );
     }
@@ -5067,7 +5067,7 @@ final class FulfillmentInboundSDK2024 implements FulfillmentInboundSDK2024Interf
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound2024\ListPrepDetailsResponse',
+            \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound2024\ListPrepDetailsResponse::class,
             []
         );
     }
@@ -5293,7 +5293,7 @@ final class FulfillmentInboundSDK2024 implements FulfillmentInboundSDK2024Interf
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound2024\ListInboundPlanBoxesResponse',
+            \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound2024\ListInboundPlanBoxesResponse::class,
             []
         );
     }
@@ -5523,7 +5523,7 @@ final class FulfillmentInboundSDK2024 implements FulfillmentInboundSDK2024Interf
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound2024\ListInboundPlanItemsResponse',
+            \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound2024\ListInboundPlanItemsResponse::class,
             []
         );
     }
@@ -5759,7 +5759,7 @@ final class FulfillmentInboundSDK2024 implements FulfillmentInboundSDK2024Interf
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound2024\ListInboundPlanPalletsResponse',
+            \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound2024\ListInboundPlanPalletsResponse::class,
             []
         );
     }
@@ -5991,7 +5991,7 @@ final class FulfillmentInboundSDK2024 implements FulfillmentInboundSDK2024Interf
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound2024\ListInboundPlansResponse',
+            \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound2024\ListInboundPlansResponse::class,
             []
         );
     }
@@ -6224,7 +6224,7 @@ final class FulfillmentInboundSDK2024 implements FulfillmentInboundSDK2024Interf
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound2024\ListItemComplianceDetailsResponse',
+            \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound2024\ListItemComplianceDetailsResponse::class,
             []
         );
     }
@@ -6448,7 +6448,7 @@ final class FulfillmentInboundSDK2024 implements FulfillmentInboundSDK2024Interf
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound2024\ListPackingGroupBoxesResponse',
+            \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound2024\ListPackingGroupBoxesResponse::class,
             []
         );
     }
@@ -6713,7 +6713,7 @@ final class FulfillmentInboundSDK2024 implements FulfillmentInboundSDK2024Interf
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound2024\ListPackingGroupItemsResponse',
+            \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound2024\ListPackingGroupItemsResponse::class,
             []
         );
     }
@@ -6977,7 +6977,7 @@ final class FulfillmentInboundSDK2024 implements FulfillmentInboundSDK2024Interf
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound2024\ListPackingOptionsResponse',
+            \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound2024\ListPackingOptionsResponse::class,
             []
         );
     }
@@ -7208,7 +7208,7 @@ final class FulfillmentInboundSDK2024 implements FulfillmentInboundSDK2024Interf
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound2024\ListPlacementOptionsResponse',
+            \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound2024\ListPlacementOptionsResponse::class,
             []
         );
     }
@@ -7445,7 +7445,7 @@ final class FulfillmentInboundSDK2024 implements FulfillmentInboundSDK2024Interf
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound2024\ListShipmentBoxesResponse',
+            \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound2024\ListShipmentBoxesResponse::class,
             []
         );
     }
@@ -7710,7 +7710,7 @@ final class FulfillmentInboundSDK2024 implements FulfillmentInboundSDK2024Interf
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound2024\ListShipmentContentUpdatePreviewsResponse',
+            \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound2024\ListShipmentContentUpdatePreviewsResponse::class,
             []
         );
     }
@@ -7970,7 +7970,7 @@ final class FulfillmentInboundSDK2024 implements FulfillmentInboundSDK2024Interf
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound2024\ListShipmentItemsResponse',
+            \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound2024\ListShipmentItemsResponse::class,
             []
         );
     }
@@ -8235,7 +8235,7 @@ final class FulfillmentInboundSDK2024 implements FulfillmentInboundSDK2024Interf
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound2024\ListShipmentPalletsResponse',
+            \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound2024\ListShipmentPalletsResponse::class,
             []
         );
     }
@@ -8495,7 +8495,7 @@ final class FulfillmentInboundSDK2024 implements FulfillmentInboundSDK2024Interf
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound2024\ListTransportationOptionsResponse',
+            \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound2024\ListTransportationOptionsResponse::class,
             []
         );
     }
@@ -8774,7 +8774,7 @@ final class FulfillmentInboundSDK2024 implements FulfillmentInboundSDK2024Interf
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound2024\ScheduleSelfShipAppointmentResponse',
+            \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound2024\ScheduleSelfShipAppointmentResponse::class,
             []
         );
     }
@@ -9041,7 +9041,7 @@ final class FulfillmentInboundSDK2024 implements FulfillmentInboundSDK2024Interf
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound2024\SetPackingInformationResponse',
+            \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound2024\SetPackingInformationResponse::class,
             []
         );
     }
@@ -9242,7 +9242,7 @@ final class FulfillmentInboundSDK2024 implements FulfillmentInboundSDK2024Interf
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound2024\SetPrepDetailsResponse',
+            \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound2024\SetPrepDetailsResponse::class,
             []
         );
     }
@@ -9627,7 +9627,7 @@ final class FulfillmentInboundSDK2024 implements FulfillmentInboundSDK2024Interf
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound2024\UpdateItemComplianceDetailsResponse',
+            \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound2024\UpdateItemComplianceDetailsResponse::class,
             []
         );
     }
@@ -10080,7 +10080,7 @@ final class FulfillmentInboundSDK2024 implements FulfillmentInboundSDK2024Interf
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound2024\UpdateShipmentSourceAddressResponse',
+            \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound2024\UpdateShipmentSourceAddressResponse::class,
             []
         );
     }
@@ -10325,7 +10325,7 @@ final class FulfillmentInboundSDK2024 implements FulfillmentInboundSDK2024Interf
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound2024\UpdateShipmentTrackingDetailsResponse',
+            \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound2024\UpdateShipmentTrackingDetailsResponse::class,
             []
         );
     }

@@ -40,7 +40,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class InvoiceDetail implements \ArrayAccess, \JsonSerializable, ModelInterface
+class InvoiceDetail implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -60,12 +60,12 @@ class InvoiceDetail implements \ArrayAccess, \JsonSerializable, ModelInterface
         'invoice_number' => 'string',
         'invoice_date' => '\DateTime',
         'reference_number' => 'string',
-        'remit_to_party' => '\Plenty\AmazonPHP\SellingPartner\Model\VendorDirectFulfillmentPayments\PartyIdentification',
-        'ship_from_party' => '\Plenty\AmazonPHP\SellingPartner\Model\VendorDirectFulfillmentPayments\PartyIdentification',
-        'bill_to_party' => '\Plenty\AmazonPHP\SellingPartner\Model\VendorDirectFulfillmentPayments\PartyIdentification',
+        'remit_to_party' => \Plenty\AmazonPHP\SellingPartner\Model\VendorDirectFulfillmentPayments\PartyIdentification::class,
+        'ship_from_party' => \Plenty\AmazonPHP\SellingPartner\Model\VendorDirectFulfillmentPayments\PartyIdentification::class,
+        'bill_to_party' => \Plenty\AmazonPHP\SellingPartner\Model\VendorDirectFulfillmentPayments\PartyIdentification::class,
         'ship_to_country_code' => 'string',
         'payment_terms_code' => 'string',
-        'invoice_total' => '\Plenty\AmazonPHP\SellingPartner\Model\VendorDirectFulfillmentPayments\Money',
+        'invoice_total' => \Plenty\AmazonPHP\SellingPartner\Model\VendorDirectFulfillmentPayments\Money::class,
         'tax_totals' => '\Plenty\AmazonPHP\SellingPartner\Model\VendorDirectFulfillmentPayments\TaxDetail[]',
         'additional_details' => '\Plenty\AmazonPHP\SellingPartner\Model\VendorDirectFulfillmentPayments\AdditionalDetails[]',
         'charge_details' => '\Plenty\AmazonPHP\SellingPartner\Model\VendorDirectFulfillmentPayments\ChargeDetails[]',
@@ -245,7 +245,7 @@ class InvoiceDetail implements \ArrayAccess, \JsonSerializable, ModelInterface
      */
     public function __toString() : string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );

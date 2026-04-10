@@ -40,7 +40,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class Stop implements \ArrayAccess, \JsonSerializable, ModelInterface
+class Stop implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -64,7 +64,7 @@ class Stop implements \ArrayAccess, \JsonSerializable, ModelInterface
      */
     protected static /** [COMPAT] array */ $openAPITypes = [
         'function_code' => 'string',
-        'location_identification' => '\Plenty\AmazonPHP\SellingPartner\Model\VendorShipments\Location',
+        'location_identification' => \Plenty\AmazonPHP\SellingPartner\Model\VendorShipments\Location::class,
         'arrival_time' => '\DateTime',
         'departure_time' => '\DateTime',
     ];
@@ -197,7 +197,7 @@ class Stop implements \ArrayAccess, \JsonSerializable, ModelInterface
      */
     public function __toString() : string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );

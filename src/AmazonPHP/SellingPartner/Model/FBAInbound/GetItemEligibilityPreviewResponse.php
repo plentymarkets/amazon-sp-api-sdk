@@ -40,7 +40,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class GetItemEligibilityPreviewResponse implements \ArrayAccess, \JsonSerializable, ModelInterface
+class GetItemEligibilityPreviewResponse implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -57,7 +57,7 @@ class GetItemEligibilityPreviewResponse implements \ArrayAccess, \JsonSerializab
      * @var string[]
      */
     protected static /** [COMPAT] array */ $openAPITypes = [
-        'payload' => '\Plenty\AmazonPHP\SellingPartner\Model\FBAInbound\ItemEligibilityPreview',
+        'payload' => \Plenty\AmazonPHP\SellingPartner\Model\FBAInbound\ItemEligibilityPreview::class,
         'errors' => '\Plenty\AmazonPHP\SellingPartner\Model\FBAInbound\Error[]',
     ];
 
@@ -179,7 +179,7 @@ class GetItemEligibilityPreviewResponse implements \ArrayAccess, \JsonSerializab
      */
     public function __toString() : string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );

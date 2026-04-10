@@ -40,7 +40,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class OfferCountType implements \ArrayAccess, \JsonSerializable, ModelInterface
+class OfferCountType implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -58,7 +58,7 @@ class OfferCountType implements \ArrayAccess, \JsonSerializable, ModelInterface
      */
     protected static /** [COMPAT] array */ $openAPITypes = [
         'condition' => 'string',
-        'fulfillment_channel' => '\Plenty\AmazonPHP\SellingPartner\Model\ProductPricing\FulfillmentChannelType',
+        'fulfillment_channel' => \Plenty\AmazonPHP\SellingPartner\Model\ProductPricing\FulfillmentChannelType::class,
         'offer_count' => 'int',
     ];
 
@@ -185,7 +185,7 @@ class OfferCountType implements \ArrayAccess, \JsonSerializable, ModelInterface
      */
     public function __toString() : string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );

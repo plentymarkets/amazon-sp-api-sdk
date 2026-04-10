@@ -40,7 +40,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class TransactionStatus implements \ArrayAccess, \JsonSerializable, ModelInterface
+class TransactionStatus implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -57,7 +57,7 @@ class TransactionStatus implements \ArrayAccess, \JsonSerializable, ModelInterfa
      * @var string[]
      */
     protected static /** [COMPAT] array */ $openAPITypes = [
-        'transaction_status' => '\Plenty\AmazonPHP\SellingPartner\Model\VendorDirectFulfillmentTransactions\Transaction',
+        'transaction_status' => \Plenty\AmazonPHP\SellingPartner\Model\VendorDirectFulfillmentTransactions\Transaction::class,
     ];
 
     /**
@@ -173,7 +173,7 @@ class TransactionStatus implements \ArrayAccess, \JsonSerializable, ModelInterfa
      */
     public function __toString() : string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );

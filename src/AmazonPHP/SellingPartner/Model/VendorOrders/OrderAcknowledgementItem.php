@@ -40,7 +40,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class OrderAcknowledgementItem implements \ArrayAccess, \JsonSerializable, ModelInterface
+class OrderAcknowledgementItem implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -60,9 +60,9 @@ class OrderAcknowledgementItem implements \ArrayAccess, \JsonSerializable, Model
         'item_sequence_number' => 'string',
         'amazon_product_identifier' => 'string',
         'vendor_product_identifier' => 'string',
-        'ordered_quantity' => '\Plenty\AmazonPHP\SellingPartner\Model\VendorOrders\ItemQuantity',
-        'net_cost' => '\Plenty\AmazonPHP\SellingPartner\Model\VendorOrders\Money',
-        'list_price' => '\Plenty\AmazonPHP\SellingPartner\Model\VendorOrders\Money',
+        'ordered_quantity' => \Plenty\AmazonPHP\SellingPartner\Model\VendorOrders\ItemQuantity::class,
+        'net_cost' => \Plenty\AmazonPHP\SellingPartner\Model\VendorOrders\Money::class,
+        'list_price' => \Plenty\AmazonPHP\SellingPartner\Model\VendorOrders\Money::class,
         'discount_multiplier' => 'string',
         'item_acknowledgements' => '\Plenty\AmazonPHP\SellingPartner\Model\VendorOrders\OrderItemAcknowledgement[]',
     ];
@@ -215,7 +215,7 @@ class OrderAcknowledgementItem implements \ArrayAccess, \JsonSerializable, Model
      */
     public function __toString() : string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );

@@ -40,7 +40,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class ItemBuyerInfo implements \ArrayAccess, \JsonSerializable, ModelInterface
+class ItemBuyerInfo implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -57,9 +57,9 @@ class ItemBuyerInfo implements \ArrayAccess, \JsonSerializable, ModelInterface
      * @var string[]
      */
     protected static /** [COMPAT] array */ $openAPITypes = [
-        'buyer_customized_info' => '\Plenty\AmazonPHP\SellingPartner\Model\Orders\BuyerCustomizedInfoDetail',
-        'gift_wrap_price' => '\Plenty\AmazonPHP\SellingPartner\Model\Orders\Money',
-        'gift_wrap_tax' => '\Plenty\AmazonPHP\SellingPartner\Model\Orders\Money',
+        'buyer_customized_info' => \Plenty\AmazonPHP\SellingPartner\Model\Orders\BuyerCustomizedInfoDetail::class,
+        'gift_wrap_price' => \Plenty\AmazonPHP\SellingPartner\Model\Orders\Money::class,
+        'gift_wrap_tax' => \Plenty\AmazonPHP\SellingPartner\Model\Orders\Money::class,
         'gift_message_text' => 'string',
         'gift_wrap_level' => 'string',
     ];
@@ -197,7 +197,7 @@ class ItemBuyerInfo implements \ArrayAccess, \JsonSerializable, ModelInterface
      */
     public function __toString() : string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );

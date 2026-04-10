@@ -40,7 +40,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class SellerDealPaymentEvent implements \ArrayAccess, \JsonSerializable, ModelInterface
+class SellerDealPaymentEvent implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -62,9 +62,9 @@ class SellerDealPaymentEvent implements \ArrayAccess, \JsonSerializable, ModelIn
         'deal_description' => 'string',
         'event_type' => 'string',
         'fee_type' => 'string',
-        'fee_amount' => '\Plenty\AmazonPHP\SellingPartner\Model\Finances\Currency',
-        'tax_amount' => '\Plenty\AmazonPHP\SellingPartner\Model\Finances\Currency',
-        'total_amount' => '\Plenty\AmazonPHP\SellingPartner\Model\Finances\Currency',
+        'fee_amount' => \Plenty\AmazonPHP\SellingPartner\Model\Finances\Currency::class,
+        'tax_amount' => \Plenty\AmazonPHP\SellingPartner\Model\Finances\Currency::class,
+        'total_amount' => \Plenty\AmazonPHP\SellingPartner\Model\Finances\Currency::class,
     ];
 
     /**
@@ -215,7 +215,7 @@ class SellerDealPaymentEvent implements \ArrayAccess, \JsonSerializable, ModelIn
      */
     public function __toString() : string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );

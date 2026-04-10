@@ -40,7 +40,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class Shipment implements \ArrayAccess, \JsonSerializable, ModelInterface
+class Shipment implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -61,14 +61,14 @@ class Shipment implements \ArrayAccess, \JsonSerializable, ModelInterface
         'amazon_order_id' => 'string',
         'seller_order_id' => 'string',
         'item_list' => '\Plenty\AmazonPHP\SellingPartner\Model\MerchantFulfillment\Item[]',
-        'ship_from_address' => '\Plenty\AmazonPHP\SellingPartner\Model\MerchantFulfillment\Address',
-        'ship_to_address' => '\Plenty\AmazonPHP\SellingPartner\Model\MerchantFulfillment\Address',
-        'package_dimensions' => '\Plenty\AmazonPHP\SellingPartner\Model\MerchantFulfillment\PackageDimensions',
-        'weight' => '\Plenty\AmazonPHP\SellingPartner\Model\MerchantFulfillment\Weight',
-        'insurance' => '\Plenty\AmazonPHP\SellingPartner\Model\MerchantFulfillment\CurrencyAmount',
-        'shipping_service' => '\Plenty\AmazonPHP\SellingPartner\Model\MerchantFulfillment\ShippingService',
-        'label' => '\Plenty\AmazonPHP\SellingPartner\Model\MerchantFulfillment\Label',
-        'status' => '\Plenty\AmazonPHP\SellingPartner\Model\MerchantFulfillment\ShipmentStatus',
+        'ship_from_address' => \Plenty\AmazonPHP\SellingPartner\Model\MerchantFulfillment\Address::class,
+        'ship_to_address' => \Plenty\AmazonPHP\SellingPartner\Model\MerchantFulfillment\Address::class,
+        'package_dimensions' => \Plenty\AmazonPHP\SellingPartner\Model\MerchantFulfillment\PackageDimensions::class,
+        'weight' => \Plenty\AmazonPHP\SellingPartner\Model\MerchantFulfillment\Weight::class,
+        'insurance' => \Plenty\AmazonPHP\SellingPartner\Model\MerchantFulfillment\CurrencyAmount::class,
+        'shipping_service' => \Plenty\AmazonPHP\SellingPartner\Model\MerchantFulfillment\ShippingService::class,
+        'label' => \Plenty\AmazonPHP\SellingPartner\Model\MerchantFulfillment\Label::class,
+        'status' => \Plenty\AmazonPHP\SellingPartner\Model\MerchantFulfillment\ShipmentStatus::class,
         'tracking_id' => 'string',
         'created_date' => '\DateTime',
         'last_updated_date' => '\DateTime',
@@ -257,7 +257,7 @@ class Shipment implements \ArrayAccess, \JsonSerializable, ModelInterface
      */
     public function __toString() : string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );

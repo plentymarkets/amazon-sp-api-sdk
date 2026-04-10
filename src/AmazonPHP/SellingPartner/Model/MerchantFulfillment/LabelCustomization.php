@@ -40,7 +40,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class LabelCustomization implements \ArrayAccess, \JsonSerializable, ModelInterface
+class LabelCustomization implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -58,7 +58,7 @@ class LabelCustomization implements \ArrayAccess, \JsonSerializable, ModelInterf
      */
     protected static /** [COMPAT] array */ $openAPITypes = [
         'custom_text_for_label' => 'string',
-        'standard_id_for_label' => '\Plenty\AmazonPHP\SellingPartner\Model\MerchantFulfillment\StandardIdForLabel',
+        'standard_id_for_label' => \Plenty\AmazonPHP\SellingPartner\Model\MerchantFulfillment\StandardIdForLabel::class,
     ];
 
     /**
@@ -179,7 +179,7 @@ class LabelCustomization implements \ArrayAccess, \JsonSerializable, ModelInterf
      */
     public function __toString() : string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );

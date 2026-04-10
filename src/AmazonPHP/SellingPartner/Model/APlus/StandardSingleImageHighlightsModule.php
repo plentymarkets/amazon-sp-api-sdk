@@ -40,7 +40,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class StandardSingleImageHighlightsModule implements \ArrayAccess, \JsonSerializable, ModelInterface
+class StandardSingleImageHighlightsModule implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -57,12 +57,12 @@ class StandardSingleImageHighlightsModule implements \ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static /** [COMPAT] array */ $openAPITypes = [
-        'image' => '\Plenty\AmazonPHP\SellingPartner\Model\APlus\ImageComponent',
-        'headline' => '\Plenty\AmazonPHP\SellingPartner\Model\APlus\TextComponent',
-        'text_block1' => '\Plenty\AmazonPHP\SellingPartner\Model\APlus\StandardTextBlock',
-        'text_block2' => '\Plenty\AmazonPHP\SellingPartner\Model\APlus\StandardTextBlock',
-        'text_block3' => '\Plenty\AmazonPHP\SellingPartner\Model\APlus\StandardTextBlock',
-        'bulleted_list_block' => '\Plenty\AmazonPHP\SellingPartner\Model\APlus\StandardHeaderTextListBlock',
+        'image' => \Plenty\AmazonPHP\SellingPartner\Model\APlus\ImageComponent::class,
+        'headline' => \Plenty\AmazonPHP\SellingPartner\Model\APlus\TextComponent::class,
+        'text_block1' => \Plenty\AmazonPHP\SellingPartner\Model\APlus\StandardTextBlock::class,
+        'text_block2' => \Plenty\AmazonPHP\SellingPartner\Model\APlus\StandardTextBlock::class,
+        'text_block3' => \Plenty\AmazonPHP\SellingPartner\Model\APlus\StandardTextBlock::class,
+        'bulleted_list_block' => \Plenty\AmazonPHP\SellingPartner\Model\APlus\StandardHeaderTextListBlock::class,
     ];
 
     /**
@@ -203,7 +203,7 @@ class StandardSingleImageHighlightsModule implements \ArrayAccess, \JsonSerializ
      */
     public function __toString() : string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );

@@ -40,7 +40,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class OrderItemStatusAcknowledgementStatus implements \ArrayAccess, \JsonSerializable, ModelInterface
+class OrderItemStatusAcknowledgementStatus implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -66,8 +66,8 @@ class OrderItemStatusAcknowledgementStatus implements \ArrayAccess, \JsonSeriali
      */
     protected static /** [COMPAT] array */ $openAPITypes = [
         'confirmation_status' => 'string',
-        'accepted_quantity' => '\Plenty\AmazonPHP\SellingPartner\Model\VendorOrders\ItemQuantity',
-        'rejected_quantity' => '\Plenty\AmazonPHP\SellingPartner\Model\VendorOrders\ItemQuantity',
+        'accepted_quantity' => \Plenty\AmazonPHP\SellingPartner\Model\VendorOrders\ItemQuantity::class,
+        'rejected_quantity' => \Plenty\AmazonPHP\SellingPartner\Model\VendorOrders\ItemQuantity::class,
         'acknowledgement_status_details' => '\Plenty\AmazonPHP\SellingPartner\Model\VendorOrders\AcknowledgementStatusDetails[]',
     ];
 
@@ -199,7 +199,7 @@ class OrderItemStatusAcknowledgementStatus implements \ArrayAccess, \JsonSeriali
      */
     public function __toString() : string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );

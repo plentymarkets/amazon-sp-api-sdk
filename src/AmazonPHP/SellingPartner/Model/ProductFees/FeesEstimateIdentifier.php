@@ -40,7 +40,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class FeesEstimateIdentifier implements \ArrayAccess, \JsonSerializable, ModelInterface
+class FeesEstimateIdentifier implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -59,12 +59,12 @@ class FeesEstimateIdentifier implements \ArrayAccess, \JsonSerializable, ModelIn
     protected static /** [COMPAT] array */ $openAPITypes = [
         'marketplace_id' => 'string',
         'seller_id' => 'string',
-        'id_type' => '\Plenty\AmazonPHP\SellingPartner\Model\ProductFees\IdType',
+        'id_type' => \Plenty\AmazonPHP\SellingPartner\Model\ProductFees\IdType::class,
         'id_value' => 'string',
         'is_amazon_fulfilled' => 'bool',
-        'price_to_estimate_fees' => '\Plenty\AmazonPHP\SellingPartner\Model\ProductFees\PriceToEstimateFees',
+        'price_to_estimate_fees' => \Plenty\AmazonPHP\SellingPartner\Model\ProductFees\PriceToEstimateFees::class,
         'seller_input_identifier' => 'string',
-        'optional_fulfillment_program' => '\Plenty\AmazonPHP\SellingPartner\Model\ProductFees\OptionalFulfillmentProgram',
+        'optional_fulfillment_program' => \Plenty\AmazonPHP\SellingPartner\Model\ProductFees\OptionalFulfillmentProgram::class,
     ];
 
     /**
@@ -215,7 +215,7 @@ class FeesEstimateIdentifier implements \ArrayAccess, \JsonSerializable, ModelIn
      */
     public function __toString() : string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );

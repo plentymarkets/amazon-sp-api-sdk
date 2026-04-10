@@ -40,7 +40,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class OrderAcknowledgementItem implements \ArrayAccess, \JsonSerializable, ModelInterface
+class OrderAcknowledgementItem implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -60,9 +60,9 @@ class OrderAcknowledgementItem implements \ArrayAccess, \JsonSerializable, Model
         'purchase_order_number' => 'string',
         'vendor_order_number' => 'string',
         'acknowledgement_date' => '\DateTime',
-        'acknowledgement_status' => '\Plenty\AmazonPHP\SellingPartner\Model\VendorDirectFulfillmentOrders\AcknowledgementStatus',
-        'selling_party' => '\Plenty\AmazonPHP\SellingPartner\Model\VendorDirectFulfillmentOrders\PartyIdentification',
-        'ship_from_party' => '\Plenty\AmazonPHP\SellingPartner\Model\VendorDirectFulfillmentOrders\PartyIdentification',
+        'acknowledgement_status' => \Plenty\AmazonPHP\SellingPartner\Model\VendorDirectFulfillmentOrders\AcknowledgementStatus::class,
+        'selling_party' => \Plenty\AmazonPHP\SellingPartner\Model\VendorDirectFulfillmentOrders\PartyIdentification::class,
+        'ship_from_party' => \Plenty\AmazonPHP\SellingPartner\Model\VendorDirectFulfillmentOrders\PartyIdentification::class,
         'item_acknowledgements' => '\Plenty\AmazonPHP\SellingPartner\Model\VendorDirectFulfillmentOrders\OrderItemAcknowledgement[]',
     ];
 
@@ -209,7 +209,7 @@ class OrderAcknowledgementItem implements \ArrayAccess, \JsonSerializable, Model
      */
     public function __toString() : string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );

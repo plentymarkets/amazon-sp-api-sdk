@@ -40,7 +40,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class NonPartneredSmallParcelPackageOutput implements \ArrayAccess, \JsonSerializable, ModelInterface
+class NonPartneredSmallParcelPackageOutput implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -59,7 +59,7 @@ class NonPartneredSmallParcelPackageOutput implements \ArrayAccess, \JsonSeriali
     protected static /** [COMPAT] array */ $openAPITypes = [
         'carrier_name' => 'string',
         'tracking_id' => 'string',
-        'package_status' => '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound\PackageStatus',
+        'package_status' => \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound\PackageStatus::class,
     ];
 
     /**
@@ -185,7 +185,7 @@ class NonPartneredSmallParcelPackageOutput implements \ArrayAccess, \JsonSeriali
      */
     public function __toString() : string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );

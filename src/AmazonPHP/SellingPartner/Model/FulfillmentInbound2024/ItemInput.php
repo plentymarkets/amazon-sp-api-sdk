@@ -39,10 +39,10 @@ class ItemInput implements \ArrayAccess, \JsonSerializable, \Stringable, ModelIn
      */
     protected static array $openAPITypes = [
         'expiration' => 'string',
-        'label_owner' => '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound2024\LabelOwner',
+        'label_owner' => \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound2024\LabelOwner::class,
         'manufacturing_lot_code' => 'string',
         'msku' => 'string',
-        'prep_owner' => '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound2024\PrepOwner',
+        'prep_owner' => \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound2024\PrepOwner::class,
         'quantity' => 'int',
     ];
 

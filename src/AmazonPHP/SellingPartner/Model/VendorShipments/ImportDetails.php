@@ -40,7 +40,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class ImportDetails implements \ArrayAccess, \JsonSerializable, ModelInterface
+class ImportDetails implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -71,9 +71,9 @@ class ImportDetails implements \ArrayAccess, \JsonSerializable, ModelInterface
     protected static /** [COMPAT] array */ $openAPITypes = [
         'method_of_payment' => 'string',
         'seal_number' => 'string',
-        'route' => '\Plenty\AmazonPHP\SellingPartner\Model\VendorShipments\Route',
+        'route' => \Plenty\AmazonPHP\SellingPartner\Model\VendorShipments\Route::class,
         'import_containers' => 'string',
-        'billable_weight' => '\Plenty\AmazonPHP\SellingPartner\Model\VendorShipments\Weight',
+        'billable_weight' => \Plenty\AmazonPHP\SellingPartner\Model\VendorShipments\Weight::class,
         'estimated_ship_by_date' => '\DateTime',
     ];
 
@@ -215,7 +215,7 @@ class ImportDetails implements \ArrayAccess, \JsonSerializable, ModelInterface
      */
     public function __toString() : string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );

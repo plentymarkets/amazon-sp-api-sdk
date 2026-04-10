@@ -40,7 +40,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class OfferDetail implements \ArrayAccess, \JsonSerializable, ModelInterface
+class OfferDetail implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -58,19 +58,19 @@ class OfferDetail implements \ArrayAccess, \JsonSerializable, ModelInterface
      */
     protected static /** [COMPAT] array */ $openAPITypes = [
         'my_offer' => 'bool',
-        'offer_type' => '\Plenty\AmazonPHP\SellingPartner\Model\ProductPricing\OfferCustomerType',
+        'offer_type' => \Plenty\AmazonPHP\SellingPartner\Model\ProductPricing\OfferCustomerType::class,
         'sub_condition' => 'string',
         'seller_id' => 'string',
         'condition_notes' => 'string',
-        'seller_feedback_rating' => '\Plenty\AmazonPHP\SellingPartner\Model\ProductPricing\SellerFeedbackType',
-        'shipping_time' => '\Plenty\AmazonPHP\SellingPartner\Model\ProductPricing\DetailedShippingTimeType',
-        'listing_price' => '\Plenty\AmazonPHP\SellingPartner\Model\ProductPricing\MoneyType',
+        'seller_feedback_rating' => \Plenty\AmazonPHP\SellingPartner\Model\ProductPricing\SellerFeedbackType::class,
+        'shipping_time' => \Plenty\AmazonPHP\SellingPartner\Model\ProductPricing\DetailedShippingTimeType::class,
+        'listing_price' => \Plenty\AmazonPHP\SellingPartner\Model\ProductPricing\MoneyType::class,
         'quantity_discount_prices' => '\Plenty\AmazonPHP\SellingPartner\Model\ProductPricing\QuantityDiscountPriceType[]',
-        'points' => '\Plenty\AmazonPHP\SellingPartner\Model\ProductPricing\Points',
-        'shipping' => '\Plenty\AmazonPHP\SellingPartner\Model\ProductPricing\MoneyType',
-        'ships_from' => '\Plenty\AmazonPHP\SellingPartner\Model\ProductPricing\ShipsFromType',
+        'points' => \Plenty\AmazonPHP\SellingPartner\Model\ProductPricing\Points::class,
+        'shipping' => \Plenty\AmazonPHP\SellingPartner\Model\ProductPricing\MoneyType::class,
+        'ships_from' => \Plenty\AmazonPHP\SellingPartner\Model\ProductPricing\ShipsFromType::class,
         'is_fulfilled_by_amazon' => 'bool',
-        'prime_information' => '\Plenty\AmazonPHP\SellingPartner\Model\ProductPricing\PrimeInformationType',
+        'prime_information' => \Plenty\AmazonPHP\SellingPartner\Model\ProductPricing\PrimeInformationType::class,
         'is_buy_box_winner' => 'bool',
         'is_featured_merchant' => 'bool',
     ];
@@ -263,7 +263,7 @@ class OfferDetail implements \ArrayAccess, \JsonSerializable, ModelInterface
      */
     public function __toString() : string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );

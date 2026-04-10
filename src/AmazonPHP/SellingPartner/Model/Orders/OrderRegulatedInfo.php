@@ -40,7 +40,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class OrderRegulatedInfo implements \ArrayAccess, \JsonSerializable, ModelInterface
+class OrderRegulatedInfo implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -58,9 +58,9 @@ class OrderRegulatedInfo implements \ArrayAccess, \JsonSerializable, ModelInterf
      */
     protected static /** [COMPAT] array */ $openAPITypes = [
         'amazon_order_id' => 'string',
-        'regulated_information' => '\Plenty\AmazonPHP\SellingPartner\Model\Orders\RegulatedInformation',
+        'regulated_information' => \Plenty\AmazonPHP\SellingPartner\Model\Orders\RegulatedInformation::class,
         'requires_dosage_label' => 'bool',
-        'regulated_order_verification_status' => '\Plenty\AmazonPHP\SellingPartner\Model\Orders\RegulatedOrderVerificationStatus',
+        'regulated_order_verification_status' => \Plenty\AmazonPHP\SellingPartner\Model\Orders\RegulatedOrderVerificationStatus::class,
     ];
 
     /**
@@ -191,7 +191,7 @@ class OrderRegulatedInfo implements \ArrayAccess, \JsonSerializable, ModelInterf
      */
     public function __toString() : string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );

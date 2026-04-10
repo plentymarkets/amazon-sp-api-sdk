@@ -40,7 +40,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class GetRatesRequest implements \ArrayAccess, \JsonSerializable, ModelInterface
+class GetRatesRequest implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -57,8 +57,8 @@ class GetRatesRequest implements \ArrayAccess, \JsonSerializable, ModelInterface
      * @var string[]
      */
     protected static /** [COMPAT] array */ $openAPITypes = [
-        'ship_to' => '\Plenty\AmazonPHP\SellingPartner\Model\Shipping\Address',
-        'ship_from' => '\Plenty\AmazonPHP\SellingPartner\Model\Shipping\Address',
+        'ship_to' => \Plenty\AmazonPHP\SellingPartner\Model\Shipping\Address::class,
+        'ship_from' => \Plenty\AmazonPHP\SellingPartner\Model\Shipping\Address::class,
         'service_types' => '\Plenty\AmazonPHP\SellingPartner\Model\Shipping\ServiceType[]',
         'ship_date' => '\DateTime',
         'container_specifications' => '\Plenty\AmazonPHP\SellingPartner\Model\Shipping\ContainerSpecification[]',
@@ -197,7 +197,7 @@ class GetRatesRequest implements \ArrayAccess, \JsonSerializable, ModelInterface
      */
     public function __toString() : string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );

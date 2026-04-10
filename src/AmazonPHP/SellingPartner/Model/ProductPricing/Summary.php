@@ -40,7 +40,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class Summary implements \ArrayAccess, \JsonSerializable, ModelInterface
+class Summary implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -61,9 +61,9 @@ class Summary implements \ArrayAccess, \JsonSerializable, ModelInterface
         'number_of_offers' => '\Plenty\AmazonPHP\SellingPartner\Model\ProductPricing\OfferCountType[]',
         'lowest_prices' => '\Plenty\AmazonPHP\SellingPartner\Model\ProductPricing\LowestPriceType[]',
         'buy_box_prices' => '\Plenty\AmazonPHP\SellingPartner\Model\ProductPricing\BuyBoxPriceType[]',
-        'list_price' => '\Plenty\AmazonPHP\SellingPartner\Model\ProductPricing\MoneyType',
-        'competitive_price_threshold' => '\Plenty\AmazonPHP\SellingPartner\Model\ProductPricing\MoneyType',
-        'suggested_lower_price_plus_shipping' => '\Plenty\AmazonPHP\SellingPartner\Model\ProductPricing\MoneyType',
+        'list_price' => \Plenty\AmazonPHP\SellingPartner\Model\ProductPricing\MoneyType::class,
+        'competitive_price_threshold' => \Plenty\AmazonPHP\SellingPartner\Model\ProductPricing\MoneyType::class,
+        'suggested_lower_price_plus_shipping' => \Plenty\AmazonPHP\SellingPartner\Model\ProductPricing\MoneyType::class,
         'sales_rankings' => '\Plenty\AmazonPHP\SellingPartner\Model\ProductPricing\SalesRankType[]',
         'buy_box_eligible_offers' => '\Plenty\AmazonPHP\SellingPartner\Model\ProductPricing\OfferCountType[]',
         'offers_available_time' => '\DateTime',
@@ -227,7 +227,7 @@ class Summary implements \ArrayAccess, \JsonSerializable, ModelInterface
      */
     public function __toString() : string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );

@@ -40,7 +40,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class CreateShipmentRequest implements \ArrayAccess, \JsonSerializable, ModelInterface
+class CreateShipmentRequest implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -57,11 +57,11 @@ class CreateShipmentRequest implements \ArrayAccess, \JsonSerializable, ModelInt
      * @var string[]
      */
     protected static /** [COMPAT] array */ $openAPITypes = [
-        'shipment_request_details' => '\Plenty\AmazonPHP\SellingPartner\Model\MerchantFulfillment\ShipmentRequestDetails',
+        'shipment_request_details' => \Plenty\AmazonPHP\SellingPartner\Model\MerchantFulfillment\ShipmentRequestDetails::class,
         'shipping_service_id' => 'string',
         'shipping_service_offer_id' => 'string',
-        'hazmat_type' => '\Plenty\AmazonPHP\SellingPartner\Model\MerchantFulfillment\HazmatType',
-        'label_format_option' => '\Plenty\AmazonPHP\SellingPartner\Model\MerchantFulfillment\LabelFormatOptionRequest',
+        'hazmat_type' => \Plenty\AmazonPHP\SellingPartner\Model\MerchantFulfillment\HazmatType::class,
+        'label_format_option' => \Plenty\AmazonPHP\SellingPartner\Model\MerchantFulfillment\LabelFormatOptionRequest::class,
         'shipment_level_seller_inputs_list' => '\Plenty\AmazonPHP\SellingPartner\Model\MerchantFulfillment\AdditionalSellerInputs[]',
     ];
 
@@ -203,7 +203,7 @@ class CreateShipmentRequest implements \ArrayAccess, \JsonSerializable, ModelInt
      */
     public function __toString() : string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );

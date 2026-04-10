@@ -39,7 +39,7 @@ use \Plenty\AmazonPHP\SellingPartner\ModelInterface;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class ItemVendorDetailsByMarketplace implements ModelInterface, ArrayAccess, \JsonSerializable
+class ItemVendorDetailsByMarketplace implements ModelInterface, ArrayAccess, \JsonSerializable, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -60,9 +60,9 @@ class ItemVendorDetailsByMarketplace implements ModelInterface, ArrayAccess, \Js
         'brand_code' => 'string',
         'manufacturer_code' => 'string',
         'manufacturer_code_parent' => 'string',
-        'product_category' => '\Plenty\AmazonPHP\SellingPartner\Model\CatalogItem\ItemVendorDetailsCategory',
+        'product_category' => \Plenty\AmazonPHP\SellingPartner\Model\CatalogItem\ItemVendorDetailsCategory::class,
         'product_group' => 'string',
-        'product_subcategory' => '\Plenty\AmazonPHP\SellingPartner\Model\CatalogItem\ItemVendorDetailsCategory',
+        'product_subcategory' => \Plenty\AmazonPHP\SellingPartner\Model\CatalogItem\ItemVendorDetailsCategory::class,
         'replenishment_category' => 'string'
     ];
 
@@ -560,7 +560,7 @@ class ItemVendorDetailsByMarketplace implements ModelInterface, ArrayAccess, \Js
      */
     public function __toString() : string
     {
-        return json_encode(
+        return (string) json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );

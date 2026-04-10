@@ -39,7 +39,7 @@ use \Plenty\AmazonPHP\SellingPartner\ModelInterface;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class Dimensions implements ModelInterface, ArrayAccess, \JsonSerializable
+class Dimensions implements ModelInterface, ArrayAccess, \JsonSerializable, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -56,10 +56,10 @@ class Dimensions implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static array $openAPITypes = [
-        'height' => '\Plenty\AmazonPHP\SellingPartner\Model\CatalogItem\Dimension',
-        'length' => '\Plenty\AmazonPHP\SellingPartner\Model\CatalogItem\Dimension',
-        'weight' => '\Plenty\AmazonPHP\SellingPartner\Model\CatalogItem\Dimension',
-        'width' => '\Plenty\AmazonPHP\SellingPartner\Model\CatalogItem\Dimension'
+        'height' => \Plenty\AmazonPHP\SellingPartner\Model\CatalogItem\Dimension::class,
+        'length' => \Plenty\AmazonPHP\SellingPartner\Model\CatalogItem\Dimension::class,
+        'weight' => \Plenty\AmazonPHP\SellingPartner\Model\CatalogItem\Dimension::class,
+        'width' => \Plenty\AmazonPHP\SellingPartner\Model\CatalogItem\Dimension::class
     ];
 
     /**
@@ -387,7 +387,7 @@ class Dimensions implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __toString() : string
     {
-        return json_encode(
+        return (string) json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );

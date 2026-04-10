@@ -40,7 +40,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class Label implements \ArrayAccess, \JsonSerializable, ModelInterface
+class Label implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -58,10 +58,10 @@ class Label implements \ArrayAccess, \JsonSerializable, ModelInterface
      */
     protected static /** [COMPAT] array */ $openAPITypes = [
         'custom_text_for_label' => 'string',
-        'dimensions' => '\Plenty\AmazonPHP\SellingPartner\Model\MerchantFulfillment\LabelDimensions',
-        'file_contents' => '\Plenty\AmazonPHP\SellingPartner\Model\MerchantFulfillment\FileContents',
-        'label_format' => '\Plenty\AmazonPHP\SellingPartner\Model\MerchantFulfillment\LabelFormat',
-        'standard_id_for_label' => '\Plenty\AmazonPHP\SellingPartner\Model\MerchantFulfillment\StandardIdForLabel',
+        'dimensions' => \Plenty\AmazonPHP\SellingPartner\Model\MerchantFulfillment\LabelDimensions::class,
+        'file_contents' => \Plenty\AmazonPHP\SellingPartner\Model\MerchantFulfillment\FileContents::class,
+        'label_format' => \Plenty\AmazonPHP\SellingPartner\Model\MerchantFulfillment\LabelFormat::class,
+        'standard_id_for_label' => \Plenty\AmazonPHP\SellingPartner\Model\MerchantFulfillment\StandardIdForLabel::class,
     ];
 
     /**
@@ -197,7 +197,7 @@ class Label implements \ArrayAccess, \JsonSerializable, ModelInterface
      */
     public function __toString() : string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );

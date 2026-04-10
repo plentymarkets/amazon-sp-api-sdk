@@ -40,7 +40,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class ShipmentItem implements \ArrayAccess, \JsonSerializable, ModelInterface
+class ShipmentItem implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -62,11 +62,11 @@ class ShipmentItem implements \ArrayAccess, \JsonSerializable, ModelInterface
         'order_item_id' => 'string',
         'title' => 'string',
         'quantity_ordered' => 'float',
-        'item_price' => '\Plenty\AmazonPHP\SellingPartner\Model\ShipmentInvoicing\Money',
-        'shipping_price' => '\Plenty\AmazonPHP\SellingPartner\Model\ShipmentInvoicing\Money',
-        'gift_wrap_price' => '\Plenty\AmazonPHP\SellingPartner\Model\ShipmentInvoicing\Money',
-        'shipping_discount' => '\Plenty\AmazonPHP\SellingPartner\Model\ShipmentInvoicing\Money',
-        'promotion_discount' => '\Plenty\AmazonPHP\SellingPartner\Model\ShipmentInvoicing\Money',
+        'item_price' => \Plenty\AmazonPHP\SellingPartner\Model\ShipmentInvoicing\Money::class,
+        'shipping_price' => \Plenty\AmazonPHP\SellingPartner\Model\ShipmentInvoicing\Money::class,
+        'gift_wrap_price' => \Plenty\AmazonPHP\SellingPartner\Model\ShipmentInvoicing\Money::class,
+        'shipping_discount' => \Plenty\AmazonPHP\SellingPartner\Model\ShipmentInvoicing\Money::class,
+        'promotion_discount' => \Plenty\AmazonPHP\SellingPartner\Model\ShipmentInvoicing\Money::class,
         'serial_numbers' => 'string[]',
     ];
 
@@ -233,7 +233,7 @@ class ShipmentItem implements \ArrayAccess, \JsonSerializable, ModelInterface
      */
     public function __toString() : string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );

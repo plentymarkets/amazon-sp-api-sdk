@@ -39,7 +39,7 @@ class ListShipmentItemsResponse implements \ArrayAccess, \JsonSerializable, \Str
      */
     protected static array $openAPITypes = [
         'items' => '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound2024\Item[]',
-        'pagination' => '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound2024\Pagination',
+        'pagination' => \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound2024\Pagination::class,
     ];
 
     /**

@@ -40,7 +40,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class BatchOffersResponse implements \ArrayAccess, \JsonSerializable, ModelInterface
+class BatchOffersResponse implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -57,9 +57,9 @@ class BatchOffersResponse implements \ArrayAccess, \JsonSerializable, ModelInter
      * @var string[]
      */
     protected static /** [COMPAT] array */ $openAPITypes = [
-        'headers' => '\Plenty\AmazonPHP\SellingPartner\Model\ProductPricing\HttpResponseHeaders',
-        'status' => '\Plenty\AmazonPHP\SellingPartner\Model\ProductPricing\GetOffersHttpStatusLine',
-        'body' => '\Plenty\AmazonPHP\SellingPartner\Model\ProductPricing\GetOffersResponse',
+        'headers' => \Plenty\AmazonPHP\SellingPartner\Model\ProductPricing\HttpResponseHeaders::class,
+        'status' => \Plenty\AmazonPHP\SellingPartner\Model\ProductPricing\GetOffersHttpStatusLine::class,
+        'body' => \Plenty\AmazonPHP\SellingPartner\Model\ProductPricing\GetOffersResponse::class,
     ];
 
     /**
@@ -185,7 +185,7 @@ class BatchOffersResponse implements \ArrayAccess, \JsonSerializable, ModelInter
      */
     public function __toString() : string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );

@@ -40,7 +40,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class QuantityDiscountPriceType implements \ArrayAccess, \JsonSerializable, ModelInterface
+class QuantityDiscountPriceType implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -58,8 +58,8 @@ class QuantityDiscountPriceType implements \ArrayAccess, \JsonSerializable, Mode
      */
     protected static /** [COMPAT] array */ $openAPITypes = [
         'quantity_tier' => 'int',
-        'quantity_discount_type' => '\Plenty\AmazonPHP\SellingPartner\Model\ProductPricing\QuantityDiscountType',
-        'listing_price' => '\Plenty\AmazonPHP\SellingPartner\Model\ProductPricing\MoneyType',
+        'quantity_discount_type' => \Plenty\AmazonPHP\SellingPartner\Model\ProductPricing\QuantityDiscountType::class,
+        'listing_price' => \Plenty\AmazonPHP\SellingPartner\Model\ProductPricing\MoneyType::class,
     ];
 
     /**
@@ -185,7 +185,7 @@ class QuantityDiscountPriceType implements \ArrayAccess, \JsonSerializable, Mode
      */
     public function __toString() : string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );

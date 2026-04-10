@@ -40,7 +40,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class LabelFormatOption implements \ArrayAccess, \JsonSerializable, ModelInterface
+class LabelFormatOption implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -58,7 +58,7 @@ class LabelFormatOption implements \ArrayAccess, \JsonSerializable, ModelInterfa
      */
     protected static /** [COMPAT] array */ $openAPITypes = [
         'include_packing_slip_with_label' => 'bool',
-        'label_format' => '\Plenty\AmazonPHP\SellingPartner\Model\MerchantFulfillment\LabelFormat',
+        'label_format' => \Plenty\AmazonPHP\SellingPartner\Model\MerchantFulfillment\LabelFormat::class,
     ];
 
     /**
@@ -179,7 +179,7 @@ class LabelFormatOption implements \ArrayAccess, \JsonSerializable, ModelInterfa
      */
     public function __toString() : string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );

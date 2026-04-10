@@ -40,7 +40,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class Order implements \ArrayAccess, \JsonSerializable, ModelInterface
+class Order implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -106,7 +106,7 @@ class Order implements \ArrayAccess, \JsonSerializable, ModelInterface
         'sales_channel' => 'string',
         'order_channel' => 'string',
         'ship_service_level' => 'string',
-        'order_total' => '\Plenty\AmazonPHP\SellingPartner\Model\Orders\Money',
+        'order_total' => \Plenty\AmazonPHP\SellingPartner\Model\Orders\Money::class,
         'number_of_items_shipped' => 'int',
         'number_of_items_unshipped' => 'int',
         'payment_execution_detail' => '\Plenty\AmazonPHP\SellingPartner\Model\Orders\PaymentExecutionDetailItem[]',
@@ -131,17 +131,17 @@ class Order implements \ArrayAccess, \JsonSerializable, ModelInterface
         'is_estimated_ship_date_set' => 'bool',
         'is_sold_by_ab' => 'bool',
         'is_iba' => 'bool',
-        'default_ship_from_location_address' => '\Plenty\AmazonPHP\SellingPartner\Model\Orders\Address',
+        'default_ship_from_location_address' => \Plenty\AmazonPHP\SellingPartner\Model\Orders\Address::class,
         'buyer_invoice_preference' => 'string',
-        'buyer_tax_information' => '\Plenty\AmazonPHP\SellingPartner\Model\Orders\BuyerTaxInformation',
-        'fulfillment_instruction' => '\Plenty\AmazonPHP\SellingPartner\Model\Orders\FulfillmentInstruction',
+        'buyer_tax_information' => \Plenty\AmazonPHP\SellingPartner\Model\Orders\BuyerTaxInformation::class,
+        'fulfillment_instruction' => \Plenty\AmazonPHP\SellingPartner\Model\Orders\FulfillmentInstruction::class,
         'is_ispu' => 'bool',
         'is_access_point_order' => 'bool',
-        'marketplace_tax_info' => '\Plenty\AmazonPHP\SellingPartner\Model\Orders\MarketplaceTaxInfo',
+        'marketplace_tax_info' => \Plenty\AmazonPHP\SellingPartner\Model\Orders\MarketplaceTaxInfo::class,
         'seller_display_name' => 'string',
-        'shipping_address' => '\Plenty\AmazonPHP\SellingPartner\Model\Orders\Address',
-        'buyer_info' => '\Plenty\AmazonPHP\SellingPartner\Model\Orders\BuyerInfo',
-        'automated_shipping_settings' => '\Plenty\AmazonPHP\SellingPartner\Model\Orders\AutomatedShippingSettings',
+        'shipping_address' => \Plenty\AmazonPHP\SellingPartner\Model\Orders\Address::class,
+        'buyer_info' => \Plenty\AmazonPHP\SellingPartner\Model\Orders\BuyerInfo::class,
+        'automated_shipping_settings' => \Plenty\AmazonPHP\SellingPartner\Model\Orders\AutomatedShippingSettings::class,
         'has_regulated_items' => 'bool',
     ];
 
@@ -483,7 +483,7 @@ class Order implements \ArrayAccess, \JsonSerializable, ModelInterface
      */
     public function __toString() : string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );

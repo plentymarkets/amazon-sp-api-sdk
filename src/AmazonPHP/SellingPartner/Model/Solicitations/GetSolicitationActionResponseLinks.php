@@ -40,7 +40,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class GetSolicitationActionResponseLinks implements \ArrayAccess, \JsonSerializable, ModelInterface
+class GetSolicitationActionResponseLinks implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -57,8 +57,8 @@ class GetSolicitationActionResponseLinks implements \ArrayAccess, \JsonSerializa
      * @var string[]
      */
     protected static /** [COMPAT] array */ $openAPITypes = [
-        'self' => '\Plenty\AmazonPHP\SellingPartner\Model\Solicitations\LinkObject',
-        'schema' => '\Plenty\AmazonPHP\SellingPartner\Model\Solicitations\LinkObject',
+        'self' => \Plenty\AmazonPHP\SellingPartner\Model\Solicitations\LinkObject::class,
+        'schema' => \Plenty\AmazonPHP\SellingPartner\Model\Solicitations\LinkObject::class,
     ];
 
     /**
@@ -179,7 +179,7 @@ class GetSolicitationActionResponseLinks implements \ArrayAccess, \JsonSerializa
      */
     public function __toString() : string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );

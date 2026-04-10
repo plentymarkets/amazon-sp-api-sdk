@@ -40,7 +40,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class Decorator implements \ArrayAccess, \JsonSerializable, ModelInterface
+class Decorator implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -57,7 +57,7 @@ class Decorator implements \ArrayAccess, \JsonSerializable, ModelInterface
      * @var string[]
      */
     protected static /** [COMPAT] array */ $openAPITypes = [
-        'type' => '\Plenty\AmazonPHP\SellingPartner\Model\APlus\DecoratorType',
+        'type' => \Plenty\AmazonPHP\SellingPartner\Model\APlus\DecoratorType::class,
         'offset' => 'int',
         'length' => 'int',
         'depth' => 'int',
@@ -191,7 +191,7 @@ class Decorator implements \ArrayAccess, \JsonSerializable, ModelInterface
      */
     public function __toString() : string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );

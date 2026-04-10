@@ -40,7 +40,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class ShippingOfferingFilter implements \ArrayAccess, \JsonSerializable, ModelInterface
+class ShippingOfferingFilter implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -59,8 +59,8 @@ class ShippingOfferingFilter implements \ArrayAccess, \JsonSerializable, ModelIn
     protected static /** [COMPAT] array */ $openAPITypes = [
         'include_packing_slip_with_label' => 'bool',
         'include_complex_shipping_options' => 'bool',
-        'carrier_will_pick_up' => '\Plenty\AmazonPHP\SellingPartner\Model\MerchantFulfillment\CarrierWillPickUpOption',
-        'delivery_experience' => '\Plenty\AmazonPHP\SellingPartner\Model\MerchantFulfillment\DeliveryExperienceOption',
+        'carrier_will_pick_up' => \Plenty\AmazonPHP\SellingPartner\Model\MerchantFulfillment\CarrierWillPickUpOption::class,
+        'delivery_experience' => \Plenty\AmazonPHP\SellingPartner\Model\MerchantFulfillment\DeliveryExperienceOption::class,
     ];
 
     /**
@@ -191,7 +191,7 @@ class ShippingOfferingFilter implements \ArrayAccess, \JsonSerializable, ModelIn
      */
     public function __toString() : string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );

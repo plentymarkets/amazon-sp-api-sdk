@@ -157,7 +157,7 @@ final class ProductPricingSDK
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            '\Plenty\AmazonPHP\SellingPartner\Model\ProductPricing\GetPricingResponse',
+            \Plenty\AmazonPHP\SellingPartner\Model\ProductPricing\GetPricingResponse::class,
             []
         );
     }
@@ -398,7 +398,7 @@ final class ProductPricingSDK
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            '\Plenty\AmazonPHP\SellingPartner\Model\ProductPricing\GetOffersResponse',
+            \Plenty\AmazonPHP\SellingPartner\Model\ProductPricing\GetOffersResponse::class,
             []
         );
     }
@@ -626,7 +626,7 @@ final class ProductPricingSDK
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            '\Plenty\AmazonPHP\SellingPartner\Model\ProductPricing\GetItemOffersBatchResponse',
+            \Plenty\AmazonPHP\SellingPartner\Model\ProductPricing\GetItemOffersBatchResponse::class,
             []
         );
     }
@@ -816,7 +816,7 @@ final class ProductPricingSDK
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            '\Plenty\AmazonPHP\SellingPartner\Model\ProductPricing\GetOffersResponse',
+            \Plenty\AmazonPHP\SellingPartner\Model\ProductPricing\GetOffersResponse::class,
             []
         );
     }
@@ -1044,7 +1044,7 @@ final class ProductPricingSDK
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            '\Plenty\AmazonPHP\SellingPartner\Model\ProductPricing\GetListingOffersBatchResponse',
+            \Plenty\AmazonPHP\SellingPartner\Model\ProductPricing\GetListingOffersBatchResponse::class,
             []
         );
     }
@@ -1236,7 +1236,7 @@ final class ProductPricingSDK
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            '\Plenty\AmazonPHP\SellingPartner\Model\ProductPricing\GetPricingResponse',
+            \Plenty\AmazonPHP\SellingPartner\Model\ProductPricing\GetPricingResponse::class,
             []
         );
     }

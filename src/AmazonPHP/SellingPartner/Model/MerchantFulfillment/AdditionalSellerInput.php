@@ -40,7 +40,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class AdditionalSellerInput implements \ArrayAccess, \JsonSerializable, ModelInterface
+class AdditionalSellerInput implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -62,10 +62,10 @@ class AdditionalSellerInput implements \ArrayAccess, \JsonSerializable, ModelInt
         'value_as_boolean' => 'bool',
         'value_as_integer' => 'int',
         'value_as_timestamp' => '\DateTime',
-        'value_as_address' => '\Plenty\AmazonPHP\SellingPartner\Model\MerchantFulfillment\Address',
-        'value_as_weight' => '\Plenty\AmazonPHP\SellingPartner\Model\MerchantFulfillment\Weight',
-        'value_as_dimension' => '\Plenty\AmazonPHP\SellingPartner\Model\MerchantFulfillment\Length',
-        'value_as_currency' => '\Plenty\AmazonPHP\SellingPartner\Model\MerchantFulfillment\CurrencyAmount',
+        'value_as_address' => \Plenty\AmazonPHP\SellingPartner\Model\MerchantFulfillment\Address::class,
+        'value_as_weight' => \Plenty\AmazonPHP\SellingPartner\Model\MerchantFulfillment\Weight::class,
+        'value_as_dimension' => \Plenty\AmazonPHP\SellingPartner\Model\MerchantFulfillment\Length::class,
+        'value_as_currency' => \Plenty\AmazonPHP\SellingPartner\Model\MerchantFulfillment\CurrencyAmount::class,
     ];
 
     /**
@@ -221,7 +221,7 @@ class AdditionalSellerInput implements \ArrayAccess, \JsonSerializable, ModelInt
      */
     public function __toString() : string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );

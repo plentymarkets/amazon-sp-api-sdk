@@ -40,7 +40,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class InboundShipmentPlan implements \ArrayAccess, \JsonSerializable, ModelInterface
+class InboundShipmentPlan implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -59,10 +59,10 @@ class InboundShipmentPlan implements \ArrayAccess, \JsonSerializable, ModelInter
     protected static /** [COMPAT] array */ $openAPITypes = [
         'shipment_id' => 'string',
         'destination_fulfillment_center_id' => 'string',
-        'ship_to_address' => '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound\Address',
-        'label_prep_type' => '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound\LabelPrepType',
+        'ship_to_address' => \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound\Address::class,
+        'label_prep_type' => \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound\LabelPrepType::class,
         'items' => '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound\InboundShipmentPlanItem[]',
-        'estimated_box_contents_fee' => '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound\BoxContentsFeeDetails',
+        'estimated_box_contents_fee' => \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound\BoxContentsFeeDetails::class,
     ];
 
     /**
@@ -203,7 +203,7 @@ class InboundShipmentPlan implements \ArrayAccess, \JsonSerializable, ModelInter
      */
     public function __toString() : string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );

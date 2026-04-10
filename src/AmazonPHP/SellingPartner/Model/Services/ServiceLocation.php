@@ -40,7 +40,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class ServiceLocation implements \ArrayAccess, \JsonSerializable, ModelInterface
+class ServiceLocation implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -64,7 +64,7 @@ class ServiceLocation implements \ArrayAccess, \JsonSerializable, ModelInterface
      */
     protected static /** [COMPAT] array */ $openAPITypes = [
         'service_location_type' => 'string',
-        'address' => '\Plenty\AmazonPHP\SellingPartner\Model\Services\Address',
+        'address' => \Plenty\AmazonPHP\SellingPartner\Model\Services\Address::class,
     ];
 
     /**
@@ -185,7 +185,7 @@ class ServiceLocation implements \ArrayAccess, \JsonSerializable, ModelInterface
      */
     public function __toString() : string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );

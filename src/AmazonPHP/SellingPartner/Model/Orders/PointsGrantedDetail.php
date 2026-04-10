@@ -40,7 +40,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class PointsGrantedDetail implements \ArrayAccess, \JsonSerializable, ModelInterface
+class PointsGrantedDetail implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -58,7 +58,7 @@ class PointsGrantedDetail implements \ArrayAccess, \JsonSerializable, ModelInter
      */
     protected static /** [COMPAT] array */ $openAPITypes = [
         'points_number' => 'int',
-        'points_monetary_value' => '\Plenty\AmazonPHP\SellingPartner\Model\Orders\Money',
+        'points_monetary_value' => \Plenty\AmazonPHP\SellingPartner\Model\Orders\Money::class,
     ];
 
     /**
@@ -179,7 +179,7 @@ class PointsGrantedDetail implements \ArrayAccess, \JsonSerializable, ModelInter
      */
     public function __toString() : string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );

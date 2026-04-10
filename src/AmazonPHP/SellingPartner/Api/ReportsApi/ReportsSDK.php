@@ -531,7 +531,7 @@ final class ReportsSDK
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            '\Plenty\AmazonPHP\SellingPartner\Model\Reports\CreateReportResponse',
+            \Plenty\AmazonPHP\SellingPartner\Model\Reports\CreateReportResponse::class,
             []
         );
     }
@@ -718,7 +718,7 @@ final class ReportsSDK
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            '\Plenty\AmazonPHP\SellingPartner\Model\Reports\CreateReportScheduleResponse',
+            \Plenty\AmazonPHP\SellingPartner\Model\Reports\CreateReportScheduleResponse::class,
             []
         );
     }
@@ -905,7 +905,7 @@ final class ReportsSDK
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            '\Plenty\AmazonPHP\SellingPartner\Model\Reports\Report',
+            \Plenty\AmazonPHP\SellingPartner\Model\Reports\Report::class,
             []
         );
     }
@@ -1093,7 +1093,7 @@ final class ReportsSDK
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            '\Plenty\AmazonPHP\SellingPartner\Model\Reports\ReportDocument',
+            \Plenty\AmazonPHP\SellingPartner\Model\Reports\ReportDocument::class,
             []
         );
     }
@@ -1281,7 +1281,7 @@ final class ReportsSDK
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            '\Plenty\AmazonPHP\SellingPartner\Model\Reports\ReportSchedule',
+            \Plenty\AmazonPHP\SellingPartner\Model\Reports\ReportSchedule::class,
             []
         );
     }
@@ -1469,7 +1469,7 @@ final class ReportsSDK
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            '\Plenty\AmazonPHP\SellingPartner\Model\Reports\ReportScheduleList',
+            \Plenty\AmazonPHP\SellingPartner\Model\Reports\ReportScheduleList::class,
             []
         );
     }
@@ -1671,7 +1671,7 @@ final class ReportsSDK
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            '\Plenty\AmazonPHP\SellingPartner\Model\Reports\GetReportsResponse',
+            \Plenty\AmazonPHP\SellingPartner\Model\Reports\GetReportsResponse::class,
             []
         );
     }

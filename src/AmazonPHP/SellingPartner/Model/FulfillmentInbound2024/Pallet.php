@@ -38,11 +38,11 @@ class Pallet implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInter
      * @var string[]
      */
     protected static array $openAPITypes = [
-        'dimensions' => '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound2024\Dimensions',
+        'dimensions' => \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound2024\Dimensions::class,
         'package_id' => 'string',
         'quantity' => 'int',
-        'stackability' => '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound2024\Stackability',
-        'weight' => '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound2024\Weight',
+        'stackability' => \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound2024\Stackability::class,
+        'weight' => \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound2024\Weight::class,
     ];
 
     /**

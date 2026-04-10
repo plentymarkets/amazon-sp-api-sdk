@@ -40,7 +40,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class UpdateVerificationStatusRequestBody implements \ArrayAccess, \JsonSerializable, ModelInterface
+class UpdateVerificationStatusRequestBody implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -57,7 +57,7 @@ class UpdateVerificationStatusRequestBody implements \ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static /** [COMPAT] array */ $openAPITypes = [
-        'status' => '\Plenty\AmazonPHP\SellingPartner\Model\Orders\VerificationStatus',
+        'status' => \Plenty\AmazonPHP\SellingPartner\Model\Orders\VerificationStatus::class,
         'external_reviewer_id' => 'string',
         'rejection_reason_id' => 'string',
     ];
@@ -185,7 +185,7 @@ class UpdateVerificationStatusRequestBody implements \ArrayAccess, \JsonSerializ
      */
     public function __toString() : string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );

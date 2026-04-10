@@ -40,7 +40,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class Invoice implements \ArrayAccess, \JsonSerializable, ModelInterface
+class Invoice implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -65,12 +65,12 @@ class Invoice implements \ArrayAccess, \JsonSerializable, ModelInterface
         'id' => 'string',
         'reference_number' => 'string',
         'date' => '\DateTime',
-        'remit_to_party' => '\Plenty\AmazonPHP\SellingPartner\Model\VendorInvoices\PartyIdentification',
-        'ship_to_party' => '\Plenty\AmazonPHP\SellingPartner\Model\VendorInvoices\PartyIdentification',
-        'ship_from_party' => '\Plenty\AmazonPHP\SellingPartner\Model\VendorInvoices\PartyIdentification',
-        'bill_to_party' => '\Plenty\AmazonPHP\SellingPartner\Model\VendorInvoices\PartyIdentification',
-        'payment_terms' => '\Plenty\AmazonPHP\SellingPartner\Model\VendorInvoices\PaymentTerms',
-        'invoice_total' => '\Plenty\AmazonPHP\SellingPartner\Model\VendorInvoices\Money',
+        'remit_to_party' => \Plenty\AmazonPHP\SellingPartner\Model\VendorInvoices\PartyIdentification::class,
+        'ship_to_party' => \Plenty\AmazonPHP\SellingPartner\Model\VendorInvoices\PartyIdentification::class,
+        'ship_from_party' => \Plenty\AmazonPHP\SellingPartner\Model\VendorInvoices\PartyIdentification::class,
+        'bill_to_party' => \Plenty\AmazonPHP\SellingPartner\Model\VendorInvoices\PartyIdentification::class,
+        'payment_terms' => \Plenty\AmazonPHP\SellingPartner\Model\VendorInvoices\PaymentTerms::class,
+        'invoice_total' => \Plenty\AmazonPHP\SellingPartner\Model\VendorInvoices\Money::class,
         'tax_details' => '\Plenty\AmazonPHP\SellingPartner\Model\VendorInvoices\TaxDetails[]',
         'additional_details' => '\Plenty\AmazonPHP\SellingPartner\Model\VendorInvoices\AdditionalDetails[]',
         'charge_details' => '\Plenty\AmazonPHP\SellingPartner\Model\VendorInvoices\ChargeDetails[]',
@@ -261,7 +261,7 @@ class Invoice implements \ArrayAccess, \JsonSerializable, ModelInterface
      */
     public function __toString() : string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );

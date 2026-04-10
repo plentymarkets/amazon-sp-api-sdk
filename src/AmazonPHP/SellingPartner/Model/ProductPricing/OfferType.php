@@ -40,7 +40,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class OfferType implements \ArrayAccess, \JsonSerializable, ModelInterface
+class OfferType implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -57,10 +57,10 @@ class OfferType implements \ArrayAccess, \JsonSerializable, ModelInterface
      * @var string[]
      */
     protected static /** [COMPAT] array */ $openAPITypes = [
-        'offer_type' => '\Plenty\AmazonPHP\SellingPartner\Model\ProductPricing\OfferCustomerType',
-        'buying_price' => '\Plenty\AmazonPHP\SellingPartner\Model\ProductPricing\PriceType',
-        'regular_price' => '\Plenty\AmazonPHP\SellingPartner\Model\ProductPricing\MoneyType',
-        'business_price' => '\Plenty\AmazonPHP\SellingPartner\Model\ProductPricing\MoneyType',
+        'offer_type' => \Plenty\AmazonPHP\SellingPartner\Model\ProductPricing\OfferCustomerType::class,
+        'buying_price' => \Plenty\AmazonPHP\SellingPartner\Model\ProductPricing\PriceType::class,
+        'regular_price' => \Plenty\AmazonPHP\SellingPartner\Model\ProductPricing\MoneyType::class,
+        'business_price' => \Plenty\AmazonPHP\SellingPartner\Model\ProductPricing\MoneyType::class,
         'quantity_discount_prices' => '\Plenty\AmazonPHP\SellingPartner\Model\ProductPricing\QuantityDiscountPriceType[]',
         'fulfillment_channel' => 'string',
         'item_condition' => 'string',
@@ -221,7 +221,7 @@ class OfferType implements \ArrayAccess, \JsonSerializable, ModelInterface
      */
     public function __toString() : string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );

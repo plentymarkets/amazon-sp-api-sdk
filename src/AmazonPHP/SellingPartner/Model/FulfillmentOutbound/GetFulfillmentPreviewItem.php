@@ -40,7 +40,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class GetFulfillmentPreviewItem implements \ArrayAccess, \JsonSerializable, ModelInterface
+class GetFulfillmentPreviewItem implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -59,7 +59,7 @@ class GetFulfillmentPreviewItem implements \ArrayAccess, \JsonSerializable, Mode
     protected static /** [COMPAT] array */ $openAPITypes = [
         'seller_sku' => 'string',
         'quantity' => 'int',
-        'per_unit_declared_value' => '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentOutbound\Money',
+        'per_unit_declared_value' => \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentOutbound\Money::class,
         'seller_fulfillment_order_item_id' => 'string',
     ];
 
@@ -191,7 +191,7 @@ class GetFulfillmentPreviewItem implements \ArrayAccess, \JsonSerializable, Mode
      */
     public function __toString() : string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );

@@ -40,7 +40,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class CompetitivePriceType implements \ArrayAccess, \JsonSerializable, ModelInterface
+class CompetitivePriceType implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -58,12 +58,12 @@ class CompetitivePriceType implements \ArrayAccess, \JsonSerializable, ModelInte
      */
     protected static /** [COMPAT] array */ $openAPITypes = [
         'competitive_price_id' => 'string',
-        'price' => '\Plenty\AmazonPHP\SellingPartner\Model\ProductPricing\PriceType',
+        'price' => \Plenty\AmazonPHP\SellingPartner\Model\ProductPricing\PriceType::class,
         'condition' => 'string',
         'subcondition' => 'string',
-        'offer_type' => '\Plenty\AmazonPHP\SellingPartner\Model\ProductPricing\OfferCustomerType',
+        'offer_type' => \Plenty\AmazonPHP\SellingPartner\Model\ProductPricing\OfferCustomerType::class,
         'quantity_tier' => 'int',
-        'quantity_discount_type' => '\Plenty\AmazonPHP\SellingPartner\Model\ProductPricing\QuantityDiscountType',
+        'quantity_discount_type' => \Plenty\AmazonPHP\SellingPartner\Model\ProductPricing\QuantityDiscountType::class,
         'seller_id' => 'string',
         'belongs_to_requester' => 'bool',
     ];
@@ -221,7 +221,7 @@ class CompetitivePriceType implements \ArrayAccess, \JsonSerializable, ModelInte
      */
     public function __toString() : string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );

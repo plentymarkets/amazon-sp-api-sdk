@@ -40,7 +40,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class SKUPrepInstructions implements \ArrayAccess, \JsonSerializable, ModelInterface
+class SKUPrepInstructions implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -59,8 +59,8 @@ class SKUPrepInstructions implements \ArrayAccess, \JsonSerializable, ModelInter
     protected static /** [COMPAT] array */ $openAPITypes = [
         'seller_sku' => 'string',
         'asin' => 'string',
-        'barcode_instruction' => '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound\BarcodeInstruction',
-        'prep_guidance' => '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound\PrepGuidance',
+        'barcode_instruction' => \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound\BarcodeInstruction::class,
+        'prep_guidance' => \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound\PrepGuidance::class,
         'prep_instruction_list' => '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound\PrepInstruction[]',
         'amazon_prep_fees_details_list' => '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound\AmazonPrepFeesDetails[]',
     ];
@@ -203,7 +203,7 @@ class SKUPrepInstructions implements \ArrayAccess, \JsonSerializable, ModelInter
      */
     public function __toString() : string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );

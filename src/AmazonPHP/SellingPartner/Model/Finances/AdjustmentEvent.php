@@ -40,7 +40,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class AdjustmentEvent implements \ArrayAccess, \JsonSerializable, ModelInterface
+class AdjustmentEvent implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -59,7 +59,7 @@ class AdjustmentEvent implements \ArrayAccess, \JsonSerializable, ModelInterface
     protected static /** [COMPAT] array */ $openAPITypes = [
         'adjustment_type' => 'string',
         'posted_date' => '\DateTime',
-        'adjustment_amount' => '\Plenty\AmazonPHP\SellingPartner\Model\Finances\Currency',
+        'adjustment_amount' => \Plenty\AmazonPHP\SellingPartner\Model\Finances\Currency::class,
         'adjustment_item_list' => '\Plenty\AmazonPHP\SellingPartner\Model\Finances\AdjustmentItem[]',
     ];
 
@@ -191,7 +191,7 @@ class AdjustmentEvent implements \ArrayAccess, \JsonSerializable, ModelInterface
      */
     public function __toString() : string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );

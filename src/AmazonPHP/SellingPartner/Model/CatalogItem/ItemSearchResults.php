@@ -39,7 +39,7 @@ use \Plenty\AmazonPHP\SellingPartner\ModelInterface;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class ItemSearchResults implements ModelInterface, ArrayAccess, \JsonSerializable
+class ItemSearchResults implements ModelInterface, ArrayAccess, \JsonSerializable, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -57,8 +57,8 @@ class ItemSearchResults implements ModelInterface, ArrayAccess, \JsonSerializabl
       */
     protected static array $openAPITypes = [
         'number_of_results' => 'int',
-        'pagination' => '\Plenty\AmazonPHP\SellingPartner\Model\CatalogItem\Pagination',
-        'refinements' => '\Plenty\AmazonPHP\SellingPartner\Model\CatalogItem\Refinements',
+        'pagination' => \Plenty\AmazonPHP\SellingPartner\Model\CatalogItem\Pagination::class,
+        'refinements' => \Plenty\AmazonPHP\SellingPartner\Model\CatalogItem\Refinements::class,
         'items' => '\Plenty\AmazonPHP\SellingPartner\Model\CatalogItem\Item[]'
     ];
 
@@ -393,7 +393,7 @@ class ItemSearchResults implements ModelInterface, ArrayAccess, \JsonSerializabl
      */
     public function __toString() : string
     {
-        return json_encode(
+        return (string) json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );

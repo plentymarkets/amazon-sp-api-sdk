@@ -40,7 +40,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class FulfillmentOrderItem implements \ArrayAccess, \JsonSerializable, ModelInterface
+class FulfillmentOrderItem implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -68,9 +68,9 @@ class FulfillmentOrderItem implements \ArrayAccess, \JsonSerializable, ModelInte
         'unfulfillable_quantity' => 'int',
         'estimated_ship_date' => '\DateTime',
         'estimated_arrival_date' => '\DateTime',
-        'per_unit_price' => '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentOutbound\Money',
-        'per_unit_tax' => '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentOutbound\Money',
-        'per_unit_declared_value' => '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentOutbound\Money',
+        'per_unit_price' => \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentOutbound\Money::class,
+        'per_unit_tax' => \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentOutbound\Money::class,
+        'per_unit_declared_value' => \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentOutbound\Money::class,
     ];
 
     /**
@@ -251,7 +251,7 @@ class FulfillmentOrderItem implements \ArrayAccess, \JsonSerializable, ModelInte
      */
     public function __toString() : string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );

@@ -40,7 +40,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class TransportHeader implements \ArrayAccess, \JsonSerializable, ModelInterface
+class TransportHeader implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -60,7 +60,7 @@ class TransportHeader implements \ArrayAccess, \JsonSerializable, ModelInterface
         'seller_id' => 'string',
         'shipment_id' => 'string',
         'is_partnered' => 'bool',
-        'shipment_type' => '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound\ShipmentType',
+        'shipment_type' => \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound\ShipmentType::class,
     ];
 
     /**
@@ -191,7 +191,7 @@ class TransportHeader implements \ArrayAccess, \JsonSerializable, ModelInterface
      */
     public function __toString() : string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );

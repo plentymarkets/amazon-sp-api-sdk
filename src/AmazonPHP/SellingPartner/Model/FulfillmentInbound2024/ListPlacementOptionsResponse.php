@@ -38,7 +38,7 @@ class ListPlacementOptionsResponse implements \ArrayAccess, \JsonSerializable, \
      * @var string[]
      */
     protected static array $openAPITypes = [
-        'pagination' => '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound2024\Pagination',
+        'pagination' => \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound2024\Pagination::class,
         'placement_options' => '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound2024\PlacementOption[]',
     ];
 

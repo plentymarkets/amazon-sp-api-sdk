@@ -40,7 +40,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class ListFinancialEventsPayload implements \ArrayAccess, \JsonSerializable, ModelInterface
+class ListFinancialEventsPayload implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -58,7 +58,7 @@ class ListFinancialEventsPayload implements \ArrayAccess, \JsonSerializable, Mod
      */
     protected static /** [COMPAT] array */ $openAPITypes = [
         'next_token' => 'string',
-        'financial_events' => '\Plenty\AmazonPHP\SellingPartner\Model\Finances\FinancialEvents',
+        'financial_events' => \Plenty\AmazonPHP\SellingPartner\Model\Finances\FinancialEvents::class,
     ];
 
     /**
@@ -179,7 +179,7 @@ class ListFinancialEventsPayload implements \ArrayAccess, \JsonSerializable, Mod
      */
     public function __toString() : string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );

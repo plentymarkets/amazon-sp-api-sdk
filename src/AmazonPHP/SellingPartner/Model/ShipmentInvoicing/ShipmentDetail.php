@@ -40,7 +40,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class ShipmentDetail implements \ArrayAccess, \JsonSerializable, ModelInterface
+class ShipmentDetail implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -61,14 +61,14 @@ class ShipmentDetail implements \ArrayAccess, \JsonSerializable, ModelInterface
         'amazon_order_id' => 'string',
         'amazon_shipment_id' => 'string',
         'purchase_date' => '\DateTime',
-        'shipping_address' => '\Plenty\AmazonPHP\SellingPartner\Model\ShipmentInvoicing\Address',
+        'shipping_address' => \Plenty\AmazonPHP\SellingPartner\Model\ShipmentInvoicing\Address::class,
         'payment_method_details' => 'string[]',
         'marketplace_id' => 'string',
         'seller_id' => 'string',
         'buyer_name' => 'string',
         'buyer_county' => 'string',
-        'buyer_tax_info' => '\Plenty\AmazonPHP\SellingPartner\Model\ShipmentInvoicing\BuyerTaxInfo',
-        'marketplace_tax_info' => '\Plenty\AmazonPHP\SellingPartner\Model\ShipmentInvoicing\MarketplaceTaxInfo',
+        'buyer_tax_info' => \Plenty\AmazonPHP\SellingPartner\Model\ShipmentInvoicing\BuyerTaxInfo::class,
+        'marketplace_tax_info' => \Plenty\AmazonPHP\SellingPartner\Model\ShipmentInvoicing\MarketplaceTaxInfo::class,
         'seller_display_name' => 'string',
         'shipment_items' => '\Plenty\AmazonPHP\SellingPartner\Model\ShipmentInvoicing\ShipmentItem[]',
     ];
@@ -251,7 +251,7 @@ class ShipmentDetail implements \ArrayAccess, \JsonSerializable, ModelInterface
      */
     public function __toString() : string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );

@@ -40,7 +40,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class ItemOffersResponse implements \ArrayAccess, \JsonSerializable, ModelInterface
+class ItemOffersResponse implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -57,10 +57,10 @@ class ItemOffersResponse implements \ArrayAccess, \JsonSerializable, ModelInterf
      * @var string[]
      */
     protected static /** [COMPAT] array */ $openAPITypes = [
-        'headers' => '\Plenty\AmazonPHP\SellingPartner\Model\ProductPricing\HttpResponseHeaders',
-        'status' => '\Plenty\AmazonPHP\SellingPartner\Model\ProductPricing\GetOffersHttpStatusLine',
-        'body' => '\Plenty\AmazonPHP\SellingPartner\Model\ProductPricing\GetOffersResponse',
-        'request' => '\Plenty\AmazonPHP\SellingPartner\Model\ProductPricing\ItemOffersRequestParams',
+        'headers' => \Plenty\AmazonPHP\SellingPartner\Model\ProductPricing\HttpResponseHeaders::class,
+        'status' => \Plenty\AmazonPHP\SellingPartner\Model\ProductPricing\GetOffersHttpStatusLine::class,
+        'body' => \Plenty\AmazonPHP\SellingPartner\Model\ProductPricing\GetOffersResponse::class,
+        'request' => \Plenty\AmazonPHP\SellingPartner\Model\ProductPricing\ItemOffersRequestParams::class,
     ];
 
     /**
@@ -191,7 +191,7 @@ class ItemOffersResponse implements \ArrayAccess, \JsonSerializable, ModelInterf
      */
     public function __toString() : string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );

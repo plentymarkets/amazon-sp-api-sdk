@@ -40,7 +40,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class AggregationSettings implements \ArrayAccess, \JsonSerializable, ModelInterface
+class AggregationSettings implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -57,7 +57,7 @@ class AggregationSettings implements \ArrayAccess, \JsonSerializable, ModelInter
      * @var string[]
      */
     protected static /** [COMPAT] array */ $openAPITypes = [
-        'aggregation_time_period' => '\Plenty\AmazonPHP\SellingPartner\Model\Notifications\AggregationTimePeriod',
+        'aggregation_time_period' => \Plenty\AmazonPHP\SellingPartner\Model\Notifications\AggregationTimePeriod::class,
     ];
 
     /**
@@ -173,7 +173,7 @@ class AggregationSettings implements \ArrayAccess, \JsonSerializable, ModelInter
      */
     public function __toString() : string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );

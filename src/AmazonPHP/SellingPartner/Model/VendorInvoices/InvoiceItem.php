@@ -40,7 +40,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class InvoiceItem implements \ArrayAccess, \JsonSerializable, ModelInterface
+class InvoiceItem implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -60,11 +60,11 @@ class InvoiceItem implements \ArrayAccess, \JsonSerializable, ModelInterface
         'item_sequence_number' => 'int',
         'amazon_product_identifier' => 'string',
         'vendor_product_identifier' => 'string',
-        'invoiced_quantity' => '\Plenty\AmazonPHP\SellingPartner\Model\VendorInvoices\ItemQuantity',
-        'net_cost' => '\Plenty\AmazonPHP\SellingPartner\Model\VendorInvoices\Money',
+        'invoiced_quantity' => \Plenty\AmazonPHP\SellingPartner\Model\VendorInvoices\ItemQuantity::class,
+        'net_cost' => \Plenty\AmazonPHP\SellingPartner\Model\VendorInvoices\Money::class,
         'purchase_order_number' => 'string',
         'hsn_code' => 'string',
-        'credit_note_details' => '\Plenty\AmazonPHP\SellingPartner\Model\VendorInvoices\CreditNoteDetails',
+        'credit_note_details' => \Plenty\AmazonPHP\SellingPartner\Model\VendorInvoices\CreditNoteDetails::class,
         'tax_details' => '\Plenty\AmazonPHP\SellingPartner\Model\VendorInvoices\TaxDetails[]',
         'charge_details' => '\Plenty\AmazonPHP\SellingPartner\Model\VendorInvoices\ChargeDetails[]',
         'allowance_details' => '\Plenty\AmazonPHP\SellingPartner\Model\VendorInvoices\AllowanceDetails[]',
@@ -233,7 +233,7 @@ class InvoiceItem implements \ArrayAccess, \JsonSerializable, ModelInterface
      */
     public function __toString() : string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );

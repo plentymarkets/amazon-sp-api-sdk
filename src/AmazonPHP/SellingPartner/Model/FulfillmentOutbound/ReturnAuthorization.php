@@ -40,7 +40,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class ReturnAuthorization implements \ArrayAccess, \JsonSerializable, ModelInterface
+class ReturnAuthorization implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -59,7 +59,7 @@ class ReturnAuthorization implements \ArrayAccess, \JsonSerializable, ModelInter
     protected static /** [COMPAT] array */ $openAPITypes = [
         'return_authorization_id' => 'string',
         'fulfillment_center_id' => 'string',
-        'return_to_address' => '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentOutbound\Address',
+        'return_to_address' => \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentOutbound\Address::class,
         'amazon_rma_id' => 'string',
         'rma_page_url' => 'string',
     ];
@@ -197,7 +197,7 @@ class ReturnAuthorization implements \ArrayAccess, \JsonSerializable, ModelInter
      */
     public function __toString() : string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );

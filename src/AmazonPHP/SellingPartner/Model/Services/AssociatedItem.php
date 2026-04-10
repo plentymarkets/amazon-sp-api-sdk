@@ -40,7 +40,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class AssociatedItem implements \ArrayAccess, \JsonSerializable, ModelInterface
+class AssociatedItem implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -71,7 +71,7 @@ class AssociatedItem implements \ArrayAccess, \JsonSerializable, ModelInterface
         'order_id' => 'string',
         'item_status' => 'string',
         'brand_name' => 'string',
-        'item_delivery' => '\Plenty\AmazonPHP\SellingPartner\Model\Services\ItemDelivery',
+        'item_delivery' => \Plenty\AmazonPHP\SellingPartner\Model\Services\ItemDelivery::class,
     ];
 
     /**
@@ -217,7 +217,7 @@ class AssociatedItem implements \ArrayAccess, \JsonSerializable, ModelInterface
      */
     public function __toString() : string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );

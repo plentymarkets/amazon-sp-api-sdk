@@ -40,7 +40,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class OrderItem implements \ArrayAccess, \JsonSerializable, ModelInterface
+class OrderItem implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -60,10 +60,10 @@ class OrderItem implements \ArrayAccess, \JsonSerializable, ModelInterface
         'item_sequence_number' => 'string',
         'amazon_product_identifier' => 'string',
         'vendor_product_identifier' => 'string',
-        'ordered_quantity' => '\Plenty\AmazonPHP\SellingPartner\Model\VendorOrders\ItemQuantity',
+        'ordered_quantity' => \Plenty\AmazonPHP\SellingPartner\Model\VendorOrders\ItemQuantity::class,
         'is_back_order_allowed' => 'bool',
-        'net_cost' => '\Plenty\AmazonPHP\SellingPartner\Model\VendorOrders\Money',
-        'list_price' => '\Plenty\AmazonPHP\SellingPartner\Model\VendorOrders\Money',
+        'net_cost' => \Plenty\AmazonPHP\SellingPartner\Model\VendorOrders\Money::class,
+        'list_price' => \Plenty\AmazonPHP\SellingPartner\Model\VendorOrders\Money::class,
     ];
 
     /**
@@ -209,7 +209,7 @@ class OrderItem implements \ArrayAccess, \JsonSerializable, ModelInterface
      */
     public function __toString() : string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );

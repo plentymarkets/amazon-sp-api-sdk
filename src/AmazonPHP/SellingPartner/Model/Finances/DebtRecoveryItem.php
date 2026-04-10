@@ -40,7 +40,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class DebtRecoveryItem implements \ArrayAccess, \JsonSerializable, ModelInterface
+class DebtRecoveryItem implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -57,8 +57,8 @@ class DebtRecoveryItem implements \ArrayAccess, \JsonSerializable, ModelInterfac
      * @var string[]
      */
     protected static /** [COMPAT] array */ $openAPITypes = [
-        'recovery_amount' => '\Plenty\AmazonPHP\SellingPartner\Model\Finances\Currency',
-        'original_amount' => '\Plenty\AmazonPHP\SellingPartner\Model\Finances\Currency',
+        'recovery_amount' => \Plenty\AmazonPHP\SellingPartner\Model\Finances\Currency::class,
+        'original_amount' => \Plenty\AmazonPHP\SellingPartner\Model\Finances\Currency::class,
         'group_begin_date' => '\DateTime',
         'group_end_date' => '\DateTime',
     ];
@@ -191,7 +191,7 @@ class DebtRecoveryItem implements \ArrayAccess, \JsonSerializable, ModelInterfac
      */
     public function __toString() : string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );

@@ -40,7 +40,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class AffordabilityExpenseEvent implements \ArrayAccess, \JsonSerializable, ModelInterface
+class AffordabilityExpenseEvent implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -61,11 +61,11 @@ class AffordabilityExpenseEvent implements \ArrayAccess, \JsonSerializable, Mode
         'posted_date' => '\DateTime',
         'marketplace_id' => 'string',
         'transaction_type' => 'string',
-        'base_expense' => '\Plenty\AmazonPHP\SellingPartner\Model\Finances\Currency',
-        'tax_type_cgst' => '\Plenty\AmazonPHP\SellingPartner\Model\Finances\Currency',
-        'tax_type_sgst' => '\Plenty\AmazonPHP\SellingPartner\Model\Finances\Currency',
-        'tax_type_igst' => '\Plenty\AmazonPHP\SellingPartner\Model\Finances\Currency',
-        'total_expense' => '\Plenty\AmazonPHP\SellingPartner\Model\Finances\Currency',
+        'base_expense' => \Plenty\AmazonPHP\SellingPartner\Model\Finances\Currency::class,
+        'tax_type_cgst' => \Plenty\AmazonPHP\SellingPartner\Model\Finances\Currency::class,
+        'tax_type_sgst' => \Plenty\AmazonPHP\SellingPartner\Model\Finances\Currency::class,
+        'tax_type_igst' => \Plenty\AmazonPHP\SellingPartner\Model\Finances\Currency::class,
+        'total_expense' => \Plenty\AmazonPHP\SellingPartner\Model\Finances\Currency::class,
     ];
 
     /**
@@ -221,7 +221,7 @@ class AffordabilityExpenseEvent implements \ArrayAccess, \JsonSerializable, Mode
      */
     public function __toString() : string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );

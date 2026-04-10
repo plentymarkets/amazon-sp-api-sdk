@@ -139,7 +139,7 @@ final class FBAInventorySDK
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            '\Plenty\AmazonPHP\SellingPartner\Model\FBAInventory\GetInventorySummariesResponse',
+            \Plenty\AmazonPHP\SellingPartner\Model\FBAInventory\GetInventorySummariesResponse::class,
             []
         );
     }

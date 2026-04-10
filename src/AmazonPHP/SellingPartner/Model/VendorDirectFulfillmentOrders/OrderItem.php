@@ -40,7 +40,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class OrderItem implements \ArrayAccess, \JsonSerializable, ModelInterface
+class OrderItem implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -61,12 +61,12 @@ class OrderItem implements \ArrayAccess, \JsonSerializable, ModelInterface
         'buyer_product_identifier' => 'string',
         'vendor_product_identifier' => 'string',
         'title' => 'string',
-        'ordered_quantity' => '\Plenty\AmazonPHP\SellingPartner\Model\VendorDirectFulfillmentOrders\ItemQuantity',
-        'scheduled_delivery_shipment' => '\Plenty\AmazonPHP\SellingPartner\Model\VendorDirectFulfillmentOrders\ScheduledDeliveryShipment',
-        'gift_details' => '\Plenty\AmazonPHP\SellingPartner\Model\VendorDirectFulfillmentOrders\GiftDetails',
-        'net_price' => '\Plenty\AmazonPHP\SellingPartner\Model\VendorDirectFulfillmentOrders\Money',
-        'tax_details' => '\Plenty\AmazonPHP\SellingPartner\Model\VendorDirectFulfillmentOrders\TaxItemDetails',
-        'total_price' => '\Plenty\AmazonPHP\SellingPartner\Model\VendorDirectFulfillmentOrders\Money',
+        'ordered_quantity' => \Plenty\AmazonPHP\SellingPartner\Model\VendorDirectFulfillmentOrders\ItemQuantity::class,
+        'scheduled_delivery_shipment' => \Plenty\AmazonPHP\SellingPartner\Model\VendorDirectFulfillmentOrders\ScheduledDeliveryShipment::class,
+        'gift_details' => \Plenty\AmazonPHP\SellingPartner\Model\VendorDirectFulfillmentOrders\GiftDetails::class,
+        'net_price' => \Plenty\AmazonPHP\SellingPartner\Model\VendorDirectFulfillmentOrders\Money::class,
+        'tax_details' => \Plenty\AmazonPHP\SellingPartner\Model\VendorDirectFulfillmentOrders\TaxItemDetails::class,
+        'total_price' => \Plenty\AmazonPHP\SellingPartner\Model\VendorDirectFulfillmentOrders\Money::class,
     ];
 
     /**
@@ -227,7 +227,7 @@ class OrderItem implements \ArrayAccess, \JsonSerializable, ModelInterface
      */
     public function __toString() : string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );

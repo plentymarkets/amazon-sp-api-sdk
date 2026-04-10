@@ -40,7 +40,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class UpdateFulfillmentOrderRequest implements \ArrayAccess, \JsonSerializable, ModelInterface
+class UpdateFulfillmentOrderRequest implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -61,10 +61,10 @@ class UpdateFulfillmentOrderRequest implements \ArrayAccess, \JsonSerializable, 
         'displayable_order_id' => 'string',
         'displayable_order_date' => '\DateTime',
         'displayable_order_comment' => 'string',
-        'shipping_speed_category' => '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentOutbound\ShippingSpeedCategory',
-        'destination_address' => '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentOutbound\Address',
-        'fulfillment_action' => '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentOutbound\FulfillmentAction',
-        'fulfillment_policy' => '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentOutbound\FulfillmentPolicy',
+        'shipping_speed_category' => \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentOutbound\ShippingSpeedCategory::class,
+        'destination_address' => \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentOutbound\Address::class,
+        'fulfillment_action' => \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentOutbound\FulfillmentAction::class,
+        'fulfillment_policy' => \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentOutbound\FulfillmentPolicy::class,
         'ship_from_country_code' => 'string',
         'notification_emails' => 'string[]',
         'feature_constraints' => '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentOutbound\FeatureSettings[]',
@@ -239,7 +239,7 @@ class UpdateFulfillmentOrderRequest implements \ArrayAccess, \JsonSerializable, 
      */
     public function __toString() : string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );

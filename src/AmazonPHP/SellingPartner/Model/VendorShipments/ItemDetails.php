@@ -40,7 +40,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class ItemDetails implements \ArrayAccess, \JsonSerializable, ModelInterface
+class ItemDetails implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -67,8 +67,8 @@ class ItemDetails implements \ArrayAccess, \JsonSerializable, ModelInterface
     protected static /** [COMPAT] array */ $openAPITypes = [
         'purchase_order_number' => 'string',
         'lot_number' => 'string',
-        'expiry' => '\Plenty\AmazonPHP\SellingPartner\Model\VendorShipments\Expiry',
-        'maximum_retail_price' => '\Plenty\AmazonPHP\SellingPartner\Model\VendorShipments\Money',
+        'expiry' => \Plenty\AmazonPHP\SellingPartner\Model\VendorShipments\Expiry::class,
+        'maximum_retail_price' => \Plenty\AmazonPHP\SellingPartner\Model\VendorShipments\Money::class,
         'handling_code' => 'string',
     ];
 
@@ -205,7 +205,7 @@ class ItemDetails implements \ArrayAccess, \JsonSerializable, ModelInterface
      */
     public function __toString() : string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );

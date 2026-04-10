@@ -40,7 +40,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class ContentModule implements \ArrayAccess, \JsonSerializable, ModelInterface
+class ContentModule implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -57,22 +57,22 @@ class ContentModule implements \ArrayAccess, \JsonSerializable, ModelInterface
      * @var string[]
      */
     protected static /** [COMPAT] array */ $openAPITypes = [
-        'content_module_type' => '\Plenty\AmazonPHP\SellingPartner\Model\APlus\ContentModuleType',
-        'standard_company_logo' => '\Plenty\AmazonPHP\SellingPartner\Model\APlus\StandardCompanyLogoModule',
-        'standard_comparison_table' => '\Plenty\AmazonPHP\SellingPartner\Model\APlus\StandardComparisonTableModule',
-        'standard_four_image_text' => '\Plenty\AmazonPHP\SellingPartner\Model\APlus\StandardFourImageTextModule',
-        'standard_four_image_text_quadrant' => '\Plenty\AmazonPHP\SellingPartner\Model\APlus\StandardFourImageTextQuadrantModule',
-        'standard_header_image_text' => '\Plenty\AmazonPHP\SellingPartner\Model\APlus\StandardHeaderImageTextModule',
-        'standard_image_sidebar' => '\Plenty\AmazonPHP\SellingPartner\Model\APlus\StandardImageSidebarModule',
-        'standard_image_text_overlay' => '\Plenty\AmazonPHP\SellingPartner\Model\APlus\StandardImageTextOverlayModule',
-        'standard_multiple_image_text' => '\Plenty\AmazonPHP\SellingPartner\Model\APlus\StandardMultipleImageTextModule',
-        'standard_product_description' => '\Plenty\AmazonPHP\SellingPartner\Model\APlus\StandardProductDescriptionModule',
-        'standard_single_image_highlights' => '\Plenty\AmazonPHP\SellingPartner\Model\APlus\StandardSingleImageHighlightsModule',
-        'standard_single_image_specs_detail' => '\Plenty\AmazonPHP\SellingPartner\Model\APlus\StandardSingleImageSpecsDetailModule',
-        'standard_single_side_image' => '\Plenty\AmazonPHP\SellingPartner\Model\APlus\StandardSingleSideImageModule',
-        'standard_tech_specs' => '\Plenty\AmazonPHP\SellingPartner\Model\APlus\StandardTechSpecsModule',
-        'standard_text' => '\Plenty\AmazonPHP\SellingPartner\Model\APlus\StandardTextModule',
-        'standard_three_image_text' => '\Plenty\AmazonPHP\SellingPartner\Model\APlus\StandardThreeImageTextModule',
+        'content_module_type' => \Plenty\AmazonPHP\SellingPartner\Model\APlus\ContentModuleType::class,
+        'standard_company_logo' => \Plenty\AmazonPHP\SellingPartner\Model\APlus\StandardCompanyLogoModule::class,
+        'standard_comparison_table' => \Plenty\AmazonPHP\SellingPartner\Model\APlus\StandardComparisonTableModule::class,
+        'standard_four_image_text' => \Plenty\AmazonPHP\SellingPartner\Model\APlus\StandardFourImageTextModule::class,
+        'standard_four_image_text_quadrant' => \Plenty\AmazonPHP\SellingPartner\Model\APlus\StandardFourImageTextQuadrantModule::class,
+        'standard_header_image_text' => \Plenty\AmazonPHP\SellingPartner\Model\APlus\StandardHeaderImageTextModule::class,
+        'standard_image_sidebar' => \Plenty\AmazonPHP\SellingPartner\Model\APlus\StandardImageSidebarModule::class,
+        'standard_image_text_overlay' => \Plenty\AmazonPHP\SellingPartner\Model\APlus\StandardImageTextOverlayModule::class,
+        'standard_multiple_image_text' => \Plenty\AmazonPHP\SellingPartner\Model\APlus\StandardMultipleImageTextModule::class,
+        'standard_product_description' => \Plenty\AmazonPHP\SellingPartner\Model\APlus\StandardProductDescriptionModule::class,
+        'standard_single_image_highlights' => \Plenty\AmazonPHP\SellingPartner\Model\APlus\StandardSingleImageHighlightsModule::class,
+        'standard_single_image_specs_detail' => \Plenty\AmazonPHP\SellingPartner\Model\APlus\StandardSingleImageSpecsDetailModule::class,
+        'standard_single_side_image' => \Plenty\AmazonPHP\SellingPartner\Model\APlus\StandardSingleSideImageModule::class,
+        'standard_tech_specs' => \Plenty\AmazonPHP\SellingPartner\Model\APlus\StandardTechSpecsModule::class,
+        'standard_text' => \Plenty\AmazonPHP\SellingPartner\Model\APlus\StandardTextModule::class,
+        'standard_three_image_text' => \Plenty\AmazonPHP\SellingPartner\Model\APlus\StandardThreeImageTextModule::class,
     ];
 
     /**
@@ -263,7 +263,7 @@ class ContentModule implements \ArrayAccess, \JsonSerializable, ModelInterface
      */
     public function __toString() : string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );

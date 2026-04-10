@@ -40,7 +40,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class ProductTypeDefinition implements \ArrayAccess, \JsonSerializable, ModelInterface
+class ProductTypeDefinition implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -67,15 +67,15 @@ class ProductTypeDefinition implements \ArrayAccess, \JsonSerializable, ModelInt
      * @var string[]
      */
     protected static /** [COMPAT] array */ $openAPITypes = [
-        'meta_schema' => '\Plenty\AmazonPHP\SellingPartner\Model\ProductTypesDefinitions\SchemaLink',
-        'schema' => '\Plenty\AmazonPHP\SellingPartner\Model\ProductTypesDefinitions\SchemaLink',
+        'meta_schema' => \Plenty\AmazonPHP\SellingPartner\Model\ProductTypesDefinitions\SchemaLink::class,
+        'schema' => \Plenty\AmazonPHP\SellingPartner\Model\ProductTypesDefinitions\SchemaLink::class,
         'requirements' => 'string',
         'requirements_enforced' => 'string',
         'property_groups' => 'array<string,\Plenty\AmazonPHP\SellingPartner\Model\ProductTypesDefinitions\PropertyGroup>',
         'locale' => 'string',
         'marketplace_ids' => 'string[]',
         'product_type' => 'string',
-        'product_type_version' => '\Plenty\AmazonPHP\SellingPartner\Model\ProductTypesDefinitions\ProductTypeVersion',
+        'product_type_version' => \Plenty\AmazonPHP\SellingPartner\Model\ProductTypesDefinitions\ProductTypeVersion::class,
     ];
 
     /**
@@ -231,7 +231,7 @@ class ProductTypeDefinition implements \ArrayAccess, \JsonSerializable, ModelInt
      */
     public function __toString() : string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );

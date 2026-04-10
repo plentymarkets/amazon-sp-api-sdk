@@ -40,7 +40,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class InboundShipmentHeader implements \ArrayAccess, \JsonSerializable, ModelInterface
+class InboundShipmentHeader implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -58,12 +58,12 @@ class InboundShipmentHeader implements \ArrayAccess, \JsonSerializable, ModelInt
      */
     protected static /** [COMPAT] array */ $openAPITypes = [
         'shipment_name' => 'string',
-        'ship_from_address' => '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound\Address',
+        'ship_from_address' => \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound\Address::class,
         'destination_fulfillment_center_id' => 'string',
         'are_cases_required' => 'bool',
-        'shipment_status' => '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound\ShipmentStatus',
-        'label_prep_preference' => '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound\LabelPrepPreference',
-        'intended_box_contents_source' => '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound\IntendedBoxContentsSource',
+        'shipment_status' => \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound\ShipmentStatus::class,
+        'label_prep_preference' => \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound\LabelPrepPreference::class,
+        'intended_box_contents_source' => \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound\IntendedBoxContentsSource::class,
     ];
 
     /**
@@ -209,7 +209,7 @@ class InboundShipmentHeader implements \ArrayAccess, \JsonSerializable, ModelInt
      */
     public function __toString() : string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );

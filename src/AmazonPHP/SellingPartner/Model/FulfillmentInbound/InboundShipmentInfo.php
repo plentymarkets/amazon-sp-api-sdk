@@ -40,7 +40,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class InboundShipmentInfo implements \ArrayAccess, \JsonSerializable, ModelInterface
+class InboundShipmentInfo implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -59,14 +59,14 @@ class InboundShipmentInfo implements \ArrayAccess, \JsonSerializable, ModelInter
     protected static /** [COMPAT] array */ $openAPITypes = [
         'shipment_id' => 'string',
         'shipment_name' => 'string',
-        'ship_from_address' => '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound\Address',
+        'ship_from_address' => \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound\Address::class,
         'destination_fulfillment_center_id' => 'string',
-        'shipment_status' => '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound\ShipmentStatus',
-        'label_prep_type' => '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound\LabelPrepType',
+        'shipment_status' => \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound\ShipmentStatus::class,
+        'label_prep_type' => \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound\LabelPrepType::class,
         'are_cases_required' => 'bool',
         'confirmed_need_by_date' => '\DateTime',
-        'box_contents_source' => '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound\BoxContentsSource',
-        'estimated_box_contents_fee' => '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound\BoxContentsFeeDetails',
+        'box_contents_source' => \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound\BoxContentsSource::class,
+        'estimated_box_contents_fee' => \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound\BoxContentsFeeDetails::class,
     ];
 
     /**
@@ -227,7 +227,7 @@ class InboundShipmentInfo implements \ArrayAccess, \JsonSerializable, ModelInter
      */
     public function __toString() : string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );

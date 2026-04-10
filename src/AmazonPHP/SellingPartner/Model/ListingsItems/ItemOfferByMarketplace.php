@@ -40,7 +40,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class ItemOfferByMarketplace implements \ArrayAccess, \JsonSerializable, ModelInterface
+class ItemOfferByMarketplace implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -63,8 +63,8 @@ class ItemOfferByMarketplace implements \ArrayAccess, \JsonSerializable, ModelIn
     protected static /** [COMPAT] array */ $openAPITypes = [
         'marketplace_id' => 'string',
         'offer_type' => 'string',
-        'price' => '\Plenty\AmazonPHP\SellingPartner\Model\ListingsItems\Money',
-        'points' => '\Plenty\AmazonPHP\SellingPartner\Model\ListingsItems\Points',
+        'price' => \Plenty\AmazonPHP\SellingPartner\Model\ListingsItems\Money::class,
+        'points' => \Plenty\AmazonPHP\SellingPartner\Model\ListingsItems\Points::class,
     ];
 
     /**
@@ -195,7 +195,7 @@ class ItemOfferByMarketplace implements \ArrayAccess, \JsonSerializable, ModelIn
      */
     public function __toString() : string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );

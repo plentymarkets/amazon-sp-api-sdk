@@ -40,7 +40,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class DestinationResource implements \ArrayAccess, \JsonSerializable, ModelInterface
+class DestinationResource implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -57,8 +57,8 @@ class DestinationResource implements \ArrayAccess, \JsonSerializable, ModelInter
      * @var string[]
      */
     protected static /** [COMPAT] array */ $openAPITypes = [
-        'sqs' => '\Plenty\AmazonPHP\SellingPartner\Model\Notifications\SqsResource',
-        'event_bridge' => '\Plenty\AmazonPHP\SellingPartner\Model\Notifications\EventBridgeResource',
+        'sqs' => \Plenty\AmazonPHP\SellingPartner\Model\Notifications\SqsResource::class,
+        'event_bridge' => \Plenty\AmazonPHP\SellingPartner\Model\Notifications\EventBridgeResource::class,
     ];
 
     /**
@@ -179,7 +179,7 @@ class DestinationResource implements \ArrayAccess, \JsonSerializable, ModelInter
      */
     public function __toString() : string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );

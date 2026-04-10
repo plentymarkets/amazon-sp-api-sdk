@@ -40,7 +40,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class PartneredSmallParcelPackageInput implements \ArrayAccess, \JsonSerializable, ModelInterface
+class PartneredSmallParcelPackageInput implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -57,8 +57,8 @@ class PartneredSmallParcelPackageInput implements \ArrayAccess, \JsonSerializabl
      * @var string[]
      */
     protected static /** [COMPAT] array */ $openAPITypes = [
-        'dimensions' => '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound\Dimensions',
-        'weight' => '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound\Weight',
+        'dimensions' => \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound\Dimensions::class,
+        'weight' => \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound\Weight::class,
     ];
 
     /**
@@ -179,7 +179,7 @@ class PartneredSmallParcelPackageInput implements \ArrayAccess, \JsonSerializabl
      */
     public function __toString() : string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );

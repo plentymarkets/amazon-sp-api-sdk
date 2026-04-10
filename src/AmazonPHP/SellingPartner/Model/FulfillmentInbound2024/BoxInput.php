@@ -38,11 +38,11 @@ class BoxInput implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInt
      * @var string[]
      */
     protected static array $openAPITypes = [
-        'content_information_source' => '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound2024\BoxContentInformationSource',
-        'dimensions' => '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound2024\Dimensions',
+        'content_information_source' => \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound2024\BoxContentInformationSource::class,
+        'dimensions' => \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound2024\Dimensions::class,
         'items' => '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound2024\ItemInput[]',
         'quantity' => 'int',
-        'weight' => '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound2024\Weight',
+        'weight' => \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound2024\Weight::class,
     ];
 
     /**

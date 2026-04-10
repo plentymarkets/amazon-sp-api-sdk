@@ -40,7 +40,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class FeeLineItem implements \ArrayAccess, \JsonSerializable, ModelInterface
+class FeeLineItem implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -66,7 +66,7 @@ class FeeLineItem implements \ArrayAccess, \JsonSerializable, ModelInterface
      */
     protected static /** [COMPAT] array */ $openAPITypes = [
         'fee_type' => 'string',
-        'fee_charge' => '\Plenty\AmazonPHP\SellingPartner\Model\FBASmallAndLight\MoneyType',
+        'fee_charge' => \Plenty\AmazonPHP\SellingPartner\Model\FBASmallAndLight\MoneyType::class,
     ];
 
     /**
@@ -187,7 +187,7 @@ class FeeLineItem implements \ArrayAccess, \JsonSerializable, ModelInterface
      */
     public function __toString() : string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );

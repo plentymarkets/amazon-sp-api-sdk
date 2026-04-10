@@ -40,7 +40,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class RetrieveShippingLabelResult implements \ArrayAccess, \JsonSerializable, ModelInterface
+class RetrieveShippingLabelResult implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -58,7 +58,7 @@ class RetrieveShippingLabelResult implements \ArrayAccess, \JsonSerializable, Mo
      */
     protected static /** [COMPAT] array */ $openAPITypes = [
         'label_stream' => 'string',
-        'label_specification' => '\Plenty\AmazonPHP\SellingPartner\Model\Shipping\LabelSpecification',
+        'label_specification' => \Plenty\AmazonPHP\SellingPartner\Model\Shipping\LabelSpecification::class,
     ];
 
     /**
@@ -179,7 +179,7 @@ class RetrieveShippingLabelResult implements \ArrayAccess, \JsonSerializable, Mo
      */
     public function __toString() : string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );

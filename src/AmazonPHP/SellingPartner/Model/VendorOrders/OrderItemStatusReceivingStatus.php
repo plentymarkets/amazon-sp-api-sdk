@@ -40,7 +40,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class OrderItemStatusReceivingStatus implements \ArrayAccess, \JsonSerializable, ModelInterface
+class OrderItemStatusReceivingStatus implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -64,7 +64,7 @@ class OrderItemStatusReceivingStatus implements \ArrayAccess, \JsonSerializable,
      */
     protected static /** [COMPAT] array */ $openAPITypes = [
         'receive_status' => 'string',
-        'received_quantity' => '\Plenty\AmazonPHP\SellingPartner\Model\VendorOrders\ItemQuantity',
+        'received_quantity' => \Plenty\AmazonPHP\SellingPartner\Model\VendorOrders\ItemQuantity::class,
         'last_receive_date' => '\DateTime',
     ];
 
@@ -191,7 +191,7 @@ class OrderItemStatusReceivingStatus implements \ArrayAccess, \JsonSerializable,
      */
     public function __toString() : string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );

@@ -148,7 +148,7 @@ final class ListingsItemsSDK
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            '\Plenty\AmazonPHP\SellingPartner\Model\ListingsItems\ListingsItemSubmissionResponse',
+            \Plenty\AmazonPHP\SellingPartner\Model\ListingsItems\ListingsItemSubmissionResponse::class,
             []
         );
     }
@@ -380,7 +380,7 @@ final class ListingsItemsSDK
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            '\Plenty\AmazonPHP\SellingPartner\Model\ListingsItems\Item',
+            \Plenty\AmazonPHP\SellingPartner\Model\ListingsItems\Item::class,
             []
         );
     }
@@ -621,7 +621,7 @@ final class ListingsItemsSDK
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            '\Plenty\AmazonPHP\SellingPartner\Model\ListingsItems\ListingsItemSubmissionResponse',
+            \Plenty\AmazonPHP\SellingPartner\Model\ListingsItems\ListingsItemSubmissionResponse::class,
             []
         );
     }
@@ -868,7 +868,7 @@ final class ListingsItemsSDK
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            '\Plenty\AmazonPHP\SellingPartner\Model\ListingsItems\ListingsItemSubmissionResponse',
+            \Plenty\AmazonPHP\SellingPartner\Model\ListingsItems\ListingsItemSubmissionResponse::class,
             []
         );
     }

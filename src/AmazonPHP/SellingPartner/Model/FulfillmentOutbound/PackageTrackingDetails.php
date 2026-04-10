@@ -40,7 +40,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class PackageTrackingDetails implements \ArrayAccess, \JsonSerializable, ModelInterface
+class PackageTrackingDetails implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -65,11 +65,11 @@ class PackageTrackingDetails implements \ArrayAccess, \JsonSerializable, ModelIn
         'carrier_url' => 'string',
         'ship_date' => '\DateTime',
         'estimated_arrival_date' => '\DateTime',
-        'ship_to_address' => '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentOutbound\TrackingAddress',
-        'current_status' => '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentOutbound\CurrentStatus',
+        'ship_to_address' => \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentOutbound\TrackingAddress::class,
+        'current_status' => \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentOutbound\CurrentStatus::class,
         'current_status_description' => 'string',
         'signed_for_by' => 'string',
-        'additional_location_info' => '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentOutbound\AdditionalLocationInfo',
+        'additional_location_info' => \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentOutbound\AdditionalLocationInfo::class,
         'tracking_events' => '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentOutbound\TrackingEvent[]',
     ];
 
@@ -251,7 +251,7 @@ class PackageTrackingDetails implements \ArrayAccess, \JsonSerializable, ModelIn
      */
     public function __toString() : string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );

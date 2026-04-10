@@ -40,7 +40,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class AvailableDeliveryExperienceOption implements \ArrayAccess, \JsonSerializable, ModelInterface
+class AvailableDeliveryExperienceOption implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -57,8 +57,8 @@ class AvailableDeliveryExperienceOption implements \ArrayAccess, \JsonSerializab
      * @var string[]
      */
     protected static /** [COMPAT] array */ $openAPITypes = [
-        'delivery_experience_option' => '\Plenty\AmazonPHP\SellingPartner\Model\MerchantFulfillment\DeliveryExperienceOption',
-        'charge' => '\Plenty\AmazonPHP\SellingPartner\Model\MerchantFulfillment\CurrencyAmount',
+        'delivery_experience_option' => \Plenty\AmazonPHP\SellingPartner\Model\MerchantFulfillment\DeliveryExperienceOption::class,
+        'charge' => \Plenty\AmazonPHP\SellingPartner\Model\MerchantFulfillment\CurrencyAmount::class,
     ];
 
     /**
@@ -179,7 +179,7 @@ class AvailableDeliveryExperienceOption implements \ArrayAccess, \JsonSerializab
      */
     public function __toString() : string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );

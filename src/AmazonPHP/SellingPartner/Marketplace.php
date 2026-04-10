@@ -174,7 +174,7 @@ final class Marketplace
 
         try {
             return self::$countryCode();
-        } catch (\BadMethodCallException $e) {
+        } catch (\BadMethodCallException) {
             throw new InvalidArgumentException("Unexpected country code {$countryCode}");
         }
     }

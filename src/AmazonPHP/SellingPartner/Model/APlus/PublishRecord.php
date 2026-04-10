@@ -40,7 +40,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class PublishRecord implements \ArrayAccess, \JsonSerializable, ModelInterface
+class PublishRecord implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -60,7 +60,7 @@ class PublishRecord implements \ArrayAccess, \JsonSerializable, ModelInterface
         'marketplace_id' => 'string',
         'locale' => 'string',
         'asin' => 'string',
-        'content_type' => '\Plenty\AmazonPHP\SellingPartner\Model\APlus\ContentType',
+        'content_type' => \Plenty\AmazonPHP\SellingPartner\Model\APlus\ContentType::class,
         'content_sub_type' => 'string',
         'content_reference_key' => 'string',
     ];
@@ -203,7 +203,7 @@ class PublishRecord implements \ArrayAccess, \JsonSerializable, ModelInterface
      */
     public function __toString() : string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );

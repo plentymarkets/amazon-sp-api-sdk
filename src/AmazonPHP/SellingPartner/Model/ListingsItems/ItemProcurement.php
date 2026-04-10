@@ -40,7 +40,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class ItemProcurement implements \ArrayAccess, \JsonSerializable, ModelInterface
+class ItemProcurement implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -57,7 +57,7 @@ class ItemProcurement implements \ArrayAccess, \JsonSerializable, ModelInterface
      * @var string[]
      */
     protected static /** [COMPAT] array */ $openAPITypes = [
-        'cost_price' => '\Plenty\AmazonPHP\SellingPartner\Model\ListingsItems\Money',
+        'cost_price' => \Plenty\AmazonPHP\SellingPartner\Model\ListingsItems\Money::class,
     ];
 
     /**
@@ -173,7 +173,7 @@ class ItemProcurement implements \ArrayAccess, \JsonSerializable, ModelInterface
      */
     public function __toString() : string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );

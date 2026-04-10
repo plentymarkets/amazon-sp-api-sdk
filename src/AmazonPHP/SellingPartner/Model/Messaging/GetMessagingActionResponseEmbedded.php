@@ -40,7 +40,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class GetMessagingActionResponseEmbedded implements \ArrayAccess, \JsonSerializable, ModelInterface
+class GetMessagingActionResponseEmbedded implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -57,7 +57,7 @@ class GetMessagingActionResponseEmbedded implements \ArrayAccess, \JsonSerializa
      * @var string[]
      */
     protected static /** [COMPAT] array */ $openAPITypes = [
-        'schema' => '\Plenty\AmazonPHP\SellingPartner\Model\Messaging\GetSchemaResponse',
+        'schema' => \Plenty\AmazonPHP\SellingPartner\Model\Messaging\GetSchemaResponse::class,
     ];
 
     /**
@@ -173,7 +173,7 @@ class GetMessagingActionResponseEmbedded implements \ArrayAccess, \JsonSerializa
      */
     public function __toString() : string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );

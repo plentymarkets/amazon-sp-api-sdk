@@ -40,7 +40,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class ShipmentRequestDetails implements \ArrayAccess, \JsonSerializable, ModelInterface
+class ShipmentRequestDetails implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -60,13 +60,13 @@ class ShipmentRequestDetails implements \ArrayAccess, \JsonSerializable, ModelIn
         'amazon_order_id' => 'string',
         'seller_order_id' => 'string',
         'item_list' => '\Plenty\AmazonPHP\SellingPartner\Model\MerchantFulfillment\Item[]',
-        'ship_from_address' => '\Plenty\AmazonPHP\SellingPartner\Model\MerchantFulfillment\Address',
-        'package_dimensions' => '\Plenty\AmazonPHP\SellingPartner\Model\MerchantFulfillment\PackageDimensions',
-        'weight' => '\Plenty\AmazonPHP\SellingPartner\Model\MerchantFulfillment\Weight',
+        'ship_from_address' => \Plenty\AmazonPHP\SellingPartner\Model\MerchantFulfillment\Address::class,
+        'package_dimensions' => \Plenty\AmazonPHP\SellingPartner\Model\MerchantFulfillment\PackageDimensions::class,
+        'weight' => \Plenty\AmazonPHP\SellingPartner\Model\MerchantFulfillment\Weight::class,
         'must_arrive_by_date' => '\DateTime',
         'ship_date' => '\DateTime',
-        'shipping_service_options' => '\Plenty\AmazonPHP\SellingPartner\Model\MerchantFulfillment\ShippingServiceOptions',
-        'label_customization' => '\Plenty\AmazonPHP\SellingPartner\Model\MerchantFulfillment\LabelCustomization',
+        'shipping_service_options' => \Plenty\AmazonPHP\SellingPartner\Model\MerchantFulfillment\ShippingServiceOptions::class,
+        'label_customization' => \Plenty\AmazonPHP\SellingPartner\Model\MerchantFulfillment\LabelCustomization::class,
     ];
 
     /**
@@ -227,7 +227,7 @@ class ShipmentRequestDetails implements \ArrayAccess, \JsonSerializable, ModelIn
      */
     public function __toString() : string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );

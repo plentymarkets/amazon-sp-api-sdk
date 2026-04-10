@@ -40,7 +40,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class Weight implements \ArrayAccess, \JsonSerializable, ModelInterface
+class Weight implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -58,7 +58,7 @@ class Weight implements \ArrayAccess, \JsonSerializable, ModelInterface
      */
     protected static /** [COMPAT] array */ $openAPITypes = [
         'value' => 'double',
-        'unit' => '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound\UnitOfWeight',
+        'unit' => \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound\UnitOfWeight::class,
     ];
 
     /**
@@ -179,7 +179,7 @@ class Weight implements \ArrayAccess, \JsonSerializable, ModelInterface
      */
     public function __toString() : string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );

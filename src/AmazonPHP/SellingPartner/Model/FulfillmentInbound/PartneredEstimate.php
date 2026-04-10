@@ -40,7 +40,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class PartneredEstimate implements \ArrayAccess, \JsonSerializable, ModelInterface
+class PartneredEstimate implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -57,7 +57,7 @@ class PartneredEstimate implements \ArrayAccess, \JsonSerializable, ModelInterfa
      * @var string[]
      */
     protected static /** [COMPAT] array */ $openAPITypes = [
-        'amount' => '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound\Amount',
+        'amount' => \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound\Amount::class,
         'confirm_deadline' => '\DateTime',
         'void_deadline' => '\DateTime',
     ];
@@ -185,7 +185,7 @@ class PartneredEstimate implements \ArrayAccess, \JsonSerializable, ModelInterfa
      */
     public function __toString() : string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );

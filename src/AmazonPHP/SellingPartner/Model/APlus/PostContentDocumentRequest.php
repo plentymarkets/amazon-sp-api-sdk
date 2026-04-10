@@ -40,7 +40,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class PostContentDocumentRequest implements \ArrayAccess, \JsonSerializable, ModelInterface
+class PostContentDocumentRequest implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -57,7 +57,7 @@ class PostContentDocumentRequest implements \ArrayAccess, \JsonSerializable, Mod
      * @var string[]
      */
     protected static /** [COMPAT] array */ $openAPITypes = [
-        'content_document' => '\Plenty\AmazonPHP\SellingPartner\Model\APlus\ContentDocument',
+        'content_document' => \Plenty\AmazonPHP\SellingPartner\Model\APlus\ContentDocument::class,
     ];
 
     /**
@@ -173,7 +173,7 @@ class PostContentDocumentRequest implements \ArrayAccess, \JsonSerializable, Mod
      */
     public function __toString() : string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );

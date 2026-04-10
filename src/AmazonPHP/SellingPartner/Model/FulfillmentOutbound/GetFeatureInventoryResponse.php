@@ -40,7 +40,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class GetFeatureInventoryResponse implements \ArrayAccess, \JsonSerializable, ModelInterface
+class GetFeatureInventoryResponse implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -57,7 +57,7 @@ class GetFeatureInventoryResponse implements \ArrayAccess, \JsonSerializable, Mo
      * @var string[]
      */
     protected static /** [COMPAT] array */ $openAPITypes = [
-        'payload' => '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentOutbound\GetFeatureInventoryResult',
+        'payload' => \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentOutbound\GetFeatureInventoryResult::class,
         'errors' => '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentOutbound\Error[]',
     ];
 
@@ -179,7 +179,7 @@ class GetFeatureInventoryResponse implements \ArrayAccess, \JsonSerializable, Mo
      */
     public function __toString() : string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );

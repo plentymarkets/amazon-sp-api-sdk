@@ -40,7 +40,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class ShippingService implements \ArrayAccess, \JsonSerializable, ModelInterface
+class ShippingService implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -64,9 +64,9 @@ class ShippingService implements \ArrayAccess, \JsonSerializable, ModelInterface
         'ship_date' => '\DateTime',
         'earliest_estimated_delivery_date' => '\DateTime',
         'latest_estimated_delivery_date' => '\DateTime',
-        'rate' => '\Plenty\AmazonPHP\SellingPartner\Model\MerchantFulfillment\CurrencyAmount',
-        'shipping_service_options' => '\Plenty\AmazonPHP\SellingPartner\Model\MerchantFulfillment\ShippingServiceOptions',
-        'available_shipping_service_options' => '\Plenty\AmazonPHP\SellingPartner\Model\MerchantFulfillment\AvailableShippingServiceOptions',
+        'rate' => \Plenty\AmazonPHP\SellingPartner\Model\MerchantFulfillment\CurrencyAmount::class,
+        'shipping_service_options' => \Plenty\AmazonPHP\SellingPartner\Model\MerchantFulfillment\ShippingServiceOptions::class,
+        'available_shipping_service_options' => \Plenty\AmazonPHP\SellingPartner\Model\MerchantFulfillment\AvailableShippingServiceOptions::class,
         'available_label_formats' => '\Plenty\AmazonPHP\SellingPartner\Model\MerchantFulfillment\LabelFormat[]',
         'available_format_options_for_label' => '\Plenty\AmazonPHP\SellingPartner\Model\MerchantFulfillment\LabelFormatOption[]',
         'requires_additional_seller_inputs' => 'bool',
@@ -245,7 +245,7 @@ class ShippingService implements \ArrayAccess, \JsonSerializable, ModelInterface
      */
     public function __toString() : string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );

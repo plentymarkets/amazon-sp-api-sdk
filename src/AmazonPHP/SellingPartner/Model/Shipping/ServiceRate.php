@@ -40,7 +40,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class ServiceRate implements \ArrayAccess, \JsonSerializable, ModelInterface
+class ServiceRate implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -57,10 +57,10 @@ class ServiceRate implements \ArrayAccess, \JsonSerializable, ModelInterface
      * @var string[]
      */
     protected static /** [COMPAT] array */ $openAPITypes = [
-        'total_charge' => '\Plenty\AmazonPHP\SellingPartner\Model\Shipping\Currency',
-        'billable_weight' => '\Plenty\AmazonPHP\SellingPartner\Model\Shipping\Weight',
-        'service_type' => '\Plenty\AmazonPHP\SellingPartner\Model\Shipping\ServiceType',
-        'promise' => '\Plenty\AmazonPHP\SellingPartner\Model\Shipping\ShippingPromiseSet',
+        'total_charge' => \Plenty\AmazonPHP\SellingPartner\Model\Shipping\Currency::class,
+        'billable_weight' => \Plenty\AmazonPHP\SellingPartner\Model\Shipping\Weight::class,
+        'service_type' => \Plenty\AmazonPHP\SellingPartner\Model\Shipping\ServiceType::class,
+        'promise' => \Plenty\AmazonPHP\SellingPartner\Model\Shipping\ShippingPromiseSet::class,
     ];
 
     /**
@@ -191,7 +191,7 @@ class ServiceRate implements \ArrayAccess, \JsonSerializable, ModelInterface
      */
     public function __toString() : string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );

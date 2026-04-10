@@ -216,24 +216,12 @@ final class ObjectSerializer
             return \preg_replace('/%5B[0-9]+%5D=/', '=', \http_build_query($collection, '', '&'));
         }
 
-        switch ($style) {
-            case 'pipeDelimited':
-            case 'pipes':
-                return \implode('|', $collection);
-
-            case 'tsv':
-                return \implode("\t", $collection);
-
-            case 'spaceDelimited':
-            case 'ssv':
-                return \implode(' ', $collection);
-
-            case 'simple':
-            case 'csv':
-                // Deliberate fall through. CSV is default format.
-            default:
-                return \implode(',', $collection);
-        }
+        return match ($style) {
+            'pipeDelimited', 'pipes' => \implode('|', $collection),
+            'tsv' => \implode("\t", $collection),
+            'spaceDelimited', 'ssv' => \implode(' ', $collection),
+            default => \implode(',', $collection),
+        };
     }
 
     /**
@@ -303,7 +291,7 @@ final class ObjectSerializer
             if (!empty($data)) {
                 try {
                     return new \DateTimeImmutable($data);
-                } catch (\Exception $exception) {
+                } catch (\Exception) {
                     // Some API's return a date-time with too high nanosecond
                     // precision for php's DateTime to handle. This conversion
                     // (string -> unix timestamp -> DateTime) is a workaround
@@ -358,7 +346,7 @@ final class ObjectSerializer
 
         try {
             $data = \is_string($data) ? \json_decode($data, null, 512, JSON_THROW_ON_ERROR) : $data;
-        } catch (\JsonException $e) {
+        } catch (\JsonException) {
         }
 
         // If a discriminator is defined and points to a valid subclass, use it.

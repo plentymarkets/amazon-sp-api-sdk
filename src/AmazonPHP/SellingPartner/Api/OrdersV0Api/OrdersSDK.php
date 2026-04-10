@@ -161,7 +161,7 @@ final class OrdersSDK
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            '\Plenty\AmazonPHP\SellingPartner\Model\Orders\GetOrderResponse',
+            \Plenty\AmazonPHP\SellingPartner\Model\Orders\GetOrderResponse::class,
             []
         );
     }
@@ -349,7 +349,7 @@ final class OrdersSDK
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            '\Plenty\AmazonPHP\SellingPartner\Model\Orders\GetOrderAddressResponse',
+            \Plenty\AmazonPHP\SellingPartner\Model\Orders\GetOrderAddressResponse::class,
             []
         );
     }
@@ -537,7 +537,7 @@ final class OrdersSDK
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            '\Plenty\AmazonPHP\SellingPartner\Model\Orders\GetOrderBuyerInfoResponse',
+            \Plenty\AmazonPHP\SellingPartner\Model\Orders\GetOrderBuyerInfoResponse::class,
             []
         );
     }
@@ -726,7 +726,7 @@ final class OrdersSDK
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            '\Plenty\AmazonPHP\SellingPartner\Model\Orders\GetOrderItemsResponse',
+            \Plenty\AmazonPHP\SellingPartner\Model\Orders\GetOrderItemsResponse::class,
             []
         );
     }
@@ -925,7 +925,7 @@ final class OrdersSDK
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            '\Plenty\AmazonPHP\SellingPartner\Model\Orders\GetOrderItemsBuyerInfoResponse',
+            \Plenty\AmazonPHP\SellingPartner\Model\Orders\GetOrderItemsBuyerInfoResponse::class,
             []
         );
     }
@@ -1123,7 +1123,7 @@ final class OrdersSDK
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            '\Plenty\AmazonPHP\SellingPartner\Model\Orders\GetOrderRegulatedInfoResponse',
+            \Plenty\AmazonPHP\SellingPartner\Model\Orders\GetOrderRegulatedInfoResponse::class,
             []
         );
     }
@@ -1327,7 +1327,7 @@ final class OrdersSDK
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            '\Plenty\AmazonPHP\SellingPartner\Model\Orders\GetOrdersResponse',
+            \Plenty\AmazonPHP\SellingPartner\Model\Orders\GetOrdersResponse::class,
             []
         );
     }

@@ -40,7 +40,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class PartneredLtlDataInput implements \ArrayAccess, \JsonSerializable, ModelInterface
+class PartneredLtlDataInput implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -57,13 +57,13 @@ class PartneredLtlDataInput implements \ArrayAccess, \JsonSerializable, ModelInt
      * @var string[]
      */
     protected static /** [COMPAT] array */ $openAPITypes = [
-        'contact' => '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound\Contact',
+        'contact' => \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound\Contact::class,
         'box_count' => 'int',
-        'seller_freight_class' => '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound\SellerFreightClass',
+        'seller_freight_class' => \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound\SellerFreightClass::class,
         'freight_ready_date' => '\DateTime',
         'pallet_list' => '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound\Pallet[]',
-        'total_weight' => '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound\Weight',
-        'seller_declared_value' => '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound\Amount',
+        'total_weight' => \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound\Weight::class,
+        'seller_declared_value' => \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound\Amount::class,
     ];
 
     /**
@@ -209,7 +209,7 @@ class PartneredLtlDataInput implements \ArrayAccess, \JsonSerializable, ModelInt
      */
     public function __toString() : string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );

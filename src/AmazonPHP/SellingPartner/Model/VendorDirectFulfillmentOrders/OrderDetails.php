@@ -40,7 +40,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class OrderDetails implements \ArrayAccess, \JsonSerializable, ModelInterface
+class OrderDetails implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -68,12 +68,12 @@ class OrderDetails implements \ArrayAccess, \JsonSerializable, ModelInterface
         'customer_order_number' => 'string',
         'order_date' => '\DateTime',
         'order_status' => 'string',
-        'shipment_details' => '\Plenty\AmazonPHP\SellingPartner\Model\VendorDirectFulfillmentOrders\ShipmentDetails',
-        'tax_total' => '\Plenty\AmazonPHP\SellingPartner\Model\VendorDirectFulfillmentOrders\TaxItemDetails',
-        'selling_party' => '\Plenty\AmazonPHP\SellingPartner\Model\VendorDirectFulfillmentOrders\PartyIdentification',
-        'ship_from_party' => '\Plenty\AmazonPHP\SellingPartner\Model\VendorDirectFulfillmentOrders\PartyIdentification',
-        'ship_to_party' => '\Plenty\AmazonPHP\SellingPartner\Model\VendorDirectFulfillmentOrders\Address',
-        'bill_to_party' => '\Plenty\AmazonPHP\SellingPartner\Model\VendorDirectFulfillmentOrders\PartyIdentification',
+        'shipment_details' => \Plenty\AmazonPHP\SellingPartner\Model\VendorDirectFulfillmentOrders\ShipmentDetails::class,
+        'tax_total' => \Plenty\AmazonPHP\SellingPartner\Model\VendorDirectFulfillmentOrders\TaxItemDetails::class,
+        'selling_party' => \Plenty\AmazonPHP\SellingPartner\Model\VendorDirectFulfillmentOrders\PartyIdentification::class,
+        'ship_from_party' => \Plenty\AmazonPHP\SellingPartner\Model\VendorDirectFulfillmentOrders\PartyIdentification::class,
+        'ship_to_party' => \Plenty\AmazonPHP\SellingPartner\Model\VendorDirectFulfillmentOrders\Address::class,
+        'bill_to_party' => \Plenty\AmazonPHP\SellingPartner\Model\VendorDirectFulfillmentOrders\PartyIdentification::class,
         'items' => '\Plenty\AmazonPHP\SellingPartner\Model\VendorDirectFulfillmentOrders\OrderItem[]',
     ];
 
@@ -235,7 +235,7 @@ class OrderDetails implements \ArrayAccess, \JsonSerializable, ModelInterface
      */
     public function __toString() : string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );

@@ -40,7 +40,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class OrderItemStatus implements \ArrayAccess, \JsonSerializable, ModelInterface
+class OrderItemStatus implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -60,11 +60,11 @@ class OrderItemStatus implements \ArrayAccess, \JsonSerializable, ModelInterface
         'item_sequence_number' => 'string',
         'buyer_product_identifier' => 'string',
         'vendor_product_identifier' => 'string',
-        'net_cost' => '\Plenty\AmazonPHP\SellingPartner\Model\VendorOrders\Money',
-        'list_price' => '\Plenty\AmazonPHP\SellingPartner\Model\VendorOrders\Money',
-        'ordered_quantity' => '\Plenty\AmazonPHP\SellingPartner\Model\VendorOrders\OrderItemStatusOrderedQuantity',
-        'acknowledgement_status' => '\Plenty\AmazonPHP\SellingPartner\Model\VendorOrders\OrderItemStatusAcknowledgementStatus',
-        'receiving_status' => '\Plenty\AmazonPHP\SellingPartner\Model\VendorOrders\OrderItemStatusReceivingStatus',
+        'net_cost' => \Plenty\AmazonPHP\SellingPartner\Model\VendorOrders\Money::class,
+        'list_price' => \Plenty\AmazonPHP\SellingPartner\Model\VendorOrders\Money::class,
+        'ordered_quantity' => \Plenty\AmazonPHP\SellingPartner\Model\VendorOrders\OrderItemStatusOrderedQuantity::class,
+        'acknowledgement_status' => \Plenty\AmazonPHP\SellingPartner\Model\VendorOrders\OrderItemStatusAcknowledgementStatus::class,
+        'receiving_status' => \Plenty\AmazonPHP\SellingPartner\Model\VendorOrders\OrderItemStatusReceivingStatus::class,
     ];
 
     /**
@@ -215,7 +215,7 @@ class OrderItemStatus implements \ArrayAccess, \JsonSerializable, ModelInterface
      */
     public function __toString() : string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );

@@ -40,7 +40,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class PaymentExecutionDetailItem implements \ArrayAccess, \JsonSerializable, ModelInterface
+class PaymentExecutionDetailItem implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -57,7 +57,7 @@ class PaymentExecutionDetailItem implements \ArrayAccess, \JsonSerializable, Mod
      * @var string[]
      */
     protected static /** [COMPAT] array */ $openAPITypes = [
-        'payment' => '\Plenty\AmazonPHP\SellingPartner\Model\Orders\Money',
+        'payment' => \Plenty\AmazonPHP\SellingPartner\Model\Orders\Money::class,
         'payment_method' => 'string',
     ];
 
@@ -179,7 +179,7 @@ class PaymentExecutionDetailItem implements \ArrayAccess, \JsonSerializable, Mod
      */
     public function __toString() : string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );

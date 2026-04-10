@@ -40,7 +40,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class RentalTransactionEvent implements \ArrayAccess, \JsonSerializable, ModelInterface
+class RentalTransactionEvent implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -64,8 +64,8 @@ class RentalTransactionEvent implements \ArrayAccess, \JsonSerializable, ModelIn
         'rental_charge_list' => '\Plenty\AmazonPHP\SellingPartner\Model\Finances\ChargeComponent[]',
         'rental_fee_list' => '\Plenty\AmazonPHP\SellingPartner\Model\Finances\FeeComponent[]',
         'marketplace_name' => 'string',
-        'rental_initial_value' => '\Plenty\AmazonPHP\SellingPartner\Model\Finances\Currency',
-        'rental_reimbursement' => '\Plenty\AmazonPHP\SellingPartner\Model\Finances\Currency',
+        'rental_initial_value' => \Plenty\AmazonPHP\SellingPartner\Model\Finances\Currency::class,
+        'rental_reimbursement' => \Plenty\AmazonPHP\SellingPartner\Model\Finances\Currency::class,
         'rental_tax_withheld_list' => '\Plenty\AmazonPHP\SellingPartner\Model\Finances\TaxWithheldComponent[]',
     ];
 
@@ -227,7 +227,7 @@ class RentalTransactionEvent implements \ArrayAccess, \JsonSerializable, ModelIn
      */
     public function __toString() : string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );

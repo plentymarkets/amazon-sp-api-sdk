@@ -40,7 +40,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class GetShippingLabelListResponse implements \ArrayAccess, \JsonSerializable, ModelInterface
+class GetShippingLabelListResponse implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -57,8 +57,8 @@ class GetShippingLabelListResponse implements \ArrayAccess, \JsonSerializable, M
      * @var string[]
      */
     protected static /** [COMPAT] array */ $openAPITypes = [
-        'payload' => '\Plenty\AmazonPHP\SellingPartner\Model\VendorDirectFulfillmentShipping\ShippingLabelList',
-        'errors' => '\Plenty\AmazonPHP\SellingPartner\Model\VendorDirectFulfillmentShipping\ErrorList',
+        'payload' => \Plenty\AmazonPHP\SellingPartner\Model\VendorDirectFulfillmentShipping\ShippingLabelList::class,
+        'errors' => \Plenty\AmazonPHP\SellingPartner\Model\VendorDirectFulfillmentShipping\ErrorList::class,
     ];
 
     /**
@@ -179,7 +179,7 @@ class GetShippingLabelListResponse implements \ArrayAccess, \JsonSerializable, M
      */
     public function __toString() : string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );

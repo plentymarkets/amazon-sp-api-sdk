@@ -39,7 +39,7 @@ use \Plenty\AmazonPHP\SellingPartner\ModelInterface;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class ItemBrowseClassification implements ModelInterface, ArrayAccess, \JsonSerializable
+class ItemBrowseClassification implements ModelInterface, ArrayAccess, \JsonSerializable, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -58,7 +58,7 @@ class ItemBrowseClassification implements ModelInterface, ArrayAccess, \JsonSeri
     protected static array $openAPITypes = [
         'display_name' => 'string',
         'classification_id' => 'string',
-        'parent' => '\Plenty\AmazonPHP\SellingPartner\Model\CatalogItem\ItemBrowseClassification'
+        'parent' => \Plenty\AmazonPHP\SellingPartner\Model\CatalogItem\ItemBrowseClassification::class
     ];
 
     /**
@@ -363,7 +363,7 @@ class ItemBrowseClassification implements ModelInterface, ArrayAccess, \JsonSeri
      */
     public function __toString() : string
     {
-        return json_encode(
+        return (string) json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );

@@ -40,7 +40,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class BatchRequest implements \ArrayAccess, \JsonSerializable, ModelInterface
+class BatchRequest implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -58,7 +58,7 @@ class BatchRequest implements \ArrayAccess, \JsonSerializable, ModelInterface
      */
     protected static /** [COMPAT] array */ $openAPITypes = [
         'uri' => 'string',
-        'method' => '\Plenty\AmazonPHP\SellingPartner\Model\ProductPricing\HttpMethod',
+        'method' => \Plenty\AmazonPHP\SellingPartner\Model\ProductPricing\HttpMethod::class,
         'headers' => 'array<string,string>',
     ];
 
@@ -185,7 +185,7 @@ class BatchRequest implements \ArrayAccess, \JsonSerializable, ModelInterface
      */
     public function __toString() : string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );

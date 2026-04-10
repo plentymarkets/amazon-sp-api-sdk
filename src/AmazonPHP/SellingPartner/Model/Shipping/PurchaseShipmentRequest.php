@@ -40,7 +40,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class PurchaseShipmentRequest implements \ArrayAccess, \JsonSerializable, ModelInterface
+class PurchaseShipmentRequest implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -58,12 +58,12 @@ class PurchaseShipmentRequest implements \ArrayAccess, \JsonSerializable, ModelI
      */
     protected static /** [COMPAT] array */ $openAPITypes = [
         'client_reference_id' => 'string',
-        'ship_to' => '\Plenty\AmazonPHP\SellingPartner\Model\Shipping\Address',
-        'ship_from' => '\Plenty\AmazonPHP\SellingPartner\Model\Shipping\Address',
+        'ship_to' => \Plenty\AmazonPHP\SellingPartner\Model\Shipping\Address::class,
+        'ship_from' => \Plenty\AmazonPHP\SellingPartner\Model\Shipping\Address::class,
         'ship_date' => '\DateTime',
-        'service_type' => '\Plenty\AmazonPHP\SellingPartner\Model\Shipping\ServiceType',
+        'service_type' => \Plenty\AmazonPHP\SellingPartner\Model\Shipping\ServiceType::class,
         'containers' => '\Plenty\AmazonPHP\SellingPartner\Model\Shipping\Container[]',
-        'label_specification' => '\Plenty\AmazonPHP\SellingPartner\Model\Shipping\LabelSpecification',
+        'label_specification' => \Plenty\AmazonPHP\SellingPartner\Model\Shipping\LabelSpecification::class,
     ];
 
     /**
@@ -209,7 +209,7 @@ class PurchaseShipmentRequest implements \ArrayAccess, \JsonSerializable, ModelI
      */
     public function __toString() : string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );

@@ -40,7 +40,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class NetworkComminglingTransactionEvent implements \ArrayAccess, \JsonSerializable, ModelInterface
+class NetworkComminglingTransactionEvent implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -63,8 +63,8 @@ class NetworkComminglingTransactionEvent implements \ArrayAccess, \JsonSerializa
         'swap_reason' => 'string',
         'asin' => 'string',
         'marketplace_id' => 'string',
-        'tax_exclusive_amount' => '\Plenty\AmazonPHP\SellingPartner\Model\Finances\Currency',
-        'tax_amount' => '\Plenty\AmazonPHP\SellingPartner\Model\Finances\Currency',
+        'tax_exclusive_amount' => \Plenty\AmazonPHP\SellingPartner\Model\Finances\Currency::class,
+        'tax_amount' => \Plenty\AmazonPHP\SellingPartner\Model\Finances\Currency::class,
     ];
 
     /**
@@ -215,7 +215,7 @@ class NetworkComminglingTransactionEvent implements \ArrayAccess, \JsonSerializa
      */
     public function __toString() : string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );

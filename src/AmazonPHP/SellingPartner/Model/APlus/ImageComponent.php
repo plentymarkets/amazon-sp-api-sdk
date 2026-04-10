@@ -40,7 +40,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class ImageComponent implements \ArrayAccess, \JsonSerializable, ModelInterface
+class ImageComponent implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -58,7 +58,7 @@ class ImageComponent implements \ArrayAccess, \JsonSerializable, ModelInterface
      */
     protected static /** [COMPAT] array */ $openAPITypes = [
         'upload_destination_id' => 'string',
-        'image_crop_specification' => '\Plenty\AmazonPHP\SellingPartner\Model\APlus\ImageCropSpecification',
+        'image_crop_specification' => \Plenty\AmazonPHP\SellingPartner\Model\APlus\ImageCropSpecification::class,
         'alt_text' => 'string',
     ];
 
@@ -185,7 +185,7 @@ class ImageComponent implements \ArrayAccess, \JsonSerializable, ModelInterface
      */
     public function __toString() : string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );

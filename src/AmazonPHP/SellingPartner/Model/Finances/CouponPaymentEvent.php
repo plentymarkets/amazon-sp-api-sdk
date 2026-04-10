@@ -40,7 +40,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class CouponPaymentEvent implements \ArrayAccess, \JsonSerializable, ModelInterface
+class CouponPaymentEvent implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -62,9 +62,9 @@ class CouponPaymentEvent implements \ArrayAccess, \JsonSerializable, ModelInterf
         'seller_coupon_description' => 'string',
         'clip_or_redemption_count' => 'int',
         'payment_event_id' => 'string',
-        'fee_component' => '\Plenty\AmazonPHP\SellingPartner\Model\Finances\FeeComponent',
-        'charge_component' => '\Plenty\AmazonPHP\SellingPartner\Model\Finances\ChargeComponent',
-        'total_amount' => '\Plenty\AmazonPHP\SellingPartner\Model\Finances\Currency',
+        'fee_component' => \Plenty\AmazonPHP\SellingPartner\Model\Finances\FeeComponent::class,
+        'charge_component' => \Plenty\AmazonPHP\SellingPartner\Model\Finances\ChargeComponent::class,
+        'total_amount' => \Plenty\AmazonPHP\SellingPartner\Model\Finances\Currency::class,
     ];
 
     /**
@@ -215,7 +215,7 @@ class CouponPaymentEvent implements \ArrayAccess, \JsonSerializable, ModelInterf
      */
     public function __toString() : string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );

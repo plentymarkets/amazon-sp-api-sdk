@@ -40,7 +40,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class ItemDelivery implements \ArrayAccess, \JsonSerializable, ModelInterface
+class ItemDelivery implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -58,7 +58,7 @@ class ItemDelivery implements \ArrayAccess, \JsonSerializable, ModelInterface
      */
     protected static /** [COMPAT] array */ $openAPITypes = [
         'estimated_delivery_date' => '\DateTime',
-        'item_delivery_promise' => '\Plenty\AmazonPHP\SellingPartner\Model\Services\ItemDeliveryPromise',
+        'item_delivery_promise' => \Plenty\AmazonPHP\SellingPartner\Model\Services\ItemDeliveryPromise::class,
     ];
 
     /**
@@ -179,7 +179,7 @@ class ItemDelivery implements \ArrayAccess, \JsonSerializable, ModelInterface
      */
     public function __toString() : string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );

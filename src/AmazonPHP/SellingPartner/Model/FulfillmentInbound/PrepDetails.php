@@ -40,7 +40,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class PrepDetails implements \ArrayAccess, \JsonSerializable, ModelInterface
+class PrepDetails implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -57,8 +57,8 @@ class PrepDetails implements \ArrayAccess, \JsonSerializable, ModelInterface
      * @var string[]
      */
     protected static /** [COMPAT] array */ $openAPITypes = [
-        'prep_instruction' => '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound\PrepInstruction',
-        'prep_owner' => '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound\PrepOwner',
+        'prep_instruction' => \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound\PrepInstruction::class,
+        'prep_owner' => \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound\PrepOwner::class,
     ];
 
     /**
@@ -179,7 +179,7 @@ class PrepDetails implements \ArrayAccess, \JsonSerializable, ModelInterface
      */
     public function __toString() : string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );

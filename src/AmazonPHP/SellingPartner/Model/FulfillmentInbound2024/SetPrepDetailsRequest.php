@@ -24,7 +24,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class SetPrepDetailsRequest implements ModelInterface, ArrayAccess, \JsonSerializable
+class SetPrepDetailsRequest implements ModelInterface, ArrayAccess, \JsonSerializable, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -335,7 +335,7 @@ class SetPrepDetailsRequest implements ModelInterface, ArrayAccess, \JsonSeriali
      */
     public function __toString() : string
     {
-        return json_encode(
+        return (string) json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );

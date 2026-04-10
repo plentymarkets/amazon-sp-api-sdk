@@ -40,7 +40,7 @@ class Dimensions implements \ArrayAccess, \JsonSerializable, \Stringable, ModelI
     protected static array $openAPITypes = [
         'height' => 'float',
         'length' => 'float',
-        'unit_of_measurement' => '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound2024\UnitOfMeasurement',
+        'unit_of_measurement' => \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound2024\UnitOfMeasurement::class,
         'width' => 'float',
     ];
 

@@ -40,7 +40,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class InboundShipmentPlanRequestItem implements \ArrayAccess, \JsonSerializable, ModelInterface
+class InboundShipmentPlanRequestItem implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -59,7 +59,7 @@ class InboundShipmentPlanRequestItem implements \ArrayAccess, \JsonSerializable,
     protected static /** [COMPAT] array */ $openAPITypes = [
         'seller_sku' => 'string',
         'asin' => 'string',
-        'condition' => '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound\Condition',
+        'condition' => \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound\Condition::class,
         'quantity' => 'int',
         'quantity_in_case' => 'int',
         'prep_details_list' => '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound\PrepDetails[]',
@@ -203,7 +203,7 @@ class InboundShipmentPlanRequestItem implements \ArrayAccess, \JsonSerializable,
      */
     public function __toString() : string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );

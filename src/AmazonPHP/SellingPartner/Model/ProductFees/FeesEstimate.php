@@ -40,7 +40,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class FeesEstimate implements \ArrayAccess, \JsonSerializable, ModelInterface
+class FeesEstimate implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -58,7 +58,7 @@ class FeesEstimate implements \ArrayAccess, \JsonSerializable, ModelInterface
      */
     protected static /** [COMPAT] array */ $openAPITypes = [
         'time_of_fees_estimation' => '\DateTime',
-        'total_fees_estimate' => '\Plenty\AmazonPHP\SellingPartner\Model\ProductFees\MoneyType',
+        'total_fees_estimate' => \Plenty\AmazonPHP\SellingPartner\Model\ProductFees\MoneyType::class,
         'fee_detail_list' => '\Plenty\AmazonPHP\SellingPartner\Model\ProductFees\FeeDetail[]',
     ];
 
@@ -185,7 +185,7 @@ class FeesEstimate implements \ArrayAccess, \JsonSerializable, ModelInterface
      */
     public function __toString() : string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );

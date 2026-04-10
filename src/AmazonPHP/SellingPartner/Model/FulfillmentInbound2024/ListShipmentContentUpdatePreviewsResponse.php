@@ -39,7 +39,7 @@ class ListShipmentContentUpdatePreviewsResponse implements \ArrayAccess, \JsonSe
      */
     protected static array $openAPITypes = [
         'content_update_previews' => '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound2024\ContentUpdatePreview[]',
-        'pagination' => '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound2024\Pagination',
+        'pagination' => \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound2024\Pagination::class,
     ];
 
     /**

@@ -40,7 +40,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class FeeDetail implements \ArrayAccess, \JsonSerializable, ModelInterface
+class FeeDetail implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -58,10 +58,10 @@ class FeeDetail implements \ArrayAccess, \JsonSerializable, ModelInterface
      */
     protected static /** [COMPAT] array */ $openAPITypes = [
         'fee_type' => 'string',
-        'fee_amount' => '\Plenty\AmazonPHP\SellingPartner\Model\ProductFees\MoneyType',
-        'fee_promotion' => '\Plenty\AmazonPHP\SellingPartner\Model\ProductFees\MoneyType',
-        'tax_amount' => '\Plenty\AmazonPHP\SellingPartner\Model\ProductFees\MoneyType',
-        'final_fee' => '\Plenty\AmazonPHP\SellingPartner\Model\ProductFees\MoneyType',
+        'fee_amount' => \Plenty\AmazonPHP\SellingPartner\Model\ProductFees\MoneyType::class,
+        'fee_promotion' => \Plenty\AmazonPHP\SellingPartner\Model\ProductFees\MoneyType::class,
+        'tax_amount' => \Plenty\AmazonPHP\SellingPartner\Model\ProductFees\MoneyType::class,
+        'final_fee' => \Plenty\AmazonPHP\SellingPartner\Model\ProductFees\MoneyType::class,
         'included_fee_detail_list' => '\Plenty\AmazonPHP\SellingPartner\Model\ProductFees\IncludedFeeDetail[]',
     ];
 
@@ -203,7 +203,7 @@ class FeeDetail implements \ArrayAccess, \JsonSerializable, ModelInterface
      */
     public function __toString() : string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );

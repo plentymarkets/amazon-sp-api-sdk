@@ -40,7 +40,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class AdditionalInputs implements \ArrayAccess, \JsonSerializable, ModelInterface
+class AdditionalInputs implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -58,7 +58,7 @@ class AdditionalInputs implements \ArrayAccess, \JsonSerializable, ModelInterfac
      */
     protected static /** [COMPAT] array */ $openAPITypes = [
         'additional_input_field_name' => 'string',
-        'seller_input_definition' => '\Plenty\AmazonPHP\SellingPartner\Model\MerchantFulfillment\SellerInputDefinition',
+        'seller_input_definition' => \Plenty\AmazonPHP\SellingPartner\Model\MerchantFulfillment\SellerInputDefinition::class,
     ];
 
     /**
@@ -179,7 +179,7 @@ class AdditionalInputs implements \ArrayAccess, \JsonSerializable, ModelInterfac
      */
     public function __toString() : string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );

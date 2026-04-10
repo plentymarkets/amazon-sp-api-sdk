@@ -40,7 +40,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class DebtRecoveryEvent implements \ArrayAccess, \JsonSerializable, ModelInterface
+class DebtRecoveryEvent implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -58,8 +58,8 @@ class DebtRecoveryEvent implements \ArrayAccess, \JsonSerializable, ModelInterfa
      */
     protected static /** [COMPAT] array */ $openAPITypes = [
         'debt_recovery_type' => 'string',
-        'recovery_amount' => '\Plenty\AmazonPHP\SellingPartner\Model\Finances\Currency',
-        'over_payment_credit' => '\Plenty\AmazonPHP\SellingPartner\Model\Finances\Currency',
+        'recovery_amount' => \Plenty\AmazonPHP\SellingPartner\Model\Finances\Currency::class,
+        'over_payment_credit' => \Plenty\AmazonPHP\SellingPartner\Model\Finances\Currency::class,
         'debt_recovery_item_list' => '\Plenty\AmazonPHP\SellingPartner\Model\Finances\DebtRecoveryItem[]',
         'charge_instrument_list' => '\Plenty\AmazonPHP\SellingPartner\Model\Finances\ChargeInstrument[]',
     ];
@@ -197,7 +197,7 @@ class DebtRecoveryEvent implements \ArrayAccess, \JsonSerializable, ModelInterfa
      */
     public function __toString() : string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );

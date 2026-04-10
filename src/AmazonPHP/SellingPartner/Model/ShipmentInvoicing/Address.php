@@ -40,7 +40,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class Address implements \ArrayAccess, \JsonSerializable, ModelInterface
+class Address implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -68,7 +68,7 @@ class Address implements \ArrayAccess, \JsonSerializable, ModelInterface
         'postal_code' => 'string',
         'country_code' => 'string',
         'phone' => 'string',
-        'address_type' => '\Plenty\AmazonPHP\SellingPartner\Model\ShipmentInvoicing\AddressTypeEnum',
+        'address_type' => \Plenty\AmazonPHP\SellingPartner\Model\ShipmentInvoicing\AddressTypeEnum::class,
     ];
 
     /**
@@ -239,7 +239,7 @@ class Address implements \ArrayAccess, \JsonSerializable, ModelInterface
      */
     public function __toString() : string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );

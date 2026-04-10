@@ -40,7 +40,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class OrderAcknowledgement implements \ArrayAccess, \JsonSerializable, ModelInterface
+class OrderAcknowledgement implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -58,7 +58,7 @@ class OrderAcknowledgement implements \ArrayAccess, \JsonSerializable, ModelInte
      */
     protected static /** [COMPAT] array */ $openAPITypes = [
         'purchase_order_number' => 'string',
-        'selling_party' => '\Plenty\AmazonPHP\SellingPartner\Model\VendorOrders\PartyIdentification',
+        'selling_party' => \Plenty\AmazonPHP\SellingPartner\Model\VendorOrders\PartyIdentification::class,
         'acknowledgement_date' => '\DateTime',
         'items' => '\Plenty\AmazonPHP\SellingPartner\Model\VendorOrders\OrderAcknowledgementItem[]',
     ];
@@ -191,7 +191,7 @@ class OrderAcknowledgement implements \ArrayAccess, \JsonSerializable, ModelInte
      */
     public function __toString() : string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );

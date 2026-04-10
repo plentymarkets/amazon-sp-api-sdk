@@ -40,7 +40,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class PackageDimensions implements \ArrayAccess, \JsonSerializable, ModelInterface
+class PackageDimensions implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -60,8 +60,8 @@ class PackageDimensions implements \ArrayAccess, \JsonSerializable, ModelInterfa
         'length' => 'double',
         'width' => 'double',
         'height' => 'double',
-        'unit' => '\Plenty\AmazonPHP\SellingPartner\Model\MerchantFulfillment\UnitOfLength',
-        'predefined_package_dimensions' => '\Plenty\AmazonPHP\SellingPartner\Model\MerchantFulfillment\PredefinedPackageDimensions',
+        'unit' => \Plenty\AmazonPHP\SellingPartner\Model\MerchantFulfillment\UnitOfLength::class,
+        'predefined_package_dimensions' => \Plenty\AmazonPHP\SellingPartner\Model\MerchantFulfillment\PredefinedPackageDimensions::class,
     ];
 
     /**
@@ -197,7 +197,7 @@ class PackageDimensions implements \ArrayAccess, \JsonSerializable, ModelInterfa
      */
     public function __toString() : string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );

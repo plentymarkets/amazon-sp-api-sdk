@@ -40,7 +40,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class Poa implements \ArrayAccess, \JsonSerializable, ModelInterface
+class Poa implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -65,7 +65,7 @@ class Poa implements \ArrayAccess, \JsonSerializable, ModelInterface
      * @var string[]
      */
     protected static /** [COMPAT] array */ $openAPITypes = [
-        'appointment_time' => '\Plenty\AmazonPHP\SellingPartner\Model\Services\AppointmentTime',
+        'appointment_time' => \Plenty\AmazonPHP\SellingPartner\Model\Services\AppointmentTime::class,
         'technicians' => '\Plenty\AmazonPHP\SellingPartner\Model\Services\Technician[]',
         'uploading_technician' => 'string',
         'upload_time' => '\DateTime',
@@ -205,7 +205,7 @@ class Poa implements \ArrayAccess, \JsonSerializable, ModelInterface
      */
     public function __toString() : string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );

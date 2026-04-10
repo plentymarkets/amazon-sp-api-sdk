@@ -40,7 +40,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class ShipmentDetails implements \ArrayAccess, \JsonSerializable, ModelInterface
+class ShipmentDetails implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -62,7 +62,7 @@ class ShipmentDetails implements \ArrayAccess, \JsonSerializable, ModelInterface
         'is_pslip_required' => 'bool',
         'is_gift' => 'bool',
         'ship_method' => 'string',
-        'shipment_dates' => '\Plenty\AmazonPHP\SellingPartner\Model\VendorDirectFulfillmentOrders\ShipmentDates',
+        'shipment_dates' => \Plenty\AmazonPHP\SellingPartner\Model\VendorDirectFulfillmentOrders\ShipmentDates::class,
         'message_to_customer' => 'string',
     ];
 
@@ -209,7 +209,7 @@ class ShipmentDetails implements \ArrayAccess, \JsonSerializable, ModelInterface
      */
     public function __toString() : string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );

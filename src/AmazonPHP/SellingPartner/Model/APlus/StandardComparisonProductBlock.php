@@ -40,7 +40,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class StandardComparisonProductBlock implements \ArrayAccess, \JsonSerializable, ModelInterface
+class StandardComparisonProductBlock implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -58,7 +58,7 @@ class StandardComparisonProductBlock implements \ArrayAccess, \JsonSerializable,
      */
     protected static /** [COMPAT] array */ $openAPITypes = [
         'position' => 'int',
-        'image' => '\Plenty\AmazonPHP\SellingPartner\Model\APlus\ImageComponent',
+        'image' => \Plenty\AmazonPHP\SellingPartner\Model\APlus\ImageComponent::class,
         'title' => 'string',
         'asin' => 'string',
         'highlight' => 'bool',
@@ -203,7 +203,7 @@ class StandardComparisonProductBlock implements \ArrayAccess, \JsonSerializable,
      */
     public function __toString() : string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );

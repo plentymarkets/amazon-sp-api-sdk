@@ -40,7 +40,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class RetrochargeEvent implements \ArrayAccess, \JsonSerializable, ModelInterface
+class RetrochargeEvent implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -60,8 +60,8 @@ class RetrochargeEvent implements \ArrayAccess, \JsonSerializable, ModelInterfac
         'retrocharge_event_type' => 'string',
         'amazon_order_id' => 'string',
         'posted_date' => '\DateTime',
-        'base_tax' => '\Plenty\AmazonPHP\SellingPartner\Model\Finances\Currency',
-        'shipping_tax' => '\Plenty\AmazonPHP\SellingPartner\Model\Finances\Currency',
+        'base_tax' => \Plenty\AmazonPHP\SellingPartner\Model\Finances\Currency::class,
+        'shipping_tax' => \Plenty\AmazonPHP\SellingPartner\Model\Finances\Currency::class,
         'marketplace_name' => 'string',
         'retrocharge_tax_withheld_list' => '\Plenty\AmazonPHP\SellingPartner\Model\Finances\TaxWithheldComponent[]',
     ];
@@ -209,7 +209,7 @@ class RetrochargeEvent implements \ArrayAccess, \JsonSerializable, ModelInterfac
      */
     public function __toString() : string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );

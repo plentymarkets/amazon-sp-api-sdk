@@ -40,7 +40,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class FileContents implements \ArrayAccess, \JsonSerializable, ModelInterface
+class FileContents implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -58,7 +58,7 @@ class FileContents implements \ArrayAccess, \JsonSerializable, ModelInterface
      */
     protected static /** [COMPAT] array */ $openAPITypes = [
         'contents' => 'string',
-        'file_type' => '\Plenty\AmazonPHP\SellingPartner\Model\MerchantFulfillment\FileType',
+        'file_type' => \Plenty\AmazonPHP\SellingPartner\Model\MerchantFulfillment\FileType::class,
         'checksum' => 'string',
     ];
 
@@ -185,7 +185,7 @@ class FileContents implements \ArrayAccess, \JsonSerializable, ModelInterface
      */
     public function __toString() : string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );

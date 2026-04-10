@@ -40,7 +40,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class StandardThreeImageTextModule implements \ArrayAccess, \JsonSerializable, ModelInterface
+class StandardThreeImageTextModule implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -57,10 +57,10 @@ class StandardThreeImageTextModule implements \ArrayAccess, \JsonSerializable, M
      * @var string[]
      */
     protected static /** [COMPAT] array */ $openAPITypes = [
-        'headline' => '\Plenty\AmazonPHP\SellingPartner\Model\APlus\TextComponent',
-        'block1' => '\Plenty\AmazonPHP\SellingPartner\Model\APlus\StandardImageTextBlock',
-        'block2' => '\Plenty\AmazonPHP\SellingPartner\Model\APlus\StandardImageTextBlock',
-        'block3' => '\Plenty\AmazonPHP\SellingPartner\Model\APlus\StandardImageTextBlock',
+        'headline' => \Plenty\AmazonPHP\SellingPartner\Model\APlus\TextComponent::class,
+        'block1' => \Plenty\AmazonPHP\SellingPartner\Model\APlus\StandardImageTextBlock::class,
+        'block2' => \Plenty\AmazonPHP\SellingPartner\Model\APlus\StandardImageTextBlock::class,
+        'block3' => \Plenty\AmazonPHP\SellingPartner\Model\APlus\StandardImageTextBlock::class,
     ];
 
     /**
@@ -191,7 +191,7 @@ class StandardThreeImageTextModule implements \ArrayAccess, \JsonSerializable, M
      */
     public function __toString() : string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );

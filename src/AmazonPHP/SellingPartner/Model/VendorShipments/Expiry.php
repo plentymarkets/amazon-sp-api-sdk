@@ -40,7 +40,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class Expiry implements \ArrayAccess, \JsonSerializable, ModelInterface
+class Expiry implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -59,7 +59,7 @@ class Expiry implements \ArrayAccess, \JsonSerializable, ModelInterface
     protected static /** [COMPAT] array */ $openAPITypes = [
         'manufacturer_date' => '\DateTime',
         'expiry_date' => '\DateTime',
-        'expiry_after_duration' => '\Plenty\AmazonPHP\SellingPartner\Model\VendorShipments\Duration',
+        'expiry_after_duration' => \Plenty\AmazonPHP\SellingPartner\Model\VendorShipments\Duration::class,
     ];
 
     /**
@@ -185,7 +185,7 @@ class Expiry implements \ArrayAccess, \JsonSerializable, ModelInterface
      */
     public function __toString() : string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );

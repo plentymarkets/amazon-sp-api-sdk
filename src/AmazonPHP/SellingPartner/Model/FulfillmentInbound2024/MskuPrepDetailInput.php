@@ -24,7 +24,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class MskuPrepDetailInput implements ModelInterface, ArrayAccess, \JsonSerializable
+class MskuPrepDetailInput implements ModelInterface, ArrayAccess, \JsonSerializable, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -341,7 +341,7 @@ class MskuPrepDetailInput implements ModelInterface, ArrayAccess, \JsonSerializa
      */
     public function __toString() : string
     {
-        return json_encode(
+        return (string) json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );

@@ -40,7 +40,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class Shipment implements \ArrayAccess, \JsonSerializable, ModelInterface
+class Shipment implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -59,10 +59,10 @@ class Shipment implements \ArrayAccess, \JsonSerializable, ModelInterface
     protected static /** [COMPAT] array */ $openAPITypes = [
         'shipment_id' => 'string',
         'client_reference_id' => 'string',
-        'ship_from' => '\Plenty\AmazonPHP\SellingPartner\Model\Shipping\Address',
-        'ship_to' => '\Plenty\AmazonPHP\SellingPartner\Model\Shipping\Address',
-        'accepted_rate' => '\Plenty\AmazonPHP\SellingPartner\Model\Shipping\AcceptedRate',
-        'shipper' => '\Plenty\AmazonPHP\SellingPartner\Model\Shipping\Party',
+        'ship_from' => \Plenty\AmazonPHP\SellingPartner\Model\Shipping\Address::class,
+        'ship_to' => \Plenty\AmazonPHP\SellingPartner\Model\Shipping\Address::class,
+        'accepted_rate' => \Plenty\AmazonPHP\SellingPartner\Model\Shipping\AcceptedRate::class,
+        'shipper' => \Plenty\AmazonPHP\SellingPartner\Model\Shipping\Party::class,
         'containers' => '\Plenty\AmazonPHP\SellingPartner\Model\Shipping\Container[]',
     ];
 
@@ -209,7 +209,7 @@ class Shipment implements \ArrayAccess, \JsonSerializable, ModelInterface
      */
     public function __toString() : string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );

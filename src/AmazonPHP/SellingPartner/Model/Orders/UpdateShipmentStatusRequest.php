@@ -40,7 +40,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class UpdateShipmentStatusRequest implements \ArrayAccess, \JsonSerializable, ModelInterface
+class UpdateShipmentStatusRequest implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -58,7 +58,7 @@ class UpdateShipmentStatusRequest implements \ArrayAccess, \JsonSerializable, Mo
      */
     protected static /** [COMPAT] array */ $openAPITypes = [
         'marketplace_id' => 'string',
-        'shipment_status' => '\Plenty\AmazonPHP\SellingPartner\Model\Orders\ShipmentStatus',
+        'shipment_status' => \Plenty\AmazonPHP\SellingPartner\Model\Orders\ShipmentStatus::class,
         'order_items' => 'object[]',
     ];
 
@@ -185,7 +185,7 @@ class UpdateShipmentStatusRequest implements \ArrayAccess, \JsonSerializable, Mo
      */
     public function __toString() : string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );

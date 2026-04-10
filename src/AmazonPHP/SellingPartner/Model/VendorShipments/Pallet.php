@@ -40,7 +40,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class Pallet implements \ArrayAccess, \JsonSerializable, ModelInterface
+class Pallet implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -60,9 +60,9 @@ class Pallet implements \ArrayAccess, \JsonSerializable, ModelInterface
         'pallet_identifiers' => '\Plenty\AmazonPHP\SellingPartner\Model\VendorShipments\ContainerIdentification[]',
         'tier' => 'int',
         'block' => 'int',
-        'dimensions' => '\Plenty\AmazonPHP\SellingPartner\Model\VendorShipments\Dimensions',
-        'weight' => '\Plenty\AmazonPHP\SellingPartner\Model\VendorShipments\Weight',
-        'carton_reference_details' => '\Plenty\AmazonPHP\SellingPartner\Model\VendorShipments\CartonReferenceDetails',
+        'dimensions' => \Plenty\AmazonPHP\SellingPartner\Model\VendorShipments\Dimensions::class,
+        'weight' => \Plenty\AmazonPHP\SellingPartner\Model\VendorShipments\Weight::class,
+        'carton_reference_details' => \Plenty\AmazonPHP\SellingPartner\Model\VendorShipments\CartonReferenceDetails::class,
         'items' => '\Plenty\AmazonPHP\SellingPartner\Model\VendorShipments\ContainerItem[]',
     ];
 
@@ -209,7 +209,7 @@ class Pallet implements \ArrayAccess, \JsonSerializable, ModelInterface
      */
     public function __toString() : string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );

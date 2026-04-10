@@ -46,7 +46,7 @@ class InboundPlan implements \ArrayAccess, \JsonSerializable, \Stringable, Model
         'packing_options' => '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound2024\PackingOptionSummary[]',
         'placement_options' => '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound2024\PlacementOptionSummary[]',
         'shipments' => '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound2024\ShipmentSummary[]',
-        'source_address' => '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound2024\Address',
+        'source_address' => \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound2024\Address::class,
         'status' => 'string',
     ];
 

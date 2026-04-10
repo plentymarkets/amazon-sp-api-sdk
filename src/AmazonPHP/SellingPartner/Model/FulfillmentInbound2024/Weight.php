@@ -38,7 +38,7 @@ class Weight implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInter
      * @var string[]
      */
     protected static array $openAPITypes = [
-        'unit' => '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound2024\UnitOfWeight',
+        'unit' => \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound2024\UnitOfWeight::class,
         'value' => 'float',
     ];
 

@@ -40,7 +40,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class OrderBuyerInfo implements \ArrayAccess, \JsonSerializable, ModelInterface
+class OrderBuyerInfo implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -61,7 +61,7 @@ class OrderBuyerInfo implements \ArrayAccess, \JsonSerializable, ModelInterface
         'buyer_email' => 'string',
         'buyer_name' => 'string',
         'buyer_county' => 'string',
-        'buyer_tax_info' => '\Plenty\AmazonPHP\SellingPartner\Model\Orders\BuyerTaxInfo',
+        'buyer_tax_info' => \Plenty\AmazonPHP\SellingPartner\Model\Orders\BuyerTaxInfo::class,
         'purchase_order_number' => 'string',
     ];
 
@@ -203,7 +203,7 @@ class OrderBuyerInfo implements \ArrayAccess, \JsonSerializable, ModelInterface
      */
     public function __toString() : string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );

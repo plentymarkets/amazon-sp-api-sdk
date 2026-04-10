@@ -40,7 +40,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class FulfillmentOrder implements \ArrayAccess, \JsonSerializable, ModelInterface
+class FulfillmentOrder implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -62,14 +62,14 @@ class FulfillmentOrder implements \ArrayAccess, \JsonSerializable, ModelInterfac
         'displayable_order_id' => 'string',
         'displayable_order_date' => '\DateTime',
         'displayable_order_comment' => 'string',
-        'shipping_speed_category' => '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentOutbound\ShippingSpeedCategory',
-        'delivery_window' => '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentOutbound\DeliveryWindow',
-        'destination_address' => '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentOutbound\Address',
-        'fulfillment_action' => '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentOutbound\FulfillmentAction',
-        'fulfillment_policy' => '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentOutbound\FulfillmentPolicy',
-        'cod_settings' => '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentOutbound\CODSettings',
+        'shipping_speed_category' => \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentOutbound\ShippingSpeedCategory::class,
+        'delivery_window' => \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentOutbound\DeliveryWindow::class,
+        'destination_address' => \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentOutbound\Address::class,
+        'fulfillment_action' => \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentOutbound\FulfillmentAction::class,
+        'fulfillment_policy' => \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentOutbound\FulfillmentPolicy::class,
+        'cod_settings' => \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentOutbound\CODSettings::class,
         'received_date' => '\DateTime',
-        'fulfillment_order_status' => '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentOutbound\FulfillmentOrderStatus',
+        'fulfillment_order_status' => \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentOutbound\FulfillmentOrderStatus::class,
         'status_updated_date' => '\DateTime',
         'notification_emails' => 'string[]',
         'feature_constraints' => '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentOutbound\FeatureSettings[]',
@@ -263,7 +263,7 @@ class FulfillmentOrder implements \ArrayAccess, \JsonSerializable, ModelInterfac
      */
     public function __toString() : string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );

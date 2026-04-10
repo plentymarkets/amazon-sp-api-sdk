@@ -40,7 +40,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class TransportResult implements \ArrayAccess, \JsonSerializable, ModelInterface
+class TransportResult implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -57,7 +57,7 @@ class TransportResult implements \ArrayAccess, \JsonSerializable, ModelInterface
      * @var string[]
      */
     protected static /** [COMPAT] array */ $openAPITypes = [
-        'transport_status' => '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound\TransportStatus',
+        'transport_status' => \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound\TransportStatus::class,
         'error_code' => 'string',
         'error_description' => 'string',
     ];
@@ -185,7 +185,7 @@ class TransportResult implements \ArrayAccess, \JsonSerializable, ModelInterface
      */
     public function __toString() : string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );

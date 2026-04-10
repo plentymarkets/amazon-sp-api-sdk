@@ -40,7 +40,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class CustomerInvoiceList implements \ArrayAccess, \JsonSerializable, ModelInterface
+class CustomerInvoiceList implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -57,7 +57,7 @@ class CustomerInvoiceList implements \ArrayAccess, \JsonSerializable, ModelInter
      * @var string[]
      */
     protected static /** [COMPAT] array */ $openAPITypes = [
-        'pagination' => '\Plenty\AmazonPHP\SellingPartner\Model\VendorDirectFulfillmentShipping\Pagination',
+        'pagination' => \Plenty\AmazonPHP\SellingPartner\Model\VendorDirectFulfillmentShipping\Pagination::class,
         'customer_invoices' => '\Plenty\AmazonPHP\SellingPartner\Model\VendorDirectFulfillmentShipping\CustomerInvoice[]',
     ];
 
@@ -179,7 +179,7 @@ class CustomerInvoiceList implements \ArrayAccess, \JsonSerializable, ModelInter
      */
     public function __toString() : string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );

@@ -40,7 +40,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class RegulatedOrderVerificationStatus implements \ArrayAccess, \JsonSerializable, ModelInterface
+class RegulatedOrderVerificationStatus implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -57,10 +57,10 @@ class RegulatedOrderVerificationStatus implements \ArrayAccess, \JsonSerializabl
      * @var string[]
      */
     protected static /** [COMPAT] array */ $openAPITypes = [
-        'status' => '\Plenty\AmazonPHP\SellingPartner\Model\Orders\VerificationStatus',
+        'status' => \Plenty\AmazonPHP\SellingPartner\Model\Orders\VerificationStatus::class,
         'requires_merchant_action' => 'bool',
         'valid_rejection_reasons' => '\Plenty\AmazonPHP\SellingPartner\Model\Orders\RejectionReason[]',
-        'rejection_reason' => '\Plenty\AmazonPHP\SellingPartner\Model\Orders\RejectionReason',
+        'rejection_reason' => \Plenty\AmazonPHP\SellingPartner\Model\Orders\RejectionReason::class,
         'review_date' => 'string',
         'external_reviewer_id' => 'string',
     ];
@@ -203,7 +203,7 @@ class RegulatedOrderVerificationStatus implements \ArrayAccess, \JsonSerializabl
      */
     public function __toString() : string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );

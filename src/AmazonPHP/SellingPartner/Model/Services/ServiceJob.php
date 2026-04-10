@@ -40,7 +40,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class ServiceJob implements \ArrayAccess, \JsonSerializable, ModelInterface
+class ServiceJob implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -74,16 +74,16 @@ class ServiceJob implements \ArrayAccess, \JsonSerializable, ModelInterface
         'create_time' => '\DateTime',
         'service_job_id' => 'string',
         'service_job_status' => 'string',
-        'scope_of_work' => '\Plenty\AmazonPHP\SellingPartner\Model\Services\ScopeOfWork',
-        'seller' => '\Plenty\AmazonPHP\SellingPartner\Model\Services\Seller',
-        'service_job_provider' => '\Plenty\AmazonPHP\SellingPartner\Model\Services\ServiceJobProvider',
+        'scope_of_work' => \Plenty\AmazonPHP\SellingPartner\Model\Services\ScopeOfWork::class,
+        'seller' => \Plenty\AmazonPHP\SellingPartner\Model\Services\Seller::class,
+        'service_job_provider' => \Plenty\AmazonPHP\SellingPartner\Model\Services\ServiceJobProvider::class,
         'preferred_appointment_times' => '\Plenty\AmazonPHP\SellingPartner\Model\Services\AppointmentTime[]',
         'appointments' => '\Plenty\AmazonPHP\SellingPartner\Model\Services\Appointment[]',
         'service_order_id' => 'string',
         'marketplace_id' => 'string',
-        'buyer' => '\Plenty\AmazonPHP\SellingPartner\Model\Services\Buyer',
+        'buyer' => \Plenty\AmazonPHP\SellingPartner\Model\Services\Buyer::class,
         'associated_items' => '\Plenty\AmazonPHP\SellingPartner\Model\Services\AssociatedItem[]',
-        'service_location' => '\Plenty\AmazonPHP\SellingPartner\Model\Services\ServiceLocation',
+        'service_location' => \Plenty\AmazonPHP\SellingPartner\Model\Services\ServiceLocation::class,
     ];
 
     /**
@@ -259,7 +259,7 @@ class ServiceJob implements \ArrayAccess, \JsonSerializable, ModelInterface
      */
     public function __toString() : string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );

@@ -40,7 +40,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class StandardCompanyLogoModule implements \ArrayAccess, \JsonSerializable, ModelInterface
+class StandardCompanyLogoModule implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -57,7 +57,7 @@ class StandardCompanyLogoModule implements \ArrayAccess, \JsonSerializable, Mode
      * @var string[]
      */
     protected static /** [COMPAT] array */ $openAPITypes = [
-        'company_logo' => '\Plenty\AmazonPHP\SellingPartner\Model\APlus\ImageComponent',
+        'company_logo' => \Plenty\AmazonPHP\SellingPartner\Model\APlus\ImageComponent::class,
     ];
 
     /**
@@ -173,7 +173,7 @@ class StandardCompanyLogoModule implements \ArrayAccess, \JsonSerializable, Mode
      */
     public function __toString() : string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );

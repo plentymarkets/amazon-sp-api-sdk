@@ -40,7 +40,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class ReturnItem implements \ArrayAccess, \JsonSerializable, ModelInterface
+class ReturnItem implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -63,10 +63,10 @@ class ReturnItem implements \ArrayAccess, \JsonSerializable, ModelInterface
         'seller_return_reason_code' => 'string',
         'return_comment' => 'string',
         'amazon_return_reason_code' => 'string',
-        'status' => '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentOutbound\FulfillmentReturnItemStatus',
+        'status' => \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentOutbound\FulfillmentReturnItemStatus::class,
         'status_changed_date' => '\DateTime',
         'return_authorization_id' => 'string',
-        'return_received_condition' => '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentOutbound\ReturnItemDisposition',
+        'return_received_condition' => \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentOutbound\ReturnItemDisposition::class,
         'fulfillment_center_id' => 'string',
     ];
 
@@ -233,7 +233,7 @@ class ReturnItem implements \ArrayAccess, \JsonSerializable, ModelInterface
      */
     public function __toString() : string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );

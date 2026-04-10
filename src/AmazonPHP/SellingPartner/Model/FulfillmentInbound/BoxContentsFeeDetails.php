@@ -40,7 +40,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class BoxContentsFeeDetails implements \ArrayAccess, \JsonSerializable, ModelInterface
+class BoxContentsFeeDetails implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -58,8 +58,8 @@ class BoxContentsFeeDetails implements \ArrayAccess, \JsonSerializable, ModelInt
      */
     protected static /** [COMPAT] array */ $openAPITypes = [
         'total_units' => 'int',
-        'fee_per_unit' => '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound\Amount',
-        'total_fee' => '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound\Amount',
+        'fee_per_unit' => \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound\Amount::class,
+        'total_fee' => \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound\Amount::class,
     ];
 
     /**
@@ -185,7 +185,7 @@ class BoxContentsFeeDetails implements \ArrayAccess, \JsonSerializable, ModelInt
      */
     public function __toString() : string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );

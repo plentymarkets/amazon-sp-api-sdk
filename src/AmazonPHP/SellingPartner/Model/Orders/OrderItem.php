@@ -40,7 +40,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class OrderItem implements \ArrayAccess, \JsonSerializable, ModelInterface
+class OrderItem implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -71,19 +71,19 @@ class OrderItem implements \ArrayAccess, \JsonSerializable, ModelInterface
         'title' => 'string',
         'quantity_ordered' => 'int',
         'quantity_shipped' => 'int',
-        'product_info' => '\Plenty\AmazonPHP\SellingPartner\Model\Orders\ProductInfoDetail',
-        'points_granted' => '\Plenty\AmazonPHP\SellingPartner\Model\Orders\PointsGrantedDetail',
-        'item_price' => '\Plenty\AmazonPHP\SellingPartner\Model\Orders\Money',
-        'shipping_price' => '\Plenty\AmazonPHP\SellingPartner\Model\Orders\Money',
-        'item_tax' => '\Plenty\AmazonPHP\SellingPartner\Model\Orders\Money',
-        'shipping_tax' => '\Plenty\AmazonPHP\SellingPartner\Model\Orders\Money',
-        'shipping_discount' => '\Plenty\AmazonPHP\SellingPartner\Model\Orders\Money',
-        'shipping_discount_tax' => '\Plenty\AmazonPHP\SellingPartner\Model\Orders\Money',
-        'promotion_discount' => '\Plenty\AmazonPHP\SellingPartner\Model\Orders\Money',
-        'promotion_discount_tax' => '\Plenty\AmazonPHP\SellingPartner\Model\Orders\Money',
+        'product_info' => \Plenty\AmazonPHP\SellingPartner\Model\Orders\ProductInfoDetail::class,
+        'points_granted' => \Plenty\AmazonPHP\SellingPartner\Model\Orders\PointsGrantedDetail::class,
+        'item_price' => \Plenty\AmazonPHP\SellingPartner\Model\Orders\Money::class,
+        'shipping_price' => \Plenty\AmazonPHP\SellingPartner\Model\Orders\Money::class,
+        'item_tax' => \Plenty\AmazonPHP\SellingPartner\Model\Orders\Money::class,
+        'shipping_tax' => \Plenty\AmazonPHP\SellingPartner\Model\Orders\Money::class,
+        'shipping_discount' => \Plenty\AmazonPHP\SellingPartner\Model\Orders\Money::class,
+        'shipping_discount_tax' => \Plenty\AmazonPHP\SellingPartner\Model\Orders\Money::class,
+        'promotion_discount' => \Plenty\AmazonPHP\SellingPartner\Model\Orders\Money::class,
+        'promotion_discount_tax' => \Plenty\AmazonPHP\SellingPartner\Model\Orders\Money::class,
         'promotion_ids' => 'string[]',
-        'cod_fee' => '\Plenty\AmazonPHP\SellingPartner\Model\Orders\Money',
-        'cod_fee_discount' => '\Plenty\AmazonPHP\SellingPartner\Model\Orders\Money',
+        'cod_fee' => \Plenty\AmazonPHP\SellingPartner\Model\Orders\Money::class,
+        'cod_fee_discount' => \Plenty\AmazonPHP\SellingPartner\Model\Orders\Money::class,
         'is_gift' => 'bool',
         'condition_note' => 'string',
         'condition_id' => 'string',
@@ -91,14 +91,14 @@ class OrderItem implements \ArrayAccess, \JsonSerializable, ModelInterface
         'scheduled_delivery_start_date' => 'string',
         'scheduled_delivery_end_date' => 'string',
         'price_designation' => 'string',
-        'tax_collection' => '\Plenty\AmazonPHP\SellingPartner\Model\Orders\TaxCollection',
+        'tax_collection' => \Plenty\AmazonPHP\SellingPartner\Model\Orders\TaxCollection::class,
         'serial_number_required' => 'bool',
         'is_transparency' => 'bool',
         'ioss_number' => 'string',
         'store_chain_store_id' => 'string',
         'deemed_reseller_category' => 'string',
-        'buyer_info' => '\Plenty\AmazonPHP\SellingPartner\Model\Orders\ItemBuyerInfo',
-        'buyer_requested_cancel' => '\Plenty\AmazonPHP\SellingPartner\Model\Orders\BuyerRequestedCancel',
+        'buyer_info' => \Plenty\AmazonPHP\SellingPartner\Model\Orders\ItemBuyerInfo::class,
+        'buyer_requested_cancel' => \Plenty\AmazonPHP\SellingPartner\Model\Orders\BuyerRequestedCancel::class,
     ];
 
     /**
@@ -379,7 +379,7 @@ class OrderItem implements \ArrayAccess, \JsonSerializable, ModelInterface
      */
     public function __toString() : string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );

@@ -40,7 +40,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class SAFETReimbursementEvent implements \ArrayAccess, \JsonSerializable, ModelInterface
+class SAFETReimbursementEvent implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -59,7 +59,7 @@ class SAFETReimbursementEvent implements \ArrayAccess, \JsonSerializable, ModelI
     protected static /** [COMPAT] array */ $openAPITypes = [
         'posted_date' => '\DateTime',
         'safet_claim_id' => 'string',
-        'reimbursed_amount' => '\Plenty\AmazonPHP\SellingPartner\Model\Finances\Currency',
+        'reimbursed_amount' => \Plenty\AmazonPHP\SellingPartner\Model\Finances\Currency::class,
         'reason_code' => 'string',
         'safet_reimbursement_item_list' => '\Plenty\AmazonPHP\SellingPartner\Model\Finances\SAFETReimbursementItem[]',
     ];
@@ -197,7 +197,7 @@ class SAFETReimbursementEvent implements \ArrayAccess, \JsonSerializable, ModelI
      */
     public function __toString() : string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );

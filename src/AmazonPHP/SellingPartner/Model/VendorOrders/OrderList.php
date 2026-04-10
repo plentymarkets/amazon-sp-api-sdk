@@ -40,7 +40,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class OrderList implements \ArrayAccess, \JsonSerializable, ModelInterface
+class OrderList implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -57,7 +57,7 @@ class OrderList implements \ArrayAccess, \JsonSerializable, ModelInterface
      * @var string[]
      */
     protected static /** [COMPAT] array */ $openAPITypes = [
-        'pagination' => '\Plenty\AmazonPHP\SellingPartner\Model\VendorOrders\Pagination',
+        'pagination' => \Plenty\AmazonPHP\SellingPartner\Model\VendorOrders\Pagination::class,
         'orders' => '\Plenty\AmazonPHP\SellingPartner\Model\VendorOrders\Order[]',
     ];
 
@@ -179,7 +179,7 @@ class OrderList implements \ArrayAccess, \JsonSerializable, ModelInterface
      */
     public function __toString() : string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );

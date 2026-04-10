@@ -40,7 +40,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class ListingOffersRequest implements \ArrayAccess, \JsonSerializable, ModelInterface
+class ListingOffersRequest implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -58,11 +58,11 @@ class ListingOffersRequest implements \ArrayAccess, \JsonSerializable, ModelInte
      */
     protected static /** [COMPAT] array */ $openAPITypes = [
         'uri' => 'string',
-        'method' => '\Plenty\AmazonPHP\SellingPartner\Model\ProductPricing\HttpMethod',
+        'method' => \Plenty\AmazonPHP\SellingPartner\Model\ProductPricing\HttpMethod::class,
         'headers' => 'array<string,string>',
         'marketplace_id' => 'string',
-        'item_condition' => '\Plenty\AmazonPHP\SellingPartner\Model\ProductPricing\ItemCondition',
-        'customer_type' => '\Plenty\AmazonPHP\SellingPartner\Model\ProductPricing\CustomerType',
+        'item_condition' => \Plenty\AmazonPHP\SellingPartner\Model\ProductPricing\ItemCondition::class,
+        'customer_type' => \Plenty\AmazonPHP\SellingPartner\Model\ProductPricing\CustomerType::class,
     ];
 
     /**
@@ -203,7 +203,7 @@ class ListingOffersRequest implements \ArrayAccess, \JsonSerializable, ModelInte
      */
     public function __toString() : string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );

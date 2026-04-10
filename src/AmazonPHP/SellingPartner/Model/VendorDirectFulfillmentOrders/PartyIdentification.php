@@ -40,7 +40,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class PartyIdentification implements \ArrayAccess, \JsonSerializable, ModelInterface
+class PartyIdentification implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -58,8 +58,8 @@ class PartyIdentification implements \ArrayAccess, \JsonSerializable, ModelInter
      */
     protected static /** [COMPAT] array */ $openAPITypes = [
         'party_id' => 'string',
-        'address' => '\Plenty\AmazonPHP\SellingPartner\Model\VendorDirectFulfillmentOrders\Address',
-        'tax_info' => '\Plenty\AmazonPHP\SellingPartner\Model\VendorDirectFulfillmentOrders\TaxRegistrationDetails',
+        'address' => \Plenty\AmazonPHP\SellingPartner\Model\VendorDirectFulfillmentOrders\Address::class,
+        'tax_info' => \Plenty\AmazonPHP\SellingPartner\Model\VendorDirectFulfillmentOrders\TaxRegistrationDetails::class,
     ];
 
     /**
@@ -185,7 +185,7 @@ class PartyIdentification implements \ArrayAccess, \JsonSerializable, ModelInter
      */
     public function __toString() : string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );

@@ -40,7 +40,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class ShippingServiceOptions implements \ArrayAccess, \JsonSerializable, ModelInterface
+class ShippingServiceOptions implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -57,11 +57,11 @@ class ShippingServiceOptions implements \ArrayAccess, \JsonSerializable, ModelIn
      * @var string[]
      */
     protected static /** [COMPAT] array */ $openAPITypes = [
-        'delivery_experience' => '\Plenty\AmazonPHP\SellingPartner\Model\MerchantFulfillment\DeliveryExperienceType',
-        'declared_value' => '\Plenty\AmazonPHP\SellingPartner\Model\MerchantFulfillment\CurrencyAmount',
+        'delivery_experience' => \Plenty\AmazonPHP\SellingPartner\Model\MerchantFulfillment\DeliveryExperienceType::class,
+        'declared_value' => \Plenty\AmazonPHP\SellingPartner\Model\MerchantFulfillment\CurrencyAmount::class,
         'carrier_will_pick_up' => 'bool',
-        'carrier_will_pick_up_option' => '\Plenty\AmazonPHP\SellingPartner\Model\MerchantFulfillment\CarrierWillPickUpOption',
-        'label_format' => '\Plenty\AmazonPHP\SellingPartner\Model\MerchantFulfillment\LabelFormat',
+        'carrier_will_pick_up_option' => \Plenty\AmazonPHP\SellingPartner\Model\MerchantFulfillment\CarrierWillPickUpOption::class,
+        'label_format' => \Plenty\AmazonPHP\SellingPartner\Model\MerchantFulfillment\LabelFormat::class,
     ];
 
     /**
@@ -197,7 +197,7 @@ class ShippingServiceOptions implements \ArrayAccess, \JsonSerializable, ModelIn
      */
     public function __toString() : string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );

@@ -40,7 +40,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class BuyBoxPriceType implements \ArrayAccess, \JsonSerializable, ModelInterface
+class BuyBoxPriceType implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -58,13 +58,13 @@ class BuyBoxPriceType implements \ArrayAccess, \JsonSerializable, ModelInterface
      */
     protected static /** [COMPAT] array */ $openAPITypes = [
         'condition' => 'string',
-        'offer_type' => '\Plenty\AmazonPHP\SellingPartner\Model\ProductPricing\OfferCustomerType',
+        'offer_type' => \Plenty\AmazonPHP\SellingPartner\Model\ProductPricing\OfferCustomerType::class,
         'quantity_tier' => 'int',
-        'quantity_discount_type' => '\Plenty\AmazonPHP\SellingPartner\Model\ProductPricing\QuantityDiscountType',
-        'landed_price' => '\Plenty\AmazonPHP\SellingPartner\Model\ProductPricing\MoneyType',
-        'listing_price' => '\Plenty\AmazonPHP\SellingPartner\Model\ProductPricing\MoneyType',
-        'shipping' => '\Plenty\AmazonPHP\SellingPartner\Model\ProductPricing\MoneyType',
-        'points' => '\Plenty\AmazonPHP\SellingPartner\Model\ProductPricing\Points',
+        'quantity_discount_type' => \Plenty\AmazonPHP\SellingPartner\Model\ProductPricing\QuantityDiscountType::class,
+        'landed_price' => \Plenty\AmazonPHP\SellingPartner\Model\ProductPricing\MoneyType::class,
+        'listing_price' => \Plenty\AmazonPHP\SellingPartner\Model\ProductPricing\MoneyType::class,
+        'shipping' => \Plenty\AmazonPHP\SellingPartner\Model\ProductPricing\MoneyType::class,
+        'points' => \Plenty\AmazonPHP\SellingPartner\Model\ProductPricing\Points::class,
         'seller_id' => 'string',
     ];
 
@@ -221,7 +221,7 @@ class BuyBoxPriceType implements \ArrayAccess, \JsonSerializable, ModelInterface
      */
     public function __toString() : string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );

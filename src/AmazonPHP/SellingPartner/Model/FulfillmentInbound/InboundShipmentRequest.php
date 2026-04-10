@@ -40,7 +40,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class InboundShipmentRequest implements \ArrayAccess, \JsonSerializable, ModelInterface
+class InboundShipmentRequest implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -57,7 +57,7 @@ class InboundShipmentRequest implements \ArrayAccess, \JsonSerializable, ModelIn
      * @var string[]
      */
     protected static /** [COMPAT] array */ $openAPITypes = [
-        'inbound_shipment_header' => '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound\InboundShipmentHeader',
+        'inbound_shipment_header' => \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound\InboundShipmentHeader::class,
         'inbound_shipment_items' => '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound\InboundShipmentItem[]',
         'marketplace_id' => 'string',
     ];
@@ -185,7 +185,7 @@ class InboundShipmentRequest implements \ArrayAccess, \JsonSerializable, ModelIn
      */
     public function __toString() : string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );

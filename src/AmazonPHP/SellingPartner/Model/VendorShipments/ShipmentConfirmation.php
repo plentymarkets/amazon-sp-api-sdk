@@ -40,7 +40,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class ShipmentConfirmation implements \ArrayAccess, \JsonSerializable, ModelInterface
+class ShipmentConfirmation implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -85,16 +85,16 @@ class ShipmentConfirmation implements \ArrayAccess, \JsonSerializable, ModelInte
         'shipment_confirmation_type' => 'string',
         'shipment_type' => 'string',
         'shipment_structure' => 'string',
-        'transportation_details' => '\Plenty\AmazonPHP\SellingPartner\Model\VendorShipments\TransportationDetails',
+        'transportation_details' => \Plenty\AmazonPHP\SellingPartner\Model\VendorShipments\TransportationDetails::class,
         'amazon_reference_number' => 'string',
         'shipment_confirmation_date' => '\DateTime',
         'shipped_date' => '\DateTime',
         'estimated_delivery_date' => '\DateTime',
-        'selling_party' => '\Plenty\AmazonPHP\SellingPartner\Model\VendorShipments\PartyIdentification',
-        'ship_from_party' => '\Plenty\AmazonPHP\SellingPartner\Model\VendorShipments\PartyIdentification',
-        'ship_to_party' => '\Plenty\AmazonPHP\SellingPartner\Model\VendorShipments\PartyIdentification',
-        'shipment_measurements' => '\Plenty\AmazonPHP\SellingPartner\Model\VendorShipments\ShipmentMeasurements',
-        'import_details' => '\Plenty\AmazonPHP\SellingPartner\Model\VendorShipments\ImportDetails',
+        'selling_party' => \Plenty\AmazonPHP\SellingPartner\Model\VendorShipments\PartyIdentification::class,
+        'ship_from_party' => \Plenty\AmazonPHP\SellingPartner\Model\VendorShipments\PartyIdentification::class,
+        'ship_to_party' => \Plenty\AmazonPHP\SellingPartner\Model\VendorShipments\PartyIdentification::class,
+        'shipment_measurements' => \Plenty\AmazonPHP\SellingPartner\Model\VendorShipments\ShipmentMeasurements::class,
+        'import_details' => \Plenty\AmazonPHP\SellingPartner\Model\VendorShipments\ImportDetails::class,
         'shipped_items' => '\Plenty\AmazonPHP\SellingPartner\Model\VendorShipments\Item[]',
         'cartons' => '\Plenty\AmazonPHP\SellingPartner\Model\VendorShipments\Carton[]',
         'pallets' => '\Plenty\AmazonPHP\SellingPartner\Model\VendorShipments\Pallet[]',
@@ -293,7 +293,7 @@ class ShipmentConfirmation implements \ArrayAccess, \JsonSerializable, ModelInte
      */
     public function __toString() : string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );

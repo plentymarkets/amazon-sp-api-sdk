@@ -40,7 +40,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class CreateInboundShipmentPlanRequest implements \ArrayAccess, \JsonSerializable, ModelInterface
+class CreateInboundShipmentPlanRequest implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -57,8 +57,8 @@ class CreateInboundShipmentPlanRequest implements \ArrayAccess, \JsonSerializabl
      * @var string[]
      */
     protected static /** [COMPAT] array */ $openAPITypes = [
-        'ship_from_address' => '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound\Address',
-        'label_prep_preference' => '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound\LabelPrepPreference',
+        'ship_from_address' => \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound\Address::class,
+        'label_prep_preference' => \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound\LabelPrepPreference::class,
         'ship_to_country_code' => 'string',
         'ship_to_country_subdivision_code' => 'string',
         'inbound_shipment_plan_request_items' => '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound\InboundShipmentPlanRequestItem[]',
@@ -197,7 +197,7 @@ class CreateInboundShipmentPlanRequest implements \ArrayAccess, \JsonSerializabl
      */
     public function __toString() : string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );

@@ -40,7 +40,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class GetFeatureSkuResult implements \ArrayAccess, \JsonSerializable, ModelInterface
+class GetFeatureSkuResult implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -61,7 +61,7 @@ class GetFeatureSkuResult implements \ArrayAccess, \JsonSerializable, ModelInter
         'feature_name' => 'string',
         'is_eligible' => 'bool',
         'ineligible_reasons' => 'string[]',
-        'sku_info' => '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentOutbound\FeatureSku',
+        'sku_info' => \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentOutbound\FeatureSku::class,
     ];
 
     /**
@@ -197,7 +197,7 @@ class GetFeatureSkuResult implements \ArrayAccess, \JsonSerializable, ModelInter
      */
     public function __toString() : string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );

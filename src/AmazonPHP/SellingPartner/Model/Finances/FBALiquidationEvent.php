@@ -40,7 +40,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class FBALiquidationEvent implements \ArrayAccess, \JsonSerializable, ModelInterface
+class FBALiquidationEvent implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -59,8 +59,8 @@ class FBALiquidationEvent implements \ArrayAccess, \JsonSerializable, ModelInter
     protected static /** [COMPAT] array */ $openAPITypes = [
         'posted_date' => '\DateTime',
         'original_removal_order_id' => 'string',
-        'liquidation_proceeds_amount' => '\Plenty\AmazonPHP\SellingPartner\Model\Finances\Currency',
-        'liquidation_fee_amount' => '\Plenty\AmazonPHP\SellingPartner\Model\Finances\Currency',
+        'liquidation_proceeds_amount' => \Plenty\AmazonPHP\SellingPartner\Model\Finances\Currency::class,
+        'liquidation_fee_amount' => \Plenty\AmazonPHP\SellingPartner\Model\Finances\Currency::class,
     ];
 
     /**
@@ -191,7 +191,7 @@ class FBALiquidationEvent implements \ArrayAccess, \JsonSerializable, ModelInter
      */
     public function __toString() : string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );

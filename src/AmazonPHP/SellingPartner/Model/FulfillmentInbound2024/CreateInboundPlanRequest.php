@@ -41,7 +41,7 @@ class CreateInboundPlanRequest implements \ArrayAccess, \JsonSerializable, \Stri
         'destination_marketplaces' => 'string[]',
         'items' => '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound2024\ItemInput[]',
         'name' => 'string',
-        'source_address' => '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound2024\AddressInput',
+        'source_address' => \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound2024\AddressInput::class,
     ];
 
     /**

@@ -40,7 +40,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class StandardTechSpecsModule implements \ArrayAccess, \JsonSerializable, ModelInterface
+class StandardTechSpecsModule implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -57,7 +57,7 @@ class StandardTechSpecsModule implements \ArrayAccess, \JsonSerializable, ModelI
      * @var string[]
      */
     protected static /** [COMPAT] array */ $openAPITypes = [
-        'headline' => '\Plenty\AmazonPHP\SellingPartner\Model\APlus\TextComponent',
+        'headline' => \Plenty\AmazonPHP\SellingPartner\Model\APlus\TextComponent::class,
         'specification_list' => '\Plenty\AmazonPHP\SellingPartner\Model\APlus\StandardTextPairBlock[]',
         'table_count' => 'int',
     ];
@@ -185,7 +185,7 @@ class StandardTechSpecsModule implements \ArrayAccess, \JsonSerializable, ModelI
      */
     public function __toString() : string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );

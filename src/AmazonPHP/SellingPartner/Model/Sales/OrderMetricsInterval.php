@@ -40,7 +40,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class OrderMetricsInterval implements \ArrayAccess, \JsonSerializable, ModelInterface
+class OrderMetricsInterval implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -61,8 +61,8 @@ class OrderMetricsInterval implements \ArrayAccess, \JsonSerializable, ModelInte
         'unit_count' => 'int',
         'order_item_count' => 'int',
         'order_count' => 'int',
-        'average_unit_price' => '\Plenty\AmazonPHP\SellingPartner\Model\Sales\Money',
-        'total_sales' => '\Plenty\AmazonPHP\SellingPartner\Model\Sales\Money',
+        'average_unit_price' => \Plenty\AmazonPHP\SellingPartner\Model\Sales\Money::class,
+        'total_sales' => \Plenty\AmazonPHP\SellingPartner\Model\Sales\Money::class,
     ];
 
     /**
@@ -203,7 +203,7 @@ class OrderMetricsInterval implements \ArrayAccess, \JsonSerializable, ModelInte
      */
     public function __toString() : string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );

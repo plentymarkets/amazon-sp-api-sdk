@@ -40,7 +40,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class InventorySummary implements \ArrayAccess, \JsonSerializable, ModelInterface
+class InventorySummary implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -61,7 +61,7 @@ class InventorySummary implements \ArrayAccess, \JsonSerializable, ModelInterfac
         'fn_sku' => 'string',
         'seller_sku' => 'string',
         'condition' => 'string',
-        'inventory_details' => '\Plenty\AmazonPHP\SellingPartner\Model\FBAInventory\InventoryDetails',
+        'inventory_details' => \Plenty\AmazonPHP\SellingPartner\Model\FBAInventory\InventoryDetails::class,
         'last_updated_time' => '\DateTime',
         'product_name' => 'string',
         'total_quantity' => 'int',
@@ -215,7 +215,7 @@ class InventorySummary implements \ArrayAccess, \JsonSerializable, ModelInterfac
      */
     public function __toString() : string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );

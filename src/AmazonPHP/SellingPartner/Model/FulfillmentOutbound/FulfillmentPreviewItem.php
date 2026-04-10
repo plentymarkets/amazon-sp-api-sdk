@@ -40,7 +40,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class FulfillmentPreviewItem implements \ArrayAccess, \JsonSerializable, ModelInterface
+class FulfillmentPreviewItem implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -64,7 +64,7 @@ class FulfillmentPreviewItem implements \ArrayAccess, \JsonSerializable, ModelIn
         'seller_sku' => 'string',
         'quantity' => 'int',
         'seller_fulfillment_order_item_id' => 'string',
-        'estimated_shipping_weight' => '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentOutbound\Weight',
+        'estimated_shipping_weight' => \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentOutbound\Weight::class,
         'shipping_weight_calculation_method' => 'string',
     ];
 
@@ -201,7 +201,7 @@ class FulfillmentPreviewItem implements \ArrayAccess, \JsonSerializable, ModelIn
      */
     public function __toString() : string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );

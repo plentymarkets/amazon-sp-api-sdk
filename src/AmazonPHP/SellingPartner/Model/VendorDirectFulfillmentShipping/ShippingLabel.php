@@ -40,7 +40,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class ShippingLabel implements \ArrayAccess, \JsonSerializable, ModelInterface
+class ShippingLabel implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -62,8 +62,8 @@ class ShippingLabel implements \ArrayAccess, \JsonSerializable, ModelInterface
      */
     protected static /** [COMPAT] array */ $openAPITypes = [
         'purchase_order_number' => 'string',
-        'selling_party' => '\Plenty\AmazonPHP\SellingPartner\Model\VendorDirectFulfillmentShipping\PartyIdentification',
-        'ship_from_party' => '\Plenty\AmazonPHP\SellingPartner\Model\VendorDirectFulfillmentShipping\PartyIdentification',
+        'selling_party' => \Plenty\AmazonPHP\SellingPartner\Model\VendorDirectFulfillmentShipping\PartyIdentification::class,
+        'ship_from_party' => \Plenty\AmazonPHP\SellingPartner\Model\VendorDirectFulfillmentShipping\PartyIdentification::class,
         'label_format' => 'string',
         'label_data' => '\Plenty\AmazonPHP\SellingPartner\Model\VendorDirectFulfillmentShipping\LabelData[]',
     ];
@@ -201,7 +201,7 @@ class ShippingLabel implements \ArrayAccess, \JsonSerializable, ModelInterface
      */
     public function __toString() : string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );

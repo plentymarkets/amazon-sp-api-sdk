@@ -40,7 +40,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class FeePreview implements \ArrayAccess, \JsonSerializable, ModelInterface
+class FeePreview implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -58,9 +58,9 @@ class FeePreview implements \ArrayAccess, \JsonSerializable, ModelInterface
      */
     protected static /** [COMPAT] array */ $openAPITypes = [
         'asin' => 'string',
-        'price' => '\Plenty\AmazonPHP\SellingPartner\Model\FBASmallAndLight\MoneyType',
+        'price' => \Plenty\AmazonPHP\SellingPartner\Model\FBASmallAndLight\MoneyType::class,
         'fee_breakdown' => '\Plenty\AmazonPHP\SellingPartner\Model\FBASmallAndLight\FeeLineItem[]',
-        'total_fees' => '\Plenty\AmazonPHP\SellingPartner\Model\FBASmallAndLight\MoneyType',
+        'total_fees' => \Plenty\AmazonPHP\SellingPartner\Model\FBASmallAndLight\MoneyType::class,
         'errors' => '\Plenty\AmazonPHP\SellingPartner\Model\FBASmallAndLight\Error[]',
     ];
 
@@ -197,7 +197,7 @@ class FeePreview implements \ArrayAccess, \JsonSerializable, ModelInterface
      */
     public function __toString() : string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );

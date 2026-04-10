@@ -40,13 +40,13 @@ class Box implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInterfac
     protected static array $openAPITypes = [
         'box_id' => 'string',
         'content_information_source' => 'string',
-        'destination_region' => '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound2024\Region',
-        'dimensions' => '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound2024\Dimensions',
+        'destination_region' => \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound2024\Region::class,
+        'dimensions' => \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound2024\Dimensions::class,
         'items' => '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound2024\Item[]',
         'package_id' => 'string',
         'quantity' => 'int',
         'template_name' => 'string',
-        'weight' => '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound2024\Weight',
+        'weight' => \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound2024\Weight::class,
     ];
 
     /**

@@ -68,11 +68,7 @@ final class LoggerConfiguration
 
     public function logLevel(string $api, string $operation) : string
     {
-        if (isset($this->customLogLevels[$api][$operation])) {
-            return $this->customLogLevels[$api][$operation];
-        }
-
-        return $this->defaultLogLevel;
+        return $this->customLogLevels[$api][$operation] ?? $this->defaultLogLevel;
     }
 
     public function skipAPI(string $api) : self

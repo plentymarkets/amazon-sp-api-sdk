@@ -40,7 +40,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class IdentifierType implements \ArrayAccess, \JsonSerializable, ModelInterface
+class IdentifierType implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -57,8 +57,8 @@ class IdentifierType implements \ArrayAccess, \JsonSerializable, ModelInterface
      * @var string[]
      */
     protected static /** [COMPAT] array */ $openAPITypes = [
-        'marketplace_asin' => '\Plenty\AmazonPHP\SellingPartner\Model\ProductPricing\ASINIdentifier',
-        'sku_identifier' => '\Plenty\AmazonPHP\SellingPartner\Model\ProductPricing\SellerSKUIdentifier',
+        'marketplace_asin' => \Plenty\AmazonPHP\SellingPartner\Model\ProductPricing\ASINIdentifier::class,
+        'sku_identifier' => \Plenty\AmazonPHP\SellingPartner\Model\ProductPricing\SellerSKUIdentifier::class,
     ];
 
     /**
@@ -179,7 +179,7 @@ class IdentifierType implements \ArrayAccess, \JsonSerializable, ModelInterface
      */
     public function __toString() : string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );

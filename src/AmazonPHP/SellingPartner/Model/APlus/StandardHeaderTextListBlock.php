@@ -40,7 +40,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class StandardHeaderTextListBlock implements \ArrayAccess, \JsonSerializable, ModelInterface
+class StandardHeaderTextListBlock implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -57,8 +57,8 @@ class StandardHeaderTextListBlock implements \ArrayAccess, \JsonSerializable, Mo
      * @var string[]
      */
     protected static /** [COMPAT] array */ $openAPITypes = [
-        'headline' => '\Plenty\AmazonPHP\SellingPartner\Model\APlus\TextComponent',
-        'block' => '\Plenty\AmazonPHP\SellingPartner\Model\APlus\StandardTextListBlock',
+        'headline' => \Plenty\AmazonPHP\SellingPartner\Model\APlus\TextComponent::class,
+        'block' => \Plenty\AmazonPHP\SellingPartner\Model\APlus\StandardTextListBlock::class,
     ];
 
     /**
@@ -179,7 +179,7 @@ class StandardHeaderTextListBlock implements \ArrayAccess, \JsonSerializable, Mo
      */
     public function __toString() : string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );

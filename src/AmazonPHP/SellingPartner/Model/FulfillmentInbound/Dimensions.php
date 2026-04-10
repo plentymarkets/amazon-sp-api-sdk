@@ -40,7 +40,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class Dimensions implements \ArrayAccess, \JsonSerializable, ModelInterface
+class Dimensions implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -60,7 +60,7 @@ class Dimensions implements \ArrayAccess, \JsonSerializable, ModelInterface
         'length' => 'double',
         'width' => 'double',
         'height' => 'double',
-        'unit' => '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound\UnitOfMeasurement',
+        'unit' => \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound\UnitOfMeasurement::class,
     ];
 
     /**
@@ -191,7 +191,7 @@ class Dimensions implements \ArrayAccess, \JsonSerializable, ModelInterface
      */
     public function __toString() : string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );

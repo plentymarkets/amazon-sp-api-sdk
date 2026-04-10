@@ -40,7 +40,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class SolutionProviderCreditEvent implements \ArrayAccess, \JsonSerializable, ModelInterface
+class SolutionProviderCreditEvent implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -65,7 +65,7 @@ class SolutionProviderCreditEvent implements \ArrayAccess, \JsonSerializable, Mo
         'seller_store_name' => 'string',
         'provider_id' => 'string',
         'provider_store_name' => 'string',
-        'transaction_amount' => '\Plenty\AmazonPHP\SellingPartner\Model\Finances\Currency',
+        'transaction_amount' => \Plenty\AmazonPHP\SellingPartner\Model\Finances\Currency::class,
         'transaction_creation_date' => '\DateTime',
     ];
 
@@ -227,7 +227,7 @@ class SolutionProviderCreditEvent implements \ArrayAccess, \JsonSerializable, Mo
      */
     public function __toString() : string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );

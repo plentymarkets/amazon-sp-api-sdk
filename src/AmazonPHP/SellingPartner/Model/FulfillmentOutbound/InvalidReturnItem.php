@@ -40,7 +40,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class InvalidReturnItem implements \ArrayAccess, \JsonSerializable, ModelInterface
+class InvalidReturnItem implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -59,7 +59,7 @@ class InvalidReturnItem implements \ArrayAccess, \JsonSerializable, ModelInterfa
     protected static /** [COMPAT] array */ $openAPITypes = [
         'seller_return_item_id' => 'string',
         'seller_fulfillment_order_item_id' => 'string',
-        'invalid_item_reason' => '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentOutbound\InvalidItemReason',
+        'invalid_item_reason' => \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentOutbound\InvalidItemReason::class,
     ];
 
     /**
@@ -185,7 +185,7 @@ class InvalidReturnItem implements \ArrayAccess, \JsonSerializable, ModelInterfa
      */
     public function __toString() : string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );

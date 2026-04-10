@@ -40,7 +40,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class GetFulfillmentPreviewRequest implements \ArrayAccess, \JsonSerializable, ModelInterface
+class GetFulfillmentPreviewRequest implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -58,7 +58,7 @@ class GetFulfillmentPreviewRequest implements \ArrayAccess, \JsonSerializable, M
      */
     protected static /** [COMPAT] array */ $openAPITypes = [
         'marketplace_id' => 'string',
-        'address' => '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentOutbound\Address',
+        'address' => \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentOutbound\Address::class,
         'items' => '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentOutbound\GetFulfillmentPreviewItem[]',
         'shipping_speed_categories' => '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentOutbound\ShippingSpeedCategory[]',
         'include_cod_fulfillment_preview' => 'bool',
@@ -209,7 +209,7 @@ class GetFulfillmentPreviewRequest implements \ArrayAccess, \JsonSerializable, M
      */
     public function __toString() : string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );

@@ -40,7 +40,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class AllowanceDetails implements \ArrayAccess, \JsonSerializable, ModelInterface
+class AllowanceDetails implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -71,7 +71,7 @@ class AllowanceDetails implements \ArrayAccess, \JsonSerializable, ModelInterfac
     protected static /** [COMPAT] array */ $openAPITypes = [
         'type' => 'string',
         'description' => 'string',
-        'allowance_amount' => '\Plenty\AmazonPHP\SellingPartner\Model\VendorInvoices\Money',
+        'allowance_amount' => \Plenty\AmazonPHP\SellingPartner\Model\VendorInvoices\Money::class,
         'tax_details' => '\Plenty\AmazonPHP\SellingPartner\Model\VendorInvoices\TaxDetails[]',
     ];
 
@@ -203,7 +203,7 @@ class AllowanceDetails implements \ArrayAccess, \JsonSerializable, ModelInterfac
      */
     public function __toString() : string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );

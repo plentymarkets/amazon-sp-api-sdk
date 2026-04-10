@@ -40,7 +40,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class GetInventorySummariesResponse implements \ArrayAccess, \JsonSerializable, ModelInterface
+class GetInventorySummariesResponse implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -57,8 +57,8 @@ class GetInventorySummariesResponse implements \ArrayAccess, \JsonSerializable, 
      * @var string[]
      */
     protected static /** [COMPAT] array */ $openAPITypes = [
-        'payload' => '\Plenty\AmazonPHP\SellingPartner\Model\FBAInventory\GetInventorySummariesResult',
-        'pagination' => '\Plenty\AmazonPHP\SellingPartner\Model\FBAInventory\Pagination',
+        'payload' => \Plenty\AmazonPHP\SellingPartner\Model\FBAInventory\GetInventorySummariesResult::class,
+        'pagination' => \Plenty\AmazonPHP\SellingPartner\Model\FBAInventory\Pagination::class,
         'errors' => '\Plenty\AmazonPHP\SellingPartner\Model\FBAInventory\Error[]',
     ];
 
@@ -185,7 +185,7 @@ class GetInventorySummariesResponse implements \ArrayAccess, \JsonSerializable, 
      */
     public function __toString() : string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );

@@ -40,7 +40,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class GetEligibleShipmentServicesRequest implements \ArrayAccess, \JsonSerializable, ModelInterface
+class GetEligibleShipmentServicesRequest implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -57,8 +57,8 @@ class GetEligibleShipmentServicesRequest implements \ArrayAccess, \JsonSerializa
      * @var string[]
      */
     protected static /** [COMPAT] array */ $openAPITypes = [
-        'shipment_request_details' => '\Plenty\AmazonPHP\SellingPartner\Model\MerchantFulfillment\ShipmentRequestDetails',
-        'shipping_offering_filter' => '\Plenty\AmazonPHP\SellingPartner\Model\MerchantFulfillment\ShippingOfferingFilter',
+        'shipment_request_details' => \Plenty\AmazonPHP\SellingPartner\Model\MerchantFulfillment\ShipmentRequestDetails::class,
+        'shipping_offering_filter' => \Plenty\AmazonPHP\SellingPartner\Model\MerchantFulfillment\ShippingOfferingFilter::class,
     ];
 
     /**
@@ -179,7 +179,7 @@ class GetEligibleShipmentServicesRequest implements \ArrayAccess, \JsonSerializa
      */
     public function __toString() : string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );

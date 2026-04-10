@@ -40,7 +40,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class ShippingLabelList implements \ArrayAccess, \JsonSerializable, ModelInterface
+class ShippingLabelList implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -57,7 +57,7 @@ class ShippingLabelList implements \ArrayAccess, \JsonSerializable, ModelInterfa
      * @var string[]
      */
     protected static /** [COMPAT] array */ $openAPITypes = [
-        'pagination' => '\Plenty\AmazonPHP\SellingPartner\Model\VendorDirectFulfillmentShipping\Pagination',
+        'pagination' => \Plenty\AmazonPHP\SellingPartner\Model\VendorDirectFulfillmentShipping\Pagination::class,
         'shipping_labels' => '\Plenty\AmazonPHP\SellingPartner\Model\VendorDirectFulfillmentShipping\ShippingLabel[]',
     ];
 
@@ -179,7 +179,7 @@ class ShippingLabelList implements \ArrayAccess, \JsonSerializable, ModelInterfa
      */
     public function __toString() : string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );

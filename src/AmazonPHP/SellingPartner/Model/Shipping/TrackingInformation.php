@@ -40,7 +40,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class TrackingInformation implements \ArrayAccess, \JsonSerializable, ModelInterface
+class TrackingInformation implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -58,7 +58,7 @@ class TrackingInformation implements \ArrayAccess, \JsonSerializable, ModelInter
      */
     protected static /** [COMPAT] array */ $openAPITypes = [
         'tracking_id' => 'string',
-        'summary' => '\Plenty\AmazonPHP\SellingPartner\Model\Shipping\TrackingSummary',
+        'summary' => \Plenty\AmazonPHP\SellingPartner\Model\Shipping\TrackingSummary::class,
         'promised_delivery_date' => '\DateTime',
         'event_history' => '\Plenty\AmazonPHP\SellingPartner\Model\Shipping\Event[]',
     ];
@@ -191,7 +191,7 @@ class TrackingInformation implements \ArrayAccess, \JsonSerializable, ModelInter
      */
     public function __toString() : string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );

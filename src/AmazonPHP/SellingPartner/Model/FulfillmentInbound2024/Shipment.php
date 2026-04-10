@@ -39,20 +39,20 @@ class Shipment implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInt
      */
     protected static array $openAPITypes = [
         'amazon_reference_id' => 'string',
-        'contact_information' => '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound2024\ContactInformation',
-        'dates' => '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound2024\Dates',
-        'destination' => '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound2024\ShipmentDestination',
-        'freight_information' => '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound2024\FreightInformation',
+        'contact_information' => \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound2024\ContactInformation::class,
+        'dates' => \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound2024\Dates::class,
+        'destination' => \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound2024\ShipmentDestination::class,
+        'freight_information' => \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound2024\FreightInformation::class,
         'name' => 'string',
         'placement_option_id' => 'string',
-        'selected_delivery_window' => '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound2024\SelectedDeliveryWindow',
+        'selected_delivery_window' => \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound2024\SelectedDeliveryWindow::class,
         'selected_transportation_option_id' => 'string',
         'self_ship_appointment_details' => '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound2024\SelfShipAppointmentDetails[]',
         'shipment_confirmation_id' => 'string',
         'shipment_id' => 'string',
-        'source' => '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound2024\ShipmentSource',
+        'source' => \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound2024\ShipmentSource::class,
         'status' => 'string',
-        'tracking_details' => '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound2024\TrackingDetails',
+        'tracking_details' => \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound2024\TrackingDetails::class,
     ];
 
     /**

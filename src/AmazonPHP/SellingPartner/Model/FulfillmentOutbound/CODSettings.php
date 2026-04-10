@@ -40,7 +40,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class CODSettings implements \ArrayAccess, \JsonSerializable, ModelInterface
+class CODSettings implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -58,10 +58,10 @@ class CODSettings implements \ArrayAccess, \JsonSerializable, ModelInterface
      */
     protected static /** [COMPAT] array */ $openAPITypes = [
         'is_cod_required' => 'bool',
-        'cod_charge' => '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentOutbound\Money',
-        'cod_charge_tax' => '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentOutbound\Money',
-        'shipping_charge' => '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentOutbound\Money',
-        'shipping_charge_tax' => '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentOutbound\Money',
+        'cod_charge' => \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentOutbound\Money::class,
+        'cod_charge_tax' => \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentOutbound\Money::class,
+        'shipping_charge' => \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentOutbound\Money::class,
+        'shipping_charge_tax' => \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentOutbound\Money::class,
     ];
 
     /**
@@ -197,7 +197,7 @@ class CODSettings implements \ArrayAccess, \JsonSerializable, ModelInterface
      */
     public function __toString() : string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );

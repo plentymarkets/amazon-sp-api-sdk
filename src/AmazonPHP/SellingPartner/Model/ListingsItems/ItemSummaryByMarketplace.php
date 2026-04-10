@@ -40,7 +40,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class ItemSummaryByMarketplace implements \ArrayAccess, \JsonSerializable, ModelInterface
+class ItemSummaryByMarketplace implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -96,7 +96,7 @@ class ItemSummaryByMarketplace implements \ArrayAccess, \JsonSerializable, Model
         'item_name' => 'string',
         'created_date' => '\DateTime',
         'last_updated_date' => '\DateTime',
-        'main_image' => '\Plenty\AmazonPHP\SellingPartner\Model\ListingsItems\ItemImage',
+        'main_image' => \Plenty\AmazonPHP\SellingPartner\Model\ListingsItems\ItemImage::class,
     ];
 
     /**
@@ -257,7 +257,7 @@ class ItemSummaryByMarketplace implements \ArrayAccess, \JsonSerializable, Model
      */
     public function __toString() : string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );

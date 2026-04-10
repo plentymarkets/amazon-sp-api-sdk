@@ -40,7 +40,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class PurchaseLabelsResult implements \ArrayAccess, \JsonSerializable, ModelInterface
+class PurchaseLabelsResult implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -59,7 +59,7 @@ class PurchaseLabelsResult implements \ArrayAccess, \JsonSerializable, ModelInte
     protected static /** [COMPAT] array */ $openAPITypes = [
         'shipment_id' => 'string',
         'client_reference_id' => 'string',
-        'accepted_rate' => '\Plenty\AmazonPHP\SellingPartner\Model\Shipping\AcceptedRate',
+        'accepted_rate' => \Plenty\AmazonPHP\SellingPartner\Model\Shipping\AcceptedRate::class,
         'label_results' => '\Plenty\AmazonPHP\SellingPartner\Model\Shipping\LabelResult[]',
     ];
 
@@ -191,7 +191,7 @@ class PurchaseLabelsResult implements \ArrayAccess, \JsonSerializable, ModelInte
      */
     public function __toString() : string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );

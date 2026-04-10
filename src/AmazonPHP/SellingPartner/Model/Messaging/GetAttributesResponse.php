@@ -40,7 +40,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class GetAttributesResponse implements \ArrayAccess, \JsonSerializable, ModelInterface
+class GetAttributesResponse implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -57,7 +57,7 @@ class GetAttributesResponse implements \ArrayAccess, \JsonSerializable, ModelInt
      * @var string[]
      */
     protected static /** [COMPAT] array */ $openAPITypes = [
-        'buyer' => '\Plenty\AmazonPHP\SellingPartner\Model\Messaging\GetAttributesResponseBuyer',
+        'buyer' => \Plenty\AmazonPHP\SellingPartner\Model\Messaging\GetAttributesResponseBuyer::class,
         'errors' => '\Plenty\AmazonPHP\SellingPartner\Model\Messaging\Error[]',
     ];
 
@@ -179,7 +179,7 @@ class GetAttributesResponse implements \ArrayAccess, \JsonSerializable, ModelInt
      */
     public function __toString() : string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );

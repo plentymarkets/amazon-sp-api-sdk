@@ -40,7 +40,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class ASINInboundGuidance implements \ArrayAccess, \JsonSerializable, ModelInterface
+class ASINInboundGuidance implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -58,7 +58,7 @@ class ASINInboundGuidance implements \ArrayAccess, \JsonSerializable, ModelInter
      */
     protected static /** [COMPAT] array */ $openAPITypes = [
         'asin' => 'string',
-        'inbound_guidance' => '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound\InboundGuidance',
+        'inbound_guidance' => \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound\InboundGuidance::class,
         'guidance_reason_list' => '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound\GuidanceReason[]',
     ];
 
@@ -185,7 +185,7 @@ class ASINInboundGuidance implements \ArrayAccess, \JsonSerializable, ModelInter
      */
     public function __toString() : string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );

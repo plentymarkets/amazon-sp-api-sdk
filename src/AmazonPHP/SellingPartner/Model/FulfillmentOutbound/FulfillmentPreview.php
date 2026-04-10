@@ -40,7 +40,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class FulfillmentPreview implements \ArrayAccess, \JsonSerializable, ModelInterface
+class FulfillmentPreview implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -57,11 +57,11 @@ class FulfillmentPreview implements \ArrayAccess, \JsonSerializable, ModelInterf
      * @var string[]
      */
     protected static /** [COMPAT] array */ $openAPITypes = [
-        'shipping_speed_category' => '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentOutbound\ShippingSpeedCategory',
-        'scheduled_delivery_info' => '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentOutbound\ScheduledDeliveryInfo',
+        'shipping_speed_category' => \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentOutbound\ShippingSpeedCategory::class,
+        'scheduled_delivery_info' => \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentOutbound\ScheduledDeliveryInfo::class,
         'is_fulfillable' => 'bool',
         'is_cod_capable' => 'bool',
-        'estimated_shipping_weight' => '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentOutbound\Weight',
+        'estimated_shipping_weight' => \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentOutbound\Weight::class,
         'estimated_fees' => '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentOutbound\Fee[]',
         'fulfillment_preview_shipments' => '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentOutbound\FulfillmentPreviewShipment[]',
         'unfulfillable_preview_items' => '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentOutbound\UnfulfillablePreviewItem[]',
@@ -233,7 +233,7 @@ class FulfillmentPreview implements \ArrayAccess, \JsonSerializable, ModelInterf
      */
     public function __toString() : string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );
