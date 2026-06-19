@@ -235,7 +235,7 @@ class TransactionsPayload implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Gets transactions
      *
-     * @return \AmazonPHP\SellingPartner\Model\Finances2024\Transaction[]|null
+     * @return Plenty\AmazonPHP\SellingPartner\Model\Finances2024\Transaction[]|null
      */
     public function getTransactions()
     {

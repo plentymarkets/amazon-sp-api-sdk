@@ -241,7 +241,7 @@ class Breakdown implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets breakdown_amount
      *
-     * @return \AmazonPHP\SellingPartner\Model\Finances2024\Currency|null
+     * @return Plenty\AmazonPHP\SellingPartner\Model\Finances2024\Currency|null
      */
     public function getBreakdownAmount()
     {
@@ -265,7 +265,7 @@ class Breakdown implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets breakdowns
      *
-     * @return \AmazonPHP\SellingPartner\Model\Finances2024\Breakdown[]|null
+     * @return Plenty\AmazonPHP\SellingPartner\Model\Finances2024\Breakdown[]|null
      */
     public function getBreakdowns()
     {

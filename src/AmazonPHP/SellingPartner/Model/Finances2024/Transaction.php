@@ -271,7 +271,7 @@ class Transaction implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets selling_partner_metadata
      *
-     * @return \AmazonPHP\SellingPartner\Model\Finances2024\SellingPartnerMetadata|null
+     * @return Plenty\AmazonPHP\SellingPartner\Model\Finances2024\SellingPartnerMetadata|null
      */
     public function getSellingPartnerMetadata()
     {
@@ -295,7 +295,7 @@ class Transaction implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets related_identifiers
      *
-     * @return \AmazonPHP\SellingPartner\Model\Finances2024\RelatedIdentifier[]|null
+     * @return Plenty\AmazonPHP\SellingPartner\Model\Finances2024\RelatedIdentifier[]|null
      */
     public function getRelatedIdentifiers()
     {
@@ -439,7 +439,7 @@ class Transaction implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets total_amount
      *
-     * @return \AmazonPHP\SellingPartner\Model\Finances2024\Currency|null
+     * @return Plenty\AmazonPHP\SellingPartner\Model\Finances2024\Currency|null
      */
     public function getTotalAmount()
     {
@@ -463,7 +463,7 @@ class Transaction implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets marketplace_details
      *
-     * @return \AmazonPHP\SellingPartner\Model\Finances2024\MarketplaceDetails|null
+     * @return Plenty\AmazonPHP\SellingPartner\Model\Finances2024\MarketplaceDetails|null
      */
     public function getMarketplaceDetails()
     {
@@ -487,7 +487,7 @@ class Transaction implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets items
      *
-     * @return \AmazonPHP\SellingPartner\Model\Finances2024\Item[]|null
+     * @return Plenty\AmazonPHP\SellingPartner\Model\Finances2024\Item[]|null
      */
     public function getItems()
     {
@@ -511,7 +511,7 @@ class Transaction implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets contexts
      *
-     * @return \AmazonPHP\SellingPartner\Model\Finances2024\Context[]|null
+     * @return Plenty\AmazonPHP\SellingPartner\Model\Finances2024\Context[]|null
      */
     public function getContexts()
     {
@@ -535,7 +535,7 @@ class Transaction implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets breakdowns
      *
-     * @return \AmazonPHP\SellingPartner\Model\Finances2024\Breakdown[]|null
+     * @return Plenty\AmazonPHP\SellingPartner\Model\Finances2024\Breakdown[]|null
      */
     public function getBreakdowns()
     {

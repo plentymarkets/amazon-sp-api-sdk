@@ -253,7 +253,7 @@ class Item implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets related_identifiers
      *
-     * @return \AmazonPHP\SellingPartner\Model\Finances2024\ItemRelatedIdentifier[]|null
+     * @return Plenty\AmazonPHP\SellingPartner\Model\Finances2024\ItemRelatedIdentifier[]|null
      */
     public function getRelatedIdentifiers()
     {
@@ -277,7 +277,7 @@ class Item implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets total_amount
      *
-     * @return \AmazonPHP\SellingPartner\Model\Finances2024\Currency|null
+     * @return Plenty\AmazonPHP\SellingPartner\Model\Finances2024\Currency|null
      */
     public function getTotalAmount()
     {
@@ -301,7 +301,7 @@ class Item implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets breakdowns
      *
-     * @return \AmazonPHP\SellingPartner\Model\Finances2024\Breakdown[]|null
+     * @return Plenty\AmazonPHP\SellingPartner\Model\Finances2024\Breakdown[]|null
      */
     public function getBreakdowns()
     {
@@ -325,7 +325,7 @@ class Item implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets contexts
      *
-     * @return \AmazonPHP\SellingPartner\Model\Finances2024\Context[]|null
+     * @return Plenty\AmazonPHP\SellingPartner\Model\Finances2024\Context[]|null
      */
     public function getContexts()
     {

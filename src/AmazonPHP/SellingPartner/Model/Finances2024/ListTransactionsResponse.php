@@ -205,7 +205,7 @@ class ListTransactionsResponse implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Gets payload
      *
-     * @return \AmazonPHP\SellingPartner\Model\Finances2024\TransactionsPayload|null
+     * @return Plenty\AmazonPHP\SellingPartner\Model\Finances2024\TransactionsPayload|null
      */
     public function getPayload()
     {
