@@ -287,7 +287,7 @@ class Item implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets total_amount
      *
-     * @param \AmazonPHP\SellingPartner\Model\Finances2024\Currency|null $total_amount total_amount
+     * @param Plenty\AmazonPHP\SellingPartner\Model\Finances2024\Currency|null $total_amount total_amount
      *
      * @return self
      */
@@ -335,7 +335,7 @@ class Item implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets contexts
      *
-     * @param \AmazonPHP\SellingPartner\Model\Finances2024\Context[]|null $contexts A list of additional information about the item.
+     * @param Plenty\AmazonPHP\SellingPartner\Model\Finances2024\Context[]|null $contexts A list of additional information about the item.
      *
      * @return self
      */
