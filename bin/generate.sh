@@ -48,6 +48,12 @@ docker run --rm -v "${PWD}:/sp-api" openapitools/openapi-generator-cli generate 
     -o /sp-api
 
 docker run --rm -v "${PWD}:/sp-api" openapitools/openapi-generator-cli generate \
+    -i https://raw.githubusercontent.com/amzn/selling-partner-api-models/main/models/finances-api-model/finances_2024-06-19.json \
+    -c /sp-api/config/generator-finances-2024.yaml \
+    --global-property models,apis,apiDocs=false,modelDocs=false,modelTests=false,apiTests=false,supportingFiles=false \
+    -o /sp-api
+
+docker run --rm -v "${PWD}:/sp-api" openapitools/openapi-generator-cli generate \
     -i https://raw.githubusercontent.com/amzn/selling-partner-api-models/main/models/fulfillment-inbound-api-model/fulfillmentInboundV0.json \
     -c /sp-api/config/generator-fulfillment-inbound.yaml \
     --global-property models,apis,apiDocs=false,modelDocs=false,modelTests=false,apiTests=false,supportingFiles=false \
