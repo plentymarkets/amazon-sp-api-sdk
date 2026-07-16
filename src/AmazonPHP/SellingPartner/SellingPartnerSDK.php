@@ -8,6 +8,7 @@ use Plenty\AmazonPHP\SellingPartner\Api\AplusContentApi\APlusSDK;
 use Plenty\AmazonPHP\SellingPartner\Api\AuthorizationApi\AuthorizationSDK;
 use Plenty\AmazonPHP\SellingPartner\Api\CatalogApi\CatalogItemSDK;
 use Plenty\AmazonPHP\SellingPartner\Api\DefaultApi\FinancesSDK;
+use Plenty\AmazonPHP\SellingPartner\Api\DefaultApi\FinancesSDK2024;
 use Plenty\AmazonPHP\SellingPartner\Api\DefinitionsApi\ProductTypesDefinitionsSDK;
 use Plenty\AmazonPHP\SellingPartner\Api\FbaInboundApi\FBAInboundSDK;
 use Plenty\AmazonPHP\SellingPartner\Api\FbaInboundApi\FulfillmentInboundSDK;
@@ -133,6 +134,11 @@ final class SellingPartnerSDK
     public function finances() : FinancesSDK
     {
         return $this->instantiateSDK(FinancesSDK::class);
+    }
+
+    public function finances2024() : FinancesSDK2024
+    {
+        return $this->instantiateSDK(FinancesSDK2024::class);
     }
 
     public function fulfillmentInbound() : FulfillmentInboundSDK
