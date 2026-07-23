@@ -52,9 +52,9 @@ final class ExternalFulfillmentShipping2024SDK
      * @param string $region
      * @param string $shipment_id The ID of the shipment you want to retrieve. (required)
      *
-     * @throws \AmazonPHP\SellingPartner\Exception\ApiException on non-2xx response
-     * @throws \AmazonPHP\SellingPartner\Exception\InvalidArgumentException
-     * @return \AmazonPHP\SellingPartner\Model\ExternalFulfillmentShipping2024\Shipment
+     * @throws \Plenty\AmazonPHP\SellingPartner\Exception\ApiException on non-2xx response
+     * @throws \Plenty\AmazonPHP\SellingPartner\Exception\InvalidArgumentException
+     * @return \Plenty\AmazonPHP\SellingPartner\Model\ExternalFulfillmentShipping2024\Shipment
      */
     public function getShipment(AccessToken $accessToken, string $region, $shipment_id)
     {
@@ -140,7 +140,7 @@ final class ExternalFulfillmentShipping2024SDK
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            '\AmazonPHP\SellingPartner\Model\ExternalFulfillmentShipping2024\Shipment',
+            '\Plenty\AmazonPHP\SellingPartner\Model\ExternalFulfillmentShipping2024\Shipment',
             []
         );
     }
@@ -152,7 +152,7 @@ final class ExternalFulfillmentShipping2024SDK
      * @param string $region
      * @param string $shipment_id The ID of the shipment you want to retrieve. (required)
      *
-     * @throws \AmazonPHP\SellingPartner\Exception\InvalidArgumentException
+     * @throws \Plenty\AmazonPHP\SellingPartner\Exception\InvalidArgumentException
      * @return RequestInterface
      */
     public function getShipmentRequest(AccessToken $accessToken, string $region, $shipment_id) : RequestInterface
@@ -254,9 +254,9 @@ final class ExternalFulfillmentShipping2024SDK
      * @param int $max_results The maximum number of shipments to include in the response. (optional)
      * @param string $pagination_token A token that you use to retrieve the next page of results. The response includes &#x60;nextToken&#x60; when there are multiple pages of results. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60; is null. Note that this operation can return empty pages. (optional)
      *
-     * @throws \AmazonPHP\SellingPartner\Exception\ApiException on non-2xx response
-     * @throws \AmazonPHP\SellingPartner\Exception\InvalidArgumentException
-     * @return \AmazonPHP\SellingPartner\Model\ExternalFulfillmentShipping2024\ShipmentsResponse
+     * @throws \Plenty\AmazonPHP\SellingPartner\Exception\ApiException on non-2xx response
+     * @throws \Plenty\AmazonPHP\SellingPartner\Exception\InvalidArgumentException
+     * @return \Plenty\AmazonPHP\SellingPartner\Model\ExternalFulfillmentShipping2024\ShipmentsResponse
      */
     public function getShipments(AccessToken $accessToken, string $region, $status, $location_id = null, $marketplace_id = null, $channel_name = null, $last_updated_after = null, $last_updated_before = null, $max_results = null, $pagination_token = null)
     {
@@ -342,7 +342,7 @@ final class ExternalFulfillmentShipping2024SDK
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            '\AmazonPHP\SellingPartner\Model\ExternalFulfillmentShipping2024\ShipmentsResponse',
+            '\Plenty\AmazonPHP\SellingPartner\Model\ExternalFulfillmentShipping2024\ShipmentsResponse',
             []
         );
     }
@@ -361,7 +361,7 @@ final class ExternalFulfillmentShipping2024SDK
      * @param int $max_results The maximum number of shipments to include in the response. (optional)
      * @param string $pagination_token A token that you use to retrieve the next page of results. The response includes &#x60;nextToken&#x60; when there are multiple pages of results. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60; is null. Note that this operation can return empty pages. (optional)
      *
-     * @throws \AmazonPHP\SellingPartner\Exception\InvalidArgumentException
+     * @throws \Plenty\AmazonPHP\SellingPartner\Exception\InvalidArgumentException
      * @return RequestInterface
      */
     public function getShipmentsRequest(AccessToken $accessToken, string $region, $status, $location_id = null, $marketplace_id = null, $channel_name = null, $last_updated_after = null, $last_updated_before = null, $max_results = null, $pagination_token = null) : RequestInterface

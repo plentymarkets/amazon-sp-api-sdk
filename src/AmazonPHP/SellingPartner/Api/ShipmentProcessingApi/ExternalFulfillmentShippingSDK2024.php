@@ -1,14 +1,14 @@
 <?php
 
-namespace AmazonPHP\SellingPartner\Api\ShipmentProcessingApi;
+namespace Plenty\AmazonPHP\SellingPartner\Api\ShipmentProcessingApi;
 
-use AmazonPHP\SellingPartner\AccessToken;
-use AmazonPHP\SellingPartner\Configuration;
-use AmazonPHP\SellingPartner\Exception\ApiException;
-use AmazonPHP\SellingPartner\Exception\InvalidArgumentException;
-use AmazonPHP\SellingPartner\HttpFactory;
-use AmazonPHP\SellingPartner\HttpSignatureHeaders;
-use AmazonPHP\SellingPartner\ObjectSerializer;
+use Plenty\AmazonPHP\SellingPartner\AccessToken;
+use Plenty\AmazonPHP\SellingPartner\Exception\ApiException;
+use Plenty\AmazonPHP\SellingPartner\Exception\InvalidArgumentException;
+use Plenty\AmazonPHP\SellingPartner\HttpSignatureHeaders;
+use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
+use Plenty\AmazonPHP\SellingPartner\Configuration;
+use Plenty\AmazonPHP\SellingPartner\HttpFactory;
 use Psr\Http\Client\ClientExceptionInterface;
 use Psr\Http\Client\ClientInterface;
 use Psr\Http\Message\RequestInterface;
@@ -69,10 +69,10 @@ final class ExternalFulfillmentShipping2024SDK
      * @param AccessToken $accessToken
      * @param string $region
      * @param string $shipment_id The ID of the shipment. (required)
-     * @param \AmazonPHP\SellingPartner\Model\ExternalFulfillmentShipping2024\Packages $body A list of packages in the shipment. (required)
+     * @param \Plenty\AmazonPHP\SellingPartner\Model\ExternalFulfillmentShipping2024\Packages $body A list of packages in the shipment. (required)
      *
-     * @throws \AmazonPHP\SellingPartner\Exception\ApiException on non-2xx response
-     * @throws \AmazonPHP\SellingPartner\Exception\InvalidArgumentException
+     * @throws \Plenty\AmazonPHP\SellingPartner\Exception\ApiException on non-2xx response
+     * @throws \Plenty\AmazonPHP\SellingPartner\Exception\InvalidArgumentException
      * @return null
      */
     public function createPackages(AccessToken $accessToken, string $region, $shipment_id, $body)
@@ -165,9 +165,9 @@ final class ExternalFulfillmentShipping2024SDK
      * @param AccessToken $accessToken
      * @param string $region
      * @param string $shipment_id The ID of the shipment. (required)
-     * @param \AmazonPHP\SellingPartner\Model\ExternalFulfillmentShipping2024\Packages $body A list of packages in the shipment. (required)
+     * @param \Plenty\AmazonPHP\SellingPartner\Model\ExternalFulfillmentShipping2024\Packages $body A list of packages in the shipment. (required)
      *
-     * @throws \AmazonPHP\SellingPartner\Exception\InvalidArgumentException
+     * @throws \Plenty\AmazonPHP\SellingPartner\Exception\InvalidArgumentException
      * @return RequestInterface
      */
     public function createPackagesRequest(AccessToken $accessToken, string $region, $shipment_id, $body) : RequestInterface
@@ -276,9 +276,9 @@ final class ExternalFulfillmentShipping2024SDK
      * @param string $region
      * @param string $shipment_id The ID of the shipment whose invoice you want. (required)
      *
-     * @throws \AmazonPHP\SellingPartner\Exception\ApiException on non-2xx response
-     * @throws \AmazonPHP\SellingPartner\Exception\InvalidArgumentException
-     * @return \AmazonPHP\SellingPartner\Model\ExternalFulfillmentShipping2024\InvoiceResponse
+     * @throws \Plenty\AmazonPHP\SellingPartner\Exception\ApiException on non-2xx response
+     * @throws \Plenty\AmazonPHP\SellingPartner\Exception\InvalidArgumentException
+     * @return \Plenty\AmazonPHP\SellingPartner\Model\ExternalFulfillmentShipping2024\InvoiceResponse
      */
     public function generateInvoice(AccessToken $accessToken, string $region, $shipment_id)
     {
@@ -364,7 +364,7 @@ final class ExternalFulfillmentShipping2024SDK
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            '\AmazonPHP\SellingPartner\Model\ExternalFulfillmentShipping2024\InvoiceResponse',
+            '\Plenty\AmazonPHP\SellingPartner\Model\ExternalFulfillmentShipping2024\InvoiceResponse',
             []
         );
     }
@@ -376,7 +376,7 @@ final class ExternalFulfillmentShipping2024SDK
      * @param string $region
      * @param string $shipment_id The ID of the shipment whose invoice you want. (required)
      *
-     * @throws \AmazonPHP\SellingPartner\Exception\InvalidArgumentException
+     * @throws \Plenty\AmazonPHP\SellingPartner\Exception\InvalidArgumentException
      * @return RequestInterface
      */
     public function generateInvoiceRequest(AccessToken $accessToken, string $region, $shipment_id) : RequestInterface
@@ -472,11 +472,11 @@ final class ExternalFulfillmentShipping2024SDK
      * @param string $shipment_id The ID of the shipment whose shipping labels you want to generate and retrieve. (required)
      * @param string $operation Specify whether you want to generate or regenerate a label. (required)
      * @param string $shipping_option_id The ID of the shipping option whose shipping labels you want. (optional)
-     * @param \AmazonPHP\SellingPartner\Model\ExternalFulfillmentShipping2024\ShipLabelsInput $body Shipping details for when shipping is not done by the marketplace channel. (optional)
+     * @param \Plenty\AmazonPHP\SellingPartner\Model\ExternalFulfillmentShipping2024\ShipLabelsInput $body Shipping details for when shipping is not done by the marketplace channel. (optional)
      *
-     * @throws \AmazonPHP\SellingPartner\Exception\ApiException on non-2xx response
-     * @throws \AmazonPHP\SellingPartner\Exception\InvalidArgumentException
-     * @return \AmazonPHP\SellingPartner\Model\ExternalFulfillmentShipping2024\ShipLabelsResponse
+     * @throws \Plenty\AmazonPHP\SellingPartner\Exception\ApiException on non-2xx response
+     * @throws \Plenty\AmazonPHP\SellingPartner\Exception\InvalidArgumentException
+     * @return \Plenty\AmazonPHP\SellingPartner\Model\ExternalFulfillmentShipping2024\ShipLabelsResponse
      */
     public function generateShipLabels(AccessToken $accessToken, string $region, $shipment_id, $operation, $shipping_option_id = null, $body = null)
     {
@@ -562,7 +562,7 @@ final class ExternalFulfillmentShipping2024SDK
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            '\AmazonPHP\SellingPartner\Model\ExternalFulfillmentShipping2024\ShipLabelsResponse',
+            '\Plenty\AmazonPHP\SellingPartner\Model\ExternalFulfillmentShipping2024\ShipLabelsResponse',
             []
         );
     }
@@ -575,9 +575,9 @@ final class ExternalFulfillmentShipping2024SDK
      * @param string $shipment_id The ID of the shipment whose shipping labels you want to generate and retrieve. (required)
      * @param string $operation Specify whether you want to generate or regenerate a label. (required)
      * @param string $shipping_option_id The ID of the shipping option whose shipping labels you want. (optional)
-     * @param \AmazonPHP\SellingPartner\Model\ExternalFulfillmentShipping2024\ShipLabelsInput $body Shipping details for when shipping is not done by the marketplace channel. (optional)
+     * @param \Plenty\AmazonPHP\SellingPartner\Model\ExternalFulfillmentShipping2024\ShipLabelsInput $body Shipping details for when shipping is not done by the marketplace channel. (optional)
      *
-     * @throws \AmazonPHP\SellingPartner\Exception\InvalidArgumentException
+     * @throws \Plenty\AmazonPHP\SellingPartner\Exception\InvalidArgumentException
      * @return RequestInterface
      */
     public function generateShipLabelsRequest(AccessToken $accessToken, string $region, $shipment_id, $operation, $shipping_option_id = null, $body = null) : RequestInterface
@@ -700,10 +700,10 @@ final class ExternalFulfillmentShipping2024SDK
      * @param string $region
      * @param string $shipment_id The ID of the shipment you want to confirm or reject. (required)
      * @param string $operation The status of the shipment. (required)
-     * @param \AmazonPHP\SellingPartner\Model\ExternalFulfillmentShipping2024\ShipmentAcknowledgementRequest $body Information about the shipment and its line items. (optional)
+     * @param \Plenty\AmazonPHP\SellingPartner\Model\ExternalFulfillmentShipping2024\ShipmentAcknowledgementRequest $body Information about the shipment and its line items. (optional)
      *
-     * @throws \AmazonPHP\SellingPartner\Exception\ApiException on non-2xx response
-     * @throws \AmazonPHP\SellingPartner\Exception\InvalidArgumentException
+     * @throws \Plenty\AmazonPHP\SellingPartner\Exception\ApiException on non-2xx response
+     * @throws \Plenty\AmazonPHP\SellingPartner\Exception\InvalidArgumentException
      * @return null
      */
     public function processShipment(AccessToken $accessToken, string $region, $shipment_id, $operation, $body = null)
@@ -797,9 +797,9 @@ final class ExternalFulfillmentShipping2024SDK
      * @param string $region
      * @param string $shipment_id The ID of the shipment you want to confirm or reject. (required)
      * @param string $operation The status of the shipment. (required)
-     * @param \AmazonPHP\SellingPartner\Model\ExternalFulfillmentShipping2024\ShipmentAcknowledgementRequest $body Information about the shipment and its line items. (optional)
+     * @param \Plenty\AmazonPHP\SellingPartner\Model\ExternalFulfillmentShipping2024\ShipmentAcknowledgementRequest $body Information about the shipment and its line items. (optional)
      *
-     * @throws \AmazonPHP\SellingPartner\Exception\InvalidArgumentException
+     * @throws \Plenty\AmazonPHP\SellingPartner\Exception\InvalidArgumentException
      * @return RequestInterface
      */
     public function processShipmentRequest(AccessToken $accessToken, string $region, $shipment_id, $operation, $body = null) : RequestInterface
@@ -915,9 +915,9 @@ final class ExternalFulfillmentShipping2024SDK
      * @param string $region
      * @param string $shipment_id The ID of the shipment whose invoice you want to retrieve. (required)
      *
-     * @throws \AmazonPHP\SellingPartner\Exception\ApiException on non-2xx response
-     * @throws \AmazonPHP\SellingPartner\Exception\InvalidArgumentException
-     * @return \AmazonPHP\SellingPartner\Model\ExternalFulfillmentShipping2024\InvoiceResponse
+     * @throws \Plenty\AmazonPHP\SellingPartner\Exception\ApiException on non-2xx response
+     * @throws \Plenty\AmazonPHP\SellingPartner\Exception\InvalidArgumentException
+     * @return \Plenty\AmazonPHP\SellingPartner\Model\ExternalFulfillmentShipping2024\InvoiceResponse
      */
     public function retrieveInvoice(AccessToken $accessToken, string $region, $shipment_id)
     {
@@ -1003,7 +1003,7 @@ final class ExternalFulfillmentShipping2024SDK
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            '\AmazonPHP\SellingPartner\Model\ExternalFulfillmentShipping2024\InvoiceResponse',
+            '\Plenty\AmazonPHP\SellingPartner\Model\ExternalFulfillmentShipping2024\InvoiceResponse',
             []
         );
     }
@@ -1015,7 +1015,7 @@ final class ExternalFulfillmentShipping2024SDK
      * @param string $region
      * @param string $shipment_id The ID of the shipment whose invoice you want to retrieve. (required)
      *
-     * @throws \AmazonPHP\SellingPartner\Exception\InvalidArgumentException
+     * @throws \Plenty\AmazonPHP\SellingPartner\Exception\InvalidArgumentException
      * @return RequestInterface
      */
     public function retrieveInvoiceRequest(AccessToken $accessToken, string $region, $shipment_id) : RequestInterface
@@ -1111,9 +1111,9 @@ final class ExternalFulfillmentShipping2024SDK
      * @param string $shipment_id The ID of the shipment to which the package belongs. (required)
      * @param string $package_id The ID of the package for which you want to retrieve shipping options. (required)
      *
-     * @throws \AmazonPHP\SellingPartner\Exception\ApiException on non-2xx response
-     * @throws \AmazonPHP\SellingPartner\Exception\InvalidArgumentException
-     * @return \AmazonPHP\SellingPartner\Model\ExternalFulfillmentShipping2024\ShippingOptionsResponse
+     * @throws \Plenty\AmazonPHP\SellingPartner\Exception\ApiException on non-2xx response
+     * @throws \Plenty\AmazonPHP\SellingPartner\Exception\InvalidArgumentException
+     * @return \Plenty\AmazonPHP\SellingPartner\Model\ExternalFulfillmentShipping2024\ShippingOptionsResponse
      */
     public function retrieveShippingOptions(AccessToken $accessToken, string $region, $shipment_id, $package_id)
     {
@@ -1199,7 +1199,7 @@ final class ExternalFulfillmentShipping2024SDK
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            '\AmazonPHP\SellingPartner\Model\ExternalFulfillmentShipping2024\ShippingOptionsResponse',
+            '\Plenty\AmazonPHP\SellingPartner\Model\ExternalFulfillmentShipping2024\ShippingOptionsResponse',
             []
         );
     }
@@ -1212,7 +1212,7 @@ final class ExternalFulfillmentShipping2024SDK
      * @param string $shipment_id The ID of the shipment to which the package belongs. (required)
      * @param string $package_id The ID of the package for which you want to retrieve shipping options. (required)
      *
-     * @throws \AmazonPHP\SellingPartner\Exception\InvalidArgumentException
+     * @throws \Plenty\AmazonPHP\SellingPartner\Exception\InvalidArgumentException
      * @return RequestInterface
      */
     public function retrieveShippingOptionsRequest(AccessToken $accessToken, string $region, $shipment_id, $package_id) : RequestInterface
@@ -1320,10 +1320,10 @@ final class ExternalFulfillmentShipping2024SDK
      * @param string $region
      * @param string $shipment_id The ID of the shipment to which the package belongs. (required)
      * @param string $package_id The ID of the package whose information you want to update. (required)
-     * @param \AmazonPHP\SellingPartner\Model\ExternalFulfillmentShipping2024\Package $body The body of the request. (required)
+     * @param \Plenty\AmazonPHP\SellingPartner\Model\ExternalFulfillmentShipping2024\Package $body The body of the request. (required)
      *
-     * @throws \AmazonPHP\SellingPartner\Exception\ApiException on non-2xx response
-     * @throws \AmazonPHP\SellingPartner\Exception\InvalidArgumentException
+     * @throws \Plenty\AmazonPHP\SellingPartner\Exception\ApiException on non-2xx response
+     * @throws \Plenty\AmazonPHP\SellingPartner\Exception\InvalidArgumentException
      * @return null
      */
     public function updatePackage(AccessToken $accessToken, string $region, $shipment_id, $package_id, $body)
@@ -1417,9 +1417,9 @@ final class ExternalFulfillmentShipping2024SDK
      * @param string $region
      * @param string $shipment_id The ID of the shipment to which the package belongs. (required)
      * @param string $package_id The ID of the package whose information you want to update. (required)
-     * @param \AmazonPHP\SellingPartner\Model\ExternalFulfillmentShipping2024\Package $body The body of the request. (required)
+     * @param \Plenty\AmazonPHP\SellingPartner\Model\ExternalFulfillmentShipping2024\Package $body The body of the request. (required)
      *
-     * @throws \AmazonPHP\SellingPartner\Exception\InvalidArgumentException
+     * @throws \Plenty\AmazonPHP\SellingPartner\Exception\InvalidArgumentException
      * @return RequestInterface
      */
     public function updatePackageRequest(AccessToken $accessToken, string $region, $shipment_id, $package_id, $body) : RequestInterface
@@ -1543,10 +1543,10 @@ final class ExternalFulfillmentShipping2024SDK
      * @param string $shipment_id The ID of the shipment to which the package belongs. (required)
      * @param string $package_id The ID of the package whose status you want to update. (required)
      * @param string $status **DEPRECATED**. Do not use. Package status is defined in the body parameter. (optional)
-     * @param \AmazonPHP\SellingPartner\Model\ExternalFulfillmentShipping2024\PackageDeliveryStatus $body The body of the request. (optional)
+     * @param \Plenty\AmazonPHP\SellingPartner\Model\ExternalFulfillmentShipping2024\PackageDeliveryStatus $body The body of the request. (optional)
      *
-     * @throws \AmazonPHP\SellingPartner\Exception\ApiException on non-2xx response
-     * @throws \AmazonPHP\SellingPartner\Exception\InvalidArgumentException
+     * @throws \Plenty\AmazonPHP\SellingPartner\Exception\ApiException on non-2xx response
+     * @throws \Plenty\AmazonPHP\SellingPartner\Exception\InvalidArgumentException
      * @return null
      */
     public function updatePackageStatus(AccessToken $accessToken, string $region, $shipment_id, $package_id, $status = null, $body = null)
@@ -1641,9 +1641,9 @@ final class ExternalFulfillmentShipping2024SDK
      * @param string $shipment_id The ID of the shipment to which the package belongs. (required)
      * @param string $package_id The ID of the package whose status you want to update. (required)
      * @param string $status **DEPRECATED**. Do not use. Package status is defined in the body parameter. (optional)
-     * @param \AmazonPHP\SellingPartner\Model\ExternalFulfillmentShipping2024\PackageDeliveryStatus $body The body of the request. (optional)
+     * @param \Plenty\AmazonPHP\SellingPartner\Model\ExternalFulfillmentShipping2024\PackageDeliveryStatus $body The body of the request. (optional)
      *
-     * @throws \AmazonPHP\SellingPartner\Exception\InvalidArgumentException
+     * @throws \Plenty\AmazonPHP\SellingPartner\Exception\InvalidArgumentException
      * @return RequestInterface
      */
     public function updatePackageStatusRequest(AccessToken $accessToken, string $region, $shipment_id, $package_id, $status = null, $body = null) : RequestInterface
