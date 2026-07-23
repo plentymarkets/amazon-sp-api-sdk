@@ -228,3 +228,8 @@ docker run --rm -v "${PWD}:/sp-api" openapitools/openapi-generator-cli generate 
     --global-property models,apis,apiDocs=false,modelDocs=false,modelTests=false,apiTests=false,supportingFiles=false \
     -o /sp-api
 
+docker run --rm -v "${PWD}:/sp-api" openapitools/openapi-generator-cli generate \
+    -i https://raw.githubusercontent.com/amzn/selling-partner-api-models/refs/heads/main/models/external-fulfillment/externalFulfillmentShipments_2024-09-11.json \
+    -c /sp-api/config/generator-external-fulfillment-shipping-2024.yaml \
+    --global-property models,apis,apiDocs=false,modelDocs=false,modelTests=false,apiTests=false,supportingFiles=false \
+    -o /sp-api
