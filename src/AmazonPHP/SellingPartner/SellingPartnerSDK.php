@@ -10,6 +10,8 @@ use Plenty\AmazonPHP\SellingPartner\Api\CatalogApi\CatalogItemSDK;
 use Plenty\AmazonPHP\SellingPartner\Api\DefaultApi\FinancesSDK;
 use Plenty\AmazonPHP\SellingPartner\Api\DefaultApi\FinancesSDK2024;
 use Plenty\AmazonPHP\SellingPartner\Api\DefinitionsApi\ProductTypesDefinitionsSDK;
+use Plenty\AmazonPHP\SellingPartner\Api\ShipmentProcessingApi\ExternalFulfillmentShipping2024SDK as ExternalFulfillmentShippingProcessing2024SDK;
+use Plenty\AmazonPHP\SellingPartner\Api\ShipmentRetrievalApi\ExternalFulfillmentShipping2024SDK as ExternalFulfillmentShippingRetrieval2024SDK;
 use Plenty\AmazonPHP\SellingPartner\Api\FbaInboundApi\FBAInboundSDK;
 use Plenty\AmazonPHP\SellingPartner\Api\FbaInboundApi\FulfillmentInboundSDK;
 use Plenty\AmazonPHP\SellingPartner\Api\FbaInboundApi\FulfillmentInboundSDK2024;
@@ -109,6 +111,16 @@ final class SellingPartnerSDK
     public function catalogItem() : CatalogItemSDK
     {
         return $this->instantiateSDK(CatalogItemSDK::class);
+    }
+
+    public function externalFulfillmentShippingProcessing2024() : ExternalFulfillmentShippingProcessing2024SDK
+    {
+        return $this->instantiateSDK(ExternalFulfillmentShippingProcessing2024SDK::class);
+    }
+
+    public function externalFulfillmentShippingRetrieval2024() : ExternalFulfillmentShippingRetrieval2024SDK
+    {
+        return $this->instantiateSDK(ExternalFulfillmentShippingRetrieval2024SDK::class);
     }
 
     public function fbaInbound() : FBAInboundSDK
