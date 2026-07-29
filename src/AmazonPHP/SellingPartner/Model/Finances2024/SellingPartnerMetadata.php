@@ -1,4 +1,5 @@
 <?php
+
 /**
  * SellingPartnerMetadata
  *
@@ -27,7 +28,7 @@
 
 namespace Plenty\AmazonPHP\SellingPartner\Model\Finances2024;
 
-use \ArrayAccess;
+use ArrayAccess;
 use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
 use Plenty\AmazonPHP\SellingPartner\ModelInterface;
 
@@ -79,7 +80,7 @@ class SellingPartnerMetadata implements ModelInterface, ArrayAccess, \JsonSerial
      *
      * @return array
      */
-    public static function openAPITypes() : array
+    public static function openAPITypes(): array
     {
         return self::$openAPITypes;
     }
@@ -89,7 +90,7 @@ class SellingPartnerMetadata implements ModelInterface, ArrayAccess, \JsonSerial
      *
      * @return array
      */
-    public static function openAPIFormats() : array
+    public static function openAPIFormats(): array
     {
         return self::$openAPIFormats;
     }
@@ -134,7 +135,7 @@ class SellingPartnerMetadata implements ModelInterface, ArrayAccess, \JsonSerial
      *
      * @return array
      */
-    public static function attributeMap() : array
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -144,7 +145,7 @@ class SellingPartnerMetadata implements ModelInterface, ArrayAccess, \JsonSerial
      *
      * @return array
      */
-    public static function setters() : array
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -154,7 +155,7 @@ class SellingPartnerMetadata implements ModelInterface, ArrayAccess, \JsonSerial
      *
      * @return array
      */
-    public static function getters() : array
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -164,7 +165,7 @@ class SellingPartnerMetadata implements ModelInterface, ArrayAccess, \JsonSerial
      *
      * @return string
      */
-    public function getModelName() : string
+    public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
@@ -195,7 +196,7 @@ class SellingPartnerMetadata implements ModelInterface, ArrayAccess, \JsonSerial
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties() : array
+    public function listInvalidProperties(): array
     {
         $invalidProperties = [];
 
@@ -208,7 +209,7 @@ class SellingPartnerMetadata implements ModelInterface, ArrayAccess, \JsonSerial
      *
      * @return bool True if all properties are valid
      */
-    public function valid() : bool
+    public function valid(): bool
     {
         return count($this->listInvalidProperties()) === 0;
     }
@@ -231,7 +232,7 @@ class SellingPartnerMetadata implements ModelInterface, ArrayAccess, \JsonSerial
      *
      * @return self
      */
-    public function setSellingPartnerId($selling_partner_id) : self
+    public function setSellingPartnerId($selling_partner_id): self
     {
         $this->container['selling_partner_id'] = $selling_partner_id;
 
@@ -255,7 +256,7 @@ class SellingPartnerMetadata implements ModelInterface, ArrayAccess, \JsonSerial
      *
      * @return self
      */
-    public function setAccountType($account_type) : self
+    public function setAccountType($account_type): self
     {
         $this->container['account_type'] = $account_type;
 
@@ -279,7 +280,7 @@ class SellingPartnerMetadata implements ModelInterface, ArrayAccess, \JsonSerial
      *
      * @return self
      */
-    public function setMarketplaceId($marketplace_id) : self
+    public function setMarketplaceId($marketplace_id): self
     {
         $this->container['marketplace_id'] = $marketplace_id;
 
@@ -292,7 +293,7 @@ class SellingPartnerMetadata implements ModelInterface, ArrayAccess, \JsonSerial
      *
      * @return boolean
      */
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -304,7 +305,7 @@ class SellingPartnerMetadata implements ModelInterface, ArrayAccess, \JsonSerial
      *
      * @return mixed|null
      */
-    public function offsetGet($offset)
+    public function offsetGet($offset): mixed
     {
         return $this->container[$offset] ?? null;
     }
@@ -317,7 +318,7 @@ class SellingPartnerMetadata implements ModelInterface, ArrayAccess, \JsonSerial
      *
      * @return void
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         if (is_null($offset)) {
             $this->container[] = $value;
@@ -333,7 +334,7 @@ class SellingPartnerMetadata implements ModelInterface, ArrayAccess, \JsonSerial
      *
      * @return void
      */
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -345,9 +346,9 @@ class SellingPartnerMetadata implements ModelInterface, ArrayAccess, \JsonSerial
      * @return mixed Returns data which can be serialized by json_encode(), which is a value
      * of any type other than a resource.
      */
-    public function jsonSerialize() : string
+    public function jsonSerialize(): string
     {
-       return \json_encode(ObjectSerializer::sanitizeForSerialization($this));
+        return \json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }
 
     /**
@@ -355,7 +356,7 @@ class SellingPartnerMetadata implements ModelInterface, ArrayAccess, \JsonSerial
      *
      * @return string
      */
-    public function __toString() : string
+    public function __toString(): string
     {
         return json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
@@ -368,7 +369,7 @@ class SellingPartnerMetadata implements ModelInterface, ArrayAccess, \JsonSerial
      *
      * @return string
      */
-    public function toHeaderValue() : string
+    public function toHeaderValue(): string
     {
         return json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }

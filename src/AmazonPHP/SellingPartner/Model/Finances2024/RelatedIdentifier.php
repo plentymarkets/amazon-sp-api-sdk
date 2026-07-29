@@ -1,4 +1,5 @@
 <?php
+
 /**
  * RelatedIdentifier
  *
@@ -27,7 +28,7 @@
 
 namespace Plenty\AmazonPHP\SellingPartner\Model\Finances2024;
 
-use \ArrayAccess;
+use ArrayAccess;
 use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
 use Plenty\AmazonPHP\SellingPartner\ModelInterface;
 
@@ -77,7 +78,7 @@ class RelatedIdentifier implements ModelInterface, ArrayAccess, \JsonSerializabl
      *
      * @return array
      */
-    public static function openAPITypes() : array
+    public static function openAPITypes(): array
     {
         return self::$openAPITypes;
     }
@@ -87,7 +88,7 @@ class RelatedIdentifier implements ModelInterface, ArrayAccess, \JsonSerializabl
      *
      * @return array
      */
-    public static function openAPIFormats() : array
+    public static function openAPIFormats(): array
     {
         return self::$openAPIFormats;
     }
@@ -129,7 +130,7 @@ class RelatedIdentifier implements ModelInterface, ArrayAccess, \JsonSerializabl
      *
      * @return array
      */
-    public static function attributeMap() : array
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -139,7 +140,7 @@ class RelatedIdentifier implements ModelInterface, ArrayAccess, \JsonSerializabl
      *
      * @return array
      */
-    public static function setters() : array
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -149,7 +150,7 @@ class RelatedIdentifier implements ModelInterface, ArrayAccess, \JsonSerializabl
      *
      * @return array
      */
-    public static function getters() : array
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -159,28 +160,28 @@ class RelatedIdentifier implements ModelInterface, ArrayAccess, \JsonSerializabl
      *
      * @return string
      */
-    public function getModelName() : string
+    public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
 
-    const RELATED_IDENTIFIER_NAME_ORDER_ID = 'ORDER_ID';
-    const RELATED_IDENTIFIER_NAME_SHIPMENT_ID = 'SHIPMENT_ID';
-    const RELATED_IDENTIFIER_NAME_FINANCIAL_EVENT_GROUP_ID = 'FINANCIAL_EVENT_GROUP_ID';
-    const RELATED_IDENTIFIER_NAME_REFUND_ID = 'REFUND_ID';
-    const RELATED_IDENTIFIER_NAME_INVOICE_ID = 'INVOICE_ID';
-    const RELATED_IDENTIFIER_NAME_DISBURSEMENT_ID = 'DISBURSEMENT_ID';
-    const RELATED_IDENTIFIER_NAME_TRANSFER_ID = 'TRANSFER_ID';
-    const RELATED_IDENTIFIER_NAME_DEFERRED_TRANSACTION_ID = 'DEFERRED_TRANSACTION_ID';
-    const RELATED_IDENTIFIER_NAME_RELEASE_TRANSACTION_ID = 'RELEASE_TRANSACTION_ID';
-    const RELATED_IDENTIFIER_NAME_SETTLEMENT_ID = 'SETTLEMENT_ID';
+    public const RELATED_IDENTIFIER_NAME_ORDER_ID = 'ORDER_ID';
+    public const RELATED_IDENTIFIER_NAME_SHIPMENT_ID = 'SHIPMENT_ID';
+    public const RELATED_IDENTIFIER_NAME_FINANCIAL_EVENT_GROUP_ID = 'FINANCIAL_EVENT_GROUP_ID';
+    public const RELATED_IDENTIFIER_NAME_REFUND_ID = 'REFUND_ID';
+    public const RELATED_IDENTIFIER_NAME_INVOICE_ID = 'INVOICE_ID';
+    public const RELATED_IDENTIFIER_NAME_DISBURSEMENT_ID = 'DISBURSEMENT_ID';
+    public const RELATED_IDENTIFIER_NAME_TRANSFER_ID = 'TRANSFER_ID';
+    public const RELATED_IDENTIFIER_NAME_DEFERRED_TRANSACTION_ID = 'DEFERRED_TRANSACTION_ID';
+    public const RELATED_IDENTIFIER_NAME_RELEASE_TRANSACTION_ID = 'RELEASE_TRANSACTION_ID';
+    public const RELATED_IDENTIFIER_NAME_SETTLEMENT_ID = 'SETTLEMENT_ID';
 
     /**
      * Gets allowable values of the enum
      *
      * @return string[]
      */
-    public function getRelatedIdentifierNameAllowableValues() : array
+    public function getRelatedIdentifierNameAllowableValues(): array
     {
         return [
             self::RELATED_IDENTIFIER_NAME_ORDER_ID,
@@ -220,7 +221,7 @@ class RelatedIdentifier implements ModelInterface, ArrayAccess, \JsonSerializabl
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties() : array
+    public function listInvalidProperties(): array
     {
         $invalidProperties = [];
 
@@ -242,7 +243,7 @@ class RelatedIdentifier implements ModelInterface, ArrayAccess, \JsonSerializabl
      *
      * @return bool True if all properties are valid
      */
-    public function valid() : bool
+    public function valid(): bool
     {
         return count($this->listInvalidProperties()) === 0;
     }
@@ -265,7 +266,7 @@ class RelatedIdentifier implements ModelInterface, ArrayAccess, \JsonSerializabl
      *
      * @return self
      */
-    public function setRelatedIdentifierName($related_identifier_name) : self
+    public function setRelatedIdentifierName($related_identifier_name): self
     {
         $allowedValues = $this->getRelatedIdentifierNameAllowableValues();
         if (!is_null($related_identifier_name) && !in_array($related_identifier_name, $allowedValues, true)) {
@@ -299,7 +300,7 @@ class RelatedIdentifier implements ModelInterface, ArrayAccess, \JsonSerializabl
      *
      * @return self
      */
-    public function setRelatedIdentifierValue($related_identifier_value) : self
+    public function setRelatedIdentifierValue($related_identifier_value): self
     {
         $this->container['related_identifier_value'] = $related_identifier_value;
 
@@ -312,7 +313,7 @@ class RelatedIdentifier implements ModelInterface, ArrayAccess, \JsonSerializabl
      *
      * @return boolean
      */
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -324,7 +325,7 @@ class RelatedIdentifier implements ModelInterface, ArrayAccess, \JsonSerializabl
      *
      * @return mixed|null
      */
-    public function offsetGet($offset)
+    public function offsetGet($offset): mixed
     {
         return $this->container[$offset] ?? null;
     }
@@ -337,7 +338,7 @@ class RelatedIdentifier implements ModelInterface, ArrayAccess, \JsonSerializabl
      *
      * @return void
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         if (is_null($offset)) {
             $this->container[] = $value;
@@ -353,7 +354,7 @@ class RelatedIdentifier implements ModelInterface, ArrayAccess, \JsonSerializabl
      *
      * @return void
      */
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -365,9 +366,9 @@ class RelatedIdentifier implements ModelInterface, ArrayAccess, \JsonSerializabl
      * @return mixed Returns data which can be serialized by json_encode(), which is a value
      * of any type other than a resource.
      */
-    public function jsonSerialize() : string
+    public function jsonSerialize(): string
     {
-       return \json_encode(ObjectSerializer::sanitizeForSerialization($this));
+        return \json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }
 
     /**
@@ -375,7 +376,7 @@ class RelatedIdentifier implements ModelInterface, ArrayAccess, \JsonSerializabl
      *
      * @return string
      */
-    public function __toString() : string
+    public function __toString(): string
     {
         return json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
@@ -388,7 +389,7 @@ class RelatedIdentifier implements ModelInterface, ArrayAccess, \JsonSerializabl
      *
      * @return string
      */
-    public function toHeaderValue() : string
+    public function toHeaderValue(): string
     {
         return json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }
