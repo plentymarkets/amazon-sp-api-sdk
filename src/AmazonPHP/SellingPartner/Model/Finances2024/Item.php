@@ -40,7 +40,7 @@ use Plenty\AmazonPHP\SellingPartner\ModelInterface;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class Item implements ModelInterface, ArrayAccess, \JsonSerializable
+class Item implements ModelInterface, ArrayAccess, \JsonSerializable, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -59,7 +59,7 @@ class Item implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static array $openAPITypes = [
         'description' => 'string',
         'related_identifiers' => 'Plenty\AmazonPHP\SellingPartner\Model\Finances2024\ItemRelatedIdentifier[]',
-        'total_amount' => 'Plenty\AmazonPHP\SellingPartner\Model\Finances2024\Currency',
+        'total_amount' => \Plenty\AmazonPHP\SellingPartner\Model\Finances2024\Currency::class,
         'breakdowns' => 'Plenty\AmazonPHP\SellingPartner\Model\Finances2024\Breakdown[]',
         'contexts' => 'Plenty\AmazonPHP\SellingPartner\Model\Finances2024\Context[]'
     ];
@@ -418,7 +418,7 @@ class Item implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __toString(): string
     {
-        return json_encode(
+        return (string) json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );

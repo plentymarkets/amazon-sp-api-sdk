@@ -39,7 +39,7 @@ use \Plenty\AmazonPHP\SellingPartner\ModelInterface;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class OrderProceedsBreakdown implements ModelInterface, ArrayAccess, \JsonSerializable
+class OrderProceedsBreakdown implements ModelInterface, ArrayAccess, \JsonSerializable, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -58,7 +58,7 @@ class OrderProceedsBreakdown implements ModelInterface, ArrayAccess, \JsonSerial
     protected static array $openAPITypes = [
         'type' => 'string',
         'status' => 'string',
-        'subtotal' => '\Plenty\AmazonPHP\SellingPartner\Model\Orders2026\Money'
+        'subtotal' => \Plenty\AmazonPHP\SellingPartner\Model\Orders2026\Money::class
     ];
 
     /**
@@ -363,7 +363,7 @@ class OrderProceedsBreakdown implements ModelInterface, ArrayAccess, \JsonSerial
      */
     public function __toString() : string
     {
-        return json_encode(
+        return (string) json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );

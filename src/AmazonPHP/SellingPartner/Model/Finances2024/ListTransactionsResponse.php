@@ -40,7 +40,7 @@ use Plenty\AmazonPHP\SellingPartner\ModelInterface;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class ListTransactionsResponse implements ModelInterface, ArrayAccess, \JsonSerializable
+class ListTransactionsResponse implements ModelInterface, ArrayAccess, \JsonSerializable, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -57,7 +57,7 @@ class ListTransactionsResponse implements ModelInterface, ArrayAccess, \JsonSeri
       * @var string[]
       */
     protected static array $openAPITypes = [
-        'payload' => 'Plenty\AmazonPHP\SellingPartner\Model\Finances2024\TransactionsPayload'
+        'payload' => \Plenty\AmazonPHP\SellingPartner\Model\Finances2024\TransactionsPayload::class
     ];
 
     /**
@@ -298,7 +298,7 @@ class ListTransactionsResponse implements ModelInterface, ArrayAccess, \JsonSeri
      */
     public function __toString(): string
     {
-        return json_encode(
+        return (string) json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );

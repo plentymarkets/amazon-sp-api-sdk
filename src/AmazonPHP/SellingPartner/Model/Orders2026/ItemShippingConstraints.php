@@ -39,7 +39,7 @@ use \Plenty\AmazonPHP\SellingPartner\ModelInterface;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class ItemShippingConstraints implements ModelInterface, ArrayAccess, \JsonSerializable
+class ItemShippingConstraints implements ModelInterface, ArrayAccess, \JsonSerializable, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -56,11 +56,11 @@ class ItemShippingConstraints implements ModelInterface, ArrayAccess, \JsonSeria
       * @var string[]
       */
     protected static array $openAPITypes = [
-        'pallet_delivery' => '\Plenty\AmazonPHP\SellingPartner\Model\Orders2026\ConstraintType',
-        'cash_on_delivery' => '\Plenty\AmazonPHP\SellingPartner\Model\Orders2026\ConstraintType',
-        'signature_confirmation' => '\Plenty\AmazonPHP\SellingPartner\Model\Orders2026\ConstraintType',
-        'recipient_identity_verification' => '\Plenty\AmazonPHP\SellingPartner\Model\Orders2026\ConstraintType',
-        'recipient_age_verification' => '\Plenty\AmazonPHP\SellingPartner\Model\Orders2026\ConstraintType'
+        'pallet_delivery' => \Plenty\AmazonPHP\SellingPartner\Model\Orders2026\ConstraintType::class,
+        'cash_on_delivery' => \Plenty\AmazonPHP\SellingPartner\Model\Orders2026\ConstraintType::class,
+        'signature_confirmation' => \Plenty\AmazonPHP\SellingPartner\Model\Orders2026\ConstraintType::class,
+        'recipient_identity_verification' => \Plenty\AmazonPHP\SellingPartner\Model\Orders2026\ConstraintType::class,
+        'recipient_age_verification' => \Plenty\AmazonPHP\SellingPartner\Model\Orders2026\ConstraintType::class
     ];
 
     /**
@@ -417,7 +417,7 @@ class ItemShippingConstraints implements ModelInterface, ArrayAccess, \JsonSeria
      */
     public function __toString() : string
     {
-        return json_encode(
+        return (string) json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );

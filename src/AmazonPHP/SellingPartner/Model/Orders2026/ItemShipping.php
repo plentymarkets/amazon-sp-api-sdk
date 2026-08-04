@@ -39,7 +39,7 @@ use \Plenty\AmazonPHP\SellingPartner\ModelInterface;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class ItemShipping implements ModelInterface, ArrayAccess, \JsonSerializable
+class ItemShipping implements ModelInterface, ArrayAccess, \JsonSerializable, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -56,9 +56,9 @@ class ItemShipping implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static array $openAPITypes = [
-        'scheduled_delivery_window' => '\Plenty\AmazonPHP\SellingPartner\Model\Orders2026\DateTimeRange',
-        'shipping_constraints' => '\Plenty\AmazonPHP\SellingPartner\Model\Orders2026\ItemShippingConstraints',
-        'international_shipping' => '\Plenty\AmazonPHP\SellingPartner\Model\Orders2026\ItemInternationalShipping'
+        'scheduled_delivery_window' => \Plenty\AmazonPHP\SellingPartner\Model\Orders2026\DateTimeRange::class,
+        'shipping_constraints' => \Plenty\AmazonPHP\SellingPartner\Model\Orders2026\ItemShippingConstraints::class,
+        'international_shipping' => \Plenty\AmazonPHP\SellingPartner\Model\Orders2026\ItemInternationalShipping::class
     ];
 
     /**
@@ -357,7 +357,7 @@ class ItemShipping implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __toString() : string
     {
-        return json_encode(
+        return (string) json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );

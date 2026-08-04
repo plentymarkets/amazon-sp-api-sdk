@@ -39,7 +39,7 @@ use \Plenty\AmazonPHP\SellingPartner\ModelInterface;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class ItemCancellation implements ModelInterface, ArrayAccess, \JsonSerializable
+class ItemCancellation implements ModelInterface, ArrayAccess, \JsonSerializable, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -56,8 +56,8 @@ class ItemCancellation implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static array $openAPITypes = [
-        'cancellation_request' => '\Plenty\AmazonPHP\SellingPartner\Model\Orders2026\ItemCancellationRequest',
-        'cancellation_execution' => '\Plenty\AmazonPHP\SellingPartner\Model\Orders2026\ItemCancellationExecution'
+        'cancellation_request' => \Plenty\AmazonPHP\SellingPartner\Model\Orders2026\ItemCancellationRequest::class,
+        'cancellation_execution' => \Plenty\AmazonPHP\SellingPartner\Model\Orders2026\ItemCancellationExecution::class
     ];
 
     /**
@@ -327,7 +327,7 @@ class ItemCancellation implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __toString() : string
     {
-        return json_encode(
+        return (string) json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );

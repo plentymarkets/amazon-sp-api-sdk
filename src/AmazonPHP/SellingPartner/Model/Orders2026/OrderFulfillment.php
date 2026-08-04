@@ -39,7 +39,7 @@ use \Plenty\AmazonPHP\SellingPartner\ModelInterface;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class OrderFulfillment implements ModelInterface, ArrayAccess, \JsonSerializable
+class OrderFulfillment implements ModelInterface, ArrayAccess, \JsonSerializable, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -56,12 +56,12 @@ class OrderFulfillment implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static array $openAPITypes = [
-        'fulfillment_status' => '\Plenty\AmazonPHP\SellingPartner\Model\Orders2026\FulfillmentStatus',
+        'fulfillment_status' => \Plenty\AmazonPHP\SellingPartner\Model\Orders2026\FulfillmentStatus::class,
         'fulfilled_by' => 'string',
         'fulfillment_service_level' => 'string',
-        'ship_by_window' => '\Plenty\AmazonPHP\SellingPartner\Model\Orders2026\DateTimeRange',
-        'deliver_by_window' => '\Plenty\AmazonPHP\SellingPartner\Model\Orders2026\DateTimeRange',
-        'label_printing_window' => '\Plenty\AmazonPHP\SellingPartner\Model\Orders2026\DateTimeRange'
+        'ship_by_window' => \Plenty\AmazonPHP\SellingPartner\Model\Orders2026\DateTimeRange::class,
+        'deliver_by_window' => \Plenty\AmazonPHP\SellingPartner\Model\Orders2026\DateTimeRange::class,
+        'label_printing_window' => \Plenty\AmazonPHP\SellingPartner\Model\Orders2026\DateTimeRange::class
     ];
 
     /**
@@ -450,7 +450,7 @@ class OrderFulfillment implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __toString() : string
     {
-        return json_encode(
+        return (string) json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );

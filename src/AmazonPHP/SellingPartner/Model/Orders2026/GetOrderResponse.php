@@ -39,7 +39,7 @@ use \Plenty\AmazonPHP\SellingPartner\ModelInterface;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class GetOrderResponse implements ModelInterface, ArrayAccess, \JsonSerializable
+class GetOrderResponse implements ModelInterface, ArrayAccess, \JsonSerializable, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -56,7 +56,7 @@ class GetOrderResponse implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static array $openAPITypes = [
-        'order' => '\Plenty\AmazonPHP\SellingPartner\Model\Orders2026\Order'
+        'order' => \Plenty\AmazonPHP\SellingPartner\Model\Orders2026\Order::class
     ];
 
     /**
@@ -300,7 +300,7 @@ class GetOrderResponse implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __toString() : string
     {
-        return json_encode(
+        return (string) json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );

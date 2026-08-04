@@ -39,7 +39,7 @@ use \Plenty\AmazonPHP\SellingPartner\ModelInterface;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class ItemFulfillment implements ModelInterface, ArrayAccess, \JsonSerializable
+class ItemFulfillment implements ModelInterface, ArrayAccess, \JsonSerializable, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -58,9 +58,9 @@ class ItemFulfillment implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static array $openAPITypes = [
         'quantity_fulfilled' => 'int',
         'quantity_unfulfilled' => 'int',
-        'picking' => '\Plenty\AmazonPHP\SellingPartner\Model\Orders2026\ItemPicking',
-        'packing' => '\Plenty\AmazonPHP\SellingPartner\Model\Orders2026\ItemPacking',
-        'shipping' => '\Plenty\AmazonPHP\SellingPartner\Model\Orders2026\ItemShipping'
+        'picking' => \Plenty\AmazonPHP\SellingPartner\Model\Orders2026\ItemPicking::class,
+        'packing' => \Plenty\AmazonPHP\SellingPartner\Model\Orders2026\ItemPacking::class,
+        'shipping' => \Plenty\AmazonPHP\SellingPartner\Model\Orders2026\ItemShipping::class
     ];
 
     /**
@@ -417,7 +417,7 @@ class ItemFulfillment implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __toString() : string
     {
-        return json_encode(
+        return (string) json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );

@@ -39,7 +39,7 @@ use \Plenty\AmazonPHP\SellingPartner\ModelInterface;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class ItemPrice implements ModelInterface, ArrayAccess, \JsonSerializable
+class ItemPrice implements ModelInterface, ArrayAccess, \JsonSerializable, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -56,7 +56,7 @@ class ItemPrice implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static array $openAPITypes = [
-        'unit_price' => '\Plenty\AmazonPHP\SellingPartner\Model\Orders2026\Money',
+        'unit_price' => \Plenty\AmazonPHP\SellingPartner\Model\Orders2026\Money::class,
         'price_designation' => 'string'
     ];
 
@@ -327,7 +327,7 @@ class ItemPrice implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __toString() : string
     {
-        return json_encode(
+        return (string) json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );

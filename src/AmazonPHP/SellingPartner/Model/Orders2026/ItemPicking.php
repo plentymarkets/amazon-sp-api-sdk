@@ -39,7 +39,7 @@ use \Plenty\AmazonPHP\SellingPartner\ModelInterface;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class ItemPicking implements ModelInterface, ArrayAccess, \JsonSerializable
+class ItemPicking implements ModelInterface, ArrayAccess, \JsonSerializable, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -56,7 +56,7 @@ class ItemPicking implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static array $openAPITypes = [
-        'substitution_preference' => '\Plenty\AmazonPHP\SellingPartner\Model\Orders2026\ItemSubstitutionPreference'
+        'substitution_preference' => \Plenty\AmazonPHP\SellingPartner\Model\Orders2026\ItemSubstitutionPreference::class
     ];
 
     /**
@@ -297,7 +297,7 @@ class ItemPicking implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __toString() : string
     {
-        return json_encode(
+        return (string) json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );

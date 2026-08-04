@@ -40,7 +40,7 @@ use Plenty\AmazonPHP\SellingPartner\ModelInterface;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class TransactionsPayload implements ModelInterface, ArrayAccess, \JsonSerializable
+class TransactionsPayload implements ModelInterface, ArrayAccess, \JsonSerializable, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -328,7 +328,7 @@ class TransactionsPayload implements ModelInterface, ArrayAccess, \JsonSerializa
      */
     public function __toString(): string
     {
-        return json_encode(
+        return (string) json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );

@@ -39,7 +39,7 @@ use \Plenty\AmazonPHP\SellingPartner\ModelInterface;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class Recipient implements ModelInterface, ArrayAccess, \JsonSerializable
+class Recipient implements ModelInterface, ArrayAccess, \JsonSerializable, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -56,8 +56,8 @@ class Recipient implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static array $openAPITypes = [
-        'delivery_address' => '\Plenty\AmazonPHP\SellingPartner\Model\Orders2026\CustomerAddress',
-        'delivery_preference' => '\Plenty\AmazonPHP\SellingPartner\Model\Orders2026\DeliveryPreference'
+        'delivery_address' => \Plenty\AmazonPHP\SellingPartner\Model\Orders2026\CustomerAddress::class,
+        'delivery_preference' => \Plenty\AmazonPHP\SellingPartner\Model\Orders2026\DeliveryPreference::class
     ];
 
     /**
@@ -327,7 +327,7 @@ class Recipient implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __toString() : string
     {
-        return json_encode(
+        return (string) json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );

@@ -39,7 +39,7 @@ use \Plenty\AmazonPHP\SellingPartner\ModelInterface;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class Order implements ModelInterface, ArrayAccess, \JsonSerializable
+class Order implements ModelInterface, ArrayAccess, \JsonSerializable, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -62,13 +62,13 @@ class Order implements ModelInterface, ArrayAccess, \JsonSerializable
         'last_updated_time' => '\DateTime',
         'programs' => 'string[]',
         'associated_orders' => '\Plenty\AmazonPHP\SellingPartner\Model\Orders2026\AssociatedOrder[]',
-        'sales_channel' => '\Plenty\AmazonPHP\SellingPartner\Model\Orders2026\SalesChannel',
-        'buyer' => '\Plenty\AmazonPHP\SellingPartner\Model\Orders2026\Buyer',
-        'recipient' => '\Plenty\AmazonPHP\SellingPartner\Model\Orders2026\Recipient',
-        'proceeds' => '\Plenty\AmazonPHP\SellingPartner\Model\Orders2026\OrderProceeds',
-        'payment' => '\Plenty\AmazonPHP\SellingPartner\Model\Orders2026\OrderPayment',
-        'tax' => '\Plenty\AmazonPHP\SellingPartner\Model\Orders2026\OrderTax',
-        'fulfillment' => '\Plenty\AmazonPHP\SellingPartner\Model\Orders2026\OrderFulfillment',
+        'sales_channel' => \Plenty\AmazonPHP\SellingPartner\Model\Orders2026\SalesChannel::class,
+        'buyer' => \Plenty\AmazonPHP\SellingPartner\Model\Orders2026\Buyer::class,
+        'recipient' => \Plenty\AmazonPHP\SellingPartner\Model\Orders2026\Recipient::class,
+        'proceeds' => \Plenty\AmazonPHP\SellingPartner\Model\Orders2026\OrderProceeds::class,
+        'payment' => \Plenty\AmazonPHP\SellingPartner\Model\Orders2026\OrderPayment::class,
+        'tax' => \Plenty\AmazonPHP\SellingPartner\Model\Orders2026\OrderTax::class,
+        'fulfillment' => \Plenty\AmazonPHP\SellingPartner\Model\Orders2026\OrderFulfillment::class,
         'order_items' => '\Plenty\AmazonPHP\SellingPartner\Model\Orders2026\OrderItem[]',
         'packages' => '\Plenty\AmazonPHP\SellingPartner\Model\Orders2026\OrderPackage[]',
         'fulfillment_orders' => '\Plenty\AmazonPHP\SellingPartner\Model\Orders2026\FulfillmentOrder[]'
@@ -762,7 +762,7 @@ class Order implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __toString() : string
     {
-        return json_encode(
+        return (string) json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );

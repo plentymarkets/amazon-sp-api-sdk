@@ -39,7 +39,7 @@ use \Plenty\AmazonPHP\SellingPartner\ModelInterface;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class OrderPackage implements ModelInterface, ArrayAccess, \JsonSerializable
+class OrderPackage implements ModelInterface, ArrayAccess, \JsonSerializable, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -58,12 +58,12 @@ class OrderPackage implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static array $openAPITypes = [
         'package_reference_id' => 'string',
         'created_time' => '\DateTime',
-        'package_status' => '\Plenty\AmazonPHP\SellingPartner\Model\Orders2026\PackageStatus',
+        'package_status' => \Plenty\AmazonPHP\SellingPartner\Model\Orders2026\PackageStatus::class,
         'carrier' => 'string',
         'ship_time' => '\DateTime',
         'shipping_service' => 'string',
         'tracking_number' => 'string',
-        'ship_from_address' => '\Plenty\AmazonPHP\SellingPartner\Model\Orders2026\MerchantAddress',
+        'ship_from_address' => \Plenty\AmazonPHP\SellingPartner\Model\Orders2026\MerchantAddress::class,
         'package_items' => '\Plenty\AmazonPHP\SellingPartner\Model\Orders2026\PackageItem[]'
     ];
 
@@ -540,7 +540,7 @@ class OrderPackage implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __toString() : string
     {
-        return json_encode(
+        return (string) json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );

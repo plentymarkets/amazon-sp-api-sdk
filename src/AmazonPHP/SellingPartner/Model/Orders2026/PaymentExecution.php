@@ -39,7 +39,7 @@ use \Plenty\AmazonPHP\SellingPartner\ModelInterface;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class PaymentExecution implements ModelInterface, ArrayAccess, \JsonSerializable
+class PaymentExecution implements ModelInterface, ArrayAccess, \JsonSerializable, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -57,7 +57,7 @@ class PaymentExecution implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static array $openAPITypes = [
         'payment_method' => 'string',
-        'payment_amount' => '\Plenty\AmazonPHP\SellingPartner\Model\Orders2026\Money',
+        'payment_amount' => \Plenty\AmazonPHP\SellingPartner\Model\Orders2026\Money::class,
         'acquirer_id' => 'string',
         'card_brand' => 'string',
         'authorization_code' => 'string'
@@ -417,7 +417,7 @@ class PaymentExecution implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __toString() : string
     {
-        return json_encode(
+        return (string) json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );

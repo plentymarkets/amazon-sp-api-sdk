@@ -40,7 +40,7 @@ use Plenty\AmazonPHP\SellingPartner\ModelInterface;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class Transaction implements ModelInterface, ArrayAccess, \JsonSerializable
+class Transaction implements ModelInterface, ArrayAccess, \JsonSerializable, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -57,15 +57,15 @@ class Transaction implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static array $openAPITypes = [
-        'selling_partner_metadata' => 'Plenty\AmazonPHP\SellingPartner\Model\Finances2024\SellingPartnerMetadata',
+        'selling_partner_metadata' => \Plenty\AmazonPHP\SellingPartner\Model\Finances2024\SellingPartnerMetadata::class,
         'related_identifiers' => 'Plenty\AmazonPHP\SellingPartner\Model\Finances2024\RelatedIdentifier[]',
         'transaction_type' => 'string',
         'transaction_id' => 'string',
         'transaction_status' => 'string',
         'description' => 'string',
         'posted_date' => '\DateTime',
-        'total_amount' => 'Plenty\AmazonPHP\SellingPartner\Model\Finances2024\Currency',
-        'marketplace_details' => 'Plenty\AmazonPHP\SellingPartner\Model\Finances2024\MarketplaceDetails',
+        'total_amount' => \Plenty\AmazonPHP\SellingPartner\Model\Finances2024\Currency::class,
+        'marketplace_details' => \Plenty\AmazonPHP\SellingPartner\Model\Finances2024\MarketplaceDetails::class,
         'items' => 'Plenty\AmazonPHP\SellingPartner\Model\Finances2024\Item[]',
         'contexts' => 'Plenty\AmazonPHP\SellingPartner\Model\Finances2024\Context[]',
         'breakdowns' => 'Plenty\AmazonPHP\SellingPartner\Model\Finances2024\Breakdown[]'
@@ -628,7 +628,7 @@ class Transaction implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __toString(): string
     {
-        return json_encode(
+        return (string) json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );

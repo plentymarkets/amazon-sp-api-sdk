@@ -39,7 +39,7 @@ use \Plenty\AmazonPHP\SellingPartner\ModelInterface;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class ItemProduct implements ModelInterface, ArrayAccess, \JsonSerializable
+class ItemProduct implements ModelInterface, ArrayAccess, \JsonSerializable, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -59,10 +59,10 @@ class ItemProduct implements ModelInterface, ArrayAccess, \JsonSerializable
         'asin' => 'string',
         'title' => 'string',
         'seller_sku' => 'string',
-        'condition' => '\Plenty\AmazonPHP\SellingPartner\Model\Orders2026\ItemCondition',
-        'price' => '\Plenty\AmazonPHP\SellingPartner\Model\Orders2026\ItemPrice',
+        'condition' => \Plenty\AmazonPHP\SellingPartner\Model\Orders2026\ItemCondition::class,
+        'price' => \Plenty\AmazonPHP\SellingPartner\Model\Orders2026\ItemPrice::class,
         'serial_numbers' => 'string[]',
-        'customization' => '\Plenty\AmazonPHP\SellingPartner\Model\Orders2026\ItemCustomization'
+        'customization' => \Plenty\AmazonPHP\SellingPartner\Model\Orders2026\ItemCustomization::class
     ];
 
     /**
@@ -477,7 +477,7 @@ class ItemProduct implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __toString() : string
     {
-        return json_encode(
+        return (string) json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );

@@ -39,7 +39,7 @@ use \Plenty\AmazonPHP\SellingPartner\ModelInterface;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class AddressExtendedFields implements ModelInterface, ArrayAccess, \JsonSerializable
+class AddressExtendedFields implements ModelInterface, ArrayAccess, \JsonSerializable, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -387,7 +387,7 @@ class AddressExtendedFields implements ModelInterface, ArrayAccess, \JsonSeriali
      */
     public function __toString() : string
     {
-        return json_encode(
+        return (string) json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );

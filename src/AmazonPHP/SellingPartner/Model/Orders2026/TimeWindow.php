@@ -39,7 +39,7 @@ use \Plenty\AmazonPHP\SellingPartner\ModelInterface;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class TimeWindow implements ModelInterface, ArrayAccess, \JsonSerializable
+class TimeWindow implements ModelInterface, ArrayAccess, \JsonSerializable, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -56,8 +56,8 @@ class TimeWindow implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static array $openAPITypes = [
-        'start_time' => '\Plenty\AmazonPHP\SellingPartner\Model\Orders2026\HourMinute',
-        'end_time' => '\Plenty\AmazonPHP\SellingPartner\Model\Orders2026\HourMinute'
+        'start_time' => \Plenty\AmazonPHP\SellingPartner\Model\Orders2026\HourMinute::class,
+        'end_time' => \Plenty\AmazonPHP\SellingPartner\Model\Orders2026\HourMinute::class
     ];
 
     /**
@@ -327,7 +327,7 @@ class TimeWindow implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __toString() : string
     {
-        return json_encode(
+        return (string) json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );

@@ -39,7 +39,7 @@ use \Plenty\AmazonPHP\SellingPartner\ModelInterface;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class OrderTax implements ModelInterface, ArrayAccess, \JsonSerializable
+class OrderTax implements ModelInterface, ArrayAccess, \JsonSerializable, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -57,7 +57,7 @@ class OrderTax implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static array $openAPITypes = [
         'tax_registrations' => '\Plenty\AmazonPHP\SellingPartner\Model\Orders2026\OrderTaxRegistration[]',
-        'tax_invoicing' => '\Plenty\AmazonPHP\SellingPartner\Model\Orders2026\OrderTaxInvoicing'
+        'tax_invoicing' => \Plenty\AmazonPHP\SellingPartner\Model\Orders2026\OrderTaxInvoicing::class
     ];
 
     /**
@@ -327,7 +327,7 @@ class OrderTax implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __toString() : string
     {
-        return json_encode(
+        return (string) json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );

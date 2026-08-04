@@ -40,7 +40,7 @@ use Plenty\AmazonPHP\SellingPartner\ModelInterface;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class Breakdown implements ModelInterface, ArrayAccess, \JsonSerializable
+class Breakdown implements ModelInterface, ArrayAccess, \JsonSerializable, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -58,7 +58,7 @@ class Breakdown implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static array $openAPITypes = [
         'breakdown_type' => 'string',
-        'breakdown_amount' => 'Plenty\AmazonPHP\SellingPartner\Model\Finances2024\Currency',
+        'breakdown_amount' => \Plenty\AmazonPHP\SellingPartner\Model\Finances2024\Currency::class,
         'breakdowns' => 'Plenty\AmazonPHP\SellingPartner\Model\Finances2024\Breakdown[]'
     ];
 
@@ -358,7 +358,7 @@ class Breakdown implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __toString(): string
     {
-        return json_encode(
+        return (string) json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );

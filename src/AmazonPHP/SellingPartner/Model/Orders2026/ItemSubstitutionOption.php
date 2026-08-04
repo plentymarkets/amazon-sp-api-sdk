@@ -39,7 +39,7 @@ use \Plenty\AmazonPHP\SellingPartner\ModelInterface;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class ItemSubstitutionOption implements ModelInterface, ArrayAccess, \JsonSerializable
+class ItemSubstitutionOption implements ModelInterface, ArrayAccess, \JsonSerializable, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -60,7 +60,7 @@ class ItemSubstitutionOption implements ModelInterface, ArrayAccess, \JsonSerial
         'quantity_ordered' => 'int',
         'seller_sku' => 'string',
         'title' => 'string',
-        'measurement' => '\Plenty\AmazonPHP\SellingPartner\Model\Orders2026\Measurement'
+        'measurement' => \Plenty\AmazonPHP\SellingPartner\Model\Orders2026\Measurement::class
     ];
 
     /**
@@ -417,7 +417,7 @@ class ItemSubstitutionOption implements ModelInterface, ArrayAccess, \JsonSerial
      */
     public function __toString() : string
     {
-        return json_encode(
+        return (string) json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );

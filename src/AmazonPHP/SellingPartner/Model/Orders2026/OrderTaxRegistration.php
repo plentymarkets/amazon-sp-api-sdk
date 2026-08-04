@@ -39,7 +39,7 @@ use \Plenty\AmazonPHP\SellingPartner\ModelInterface;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class OrderTaxRegistration implements ModelInterface, ArrayAccess, \JsonSerializable
+class OrderTaxRegistration implements ModelInterface, ArrayAccess, \JsonSerializable, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -60,7 +60,7 @@ class OrderTaxRegistration implements ModelInterface, ArrayAccess, \JsonSerializ
         'legal_name' => 'string',
         'tax_registration_type' => 'string',
         'tax_registration_number' => 'string',
-        'tax_registration_address' => '\Plenty\AmazonPHP\SellingPartner\Model\Orders2026\CustomerAddress',
+        'tax_registration_address' => \Plenty\AmazonPHP\SellingPartner\Model\Orders2026\CustomerAddress::class,
         'tax_registration_attributes' => '\Plenty\AmazonPHP\SellingPartner\Model\Orders2026\TaxRegistrationAttribute[]'
     ];
 
@@ -447,7 +447,7 @@ class OrderTaxRegistration implements ModelInterface, ArrayAccess, \JsonSerializ
      */
     public function __toString() : string
     {
-        return json_encode(
+        return (string) json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );

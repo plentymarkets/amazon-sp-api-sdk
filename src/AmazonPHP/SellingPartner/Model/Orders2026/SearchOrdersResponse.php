@@ -39,7 +39,7 @@ use \Plenty\AmazonPHP\SellingPartner\ModelInterface;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class SearchOrdersResponse implements ModelInterface, ArrayAccess, \JsonSerializable
+class SearchOrdersResponse implements ModelInterface, ArrayAccess, \JsonSerializable, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -57,7 +57,7 @@ class SearchOrdersResponse implements ModelInterface, ArrayAccess, \JsonSerializ
       */
     protected static array $openAPITypes = [
         'orders' => '\Plenty\AmazonPHP\SellingPartner\Model\Orders2026\Order[]',
-        'pagination' => '\Plenty\AmazonPHP\SellingPartner\Model\Orders2026\Pagination',
+        'pagination' => \Plenty\AmazonPHP\SellingPartner\Model\Orders2026\Pagination::class,
         'last_updated_before' => '\DateTime',
         'created_before' => '\DateTime'
     ];
@@ -390,7 +390,7 @@ class SearchOrdersResponse implements ModelInterface, ArrayAccess, \JsonSerializ
      */
     public function __toString() : string
     {
-        return json_encode(
+        return (string) json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );

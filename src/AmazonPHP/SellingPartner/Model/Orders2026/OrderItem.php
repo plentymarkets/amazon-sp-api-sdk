@@ -39,7 +39,7 @@ use \Plenty\AmazonPHP\SellingPartner\ModelInterface;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class OrderItem implements ModelInterface, ArrayAccess, \JsonSerializable
+class OrderItem implements ModelInterface, ArrayAccess, \JsonSerializable, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -58,16 +58,16 @@ class OrderItem implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static array $openAPITypes = [
         'order_item_id' => 'string',
         'quantity_ordered' => 'int',
-        'measurement' => '\Plenty\AmazonPHP\SellingPartner\Model\Orders2026\Measurement',
+        'measurement' => \Plenty\AmazonPHP\SellingPartner\Model\Orders2026\Measurement::class,
         'associated_order_items' => '\Plenty\AmazonPHP\SellingPartner\Model\Orders2026\AssociatedOrderItem[]',
         'programs' => 'string[]',
-        'product' => '\Plenty\AmazonPHP\SellingPartner\Model\Orders2026\ItemProduct',
-        'proceeds' => '\Plenty\AmazonPHP\SellingPartner\Model\Orders2026\ItemProceeds',
-        'expense' => '\Plenty\AmazonPHP\SellingPartner\Model\Orders2026\ItemExpense',
-        'promotion' => '\Plenty\AmazonPHP\SellingPartner\Model\Orders2026\ItemPromotion',
-        'cancellation' => '\Plenty\AmazonPHP\SellingPartner\Model\Orders2026\ItemCancellation',
-        'fulfillment' => '\Plenty\AmazonPHP\SellingPartner\Model\Orders2026\ItemFulfillment',
-        'tax' => '\Plenty\AmazonPHP\SellingPartner\Model\Orders2026\ItemTax'
+        'product' => \Plenty\AmazonPHP\SellingPartner\Model\Orders2026\ItemProduct::class,
+        'proceeds' => \Plenty\AmazonPHP\SellingPartner\Model\Orders2026\ItemProceeds::class,
+        'expense' => \Plenty\AmazonPHP\SellingPartner\Model\Orders2026\ItemExpense::class,
+        'promotion' => \Plenty\AmazonPHP\SellingPartner\Model\Orders2026\ItemPromotion::class,
+        'cancellation' => \Plenty\AmazonPHP\SellingPartner\Model\Orders2026\ItemCancellation::class,
+        'fulfillment' => \Plenty\AmazonPHP\SellingPartner\Model\Orders2026\ItemFulfillment::class,
+        'tax' => \Plenty\AmazonPHP\SellingPartner\Model\Orders2026\ItemTax::class
     ];
 
     /**
@@ -636,7 +636,7 @@ class OrderItem implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __toString() : string
     {
-        return json_encode(
+        return (string) json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );
