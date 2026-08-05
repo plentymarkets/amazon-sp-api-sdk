@@ -26,7 +26,7 @@
  * Do not edit the class manually.
  */
 
-namespace Plenty\AmazonPHP\SellingPartner\Model\ExternalFulfillmentShipping2024\;
+namespace Plenty\AmazonPHP\SellingPartner\Model\ExternalFulfillmentShipping2024;
 
 use \ArrayAccess;
 use \Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
