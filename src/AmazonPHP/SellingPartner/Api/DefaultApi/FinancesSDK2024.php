@@ -145,7 +145,7 @@ final class FinancesSDK2024
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            '\Plenty\AmazonPHP\SellingPartner\Model\Finances2024\ListTransactionsResponse',
+            \Plenty\AmazonPHP\SellingPartner\Model\Finances2024\ListTransactionsResponse::class,
             []
         );
     }

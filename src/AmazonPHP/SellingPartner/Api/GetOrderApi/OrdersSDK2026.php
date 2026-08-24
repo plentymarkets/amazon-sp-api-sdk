@@ -138,7 +138,7 @@ final class OrdersSDK2026
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            '\Plenty\AmazonPHP\SellingPartner\Model\Orders2026\GetOrderResponse',
+            \Plenty\AmazonPHP\SellingPartner\Model\Orders2026\GetOrderResponse::class,
             []
         );
     }
