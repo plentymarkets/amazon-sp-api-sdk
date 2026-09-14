@@ -174,6 +174,7 @@ class RelatedIdentifier implements ModelInterface, ArrayAccess, \JsonSerializabl
     const RELATED_IDENTIFIER_NAME_DEFERRED_TRANSACTION_ID = 'DEFERRED_TRANSACTION_ID';
     const RELATED_IDENTIFIER_NAME_RELEASE_TRANSACTION_ID = 'RELEASE_TRANSACTION_ID';
     const RELATED_IDENTIFIER_NAME_SETTLEMENT_ID = 'SETTLEMENT_ID';
+    const RELATED_IDENTIFIER_NAME_OBFUSCATED_SHIPMENT_ID = 'OBFUSCATED_SHIPMENT_ID';
 
     /**
      * Gets allowable values of the enum
@@ -193,6 +194,7 @@ class RelatedIdentifier implements ModelInterface, ArrayAccess, \JsonSerializabl
             self::RELATED_IDENTIFIER_NAME_DEFERRED_TRANSACTION_ID,
             self::RELATED_IDENTIFIER_NAME_RELEASE_TRANSACTION_ID,
             self::RELATED_IDENTIFIER_NAME_SETTLEMENT_ID,
+            self::RELATED_IDENTIFIER_NAME_OBFUSCATED_SHIPMENT_ID,
         ];
     }
 
