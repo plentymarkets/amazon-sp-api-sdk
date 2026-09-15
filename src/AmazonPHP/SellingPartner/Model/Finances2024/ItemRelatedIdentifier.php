@@ -168,6 +168,7 @@ class ItemRelatedIdentifier implements ModelInterface, ArrayAccess, \JsonSeriali
     const ITEM_RELATED_IDENTIFIER_NAME_COUPON_ID = 'COUPON_ID';
     const ITEM_RELATED_IDENTIFIER_NAME_REMOVAL_SHIPMENT_ITEM_ID = 'REMOVAL_SHIPMENT_ITEM_ID';
     const ITEM_RELATED_IDENTIFIER_NAME_TRANSACTION_ID = 'TRANSACTION_ID';
+    const ITEM_RELATED_IDENTIFIER_NAME_INVOICE_ID = 'INVOICE_ID';
 
     /**
      * Gets allowable values of the enum
@@ -181,6 +182,7 @@ class ItemRelatedIdentifier implements ModelInterface, ArrayAccess, \JsonSeriali
             self::ITEM_RELATED_IDENTIFIER_NAME_COUPON_ID,
             self::ITEM_RELATED_IDENTIFIER_NAME_REMOVAL_SHIPMENT_ITEM_ID,
             self::ITEM_RELATED_IDENTIFIER_NAME_TRANSACTION_ID,
+            self::ITEM_RELATED_IDENTIFIER_NAME_INVOICE_ID,
         ];
     }
 
@@ -255,16 +257,13 @@ class ItemRelatedIdentifier implements ModelInterface, ArrayAccess, \JsonSeriali
      */
     public function setItemRelatedIdentifierName($item_related_identifier_name) : self
     {
-        $allowedValues = $this->getItemRelatedIdentifierNameAllowableValues();
-        if (!is_null($item_related_identifier_name) && !in_array($item_related_identifier_name, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'item_related_identifier_name', must be one of '%s'",
-                    $item_related_identifier_name,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
+        // Deliberately not validated against getItemRelatedIdentifierNameAllowableValues(): this
+        // setter runs during response deserialization (ObjectSerializer::deserialize()), not
+        // request-building, so Amazon adding a new identifier name we don't know about yet is
+        // expected forward-compatible behaviour, not a client bug. Throwing here aborted
+        // deserialization of the entire response for one unrecognized value (see INVOICE_ID/
+        // OBFUSCATED_SHIPMENT_ID incidents). listInvalidProperties()/valid() still flag unknown
+        // values for callers who want to check.
         $this->container['item_related_identifier_name'] = $item_related_identifier_name;
 
         return $this;
