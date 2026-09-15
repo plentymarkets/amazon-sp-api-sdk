@@ -269,16 +269,13 @@ class RelatedIdentifier implements ModelInterface, ArrayAccess, \JsonSerializabl
      */
     public function setRelatedIdentifierName($related_identifier_name) : self
     {
-        $allowedValues = $this->getRelatedIdentifierNameAllowableValues();
-        if (!is_null($related_identifier_name) && !in_array($related_identifier_name, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'related_identifier_name', must be one of '%s'",
-                    $related_identifier_name,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
+        // Deliberately not validated against getRelatedIdentifierNameAllowableValues(): this
+        // setter runs during response deserialization (ObjectSerializer::deserialize()), not
+        // request-building, so Amazon adding a new identifier name we don't know about yet is
+        // expected forward-compatible behaviour, not a client bug. Throwing here aborted
+        // deserialization of the entire response for one unrecognized value (see the
+        // OBFUSCATED_SHIPMENT_ID incident). listInvalidProperties()/valid() still flag unknown
+        // values for callers who want to check.
         $this->container['related_identifier_name'] = $related_identifier_name;
 
         return $this;

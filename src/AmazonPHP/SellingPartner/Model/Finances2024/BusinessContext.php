@@ -243,16 +243,14 @@ class BusinessContext implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function setStoreName($store_name) : self
     {
-        $allowedValues = $this->getStoreNameAllowableValues();
-        if (!is_null($store_name) && !in_array($store_name, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'store_name', must be one of '%s'",
-                    $store_name,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
+        // Deliberately not validated against getStoreNameAllowableValues(): this setter runs
+        // during response deserialization (ObjectSerializer::deserialize()), not
+        // request-building, so Amazon adding a new store name we don't know about yet is
+        // expected forward-compatible behaviour, not a client bug. Throwing here would abort
+        // deserialization of the entire response for one unrecognized value (see the
+        // relatedIdentifierName/itemRelatedIdentifierName incidents on the sibling models in
+        // this same directory). listInvalidProperties()/valid() still flag unknown values for
+        // callers who want to check.
         $this->container['store_name'] = $store_name;
 
         return $this;
