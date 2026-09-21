@@ -1,4 +1,7 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
+
 /**
  * Issue.
  *
@@ -133,7 +136,7 @@ class Issue implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringa
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['code'] = $data['code'] ?? null;
         $this->container['message'] = $data['message'] ?? null;
@@ -146,7 +149,7 @@ class Issue implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringa
      *
      * @return string[]
      */
-    public static function openAPITypes() : array
+    public static function openAPITypes(): array
     {
         return self::$openAPITypes;
     }
@@ -156,7 +159,7 @@ class Issue implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringa
      *
      * @return null[]|string[]
      */
-    public static function openAPIFormats() : array
+    public static function openAPIFormats(): array
     {
         return self::$openAPIFormats;
     }
@@ -167,7 +170,7 @@ class Issue implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringa
      *
      * @return string[]
      */
-    public static function attributeMap() : array
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -177,7 +180,7 @@ class Issue implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringa
      *
      * @return string[]
      */
-    public static function setters() : array
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -187,7 +190,7 @@ class Issue implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringa
      *
      * @return string[]
      */
-    public static function getters() : array
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -195,7 +198,7 @@ class Issue implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringa
     /**
      * Gets the string presentation of the object.
      */
-    public function __toString() : string
+    public function __toString(): string
     {
         return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
@@ -206,7 +209,7 @@ class Issue implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringa
     /**
      * The original name of the model.
      */
-    public function getModelName() : string
+    public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
@@ -216,7 +219,7 @@ class Issue implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringa
      *
      * @return string[]
      */
-    public function getSeverityAllowableValues() : array
+    public function getSeverityAllowableValues(): array
     {
         return [
             self::SEVERITY_ERROR,
@@ -230,7 +233,7 @@ class Issue implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringa
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties() : array
+    public function listInvalidProperties(): array
     {
         $invalidProperties = [];
 
@@ -264,7 +267,7 @@ class Issue implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringa
      *
      * @return bool True if all properties are valid
      */
-    public function valid() : bool
+    public function valid(): bool
     {
         return \count($this->listInvalidProperties()) === 0;
     }
@@ -272,7 +275,7 @@ class Issue implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringa
     /**
      * Gets code.
      */
-    public function getCode() : string
+    public function getCode(): string
     {
         return $this->container['code'];
     }
@@ -282,7 +285,7 @@ class Issue implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringa
      *
      * @param string $code an issue code that identifies the type of issue
      */
-    public function setCode(string $code) : self
+    public function setCode(string $code): self
     {
         $this->container['code'] = $code;
 
@@ -292,7 +295,7 @@ class Issue implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringa
     /**
      * Gets message.
      */
-    public function getMessage() : string
+    public function getMessage(): string
     {
         return $this->container['message'];
     }
@@ -302,7 +305,7 @@ class Issue implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringa
      *
      * @param string $message a message that describes the issue
      */
-    public function setMessage(string $message) : self
+    public function setMessage(string $message): self
     {
         $this->container['message'] = $message;
 
@@ -312,7 +315,7 @@ class Issue implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringa
     /**
      * Gets severity.
      */
-    public function getSeverity() : string
+    public function getSeverity(): string
     {
         return $this->container['severity'];
     }
@@ -322,7 +325,7 @@ class Issue implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringa
      *
      * @param string $severity the severity of the issue
      */
-    public function setSeverity(string $severity) : self
+    public function setSeverity(string $severity): self
     {
         $allowedValues = $this->getSeverityAllowableValues();
 
@@ -345,7 +348,7 @@ class Issue implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringa
      *
      * @return null|string[]
      */
-    public function getAttributeNames() : ?array
+    public function getAttributeNames(): ?array
     {
         return $this->container['attribute_names'];
     }
@@ -355,7 +358,7 @@ class Issue implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringa
      *
      * @param null|string[] $attribute_names names of the attributes associated with the issue, if applicable
      */
-    public function setAttributeNames(?array $attribute_names) : self
+    public function setAttributeNames(?array $attribute_names): self
     {
         $this->container['attribute_names'] = $attribute_names;
 
@@ -367,7 +370,7 @@ class Issue implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringa
      *
      * @param int $offset Offset
      */
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -390,7 +393,7 @@ class Issue implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringa
      * @param null|int $offset Offset
      * @param mixed $value Value to be set
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         if (null === $offset) {
             $this->container[] = $value;
@@ -404,7 +407,7 @@ class Issue implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringa
      *
      * @param int $offset Offset
      */
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -417,7 +420,7 @@ class Issue implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringa
      * @return mixed returns data which can be serialized by json_encode(), which is a value
      *               of any type other than a resource
      */
-    public function jsonSerialize() : string
+    public function jsonSerialize(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }
@@ -425,7 +428,7 @@ class Issue implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringa
     /**
      * Gets a header-safe presentation of the object.
      */
-    public function toHeaderValue() : string
+    public function toHeaderValue(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }

@@ -1,4 +1,7 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
+
 /**
  * Currency.
  *
@@ -117,7 +120,7 @@ class Currency implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stri
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['currency_code'] = $data['currency_code'] ?? null;
         $this->container['currency_amount'] = $data['currency_amount'] ?? null;
@@ -128,7 +131,7 @@ class Currency implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stri
      *
      * @return string[]
      */
-    public static function openAPITypes() : array
+    public static function openAPITypes(): array
     {
         return self::$openAPITypes;
     }
@@ -138,7 +141,7 @@ class Currency implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stri
      *
      * @return null[]|string[]
      */
-    public static function openAPIFormats() : array
+    public static function openAPIFormats(): array
     {
         return self::$openAPIFormats;
     }
@@ -149,7 +152,7 @@ class Currency implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stri
      *
      * @return string[]
      */
-    public static function attributeMap() : array
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -159,7 +162,7 @@ class Currency implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stri
      *
      * @return string[]
      */
-    public static function setters() : array
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -169,7 +172,7 @@ class Currency implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stri
      *
      * @return string[]
      */
-    public static function getters() : array
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -177,7 +180,7 @@ class Currency implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stri
     /**
      * Gets the string presentation of the object.
      */
-    public function __toString() : string
+    public function __toString(): string
     {
         return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
@@ -188,7 +191,7 @@ class Currency implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stri
     /**
      * The original name of the model.
      */
-    public function getModelName() : string
+    public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
@@ -198,7 +201,7 @@ class Currency implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stri
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties() : array
+    public function listInvalidProperties(): array
     {
         return [];
     }
@@ -209,7 +212,7 @@ class Currency implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stri
      *
      * @return bool True if all properties are valid
      */
-    public function valid() : bool
+    public function valid(): bool
     {
         return \count($this->listInvalidProperties()) === 0;
     }
@@ -217,7 +220,7 @@ class Currency implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stri
     /**
      * Gets currency_code.
      */
-    public function getCurrencyCode() : ?string
+    public function getCurrencyCode(): ?string
     {
         return $this->container['currency_code'];
     }
@@ -227,7 +230,7 @@ class Currency implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stri
      *
      * @param null|string $currency_code the three-digit currency code in ISO 4217 format
      */
-    public function setCurrencyCode(?string $currency_code) : self
+    public function setCurrencyCode(?string $currency_code): self
     {
         $this->container['currency_code'] = $currency_code;
 
@@ -237,7 +240,7 @@ class Currency implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stri
     /**
      * Gets currency_amount.
      */
-    public function getCurrencyAmount() : ?float
+    public function getCurrencyAmount(): ?float
     {
         return $this->container['currency_amount'];
     }
@@ -247,7 +250,7 @@ class Currency implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stri
      *
      * @param null|float $currency_amount currency_amount
      */
-    public function setCurrencyAmount(?float $currency_amount) : self
+    public function setCurrencyAmount(?float $currency_amount): self
     {
         $this->container['currency_amount'] = $currency_amount;
 
@@ -259,7 +262,7 @@ class Currency implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stri
      *
      * @param int $offset Offset
      */
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -282,7 +285,7 @@ class Currency implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stri
      * @param null|int $offset Offset
      * @param mixed $value Value to be set
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         if (null === $offset) {
             $this->container[] = $value;
@@ -296,7 +299,7 @@ class Currency implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stri
      *
      * @param int $offset Offset
      */
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -309,7 +312,7 @@ class Currency implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stri
      * @return mixed returns data which can be serialized by json_encode(), which is a value
      *               of any type other than a resource
      */
-    public function jsonSerialize() : string
+    public function jsonSerialize(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }
@@ -317,7 +320,7 @@ class Currency implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stri
     /**
      * Gets a header-safe presentation of the object.
      */
-    public function toHeaderValue() : string
+    public function toHeaderValue(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }

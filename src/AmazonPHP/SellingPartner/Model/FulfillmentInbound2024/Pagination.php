@@ -95,7 +95,7 @@ class Pagination implements \ArrayAccess, \JsonSerializable, \Stringable, ModelI
      * @param null|mixed[] $data Associated array of property values
      *                           initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['next_token'] = $data['next_token'] ?? null;
     }
@@ -103,7 +103,7 @@ class Pagination implements \ArrayAccess, \JsonSerializable, \Stringable, ModelI
     /**
      * Array of property to type mappings. Used for (de)serialization.
      */
-    public static function openAPITypes() : array
+    public static function openAPITypes(): array
     {
         return self::$openAPITypes;
     }
@@ -111,7 +111,7 @@ class Pagination implements \ArrayAccess, \JsonSerializable, \Stringable, ModelI
     /**
      * Array of property to format mappings. Used for (de)serialization.
      */
-    public static function openAPIFormats() : array
+    public static function openAPIFormats(): array
     {
         return self::$openAPIFormats;
     }
@@ -120,7 +120,7 @@ class Pagination implements \ArrayAccess, \JsonSerializable, \Stringable, ModelI
      * Array of attributes where the key is the local name,
      * and the value is the original name.
      */
-    public static function attributeMap() : array
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -128,7 +128,7 @@ class Pagination implements \ArrayAccess, \JsonSerializable, \Stringable, ModelI
     /**
      * Array of attributes to setter functions (for deserialization of responses).
      */
-    public static function setters() : array
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -136,7 +136,7 @@ class Pagination implements \ArrayAccess, \JsonSerializable, \Stringable, ModelI
     /**
      * Array of attributes to getter functions (for serialization of requests).
      */
-    public static function getters() : array
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -144,7 +144,7 @@ class Pagination implements \ArrayAccess, \JsonSerializable, \Stringable, ModelI
     /**
      * Gets the string presentation of the object.
      */
-    public function __toString() : string
+    public function __toString(): string
     {
         return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
@@ -155,7 +155,7 @@ class Pagination implements \ArrayAccess, \JsonSerializable, \Stringable, ModelI
     /**
      * The original name of the model.
      */
-    public function getModelName() : string
+    public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
@@ -165,10 +165,10 @@ class Pagination implements \ArrayAccess, \JsonSerializable, \Stringable, ModelI
      *
      * @throws AssertionException
      */
-    public function listInvalidProperties() : array
+    public function listInvalidProperties(): array
     {
         $invalidProperties = [];
-         
+
         if (null !== $this->container['next_token'] && (\mb_strlen((string) $this->container['next_token']) > 1024)) {
             $invalidProperties[] = "invalid value for 'next_token', the character length must be smaller than or equal to 1024.";
         }
@@ -186,7 +186,7 @@ class Pagination implements \ArrayAccess, \JsonSerializable, \Stringable, ModelI
      *
      * @return bool True if all properties are valid
      */
-    public function valid() : bool
+    public function valid(): bool
     {
         return \count($this->listInvalidProperties()) === 0;
     }
@@ -194,7 +194,7 @@ class Pagination implements \ArrayAccess, \JsonSerializable, \Stringable, ModelI
     /**
      * Gets next_token.
      */
-    public function getNextToken() : ?string
+    public function getNextToken(): ?string
     {
         return $this->container['next_token'];
     }
@@ -204,7 +204,7 @@ class Pagination implements \ArrayAccess, \JsonSerializable, \Stringable, ModelI
      *
      * @param null|string $next_token when present, pass this string token in the next request to return the next response page
      */
-    public function setNextToken(?string $next_token) : self
+    public function setNextToken(?string $next_token): self
     {
         $this->container['next_token'] = $next_token;
 
@@ -214,7 +214,7 @@ class Pagination implements \ArrayAccess, \JsonSerializable, \Stringable, ModelI
     /**
      * Returns true if offset exists. False otherwise.
      */
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -225,7 +225,7 @@ class Pagination implements \ArrayAccess, \JsonSerializable, \Stringable, ModelI
      * @return null|mixed
      */
     #[\ReturnTypeWillChange]
-    public function offsetGet($offset) : mixed
+    public function offsetGet($offset): mixed
     {
         return $this->container[$offset] ?? null;
     }
@@ -233,7 +233,7 @@ class Pagination implements \ArrayAccess, \JsonSerializable, \Stringable, ModelI
     /**
      * Sets value based on offset.
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         if (null === $offset) {
             $this->container[] = $value;
@@ -245,7 +245,7 @@ class Pagination implements \ArrayAccess, \JsonSerializable, \Stringable, ModelI
     /**
      * Unsets offset.
      */
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -259,7 +259,7 @@ class Pagination implements \ArrayAccess, \JsonSerializable, \Stringable, ModelI
      *               of any type other than a resource
      */
     #[\ReturnTypeWillChange]
-    public function jsonSerialize() : string
+    public function jsonSerialize(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }
@@ -267,7 +267,7 @@ class Pagination implements \ArrayAccess, \JsonSerializable, \Stringable, ModelI
     /**
      * Gets a header-safe presentation of the object.
      */
-    public function toHeaderValue() : string
+    public function toHeaderValue(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }

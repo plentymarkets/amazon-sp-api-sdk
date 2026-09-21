@@ -110,7 +110,7 @@ class Incentive implements \ArrayAccess, \JsonSerializable, \Stringable, ModelIn
      * @param null|mixed[] $data Associated array of property values
      *                           initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['description'] = $data['description'] ?? null;
         $this->container['target'] = $data['target'] ?? null;
@@ -121,7 +121,7 @@ class Incentive implements \ArrayAccess, \JsonSerializable, \Stringable, ModelIn
     /**
      * Array of property to type mappings. Used for (de)serialization.
      */
-    public static function openAPITypes() : array
+    public static function openAPITypes(): array
     {
         return self::$openAPITypes;
     }
@@ -129,7 +129,7 @@ class Incentive implements \ArrayAccess, \JsonSerializable, \Stringable, ModelIn
     /**
      * Array of property to format mappings. Used for (de)serialization.
      */
-    public static function openAPIFormats() : array
+    public static function openAPIFormats(): array
     {
         return self::$openAPIFormats;
     }
@@ -138,7 +138,7 @@ class Incentive implements \ArrayAccess, \JsonSerializable, \Stringable, ModelIn
      * Array of attributes where the key is the local name,
      * and the value is the original name.
      */
-    public static function attributeMap() : array
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -146,7 +146,7 @@ class Incentive implements \ArrayAccess, \JsonSerializable, \Stringable, ModelIn
     /**
      * Array of attributes to setter functions (for deserialization of responses).
      */
-    public static function setters() : array
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -154,7 +154,7 @@ class Incentive implements \ArrayAccess, \JsonSerializable, \Stringable, ModelIn
     /**
      * Array of attributes to getter functions (for serialization of requests).
      */
-    public static function getters() : array
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -162,7 +162,7 @@ class Incentive implements \ArrayAccess, \JsonSerializable, \Stringable, ModelIn
     /**
      * Gets the string presentation of the object.
      */
-    public function __toString() : string
+    public function __toString(): string
     {
         return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
@@ -173,7 +173,7 @@ class Incentive implements \ArrayAccess, \JsonSerializable, \Stringable, ModelIn
     /**
      * The original name of the model.
      */
-    public function getModelName() : string
+    public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
@@ -183,10 +183,10 @@ class Incentive implements \ArrayAccess, \JsonSerializable, \Stringable, ModelIn
      *
      * @throws AssertionException
      */
-    public function listInvalidProperties() : array
+    public function listInvalidProperties(): array
     {
         $invalidProperties = [];
-         
+
         if ($this->container['description'] === null) {
             $invalidProperties[] = "'description' can't be null";
         }
@@ -238,7 +238,7 @@ class Incentive implements \ArrayAccess, \JsonSerializable, \Stringable, ModelIn
      *
      * @return bool True if all properties are valid
      */
-    public function valid() : bool
+    public function valid(): bool
     {
         return \count($this->listInvalidProperties()) === 0;
     }
@@ -246,7 +246,7 @@ class Incentive implements \ArrayAccess, \JsonSerializable, \Stringable, ModelIn
     /**
      * Gets description.
      */
-    public function getDescription() : string
+    public function getDescription(): string
     {
         return $this->container['description'];
     }
@@ -256,7 +256,7 @@ class Incentive implements \ArrayAccess, \JsonSerializable, \Stringable, ModelIn
      *
      * @param string $description description of the incentive
      */
-    public function setDescription(string $description) : self
+    public function setDescription(string $description): self
     {
         $this->container['description'] = $description;
 
@@ -266,7 +266,7 @@ class Incentive implements \ArrayAccess, \JsonSerializable, \Stringable, ModelIn
     /**
      * Gets target.
      */
-    public function getTarget() : string
+    public function getTarget(): string
     {
         return $this->container['target'];
     }
@@ -276,7 +276,7 @@ class Incentive implements \ArrayAccess, \JsonSerializable, \Stringable, ModelIn
      *
      * @param string $target Target of the incentive. Can be 'Placement Services' or 'Fulfillment Fee Discount'.
      */
-    public function setTarget(string $target) : self
+    public function setTarget(string $target): self
     {
         $this->container['target'] = $target;
 
@@ -286,7 +286,7 @@ class Incentive implements \ArrayAccess, \JsonSerializable, \Stringable, ModelIn
     /**
      * Gets type.
      */
-    public function getType() : string
+    public function getType(): string
     {
         return $this->container['type'];
     }
@@ -296,7 +296,7 @@ class Incentive implements \ArrayAccess, \JsonSerializable, \Stringable, ModelIn
      *
      * @param string $type Type of incentive. Can be: `FEE`, `DISCOUNT`.
      */
-    public function setType(string $type) : self
+    public function setType(string $type): self
     {
         $this->container['type'] = $type;
 
@@ -306,7 +306,7 @@ class Incentive implements \ArrayAccess, \JsonSerializable, \Stringable, ModelIn
     /**
      * Gets value.
      */
-    public function getValue() : Currency
+    public function getValue(): Currency
     {
         return $this->container['value'];
     }
@@ -316,7 +316,7 @@ class Incentive implements \ArrayAccess, \JsonSerializable, \Stringable, ModelIn
      *
      * @param Currency $value value
      */
-    public function setValue(Currency $value) : self
+    public function setValue(Currency $value): self
     {
         $this->container['value'] = $value;
 
@@ -326,7 +326,7 @@ class Incentive implements \ArrayAccess, \JsonSerializable, \Stringable, ModelIn
     /**
      * Returns true if offset exists. False otherwise.
      */
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -337,7 +337,7 @@ class Incentive implements \ArrayAccess, \JsonSerializable, \Stringable, ModelIn
      * @return null|mixed
      */
     #[\ReturnTypeWillChange]
-    public function offsetGet($offset) : mixed
+    public function offsetGet($offset): mixed
     {
         return $this->container[$offset] ?? null;
     }
@@ -345,7 +345,7 @@ class Incentive implements \ArrayAccess, \JsonSerializable, \Stringable, ModelIn
     /**
      * Sets value based on offset.
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         if (null === $offset) {
             $this->container[] = $value;
@@ -357,7 +357,7 @@ class Incentive implements \ArrayAccess, \JsonSerializable, \Stringable, ModelIn
     /**
      * Unsets offset.
      */
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -371,7 +371,7 @@ class Incentive implements \ArrayAccess, \JsonSerializable, \Stringable, ModelIn
      *               of any type other than a resource
      */
     #[\ReturnTypeWillChange]
-    public function jsonSerialize() : string
+    public function jsonSerialize(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }
@@ -379,7 +379,7 @@ class Incentive implements \ArrayAccess, \JsonSerializable, \Stringable, ModelIn
     /**
      * Gets a header-safe presentation of the object.
      */
-    public function toHeaderValue() : string
+    public function toHeaderValue(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }

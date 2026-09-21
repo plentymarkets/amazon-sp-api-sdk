@@ -1,4 +1,7 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
+
 /**
  * SetAppointmentResponse.
  *
@@ -122,7 +125,7 @@ class SetAppointmentResponse implements \ArrayAccess, \JsonSerializable, ModelIn
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['appointment_id'] = $data['appointment_id'] ?? null;
         $this->container['warnings'] = $data['warnings'] ?? null;
@@ -134,7 +137,7 @@ class SetAppointmentResponse implements \ArrayAccess, \JsonSerializable, ModelIn
      *
      * @return string[]
      */
-    public static function openAPITypes() : array
+    public static function openAPITypes(): array
     {
         return self::$openAPITypes;
     }
@@ -144,7 +147,7 @@ class SetAppointmentResponse implements \ArrayAccess, \JsonSerializable, ModelIn
      *
      * @return null[]|string[]
      */
-    public static function openAPIFormats() : array
+    public static function openAPIFormats(): array
     {
         return self::$openAPIFormats;
     }
@@ -155,7 +158,7 @@ class SetAppointmentResponse implements \ArrayAccess, \JsonSerializable, ModelIn
      *
      * @return string[]
      */
-    public static function attributeMap() : array
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -165,7 +168,7 @@ class SetAppointmentResponse implements \ArrayAccess, \JsonSerializable, ModelIn
      *
      * @return string[]
      */
-    public static function setters() : array
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -175,7 +178,7 @@ class SetAppointmentResponse implements \ArrayAccess, \JsonSerializable, ModelIn
      *
      * @return string[]
      */
-    public static function getters() : array
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -183,7 +186,7 @@ class SetAppointmentResponse implements \ArrayAccess, \JsonSerializable, ModelIn
     /**
      * Gets the string presentation of the object.
      */
-    public function __toString() : string
+    public function __toString(): string
     {
         return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
@@ -194,7 +197,7 @@ class SetAppointmentResponse implements \ArrayAccess, \JsonSerializable, ModelIn
     /**
      * The original name of the model.
      */
-    public function getModelName() : string
+    public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
@@ -204,7 +207,7 @@ class SetAppointmentResponse implements \ArrayAccess, \JsonSerializable, ModelIn
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties() : array
+    public function listInvalidProperties(): array
     {
         $invalidProperties = [];
 
@@ -225,7 +228,7 @@ class SetAppointmentResponse implements \ArrayAccess, \JsonSerializable, ModelIn
      *
      * @return bool True if all properties are valid
      */
-    public function valid() : bool
+    public function valid(): bool
     {
         return \count($this->listInvalidProperties()) === 0;
     }
@@ -233,7 +236,7 @@ class SetAppointmentResponse implements \ArrayAccess, \JsonSerializable, ModelIn
     /**
      * Gets appointment_id.
      */
-    public function getAppointmentId() : ?string
+    public function getAppointmentId(): ?string
     {
         return $this->container['appointment_id'];
     }
@@ -243,7 +246,7 @@ class SetAppointmentResponse implements \ArrayAccess, \JsonSerializable, ModelIn
      *
      * @param null|string $appointment_id the appointment identifier
      */
-    public function setAppointmentId(?string $appointment_id) : self
+    public function setAppointmentId(?string $appointment_id): self
     {
         if (null !== $appointment_id && (\mb_strlen($appointment_id) > 100)) {
             throw new \InvalidArgumentException('invalid length for $appointment_id when calling SetAppointmentResponse., must be smaller than or equal to 100.');
@@ -263,7 +266,7 @@ class SetAppointmentResponse implements \ArrayAccess, \JsonSerializable, ModelIn
      *
      * @return null|\Plenty\AmazonPHP\SellingPartner\Model\Services\Warning[]
      */
-    public function getWarnings() : ?array
+    public function getWarnings(): ?array
     {
         return $this->container['warnings'];
     }
@@ -273,7 +276,7 @@ class SetAppointmentResponse implements \ArrayAccess, \JsonSerializable, ModelIn
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\Services\Warning[] $warnings a list of warnings returned in the sucessful execution response of an API request
      */
-    public function setWarnings(?array $warnings) : self
+    public function setWarnings(?array $warnings): self
     {
         $this->container['warnings'] = $warnings;
 
@@ -285,7 +288,7 @@ class SetAppointmentResponse implements \ArrayAccess, \JsonSerializable, ModelIn
      *
      * @return null|\Plenty\AmazonPHP\SellingPartner\Model\Services\Error[]
      */
-    public function getErrors() : ?array
+    public function getErrors(): ?array
     {
         return $this->container['errors'];
     }
@@ -295,7 +298,7 @@ class SetAppointmentResponse implements \ArrayAccess, \JsonSerializable, ModelIn
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\Services\Error[] $errors a list of error responses returned when a request is unsuccessful
      */
-    public function setErrors(?array $errors) : self
+    public function setErrors(?array $errors): self
     {
         $this->container['errors'] = $errors;
 
@@ -307,7 +310,7 @@ class SetAppointmentResponse implements \ArrayAccess, \JsonSerializable, ModelIn
      *
      * @param int $offset Offset
      */
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -330,7 +333,7 @@ class SetAppointmentResponse implements \ArrayAccess, \JsonSerializable, ModelIn
      * @param null|int $offset Offset
      * @param mixed $value Value to be set
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         if (null === $offset) {
             $this->container[] = $value;
@@ -344,7 +347,7 @@ class SetAppointmentResponse implements \ArrayAccess, \JsonSerializable, ModelIn
      *
      * @param int $offset Offset
      */
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -357,7 +360,7 @@ class SetAppointmentResponse implements \ArrayAccess, \JsonSerializable, ModelIn
      * @return mixed returns data which can be serialized by json_encode(), which is a value
      *               of any type other than a resource
      */
-    public function jsonSerialize() : string
+    public function jsonSerialize(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }
@@ -365,7 +368,7 @@ class SetAppointmentResponse implements \ArrayAccess, \JsonSerializable, ModelIn
     /**
      * Gets a header-safe presentation of the object.
      */
-    public function toHeaderValue() : string
+    public function toHeaderValue(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }

@@ -1,4 +1,7 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
+
 /**
  * FeesEstimateError.
  *
@@ -127,7 +130,7 @@ class FeesEstimateError implements \ArrayAccess, \JsonSerializable, ModelInterfa
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['type'] = $data['type'] ?? null;
         $this->container['code'] = $data['code'] ?? null;
@@ -140,7 +143,7 @@ class FeesEstimateError implements \ArrayAccess, \JsonSerializable, ModelInterfa
      *
      * @return string[]
      */
-    public static function openAPITypes() : array
+    public static function openAPITypes(): array
     {
         return self::$openAPITypes;
     }
@@ -150,7 +153,7 @@ class FeesEstimateError implements \ArrayAccess, \JsonSerializable, ModelInterfa
      *
      * @return null[]|string[]
      */
-    public static function openAPIFormats() : array
+    public static function openAPIFormats(): array
     {
         return self::$openAPIFormats;
     }
@@ -161,7 +164,7 @@ class FeesEstimateError implements \ArrayAccess, \JsonSerializable, ModelInterfa
      *
      * @return string[]
      */
-    public static function attributeMap() : array
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -171,7 +174,7 @@ class FeesEstimateError implements \ArrayAccess, \JsonSerializable, ModelInterfa
      *
      * @return string[]
      */
-    public static function setters() : array
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -181,7 +184,7 @@ class FeesEstimateError implements \ArrayAccess, \JsonSerializable, ModelInterfa
      *
      * @return string[]
      */
-    public static function getters() : array
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -189,7 +192,7 @@ class FeesEstimateError implements \ArrayAccess, \JsonSerializable, ModelInterfa
     /**
      * Gets the string presentation of the object.
      */
-    public function __toString() : string
+    public function __toString(): string
     {
         return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
@@ -200,7 +203,7 @@ class FeesEstimateError implements \ArrayAccess, \JsonSerializable, ModelInterfa
     /**
      * The original name of the model.
      */
-    public function getModelName() : string
+    public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
@@ -210,7 +213,7 @@ class FeesEstimateError implements \ArrayAccess, \JsonSerializable, ModelInterfa
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties() : array
+    public function listInvalidProperties(): array
     {
         $invalidProperties = [];
 
@@ -239,7 +242,7 @@ class FeesEstimateError implements \ArrayAccess, \JsonSerializable, ModelInterfa
      *
      * @return bool True if all properties are valid
      */
-    public function valid() : bool
+    public function valid(): bool
     {
         return \count($this->listInvalidProperties()) === 0;
     }
@@ -247,7 +250,7 @@ class FeesEstimateError implements \ArrayAccess, \JsonSerializable, ModelInterfa
     /**
      * Gets type.
      */
-    public function getType() : string
+    public function getType(): string
     {
         return $this->container['type'];
     }
@@ -257,7 +260,7 @@ class FeesEstimateError implements \ArrayAccess, \JsonSerializable, ModelInterfa
      *
      * @param string $type an error type, identifying either the receiver or the sender as the originator of the error
      */
-    public function setType(string $type) : self
+    public function setType(string $type): self
     {
         $this->container['type'] = $type;
 
@@ -267,7 +270,7 @@ class FeesEstimateError implements \ArrayAccess, \JsonSerializable, ModelInterfa
     /**
      * Gets code.
      */
-    public function getCode() : string
+    public function getCode(): string
     {
         return $this->container['code'];
     }
@@ -277,7 +280,7 @@ class FeesEstimateError implements \ArrayAccess, \JsonSerializable, ModelInterfa
      *
      * @param string $code an error code that identifies the type of error that occurred
      */
-    public function setCode(string $code) : self
+    public function setCode(string $code): self
     {
         $this->container['code'] = $code;
 
@@ -287,7 +290,7 @@ class FeesEstimateError implements \ArrayAccess, \JsonSerializable, ModelInterfa
     /**
      * Gets message.
      */
-    public function getMessage() : string
+    public function getMessage(): string
     {
         return $this->container['message'];
     }
@@ -297,7 +300,7 @@ class FeesEstimateError implements \ArrayAccess, \JsonSerializable, ModelInterfa
      *
      * @param string $message a message that describes the error condition
      */
-    public function setMessage(string $message) : self
+    public function setMessage(string $message): self
     {
         $this->container['message'] = $message;
 
@@ -309,7 +312,7 @@ class FeesEstimateError implements \ArrayAccess, \JsonSerializable, ModelInterfa
      *
      * @return object[]
      */
-    public function getDetail() : array
+    public function getDetail(): array
     {
         return $this->container['detail'];
     }
@@ -319,7 +322,7 @@ class FeesEstimateError implements \ArrayAccess, \JsonSerializable, ModelInterfa
      *
      * @param object[] $detail additional information that can help the caller understand or fix the issue
      */
-    public function setDetail(array $detail) : self
+    public function setDetail(array $detail): self
     {
         $this->container['detail'] = $detail;
 
@@ -331,7 +334,7 @@ class FeesEstimateError implements \ArrayAccess, \JsonSerializable, ModelInterfa
      *
      * @param int $offset Offset
      */
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -354,7 +357,7 @@ class FeesEstimateError implements \ArrayAccess, \JsonSerializable, ModelInterfa
      * @param null|int $offset Offset
      * @param mixed $value Value to be set
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         if (null === $offset) {
             $this->container[] = $value;
@@ -368,7 +371,7 @@ class FeesEstimateError implements \ArrayAccess, \JsonSerializable, ModelInterfa
      *
      * @param int $offset Offset
      */
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -381,7 +384,7 @@ class FeesEstimateError implements \ArrayAccess, \JsonSerializable, ModelInterfa
      * @return mixed returns data which can be serialized by json_encode(), which is a value
      *               of any type other than a resource
      */
-    public function jsonSerialize() : string
+    public function jsonSerialize(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }
@@ -389,7 +392,7 @@ class FeesEstimateError implements \ArrayAccess, \JsonSerializable, ModelInterfa
     /**
      * Gets a header-safe presentation of the object.
      */
-    public function toHeaderValue() : string
+    public function toHeaderValue(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }

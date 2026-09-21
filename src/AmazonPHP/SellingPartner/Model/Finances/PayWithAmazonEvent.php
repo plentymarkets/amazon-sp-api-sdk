@@ -1,4 +1,7 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
+
 /**
  * PayWithAmazonEvent.
  *
@@ -157,7 +160,7 @@ class PayWithAmazonEvent implements \ArrayAccess, \JsonSerializable, ModelInterf
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['seller_order_id'] = $data['seller_order_id'] ?? null;
         $this->container['transaction_posted_date'] = $data['transaction_posted_date'] ?? null;
@@ -176,7 +179,7 @@ class PayWithAmazonEvent implements \ArrayAccess, \JsonSerializable, ModelInterf
      *
      * @return string[]
      */
-    public static function openAPITypes() : array
+    public static function openAPITypes(): array
     {
         return self::$openAPITypes;
     }
@@ -186,7 +189,7 @@ class PayWithAmazonEvent implements \ArrayAccess, \JsonSerializable, ModelInterf
      *
      * @return null[]|string[]
      */
-    public static function openAPIFormats() : array
+    public static function openAPIFormats(): array
     {
         return self::$openAPIFormats;
     }
@@ -197,7 +200,7 @@ class PayWithAmazonEvent implements \ArrayAccess, \JsonSerializable, ModelInterf
      *
      * @return string[]
      */
-    public static function attributeMap() : array
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -207,7 +210,7 @@ class PayWithAmazonEvent implements \ArrayAccess, \JsonSerializable, ModelInterf
      *
      * @return string[]
      */
-    public static function setters() : array
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -217,7 +220,7 @@ class PayWithAmazonEvent implements \ArrayAccess, \JsonSerializable, ModelInterf
      *
      * @return string[]
      */
-    public static function getters() : array
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -225,7 +228,7 @@ class PayWithAmazonEvent implements \ArrayAccess, \JsonSerializable, ModelInterf
     /**
      * Gets the string presentation of the object.
      */
-    public function __toString() : string
+    public function __toString(): string
     {
         return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
@@ -236,7 +239,7 @@ class PayWithAmazonEvent implements \ArrayAccess, \JsonSerializable, ModelInterf
     /**
      * The original name of the model.
      */
-    public function getModelName() : string
+    public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
@@ -246,7 +249,7 @@ class PayWithAmazonEvent implements \ArrayAccess, \JsonSerializable, ModelInterf
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties() : array
+    public function listInvalidProperties(): array
     {
         return [];
     }
@@ -257,7 +260,7 @@ class PayWithAmazonEvent implements \ArrayAccess, \JsonSerializable, ModelInterf
      *
      * @return bool True if all properties are valid
      */
-    public function valid() : bool
+    public function valid(): bool
     {
         return \count($this->listInvalidProperties()) === 0;
     }
@@ -265,7 +268,7 @@ class PayWithAmazonEvent implements \ArrayAccess, \JsonSerializable, ModelInterf
     /**
      * Gets seller_order_id.
      */
-    public function getSellerOrderId() : ?string
+    public function getSellerOrderId(): ?string
     {
         return $this->container['seller_order_id'];
     }
@@ -275,7 +278,7 @@ class PayWithAmazonEvent implements \ArrayAccess, \JsonSerializable, ModelInterf
      *
      * @param null|string $seller_order_id an order identifier that is specified by the seller
      */
-    public function setSellerOrderId(?string $seller_order_id) : self
+    public function setSellerOrderId(?string $seller_order_id): self
     {
         $this->container['seller_order_id'] = $seller_order_id;
 
@@ -287,7 +290,7 @@ class PayWithAmazonEvent implements \ArrayAccess, \JsonSerializable, ModelInterf
      *
      * @return null|\DateTime|\DateTimeImmutable
      */
-    public function getTransactionPostedDate() : ?\DateTimeInterface
+    public function getTransactionPostedDate(): ?\DateTimeInterface
     {
         return $this->container['transaction_posted_date'];
     }
@@ -297,7 +300,7 @@ class PayWithAmazonEvent implements \ArrayAccess, \JsonSerializable, ModelInterf
      *
      * @param \DateTime|\DateTimeImmutable $transaction_posted_date transaction_posted_date
      */
-    public function setTransactionPostedDate(\DateTimeInterface $transaction_posted_date) : self
+    public function setTransactionPostedDate(\DateTimeInterface $transaction_posted_date): self
     {
         $this->container['transaction_posted_date'] = $transaction_posted_date;
 
@@ -307,7 +310,7 @@ class PayWithAmazonEvent implements \ArrayAccess, \JsonSerializable, ModelInterf
     /**
      * Gets business_object_type.
      */
-    public function getBusinessObjectType() : ?string
+    public function getBusinessObjectType(): ?string
     {
         return $this->container['business_object_type'];
     }
@@ -317,7 +320,7 @@ class PayWithAmazonEvent implements \ArrayAccess, \JsonSerializable, ModelInterf
      *
      * @param null|string $business_object_type the type of business object
      */
-    public function setBusinessObjectType(?string $business_object_type) : self
+    public function setBusinessObjectType(?string $business_object_type): self
     {
         $this->container['business_object_type'] = $business_object_type;
 
@@ -327,7 +330,7 @@ class PayWithAmazonEvent implements \ArrayAccess, \JsonSerializable, ModelInterf
     /**
      * Gets sales_channel.
      */
-    public function getSalesChannel() : ?string
+    public function getSalesChannel(): ?string
     {
         return $this->container['sales_channel'];
     }
@@ -337,7 +340,7 @@ class PayWithAmazonEvent implements \ArrayAccess, \JsonSerializable, ModelInterf
      *
      * @param null|string $sales_channel the sales channel for the transaction
      */
-    public function setSalesChannel(?string $sales_channel) : self
+    public function setSalesChannel(?string $sales_channel): self
     {
         $this->container['sales_channel'] = $sales_channel;
 
@@ -347,7 +350,7 @@ class PayWithAmazonEvent implements \ArrayAccess, \JsonSerializable, ModelInterf
     /**
      * Gets charge.
      */
-    public function getCharge() : ?ChargeComponent
+    public function getCharge(): ?ChargeComponent
     {
         return $this->container['charge'];
     }
@@ -357,7 +360,7 @@ class PayWithAmazonEvent implements \ArrayAccess, \JsonSerializable, ModelInterf
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\Finances\ChargeComponent $charge charge
      */
-    public function setCharge(?ChargeComponent $charge) : self
+    public function setCharge(?ChargeComponent $charge): self
     {
         $this->container['charge'] = $charge;
 
@@ -369,7 +372,7 @@ class PayWithAmazonEvent implements \ArrayAccess, \JsonSerializable, ModelInterf
      *
      * @return null|\Plenty\AmazonPHP\SellingPartner\Model\Finances\FeeComponent[]
      */
-    public function getFeeList() : ?array
+    public function getFeeList(): ?array
     {
         return $this->container['fee_list'];
     }
@@ -379,7 +382,7 @@ class PayWithAmazonEvent implements \ArrayAccess, \JsonSerializable, ModelInterf
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\Finances\FeeComponent[] $fee_list a list of fee component information
      */
-    public function setFeeList(?array $fee_list) : self
+    public function setFeeList(?array $fee_list): self
     {
         $this->container['fee_list'] = $fee_list;
 
@@ -389,7 +392,7 @@ class PayWithAmazonEvent implements \ArrayAccess, \JsonSerializable, ModelInterf
     /**
      * Gets payment_amount_type.
      */
-    public function getPaymentAmountType() : ?string
+    public function getPaymentAmountType(): ?string
     {
         return $this->container['payment_amount_type'];
     }
@@ -399,7 +402,7 @@ class PayWithAmazonEvent implements \ArrayAccess, \JsonSerializable, ModelInterf
      *
      * @param null|string $payment_amount_type The type of payment.  Possible values:  * Sales
      */
-    public function setPaymentAmountType(?string $payment_amount_type) : self
+    public function setPaymentAmountType(?string $payment_amount_type): self
     {
         $this->container['payment_amount_type'] = $payment_amount_type;
 
@@ -409,7 +412,7 @@ class PayWithAmazonEvent implements \ArrayAccess, \JsonSerializable, ModelInterf
     /**
      * Gets amount_description.
      */
-    public function getAmountDescription() : ?string
+    public function getAmountDescription(): ?string
     {
         return $this->container['amount_description'];
     }
@@ -419,7 +422,7 @@ class PayWithAmazonEvent implements \ArrayAccess, \JsonSerializable, ModelInterf
      *
      * @param null|string $amount_description a short description of this payment event
      */
-    public function setAmountDescription(?string $amount_description) : self
+    public function setAmountDescription(?string $amount_description): self
     {
         $this->container['amount_description'] = $amount_description;
 
@@ -429,7 +432,7 @@ class PayWithAmazonEvent implements \ArrayAccess, \JsonSerializable, ModelInterf
     /**
      * Gets fulfillment_channel.
      */
-    public function getFulfillmentChannel() : ?string
+    public function getFulfillmentChannel(): ?string
     {
         return $this->container['fulfillment_channel'];
     }
@@ -439,7 +442,7 @@ class PayWithAmazonEvent implements \ArrayAccess, \JsonSerializable, ModelInterf
      *
      * @param null|string $fulfillment_channel The fulfillment channel.  Possible values:  * AFN - Amazon Fulfillment Network (Fulfillment by Amazon)  * MFN - Merchant Fulfillment Network (self-fulfilled)
      */
-    public function setFulfillmentChannel(?string $fulfillment_channel) : self
+    public function setFulfillmentChannel(?string $fulfillment_channel): self
     {
         $this->container['fulfillment_channel'] = $fulfillment_channel;
 
@@ -449,7 +452,7 @@ class PayWithAmazonEvent implements \ArrayAccess, \JsonSerializable, ModelInterf
     /**
      * Gets store_name.
      */
-    public function getStoreName() : ?string
+    public function getStoreName(): ?string
     {
         return $this->container['store_name'];
     }
@@ -459,7 +462,7 @@ class PayWithAmazonEvent implements \ArrayAccess, \JsonSerializable, ModelInterf
      *
      * @param null|string $store_name the store name where the event occurred
      */
-    public function setStoreName(?string $store_name) : self
+    public function setStoreName(?string $store_name): self
     {
         $this->container['store_name'] = $store_name;
 
@@ -471,7 +474,7 @@ class PayWithAmazonEvent implements \ArrayAccess, \JsonSerializable, ModelInterf
      *
      * @param int $offset Offset
      */
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -494,7 +497,7 @@ class PayWithAmazonEvent implements \ArrayAccess, \JsonSerializable, ModelInterf
      * @param null|int $offset Offset
      * @param mixed $value Value to be set
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         if (null === $offset) {
             $this->container[] = $value;
@@ -508,7 +511,7 @@ class PayWithAmazonEvent implements \ArrayAccess, \JsonSerializable, ModelInterf
      *
      * @param int $offset Offset
      */
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -521,7 +524,7 @@ class PayWithAmazonEvent implements \ArrayAccess, \JsonSerializable, ModelInterf
      * @return mixed returns data which can be serialized by json_encode(), which is a value
      *               of any type other than a resource
      */
-    public function jsonSerialize() : string
+    public function jsonSerialize(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }
@@ -529,7 +532,7 @@ class PayWithAmazonEvent implements \ArrayAccess, \JsonSerializable, ModelInterf
     /**
      * Gets a header-safe presentation of the object.
      */
-    public function toHeaderValue() : string
+    public function toHeaderValue(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }

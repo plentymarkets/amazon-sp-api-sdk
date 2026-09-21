@@ -1,4 +1,7 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
+
 /**
  * AppointmentTime.
  *
@@ -117,7 +120,7 @@ class AppointmentTime implements \ArrayAccess, \JsonSerializable, ModelInterface
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['start_time'] = $data['start_time'] ?? null;
         $this->container['duration_in_minutes'] = $data['duration_in_minutes'] ?? null;
@@ -128,7 +131,7 @@ class AppointmentTime implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return string[]
      */
-    public static function openAPITypes() : array
+    public static function openAPITypes(): array
     {
         return self::$openAPITypes;
     }
@@ -138,7 +141,7 @@ class AppointmentTime implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return null[]|string[]
      */
-    public static function openAPIFormats() : array
+    public static function openAPIFormats(): array
     {
         return self::$openAPIFormats;
     }
@@ -149,7 +152,7 @@ class AppointmentTime implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return string[]
      */
-    public static function attributeMap() : array
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -159,7 +162,7 @@ class AppointmentTime implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return string[]
      */
-    public static function setters() : array
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -169,7 +172,7 @@ class AppointmentTime implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return string[]
      */
-    public static function getters() : array
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -177,7 +180,7 @@ class AppointmentTime implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets the string presentation of the object.
      */
-    public function __toString() : string
+    public function __toString(): string
     {
         return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
@@ -188,7 +191,7 @@ class AppointmentTime implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * The original name of the model.
      */
-    public function getModelName() : string
+    public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
@@ -198,7 +201,7 @@ class AppointmentTime implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties() : array
+    public function listInvalidProperties(): array
     {
         $invalidProperties = [];
 
@@ -223,7 +226,7 @@ class AppointmentTime implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return bool True if all properties are valid
      */
-    public function valid() : bool
+    public function valid(): bool
     {
         return \count($this->listInvalidProperties()) === 0;
     }
@@ -233,7 +236,7 @@ class AppointmentTime implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return \DateTime|\DateTimeImmutable
      */
-    public function getStartTime() : \DateTimeInterface
+    public function getStartTime(): \DateTimeInterface
     {
         return $this->container['start_time'];
     }
@@ -243,7 +246,7 @@ class AppointmentTime implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param \DateTime $start_time the date and time of the start of the appointment window, in ISO 8601 format
      */
-    public function setStartTime(\DateTimeInterface $start_time) : self
+    public function setStartTime(\DateTimeInterface $start_time): self
     {
         $this->container['start_time'] = $start_time;
 
@@ -253,7 +256,7 @@ class AppointmentTime implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets duration_in_minutes.
      */
-    public function getDurationInMinutes() : int
+    public function getDurationInMinutes(): int
     {
         return $this->container['duration_in_minutes'];
     }
@@ -263,7 +266,7 @@ class AppointmentTime implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param int $duration_in_minutes the duration of the appointment window, in minutes
      */
-    public function setDurationInMinutes(int $duration_in_minutes) : self
+    public function setDurationInMinutes(int $duration_in_minutes): self
     {
         if (($duration_in_minutes < 1)) {
             throw new \InvalidArgumentException('invalid value for $duration_in_minutes when calling AppointmentTime., must be bigger than or equal to 1.');
@@ -279,7 +282,7 @@ class AppointmentTime implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param int $offset Offset
      */
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -302,7 +305,7 @@ class AppointmentTime implements \ArrayAccess, \JsonSerializable, ModelInterface
      * @param null|int $offset Offset
      * @param mixed $value Value to be set
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         if (null === $offset) {
             $this->container[] = $value;
@@ -316,7 +319,7 @@ class AppointmentTime implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param int $offset Offset
      */
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -329,7 +332,7 @@ class AppointmentTime implements \ArrayAccess, \JsonSerializable, ModelInterface
      * @return mixed returns data which can be serialized by json_encode(), which is a value
      *               of any type other than a resource
      */
-    public function jsonSerialize() : string
+    public function jsonSerialize(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }
@@ -337,7 +340,7 @@ class AppointmentTime implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets a header-safe presentation of the object.
      */
-    public function toHeaderValue() : string
+    public function toHeaderValue(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }

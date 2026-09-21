@@ -1,4 +1,7 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
+
 /**
  * OrderAcknowledgementItem.
  *
@@ -142,7 +145,7 @@ class OrderAcknowledgementItem implements \ArrayAccess, \JsonSerializable, Model
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['purchase_order_number'] = $data['purchase_order_number'] ?? null;
         $this->container['vendor_order_number'] = $data['vendor_order_number'] ?? null;
@@ -158,7 +161,7 @@ class OrderAcknowledgementItem implements \ArrayAccess, \JsonSerializable, Model
      *
      * @return string[]
      */
-    public static function openAPITypes() : array
+    public static function openAPITypes(): array
     {
         return self::$openAPITypes;
     }
@@ -168,7 +171,7 @@ class OrderAcknowledgementItem implements \ArrayAccess, \JsonSerializable, Model
      *
      * @return null[]|string[]
      */
-    public static function openAPIFormats() : array
+    public static function openAPIFormats(): array
     {
         return self::$openAPIFormats;
     }
@@ -179,7 +182,7 @@ class OrderAcknowledgementItem implements \ArrayAccess, \JsonSerializable, Model
      *
      * @return string[]
      */
-    public static function attributeMap() : array
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -189,7 +192,7 @@ class OrderAcknowledgementItem implements \ArrayAccess, \JsonSerializable, Model
      *
      * @return string[]
      */
-    public static function setters() : array
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -199,7 +202,7 @@ class OrderAcknowledgementItem implements \ArrayAccess, \JsonSerializable, Model
      *
      * @return string[]
      */
-    public static function getters() : array
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -207,7 +210,7 @@ class OrderAcknowledgementItem implements \ArrayAccess, \JsonSerializable, Model
     /**
      * Gets the string presentation of the object.
      */
-    public function __toString() : string
+    public function __toString(): string
     {
         return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
@@ -218,7 +221,7 @@ class OrderAcknowledgementItem implements \ArrayAccess, \JsonSerializable, Model
     /**
      * The original name of the model.
      */
-    public function getModelName() : string
+    public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
@@ -228,7 +231,7 @@ class OrderAcknowledgementItem implements \ArrayAccess, \JsonSerializable, Model
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties() : array
+    public function listInvalidProperties(): array
     {
         $invalidProperties = [];
 
@@ -269,7 +272,7 @@ class OrderAcknowledgementItem implements \ArrayAccess, \JsonSerializable, Model
      *
      * @return bool True if all properties are valid
      */
-    public function valid() : bool
+    public function valid(): bool
     {
         return \count($this->listInvalidProperties()) === 0;
     }
@@ -277,7 +280,7 @@ class OrderAcknowledgementItem implements \ArrayAccess, \JsonSerializable, Model
     /**
      * Gets purchase_order_number.
      */
-    public function getPurchaseOrderNumber() : string
+    public function getPurchaseOrderNumber(): string
     {
         return $this->container['purchase_order_number'];
     }
@@ -287,7 +290,7 @@ class OrderAcknowledgementItem implements \ArrayAccess, \JsonSerializable, Model
      *
      * @param string $purchase_order_number The purchase order number for this order. Formatting Notes: alpha-numeric code.
      */
-    public function setPurchaseOrderNumber(string $purchase_order_number) : self
+    public function setPurchaseOrderNumber(string $purchase_order_number): self
     {
         $this->container['purchase_order_number'] = $purchase_order_number;
 
@@ -297,7 +300,7 @@ class OrderAcknowledgementItem implements \ArrayAccess, \JsonSerializable, Model
     /**
      * Gets vendor_order_number.
      */
-    public function getVendorOrderNumber() : string
+    public function getVendorOrderNumber(): string
     {
         return $this->container['vendor_order_number'];
     }
@@ -307,7 +310,7 @@ class OrderAcknowledgementItem implements \ArrayAccess, \JsonSerializable, Model
      *
      * @param string $vendor_order_number the vendor's order number for this order
      */
-    public function setVendorOrderNumber(string $vendor_order_number) : self
+    public function setVendorOrderNumber(string $vendor_order_number): self
     {
         $this->container['vendor_order_number'] = $vendor_order_number;
 
@@ -319,7 +322,7 @@ class OrderAcknowledgementItem implements \ArrayAccess, \JsonSerializable, Model
      *
      * @return \DateTime|\DateTimeImmutable
      */
-    public function getAcknowledgementDate() : \DateTimeInterface
+    public function getAcknowledgementDate(): \DateTimeInterface
     {
         return $this->container['acknowledgement_date'];
     }
@@ -329,7 +332,7 @@ class OrderAcknowledgementItem implements \ArrayAccess, \JsonSerializable, Model
      *
      * @param \DateTime $acknowledgement_date The date and time when the order is acknowledged, in ISO-8601 date/time format. For example: 2018-07-16T23:00:00Z / 2018-07-16T23:00:00-05:00 / 2018-07-16T23:00:00-08:00.
      */
-    public function setAcknowledgementDate(\DateTimeInterface $acknowledgement_date) : self
+    public function setAcknowledgementDate(\DateTimeInterface $acknowledgement_date): self
     {
         $this->container['acknowledgement_date'] = $acknowledgement_date;
 
@@ -339,7 +342,7 @@ class OrderAcknowledgementItem implements \ArrayAccess, \JsonSerializable, Model
     /**
      * Gets acknowledgement_status.
      */
-    public function getAcknowledgementStatus() : AcknowledgementStatus
+    public function getAcknowledgementStatus(): AcknowledgementStatus
     {
         return $this->container['acknowledgement_status'];
     }
@@ -349,7 +352,7 @@ class OrderAcknowledgementItem implements \ArrayAccess, \JsonSerializable, Model
      *
      * @param \Plenty\AmazonPHP\SellingPartner\Model\VendorDirectFulfillmentOrders\AcknowledgementStatus $acknowledgement_status acknowledgement_status
      */
-    public function setAcknowledgementStatus(AcknowledgementStatus $acknowledgement_status) : self
+    public function setAcknowledgementStatus(AcknowledgementStatus $acknowledgement_status): self
     {
         $this->container['acknowledgement_status'] = $acknowledgement_status;
 
@@ -359,7 +362,7 @@ class OrderAcknowledgementItem implements \ArrayAccess, \JsonSerializable, Model
     /**
      * Gets selling_party.
      */
-    public function getSellingParty() : PartyIdentification
+    public function getSellingParty(): PartyIdentification
     {
         return $this->container['selling_party'];
     }
@@ -369,7 +372,7 @@ class OrderAcknowledgementItem implements \ArrayAccess, \JsonSerializable, Model
      *
      * @param \Plenty\AmazonPHP\SellingPartner\Model\VendorDirectFulfillmentOrders\PartyIdentification $selling_party selling_party
      */
-    public function setSellingParty(PartyIdentification $selling_party) : self
+    public function setSellingParty(PartyIdentification $selling_party): self
     {
         $this->container['selling_party'] = $selling_party;
 
@@ -379,7 +382,7 @@ class OrderAcknowledgementItem implements \ArrayAccess, \JsonSerializable, Model
     /**
      * Gets ship_from_party.
      */
-    public function getShipFromParty() : PartyIdentification
+    public function getShipFromParty(): PartyIdentification
     {
         return $this->container['ship_from_party'];
     }
@@ -389,7 +392,7 @@ class OrderAcknowledgementItem implements \ArrayAccess, \JsonSerializable, Model
      *
      * @param \Plenty\AmazonPHP\SellingPartner\Model\VendorDirectFulfillmentOrders\PartyIdentification $ship_from_party ship_from_party
      */
-    public function setShipFromParty(PartyIdentification $ship_from_party) : self
+    public function setShipFromParty(PartyIdentification $ship_from_party): self
     {
         $this->container['ship_from_party'] = $ship_from_party;
 
@@ -401,7 +404,7 @@ class OrderAcknowledgementItem implements \ArrayAccess, \JsonSerializable, Model
      *
      * @return \Plenty\AmazonPHP\SellingPartner\Model\VendorDirectFulfillmentOrders\OrderItemAcknowledgement[]
      */
-    public function getItemAcknowledgements() : array
+    public function getItemAcknowledgements(): array
     {
         return $this->container['item_acknowledgements'];
     }
@@ -411,7 +414,7 @@ class OrderAcknowledgementItem implements \ArrayAccess, \JsonSerializable, Model
      *
      * @param \Plenty\AmazonPHP\SellingPartner\Model\VendorDirectFulfillmentOrders\OrderItemAcknowledgement[] $item_acknowledgements item details including acknowledged quantity
      */
-    public function setItemAcknowledgements(array $item_acknowledgements) : self
+    public function setItemAcknowledgements(array $item_acknowledgements): self
     {
         $this->container['item_acknowledgements'] = $item_acknowledgements;
 
@@ -423,7 +426,7 @@ class OrderAcknowledgementItem implements \ArrayAccess, \JsonSerializable, Model
      *
      * @param int $offset Offset
      */
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -446,7 +449,7 @@ class OrderAcknowledgementItem implements \ArrayAccess, \JsonSerializable, Model
      * @param null|int $offset Offset
      * @param mixed $value Value to be set
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         if (null === $offset) {
             $this->container[] = $value;
@@ -460,7 +463,7 @@ class OrderAcknowledgementItem implements \ArrayAccess, \JsonSerializable, Model
      *
      * @param int $offset Offset
      */
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -473,7 +476,7 @@ class OrderAcknowledgementItem implements \ArrayAccess, \JsonSerializable, Model
      * @return mixed returns data which can be serialized by json_encode(), which is a value
      *               of any type other than a resource
      */
-    public function jsonSerialize() : string
+    public function jsonSerialize(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }
@@ -481,7 +484,7 @@ class OrderAcknowledgementItem implements \ArrayAccess, \JsonSerializable, Model
     /**
      * Gets a header-safe presentation of the object.
      */
-    public function toHeaderValue() : string
+    public function toHeaderValue(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }

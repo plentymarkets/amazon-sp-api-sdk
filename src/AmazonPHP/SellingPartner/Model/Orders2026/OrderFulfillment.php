@@ -199,7 +199,7 @@ class OrderFulfillment implements ModelInterface, ArrayAccess, \JsonSerializable
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['fulfillment_status'] = $data['fulfillment_status'] ?? null;
         $this->container['fulfilled_by'] = $data['fulfilled_by'] ?? null;

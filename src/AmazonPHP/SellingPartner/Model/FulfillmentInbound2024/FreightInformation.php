@@ -100,7 +100,7 @@ class FreightInformation implements \ArrayAccess, \JsonSerializable, \Stringable
      * @param null|mixed[] $data Associated array of property values
      *                           initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['declared_value'] = $data['declared_value'] ?? null;
         $this->container['freight_class'] = $data['freight_class'] ?? null;
@@ -109,7 +109,7 @@ class FreightInformation implements \ArrayAccess, \JsonSerializable, \Stringable
     /**
      * Array of property to type mappings. Used for (de)serialization.
      */
-    public static function openAPITypes() : array
+    public static function openAPITypes(): array
     {
         return self::$openAPITypes;
     }
@@ -117,7 +117,7 @@ class FreightInformation implements \ArrayAccess, \JsonSerializable, \Stringable
     /**
      * Array of property to format mappings. Used for (de)serialization.
      */
-    public static function openAPIFormats() : array
+    public static function openAPIFormats(): array
     {
         return self::$openAPIFormats;
     }
@@ -126,7 +126,7 @@ class FreightInformation implements \ArrayAccess, \JsonSerializable, \Stringable
      * Array of attributes where the key is the local name,
      * and the value is the original name.
      */
-    public static function attributeMap() : array
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -134,7 +134,7 @@ class FreightInformation implements \ArrayAccess, \JsonSerializable, \Stringable
     /**
      * Array of attributes to setter functions (for deserialization of responses).
      */
-    public static function setters() : array
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -142,7 +142,7 @@ class FreightInformation implements \ArrayAccess, \JsonSerializable, \Stringable
     /**
      * Array of attributes to getter functions (for serialization of requests).
      */
-    public static function getters() : array
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -150,7 +150,7 @@ class FreightInformation implements \ArrayAccess, \JsonSerializable, \Stringable
     /**
      * Gets the string presentation of the object.
      */
-    public function __toString() : string
+    public function __toString(): string
     {
         return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
@@ -161,7 +161,7 @@ class FreightInformation implements \ArrayAccess, \JsonSerializable, \Stringable
     /**
      * The original name of the model.
      */
-    public function getModelName() : string
+    public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
@@ -171,10 +171,10 @@ class FreightInformation implements \ArrayAccess, \JsonSerializable, \Stringable
      *
      * @throws AssertionException
      */
-    public function listInvalidProperties() : array
+    public function listInvalidProperties(): array
     {
         $invalidProperties = [];
-         
+
         if ($this->container['declared_value'] !== null) {
             $this->container['declared_value']->listInvalidProperties();
         }
@@ -196,7 +196,7 @@ class FreightInformation implements \ArrayAccess, \JsonSerializable, \Stringable
      *
      * @return bool True if all properties are valid
      */
-    public function valid() : bool
+    public function valid(): bool
     {
         return \count($this->listInvalidProperties()) === 0;
     }
@@ -204,7 +204,7 @@ class FreightInformation implements \ArrayAccess, \JsonSerializable, \Stringable
     /**
      * Gets declared_value.
      */
-    public function getDeclaredValue() : ?Currency
+    public function getDeclaredValue(): ?Currency
     {
         return $this->container['declared_value'];
     }
@@ -214,7 +214,7 @@ class FreightInformation implements \ArrayAccess, \JsonSerializable, \Stringable
      *
      * @param null|Currency $declared_value declared_value
      */
-    public function setDeclaredValue(?Currency $declared_value) : self
+    public function setDeclaredValue(?Currency $declared_value): self
     {
         $this->container['declared_value'] = $declared_value;
 
@@ -224,7 +224,7 @@ class FreightInformation implements \ArrayAccess, \JsonSerializable, \Stringable
     /**
      * Gets freight_class.
      */
-    public function getFreightClass() : ?string
+    public function getFreightClass(): ?string
     {
         return $this->container['freight_class'];
     }
@@ -234,7 +234,7 @@ class FreightInformation implements \ArrayAccess, \JsonSerializable, \Stringable
      *
      * @param null|string $freight_class Freight class. Can be: `NONE`, `FC_50`, `FC_55`, `FC_60`, `FC_65`, `FC_70`, `FC_77_5`, `FC_85`, `FC_92_5`, `FC_100`, `FC_110`, `FC_125`, `FC_150`, `FC_175`, `FC_200`, `FC_250`, `FC_300`, `FC_400`, `FC_500`.
      */
-    public function setFreightClass(?string $freight_class) : self
+    public function setFreightClass(?string $freight_class): self
     {
         $this->container['freight_class'] = $freight_class;
 
@@ -244,7 +244,7 @@ class FreightInformation implements \ArrayAccess, \JsonSerializable, \Stringable
     /**
      * Returns true if offset exists. False otherwise.
      */
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -255,7 +255,7 @@ class FreightInformation implements \ArrayAccess, \JsonSerializable, \Stringable
      * @return null|mixed
      */
     #[\ReturnTypeWillChange]
-    public function offsetGet($offset) : mixed
+    public function offsetGet($offset): mixed
     {
         return $this->container[$offset] ?? null;
     }
@@ -263,7 +263,7 @@ class FreightInformation implements \ArrayAccess, \JsonSerializable, \Stringable
     /**
      * Sets value based on offset.
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         if (null === $offset) {
             $this->container[] = $value;
@@ -275,7 +275,7 @@ class FreightInformation implements \ArrayAccess, \JsonSerializable, \Stringable
     /**
      * Unsets offset.
      */
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -289,7 +289,7 @@ class FreightInformation implements \ArrayAccess, \JsonSerializable, \Stringable
      *               of any type other than a resource
      */
     #[\ReturnTypeWillChange]
-    public function jsonSerialize() : string
+    public function jsonSerialize(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }
@@ -297,7 +297,7 @@ class FreightInformation implements \ArrayAccess, \JsonSerializable, \Stringable
     /**
      * Gets a header-safe presentation of the object.
      */
-    public function toHeaderValue() : string
+    public function toHeaderValue(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }

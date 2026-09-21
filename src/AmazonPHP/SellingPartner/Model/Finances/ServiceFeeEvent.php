@@ -1,4 +1,7 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
+
 /**
  * ServiceFeeEvent.
  *
@@ -142,7 +145,7 @@ class ServiceFeeEvent implements \ArrayAccess, \JsonSerializable, ModelInterface
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['amazon_order_id'] = $data['amazon_order_id'] ?? null;
         $this->container['fee_reason'] = $data['fee_reason'] ?? null;
@@ -158,7 +161,7 @@ class ServiceFeeEvent implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return string[]
      */
-    public static function openAPITypes() : array
+    public static function openAPITypes(): array
     {
         return self::$openAPITypes;
     }
@@ -168,7 +171,7 @@ class ServiceFeeEvent implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return null[]|string[]
      */
-    public static function openAPIFormats() : array
+    public static function openAPIFormats(): array
     {
         return self::$openAPIFormats;
     }
@@ -179,7 +182,7 @@ class ServiceFeeEvent implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return string[]
      */
-    public static function attributeMap() : array
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -189,7 +192,7 @@ class ServiceFeeEvent implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return string[]
      */
-    public static function setters() : array
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -199,7 +202,7 @@ class ServiceFeeEvent implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return string[]
      */
-    public static function getters() : array
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -207,7 +210,7 @@ class ServiceFeeEvent implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets the string presentation of the object.
      */
-    public function __toString() : string
+    public function __toString(): string
     {
         return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
@@ -218,7 +221,7 @@ class ServiceFeeEvent implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * The original name of the model.
      */
-    public function getModelName() : string
+    public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
@@ -228,7 +231,7 @@ class ServiceFeeEvent implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties() : array
+    public function listInvalidProperties(): array
     {
         return [];
     }
@@ -239,7 +242,7 @@ class ServiceFeeEvent implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return bool True if all properties are valid
      */
-    public function valid() : bool
+    public function valid(): bool
     {
         return \count($this->listInvalidProperties()) === 0;
     }
@@ -247,7 +250,7 @@ class ServiceFeeEvent implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets amazon_order_id.
      */
-    public function getAmazonOrderId() : ?string
+    public function getAmazonOrderId(): ?string
     {
         return $this->container['amazon_order_id'];
     }
@@ -257,7 +260,7 @@ class ServiceFeeEvent implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param null|string $amazon_order_id an Amazon-defined identifier for an order
      */
-    public function setAmazonOrderId(?string $amazon_order_id) : self
+    public function setAmazonOrderId(?string $amazon_order_id): self
     {
         $this->container['amazon_order_id'] = $amazon_order_id;
 
@@ -267,7 +270,7 @@ class ServiceFeeEvent implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets fee_reason.
      */
-    public function getFeeReason() : ?string
+    public function getFeeReason(): ?string
     {
         return $this->container['fee_reason'];
     }
@@ -277,7 +280,7 @@ class ServiceFeeEvent implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param null|string $fee_reason a short description of the service fee reason
      */
-    public function setFeeReason(?string $fee_reason) : self
+    public function setFeeReason(?string $fee_reason): self
     {
         $this->container['fee_reason'] = $fee_reason;
 
@@ -289,7 +292,7 @@ class ServiceFeeEvent implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return null|\Plenty\AmazonPHP\SellingPartner\Model\Finances\FeeComponent[]
      */
-    public function getFeeList() : ?array
+    public function getFeeList(): ?array
     {
         return $this->container['fee_list'];
     }
@@ -299,7 +302,7 @@ class ServiceFeeEvent implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\Finances\FeeComponent[] $fee_list a list of fee component information
      */
-    public function setFeeList(?array $fee_list) : self
+    public function setFeeList(?array $fee_list): self
     {
         $this->container['fee_list'] = $fee_list;
 
@@ -309,7 +312,7 @@ class ServiceFeeEvent implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets seller_sku.
      */
-    public function getSellerSku() : ?string
+    public function getSellerSku(): ?string
     {
         return $this->container['seller_sku'];
     }
@@ -319,7 +322,7 @@ class ServiceFeeEvent implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param null|string $seller_sku The seller SKU of the item. The seller SKU is qualified by the seller's seller ID, which is included with every call to the Selling Partner API.
      */
-    public function setSellerSku(?string $seller_sku) : self
+    public function setSellerSku(?string $seller_sku): self
     {
         $this->container['seller_sku'] = $seller_sku;
 
@@ -329,7 +332,7 @@ class ServiceFeeEvent implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets fn_sku.
      */
-    public function getFnSku() : ?string
+    public function getFnSku(): ?string
     {
         return $this->container['fn_sku'];
     }
@@ -339,7 +342,7 @@ class ServiceFeeEvent implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param null|string $fn_sku a unique identifier assigned by Amazon to products stored in and fulfilled from an Amazon fulfillment center
      */
-    public function setFnSku(?string $fn_sku) : self
+    public function setFnSku(?string $fn_sku): self
     {
         $this->container['fn_sku'] = $fn_sku;
 
@@ -349,7 +352,7 @@ class ServiceFeeEvent implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets fee_description.
      */
-    public function getFeeDescription() : ?string
+    public function getFeeDescription(): ?string
     {
         return $this->container['fee_description'];
     }
@@ -359,7 +362,7 @@ class ServiceFeeEvent implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param null|string $fee_description a short description of the service fee event
      */
-    public function setFeeDescription(?string $fee_description) : self
+    public function setFeeDescription(?string $fee_description): self
     {
         $this->container['fee_description'] = $fee_description;
 
@@ -369,7 +372,7 @@ class ServiceFeeEvent implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets asin.
      */
-    public function getAsin() : ?string
+    public function getAsin(): ?string
     {
         return $this->container['asin'];
     }
@@ -379,7 +382,7 @@ class ServiceFeeEvent implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param null|string $asin the Amazon Standard Identification Number (ASIN) of the item
      */
-    public function setAsin(?string $asin) : self
+    public function setAsin(?string $asin): self
     {
         $this->container['asin'] = $asin;
 
@@ -391,7 +394,7 @@ class ServiceFeeEvent implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param int $offset Offset
      */
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -414,7 +417,7 @@ class ServiceFeeEvent implements \ArrayAccess, \JsonSerializable, ModelInterface
      * @param null|int $offset Offset
      * @param mixed $value Value to be set
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         if (null === $offset) {
             $this->container[] = $value;
@@ -428,7 +431,7 @@ class ServiceFeeEvent implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param int $offset Offset
      */
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -441,7 +444,7 @@ class ServiceFeeEvent implements \ArrayAccess, \JsonSerializable, ModelInterface
      * @return mixed returns data which can be serialized by json_encode(), which is a value
      *               of any type other than a resource
      */
-    public function jsonSerialize() : string
+    public function jsonSerialize(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }
@@ -449,7 +452,7 @@ class ServiceFeeEvent implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets a header-safe presentation of the object.
      */
-    public function toHeaderValue() : string
+    public function toHeaderValue(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }

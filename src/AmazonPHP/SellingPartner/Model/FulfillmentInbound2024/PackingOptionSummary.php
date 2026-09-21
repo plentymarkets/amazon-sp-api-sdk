@@ -100,7 +100,7 @@ class PackingOptionSummary implements \ArrayAccess, \JsonSerializable, \Stringab
      * @param null|mixed[] $data Associated array of property values
      *                           initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['packing_option_id'] = $data['packing_option_id'] ?? null;
         $this->container['status'] = $data['status'] ?? null;
@@ -109,7 +109,7 @@ class PackingOptionSummary implements \ArrayAccess, \JsonSerializable, \Stringab
     /**
      * Array of property to type mappings. Used for (de)serialization.
      */
-    public static function openAPITypes() : array
+    public static function openAPITypes(): array
     {
         return self::$openAPITypes;
     }
@@ -117,7 +117,7 @@ class PackingOptionSummary implements \ArrayAccess, \JsonSerializable, \Stringab
     /**
      * Array of property to format mappings. Used for (de)serialization.
      */
-    public static function openAPIFormats() : array
+    public static function openAPIFormats(): array
     {
         return self::$openAPIFormats;
     }
@@ -126,7 +126,7 @@ class PackingOptionSummary implements \ArrayAccess, \JsonSerializable, \Stringab
      * Array of attributes where the key is the local name,
      * and the value is the original name.
      */
-    public static function attributeMap() : array
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -134,7 +134,7 @@ class PackingOptionSummary implements \ArrayAccess, \JsonSerializable, \Stringab
     /**
      * Array of attributes to setter functions (for deserialization of responses).
      */
-    public static function setters() : array
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -142,7 +142,7 @@ class PackingOptionSummary implements \ArrayAccess, \JsonSerializable, \Stringab
     /**
      * Array of attributes to getter functions (for serialization of requests).
      */
-    public static function getters() : array
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -150,7 +150,7 @@ class PackingOptionSummary implements \ArrayAccess, \JsonSerializable, \Stringab
     /**
      * Gets the string presentation of the object.
      */
-    public function __toString() : string
+    public function __toString(): string
     {
         return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
@@ -161,7 +161,7 @@ class PackingOptionSummary implements \ArrayAccess, \JsonSerializable, \Stringab
     /**
      * The original name of the model.
      */
-    public function getModelName() : string
+    public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
@@ -171,10 +171,10 @@ class PackingOptionSummary implements \ArrayAccess, \JsonSerializable, \Stringab
      *
      * @throws AssertionException
      */
-    public function listInvalidProperties() : array
+    public function listInvalidProperties(): array
     {
         $invalidProperties = [];
-         
+
         if ($this->container['packing_option_id'] === null) {
             $invalidProperties[] = "'packing_option_id' can't be null";
         }
@@ -212,7 +212,7 @@ class PackingOptionSummary implements \ArrayAccess, \JsonSerializable, \Stringab
      *
      * @return bool True if all properties are valid
      */
-    public function valid() : bool
+    public function valid(): bool
     {
         return \count($this->listInvalidProperties()) === 0;
     }
@@ -220,7 +220,7 @@ class PackingOptionSummary implements \ArrayAccess, \JsonSerializable, \Stringab
     /**
      * Gets packing_option_id.
      */
-    public function getPackingOptionId() : string
+    public function getPackingOptionId(): string
     {
         return $this->container['packing_option_id'];
     }
@@ -230,7 +230,7 @@ class PackingOptionSummary implements \ArrayAccess, \JsonSerializable, \Stringab
      *
      * @param string $packing_option_id identifier of a packing option
      */
-    public function setPackingOptionId(string $packing_option_id) : self
+    public function setPackingOptionId(string $packing_option_id): self
     {
         $this->container['packing_option_id'] = $packing_option_id;
 
@@ -240,7 +240,7 @@ class PackingOptionSummary implements \ArrayAccess, \JsonSerializable, \Stringab
     /**
      * Gets status.
      */
-    public function getStatus() : string
+    public function getStatus(): string
     {
         return $this->container['status'];
     }
@@ -250,7 +250,7 @@ class PackingOptionSummary implements \ArrayAccess, \JsonSerializable, \Stringab
      *
      * @param string $status The status of a packing option. Can be 'OFFERED', 'ACCEPTED', or 'EXPIRED'.
      */
-    public function setStatus(string $status) : self
+    public function setStatus(string $status): self
     {
         $this->container['status'] = $status;
 
@@ -260,7 +260,7 @@ class PackingOptionSummary implements \ArrayAccess, \JsonSerializable, \Stringab
     /**
      * Returns true if offset exists. False otherwise.
      */
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -271,7 +271,7 @@ class PackingOptionSummary implements \ArrayAccess, \JsonSerializable, \Stringab
      * @return null|mixed
      */
     #[\ReturnTypeWillChange]
-    public function offsetGet($offset) : mixed
+    public function offsetGet($offset): mixed
     {
         return $this->container[$offset] ?? null;
     }
@@ -279,7 +279,7 @@ class PackingOptionSummary implements \ArrayAccess, \JsonSerializable, \Stringab
     /**
      * Sets value based on offset.
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         if (null === $offset) {
             $this->container[] = $value;
@@ -291,7 +291,7 @@ class PackingOptionSummary implements \ArrayAccess, \JsonSerializable, \Stringab
     /**
      * Unsets offset.
      */
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -305,7 +305,7 @@ class PackingOptionSummary implements \ArrayAccess, \JsonSerializable, \Stringab
      *               of any type other than a resource
      */
     #[\ReturnTypeWillChange]
-    public function jsonSerialize() : string
+    public function jsonSerialize(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }
@@ -313,7 +313,7 @@ class PackingOptionSummary implements \ArrayAccess, \JsonSerializable, \Stringab
     /**
      * Gets a header-safe presentation of the object.
      */
-    public function toHeaderValue() : string
+    public function toHeaderValue(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }

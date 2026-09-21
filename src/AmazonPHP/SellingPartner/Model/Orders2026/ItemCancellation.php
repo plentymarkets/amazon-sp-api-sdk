@@ -179,7 +179,7 @@ class ItemCancellation implements ModelInterface, ArrayAccess, \JsonSerializable
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['cancellation_request'] = $data['cancellation_request'] ?? null;
         $this->container['cancellation_execution'] = $data['cancellation_execution'] ?? null;

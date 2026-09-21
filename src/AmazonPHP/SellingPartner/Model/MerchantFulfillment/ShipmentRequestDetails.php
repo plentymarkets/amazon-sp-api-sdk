@@ -1,4 +1,7 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
+
 /**
  * ShipmentRequestDetails.
  *
@@ -157,7 +160,7 @@ class ShipmentRequestDetails implements \ArrayAccess, \JsonSerializable, ModelIn
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['amazon_order_id'] = $data['amazon_order_id'] ?? null;
         $this->container['seller_order_id'] = $data['seller_order_id'] ?? null;
@@ -176,7 +179,7 @@ class ShipmentRequestDetails implements \ArrayAccess, \JsonSerializable, ModelIn
      *
      * @return string[]
      */
-    public static function openAPITypes() : array
+    public static function openAPITypes(): array
     {
         return self::$openAPITypes;
     }
@@ -186,7 +189,7 @@ class ShipmentRequestDetails implements \ArrayAccess, \JsonSerializable, ModelIn
      *
      * @return null[]|string[]
      */
-    public static function openAPIFormats() : array
+    public static function openAPIFormats(): array
     {
         return self::$openAPIFormats;
     }
@@ -197,7 +200,7 @@ class ShipmentRequestDetails implements \ArrayAccess, \JsonSerializable, ModelIn
      *
      * @return string[]
      */
-    public static function attributeMap() : array
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -207,7 +210,7 @@ class ShipmentRequestDetails implements \ArrayAccess, \JsonSerializable, ModelIn
      *
      * @return string[]
      */
-    public static function setters() : array
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -217,7 +220,7 @@ class ShipmentRequestDetails implements \ArrayAccess, \JsonSerializable, ModelIn
      *
      * @return string[]
      */
-    public static function getters() : array
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -225,7 +228,7 @@ class ShipmentRequestDetails implements \ArrayAccess, \JsonSerializable, ModelIn
     /**
      * Gets the string presentation of the object.
      */
-    public function __toString() : string
+    public function __toString(): string
     {
         return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
@@ -236,7 +239,7 @@ class ShipmentRequestDetails implements \ArrayAccess, \JsonSerializable, ModelIn
     /**
      * The original name of the model.
      */
-    public function getModelName() : string
+    public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
@@ -246,7 +249,7 @@ class ShipmentRequestDetails implements \ArrayAccess, \JsonSerializable, ModelIn
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties() : array
+    public function listInvalidProperties(): array
     {
         $invalidProperties = [];
 
@@ -287,7 +290,7 @@ class ShipmentRequestDetails implements \ArrayAccess, \JsonSerializable, ModelIn
      *
      * @return bool True if all properties are valid
      */
-    public function valid() : bool
+    public function valid(): bool
     {
         return \count($this->listInvalidProperties()) === 0;
     }
@@ -295,7 +298,7 @@ class ShipmentRequestDetails implements \ArrayAccess, \JsonSerializable, ModelIn
     /**
      * Gets amazon_order_id.
      */
-    public function getAmazonOrderId() : string
+    public function getAmazonOrderId(): string
     {
         return $this->container['amazon_order_id'];
     }
@@ -305,7 +308,7 @@ class ShipmentRequestDetails implements \ArrayAccess, \JsonSerializable, ModelIn
      *
      * @param string $amazon_order_id an Amazon-defined order identifier, in 3-7-7 format
      */
-    public function setAmazonOrderId(string $amazon_order_id) : self
+    public function setAmazonOrderId(string $amazon_order_id): self
     {
         $this->container['amazon_order_id'] = $amazon_order_id;
 
@@ -315,7 +318,7 @@ class ShipmentRequestDetails implements \ArrayAccess, \JsonSerializable, ModelIn
     /**
      * Gets seller_order_id.
      */
-    public function getSellerOrderId() : ?string
+    public function getSellerOrderId(): ?string
     {
         return $this->container['seller_order_id'];
     }
@@ -325,7 +328,7 @@ class ShipmentRequestDetails implements \ArrayAccess, \JsonSerializable, ModelIn
      *
      * @param null|string $seller_order_id a seller-defined order identifier
      */
-    public function setSellerOrderId(?string $seller_order_id) : self
+    public function setSellerOrderId(?string $seller_order_id): self
     {
         if (null !== $seller_order_id && (\mb_strlen($seller_order_id) > 64)) {
             throw new \InvalidArgumentException('invalid length for $seller_order_id when calling ShipmentRequestDetails., must be smaller than or equal to 64.');
@@ -341,7 +344,7 @@ class ShipmentRequestDetails implements \ArrayAccess, \JsonSerializable, ModelIn
      *
      * @return \Plenty\AmazonPHP\SellingPartner\Model\MerchantFulfillment\Item[]
      */
-    public function getItemList() : array
+    public function getItemList(): array
     {
         return $this->container['item_list'];
     }
@@ -351,7 +354,7 @@ class ShipmentRequestDetails implements \ArrayAccess, \JsonSerializable, ModelIn
      *
      * @param \Plenty\AmazonPHP\SellingPartner\Model\MerchantFulfillment\Item[] $item_list the list of items to be included in a shipment
      */
-    public function setItemList(array $item_list) : self
+    public function setItemList(array $item_list): self
     {
         $this->container['item_list'] = $item_list;
 
@@ -361,7 +364,7 @@ class ShipmentRequestDetails implements \ArrayAccess, \JsonSerializable, ModelIn
     /**
      * Gets ship_from_address.
      */
-    public function getShipFromAddress() : Address
+    public function getShipFromAddress(): Address
     {
         return $this->container['ship_from_address'];
     }
@@ -371,7 +374,7 @@ class ShipmentRequestDetails implements \ArrayAccess, \JsonSerializable, ModelIn
      *
      * @param \Plenty\AmazonPHP\SellingPartner\Model\MerchantFulfillment\Address $ship_from_address ship_from_address
      */
-    public function setShipFromAddress(Address $ship_from_address) : self
+    public function setShipFromAddress(Address $ship_from_address): self
     {
         $this->container['ship_from_address'] = $ship_from_address;
 
@@ -381,7 +384,7 @@ class ShipmentRequestDetails implements \ArrayAccess, \JsonSerializable, ModelIn
     /**
      * Gets package_dimensions.
      */
-    public function getPackageDimensions() : PackageDimensions
+    public function getPackageDimensions(): PackageDimensions
     {
         return $this->container['package_dimensions'];
     }
@@ -391,7 +394,7 @@ class ShipmentRequestDetails implements \ArrayAccess, \JsonSerializable, ModelIn
      *
      * @param \Plenty\AmazonPHP\SellingPartner\Model\MerchantFulfillment\PackageDimensions $package_dimensions package_dimensions
      */
-    public function setPackageDimensions(PackageDimensions $package_dimensions) : self
+    public function setPackageDimensions(PackageDimensions $package_dimensions): self
     {
         $this->container['package_dimensions'] = $package_dimensions;
 
@@ -401,7 +404,7 @@ class ShipmentRequestDetails implements \ArrayAccess, \JsonSerializable, ModelIn
     /**
      * Gets weight.
      */
-    public function getWeight() : Weight
+    public function getWeight(): Weight
     {
         return $this->container['weight'];
     }
@@ -411,7 +414,7 @@ class ShipmentRequestDetails implements \ArrayAccess, \JsonSerializable, ModelIn
      *
      * @param \Plenty\AmazonPHP\SellingPartner\Model\MerchantFulfillment\Weight $weight weight
      */
-    public function setWeight(Weight $weight) : self
+    public function setWeight(Weight $weight): self
     {
         $this->container['weight'] = $weight;
 
@@ -423,7 +426,7 @@ class ShipmentRequestDetails implements \ArrayAccess, \JsonSerializable, ModelIn
      *
      * @return null|\DateTime|\DateTimeImmutable
      */
-    public function getMustArriveByDate() : ?\DateTimeInterface
+    public function getMustArriveByDate(): ?\DateTimeInterface
     {
         return $this->container['must_arrive_by_date'];
     }
@@ -433,7 +436,7 @@ class ShipmentRequestDetails implements \ArrayAccess, \JsonSerializable, ModelIn
      *
      * @param \DateTime|\DateTimeImmutable $must_arrive_by_date must_arrive_by_date
      */
-    public function setMustArriveByDate(\DateTimeInterface $must_arrive_by_date) : self
+    public function setMustArriveByDate(\DateTimeInterface $must_arrive_by_date): self
     {
         $this->container['must_arrive_by_date'] = $must_arrive_by_date;
 
@@ -445,7 +448,7 @@ class ShipmentRequestDetails implements \ArrayAccess, \JsonSerializable, ModelIn
      *
      * @return null|\DateTime|\DateTimeImmutable
      */
-    public function getShipDate() : ?\DateTimeInterface
+    public function getShipDate(): ?\DateTimeInterface
     {
         return $this->container['ship_date'];
     }
@@ -455,7 +458,7 @@ class ShipmentRequestDetails implements \ArrayAccess, \JsonSerializable, ModelIn
      *
      * @param \DateTime|\DateTimeImmutable $ship_date ship_date
      */
-    public function setShipDate(\DateTimeInterface $ship_date) : self
+    public function setShipDate(\DateTimeInterface $ship_date): self
     {
         $this->container['ship_date'] = $ship_date;
 
@@ -465,7 +468,7 @@ class ShipmentRequestDetails implements \ArrayAccess, \JsonSerializable, ModelIn
     /**
      * Gets shipping_service_options.
      */
-    public function getShippingServiceOptions() : ShippingServiceOptions
+    public function getShippingServiceOptions(): ShippingServiceOptions
     {
         return $this->container['shipping_service_options'];
     }
@@ -475,7 +478,7 @@ class ShipmentRequestDetails implements \ArrayAccess, \JsonSerializable, ModelIn
      *
      * @param \Plenty\AmazonPHP\SellingPartner\Model\MerchantFulfillment\ShippingServiceOptions $shipping_service_options shipping_service_options
      */
-    public function setShippingServiceOptions(ShippingServiceOptions $shipping_service_options) : self
+    public function setShippingServiceOptions(ShippingServiceOptions $shipping_service_options): self
     {
         $this->container['shipping_service_options'] = $shipping_service_options;
 
@@ -485,7 +488,7 @@ class ShipmentRequestDetails implements \ArrayAccess, \JsonSerializable, ModelIn
     /**
      * Gets label_customization.
      */
-    public function getLabelCustomization() : ?LabelCustomization
+    public function getLabelCustomization(): ?LabelCustomization
     {
         return $this->container['label_customization'];
     }
@@ -495,7 +498,7 @@ class ShipmentRequestDetails implements \ArrayAccess, \JsonSerializable, ModelIn
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\MerchantFulfillment\LabelCustomization $label_customization label_customization
      */
-    public function setLabelCustomization(?LabelCustomization $label_customization) : self
+    public function setLabelCustomization(?LabelCustomization $label_customization): self
     {
         $this->container['label_customization'] = $label_customization;
 
@@ -507,7 +510,7 @@ class ShipmentRequestDetails implements \ArrayAccess, \JsonSerializable, ModelIn
      *
      * @param int $offset Offset
      */
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -530,7 +533,7 @@ class ShipmentRequestDetails implements \ArrayAccess, \JsonSerializable, ModelIn
      * @param null|int $offset Offset
      * @param mixed $value Value to be set
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         if (null === $offset) {
             $this->container[] = $value;
@@ -544,7 +547,7 @@ class ShipmentRequestDetails implements \ArrayAccess, \JsonSerializable, ModelIn
      *
      * @param int $offset Offset
      */
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -557,7 +560,7 @@ class ShipmentRequestDetails implements \ArrayAccess, \JsonSerializable, ModelIn
      * @return mixed returns data which can be serialized by json_encode(), which is a value
      *               of any type other than a resource
      */
-    public function jsonSerialize() : string
+    public function jsonSerialize(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }
@@ -565,7 +568,7 @@ class ShipmentRequestDetails implements \ArrayAccess, \JsonSerializable, ModelIn
     /**
      * Gets a header-safe presentation of the object.
      */
-    public function toHeaderValue() : string
+    public function toHeaderValue(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }

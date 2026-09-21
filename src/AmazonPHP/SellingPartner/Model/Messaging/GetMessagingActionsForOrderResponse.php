@@ -1,4 +1,7 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
+
 /**
  * GetMessagingActionsForOrderResponse.
  *
@@ -122,7 +125,7 @@ class GetMessagingActionsForOrderResponse implements \ArrayAccess, \JsonSerializ
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['_links'] = $data['_links'] ?? null;
         $this->container['_embedded'] = $data['_embedded'] ?? null;
@@ -134,7 +137,7 @@ class GetMessagingActionsForOrderResponse implements \ArrayAccess, \JsonSerializ
      *
      * @return string[]
      */
-    public static function openAPITypes() : array
+    public static function openAPITypes(): array
     {
         return self::$openAPITypes;
     }
@@ -144,7 +147,7 @@ class GetMessagingActionsForOrderResponse implements \ArrayAccess, \JsonSerializ
      *
      * @return null[]|string[]
      */
-    public static function openAPIFormats() : array
+    public static function openAPIFormats(): array
     {
         return self::$openAPIFormats;
     }
@@ -155,7 +158,7 @@ class GetMessagingActionsForOrderResponse implements \ArrayAccess, \JsonSerializ
      *
      * @return string[]
      */
-    public static function attributeMap() : array
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -165,7 +168,7 @@ class GetMessagingActionsForOrderResponse implements \ArrayAccess, \JsonSerializ
      *
      * @return string[]
      */
-    public static function setters() : array
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -175,7 +178,7 @@ class GetMessagingActionsForOrderResponse implements \ArrayAccess, \JsonSerializ
      *
      * @return string[]
      */
-    public static function getters() : array
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -183,7 +186,7 @@ class GetMessagingActionsForOrderResponse implements \ArrayAccess, \JsonSerializ
     /**
      * Gets the string presentation of the object.
      */
-    public function __toString() : string
+    public function __toString(): string
     {
         return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
@@ -194,7 +197,7 @@ class GetMessagingActionsForOrderResponse implements \ArrayAccess, \JsonSerializ
     /**
      * The original name of the model.
      */
-    public function getModelName() : string
+    public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
@@ -204,7 +207,7 @@ class GetMessagingActionsForOrderResponse implements \ArrayAccess, \JsonSerializ
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties() : array
+    public function listInvalidProperties(): array
     {
         return [];
     }
@@ -215,7 +218,7 @@ class GetMessagingActionsForOrderResponse implements \ArrayAccess, \JsonSerializ
      *
      * @return bool True if all properties are valid
      */
-    public function valid() : bool
+    public function valid(): bool
     {
         return \count($this->listInvalidProperties()) === 0;
     }
@@ -223,7 +226,7 @@ class GetMessagingActionsForOrderResponse implements \ArrayAccess, \JsonSerializ
     /**
      * Gets _links.
      */
-    public function getLinks() : ?GetMessagingActionsForOrderResponseLinks
+    public function getLinks(): ?GetMessagingActionsForOrderResponseLinks
     {
         return $this->container['_links'];
     }
@@ -233,7 +236,7 @@ class GetMessagingActionsForOrderResponse implements \ArrayAccess, \JsonSerializ
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\Messaging\GetMessagingActionsForOrderResponseLinks $_links _links
      */
-    public function setLinks(?GetMessagingActionsForOrderResponseLinks $_links) : self
+    public function setLinks(?GetMessagingActionsForOrderResponseLinks $_links): self
     {
         $this->container['_links'] = $_links;
 
@@ -243,7 +246,7 @@ class GetMessagingActionsForOrderResponse implements \ArrayAccess, \JsonSerializ
     /**
      * Gets _embedded.
      */
-    public function getEmbedded() : ?GetMessagingActionsForOrderResponseEmbedded
+    public function getEmbedded(): ?GetMessagingActionsForOrderResponseEmbedded
     {
         return $this->container['_embedded'];
     }
@@ -253,7 +256,7 @@ class GetMessagingActionsForOrderResponse implements \ArrayAccess, \JsonSerializ
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\Messaging\GetMessagingActionsForOrderResponseEmbedded $_embedded _embedded
      */
-    public function setEmbedded(?GetMessagingActionsForOrderResponseEmbedded $_embedded) : self
+    public function setEmbedded(?GetMessagingActionsForOrderResponseEmbedded $_embedded): self
     {
         $this->container['_embedded'] = $_embedded;
 
@@ -265,7 +268,7 @@ class GetMessagingActionsForOrderResponse implements \ArrayAccess, \JsonSerializ
      *
      * @return null|\Plenty\AmazonPHP\SellingPartner\Model\Messaging\Error[]
      */
-    public function getErrors() : ?array
+    public function getErrors(): ?array
     {
         return $this->container['errors'];
     }
@@ -275,7 +278,7 @@ class GetMessagingActionsForOrderResponse implements \ArrayAccess, \JsonSerializ
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\Messaging\Error[] $errors a list of error responses returned when a request is unsuccessful
      */
-    public function setErrors(?array $errors) : self
+    public function setErrors(?array $errors): self
     {
         $this->container['errors'] = $errors;
 
@@ -287,7 +290,7 @@ class GetMessagingActionsForOrderResponse implements \ArrayAccess, \JsonSerializ
      *
      * @param int $offset Offset
      */
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -310,7 +313,7 @@ class GetMessagingActionsForOrderResponse implements \ArrayAccess, \JsonSerializ
      * @param null|int $offset Offset
      * @param mixed $value Value to be set
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         if (null === $offset) {
             $this->container[] = $value;
@@ -324,7 +327,7 @@ class GetMessagingActionsForOrderResponse implements \ArrayAccess, \JsonSerializ
      *
      * @param int $offset Offset
      */
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -337,7 +340,7 @@ class GetMessagingActionsForOrderResponse implements \ArrayAccess, \JsonSerializ
      * @return mixed returns data which can be serialized by json_encode(), which is a value
      *               of any type other than a resource
      */
-    public function jsonSerialize() : string
+    public function jsonSerialize(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }
@@ -345,7 +348,7 @@ class GetMessagingActionsForOrderResponse implements \ArrayAccess, \JsonSerializ
     /**
      * Gets a header-safe presentation of the object.
      */
-    public function toHeaderValue() : string
+    public function toHeaderValue(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }

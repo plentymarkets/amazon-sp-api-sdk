@@ -2,7 +2,6 @@
 
 declare(strict_types=1);
 
-
 namespace Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound2024;
 
 use Plenty\AmazonPHP\SellingPartner\ModelInterface;
@@ -59,7 +58,7 @@ class ListPrepDetailsResponse implements ModelInterface, \ArrayAccess, \JsonSeri
      *
      * @return array
      */
-    public static function openAPITypes() : array
+    public static function openAPITypes(): array
     {
         return self::$openAPITypes;
     }
@@ -69,7 +68,7 @@ class ListPrepDetailsResponse implements ModelInterface, \ArrayAccess, \JsonSeri
      *
      * @return array
      */
-    public static function openAPIFormats() : array
+    public static function openAPIFormats(): array
     {
         return self::$openAPIFormats;
     }
@@ -108,7 +107,7 @@ class ListPrepDetailsResponse implements ModelInterface, \ArrayAccess, \JsonSeri
      *
      * @return array
      */
-    public static function attributeMap() : array
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -118,7 +117,7 @@ class ListPrepDetailsResponse implements ModelInterface, \ArrayAccess, \JsonSeri
      *
      * @return array
      */
-    public static function setters() : array
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -128,7 +127,7 @@ class ListPrepDetailsResponse implements ModelInterface, \ArrayAccess, \JsonSeri
      *
      * @return array
      */
-    public static function getters() : array
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -138,7 +137,7 @@ class ListPrepDetailsResponse implements ModelInterface, \ArrayAccess, \JsonSeri
      *
      * @return string
      */
-    public function getModelName() : string
+    public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
@@ -157,7 +156,7 @@ class ListPrepDetailsResponse implements ModelInterface, \ArrayAccess, \JsonSeri
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['msku_prep_details'] = $data['msku_prep_details'] ?? null;
     }
@@ -167,12 +166,11 @@ class ListPrepDetailsResponse implements ModelInterface, \ArrayAccess, \JsonSeri
      *
      * @throws AssertionException
      */
-    public function validate() : void
+    public function validate(): void
     {
         if ($this->container['msku_prep_details'] === null) {
             throw new AssertionException("'msku_prep_details' can't be null");
         }
-
     }
 
 
@@ -193,7 +191,7 @@ class ListPrepDetailsResponse implements ModelInterface, \ArrayAccess, \JsonSeri
      *
      * @return self
      */
-    public function setMskuPrepDetails($msku_prep_details) : self
+    public function setMskuPrepDetails($msku_prep_details): self
     {
         $this->container['msku_prep_details'] = $msku_prep_details;
 
@@ -204,7 +202,7 @@ class ListPrepDetailsResponse implements ModelInterface, \ArrayAccess, \JsonSeri
      *
      * @return boolean
      */
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -225,7 +223,7 @@ class ListPrepDetailsResponse implements ModelInterface, \ArrayAccess, \JsonSeri
      *
      * @return void
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         if (is_null($offset)) {
             $this->container[] = $value;
@@ -239,7 +237,7 @@ class ListPrepDetailsResponse implements ModelInterface, \ArrayAccess, \JsonSeri
      *
      * @return void
      */
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -252,9 +250,9 @@ class ListPrepDetailsResponse implements ModelInterface, \ArrayAccess, \JsonSeri
      * of any type other than a resource.
      */
     #[\ReturnTypeWillChange]
-    public function jsonSerialize() : string
+    public function jsonSerialize(): string
     {
-       return \json_encode(ObjectSerializer::sanitizeForSerialization($this));
+        return \json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }
 
     /**
@@ -262,7 +260,7 @@ class ListPrepDetailsResponse implements ModelInterface, \ArrayAccess, \JsonSeri
      *
      * @return string
      */
-    public function __toString() : string
+    public function __toString(): string
     {
         return (string) json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
@@ -275,7 +273,7 @@ class ListPrepDetailsResponse implements ModelInterface, \ArrayAccess, \JsonSeri
      *
      * @return string
      */
-    public function toHeaderValue() : string
+    public function toHeaderValue(): string
     {
         return json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }
@@ -290,4 +288,3 @@ class ListPrepDetailsResponse implements ModelInterface, \ArrayAccess, \JsonSeri
         return \count($this->listInvalidProperties()) === 0;
     }
 }
-

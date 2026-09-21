@@ -115,7 +115,7 @@ class ShipmentTransportationConfiguration implements \ArrayAccess, \JsonSerializ
      * @param null|mixed[] $data Associated array of property values
      *                           initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['contact_information'] = $data['contact_information'] ?? null;
         $this->container['freight_information'] = $data['freight_information'] ?? null;
@@ -127,7 +127,7 @@ class ShipmentTransportationConfiguration implements \ArrayAccess, \JsonSerializ
     /**
      * Array of property to type mappings. Used for (de)serialization.
      */
-    public static function openAPITypes() : array
+    public static function openAPITypes(): array
     {
         return self::$openAPITypes;
     }
@@ -135,7 +135,7 @@ class ShipmentTransportationConfiguration implements \ArrayAccess, \JsonSerializ
     /**
      * Array of property to format mappings. Used for (de)serialization.
      */
-    public static function openAPIFormats() : array
+    public static function openAPIFormats(): array
     {
         return self::$openAPIFormats;
     }
@@ -144,7 +144,7 @@ class ShipmentTransportationConfiguration implements \ArrayAccess, \JsonSerializ
      * Array of attributes where the key is the local name,
      * and the value is the original name.
      */
-    public static function attributeMap() : array
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -152,7 +152,7 @@ class ShipmentTransportationConfiguration implements \ArrayAccess, \JsonSerializ
     /**
      * Array of attributes to setter functions (for deserialization of responses).
      */
-    public static function setters() : array
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -160,7 +160,7 @@ class ShipmentTransportationConfiguration implements \ArrayAccess, \JsonSerializ
     /**
      * Array of attributes to getter functions (for serialization of requests).
      */
-    public static function getters() : array
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -168,7 +168,7 @@ class ShipmentTransportationConfiguration implements \ArrayAccess, \JsonSerializ
     /**
      * Gets the string presentation of the object.
      */
-    public function __toString() : string
+    public function __toString(): string
     {
         return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
@@ -179,7 +179,7 @@ class ShipmentTransportationConfiguration implements \ArrayAccess, \JsonSerializ
     /**
      * The original name of the model.
      */
-    public function getModelName() : string
+    public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
@@ -189,10 +189,10 @@ class ShipmentTransportationConfiguration implements \ArrayAccess, \JsonSerializ
      *
      * @throws AssertionException
      */
-    public function listInvalidProperties() : array
+    public function listInvalidProperties(): array
     {
         $invalidProperties = [];
-         
+
         if ($this->container['contact_information'] !== null) {
             $this->container['contact_information']->listInvalidProperties();
         }
@@ -232,7 +232,7 @@ class ShipmentTransportationConfiguration implements \ArrayAccess, \JsonSerializ
      *
      * @return bool True if all properties are valid
      */
-    public function valid() : bool
+    public function valid(): bool
     {
         return \count($this->listInvalidProperties()) === 0;
     }
@@ -240,7 +240,7 @@ class ShipmentTransportationConfiguration implements \ArrayAccess, \JsonSerializ
     /**
      * Gets contact_information.
      */
-    public function getContactInformation() : ?ContactInformation
+    public function getContactInformation(): ?ContactInformation
     {
         return $this->container['contact_information'];
     }
@@ -250,7 +250,7 @@ class ShipmentTransportationConfiguration implements \ArrayAccess, \JsonSerializ
      *
      * @param null|ContactInformation $contact_information contact_information
      */
-    public function setContactInformation(?ContactInformation $contact_information) : self
+    public function setContactInformation(?ContactInformation $contact_information): self
     {
         $this->container['contact_information'] = $contact_information;
 
@@ -260,7 +260,7 @@ class ShipmentTransportationConfiguration implements \ArrayAccess, \JsonSerializ
     /**
      * Gets freight_information.
      */
-    public function getFreightInformation() : ?FreightInformation
+    public function getFreightInformation(): ?FreightInformation
     {
         return $this->container['freight_information'];
     }
@@ -270,7 +270,7 @@ class ShipmentTransportationConfiguration implements \ArrayAccess, \JsonSerializ
      *
      * @param null|FreightInformation $freight_information freight_information
      */
-    public function setFreightInformation(?FreightInformation $freight_information) : self
+    public function setFreightInformation(?FreightInformation $freight_information): self
     {
         $this->container['freight_information'] = $freight_information;
 
@@ -282,7 +282,7 @@ class ShipmentTransportationConfiguration implements \ArrayAccess, \JsonSerializ
      *
      * @return null|PalletInput[]
      */
-    public function getPallets() : ?array
+    public function getPallets(): ?array
     {
         return $this->container['pallets'];
     }
@@ -292,7 +292,7 @@ class ShipmentTransportationConfiguration implements \ArrayAccess, \JsonSerializ
      *
      * @param null|PalletInput[] $pallets list of pallet configuration inputs
      */
-    public function setPallets(?array $pallets) : self
+    public function setPallets(?array $pallets): self
     {
         $this->container['pallets'] = $pallets;
 
@@ -302,7 +302,7 @@ class ShipmentTransportationConfiguration implements \ArrayAccess, \JsonSerializ
     /**
      * Gets ready_to_ship_window.
      */
-    public function getReadyToShipWindow() : WindowInput
+    public function getReadyToShipWindow(): WindowInput
     {
         return $this->container['ready_to_ship_window'];
     }
@@ -312,7 +312,7 @@ class ShipmentTransportationConfiguration implements \ArrayAccess, \JsonSerializ
      *
      * @param WindowInput $ready_to_ship_window ready_to_ship_window
      */
-    public function setReadyToShipWindow(WindowInput $ready_to_ship_window) : self
+    public function setReadyToShipWindow(WindowInput $ready_to_ship_window): self
     {
         $this->container['ready_to_ship_window'] = $ready_to_ship_window;
 
@@ -322,7 +322,7 @@ class ShipmentTransportationConfiguration implements \ArrayAccess, \JsonSerializ
     /**
      * Gets shipment_id.
      */
-    public function getShipmentId() : string
+    public function getShipmentId(): string
     {
         return $this->container['shipment_id'];
     }
@@ -332,7 +332,7 @@ class ShipmentTransportationConfiguration implements \ArrayAccess, \JsonSerializ
      *
      * @param string $shipment_id Identifier of a shipment. A shipment contains the boxes and units being inbounded.
      */
-    public function setShipmentId(string $shipment_id) : self
+    public function setShipmentId(string $shipment_id): self
     {
         $this->container['shipment_id'] = $shipment_id;
 
@@ -342,7 +342,7 @@ class ShipmentTransportationConfiguration implements \ArrayAccess, \JsonSerializ
     /**
      * Returns true if offset exists. False otherwise.
      */
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -353,7 +353,7 @@ class ShipmentTransportationConfiguration implements \ArrayAccess, \JsonSerializ
      * @return null|mixed
      */
     #[\ReturnTypeWillChange]
-    public function offsetGet($offset) : mixed
+    public function offsetGet($offset): mixed
     {
         return $this->container[$offset] ?? null;
     }
@@ -361,7 +361,7 @@ class ShipmentTransportationConfiguration implements \ArrayAccess, \JsonSerializ
     /**
      * Sets value based on offset.
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         if (null === $offset) {
             $this->container[] = $value;
@@ -373,7 +373,7 @@ class ShipmentTransportationConfiguration implements \ArrayAccess, \JsonSerializ
     /**
      * Unsets offset.
      */
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -387,7 +387,7 @@ class ShipmentTransportationConfiguration implements \ArrayAccess, \JsonSerializ
      *               of any type other than a resource
      */
     #[\ReturnTypeWillChange]
-    public function jsonSerialize() : string
+    public function jsonSerialize(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }
@@ -395,7 +395,7 @@ class ShipmentTransportationConfiguration implements \ArrayAccess, \JsonSerializ
     /**
      * Gets a header-safe presentation of the object.
      */
-    public function toHeaderValue() : string
+    public function toHeaderValue(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }

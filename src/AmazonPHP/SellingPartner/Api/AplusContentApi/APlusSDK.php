@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Plenty\AmazonPHP\SellingPartner\Api\AplusContentApi;
 
@@ -88,7 +90,7 @@ final class APlusSDK
      * @throws \Plenty\AmazonPHP\SellingPartner\Exception\ApiException on non-2xx response
      * @throws \Plenty\AmazonPHP\SellingPartner\Exception\InvalidArgumentException
      */
-    public function createContentDocument(AccessToken $accessToken, string $region, string $marketplace_id, \Plenty\AmazonPHP\SellingPartner\Model\APlus\PostContentDocumentRequest $post_content_document_request) : \Plenty\AmazonPHP\SellingPartner\Model\APlus\PostContentDocumentResponse
+    public function createContentDocument(AccessToken $accessToken, string $region, string $marketplace_id, \Plenty\AmazonPHP\SellingPartner\Model\APlus\PostContentDocumentRequest $post_content_document_request): \Plenty\AmazonPHP\SellingPartner\Model\APlus\PostContentDocumentResponse
     {
         $request = $this->createContentDocumentRequest($accessToken, $region, $marketplace_id, $post_content_document_request);
 
@@ -184,7 +186,7 @@ final class APlusSDK
      *
      * @throws \Plenty\AmazonPHP\SellingPartner\Exception\InvalidArgumentException
      */
-    public function createContentDocumentRequest(AccessToken $accessToken, string $region, string $marketplace_id, \Plenty\AmazonPHP\SellingPartner\Model\APlus\PostContentDocumentRequest $post_content_document_request) : RequestInterface
+    public function createContentDocumentRequest(AccessToken $accessToken, string $region, string $marketplace_id, \Plenty\AmazonPHP\SellingPartner\Model\APlus\PostContentDocumentRequest $post_content_document_request): RequestInterface
     {
         // verify the required parameter 'marketplace_id' is set
         if ($marketplace_id === null || (\is_array($marketplace_id) && \count($marketplace_id) === 0)) {
@@ -298,7 +300,7 @@ final class APlusSDK
      * @throws \Plenty\AmazonPHP\SellingPartner\Exception\ApiException on non-2xx response
      * @throws \Plenty\AmazonPHP\SellingPartner\Exception\InvalidArgumentException
      */
-    public function getContentDocument(AccessToken $accessToken, string $region, string $content_reference_key, string $marketplace_id, array $included_data_set) : \Plenty\AmazonPHP\SellingPartner\Model\APlus\GetContentDocumentResponse
+    public function getContentDocument(AccessToken $accessToken, string $region, string $content_reference_key, string $marketplace_id, array $included_data_set): \Plenty\AmazonPHP\SellingPartner\Model\APlus\GetContentDocumentResponse
     {
         $request = $this->getContentDocumentRequest($accessToken, $region, $content_reference_key, $marketplace_id, $included_data_set);
 
@@ -395,7 +397,7 @@ final class APlusSDK
      *
      * @throws \Plenty\AmazonPHP\SellingPartner\Exception\InvalidArgumentException
      */
-    public function getContentDocumentRequest(AccessToken $accessToken, string $region, string $content_reference_key, string $marketplace_id, array $included_data_set) : RequestInterface
+    public function getContentDocumentRequest(AccessToken $accessToken, string $region, string $content_reference_key, string $marketplace_id, array $included_data_set): RequestInterface
     {
         // verify the required parameter 'content_reference_key' is set
         if ($content_reference_key === null || (\is_array($content_reference_key) && \count($content_reference_key) === 0)) {
@@ -535,7 +537,7 @@ final class APlusSDK
      * @throws \Plenty\AmazonPHP\SellingPartner\Exception\ApiException on non-2xx response
      * @throws \Plenty\AmazonPHP\SellingPartner\Exception\InvalidArgumentException
      */
-    public function listContentDocumentAsinRelations(AccessToken $accessToken, string $region, string $content_reference_key, string $marketplace_id, array $included_data_set = null, array $asin_set = null, string $page_token = null) : \Plenty\AmazonPHP\SellingPartner\Model\APlus\ListContentDocumentAsinRelationsResponse
+    public function listContentDocumentAsinRelations(AccessToken $accessToken, string $region, string $content_reference_key, string $marketplace_id, ?array $included_data_set = null, ?array $asin_set = null, ?string $page_token = null): \Plenty\AmazonPHP\SellingPartner\Model\APlus\ListContentDocumentAsinRelationsResponse
     {
         $request = $this->listContentDocumentAsinRelationsRequest($accessToken, $region, $content_reference_key, $marketplace_id, $included_data_set, $asin_set, $page_token);
 
@@ -634,7 +636,7 @@ final class APlusSDK
      *
      * @throws \Plenty\AmazonPHP\SellingPartner\Exception\InvalidArgumentException
      */
-    public function listContentDocumentAsinRelationsRequest(AccessToken $accessToken, string $region, string $content_reference_key, string $marketplace_id, array $included_data_set = null, array $asin_set = null, string $page_token = null) : RequestInterface
+    public function listContentDocumentAsinRelationsRequest(AccessToken $accessToken, string $region, string $content_reference_key, string $marketplace_id, ?array $included_data_set = null, ?array $asin_set = null, ?string $page_token = null): RequestInterface
     {
         // verify the required parameter 'content_reference_key' is set
         if ($content_reference_key === null || (\is_array($content_reference_key) && \count($content_reference_key) === 0)) {
@@ -784,7 +786,7 @@ final class APlusSDK
      * @throws \Plenty\AmazonPHP\SellingPartner\Exception\ApiException on non-2xx response
      * @throws \Plenty\AmazonPHP\SellingPartner\Exception\InvalidArgumentException
      */
-    public function postContentDocumentApprovalSubmission(AccessToken $accessToken, string $region, string $content_reference_key, string $marketplace_id) : \Plenty\AmazonPHP\SellingPartner\Model\APlus\PostContentDocumentApprovalSubmissionResponse
+    public function postContentDocumentApprovalSubmission(AccessToken $accessToken, string $region, string $content_reference_key, string $marketplace_id): \Plenty\AmazonPHP\SellingPartner\Model\APlus\PostContentDocumentApprovalSubmissionResponse
     {
         $request = $this->postContentDocumentApprovalSubmissionRequest($accessToken, $region, $content_reference_key, $marketplace_id);
 
@@ -880,7 +882,7 @@ final class APlusSDK
      *
      * @throws \Plenty\AmazonPHP\SellingPartner\Exception\InvalidArgumentException
      */
-    public function postContentDocumentApprovalSubmissionRequest(AccessToken $accessToken, string $region, string $content_reference_key, string $marketplace_id) : RequestInterface
+    public function postContentDocumentApprovalSubmissionRequest(AccessToken $accessToken, string $region, string $content_reference_key, string $marketplace_id): RequestInterface
     {
         // verify the required parameter 'content_reference_key' is set
         if ($content_reference_key === null || (\is_array($content_reference_key) && \count($content_reference_key) === 0)) {
@@ -999,7 +1001,7 @@ final class APlusSDK
      * @throws \Plenty\AmazonPHP\SellingPartner\Exception\ApiException on non-2xx response
      * @throws \Plenty\AmazonPHP\SellingPartner\Exception\InvalidArgumentException
      */
-    public function postContentDocumentAsinRelations(AccessToken $accessToken, string $region, string $content_reference_key, string $marketplace_id, \Plenty\AmazonPHP\SellingPartner\Model\APlus\PostContentDocumentAsinRelationsRequest $post_content_document_asin_relations_request) : \Plenty\AmazonPHP\SellingPartner\Model\APlus\PostContentDocumentAsinRelationsResponse
+    public function postContentDocumentAsinRelations(AccessToken $accessToken, string $region, string $content_reference_key, string $marketplace_id, \Plenty\AmazonPHP\SellingPartner\Model\APlus\PostContentDocumentAsinRelationsRequest $post_content_document_asin_relations_request): \Plenty\AmazonPHP\SellingPartner\Model\APlus\PostContentDocumentAsinRelationsResponse
     {
         $request = $this->postContentDocumentAsinRelationsRequest($accessToken, $region, $content_reference_key, $marketplace_id, $post_content_document_asin_relations_request);
 
@@ -1096,7 +1098,7 @@ final class APlusSDK
      *
      * @throws \Plenty\AmazonPHP\SellingPartner\Exception\InvalidArgumentException
      */
-    public function postContentDocumentAsinRelationsRequest(AccessToken $accessToken, string $region, string $content_reference_key, string $marketplace_id, \Plenty\AmazonPHP\SellingPartner\Model\APlus\PostContentDocumentAsinRelationsRequest $post_content_document_asin_relations_request) : RequestInterface
+    public function postContentDocumentAsinRelationsRequest(AccessToken $accessToken, string $region, string $content_reference_key, string $marketplace_id, \Plenty\AmazonPHP\SellingPartner\Model\APlus\PostContentDocumentAsinRelationsRequest $post_content_document_asin_relations_request): RequestInterface
     {
         // verify the required parameter 'content_reference_key' is set
         if ($content_reference_key === null || (\is_array($content_reference_key) && \count($content_reference_key) === 0)) {
@@ -1229,7 +1231,7 @@ final class APlusSDK
      * @throws \Plenty\AmazonPHP\SellingPartner\Exception\ApiException on non-2xx response
      * @throws \Plenty\AmazonPHP\SellingPartner\Exception\InvalidArgumentException
      */
-    public function postContentDocumentSuspendSubmission(AccessToken $accessToken, string $region, string $content_reference_key, string $marketplace_id) : \Plenty\AmazonPHP\SellingPartner\Model\APlus\PostContentDocumentSuspendSubmissionResponse
+    public function postContentDocumentSuspendSubmission(AccessToken $accessToken, string $region, string $content_reference_key, string $marketplace_id): \Plenty\AmazonPHP\SellingPartner\Model\APlus\PostContentDocumentSuspendSubmissionResponse
     {
         $request = $this->postContentDocumentSuspendSubmissionRequest($accessToken, $region, $content_reference_key, $marketplace_id);
 
@@ -1325,7 +1327,7 @@ final class APlusSDK
      *
      * @throws \Plenty\AmazonPHP\SellingPartner\Exception\InvalidArgumentException
      */
-    public function postContentDocumentSuspendSubmissionRequest(AccessToken $accessToken, string $region, string $content_reference_key, string $marketplace_id) : RequestInterface
+    public function postContentDocumentSuspendSubmissionRequest(AccessToken $accessToken, string $region, string $content_reference_key, string $marketplace_id): RequestInterface
     {
         // verify the required parameter 'content_reference_key' is set
         if ($content_reference_key === null || (\is_array($content_reference_key) && \count($content_reference_key) === 0)) {
@@ -1443,7 +1445,7 @@ final class APlusSDK
      * @throws \Plenty\AmazonPHP\SellingPartner\Exception\ApiException on non-2xx response
      * @throws \Plenty\AmazonPHP\SellingPartner\Exception\InvalidArgumentException
      */
-    public function searchContentDocuments(AccessToken $accessToken, string $region, string $marketplace_id, string $page_token = null) : \Plenty\AmazonPHP\SellingPartner\Model\APlus\SearchContentDocumentsResponse
+    public function searchContentDocuments(AccessToken $accessToken, string $region, string $marketplace_id, ?string $page_token = null): \Plenty\AmazonPHP\SellingPartner\Model\APlus\SearchContentDocumentsResponse
     {
         $request = $this->searchContentDocumentsRequest($accessToken, $region, $marketplace_id, $page_token);
 
@@ -1539,7 +1541,7 @@ final class APlusSDK
      *
      * @throws \Plenty\AmazonPHP\SellingPartner\Exception\InvalidArgumentException
      */
-    public function searchContentDocumentsRequest(AccessToken $accessToken, string $region, string $marketplace_id, string $page_token = null) : RequestInterface
+    public function searchContentDocumentsRequest(AccessToken $accessToken, string $region, string $marketplace_id, ?string $page_token = null): RequestInterface
     {
         // verify the required parameter 'marketplace_id' is set
         if ($marketplace_id === null || (\is_array($marketplace_id) && \count($marketplace_id) === 0)) {
@@ -1650,7 +1652,7 @@ final class APlusSDK
      * @throws \Plenty\AmazonPHP\SellingPartner\Exception\ApiException on non-2xx response
      * @throws \Plenty\AmazonPHP\SellingPartner\Exception\InvalidArgumentException
      */
-    public function searchContentPublishRecords(AccessToken $accessToken, string $region, string $marketplace_id, string $asin, string $page_token = null) : \Plenty\AmazonPHP\SellingPartner\Model\APlus\SearchContentPublishRecordsResponse
+    public function searchContentPublishRecords(AccessToken $accessToken, string $region, string $marketplace_id, string $asin, ?string $page_token = null): \Plenty\AmazonPHP\SellingPartner\Model\APlus\SearchContentPublishRecordsResponse
     {
         $request = $this->searchContentPublishRecordsRequest($accessToken, $region, $marketplace_id, $asin, $page_token);
 
@@ -1747,7 +1749,7 @@ final class APlusSDK
      *
      * @throws \Plenty\AmazonPHP\SellingPartner\Exception\InvalidArgumentException
      */
-    public function searchContentPublishRecordsRequest(AccessToken $accessToken, string $region, string $marketplace_id, string $asin, string $page_token = null) : RequestInterface
+    public function searchContentPublishRecordsRequest(AccessToken $accessToken, string $region, string $marketplace_id, string $asin, ?string $page_token = null): RequestInterface
     {
         // verify the required parameter 'marketplace_id' is set
         if ($marketplace_id === null || (\is_array($marketplace_id) && \count($marketplace_id) === 0)) {
@@ -1877,7 +1879,7 @@ final class APlusSDK
      * @throws \Plenty\AmazonPHP\SellingPartner\Exception\ApiException on non-2xx response
      * @throws \Plenty\AmazonPHP\SellingPartner\Exception\InvalidArgumentException
      */
-    public function updateContentDocument(AccessToken $accessToken, string $region, string $content_reference_key, string $marketplace_id, \Plenty\AmazonPHP\SellingPartner\Model\APlus\PostContentDocumentRequest $post_content_document_request) : \Plenty\AmazonPHP\SellingPartner\Model\APlus\PostContentDocumentResponse
+    public function updateContentDocument(AccessToken $accessToken, string $region, string $content_reference_key, string $marketplace_id, \Plenty\AmazonPHP\SellingPartner\Model\APlus\PostContentDocumentRequest $post_content_document_request): \Plenty\AmazonPHP\SellingPartner\Model\APlus\PostContentDocumentResponse
     {
         $request = $this->updateContentDocumentRequest($accessToken, $region, $content_reference_key, $marketplace_id, $post_content_document_request);
 
@@ -1974,7 +1976,7 @@ final class APlusSDK
      *
      * @throws \Plenty\AmazonPHP\SellingPartner\Exception\InvalidArgumentException
      */
-    public function updateContentDocumentRequest(AccessToken $accessToken, string $region, string $content_reference_key, string $marketplace_id, \Plenty\AmazonPHP\SellingPartner\Model\APlus\PostContentDocumentRequest $post_content_document_request) : RequestInterface
+    public function updateContentDocumentRequest(AccessToken $accessToken, string $region, string $content_reference_key, string $marketplace_id, \Plenty\AmazonPHP\SellingPartner\Model\APlus\PostContentDocumentRequest $post_content_document_request): RequestInterface
     {
         // verify the required parameter 'content_reference_key' is set
         if ($content_reference_key === null || (\is_array($content_reference_key) && \count($content_reference_key) === 0)) {
@@ -2108,7 +2110,7 @@ final class APlusSDK
      * @throws \Plenty\AmazonPHP\SellingPartner\Exception\ApiException on non-2xx response
      * @throws \Plenty\AmazonPHP\SellingPartner\Exception\InvalidArgumentException
      */
-    public function validateContentDocumentAsinRelations(AccessToken $accessToken, string $region, string $marketplace_id, \Plenty\AmazonPHP\SellingPartner\Model\APlus\PostContentDocumentRequest $post_content_document_request, array $asin_set = null) : \Plenty\AmazonPHP\SellingPartner\Model\APlus\ValidateContentDocumentAsinRelationsResponse
+    public function validateContentDocumentAsinRelations(AccessToken $accessToken, string $region, string $marketplace_id, \Plenty\AmazonPHP\SellingPartner\Model\APlus\PostContentDocumentRequest $post_content_document_request, ?array $asin_set = null): \Plenty\AmazonPHP\SellingPartner\Model\APlus\ValidateContentDocumentAsinRelationsResponse
     {
         $request = $this->validateContentDocumentAsinRelationsRequest($accessToken, $region, $marketplace_id, $post_content_document_request, $asin_set);
 
@@ -2205,7 +2207,7 @@ final class APlusSDK
      *
      * @throws \Plenty\AmazonPHP\SellingPartner\Exception\InvalidArgumentException
      */
-    public function validateContentDocumentAsinRelationsRequest(AccessToken $accessToken, string $region, string $marketplace_id, \Plenty\AmazonPHP\SellingPartner\Model\APlus\PostContentDocumentRequest $post_content_document_request, array $asin_set = null) : RequestInterface
+    public function validateContentDocumentAsinRelationsRequest(AccessToken $accessToken, string $region, string $marketplace_id, \Plenty\AmazonPHP\SellingPartner\Model\APlus\PostContentDocumentRequest $post_content_document_request, ?array $asin_set = null): RequestInterface
     {
         // verify the required parameter 'marketplace_id' is set
         if ($marketplace_id === null || (\is_array($marketplace_id) && \count($marketplace_id) === 0)) {

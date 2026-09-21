@@ -95,7 +95,7 @@ class Dates implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInterf
      * @param null|mixed[] $data Associated array of property values
      *                           initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['ready_to_ship_window'] = $data['ready_to_ship_window'] ?? null;
     }
@@ -103,7 +103,7 @@ class Dates implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInterf
     /**
      * Array of property to type mappings. Used for (de)serialization.
      */
-    public static function openAPITypes() : array
+    public static function openAPITypes(): array
     {
         return self::$openAPITypes;
     }
@@ -111,7 +111,7 @@ class Dates implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInterf
     /**
      * Array of property to format mappings. Used for (de)serialization.
      */
-    public static function openAPIFormats() : array
+    public static function openAPIFormats(): array
     {
         return self::$openAPIFormats;
     }
@@ -120,7 +120,7 @@ class Dates implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInterf
      * Array of attributes where the key is the local name,
      * and the value is the original name.
      */
-    public static function attributeMap() : array
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -128,7 +128,7 @@ class Dates implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInterf
     /**
      * Array of attributes to setter functions (for deserialization of responses).
      */
-    public static function setters() : array
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -136,7 +136,7 @@ class Dates implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInterf
     /**
      * Array of attributes to getter functions (for serialization of requests).
      */
-    public static function getters() : array
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -144,7 +144,7 @@ class Dates implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInterf
     /**
      * Gets the string presentation of the object.
      */
-    public function __toString() : string
+    public function __toString(): string
     {
         return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
@@ -155,7 +155,7 @@ class Dates implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInterf
     /**
      * The original name of the model.
      */
-    public function getModelName() : string
+    public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
@@ -165,10 +165,10 @@ class Dates implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInterf
      *
      * @throws AssertionException
      */
-    public function listInvalidProperties() : array
+    public function listInvalidProperties(): array
     {
         $invalidProperties = [];
-         
+
         if ($this->container['ready_to_ship_window'] !== null) {
             $this->container['ready_to_ship_window']->listInvalidProperties();
         }
@@ -182,7 +182,7 @@ class Dates implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInterf
      *
      * @return bool True if all properties are valid
      */
-    public function valid() : bool
+    public function valid(): bool
     {
         return \count($this->listInvalidProperties()) === 0;
     }
@@ -190,7 +190,7 @@ class Dates implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInterf
     /**
      * Gets ready_to_ship_window.
      */
-    public function getReadyToShipWindow() : ?Window
+    public function getReadyToShipWindow(): ?Window
     {
         return $this->container['ready_to_ship_window'];
     }
@@ -200,7 +200,7 @@ class Dates implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInterf
      *
      * @param null|Window $ready_to_ship_window ready_to_ship_window
      */
-    public function setReadyToShipWindow(?Window $ready_to_ship_window) : self
+    public function setReadyToShipWindow(?Window $ready_to_ship_window): self
     {
         $this->container['ready_to_ship_window'] = $ready_to_ship_window;
 
@@ -210,7 +210,7 @@ class Dates implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInterf
     /**
      * Returns true if offset exists. False otherwise.
      */
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -221,7 +221,7 @@ class Dates implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInterf
      * @return null|mixed
      */
     #[\ReturnTypeWillChange]
-    public function offsetGet($offset) : mixed
+    public function offsetGet($offset): mixed
     {
         return $this->container[$offset] ?? null;
     }
@@ -229,7 +229,7 @@ class Dates implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInterf
     /**
      * Sets value based on offset.
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         if (null === $offset) {
             $this->container[] = $value;
@@ -241,7 +241,7 @@ class Dates implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInterf
     /**
      * Unsets offset.
      */
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -255,7 +255,7 @@ class Dates implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInterf
      *               of any type other than a resource
      */
     #[\ReturnTypeWillChange]
-    public function jsonSerialize() : string
+    public function jsonSerialize(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }
@@ -263,7 +263,7 @@ class Dates implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInterf
     /**
      * Gets a header-safe presentation of the object.
      */
-    public function toHeaderValue() : string
+    public function toHeaderValue(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }

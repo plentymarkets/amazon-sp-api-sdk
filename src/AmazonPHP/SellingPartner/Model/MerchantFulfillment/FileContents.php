@@ -1,4 +1,7 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
+
 /**
  * FileContents.
  *
@@ -122,7 +125,7 @@ class FileContents implements \ArrayAccess, \JsonSerializable, ModelInterface, \
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['contents'] = $data['contents'] ?? null;
         $this->container['file_type'] = $data['file_type'] ?? null;
@@ -134,7 +137,7 @@ class FileContents implements \ArrayAccess, \JsonSerializable, ModelInterface, \
      *
      * @return string[]
      */
-    public static function openAPITypes() : array
+    public static function openAPITypes(): array
     {
         return self::$openAPITypes;
     }
@@ -144,7 +147,7 @@ class FileContents implements \ArrayAccess, \JsonSerializable, ModelInterface, \
      *
      * @return null[]|string[]
      */
-    public static function openAPIFormats() : array
+    public static function openAPIFormats(): array
     {
         return self::$openAPIFormats;
     }
@@ -155,7 +158,7 @@ class FileContents implements \ArrayAccess, \JsonSerializable, ModelInterface, \
      *
      * @return string[]
      */
-    public static function attributeMap() : array
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -165,7 +168,7 @@ class FileContents implements \ArrayAccess, \JsonSerializable, ModelInterface, \
      *
      * @return string[]
      */
-    public static function setters() : array
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -175,7 +178,7 @@ class FileContents implements \ArrayAccess, \JsonSerializable, ModelInterface, \
      *
      * @return string[]
      */
-    public static function getters() : array
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -183,7 +186,7 @@ class FileContents implements \ArrayAccess, \JsonSerializable, ModelInterface, \
     /**
      * Gets the string presentation of the object.
      */
-    public function __toString() : string
+    public function __toString(): string
     {
         return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
@@ -194,7 +197,7 @@ class FileContents implements \ArrayAccess, \JsonSerializable, ModelInterface, \
     /**
      * The original name of the model.
      */
-    public function getModelName() : string
+    public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
@@ -204,7 +207,7 @@ class FileContents implements \ArrayAccess, \JsonSerializable, ModelInterface, \
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties() : array
+    public function listInvalidProperties(): array
     {
         $invalidProperties = [];
 
@@ -229,7 +232,7 @@ class FileContents implements \ArrayAccess, \JsonSerializable, ModelInterface, \
      *
      * @return bool True if all properties are valid
      */
-    public function valid() : bool
+    public function valid(): bool
     {
         return \count($this->listInvalidProperties()) === 0;
     }
@@ -237,7 +240,7 @@ class FileContents implements \ArrayAccess, \JsonSerializable, ModelInterface, \
     /**
      * Gets contents.
      */
-    public function getContents() : string
+    public function getContents(): string
     {
         return $this->container['contents'];
     }
@@ -247,7 +250,7 @@ class FileContents implements \ArrayAccess, \JsonSerializable, ModelInterface, \
      *
      * @param string $contents data for printing labels, in the form of a Base64-encoded, GZip-compressed string
      */
-    public function setContents(string $contents) : self
+    public function setContents(string $contents): self
     {
         $this->container['contents'] = $contents;
 
@@ -257,7 +260,7 @@ class FileContents implements \ArrayAccess, \JsonSerializable, ModelInterface, \
     /**
      * Gets file_type.
      */
-    public function getFileType() : FileType
+    public function getFileType(): FileType
     {
         return $this->container['file_type'];
     }
@@ -267,7 +270,7 @@ class FileContents implements \ArrayAccess, \JsonSerializable, ModelInterface, \
      *
      * @param \Plenty\AmazonPHP\SellingPartner\Model\MerchantFulfillment\FileType $file_type file_type
      */
-    public function setFileType(FileType $file_type) : self
+    public function setFileType(FileType $file_type): self
     {
         $this->container['file_type'] = $file_type;
 
@@ -277,7 +280,7 @@ class FileContents implements \ArrayAccess, \JsonSerializable, ModelInterface, \
     /**
      * Gets checksum.
      */
-    public function getChecksum() : string
+    public function getChecksum(): string
     {
         return $this->container['checksum'];
     }
@@ -287,7 +290,7 @@ class FileContents implements \ArrayAccess, \JsonSerializable, ModelInterface, \
      *
      * @param string $checksum an MD5 hash to validate the PDF document data, in the form of a Base64-encoded string
      */
-    public function setChecksum(string $checksum) : self
+    public function setChecksum(string $checksum): self
     {
         $this->container['checksum'] = $checksum;
 
@@ -299,7 +302,7 @@ class FileContents implements \ArrayAccess, \JsonSerializable, ModelInterface, \
      *
      * @param int $offset Offset
      */
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -322,7 +325,7 @@ class FileContents implements \ArrayAccess, \JsonSerializable, ModelInterface, \
      * @param null|int $offset Offset
      * @param mixed $value Value to be set
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         if (null === $offset) {
             $this->container[] = $value;
@@ -336,7 +339,7 @@ class FileContents implements \ArrayAccess, \JsonSerializable, ModelInterface, \
      *
      * @param int $offset Offset
      */
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -349,7 +352,7 @@ class FileContents implements \ArrayAccess, \JsonSerializable, ModelInterface, \
      * @return mixed returns data which can be serialized by json_encode(), which is a value
      *               of any type other than a resource
      */
-    public function jsonSerialize() : string
+    public function jsonSerialize(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }
@@ -357,7 +360,7 @@ class FileContents implements \ArrayAccess, \JsonSerializable, ModelInterface, \
     /**
      * Gets a header-safe presentation of the object.
      */
-    public function toHeaderValue() : string
+    public function toHeaderValue(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }

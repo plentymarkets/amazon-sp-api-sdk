@@ -1,4 +1,7 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
+
 /**
  * AcknowledgementStatusDetails.
  *
@@ -122,7 +125,7 @@ class AcknowledgementStatusDetails implements \ArrayAccess, \JsonSerializable, M
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['acknowledgement_date'] = $data['acknowledgement_date'] ?? null;
         $this->container['accepted_quantity'] = $data['accepted_quantity'] ?? null;
@@ -134,7 +137,7 @@ class AcknowledgementStatusDetails implements \ArrayAccess, \JsonSerializable, M
      *
      * @return string[]
      */
-    public static function openAPITypes() : array
+    public static function openAPITypes(): array
     {
         return self::$openAPITypes;
     }
@@ -144,7 +147,7 @@ class AcknowledgementStatusDetails implements \ArrayAccess, \JsonSerializable, M
      *
      * @return null[]|string[]
      */
-    public static function openAPIFormats() : array
+    public static function openAPIFormats(): array
     {
         return self::$openAPIFormats;
     }
@@ -155,7 +158,7 @@ class AcknowledgementStatusDetails implements \ArrayAccess, \JsonSerializable, M
      *
      * @return string[]
      */
-    public static function attributeMap() : array
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -165,7 +168,7 @@ class AcknowledgementStatusDetails implements \ArrayAccess, \JsonSerializable, M
      *
      * @return string[]
      */
-    public static function setters() : array
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -175,7 +178,7 @@ class AcknowledgementStatusDetails implements \ArrayAccess, \JsonSerializable, M
      *
      * @return string[]
      */
-    public static function getters() : array
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -183,7 +186,7 @@ class AcknowledgementStatusDetails implements \ArrayAccess, \JsonSerializable, M
     /**
      * Gets the string presentation of the object.
      */
-    public function __toString() : string
+    public function __toString(): string
     {
         return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
@@ -194,7 +197,7 @@ class AcknowledgementStatusDetails implements \ArrayAccess, \JsonSerializable, M
     /**
      * The original name of the model.
      */
-    public function getModelName() : string
+    public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
@@ -204,7 +207,7 @@ class AcknowledgementStatusDetails implements \ArrayAccess, \JsonSerializable, M
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties() : array
+    public function listInvalidProperties(): array
     {
         return [];
     }
@@ -215,7 +218,7 @@ class AcknowledgementStatusDetails implements \ArrayAccess, \JsonSerializable, M
      *
      * @return bool True if all properties are valid
      */
-    public function valid() : bool
+    public function valid(): bool
     {
         return \count($this->listInvalidProperties()) === 0;
     }
@@ -225,7 +228,7 @@ class AcknowledgementStatusDetails implements \ArrayAccess, \JsonSerializable, M
      *
      * @return null|\DateTime|\DateTimeImmutable
      */
-    public function getAcknowledgementDate() : ?\DateTimeInterface
+    public function getAcknowledgementDate(): ?\DateTimeInterface
     {
         return $this->container['acknowledgement_date'];
     }
@@ -235,7 +238,7 @@ class AcknowledgementStatusDetails implements \ArrayAccess, \JsonSerializable, M
      *
      * @param \DateTime|\DateTimeImmutable $acknowledgement_date The date when the line item was confirmed by vendor. Must be in ISO-8601 date/time format.
      */
-    public function setAcknowledgementDate(\DateTimeInterface $acknowledgement_date) : self
+    public function setAcknowledgementDate(\DateTimeInterface $acknowledgement_date): self
     {
         $this->container['acknowledgement_date'] = $acknowledgement_date;
 
@@ -245,7 +248,7 @@ class AcknowledgementStatusDetails implements \ArrayAccess, \JsonSerializable, M
     /**
      * Gets accepted_quantity.
      */
-    public function getAcceptedQuantity() : ?ItemQuantity
+    public function getAcceptedQuantity(): ?ItemQuantity
     {
         return $this->container['accepted_quantity'];
     }
@@ -255,7 +258,7 @@ class AcknowledgementStatusDetails implements \ArrayAccess, \JsonSerializable, M
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\VendorOrders\ItemQuantity $accepted_quantity accepted_quantity
      */
-    public function setAcceptedQuantity(?ItemQuantity $accepted_quantity) : self
+    public function setAcceptedQuantity(?ItemQuantity $accepted_quantity): self
     {
         $this->container['accepted_quantity'] = $accepted_quantity;
 
@@ -265,7 +268,7 @@ class AcknowledgementStatusDetails implements \ArrayAccess, \JsonSerializable, M
     /**
      * Gets rejected_quantity.
      */
-    public function getRejectedQuantity() : ?ItemQuantity
+    public function getRejectedQuantity(): ?ItemQuantity
     {
         return $this->container['rejected_quantity'];
     }
@@ -275,7 +278,7 @@ class AcknowledgementStatusDetails implements \ArrayAccess, \JsonSerializable, M
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\VendorOrders\ItemQuantity $rejected_quantity rejected_quantity
      */
-    public function setRejectedQuantity(?ItemQuantity $rejected_quantity) : self
+    public function setRejectedQuantity(?ItemQuantity $rejected_quantity): self
     {
         $this->container['rejected_quantity'] = $rejected_quantity;
 
@@ -287,7 +290,7 @@ class AcknowledgementStatusDetails implements \ArrayAccess, \JsonSerializable, M
      *
      * @param int $offset Offset
      */
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -310,7 +313,7 @@ class AcknowledgementStatusDetails implements \ArrayAccess, \JsonSerializable, M
      * @param null|int $offset Offset
      * @param mixed $value Value to be set
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         if (null === $offset) {
             $this->container[] = $value;
@@ -324,7 +327,7 @@ class AcknowledgementStatusDetails implements \ArrayAccess, \JsonSerializable, M
      *
      * @param int $offset Offset
      */
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -337,7 +340,7 @@ class AcknowledgementStatusDetails implements \ArrayAccess, \JsonSerializable, M
      * @return mixed returns data which can be serialized by json_encode(), which is a value
      *               of any type other than a resource
      */
-    public function jsonSerialize() : string
+    public function jsonSerialize(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }
@@ -345,7 +348,7 @@ class AcknowledgementStatusDetails implements \ArrayAccess, \JsonSerializable, M
     /**
      * Gets a header-safe presentation of the object.
      */
-    public function toHeaderValue() : string
+    public function toHeaderValue(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }

@@ -1,4 +1,7 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
+
 /**
  * PublishRecord.
  *
@@ -137,7 +140,7 @@ class PublishRecord implements \ArrayAccess, \JsonSerializable, ModelInterface, 
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['marketplace_id'] = $data['marketplace_id'] ?? null;
         $this->container['locale'] = $data['locale'] ?? null;
@@ -152,7 +155,7 @@ class PublishRecord implements \ArrayAccess, \JsonSerializable, ModelInterface, 
      *
      * @return string[]
      */
-    public static function openAPITypes() : array
+    public static function openAPITypes(): array
     {
         return self::$openAPITypes;
     }
@@ -162,7 +165,7 @@ class PublishRecord implements \ArrayAccess, \JsonSerializable, ModelInterface, 
      *
      * @return null[]|string[]
      */
-    public static function openAPIFormats() : array
+    public static function openAPIFormats(): array
     {
         return self::$openAPIFormats;
     }
@@ -173,7 +176,7 @@ class PublishRecord implements \ArrayAccess, \JsonSerializable, ModelInterface, 
      *
      * @return string[]
      */
-    public static function attributeMap() : array
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -183,7 +186,7 @@ class PublishRecord implements \ArrayAccess, \JsonSerializable, ModelInterface, 
      *
      * @return string[]
      */
-    public static function setters() : array
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -193,7 +196,7 @@ class PublishRecord implements \ArrayAccess, \JsonSerializable, ModelInterface, 
      *
      * @return string[]
      */
-    public static function getters() : array
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -201,7 +204,7 @@ class PublishRecord implements \ArrayAccess, \JsonSerializable, ModelInterface, 
     /**
      * Gets the string presentation of the object.
      */
-    public function __toString() : string
+    public function __toString(): string
     {
         return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
@@ -212,7 +215,7 @@ class PublishRecord implements \ArrayAccess, \JsonSerializable, ModelInterface, 
     /**
      * The original name of the model.
      */
-    public function getModelName() : string
+    public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
@@ -222,7 +225,7 @@ class PublishRecord implements \ArrayAccess, \JsonSerializable, ModelInterface, 
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties() : array
+    public function listInvalidProperties(): array
     {
         $invalidProperties = [];
 
@@ -275,7 +278,7 @@ class PublishRecord implements \ArrayAccess, \JsonSerializable, ModelInterface, 
      *
      * @return bool True if all properties are valid
      */
-    public function valid() : bool
+    public function valid(): bool
     {
         return \count($this->listInvalidProperties()) === 0;
     }
@@ -283,7 +286,7 @@ class PublishRecord implements \ArrayAccess, \JsonSerializable, ModelInterface, 
     /**
      * Gets marketplace_id.
      */
-    public function getMarketplaceId() : string
+    public function getMarketplaceId(): string
     {
         return $this->container['marketplace_id'];
     }
@@ -293,7 +296,7 @@ class PublishRecord implements \ArrayAccess, \JsonSerializable, ModelInterface, 
      *
      * @param string $marketplace_id the identifier for the marketplace where the A+ Content is published
      */
-    public function setMarketplaceId(string $marketplace_id) : self
+    public function setMarketplaceId(string $marketplace_id): self
     {
         if ((\mb_strlen($marketplace_id) < 1)) {
             throw new \InvalidArgumentException('invalid length for $marketplace_id when calling PublishRecord., must be bigger than or equal to 1.');
@@ -307,7 +310,7 @@ class PublishRecord implements \ArrayAccess, \JsonSerializable, ModelInterface, 
     /**
      * Gets locale.
      */
-    public function getLocale() : string
+    public function getLocale(): string
     {
         return $this->container['locale'];
     }
@@ -317,7 +320,7 @@ class PublishRecord implements \ArrayAccess, \JsonSerializable, ModelInterface, 
      *
      * @param string $locale The IETF language tag. This only supports the primary language subtag with one secondary language subtag. The secondary language subtag is almost always a regional designation. This does not support additional subtags beyond the primary and secondary subtags. **Pattern:** ^[a-z]{2,}-[A-Z0-9]{2,}$
      */
-    public function setLocale(string $locale) : self
+    public function setLocale(string $locale): self
     {
         if ((\mb_strlen($locale) < 5)) {
             throw new \InvalidArgumentException('invalid length for $locale when calling PublishRecord., must be bigger than or equal to 5.');
@@ -331,7 +334,7 @@ class PublishRecord implements \ArrayAccess, \JsonSerializable, ModelInterface, 
     /**
      * Gets asin.
      */
-    public function getAsin() : string
+    public function getAsin(): string
     {
         return $this->container['asin'];
     }
@@ -341,7 +344,7 @@ class PublishRecord implements \ArrayAccess, \JsonSerializable, ModelInterface, 
      *
      * @param string $asin the Amazon Standard Identification Number (ASIN)
      */
-    public function setAsin(string $asin) : self
+    public function setAsin(string $asin): self
     {
         if ((\mb_strlen($asin) < 10)) {
             throw new \InvalidArgumentException('invalid length for $asin when calling PublishRecord., must be bigger than or equal to 10.');
@@ -355,7 +358,7 @@ class PublishRecord implements \ArrayAccess, \JsonSerializable, ModelInterface, 
     /**
      * Gets content_type.
      */
-    public function getContentType() : ContentType
+    public function getContentType(): ContentType
     {
         return $this->container['content_type'];
     }
@@ -365,7 +368,7 @@ class PublishRecord implements \ArrayAccess, \JsonSerializable, ModelInterface, 
      *
      * @param \Plenty\AmazonPHP\SellingPartner\Model\APlus\ContentType $content_type content_type
      */
-    public function setContentType(ContentType $content_type) : self
+    public function setContentType(ContentType $content_type): self
     {
         $this->container['content_type'] = $content_type;
 
@@ -375,7 +378,7 @@ class PublishRecord implements \ArrayAccess, \JsonSerializable, ModelInterface, 
     /**
      * Gets content_sub_type.
      */
-    public function getContentSubType() : ?string
+    public function getContentSubType(): ?string
     {
         return $this->container['content_sub_type'];
     }
@@ -385,7 +388,7 @@ class PublishRecord implements \ArrayAccess, \JsonSerializable, ModelInterface, 
      *
      * @param null|string $content_sub_type The A+ Content document subtype. This represents a special-purpose type of an A+ Content document. Not every A+ Content document type will have a subtype, and subtypes may change at any time.
      */
-    public function setContentSubType(?string $content_sub_type) : self
+    public function setContentSubType(?string $content_sub_type): self
     {
         if (null !== $content_sub_type && (\mb_strlen($content_sub_type) < 1)) {
             throw new \InvalidArgumentException('invalid length for $content_sub_type when calling PublishRecord., must be bigger than or equal to 1.');
@@ -399,7 +402,7 @@ class PublishRecord implements \ArrayAccess, \JsonSerializable, ModelInterface, 
     /**
      * Gets content_reference_key.
      */
-    public function getContentReferenceKey() : string
+    public function getContentReferenceKey(): string
     {
         return $this->container['content_reference_key'];
     }
@@ -409,7 +412,7 @@ class PublishRecord implements \ArrayAccess, \JsonSerializable, ModelInterface, 
      *
      * @param string $content_reference_key A unique reference key for the A+ Content document. A content reference key cannot form a permalink and may change in the future. A content reference key is not guaranteed to match any A+ content identifier.
      */
-    public function setContentReferenceKey(string $content_reference_key) : self
+    public function setContentReferenceKey(string $content_reference_key): self
     {
         if ((\mb_strlen($content_reference_key) < 1)) {
             throw new \InvalidArgumentException('invalid length for $content_reference_key when calling PublishRecord., must be bigger than or equal to 1.');
@@ -425,7 +428,7 @@ class PublishRecord implements \ArrayAccess, \JsonSerializable, ModelInterface, 
      *
      * @param int $offset Offset
      */
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -448,7 +451,7 @@ class PublishRecord implements \ArrayAccess, \JsonSerializable, ModelInterface, 
      * @param null|int $offset Offset
      * @param mixed $value Value to be set
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         if (null === $offset) {
             $this->container[] = $value;
@@ -462,7 +465,7 @@ class PublishRecord implements \ArrayAccess, \JsonSerializable, ModelInterface, 
      *
      * @param int $offset Offset
      */
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -475,7 +478,7 @@ class PublishRecord implements \ArrayAccess, \JsonSerializable, ModelInterface, 
      * @return mixed returns data which can be serialized by json_encode(), which is a value
      *               of any type other than a resource
      */
-    public function jsonSerialize() : string
+    public function jsonSerialize(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }
@@ -483,7 +486,7 @@ class PublishRecord implements \ArrayAccess, \JsonSerializable, ModelInterface, 
     /**
      * Gets a header-safe presentation of the object.
      */
-    public function toHeaderValue() : string
+    public function toHeaderValue(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }

@@ -105,7 +105,7 @@ class DocumentDownload implements \ArrayAccess, \JsonSerializable, \Stringable, 
      * @param null|mixed[] $data Associated array of property values
      *                           initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['download_type'] = $data['download_type'] ?? null;
         $this->container['expiration'] = $data['expiration'] ?? null;
@@ -115,7 +115,7 @@ class DocumentDownload implements \ArrayAccess, \JsonSerializable, \Stringable, 
     /**
      * Array of property to type mappings. Used for (de)serialization.
      */
-    public static function openAPITypes() : array
+    public static function openAPITypes(): array
     {
         return self::$openAPITypes;
     }
@@ -123,7 +123,7 @@ class DocumentDownload implements \ArrayAccess, \JsonSerializable, \Stringable, 
     /**
      * Array of property to format mappings. Used for (de)serialization.
      */
-    public static function openAPIFormats() : array
+    public static function openAPIFormats(): array
     {
         return self::$openAPIFormats;
     }
@@ -132,7 +132,7 @@ class DocumentDownload implements \ArrayAccess, \JsonSerializable, \Stringable, 
      * Array of attributes where the key is the local name,
      * and the value is the original name.
      */
-    public static function attributeMap() : array
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -140,7 +140,7 @@ class DocumentDownload implements \ArrayAccess, \JsonSerializable, \Stringable, 
     /**
      * Array of attributes to setter functions (for deserialization of responses).
      */
-    public static function setters() : array
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -148,7 +148,7 @@ class DocumentDownload implements \ArrayAccess, \JsonSerializable, \Stringable, 
     /**
      * Array of attributes to getter functions (for serialization of requests).
      */
-    public static function getters() : array
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -156,7 +156,7 @@ class DocumentDownload implements \ArrayAccess, \JsonSerializable, \Stringable, 
     /**
      * Gets the string presentation of the object.
      */
-    public function __toString() : string
+    public function __toString(): string
     {
         return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
@@ -167,7 +167,7 @@ class DocumentDownload implements \ArrayAccess, \JsonSerializable, \Stringable, 
     /**
      * The original name of the model.
      */
-    public function getModelName() : string
+    public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
@@ -177,10 +177,10 @@ class DocumentDownload implements \ArrayAccess, \JsonSerializable, \Stringable, 
      *
      * @throws AssertionException
      */
-    public function listInvalidProperties() : array
+    public function listInvalidProperties(): array
     {
         $invalidProperties = [];
-         
+
         if ($this->container['download_type'] === null) {
             $invalidProperties[] = "'download_type' can't be null";
         }
@@ -198,7 +198,7 @@ class DocumentDownload implements \ArrayAccess, \JsonSerializable, \Stringable, 
      *
      * @return bool True if all properties are valid
      */
-    public function valid() : bool
+    public function valid(): bool
     {
         return \count($this->listInvalidProperties()) === 0;
     }
@@ -206,7 +206,7 @@ class DocumentDownload implements \ArrayAccess, \JsonSerializable, \Stringable, 
     /**
      * Gets download_type.
      */
-    public function getDownloadType() : string
+    public function getDownloadType(): string
     {
         return $this->container['download_type'];
     }
@@ -216,7 +216,7 @@ class DocumentDownload implements \ArrayAccess, \JsonSerializable, \Stringable, 
      *
      * @param string $download_type The type of download. Can be `URL`.
      */
-    public function setDownloadType(string $download_type) : self
+    public function setDownloadType(string $download_type): self
     {
         $this->container['download_type'] = $download_type;
 
@@ -226,7 +226,7 @@ class DocumentDownload implements \ArrayAccess, \JsonSerializable, \Stringable, 
     /**
      * Gets expiration.
      */
-    public function getExpiration() : ?\DateTimeInterface
+    public function getExpiration(): ?\DateTimeInterface
     {
         return $this->container['expiration'];
     }
@@ -236,7 +236,7 @@ class DocumentDownload implements \ArrayAccess, \JsonSerializable, \Stringable, 
      *
      * @param null|\DateTimeInterface $expiration The timestamp of expiration of the URI. This is in ISO 8601 datetime format with pattern `yyyy-MM-ddTHH:mm:ss.sssZ`.
      */
-    public function setExpiration(?\DateTimeInterface $expiration) : self
+    public function setExpiration(?\DateTimeInterface $expiration): self
     {
         $this->container['expiration'] = $expiration;
 
@@ -246,7 +246,7 @@ class DocumentDownload implements \ArrayAccess, \JsonSerializable, \Stringable, 
     /**
      * Gets uri.
      */
-    public function getUri() : string
+    public function getUri(): string
     {
         return $this->container['uri'];
     }
@@ -256,7 +256,7 @@ class DocumentDownload implements \ArrayAccess, \JsonSerializable, \Stringable, 
      *
      * @param string $uri uniform resource identifier to identify where the document is located
      */
-    public function setUri(string $uri) : self
+    public function setUri(string $uri): self
     {
         $this->container['uri'] = $uri;
 
@@ -266,7 +266,7 @@ class DocumentDownload implements \ArrayAccess, \JsonSerializable, \Stringable, 
     /**
      * Returns true if offset exists. False otherwise.
      */
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -277,7 +277,7 @@ class DocumentDownload implements \ArrayAccess, \JsonSerializable, \Stringable, 
      * @return null|mixed
      */
     #[\ReturnTypeWillChange]
-    public function offsetGet($offset) : mixed
+    public function offsetGet($offset): mixed
     {
         return $this->container[$offset] ?? null;
     }
@@ -285,7 +285,7 @@ class DocumentDownload implements \ArrayAccess, \JsonSerializable, \Stringable, 
     /**
      * Sets value based on offset.
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         if (null === $offset) {
             $this->container[] = $value;
@@ -297,7 +297,7 @@ class DocumentDownload implements \ArrayAccess, \JsonSerializable, \Stringable, 
     /**
      * Unsets offset.
      */
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -311,7 +311,7 @@ class DocumentDownload implements \ArrayAccess, \JsonSerializable, \Stringable, 
      *               of any type other than a resource
      */
     #[\ReturnTypeWillChange]
-    public function jsonSerialize() : string
+    public function jsonSerialize(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }
@@ -319,7 +319,7 @@ class DocumentDownload implements \ArrayAccess, \JsonSerializable, \Stringable, 
     /**
      * Gets a header-safe presentation of the object.
      */
-    public function toHeaderValue() : string
+    public function toHeaderValue(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }

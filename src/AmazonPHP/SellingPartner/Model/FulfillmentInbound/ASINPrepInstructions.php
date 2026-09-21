@@ -1,4 +1,7 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
+
 /**
  * ASINPrepInstructions.
  *
@@ -127,7 +130,7 @@ class ASINPrepInstructions implements \ArrayAccess, \JsonSerializable, ModelInte
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['asin'] = $data['asin'] ?? null;
         $this->container['barcode_instruction'] = $data['barcode_instruction'] ?? null;
@@ -140,7 +143,7 @@ class ASINPrepInstructions implements \ArrayAccess, \JsonSerializable, ModelInte
      *
      * @return string[]
      */
-    public static function openAPITypes() : array
+    public static function openAPITypes(): array
     {
         return self::$openAPITypes;
     }
@@ -150,7 +153,7 @@ class ASINPrepInstructions implements \ArrayAccess, \JsonSerializable, ModelInte
      *
      * @return null[]|string[]
      */
-    public static function openAPIFormats() : array
+    public static function openAPIFormats(): array
     {
         return self::$openAPIFormats;
     }
@@ -161,7 +164,7 @@ class ASINPrepInstructions implements \ArrayAccess, \JsonSerializable, ModelInte
      *
      * @return string[]
      */
-    public static function attributeMap() : array
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -171,7 +174,7 @@ class ASINPrepInstructions implements \ArrayAccess, \JsonSerializable, ModelInte
      *
      * @return string[]
      */
-    public static function setters() : array
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -181,7 +184,7 @@ class ASINPrepInstructions implements \ArrayAccess, \JsonSerializable, ModelInte
      *
      * @return string[]
      */
-    public static function getters() : array
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -189,7 +192,7 @@ class ASINPrepInstructions implements \ArrayAccess, \JsonSerializable, ModelInte
     /**
      * Gets the string presentation of the object.
      */
-    public function __toString() : string
+    public function __toString(): string
     {
         return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
@@ -200,7 +203,7 @@ class ASINPrepInstructions implements \ArrayAccess, \JsonSerializable, ModelInte
     /**
      * The original name of the model.
      */
-    public function getModelName() : string
+    public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
@@ -210,7 +213,7 @@ class ASINPrepInstructions implements \ArrayAccess, \JsonSerializable, ModelInte
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties() : array
+    public function listInvalidProperties(): array
     {
         return [];
     }
@@ -221,7 +224,7 @@ class ASINPrepInstructions implements \ArrayAccess, \JsonSerializable, ModelInte
      *
      * @return bool True if all properties are valid
      */
-    public function valid() : bool
+    public function valid(): bool
     {
         return \count($this->listInvalidProperties()) === 0;
     }
@@ -229,7 +232,7 @@ class ASINPrepInstructions implements \ArrayAccess, \JsonSerializable, ModelInte
     /**
      * Gets asin.
      */
-    public function getAsin() : ?string
+    public function getAsin(): ?string
     {
         return $this->container['asin'];
     }
@@ -239,7 +242,7 @@ class ASINPrepInstructions implements \ArrayAccess, \JsonSerializable, ModelInte
      *
      * @param null|string $asin the Amazon Standard Identification Number (ASIN) of the item
      */
-    public function setAsin(?string $asin) : self
+    public function setAsin(?string $asin): self
     {
         $this->container['asin'] = $asin;
 
@@ -249,7 +252,7 @@ class ASINPrepInstructions implements \ArrayAccess, \JsonSerializable, ModelInte
     /**
      * Gets barcode_instruction.
      */
-    public function getBarcodeInstruction() : ?BarcodeInstruction
+    public function getBarcodeInstruction(): ?BarcodeInstruction
     {
         return $this->container['barcode_instruction'];
     }
@@ -259,7 +262,7 @@ class ASINPrepInstructions implements \ArrayAccess, \JsonSerializable, ModelInte
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound\BarcodeInstruction $barcode_instruction barcode_instruction
      */
-    public function setBarcodeInstruction(?BarcodeInstruction $barcode_instruction) : self
+    public function setBarcodeInstruction(?BarcodeInstruction $barcode_instruction): self
     {
         $this->container['barcode_instruction'] = $barcode_instruction;
 
@@ -269,7 +272,7 @@ class ASINPrepInstructions implements \ArrayAccess, \JsonSerializable, ModelInte
     /**
      * Gets prep_guidance.
      */
-    public function getPrepGuidance() : ?PrepGuidance
+    public function getPrepGuidance(): ?PrepGuidance
     {
         return $this->container['prep_guidance'];
     }
@@ -279,7 +282,7 @@ class ASINPrepInstructions implements \ArrayAccess, \JsonSerializable, ModelInte
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound\PrepGuidance $prep_guidance prep_guidance
      */
-    public function setPrepGuidance(?PrepGuidance $prep_guidance) : self
+    public function setPrepGuidance(?PrepGuidance $prep_guidance): self
     {
         $this->container['prep_guidance'] = $prep_guidance;
 
@@ -291,7 +294,7 @@ class ASINPrepInstructions implements \ArrayAccess, \JsonSerializable, ModelInte
      *
      * @return null|\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound\PrepInstruction[]
      */
-    public function getPrepInstructionList() : ?array
+    public function getPrepInstructionList(): ?array
     {
         return $this->container['prep_instruction_list'];
     }
@@ -301,7 +304,7 @@ class ASINPrepInstructions implements \ArrayAccess, \JsonSerializable, ModelInte
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound\PrepInstruction[] $prep_instruction_list a list of preparation instructions to help with item sourcing decisions
      */
-    public function setPrepInstructionList(?array $prep_instruction_list) : self
+    public function setPrepInstructionList(?array $prep_instruction_list): self
     {
         $this->container['prep_instruction_list'] = $prep_instruction_list;
 
@@ -313,7 +316,7 @@ class ASINPrepInstructions implements \ArrayAccess, \JsonSerializable, ModelInte
      *
      * @param int $offset Offset
      */
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -336,7 +339,7 @@ class ASINPrepInstructions implements \ArrayAccess, \JsonSerializable, ModelInte
      * @param null|int $offset Offset
      * @param mixed $value Value to be set
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         if (null === $offset) {
             $this->container[] = $value;
@@ -350,7 +353,7 @@ class ASINPrepInstructions implements \ArrayAccess, \JsonSerializable, ModelInte
      *
      * @param int $offset Offset
      */
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -363,7 +366,7 @@ class ASINPrepInstructions implements \ArrayAccess, \JsonSerializable, ModelInte
      * @return mixed returns data which can be serialized by json_encode(), which is a value
      *               of any type other than a resource
      */
-    public function jsonSerialize() : string
+    public function jsonSerialize(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }
@@ -371,7 +374,7 @@ class ASINPrepInstructions implements \ArrayAccess, \JsonSerializable, ModelInte
     /**
      * Gets a header-safe presentation of the object.
      */
-    public function toHeaderValue() : string
+    public function toHeaderValue(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }

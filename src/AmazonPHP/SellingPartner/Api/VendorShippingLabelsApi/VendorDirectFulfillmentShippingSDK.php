@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Plenty\AmazonPHP\SellingPartner\Api\VendorShippingLabelsApi;
 
@@ -59,7 +61,7 @@ final class VendorDirectFulfillmentShippingSDK
      * @throws \Plenty\AmazonPHP\SellingPartner\Exception\ApiException on non-2xx response
      * @throws \Plenty\AmazonPHP\SellingPartner\Exception\InvalidArgumentException
      */
-    public function getShippingLabel(AccessToken $accessToken, string $region, string $purchase_order_number) : \Plenty\AmazonPHP\SellingPartner\Model\VendorDirectFulfillmentShipping\ShippingLabel
+    public function getShippingLabel(AccessToken $accessToken, string $region, string $purchase_order_number): \Plenty\AmazonPHP\SellingPartner\Model\VendorDirectFulfillmentShipping\ShippingLabel
     {
         $request = $this->getShippingLabelRequest($accessToken, $region, $purchase_order_number);
 
@@ -154,7 +156,7 @@ final class VendorDirectFulfillmentShippingSDK
      *
      * @throws \Plenty\AmazonPHP\SellingPartner\Exception\InvalidArgumentException
      */
-    public function getShippingLabelRequest(AccessToken $accessToken, string $region, string $purchase_order_number) : RequestInterface
+    public function getShippingLabelRequest(AccessToken $accessToken, string $region, string $purchase_order_number): RequestInterface
     {
         // verify the required parameter 'purchase_order_number' is set
         if ($purchase_order_number === null || (\is_array($purchase_order_number) && \count($purchase_order_number) === 0)) {
@@ -256,7 +258,7 @@ final class VendorDirectFulfillmentShippingSDK
      * @throws \Plenty\AmazonPHP\SellingPartner\Exception\ApiException on non-2xx response
      * @throws \Plenty\AmazonPHP\SellingPartner\Exception\InvalidArgumentException
      */
-    public function getShippingLabels(AccessToken $accessToken, string $region, \DateTimeInterface $created_after, \DateTimeInterface $created_before, string $ship_from_party_id = null, int $limit = null, string $sort_order = 'ASC', string $next_token = null) : \Plenty\AmazonPHP\SellingPartner\Model\VendorDirectFulfillmentShipping\ShippingLabelList
+    public function getShippingLabels(AccessToken $accessToken, string $region, \DateTimeInterface $created_after, \DateTimeInterface $created_before, ?string $ship_from_party_id = null, ?int $limit = null, string $sort_order = 'ASC', ?string $next_token = null): \Plenty\AmazonPHP\SellingPartner\Model\VendorDirectFulfillmentShipping\ShippingLabelList
     {
         $request = $this->getShippingLabelsRequest($accessToken, $region, $created_after, $created_before, $ship_from_party_id, $limit, $sort_order, $next_token);
 
@@ -356,7 +358,7 @@ final class VendorDirectFulfillmentShippingSDK
      *
      * @throws \Plenty\AmazonPHP\SellingPartner\Exception\InvalidArgumentException
      */
-    public function getShippingLabelsRequest(AccessToken $accessToken, string $region, \DateTimeInterface $created_after, \DateTimeInterface $created_before, string $ship_from_party_id = null, int $limit = null, string $sort_order = 'ASC', string $next_token = null) : RequestInterface
+    public function getShippingLabelsRequest(AccessToken $accessToken, string $region, \DateTimeInterface $created_after, \DateTimeInterface $created_before, ?string $ship_from_party_id = null, ?int $limit = null, string $sort_order = 'ASC', ?string $next_token = null): RequestInterface
     {
         // verify the required parameter 'created_after' is set
         if ($created_after === null || (\is_array($created_after) && \count($created_after) === 0)) {
@@ -503,7 +505,7 @@ final class VendorDirectFulfillmentShippingSDK
      * @throws \Plenty\AmazonPHP\SellingPartner\Exception\ApiException on non-2xx response
      * @throws \Plenty\AmazonPHP\SellingPartner\Exception\InvalidArgumentException
      */
-    public function submitShippingLabelRequest(AccessToken $accessToken, string $region, \Plenty\AmazonPHP\SellingPartner\Model\VendorDirectFulfillmentShipping\SubmitShippingLabelsRequest $body) : \Plenty\AmazonPHP\SellingPartner\Model\VendorDirectFulfillmentShipping\TransactionReference
+    public function submitShippingLabelRequest(AccessToken $accessToken, string $region, \Plenty\AmazonPHP\SellingPartner\Model\VendorDirectFulfillmentShipping\SubmitShippingLabelsRequest $body): \Plenty\AmazonPHP\SellingPartner\Model\VendorDirectFulfillmentShipping\TransactionReference
     {
         $request = $this->submitShippingLabelRequestRequest($accessToken, $region, $body);
 
@@ -598,7 +600,7 @@ final class VendorDirectFulfillmentShippingSDK
      *
      * @throws \Plenty\AmazonPHP\SellingPartner\Exception\InvalidArgumentException
      */
-    public function submitShippingLabelRequestRequest(AccessToken $accessToken, string $region, \Plenty\AmazonPHP\SellingPartner\Model\VendorDirectFulfillmentShipping\SubmitShippingLabelsRequest $body) : RequestInterface
+    public function submitShippingLabelRequestRequest(AccessToken $accessToken, string $region, \Plenty\AmazonPHP\SellingPartner\Model\VendorDirectFulfillmentShipping\SubmitShippingLabelsRequest $body): RequestInterface
     {
         // verify the required parameter 'body' is set
         if ($body === null || (\is_array($body) && \count($body) === 0)) {

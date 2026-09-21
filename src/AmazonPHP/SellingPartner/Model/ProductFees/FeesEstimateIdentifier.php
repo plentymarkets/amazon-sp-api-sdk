@@ -1,4 +1,7 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
+
 /**
  * FeesEstimateIdentifier.
  *
@@ -147,7 +150,7 @@ class FeesEstimateIdentifier implements \ArrayAccess, \JsonSerializable, ModelIn
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['marketplace_id'] = $data['marketplace_id'] ?? null;
         $this->container['seller_id'] = $data['seller_id'] ?? null;
@@ -164,7 +167,7 @@ class FeesEstimateIdentifier implements \ArrayAccess, \JsonSerializable, ModelIn
      *
      * @return string[]
      */
-    public static function openAPITypes() : array
+    public static function openAPITypes(): array
     {
         return self::$openAPITypes;
     }
@@ -174,7 +177,7 @@ class FeesEstimateIdentifier implements \ArrayAccess, \JsonSerializable, ModelIn
      *
      * @return null[]|string[]
      */
-    public static function openAPIFormats() : array
+    public static function openAPIFormats(): array
     {
         return self::$openAPIFormats;
     }
@@ -185,7 +188,7 @@ class FeesEstimateIdentifier implements \ArrayAccess, \JsonSerializable, ModelIn
      *
      * @return string[]
      */
-    public static function attributeMap() : array
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -195,7 +198,7 @@ class FeesEstimateIdentifier implements \ArrayAccess, \JsonSerializable, ModelIn
      *
      * @return string[]
      */
-    public static function setters() : array
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -205,7 +208,7 @@ class FeesEstimateIdentifier implements \ArrayAccess, \JsonSerializable, ModelIn
      *
      * @return string[]
      */
-    public static function getters() : array
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -213,7 +216,7 @@ class FeesEstimateIdentifier implements \ArrayAccess, \JsonSerializable, ModelIn
     /**
      * Gets the string presentation of the object.
      */
-    public function __toString() : string
+    public function __toString(): string
     {
         return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
@@ -224,7 +227,7 @@ class FeesEstimateIdentifier implements \ArrayAccess, \JsonSerializable, ModelIn
     /**
      * The original name of the model.
      */
-    public function getModelName() : string
+    public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
@@ -234,7 +237,7 @@ class FeesEstimateIdentifier implements \ArrayAccess, \JsonSerializable, ModelIn
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties() : array
+    public function listInvalidProperties(): array
     {
         return [];
     }
@@ -245,7 +248,7 @@ class FeesEstimateIdentifier implements \ArrayAccess, \JsonSerializable, ModelIn
      *
      * @return bool True if all properties are valid
      */
-    public function valid() : bool
+    public function valid(): bool
     {
         return \count($this->listInvalidProperties()) === 0;
     }
@@ -253,7 +256,7 @@ class FeesEstimateIdentifier implements \ArrayAccess, \JsonSerializable, ModelIn
     /**
      * Gets marketplace_id.
      */
-    public function getMarketplaceId() : ?string
+    public function getMarketplaceId(): ?string
     {
         return $this->container['marketplace_id'];
     }
@@ -263,7 +266,7 @@ class FeesEstimateIdentifier implements \ArrayAccess, \JsonSerializable, ModelIn
      *
      * @param null|string $marketplace_id a marketplace identifier
      */
-    public function setMarketplaceId(?string $marketplace_id) : self
+    public function setMarketplaceId(?string $marketplace_id): self
     {
         $this->container['marketplace_id'] = $marketplace_id;
 
@@ -273,7 +276,7 @@ class FeesEstimateIdentifier implements \ArrayAccess, \JsonSerializable, ModelIn
     /**
      * Gets seller_id.
      */
-    public function getSellerId() : ?string
+    public function getSellerId(): ?string
     {
         return $this->container['seller_id'];
     }
@@ -283,7 +286,7 @@ class FeesEstimateIdentifier implements \ArrayAccess, \JsonSerializable, ModelIn
      *
      * @param null|string $seller_id the seller identifier
      */
-    public function setSellerId(?string $seller_id) : self
+    public function setSellerId(?string $seller_id): self
     {
         $this->container['seller_id'] = $seller_id;
 
@@ -293,7 +296,7 @@ class FeesEstimateIdentifier implements \ArrayAccess, \JsonSerializable, ModelIn
     /**
      * Gets id_type.
      */
-    public function getIdType() : ?IdType
+    public function getIdType(): ?IdType
     {
         return $this->container['id_type'];
     }
@@ -303,7 +306,7 @@ class FeesEstimateIdentifier implements \ArrayAccess, \JsonSerializable, ModelIn
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\ProductFees\IdType $id_type id_type
      */
-    public function setIdType(?IdType $id_type) : self
+    public function setIdType(?IdType $id_type): self
     {
         $this->container['id_type'] = $id_type;
 
@@ -313,7 +316,7 @@ class FeesEstimateIdentifier implements \ArrayAccess, \JsonSerializable, ModelIn
     /**
      * Gets id_value.
      */
-    public function getIdValue() : ?string
+    public function getIdValue(): ?string
     {
         return $this->container['id_value'];
     }
@@ -323,7 +326,7 @@ class FeesEstimateIdentifier implements \ArrayAccess, \JsonSerializable, ModelIn
      *
      * @param null|string $id_value the item identifier
      */
-    public function setIdValue(?string $id_value) : self
+    public function setIdValue(?string $id_value): self
     {
         $this->container['id_value'] = $id_value;
 
@@ -333,7 +336,7 @@ class FeesEstimateIdentifier implements \ArrayAccess, \JsonSerializable, ModelIn
     /**
      * Gets is_amazon_fulfilled.
      */
-    public function getIsAmazonFulfilled() : ?bool
+    public function getIsAmazonFulfilled(): ?bool
     {
         return $this->container['is_amazon_fulfilled'];
     }
@@ -343,7 +346,7 @@ class FeesEstimateIdentifier implements \ArrayAccess, \JsonSerializable, ModelIn
      *
      * @param null|bool $is_amazon_fulfilled when true, the offer is fulfilled by Amazon
      */
-    public function setIsAmazonFulfilled(?bool $is_amazon_fulfilled) : self
+    public function setIsAmazonFulfilled(?bool $is_amazon_fulfilled): self
     {
         $this->container['is_amazon_fulfilled'] = $is_amazon_fulfilled;
 
@@ -353,7 +356,7 @@ class FeesEstimateIdentifier implements \ArrayAccess, \JsonSerializable, ModelIn
     /**
      * Gets price_to_estimate_fees.
      */
-    public function getPriceToEstimateFees() : ?PriceToEstimateFees
+    public function getPriceToEstimateFees(): ?PriceToEstimateFees
     {
         return $this->container['price_to_estimate_fees'];
     }
@@ -363,7 +366,7 @@ class FeesEstimateIdentifier implements \ArrayAccess, \JsonSerializable, ModelIn
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\ProductFees\PriceToEstimateFees $price_to_estimate_fees price_to_estimate_fees
      */
-    public function setPriceToEstimateFees(?PriceToEstimateFees $price_to_estimate_fees) : self
+    public function setPriceToEstimateFees(?PriceToEstimateFees $price_to_estimate_fees): self
     {
         $this->container['price_to_estimate_fees'] = $price_to_estimate_fees;
 
@@ -373,7 +376,7 @@ class FeesEstimateIdentifier implements \ArrayAccess, \JsonSerializable, ModelIn
     /**
      * Gets seller_input_identifier.
      */
-    public function getSellerInputIdentifier() : ?string
+    public function getSellerInputIdentifier(): ?string
     {
         return $this->container['seller_input_identifier'];
     }
@@ -383,7 +386,7 @@ class FeesEstimateIdentifier implements \ArrayAccess, \JsonSerializable, ModelIn
      *
      * @param null|string $seller_input_identifier a unique identifier provided by the caller to track this request
      */
-    public function setSellerInputIdentifier(?string $seller_input_identifier) : self
+    public function setSellerInputIdentifier(?string $seller_input_identifier): self
     {
         $this->container['seller_input_identifier'] = $seller_input_identifier;
 
@@ -393,7 +396,7 @@ class FeesEstimateIdentifier implements \ArrayAccess, \JsonSerializable, ModelIn
     /**
      * Gets optional_fulfillment_program.
      */
-    public function getOptionalFulfillmentProgram() : ?OptionalFulfillmentProgram
+    public function getOptionalFulfillmentProgram(): ?OptionalFulfillmentProgram
     {
         return $this->container['optional_fulfillment_program'];
     }
@@ -403,7 +406,7 @@ class FeesEstimateIdentifier implements \ArrayAccess, \JsonSerializable, ModelIn
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\ProductFees\OptionalFulfillmentProgram $optional_fulfillment_program optional_fulfillment_program
      */
-    public function setOptionalFulfillmentProgram(?OptionalFulfillmentProgram $optional_fulfillment_program) : self
+    public function setOptionalFulfillmentProgram(?OptionalFulfillmentProgram $optional_fulfillment_program): self
     {
         $this->container['optional_fulfillment_program'] = $optional_fulfillment_program;
 
@@ -415,7 +418,7 @@ class FeesEstimateIdentifier implements \ArrayAccess, \JsonSerializable, ModelIn
      *
      * @param int $offset Offset
      */
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -438,7 +441,7 @@ class FeesEstimateIdentifier implements \ArrayAccess, \JsonSerializable, ModelIn
      * @param null|int $offset Offset
      * @param mixed $value Value to be set
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         if (null === $offset) {
             $this->container[] = $value;
@@ -452,7 +455,7 @@ class FeesEstimateIdentifier implements \ArrayAccess, \JsonSerializable, ModelIn
      *
      * @param int $offset Offset
      */
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -465,7 +468,7 @@ class FeesEstimateIdentifier implements \ArrayAccess, \JsonSerializable, ModelIn
      * @return mixed returns data which can be serialized by json_encode(), which is a value
      *               of any type other than a resource
      */
-    public function jsonSerialize() : string
+    public function jsonSerialize(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }
@@ -473,7 +476,7 @@ class FeesEstimateIdentifier implements \ArrayAccess, \JsonSerializable, ModelIn
     /**
      * Gets a header-safe presentation of the object.
      */
-    public function toHeaderValue() : string
+    public function toHeaderValue(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }

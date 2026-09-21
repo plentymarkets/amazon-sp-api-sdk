@@ -1,4 +1,7 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
+
 /**
  * ContentRecord.
  *
@@ -122,7 +125,7 @@ class ContentRecord implements \ArrayAccess, \JsonSerializable, ModelInterface, 
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['content_reference_key'] = $data['content_reference_key'] ?? null;
         $this->container['content_metadata'] = $data['content_metadata'] ?? null;
@@ -134,7 +137,7 @@ class ContentRecord implements \ArrayAccess, \JsonSerializable, ModelInterface, 
      *
      * @return string[]
      */
-    public static function openAPITypes() : array
+    public static function openAPITypes(): array
     {
         return self::$openAPITypes;
     }
@@ -144,7 +147,7 @@ class ContentRecord implements \ArrayAccess, \JsonSerializable, ModelInterface, 
      *
      * @return null[]|string[]
      */
-    public static function openAPIFormats() : array
+    public static function openAPIFormats(): array
     {
         return self::$openAPIFormats;
     }
@@ -155,7 +158,7 @@ class ContentRecord implements \ArrayAccess, \JsonSerializable, ModelInterface, 
      *
      * @return string[]
      */
-    public static function attributeMap() : array
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -165,7 +168,7 @@ class ContentRecord implements \ArrayAccess, \JsonSerializable, ModelInterface, 
      *
      * @return string[]
      */
-    public static function setters() : array
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -175,7 +178,7 @@ class ContentRecord implements \ArrayAccess, \JsonSerializable, ModelInterface, 
      *
      * @return string[]
      */
-    public static function getters() : array
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -183,7 +186,7 @@ class ContentRecord implements \ArrayAccess, \JsonSerializable, ModelInterface, 
     /**
      * Gets the string presentation of the object.
      */
-    public function __toString() : string
+    public function __toString(): string
     {
         return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
@@ -194,7 +197,7 @@ class ContentRecord implements \ArrayAccess, \JsonSerializable, ModelInterface, 
     /**
      * The original name of the model.
      */
-    public function getModelName() : string
+    public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
@@ -204,7 +207,7 @@ class ContentRecord implements \ArrayAccess, \JsonSerializable, ModelInterface, 
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties() : array
+    public function listInvalidProperties(): array
     {
         $invalidProperties = [];
 
@@ -225,7 +228,7 @@ class ContentRecord implements \ArrayAccess, \JsonSerializable, ModelInterface, 
      *
      * @return bool True if all properties are valid
      */
-    public function valid() : bool
+    public function valid(): bool
     {
         return \count($this->listInvalidProperties()) === 0;
     }
@@ -233,7 +236,7 @@ class ContentRecord implements \ArrayAccess, \JsonSerializable, ModelInterface, 
     /**
      * Gets content_reference_key.
      */
-    public function getContentReferenceKey() : string
+    public function getContentReferenceKey(): string
     {
         return $this->container['content_reference_key'];
     }
@@ -243,7 +246,7 @@ class ContentRecord implements \ArrayAccess, \JsonSerializable, ModelInterface, 
      *
      * @param string $content_reference_key A unique reference key for the A+ Content document. A content reference key cannot form a permalink and may change in the future. A content reference key is not guaranteed to match any A+ content identifier.
      */
-    public function setContentReferenceKey(string $content_reference_key) : self
+    public function setContentReferenceKey(string $content_reference_key): self
     {
         if ((\mb_strlen($content_reference_key) < 1)) {
             throw new \InvalidArgumentException('invalid length for $content_reference_key when calling ContentRecord., must be bigger than or equal to 1.');
@@ -257,7 +260,7 @@ class ContentRecord implements \ArrayAccess, \JsonSerializable, ModelInterface, 
     /**
      * Gets content_metadata.
      */
-    public function getContentMetadata() : ?ContentMetadata
+    public function getContentMetadata(): ?ContentMetadata
     {
         return $this->container['content_metadata'];
     }
@@ -267,7 +270,7 @@ class ContentRecord implements \ArrayAccess, \JsonSerializable, ModelInterface, 
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\APlus\ContentMetadata $content_metadata content_metadata
      */
-    public function setContentMetadata(?ContentMetadata $content_metadata) : self
+    public function setContentMetadata(?ContentMetadata $content_metadata): self
     {
         $this->container['content_metadata'] = $content_metadata;
 
@@ -277,7 +280,7 @@ class ContentRecord implements \ArrayAccess, \JsonSerializable, ModelInterface, 
     /**
      * Gets content_document.
      */
-    public function getContentDocument() : ?ContentDocument
+    public function getContentDocument(): ?ContentDocument
     {
         return $this->container['content_document'];
     }
@@ -287,7 +290,7 @@ class ContentRecord implements \ArrayAccess, \JsonSerializable, ModelInterface, 
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\APlus\ContentDocument $content_document content_document
      */
-    public function setContentDocument(?ContentDocument $content_document) : self
+    public function setContentDocument(?ContentDocument $content_document): self
     {
         $this->container['content_document'] = $content_document;
 
@@ -299,7 +302,7 @@ class ContentRecord implements \ArrayAccess, \JsonSerializable, ModelInterface, 
      *
      * @param int $offset Offset
      */
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -322,7 +325,7 @@ class ContentRecord implements \ArrayAccess, \JsonSerializable, ModelInterface, 
      * @param null|int $offset Offset
      * @param mixed $value Value to be set
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         if (null === $offset) {
             $this->container[] = $value;
@@ -336,7 +339,7 @@ class ContentRecord implements \ArrayAccess, \JsonSerializable, ModelInterface, 
      *
      * @param int $offset Offset
      */
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -349,7 +352,7 @@ class ContentRecord implements \ArrayAccess, \JsonSerializable, ModelInterface, 
      * @return mixed returns data which can be serialized by json_encode(), which is a value
      *               of any type other than a resource
      */
-    public function jsonSerialize() : string
+    public function jsonSerialize(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }
@@ -357,7 +360,7 @@ class ContentRecord implements \ArrayAccess, \JsonSerializable, ModelInterface, 
     /**
      * Gets a header-safe presentation of the object.
      */
-    public function toHeaderValue() : string
+    public function toHeaderValue(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }

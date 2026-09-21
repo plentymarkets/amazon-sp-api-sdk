@@ -1,4 +1,7 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
+
 /**
  * ShippingOfferingFilter.
  *
@@ -127,7 +130,7 @@ class ShippingOfferingFilter implements \ArrayAccess, \JsonSerializable, ModelIn
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['include_packing_slip_with_label'] = $data['include_packing_slip_with_label'] ?? null;
         $this->container['include_complex_shipping_options'] = $data['include_complex_shipping_options'] ?? null;
@@ -140,7 +143,7 @@ class ShippingOfferingFilter implements \ArrayAccess, \JsonSerializable, ModelIn
      *
      * @return string[]
      */
-    public static function openAPITypes() : array
+    public static function openAPITypes(): array
     {
         return self::$openAPITypes;
     }
@@ -150,7 +153,7 @@ class ShippingOfferingFilter implements \ArrayAccess, \JsonSerializable, ModelIn
      *
      * @return null[]|string[]
      */
-    public static function openAPIFormats() : array
+    public static function openAPIFormats(): array
     {
         return self::$openAPIFormats;
     }
@@ -161,7 +164,7 @@ class ShippingOfferingFilter implements \ArrayAccess, \JsonSerializable, ModelIn
      *
      * @return string[]
      */
-    public static function attributeMap() : array
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -171,7 +174,7 @@ class ShippingOfferingFilter implements \ArrayAccess, \JsonSerializable, ModelIn
      *
      * @return string[]
      */
-    public static function setters() : array
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -181,7 +184,7 @@ class ShippingOfferingFilter implements \ArrayAccess, \JsonSerializable, ModelIn
      *
      * @return string[]
      */
-    public static function getters() : array
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -189,7 +192,7 @@ class ShippingOfferingFilter implements \ArrayAccess, \JsonSerializable, ModelIn
     /**
      * Gets the string presentation of the object.
      */
-    public function __toString() : string
+    public function __toString(): string
     {
         return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
@@ -200,7 +203,7 @@ class ShippingOfferingFilter implements \ArrayAccess, \JsonSerializable, ModelIn
     /**
      * The original name of the model.
      */
-    public function getModelName() : string
+    public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
@@ -210,7 +213,7 @@ class ShippingOfferingFilter implements \ArrayAccess, \JsonSerializable, ModelIn
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties() : array
+    public function listInvalidProperties(): array
     {
         return [];
     }
@@ -221,7 +224,7 @@ class ShippingOfferingFilter implements \ArrayAccess, \JsonSerializable, ModelIn
      *
      * @return bool True if all properties are valid
      */
-    public function valid() : bool
+    public function valid(): bool
     {
         return \count($this->listInvalidProperties()) === 0;
     }
@@ -229,7 +232,7 @@ class ShippingOfferingFilter implements \ArrayAccess, \JsonSerializable, ModelIn
     /**
      * Gets include_packing_slip_with_label.
      */
-    public function getIncludePackingSlipWithLabel() : ?bool
+    public function getIncludePackingSlipWithLabel(): ?bool
     {
         return $this->container['include_packing_slip_with_label'];
     }
@@ -239,7 +242,7 @@ class ShippingOfferingFilter implements \ArrayAccess, \JsonSerializable, ModelIn
      *
      * @param null|bool $include_packing_slip_with_label when true, include a packing slip with the label
      */
-    public function setIncludePackingSlipWithLabel(?bool $include_packing_slip_with_label) : self
+    public function setIncludePackingSlipWithLabel(?bool $include_packing_slip_with_label): self
     {
         $this->container['include_packing_slip_with_label'] = $include_packing_slip_with_label;
 
@@ -249,7 +252,7 @@ class ShippingOfferingFilter implements \ArrayAccess, \JsonSerializable, ModelIn
     /**
      * Gets include_complex_shipping_options.
      */
-    public function getIncludeComplexShippingOptions() : ?bool
+    public function getIncludeComplexShippingOptions(): ?bool
     {
         return $this->container['include_complex_shipping_options'];
     }
@@ -259,7 +262,7 @@ class ShippingOfferingFilter implements \ArrayAccess, \JsonSerializable, ModelIn
      *
      * @param null|bool $include_complex_shipping_options when true, include complex shipping options
      */
-    public function setIncludeComplexShippingOptions(?bool $include_complex_shipping_options) : self
+    public function setIncludeComplexShippingOptions(?bool $include_complex_shipping_options): self
     {
         $this->container['include_complex_shipping_options'] = $include_complex_shipping_options;
 
@@ -269,7 +272,7 @@ class ShippingOfferingFilter implements \ArrayAccess, \JsonSerializable, ModelIn
     /**
      * Gets carrier_will_pick_up.
      */
-    public function getCarrierWillPickUp() : ?CarrierWillPickUpOption
+    public function getCarrierWillPickUp(): ?CarrierWillPickUpOption
     {
         return $this->container['carrier_will_pick_up'];
     }
@@ -279,7 +282,7 @@ class ShippingOfferingFilter implements \ArrayAccess, \JsonSerializable, ModelIn
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\MerchantFulfillment\CarrierWillPickUpOption $carrier_will_pick_up carrier_will_pick_up
      */
-    public function setCarrierWillPickUp(?CarrierWillPickUpOption $carrier_will_pick_up) : self
+    public function setCarrierWillPickUp(?CarrierWillPickUpOption $carrier_will_pick_up): self
     {
         $this->container['carrier_will_pick_up'] = $carrier_will_pick_up;
 
@@ -289,7 +292,7 @@ class ShippingOfferingFilter implements \ArrayAccess, \JsonSerializable, ModelIn
     /**
      * Gets delivery_experience.
      */
-    public function getDeliveryExperience() : ?DeliveryExperienceOption
+    public function getDeliveryExperience(): ?DeliveryExperienceOption
     {
         return $this->container['delivery_experience'];
     }
@@ -299,7 +302,7 @@ class ShippingOfferingFilter implements \ArrayAccess, \JsonSerializable, ModelIn
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\MerchantFulfillment\DeliveryExperienceOption $delivery_experience delivery_experience
      */
-    public function setDeliveryExperience(?DeliveryExperienceOption $delivery_experience) : self
+    public function setDeliveryExperience(?DeliveryExperienceOption $delivery_experience): self
     {
         $this->container['delivery_experience'] = $delivery_experience;
 
@@ -311,7 +314,7 @@ class ShippingOfferingFilter implements \ArrayAccess, \JsonSerializable, ModelIn
      *
      * @param int $offset Offset
      */
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -334,7 +337,7 @@ class ShippingOfferingFilter implements \ArrayAccess, \JsonSerializable, ModelIn
      * @param null|int $offset Offset
      * @param mixed $value Value to be set
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         if (null === $offset) {
             $this->container[] = $value;
@@ -348,7 +351,7 @@ class ShippingOfferingFilter implements \ArrayAccess, \JsonSerializable, ModelIn
      *
      * @param int $offset Offset
      */
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -361,7 +364,7 @@ class ShippingOfferingFilter implements \ArrayAccess, \JsonSerializable, ModelIn
      * @return mixed returns data which can be serialized by json_encode(), which is a value
      *               of any type other than a resource
      */
-    public function jsonSerialize() : string
+    public function jsonSerialize(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }
@@ -369,7 +372,7 @@ class ShippingOfferingFilter implements \ArrayAccess, \JsonSerializable, ModelIn
     /**
      * Gets a header-safe presentation of the object.
      */
-    public function toHeaderValue() : string
+    public function toHeaderValue(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }

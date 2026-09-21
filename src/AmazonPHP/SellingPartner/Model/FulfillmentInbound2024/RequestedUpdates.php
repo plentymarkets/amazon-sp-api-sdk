@@ -100,7 +100,7 @@ class RequestedUpdates implements \ArrayAccess, \JsonSerializable, \Stringable, 
      * @param null|mixed[] $data Associated array of property values
      *                           initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['boxes'] = $data['boxes'] ?? null;
         $this->container['items'] = $data['items'] ?? null;
@@ -109,7 +109,7 @@ class RequestedUpdates implements \ArrayAccess, \JsonSerializable, \Stringable, 
     /**
      * Array of property to type mappings. Used for (de)serialization.
      */
-    public static function openAPITypes() : array
+    public static function openAPITypes(): array
     {
         return self::$openAPITypes;
     }
@@ -117,7 +117,7 @@ class RequestedUpdates implements \ArrayAccess, \JsonSerializable, \Stringable, 
     /**
      * Array of property to format mappings. Used for (de)serialization.
      */
-    public static function openAPIFormats() : array
+    public static function openAPIFormats(): array
     {
         return self::$openAPIFormats;
     }
@@ -126,7 +126,7 @@ class RequestedUpdates implements \ArrayAccess, \JsonSerializable, \Stringable, 
      * Array of attributes where the key is the local name,
      * and the value is the original name.
      */
-    public static function attributeMap() : array
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -134,7 +134,7 @@ class RequestedUpdates implements \ArrayAccess, \JsonSerializable, \Stringable, 
     /**
      * Array of attributes to setter functions (for deserialization of responses).
      */
-    public static function setters() : array
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -142,7 +142,7 @@ class RequestedUpdates implements \ArrayAccess, \JsonSerializable, \Stringable, 
     /**
      * Array of attributes to getter functions (for serialization of requests).
      */
-    public static function getters() : array
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -150,7 +150,7 @@ class RequestedUpdates implements \ArrayAccess, \JsonSerializable, \Stringable, 
     /**
      * Gets the string presentation of the object.
      */
-    public function __toString() : string
+    public function __toString(): string
     {
         return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
@@ -161,7 +161,7 @@ class RequestedUpdates implements \ArrayAccess, \JsonSerializable, \Stringable, 
     /**
      * The original name of the model.
      */
-    public function getModelName() : string
+    public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
@@ -171,7 +171,7 @@ class RequestedUpdates implements \ArrayAccess, \JsonSerializable, \Stringable, 
      *
      * @throws AssertionException
      */
-    public function listInvalidProperties() : array
+    public function listInvalidProperties(): array
     {
         return [];
     }
@@ -182,7 +182,7 @@ class RequestedUpdates implements \ArrayAccess, \JsonSerializable, \Stringable, 
      *
      * @return bool True if all properties are valid
      */
-    public function valid() : bool
+    public function valid(): bool
     {
         return \count($this->listInvalidProperties()) === 0;
     }
@@ -192,7 +192,7 @@ class RequestedUpdates implements \ArrayAccess, \JsonSerializable, \Stringable, 
      *
      * @return null|BoxUpdateInput[]
      */
-    public function getBoxes() : ?array
+    public function getBoxes(): ?array
     {
         return $this->container['boxes'];
     }
@@ -202,7 +202,7 @@ class RequestedUpdates implements \ArrayAccess, \JsonSerializable, \Stringable, 
      *
      * @param null|BoxUpdateInput[] $boxes a list of boxes that will be present in the shipment after the update
      */
-    public function setBoxes(?array $boxes) : self
+    public function setBoxes(?array $boxes): self
     {
         $this->container['boxes'] = $boxes;
 
@@ -214,7 +214,7 @@ class RequestedUpdates implements \ArrayAccess, \JsonSerializable, \Stringable, 
      *
      * @return null|ItemInput[]
      */
-    public function getItems() : ?array
+    public function getItems(): ?array
     {
         return $this->container['items'];
     }
@@ -224,7 +224,7 @@ class RequestedUpdates implements \ArrayAccess, \JsonSerializable, \Stringable, 
      *
      * @param null|ItemInput[] $items a list of all items that will be present in the shipment after the update
      */
-    public function setItems(?array $items) : self
+    public function setItems(?array $items): self
     {
         $this->container['items'] = $items;
 
@@ -234,7 +234,7 @@ class RequestedUpdates implements \ArrayAccess, \JsonSerializable, \Stringable, 
     /**
      * Returns true if offset exists. False otherwise.
      */
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -245,7 +245,7 @@ class RequestedUpdates implements \ArrayAccess, \JsonSerializable, \Stringable, 
      * @return null|mixed
      */
     #[\ReturnTypeWillChange]
-    public function offsetGet($offset) : mixed
+    public function offsetGet($offset): mixed
     {
         return $this->container[$offset] ?? null;
     }
@@ -253,7 +253,7 @@ class RequestedUpdates implements \ArrayAccess, \JsonSerializable, \Stringable, 
     /**
      * Sets value based on offset.
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         if (null === $offset) {
             $this->container[] = $value;
@@ -265,7 +265,7 @@ class RequestedUpdates implements \ArrayAccess, \JsonSerializable, \Stringable, 
     /**
      * Unsets offset.
      */
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -279,7 +279,7 @@ class RequestedUpdates implements \ArrayAccess, \JsonSerializable, \Stringable, 
      *               of any type other than a resource
      */
     #[\ReturnTypeWillChange]
-    public function jsonSerialize() : string
+    public function jsonSerialize(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }
@@ -287,7 +287,7 @@ class RequestedUpdates implements \ArrayAccess, \JsonSerializable, \Stringable, 
     /**
      * Gets a header-safe presentation of the object.
      */
-    public function toHeaderValue() : string
+    public function toHeaderValue(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }

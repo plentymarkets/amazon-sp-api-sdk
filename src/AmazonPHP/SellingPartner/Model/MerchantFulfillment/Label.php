@@ -1,4 +1,7 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
+
 /**
  * Label.
  *
@@ -132,7 +135,7 @@ class Label implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringa
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['custom_text_for_label'] = $data['custom_text_for_label'] ?? null;
         $this->container['dimensions'] = $data['dimensions'] ?? null;
@@ -146,7 +149,7 @@ class Label implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringa
      *
      * @return string[]
      */
-    public static function openAPITypes() : array
+    public static function openAPITypes(): array
     {
         return self::$openAPITypes;
     }
@@ -156,7 +159,7 @@ class Label implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringa
      *
      * @return null[]|string[]
      */
-    public static function openAPIFormats() : array
+    public static function openAPIFormats(): array
     {
         return self::$openAPIFormats;
     }
@@ -167,7 +170,7 @@ class Label implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringa
      *
      * @return string[]
      */
-    public static function attributeMap() : array
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -177,7 +180,7 @@ class Label implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringa
      *
      * @return string[]
      */
-    public static function setters() : array
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -187,7 +190,7 @@ class Label implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringa
      *
      * @return string[]
      */
-    public static function getters() : array
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -195,7 +198,7 @@ class Label implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringa
     /**
      * Gets the string presentation of the object.
      */
-    public function __toString() : string
+    public function __toString(): string
     {
         return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
@@ -206,7 +209,7 @@ class Label implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringa
     /**
      * The original name of the model.
      */
-    public function getModelName() : string
+    public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
@@ -216,7 +219,7 @@ class Label implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringa
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties() : array
+    public function listInvalidProperties(): array
     {
         $invalidProperties = [];
 
@@ -241,7 +244,7 @@ class Label implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringa
      *
      * @return bool True if all properties are valid
      */
-    public function valid() : bool
+    public function valid(): bool
     {
         return \count($this->listInvalidProperties()) === 0;
     }
@@ -249,7 +252,7 @@ class Label implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringa
     /**
      * Gets custom_text_for_label.
      */
-    public function getCustomTextForLabel() : ?string
+    public function getCustomTextForLabel(): ?string
     {
         return $this->container['custom_text_for_label'];
     }
@@ -259,7 +262,7 @@ class Label implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringa
      *
      * @param null|string $custom_text_for_label Custom text to print on the label.  Note: Custom text is only included on labels that are in ZPL format (ZPL203). FedEx does not support CustomTextForLabel.
      */
-    public function setCustomTextForLabel(?string $custom_text_for_label) : self
+    public function setCustomTextForLabel(?string $custom_text_for_label): self
     {
         if (null !== $custom_text_for_label && (\mb_strlen($custom_text_for_label) > 14)) {
             throw new \InvalidArgumentException('invalid length for $custom_text_for_label when calling Label., must be smaller than or equal to 14.');
@@ -273,7 +276,7 @@ class Label implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringa
     /**
      * Gets dimensions.
      */
-    public function getDimensions() : LabelDimensions
+    public function getDimensions(): LabelDimensions
     {
         return $this->container['dimensions'];
     }
@@ -283,7 +286,7 @@ class Label implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringa
      *
      * @param \Plenty\AmazonPHP\SellingPartner\Model\MerchantFulfillment\LabelDimensions $dimensions dimensions
      */
-    public function setDimensions(LabelDimensions $dimensions) : self
+    public function setDimensions(LabelDimensions $dimensions): self
     {
         $this->container['dimensions'] = $dimensions;
 
@@ -293,7 +296,7 @@ class Label implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringa
     /**
      * Gets file_contents.
      */
-    public function getFileContents() : FileContents
+    public function getFileContents(): FileContents
     {
         return $this->container['file_contents'];
     }
@@ -303,7 +306,7 @@ class Label implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringa
      *
      * @param \Plenty\AmazonPHP\SellingPartner\Model\MerchantFulfillment\FileContents $file_contents file_contents
      */
-    public function setFileContents(FileContents $file_contents) : self
+    public function setFileContents(FileContents $file_contents): self
     {
         $this->container['file_contents'] = $file_contents;
 
@@ -313,7 +316,7 @@ class Label implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringa
     /**
      * Gets label_format.
      */
-    public function getLabelFormat() : ?LabelFormat
+    public function getLabelFormat(): ?LabelFormat
     {
         return $this->container['label_format'];
     }
@@ -323,7 +326,7 @@ class Label implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringa
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\MerchantFulfillment\LabelFormat $label_format label_format
      */
-    public function setLabelFormat(?LabelFormat $label_format) : self
+    public function setLabelFormat(?LabelFormat $label_format): self
     {
         $this->container['label_format'] = $label_format;
 
@@ -333,7 +336,7 @@ class Label implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringa
     /**
      * Gets standard_id_for_label.
      */
-    public function getStandardIdForLabel() : ?StandardIdForLabel
+    public function getStandardIdForLabel(): ?StandardIdForLabel
     {
         return $this->container['standard_id_for_label'];
     }
@@ -343,7 +346,7 @@ class Label implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringa
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\MerchantFulfillment\StandardIdForLabel $standard_id_for_label standard_id_for_label
      */
-    public function setStandardIdForLabel(?StandardIdForLabel $standard_id_for_label) : self
+    public function setStandardIdForLabel(?StandardIdForLabel $standard_id_for_label): self
     {
         $this->container['standard_id_for_label'] = $standard_id_for_label;
 
@@ -355,7 +358,7 @@ class Label implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringa
      *
      * @param int $offset Offset
      */
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -378,7 +381,7 @@ class Label implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringa
      * @param null|int $offset Offset
      * @param mixed $value Value to be set
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         if (null === $offset) {
             $this->container[] = $value;
@@ -392,7 +395,7 @@ class Label implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringa
      *
      * @param int $offset Offset
      */
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -405,7 +408,7 @@ class Label implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringa
      * @return mixed returns data which can be serialized by json_encode(), which is a value
      *               of any type other than a resource
      */
-    public function jsonSerialize() : string
+    public function jsonSerialize(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }
@@ -413,7 +416,7 @@ class Label implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringa
     /**
      * Gets a header-safe presentation of the object.
      */
-    public function toHeaderValue() : string
+    public function toHeaderValue(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }

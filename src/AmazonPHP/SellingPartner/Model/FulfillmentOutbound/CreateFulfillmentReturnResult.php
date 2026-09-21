@@ -1,4 +1,7 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
+
 /**
  * CreateFulfillmentReturnResult.
  *
@@ -122,7 +125,7 @@ class CreateFulfillmentReturnResult implements \ArrayAccess, \JsonSerializable, 
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['return_items'] = $data['return_items'] ?? null;
         $this->container['invalid_return_items'] = $data['invalid_return_items'] ?? null;
@@ -134,7 +137,7 @@ class CreateFulfillmentReturnResult implements \ArrayAccess, \JsonSerializable, 
      *
      * @return string[]
      */
-    public static function openAPITypes() : array
+    public static function openAPITypes(): array
     {
         return self::$openAPITypes;
     }
@@ -144,7 +147,7 @@ class CreateFulfillmentReturnResult implements \ArrayAccess, \JsonSerializable, 
      *
      * @return null[]|string[]
      */
-    public static function openAPIFormats() : array
+    public static function openAPIFormats(): array
     {
         return self::$openAPIFormats;
     }
@@ -155,7 +158,7 @@ class CreateFulfillmentReturnResult implements \ArrayAccess, \JsonSerializable, 
      *
      * @return string[]
      */
-    public static function attributeMap() : array
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -165,7 +168,7 @@ class CreateFulfillmentReturnResult implements \ArrayAccess, \JsonSerializable, 
      *
      * @return string[]
      */
-    public static function setters() : array
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -175,7 +178,7 @@ class CreateFulfillmentReturnResult implements \ArrayAccess, \JsonSerializable, 
      *
      * @return string[]
      */
-    public static function getters() : array
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -183,7 +186,7 @@ class CreateFulfillmentReturnResult implements \ArrayAccess, \JsonSerializable, 
     /**
      * Gets the string presentation of the object.
      */
-    public function __toString() : string
+    public function __toString(): string
     {
         return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
@@ -194,7 +197,7 @@ class CreateFulfillmentReturnResult implements \ArrayAccess, \JsonSerializable, 
     /**
      * The original name of the model.
      */
-    public function getModelName() : string
+    public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
@@ -204,7 +207,7 @@ class CreateFulfillmentReturnResult implements \ArrayAccess, \JsonSerializable, 
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties() : array
+    public function listInvalidProperties(): array
     {
         return [];
     }
@@ -215,7 +218,7 @@ class CreateFulfillmentReturnResult implements \ArrayAccess, \JsonSerializable, 
      *
      * @return bool True if all properties are valid
      */
-    public function valid() : bool
+    public function valid(): bool
     {
         return \count($this->listInvalidProperties()) === 0;
     }
@@ -225,7 +228,7 @@ class CreateFulfillmentReturnResult implements \ArrayAccess, \JsonSerializable, 
      *
      * @return null|\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentOutbound\ReturnItem[]
      */
-    public function getReturnItems() : ?array
+    public function getReturnItems(): ?array
     {
         return $this->container['return_items'];
     }
@@ -235,7 +238,7 @@ class CreateFulfillmentReturnResult implements \ArrayAccess, \JsonSerializable, 
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentOutbound\ReturnItem[] $return_items An array of items that Amazon accepted for return. Returns empty if no items were accepted for return.
      */
-    public function setReturnItems(?array $return_items) : self
+    public function setReturnItems(?array $return_items): self
     {
         $this->container['return_items'] = $return_items;
 
@@ -247,7 +250,7 @@ class CreateFulfillmentReturnResult implements \ArrayAccess, \JsonSerializable, 
      *
      * @return null|\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentOutbound\InvalidReturnItem[]
      */
-    public function getInvalidReturnItems() : ?array
+    public function getInvalidReturnItems(): ?array
     {
         return $this->container['invalid_return_items'];
     }
@@ -257,7 +260,7 @@ class CreateFulfillmentReturnResult implements \ArrayAccess, \JsonSerializable, 
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentOutbound\InvalidReturnItem[] $invalid_return_items an array of invalid return item information
      */
-    public function setInvalidReturnItems(?array $invalid_return_items) : self
+    public function setInvalidReturnItems(?array $invalid_return_items): self
     {
         $this->container['invalid_return_items'] = $invalid_return_items;
 
@@ -269,7 +272,7 @@ class CreateFulfillmentReturnResult implements \ArrayAccess, \JsonSerializable, 
      *
      * @return null|\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentOutbound\ReturnAuthorization[]
      */
-    public function getReturnAuthorizations() : ?array
+    public function getReturnAuthorizations(): ?array
     {
         return $this->container['return_authorizations'];
     }
@@ -279,7 +282,7 @@ class CreateFulfillmentReturnResult implements \ArrayAccess, \JsonSerializable, 
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentOutbound\ReturnAuthorization[] $return_authorizations an array of return authorization information
      */
-    public function setReturnAuthorizations(?array $return_authorizations) : self
+    public function setReturnAuthorizations(?array $return_authorizations): self
     {
         $this->container['return_authorizations'] = $return_authorizations;
 
@@ -291,7 +294,7 @@ class CreateFulfillmentReturnResult implements \ArrayAccess, \JsonSerializable, 
      *
      * @param int $offset Offset
      */
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -314,7 +317,7 @@ class CreateFulfillmentReturnResult implements \ArrayAccess, \JsonSerializable, 
      * @param null|int $offset Offset
      * @param mixed $value Value to be set
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         if (null === $offset) {
             $this->container[] = $value;
@@ -328,7 +331,7 @@ class CreateFulfillmentReturnResult implements \ArrayAccess, \JsonSerializable, 
      *
      * @param int $offset Offset
      */
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -341,7 +344,7 @@ class CreateFulfillmentReturnResult implements \ArrayAccess, \JsonSerializable, 
      * @return mixed returns data which can be serialized by json_encode(), which is a value
      *               of any type other than a resource
      */
-    public function jsonSerialize() : string
+    public function jsonSerialize(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }
@@ -349,7 +352,7 @@ class CreateFulfillmentReturnResult implements \ArrayAccess, \JsonSerializable, 
     /**
      * Gets a header-safe presentation of the object.
      */
-    public function toHeaderValue() : string
+    public function toHeaderValue(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }

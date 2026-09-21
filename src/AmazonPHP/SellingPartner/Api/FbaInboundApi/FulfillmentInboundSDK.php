@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Plenty\AmazonPHP\SellingPartner\Api\FbaInboundApi;
 
@@ -121,7 +123,7 @@ final class FulfillmentInboundSDK
      * @throws \Plenty\AmazonPHP\SellingPartner\Exception\ApiException on non-2xx response
      * @throws \Plenty\AmazonPHP\SellingPartner\Exception\InvalidArgumentException
      */
-    public function confirmPreorder(AccessToken $accessToken, string $region, string $shipment_id, \DateTimeInterface $need_by_date, string $marketplace_id) : \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound\ConfirmPreorderResponse
+    public function confirmPreorder(AccessToken $accessToken, string $region, string $shipment_id, \DateTimeInterface $need_by_date, string $marketplace_id): \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound\ConfirmPreorderResponse
     {
         $request = $this->confirmPreorderRequest($accessToken, $region, $shipment_id, $need_by_date, $marketplace_id);
 
@@ -179,7 +181,7 @@ final class FulfillmentInboundSDK
             $message = json_decode($cEx->getResponse()->getBody()->getContents());
             $message = $message?->errors[0]?->message ?? 'Unknown error encountered';
             throw new ApiException(
-                str_replace(  "Reason: ", 'API error encountered: ', $message),
+                str_replace("Reason: ", 'API error encountered: ', $message),
                 (int) $cEx->getCode(),
                 null,
                 null,
@@ -187,11 +189,11 @@ final class FulfillmentInboundSDK
             );
         } catch (ClientExceptionInterface $e) {
             $message = $e->getMessage();
-            if (method_exists($e, 'getResponse'))  {
+            if (method_exists($e, 'getResponse')) {
                 $message = $e->getResponse()->getBody()->getContents();
             }
             throw new ApiException(
-                "[{$e->getCode()}] ". $message,
+                "[{$e->getCode()}] " . $message,
                 (int) $e->getCode(),
                 null,
                 null,
@@ -232,7 +234,7 @@ final class FulfillmentInboundSDK
      *
      * @throws \Plenty\AmazonPHP\SellingPartner\Exception\InvalidArgumentException
      */
-    public function confirmPreorderRequest(AccessToken $accessToken, string $region, string $shipment_id, \DateTimeInterface $need_by_date, string $marketplace_id) : RequestInterface
+    public function confirmPreorderRequest(AccessToken $accessToken, string $region, string $shipment_id, \DateTimeInterface $need_by_date, string $marketplace_id): RequestInterface
     {
         // verify the required parameter 'shipment_id' is set
         if ($shipment_id === null || (\is_array($shipment_id) && \count($shipment_id) === 0)) {
@@ -354,7 +356,7 @@ final class FulfillmentInboundSDK
      * @throws \Plenty\AmazonPHP\SellingPartner\Exception\ApiException on non-2xx response
      * @throws \Plenty\AmazonPHP\SellingPartner\Exception\InvalidArgumentException
      */
-    public function confirmTransport(AccessToken $accessToken, string $region, string $shipment_id) : \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound\ConfirmTransportResponse
+    public function confirmTransport(AccessToken $accessToken, string $region, string $shipment_id): \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound\ConfirmTransportResponse
     {
         $request = $this->confirmTransportRequest($accessToken, $region, $shipment_id);
 
@@ -412,7 +414,7 @@ final class FulfillmentInboundSDK
             $message = json_decode($cEx->getResponse()->getBody()->getContents());
             $message = $message?->errors[0]?->message ?? 'Unknown error encountered';
             throw new ApiException(
-                str_replace(  "Reason: ", 'API error encountered: ', $message),
+                str_replace("Reason: ", 'API error encountered: ', $message),
                 (int) $cEx->getCode(),
                 null,
                 null,
@@ -420,11 +422,11 @@ final class FulfillmentInboundSDK
             );
         } catch (ClientExceptionInterface $e) {
             $message = $e->getMessage();
-            if (method_exists($e, 'getResponse'))  {
+            if (method_exists($e, 'getResponse')) {
                 $message = $e->getResponse()->getBody()->getContents();
             }
             throw new ApiException(
-                "[{$e->getCode()}] ". $message,
+                "[{$e->getCode()}] " . $message,
                 (int) $e->getCode(),
                 null,
                 null,
@@ -463,7 +465,7 @@ final class FulfillmentInboundSDK
      *
      * @throws \Plenty\AmazonPHP\SellingPartner\Exception\InvalidArgumentException
      */
-    public function confirmTransportRequest(AccessToken $accessToken, string $region, string $shipment_id) : RequestInterface
+    public function confirmTransportRequest(AccessToken $accessToken, string $region, string $shipment_id): RequestInterface
     {
         // verify the required parameter 'shipment_id' is set
         if ($shipment_id === null || (\is_array($shipment_id) && \count($shipment_id) === 0)) {
@@ -557,7 +559,7 @@ final class FulfillmentInboundSDK
      * @throws \Plenty\AmazonPHP\SellingPartner\Exception\ApiException on non-2xx response
      * @throws \Plenty\AmazonPHP\SellingPartner\Exception\InvalidArgumentException
      */
-    public function createInboundShipment(AccessToken $accessToken, string $region, string $shipment_id, \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound\InboundShipmentRequest $body) : \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound\InboundShipmentResponse
+    public function createInboundShipment(AccessToken $accessToken, string $region, string $shipment_id, \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound\InboundShipmentRequest $body): \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound\InboundShipmentResponse
     {
         $request = $this->createInboundShipmentRequest($accessToken, $region, $shipment_id, $body);
 
@@ -573,7 +575,8 @@ final class FulfillmentInboundSDK
                     $sanitizedRequest = $sanitizedRequest->withoutHeader($sensitiveHeader);
                 }
 
-                $this->getLogger('CreateInboundShipmentRequest')->report('module_amazon::log/fbaInbound/debug.requestPayload',
+                $this->getLogger('CreateInboundShipmentRequest')->report(
+                    'module_amazon::log/fbaInbound/debug.requestPayload',
                     [
                         'api' => 'FulfillmentInbound',
                         'operation' => 'createInboundShipment',
@@ -596,7 +599,8 @@ final class FulfillmentInboundSDK
                     $sanitizedResponse = $sanitizedResponse->withoutHeader($sensitiveHeader);
                 }
 
-                $this->getLogger('CreateInboundShipmentResponse')->report('module_amazon::log/fbaInbound/debug.requestPayload',
+                $this->getLogger('CreateInboundShipmentResponse')->report(
+                    'module_amazon::log/fbaInbound/debug.requestPayload',
                     [
                         'api' => 'FulfillmentInbound',
                         'operation' => 'createInboundShipment',
@@ -611,7 +615,7 @@ final class FulfillmentInboundSDK
             $message = json_decode($cEx->getResponse()->getBody()->getContents());
             $message = $message?->errors[0]?->message ?? 'Unknown error encountered';
             throw new ApiException(
-                str_replace(  "Reason: ", 'API error encountered: ', $message),
+                str_replace("Reason: ", 'API error encountered: ', $message),
                 (int) $cEx->getCode(),
                 null,
                 null,
@@ -619,11 +623,11 @@ final class FulfillmentInboundSDK
             );
         } catch (ClientExceptionInterface $e) {
             $message = $e->getMessage();
-            if (method_exists($e, 'getResponse'))  {
+            if (method_exists($e, 'getResponse')) {
                 $message = $e->getResponse()->getBody()->getContents();
             }
             throw new ApiException(
-                "[{$e->getCode()}] ". $message,
+                "[{$e->getCode()}] " . $message,
                 (int) $e->getCode(),
                 null,
                 null,
@@ -663,7 +667,7 @@ final class FulfillmentInboundSDK
      *
      * @throws \Plenty\AmazonPHP\SellingPartner\Exception\InvalidArgumentException
      */
-    public function createInboundShipmentRequest(AccessToken $accessToken, string $region, string $shipment_id, \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound\InboundShipmentRequest $body) : RequestInterface
+    public function createInboundShipmentRequest(AccessToken $accessToken, string $region, string $shipment_id, \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound\InboundShipmentRequest $body): RequestInterface
     {
         // verify the required parameter 'shipment_id' is set
         if ($shipment_id === null || (\is_array($shipment_id) && \count($shipment_id) === 0)) {
@@ -770,7 +774,7 @@ final class FulfillmentInboundSDK
      * @throws \Plenty\AmazonPHP\SellingPartner\Exception\ApiException on non-2xx response
      * @throws \Plenty\AmazonPHP\SellingPartner\Exception\InvalidArgumentException
      */
-    public function createInboundShipmentPlan(AccessToken $accessToken, string $region, \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound\CreateInboundShipmentPlanRequest $body) : \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound\CreateInboundShipmentPlanResponse
+    public function createInboundShipmentPlan(AccessToken $accessToken, string $region, \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound\CreateInboundShipmentPlanRequest $body): \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound\CreateInboundShipmentPlanResponse
     {
         $request = $this->createInboundShipmentPlanRequest($accessToken, $region, $body);
 
@@ -786,7 +790,8 @@ final class FulfillmentInboundSDK
                     $sanitizedRequest = $sanitizedRequest->withoutHeader($sensitiveHeader);
                 }
 
-                $this->getLogger('CreateInboundShipmentPlanRequest')->report('module_amazon::log/fbaInbound/debug.requestPayload',
+                $this->getLogger('CreateInboundShipmentPlanRequest')->report(
+                    'module_amazon::log/fbaInbound/debug.requestPayload',
                     [
                         'api' => 'FulfillmentInbound',
                         'operation' => 'createInboundShipmentPlan',
@@ -809,7 +814,8 @@ final class FulfillmentInboundSDK
                     $sanitizedResponse = $sanitizedResponse->withoutHeader($sensitiveHeader);
                 }
 
-                $this->getLogger('CreateInboundShipmentPlanResponse')->report('module_amazon::log/fbaInbound/debug.requestPayload',
+                $this->getLogger('CreateInboundShipmentPlanResponse')->report(
+                    'module_amazon::log/fbaInbound/debug.requestPayload',
                     [
                         'api' => 'FulfillmentInbound',
                         'operation' => 'createInboundShipmentPlan',
@@ -820,11 +826,11 @@ final class FulfillmentInboundSDK
                     ]
                 );
             }
-        }  catch (ClientException $cEx) {
+        } catch (ClientException $cEx) {
             $message = json_decode($cEx->getResponse()->getBody()->getContents());
             $message = $message?->errors[0]?->message ?? 'Unknown error encountered';
             throw new ApiException(
-                str_replace(  "Reason: ", 'API error encountered: ', $message),
+                str_replace("Reason: ", 'API error encountered: ', $message),
                 (int) $cEx->getCode(),
                 null,
                 null,
@@ -832,11 +838,11 @@ final class FulfillmentInboundSDK
             );
         } catch (ClientExceptionInterface $e) {
             $message = $e->getMessage();
-            if (method_exists($e, 'getResponse'))  {
+            if (method_exists($e, 'getResponse')) {
                 $message = $e->getResponse()->getBody()->getContents();
             }
             throw new ApiException(
-                "[{$e->getCode()}] ". $message,
+                "[{$e->getCode()}] " . $message,
                 (int) $e->getCode(),
                 null,
                 null,
@@ -875,7 +881,7 @@ final class FulfillmentInboundSDK
      *
      * @throws \Plenty\AmazonPHP\SellingPartner\Exception\InvalidArgumentException
      */
-    public function createInboundShipmentPlanRequest(AccessToken $accessToken, string $region, \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound\CreateInboundShipmentPlanRequest $body) : RequestInterface
+    public function createInboundShipmentPlanRequest(AccessToken $accessToken, string $region, \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound\CreateInboundShipmentPlanRequest $body): RequestInterface
     {
         // verify the required parameter 'body' is set
         if ($body === null || (\is_array($body) && \count($body) === 0)) {
@@ -967,7 +973,7 @@ final class FulfillmentInboundSDK
      * @throws \Plenty\AmazonPHP\SellingPartner\Exception\ApiException on non-2xx response
      * @throws \Plenty\AmazonPHP\SellingPartner\Exception\InvalidArgumentException
      */
-    public function estimateTransport(AccessToken $accessToken, string $region, string $shipment_id) : \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound\EstimateTransportResponse
+    public function estimateTransport(AccessToken $accessToken, string $region, string $shipment_id): \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound\EstimateTransportResponse
     {
         $request = $this->estimateTransportRequest($accessToken, $region, $shipment_id);
 
@@ -1021,11 +1027,11 @@ final class FulfillmentInboundSDK
                     ]
                 );
             }
-        }  catch (ClientException $cEx) {
+        } catch (ClientException $cEx) {
             $message = json_decode($cEx->getResponse()->getBody()->getContents());
             $message = $message?->errors[0]?->message ?? 'Unknown error encountered';
             throw new ApiException(
-                str_replace(  "Reason: ", 'API error encountered: ', $message),
+                str_replace("Reason: ", 'API error encountered: ', $message),
                 (int) $cEx->getCode(),
                 null,
                 null,
@@ -1033,11 +1039,11 @@ final class FulfillmentInboundSDK
             );
         } catch (ClientExceptionInterface $e) {
             $message = $e->getMessage();
-            if (method_exists($e, 'getResponse'))  {
+            if (method_exists($e, 'getResponse')) {
                 $message = $e->getResponse()->getBody()->getContents();
             }
             throw new ApiException(
-                "[{$e->getCode()}] ". $message,
+                "[{$e->getCode()}] " . $message,
                 (int) $e->getCode(),
                 null,
                 null,
@@ -1076,7 +1082,7 @@ final class FulfillmentInboundSDK
      *
      * @throws \Plenty\AmazonPHP\SellingPartner\Exception\InvalidArgumentException
      */
-    public function estimateTransportRequest(AccessToken $accessToken, string $region, string $shipment_id) : RequestInterface
+    public function estimateTransportRequest(AccessToken $accessToken, string $region, string $shipment_id): RequestInterface
     {
         // verify the required parameter 'shipment_id' is set
         if ($shipment_id === null || (\is_array($shipment_id) && \count($shipment_id) === 0)) {
@@ -1169,7 +1175,7 @@ final class FulfillmentInboundSDK
      * @throws \Plenty\AmazonPHP\SellingPartner\Exception\ApiException on non-2xx response
      * @throws \Plenty\AmazonPHP\SellingPartner\Exception\InvalidArgumentException
      */
-    public function getBillOfLading(AccessToken $accessToken, string $region, string $shipment_id) : \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound\GetBillOfLadingResponse
+    public function getBillOfLading(AccessToken $accessToken, string $region, string $shipment_id): \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound\GetBillOfLadingResponse
     {
         $request = $this->getBillOfLadingRequest($accessToken, $region, $shipment_id);
 
@@ -1227,7 +1233,7 @@ final class FulfillmentInboundSDK
             $message = json_decode($cEx->getResponse()->getBody()->getContents());
             $message = $message?->errors[0]?->message ?? 'Unknown error encountered';
             throw new ApiException(
-                str_replace(  "Reason: ", 'API error encountered: ', $message),
+                str_replace("Reason: ", 'API error encountered: ', $message),
                 (int) $cEx->getCode(),
                 null,
                 null,
@@ -1235,11 +1241,11 @@ final class FulfillmentInboundSDK
             );
         } catch (ClientExceptionInterface $e) {
             $message = $e->getMessage();
-            if (method_exists($e, 'getResponse'))  {
+            if (method_exists($e, 'getResponse')) {
                 $message = $e->getResponse()->getBody()->getContents();
             }
             throw new ApiException(
-                "[{$e->getCode()}] ". $message,
+                "[{$e->getCode()}] " . $message,
                 (int) $e->getCode(),
                 null,
                 null,
@@ -1278,7 +1284,7 @@ final class FulfillmentInboundSDK
      *
      * @throws \Plenty\AmazonPHP\SellingPartner\Exception\InvalidArgumentException
      */
-    public function getBillOfLadingRequest(AccessToken $accessToken, string $region, string $shipment_id) : RequestInterface
+    public function getBillOfLadingRequest(AccessToken $accessToken, string $region, string $shipment_id): RequestInterface
     {
         // verify the required parameter 'shipment_id' is set
         if ($shipment_id === null || (\is_array($shipment_id) && \count($shipment_id) === 0)) {
@@ -1373,7 +1379,7 @@ final class FulfillmentInboundSDK
      * @throws \Plenty\AmazonPHP\SellingPartner\Exception\ApiException on non-2xx response
      * @throws \Plenty\AmazonPHP\SellingPartner\Exception\InvalidArgumentException
      */
-    public function getInboundGuidance(AccessToken $accessToken, string $region, string $marketplace_id, array $seller_sku_list = null, array $asin_list = null) : \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound\GetInboundGuidanceResponse
+    public function getInboundGuidance(AccessToken $accessToken, string $region, string $marketplace_id, ?array $seller_sku_list = null, ?array $asin_list = null): \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound\GetInboundGuidanceResponse
     {
         $request = $this->getInboundGuidanceRequest($accessToken, $region, $marketplace_id, $seller_sku_list, $asin_list);
 
@@ -1431,7 +1437,7 @@ final class FulfillmentInboundSDK
             $message = json_decode($cEx->getResponse()->getBody()->getContents());
             $message = $message?->errors[0]?->message ?? 'Unknown error encountered';
             throw new ApiException(
-                str_replace(  "Reason: ", 'API error encountered: ', $message),
+                str_replace("Reason: ", 'API error encountered: ', $message),
                 (int) $cEx->getCode(),
                 null,
                 null,
@@ -1439,11 +1445,11 @@ final class FulfillmentInboundSDK
             );
         } catch (ClientExceptionInterface $e) {
             $message = $e->getMessage();
-            if (method_exists($e, 'getResponse'))  {
+            if (method_exists($e, 'getResponse')) {
                 $message = $e->getResponse()->getBody()->getContents();
             }
             throw new ApiException(
-                "[{$e->getCode()}] ". $message,
+                "[{$e->getCode()}] " . $message,
                 (int) $e->getCode(),
                 null,
                 null,
@@ -1484,7 +1490,7 @@ final class FulfillmentInboundSDK
      *
      * @throws \Plenty\AmazonPHP\SellingPartner\Exception\InvalidArgumentException
      */
-    public function getInboundGuidanceRequest(AccessToken $accessToken, string $region, string $marketplace_id, array $seller_sku_list = null, array $asin_list = null) : RequestInterface
+    public function getInboundGuidanceRequest(AccessToken $accessToken, string $region, string $marketplace_id, ?array $seller_sku_list = null, ?array $asin_list = null): RequestInterface
     {
         // verify the required parameter 'marketplace_id' is set
         if ($marketplace_id === null || (\is_array($marketplace_id) && \count($marketplace_id) === 0)) {
@@ -1608,7 +1614,7 @@ final class FulfillmentInboundSDK
      * @throws \Plenty\AmazonPHP\SellingPartner\Exception\ApiException on non-2xx response
      * @throws \Plenty\AmazonPHP\SellingPartner\Exception\InvalidArgumentException
      */
-    public function getLabels(AccessToken $accessToken, string $region, string $shipment_id, string $page_type, string $label_type, int $number_of_packages = null, array $package_labels_to_print = null, int $number_of_pallets = null, int $page_size = null, int $page_start_index = null) : \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound\GetLabelsResponse
+    public function getLabels(AccessToken $accessToken, string $region, string $shipment_id, string $page_type, string $label_type, ?int $number_of_packages = null, ?array $package_labels_to_print = null, ?int $number_of_pallets = null, ?int $page_size = null, ?int $page_start_index = null): \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound\GetLabelsResponse
     {
         $request = $this->getLabelsRequest($accessToken, $region, $shipment_id, $page_type, $label_type, $number_of_packages, $package_labels_to_print, $number_of_pallets, $page_size, $page_start_index);
 
@@ -1624,7 +1630,8 @@ final class FulfillmentInboundSDK
                     $sanitizedRequest = $sanitizedRequest->withoutHeader($sensitiveHeader);
                 }
 
-                $this->getLogger('GetLabelsRequest')->report('module_amazon::log/fbaInbound/debug.requestPayload',
+                $this->getLogger('GetLabelsRequest')->report(
+                    'module_amazon::log/fbaInbound/debug.requestPayload',
                     [
                         'api' => 'FulfillmentInbound',
                         'operation' => 'getLabels',
@@ -1647,7 +1654,8 @@ final class FulfillmentInboundSDK
                     $sanitizedResponse = $sanitizedResponse->withoutHeader($sensitiveHeader);
                 }
 
-                $this->getLogger('GetLabelsResponse')->report('module_amazon::log/fbaInbound/debug.requestPayload',
+                $this->getLogger('GetLabelsResponse')->report(
+                    'module_amazon::log/fbaInbound/debug.requestPayload',
                     [
                         'api' => 'FulfillmentInbound',
                         'operation' => 'getLabels',
@@ -1662,7 +1670,7 @@ final class FulfillmentInboundSDK
             $message = json_decode($cEx->getResponse()->getBody()->getContents());
             $message = $message?->errors[0]?->message ?? 'Unknown error encountered';
             throw new ApiException(
-                str_replace(  "Reason: ", 'API error encountered: ', $message),
+                str_replace("Reason: ", 'API error encountered: ', $message),
                 (int) $cEx->getCode(),
                 null,
                 null,
@@ -1670,11 +1678,11 @@ final class FulfillmentInboundSDK
             );
         } catch (ClientExceptionInterface $e) {
             $message = $e->getMessage();
-            if (method_exists($e, 'getResponse'))  {
+            if (method_exists($e, 'getResponse')) {
                 $message = $e->getResponse()->getBody()->getContents();
             }
             throw new ApiException(
-                "[{$e->getCode()}] ". $message,
+                "[{$e->getCode()}] " . $message,
                 (int) $e->getCode(),
                 null,
                 null,
@@ -1720,7 +1728,7 @@ final class FulfillmentInboundSDK
      *
      * @throws \Plenty\AmazonPHP\SellingPartner\Exception\InvalidArgumentException
      */
-    public function getLabelsRequest(AccessToken $accessToken, string $region, string $shipment_id, string $page_type, string $label_type, int $number_of_packages = null, array $package_labels_to_print = null, int $number_of_pallets = null, int $page_size = null, int $page_start_index = null) : RequestInterface
+    public function getLabelsRequest(AccessToken $accessToken, string $region, string $shipment_id, string $page_type, string $label_type, ?int $number_of_packages = null, ?array $package_labels_to_print = null, ?int $number_of_pallets = null, ?int $page_size = null, ?int $page_start_index = null): RequestInterface
     {
         // verify the required parameter 'shipment_id' is set
         if ($shipment_id === null || (\is_array($shipment_id) && \count($shipment_id) === 0)) {
@@ -1887,7 +1895,7 @@ final class FulfillmentInboundSDK
      * @throws \Plenty\AmazonPHP\SellingPartner\Exception\ApiException on non-2xx response
      * @throws \Plenty\AmazonPHP\SellingPartner\Exception\InvalidArgumentException
      */
-    public function getPreorderInfo(AccessToken $accessToken, string $region, string $shipment_id, string $marketplace_id) : \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound\GetPreorderInfoResponse
+    public function getPreorderInfo(AccessToken $accessToken, string $region, string $shipment_id, string $marketplace_id): \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound\GetPreorderInfoResponse
     {
         $request = $this->getPreorderInfoRequest($accessToken, $region, $shipment_id, $marketplace_id);
 
@@ -1945,7 +1953,7 @@ final class FulfillmentInboundSDK
             $message = json_decode($cEx->getResponse()->getBody()->getContents());
             $message = $message?->errors[0]?->message ?? 'Unknown error encountered';
             throw new ApiException(
-                str_replace(  "Reason: ", 'API error encountered: ', $message),
+                str_replace("Reason: ", 'API error encountered: ', $message),
                 (int) $cEx->getCode(),
                 null,
                 null,
@@ -1953,11 +1961,11 @@ final class FulfillmentInboundSDK
             );
         } catch (ClientExceptionInterface $e) {
             $message = $e->getMessage();
-            if (method_exists($e, 'getResponse'))  {
+            if (method_exists($e, 'getResponse')) {
                 $message = $e->getResponse()->getBody()->getContents();
             }
             throw new ApiException(
-                "[{$e->getCode()}] ". $message,
+                "[{$e->getCode()}] " . $message,
                 (int) $e->getCode(),
                 null,
                 null,
@@ -1997,7 +2005,7 @@ final class FulfillmentInboundSDK
      *
      * @throws \Plenty\AmazonPHP\SellingPartner\Exception\InvalidArgumentException
      */
-    public function getPreorderInfoRequest(AccessToken $accessToken, string $region, string $shipment_id, string $marketplace_id) : RequestInterface
+    public function getPreorderInfoRequest(AccessToken $accessToken, string $region, string $shipment_id, string $marketplace_id): RequestInterface
     {
         // verify the required parameter 'shipment_id' is set
         if ($shipment_id === null || (\is_array($shipment_id) && \count($shipment_id) === 0)) {
@@ -2107,7 +2115,7 @@ final class FulfillmentInboundSDK
      * @throws \Plenty\AmazonPHP\SellingPartner\Exception\ApiException on non-2xx response
      * @throws \Plenty\AmazonPHP\SellingPartner\Exception\InvalidArgumentException
      */
-    public function getPrepInstructions(AccessToken $accessToken, string $region, string $ship_to_country_code, array $seller_sku_list = null, array $asin_list = null) : \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound\GetPrepInstructionsResponse
+    public function getPrepInstructions(AccessToken $accessToken, string $region, string $ship_to_country_code, ?array $seller_sku_list = null, ?array $asin_list = null): \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound\GetPrepInstructionsResponse
     {
         $request = $this->getPrepInstructionsRequest($accessToken, $region, $ship_to_country_code, $seller_sku_list, $asin_list);
 
@@ -2165,7 +2173,7 @@ final class FulfillmentInboundSDK
             $message = json_decode($cEx->getResponse()->getBody()->getContents());
             $message = $message?->errors[0]?->message ?? 'Unknown error encountered';
             throw new ApiException(
-                str_replace(  "Reason: ", 'API error encountered: ', $message),
+                str_replace("Reason: ", 'API error encountered: ', $message),
                 (int) $cEx->getCode(),
                 null,
                 null,
@@ -2173,11 +2181,11 @@ final class FulfillmentInboundSDK
             );
         } catch (ClientExceptionInterface $e) {
             $message = $e->getMessage();
-            if (method_exists($e, 'getResponse'))  {
+            if (method_exists($e, 'getResponse')) {
                 $message = $e->getResponse()->getBody()->getContents();
             }
             throw new ApiException(
-                "[{$e->getCode()}] ". $message,
+                "[{$e->getCode()}] " . $message,
                 (int) $e->getCode(),
                 null,
                 null,
@@ -2218,7 +2226,7 @@ final class FulfillmentInboundSDK
      *
      * @throws \Plenty\AmazonPHP\SellingPartner\Exception\InvalidArgumentException
      */
-    public function getPrepInstructionsRequest(AccessToken $accessToken, string $region, string $ship_to_country_code, array $seller_sku_list = null, array $asin_list = null) : RequestInterface
+    public function getPrepInstructionsRequest(AccessToken $accessToken, string $region, string $ship_to_country_code, ?array $seller_sku_list = null, ?array $asin_list = null): RequestInterface
     {
         // verify the required parameter 'ship_to_country_code' is set
         if ($ship_to_country_code === null || (\is_array($ship_to_country_code) && \count($ship_to_country_code) === 0)) {
@@ -2339,7 +2347,7 @@ final class FulfillmentInboundSDK
      * @throws \Plenty\AmazonPHP\SellingPartner\Exception\ApiException on non-2xx response
      * @throws \Plenty\AmazonPHP\SellingPartner\Exception\InvalidArgumentException
      */
-    public function getShipmentItems(AccessToken $accessToken, string $region, string $query_type, string $marketplace_id, \DateTimeInterface $last_updated_after = null, \DateTimeInterface $last_updated_before = null, string $next_token = null) : \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound\GetShipmentItemsResponse
+    public function getShipmentItems(AccessToken $accessToken, string $region, string $query_type, string $marketplace_id, ?\DateTimeInterface $last_updated_after = null, ?\DateTimeInterface $last_updated_before = null, ?string $next_token = null): \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound\GetShipmentItemsResponse
     {
         $request = $this->getShipmentItemsRequest($accessToken, $region, $query_type, $marketplace_id, $last_updated_after, $last_updated_before, $next_token);
 
@@ -2397,7 +2405,7 @@ final class FulfillmentInboundSDK
             $message = json_decode($cEx->getResponse()->getBody()->getContents());
             $message = $message?->errors[0]?->message ?? 'Unknown error encountered';
             throw new ApiException(
-                str_replace(  "Reason: ", 'API error encountered: ', $message),
+                str_replace("Reason: ", 'API error encountered: ', $message),
                 (int) $cEx->getCode(),
                 null,
                 null,
@@ -2405,11 +2413,11 @@ final class FulfillmentInboundSDK
             );
         } catch (ClientExceptionInterface $e) {
             $message = $e->getMessage();
-            if (method_exists($e, 'getResponse'))  {
+            if (method_exists($e, 'getResponse')) {
                 $message = $e->getResponse()->getBody()->getContents();
             }
             throw new ApiException(
-                "[{$e->getCode()}] ". $message,
+                "[{$e->getCode()}] " . $message,
                 (int) $e->getCode(),
                 null,
                 null,
@@ -2452,7 +2460,7 @@ final class FulfillmentInboundSDK
      *
      * @throws \Plenty\AmazonPHP\SellingPartner\Exception\InvalidArgumentException
      */
-    public function getShipmentItemsRequest(AccessToken $accessToken, string $region, string $query_type, string $marketplace_id, \DateTimeInterface $last_updated_after = null, \DateTimeInterface $last_updated_before = null, string $next_token = null) : RequestInterface
+    public function getShipmentItemsRequest(AccessToken $accessToken, string $region, string $query_type, string $marketplace_id, ?\DateTimeInterface $last_updated_after = null, ?\DateTimeInterface $last_updated_before = null, ?string $next_token = null): RequestInterface
     {
         // verify the required parameter 'query_type' is set
         if ($query_type === null || (\is_array($query_type) && \count($query_type) === 0)) {
@@ -2584,7 +2592,7 @@ final class FulfillmentInboundSDK
      * @throws \Plenty\AmazonPHP\SellingPartner\Exception\ApiException on non-2xx response
      * @throws \Plenty\AmazonPHP\SellingPartner\Exception\InvalidArgumentException
      */
-    public function getShipmentItemsByShipmentId(AccessToken $accessToken, string $region, string $shipment_id, string $marketplace_id) : \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound\GetShipmentItemsResponse
+    public function getShipmentItemsByShipmentId(AccessToken $accessToken, string $region, string $shipment_id, string $marketplace_id): \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound\GetShipmentItemsResponse
     {
         $request = $this->getShipmentItemsByShipmentIdRequest($accessToken, $region, $shipment_id, $marketplace_id);
 
@@ -2642,7 +2650,7 @@ final class FulfillmentInboundSDK
             $message = json_decode($cEx->getResponse()->getBody()->getContents());
             $message = $message?->errors[0]?->message ?? 'Unknown error encountered';
             throw new ApiException(
-                str_replace(  "Reason: ", 'API error encountered: ', $message),
+                str_replace("Reason: ", 'API error encountered: ', $message),
                 (int) $cEx->getCode(),
                 null,
                 null,
@@ -2650,11 +2658,11 @@ final class FulfillmentInboundSDK
             );
         } catch (ClientExceptionInterface $e) {
             $message = $e->getMessage();
-            if (method_exists($e, 'getResponse'))  {
+            if (method_exists($e, 'getResponse')) {
                 $message = $e->getResponse()->getBody()->getContents();
             }
             throw new ApiException(
-                "[{$e->getCode()}] ". $message,
+                "[{$e->getCode()}] " . $message,
                 (int) $e->getCode(),
                 null,
                 null,
@@ -2694,7 +2702,7 @@ final class FulfillmentInboundSDK
      *
      * @throws \Plenty\AmazonPHP\SellingPartner\Exception\InvalidArgumentException
      */
-    public function getShipmentItemsByShipmentIdRequest(AccessToken $accessToken, string $region, string $shipment_id, string $marketplace_id) : RequestInterface
+    public function getShipmentItemsByShipmentIdRequest(AccessToken $accessToken, string $region, string $shipment_id, string $marketplace_id): RequestInterface
     {
         // verify the required parameter 'shipment_id' is set
         if ($shipment_id === null || (\is_array($shipment_id) && \count($shipment_id) === 0)) {
@@ -2808,7 +2816,7 @@ final class FulfillmentInboundSDK
      * @throws \Plenty\AmazonPHP\SellingPartner\Exception\ApiException on non-2xx response
      * @throws \Plenty\AmazonPHP\SellingPartner\Exception\InvalidArgumentException
      */
-    public function getShipments(AccessToken $accessToken, string $region, string $query_type, string $marketplace_id, array $shipment_status_list = null, array $shipment_id_list = null, \DateTimeInterface $last_updated_after = null, \DateTimeInterface $last_updated_before = null, string $next_token = null) : \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound\GetShipmentsResponse
+    public function getShipments(AccessToken $accessToken, string $region, string $query_type, string $marketplace_id, ?array $shipment_status_list = null, ?array $shipment_id_list = null, ?\DateTimeInterface $last_updated_after = null, ?\DateTimeInterface $last_updated_before = null, ?string $next_token = null): \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound\GetShipmentsResponse
     {
         $request = $this->getShipmentsRequest($accessToken, $region, $query_type, $marketplace_id, $shipment_status_list, $shipment_id_list, $last_updated_after, $last_updated_before, $next_token);
 
@@ -2866,7 +2874,7 @@ final class FulfillmentInboundSDK
             $message = json_decode($cEx->getResponse()->getBody()->getContents());
             $message = $message?->errors[0]?->message ?? 'Unknown error encountered';
             throw new ApiException(
-                str_replace(  "Reason: ", 'API error encountered: ', $message),
+                str_replace("Reason: ", 'API error encountered: ', $message),
                 (int) $cEx->getCode(),
                 null,
                 null,
@@ -2874,11 +2882,11 @@ final class FulfillmentInboundSDK
             );
         } catch (ClientExceptionInterface $e) {
             $message = $e->getMessage();
-            if (method_exists($e, 'getResponse'))  {
+            if (method_exists($e, 'getResponse')) {
                 $message = $e->getResponse()->getBody()->getContents();
             }
             throw new ApiException(
-                "[{$e->getCode()}] ". $message,
+                "[{$e->getCode()}] " . $message,
                 (int) $e->getCode(),
                 null,
                 null,
@@ -2923,7 +2931,7 @@ final class FulfillmentInboundSDK
      *
      * @throws \Plenty\AmazonPHP\SellingPartner\Exception\InvalidArgumentException
      */
-    public function getShipmentsRequest(AccessToken $accessToken, string $region, string $query_type, string $marketplace_id, array $shipment_status_list = null, array $shipment_id_list = null, \DateTimeInterface $last_updated_after = null, \DateTimeInterface $last_updated_before = null, string $next_token = null) : RequestInterface
+    public function getShipmentsRequest(AccessToken $accessToken, string $region, string $query_type, string $marketplace_id, ?array $shipment_status_list = null, ?array $shipment_id_list = null, ?\DateTimeInterface $last_updated_after = null, ?\DateTimeInterface $last_updated_before = null, ?string $next_token = null): RequestInterface
     {
         // verify the required parameter 'query_type' is set
         if ($query_type === null || (\is_array($query_type) && \count($query_type) === 0)) {
@@ -3070,7 +3078,7 @@ final class FulfillmentInboundSDK
      * @throws \Plenty\AmazonPHP\SellingPartner\Exception\ApiException on non-2xx response
      * @throws \Plenty\AmazonPHP\SellingPartner\Exception\InvalidArgumentException
      */
-    public function getTransportDetails(AccessToken $accessToken, string $region, string $shipment_id) : \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound\GetTransportDetailsResponse
+    public function getTransportDetails(AccessToken $accessToken, string $region, string $shipment_id): \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound\GetTransportDetailsResponse
     {
         $request = $this->getTransportDetailsRequest($accessToken, $region, $shipment_id);
 
@@ -3128,7 +3136,7 @@ final class FulfillmentInboundSDK
             $message = json_decode($cEx->getResponse()->getBody()->getContents());
             $message = $message?->errors[0]?->message ?? 'Unknown error encountered';
             throw new ApiException(
-                str_replace(  "Reason: ", 'API error encountered: ', $message),
+                str_replace("Reason: ", 'API error encountered: ', $message),
                 (int) $cEx->getCode(),
                 null,
                 null,
@@ -3136,11 +3144,11 @@ final class FulfillmentInboundSDK
             );
         } catch (ClientExceptionInterface $e) {
             $message = $e->getMessage();
-            if (method_exists($e, 'getResponse'))  {
+            if (method_exists($e, 'getResponse')) {
                 $message = $e->getResponse()->getBody()->getContents();
             }
             throw new ApiException(
-                "[{$e->getCode()}] ". $message,
+                "[{$e->getCode()}] " . $message,
                 (int) $e->getCode(),
                 null,
                 null,
@@ -3179,7 +3187,7 @@ final class FulfillmentInboundSDK
      *
      * @throws \Plenty\AmazonPHP\SellingPartner\Exception\InvalidArgumentException
      */
-    public function getTransportDetailsRequest(AccessToken $accessToken, string $region, string $shipment_id) : RequestInterface
+    public function getTransportDetailsRequest(AccessToken $accessToken, string $region, string $shipment_id): RequestInterface
     {
         // verify the required parameter 'shipment_id' is set
         if ($shipment_id === null || (\is_array($shipment_id) && \count($shipment_id) === 0)) {
@@ -3273,7 +3281,7 @@ final class FulfillmentInboundSDK
      * @throws \Plenty\AmazonPHP\SellingPartner\Exception\ApiException on non-2xx response
      * @throws \Plenty\AmazonPHP\SellingPartner\Exception\InvalidArgumentException
      */
-    public function putTransportDetails(AccessToken $accessToken, string $region, string $shipment_id, \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound\PutTransportDetailsRequest $body) : \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound\PutTransportDetailsResponse
+    public function putTransportDetails(AccessToken $accessToken, string $region, string $shipment_id, \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound\PutTransportDetailsRequest $body): \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound\PutTransportDetailsResponse
     {
         $request = $this->putTransportDetailsRequest($accessToken, $region, $shipment_id, $body);
 
@@ -3289,7 +3297,8 @@ final class FulfillmentInboundSDK
                     $sanitizedRequest = $sanitizedRequest->withoutHeader($sensitiveHeader);
                 }
 
-                $this->getLogger('PutTransportDetailsRequest')->report('module_amazon::log/fbaInbound/debug.requestPayload',
+                $this->getLogger('PutTransportDetailsRequest')->report(
+                    'module_amazon::log/fbaInbound/debug.requestPayload',
                     [
                         'api' => 'FulfillmentInbound',
                         'operation' => 'putTransportDetails',
@@ -3312,7 +3321,8 @@ final class FulfillmentInboundSDK
                     $sanitizedResponse = $sanitizedResponse->withoutHeader($sensitiveHeader);
                 }
 
-                $this->getLogger('PutTransportDetailsResponse')->report('module_amazon::log/fbaInbound/debug.requestPayload',
+                $this->getLogger('PutTransportDetailsResponse')->report(
+                    'module_amazon::log/fbaInbound/debug.requestPayload',
                     [
                         'api' => 'FulfillmentInbound',
                         'operation' => 'putTransportDetails',
@@ -3327,7 +3337,7 @@ final class FulfillmentInboundSDK
             $message = json_decode($cEx->getResponse()->getBody()->getContents());
             $message = $message?->errors[0]?->message ?? 'Unknown error encountered';
             throw new ApiException(
-                str_replace(  "Reason: ", 'API error encountered: ', $message),
+                str_replace("Reason: ", 'API error encountered: ', $message),
                 (int) $cEx->getCode(),
                 null,
                 null,
@@ -3335,11 +3345,11 @@ final class FulfillmentInboundSDK
             );
         } catch (ClientExceptionInterface $e) {
             $message = $e->getMessage();
-            if (method_exists($e, 'getResponse'))  {
+            if (method_exists($e, 'getResponse')) {
                 $message = $e->getResponse()->getBody()->getContents();
             }
             throw new ApiException(
-                "[{$e->getCode()}] ". $message,
+                "[{$e->getCode()}] " . $message,
                 (int) $e->getCode(),
                 null,
                 null,
@@ -3379,7 +3389,7 @@ final class FulfillmentInboundSDK
      *
      * @throws \Plenty\AmazonPHP\SellingPartner\Exception\InvalidArgumentException
      */
-    public function putTransportDetailsRequest(AccessToken $accessToken, string $region, string $shipment_id, \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound\PutTransportDetailsRequest $body) : RequestInterface
+    public function putTransportDetailsRequest(AccessToken $accessToken, string $region, string $shipment_id, \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound\PutTransportDetailsRequest $body): RequestInterface
     {
         // verify the required parameter 'shipment_id' is set
         if ($shipment_id === null || (\is_array($shipment_id) && \count($shipment_id) === 0)) {
@@ -3487,7 +3497,7 @@ final class FulfillmentInboundSDK
      * @throws \Plenty\AmazonPHP\SellingPartner\Exception\ApiException on non-2xx response
      * @throws \Plenty\AmazonPHP\SellingPartner\Exception\InvalidArgumentException
      */
-    public function updateInboundShipment(AccessToken $accessToken, string $region, string $shipment_id, \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound\InboundShipmentRequest $body) : \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound\InboundShipmentResponse
+    public function updateInboundShipment(AccessToken $accessToken, string $region, string $shipment_id, \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound\InboundShipmentRequest $body): \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound\InboundShipmentResponse
     {
         $request = $this->updateInboundShipmentRequest($accessToken, $region, $shipment_id, $body);
 
@@ -3545,7 +3555,7 @@ final class FulfillmentInboundSDK
             $message = json_decode($cEx->getResponse()->getBody()->getContents());
             $message = $message?->errors[0]?->message ?? 'Unknown error encountered';
             throw new ApiException(
-                str_replace(  "Reason: ", 'API error encountered: ', $message),
+                str_replace("Reason: ", 'API error encountered: ', $message),
                 (int) $cEx->getCode(),
                 null,
                 null,
@@ -3553,11 +3563,11 @@ final class FulfillmentInboundSDK
             );
         } catch (ClientExceptionInterface $e) {
             $message = $e->getMessage();
-            if (method_exists($e, 'getResponse'))  {
+            if (method_exists($e, 'getResponse')) {
                 $message = $e->getResponse()->getBody()->getContents();
             }
             throw new ApiException(
-                "[{$e->getCode()}] ". $message,
+                "[{$e->getCode()}] " . $message,
                 (int) $e->getCode(),
                 null,
                 null,
@@ -3597,7 +3607,7 @@ final class FulfillmentInboundSDK
      *
      * @throws \Plenty\AmazonPHP\SellingPartner\Exception\InvalidArgumentException
      */
-    public function updateInboundShipmentRequest(AccessToken $accessToken, string $region, string $shipment_id, \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound\InboundShipmentRequest $body) : RequestInterface
+    public function updateInboundShipmentRequest(AccessToken $accessToken, string $region, string $shipment_id, \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound\InboundShipmentRequest $body): RequestInterface
     {
         // verify the required parameter 'shipment_id' is set
         if ($shipment_id === null || (\is_array($shipment_id) && \count($shipment_id) === 0)) {
@@ -3704,7 +3714,7 @@ final class FulfillmentInboundSDK
      * @throws \Plenty\AmazonPHP\SellingPartner\Exception\ApiException on non-2xx response
      * @throws \Plenty\AmazonPHP\SellingPartner\Exception\InvalidArgumentException
      */
-    public function voidTransport(AccessToken $accessToken, string $region, string $shipment_id) : \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound\VoidTransportResponse
+    public function voidTransport(AccessToken $accessToken, string $region, string $shipment_id): \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound\VoidTransportResponse
     {
         $request = $this->voidTransportRequest($accessToken, $region, $shipment_id);
 
@@ -3762,7 +3772,7 @@ final class FulfillmentInboundSDK
             $message = json_decode($cEx->getResponse()->getBody()->getContents());
             $message = $message?->errors[0]?->message ?? 'Unknown error encountered';
             throw new ApiException(
-                str_replace(  "Reason: ", 'API error encountered: ', $message),
+                str_replace("Reason: ", 'API error encountered: ', $message),
                 (int) $cEx->getCode(),
                 null,
                 null,
@@ -3770,11 +3780,11 @@ final class FulfillmentInboundSDK
             );
         } catch (ClientExceptionInterface $e) {
             $message = $e->getMessage();
-            if (method_exists($e, 'getResponse'))  {
+            if (method_exists($e, 'getResponse')) {
                 $message = $e->getResponse()->getBody()->getContents();
             }
             throw new ApiException(
-                "[{$e->getCode()}] ". $message,
+                "[{$e->getCode()}] " . $message,
                 (int) $e->getCode(),
                 null,
                 null,
@@ -3813,7 +3823,7 @@ final class FulfillmentInboundSDK
      *
      * @throws \Plenty\AmazonPHP\SellingPartner\Exception\InvalidArgumentException
      */
-    public function voidTransportRequest(AccessToken $accessToken, string $region, string $shipment_id) : RequestInterface
+    public function voidTransportRequest(AccessToken $accessToken, string $region, string $shipment_id): RequestInterface
     {
         // verify the required parameter 'shipment_id' is set
         if ($shipment_id === null || (\is_array($shipment_id) && \count($shipment_id) === 0)) {

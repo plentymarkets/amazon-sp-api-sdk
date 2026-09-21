@@ -1,4 +1,7 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
+
 /**
  * SellerFeedbackType.
  *
@@ -117,7 +120,7 @@ class SellerFeedbackType implements \ArrayAccess, \JsonSerializable, ModelInterf
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['seller_positive_feedback_rating'] = $data['seller_positive_feedback_rating'] ?? null;
         $this->container['feedback_count'] = $data['feedback_count'] ?? null;
@@ -128,7 +131,7 @@ class SellerFeedbackType implements \ArrayAccess, \JsonSerializable, ModelInterf
      *
      * @return string[]
      */
-    public static function openAPITypes() : array
+    public static function openAPITypes(): array
     {
         return self::$openAPITypes;
     }
@@ -138,7 +141,7 @@ class SellerFeedbackType implements \ArrayAccess, \JsonSerializable, ModelInterf
      *
      * @return null[]|string[]
      */
-    public static function openAPIFormats() : array
+    public static function openAPIFormats(): array
     {
         return self::$openAPIFormats;
     }
@@ -149,7 +152,7 @@ class SellerFeedbackType implements \ArrayAccess, \JsonSerializable, ModelInterf
      *
      * @return string[]
      */
-    public static function attributeMap() : array
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -159,7 +162,7 @@ class SellerFeedbackType implements \ArrayAccess, \JsonSerializable, ModelInterf
      *
      * @return string[]
      */
-    public static function setters() : array
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -169,7 +172,7 @@ class SellerFeedbackType implements \ArrayAccess, \JsonSerializable, ModelInterf
      *
      * @return string[]
      */
-    public static function getters() : array
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -177,7 +180,7 @@ class SellerFeedbackType implements \ArrayAccess, \JsonSerializable, ModelInterf
     /**
      * Gets the string presentation of the object.
      */
-    public function __toString() : string
+    public function __toString(): string
     {
         return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
@@ -188,7 +191,7 @@ class SellerFeedbackType implements \ArrayAccess, \JsonSerializable, ModelInterf
     /**
      * The original name of the model.
      */
-    public function getModelName() : string
+    public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
@@ -198,7 +201,7 @@ class SellerFeedbackType implements \ArrayAccess, \JsonSerializable, ModelInterf
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties() : array
+    public function listInvalidProperties(): array
     {
         $invalidProperties = [];
 
@@ -215,7 +218,7 @@ class SellerFeedbackType implements \ArrayAccess, \JsonSerializable, ModelInterf
      *
      * @return bool True if all properties are valid
      */
-    public function valid() : bool
+    public function valid(): bool
     {
         return \count($this->listInvalidProperties()) === 0;
     }
@@ -223,7 +226,7 @@ class SellerFeedbackType implements \ArrayAccess, \JsonSerializable, ModelInterf
     /**
      * Gets seller_positive_feedback_rating.
      */
-    public function getSellerPositiveFeedbackRating() : ?float
+    public function getSellerPositiveFeedbackRating(): ?float
     {
         return $this->container['seller_positive_feedback_rating'];
     }
@@ -233,7 +236,7 @@ class SellerFeedbackType implements \ArrayAccess, \JsonSerializable, ModelInterf
      *
      * @param null|float $seller_positive_feedback_rating the percentage of positive feedback for the seller in the past 365 days
      */
-    public function setSellerPositiveFeedbackRating(?float $seller_positive_feedback_rating) : self
+    public function setSellerPositiveFeedbackRating(?float $seller_positive_feedback_rating): self
     {
         $this->container['seller_positive_feedback_rating'] = $seller_positive_feedback_rating;
 
@@ -243,7 +246,7 @@ class SellerFeedbackType implements \ArrayAccess, \JsonSerializable, ModelInterf
     /**
      * Gets feedback_count.
      */
-    public function getFeedbackCount() : int
+    public function getFeedbackCount(): int
     {
         return $this->container['feedback_count'];
     }
@@ -253,7 +256,7 @@ class SellerFeedbackType implements \ArrayAccess, \JsonSerializable, ModelInterf
      *
      * @param int $feedback_count the number of ratings received about the seller
      */
-    public function setFeedbackCount(int $feedback_count) : self
+    public function setFeedbackCount(int $feedback_count): self
     {
         $this->container['feedback_count'] = $feedback_count;
 
@@ -265,7 +268,7 @@ class SellerFeedbackType implements \ArrayAccess, \JsonSerializable, ModelInterf
      *
      * @param int $offset Offset
      */
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -288,7 +291,7 @@ class SellerFeedbackType implements \ArrayAccess, \JsonSerializable, ModelInterf
      * @param null|int $offset Offset
      * @param mixed $value Value to be set
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         if (null === $offset) {
             $this->container[] = $value;
@@ -302,7 +305,7 @@ class SellerFeedbackType implements \ArrayAccess, \JsonSerializable, ModelInterf
      *
      * @param int $offset Offset
      */
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -315,7 +318,7 @@ class SellerFeedbackType implements \ArrayAccess, \JsonSerializable, ModelInterf
      * @return mixed returns data which can be serialized by json_encode(), which is a value
      *               of any type other than a resource
      */
-    public function jsonSerialize() : string
+    public function jsonSerialize(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }
@@ -323,7 +326,7 @@ class SellerFeedbackType implements \ArrayAccess, \JsonSerializable, ModelInterf
     /**
      * Gets a header-safe presentation of the object.
      */
-    public function toHeaderValue() : string
+    public function toHeaderValue(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }

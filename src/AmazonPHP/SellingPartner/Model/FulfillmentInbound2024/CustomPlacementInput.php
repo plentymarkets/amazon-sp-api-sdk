@@ -100,7 +100,7 @@ class CustomPlacementInput implements \ArrayAccess, \JsonSerializable, \Stringab
      * @param null|mixed[] $data Associated array of property values
      *                           initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['items'] = $data['items'] ?? null;
         $this->container['warehouse_id'] = $data['warehouse_id'] ?? null;
@@ -109,7 +109,7 @@ class CustomPlacementInput implements \ArrayAccess, \JsonSerializable, \Stringab
     /**
      * Array of property to type mappings. Used for (de)serialization.
      */
-    public static function openAPITypes() : array
+    public static function openAPITypes(): array
     {
         return self::$openAPITypes;
     }
@@ -117,7 +117,7 @@ class CustomPlacementInput implements \ArrayAccess, \JsonSerializable, \Stringab
     /**
      * Array of property to format mappings. Used for (de)serialization.
      */
-    public static function openAPIFormats() : array
+    public static function openAPIFormats(): array
     {
         return self::$openAPIFormats;
     }
@@ -126,7 +126,7 @@ class CustomPlacementInput implements \ArrayAccess, \JsonSerializable, \Stringab
      * Array of attributes where the key is the local name,
      * and the value is the original name.
      */
-    public static function attributeMap() : array
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -134,7 +134,7 @@ class CustomPlacementInput implements \ArrayAccess, \JsonSerializable, \Stringab
     /**
      * Array of attributes to setter functions (for deserialization of responses).
      */
-    public static function setters() : array
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -142,7 +142,7 @@ class CustomPlacementInput implements \ArrayAccess, \JsonSerializable, \Stringab
     /**
      * Array of attributes to getter functions (for serialization of requests).
      */
-    public static function getters() : array
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -150,7 +150,7 @@ class CustomPlacementInput implements \ArrayAccess, \JsonSerializable, \Stringab
     /**
      * Gets the string presentation of the object.
      */
-    public function __toString() : string
+    public function __toString(): string
     {
         return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
@@ -161,7 +161,7 @@ class CustomPlacementInput implements \ArrayAccess, \JsonSerializable, \Stringab
     /**
      * The original name of the model.
      */
-    public function getModelName() : string
+    public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
@@ -171,10 +171,10 @@ class CustomPlacementInput implements \ArrayAccess, \JsonSerializable, \Stringab
      *
      * @throws AssertionException
      */
-    public function listInvalidProperties() : array
+    public function listInvalidProperties(): array
     {
         $invalidProperties = [];
-         
+
         if ($this->container['items'] === null) {
             $invalidProperties[] = "'items' can't be null";
         }
@@ -208,7 +208,7 @@ class CustomPlacementInput implements \ArrayAccess, \JsonSerializable, \Stringab
      *
      * @return bool True if all properties are valid
      */
-    public function valid() : bool
+    public function valid(): bool
     {
         return \count($this->listInvalidProperties()) === 0;
     }
@@ -218,7 +218,7 @@ class CustomPlacementInput implements \ArrayAccess, \JsonSerializable, \Stringab
      *
      * @return ItemInput[]
      */
-    public function getItems() : array
+    public function getItems(): array
     {
         return $this->container['items'];
     }
@@ -228,7 +228,7 @@ class CustomPlacementInput implements \ArrayAccess, \JsonSerializable, \Stringab
      *
      * @param ItemInput[] $items items included while creating Inbound Plan
      */
-    public function setItems(array $items) : self
+    public function setItems(array $items): self
     {
         $this->container['items'] = $items;
 
@@ -238,7 +238,7 @@ class CustomPlacementInput implements \ArrayAccess, \JsonSerializable, \Stringab
     /**
      * Gets warehouse_id.
      */
-    public function getWarehouseId() : string
+    public function getWarehouseId(): string
     {
         return $this->container['warehouse_id'];
     }
@@ -248,7 +248,7 @@ class CustomPlacementInput implements \ArrayAccess, \JsonSerializable, \Stringab
      *
      * @param string $warehouse_id warehouse Id
      */
-    public function setWarehouseId(string $warehouse_id) : self
+    public function setWarehouseId(string $warehouse_id): self
     {
         $this->container['warehouse_id'] = $warehouse_id;
 
@@ -258,7 +258,7 @@ class CustomPlacementInput implements \ArrayAccess, \JsonSerializable, \Stringab
     /**
      * Returns true if offset exists. False otherwise.
      */
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -269,7 +269,7 @@ class CustomPlacementInput implements \ArrayAccess, \JsonSerializable, \Stringab
      * @return null|mixed
      */
     #[\ReturnTypeWillChange]
-    public function offsetGet($offset) : mixed
+    public function offsetGet($offset): mixed
     {
         return $this->container[$offset] ?? null;
     }
@@ -277,7 +277,7 @@ class CustomPlacementInput implements \ArrayAccess, \JsonSerializable, \Stringab
     /**
      * Sets value based on offset.
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         if (null === $offset) {
             $this->container[] = $value;
@@ -289,7 +289,7 @@ class CustomPlacementInput implements \ArrayAccess, \JsonSerializable, \Stringab
     /**
      * Unsets offset.
      */
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -303,7 +303,7 @@ class CustomPlacementInput implements \ArrayAccess, \JsonSerializable, \Stringab
      *               of any type other than a resource
      */
     #[\ReturnTypeWillChange]
-    public function jsonSerialize() : string
+    public function jsonSerialize(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }
@@ -311,7 +311,7 @@ class CustomPlacementInput implements \ArrayAccess, \JsonSerializable, \Stringab
     /**
      * Gets a header-safe presentation of the object.
      */
-    public function toHeaderValue() : string
+    public function toHeaderValue(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }

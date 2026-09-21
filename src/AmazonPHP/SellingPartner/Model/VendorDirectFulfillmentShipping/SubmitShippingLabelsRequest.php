@@ -1,4 +1,7 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
+
 /**
  * SubmitShippingLabelsRequest.
  *
@@ -112,7 +115,7 @@ class SubmitShippingLabelsRequest implements \ArrayAccess, \JsonSerializable, Mo
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['shipping_label_requests'] = $data['shipping_label_requests'] ?? null;
     }
@@ -122,7 +125,7 @@ class SubmitShippingLabelsRequest implements \ArrayAccess, \JsonSerializable, Mo
      *
      * @return string[]
      */
-    public static function openAPITypes() : array
+    public static function openAPITypes(): array
     {
         return self::$openAPITypes;
     }
@@ -132,7 +135,7 @@ class SubmitShippingLabelsRequest implements \ArrayAccess, \JsonSerializable, Mo
      *
      * @return null[]|string[]
      */
-    public static function openAPIFormats() : array
+    public static function openAPIFormats(): array
     {
         return self::$openAPIFormats;
     }
@@ -143,7 +146,7 @@ class SubmitShippingLabelsRequest implements \ArrayAccess, \JsonSerializable, Mo
      *
      * @return string[]
      */
-    public static function attributeMap() : array
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -153,7 +156,7 @@ class SubmitShippingLabelsRequest implements \ArrayAccess, \JsonSerializable, Mo
      *
      * @return string[]
      */
-    public static function setters() : array
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -163,7 +166,7 @@ class SubmitShippingLabelsRequest implements \ArrayAccess, \JsonSerializable, Mo
      *
      * @return string[]
      */
-    public static function getters() : array
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -171,7 +174,7 @@ class SubmitShippingLabelsRequest implements \ArrayAccess, \JsonSerializable, Mo
     /**
      * Gets the string presentation of the object.
      */
-    public function __toString() : string
+    public function __toString(): string
     {
         return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
@@ -182,7 +185,7 @@ class SubmitShippingLabelsRequest implements \ArrayAccess, \JsonSerializable, Mo
     /**
      * The original name of the model.
      */
-    public function getModelName() : string
+    public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
@@ -192,7 +195,7 @@ class SubmitShippingLabelsRequest implements \ArrayAccess, \JsonSerializable, Mo
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties() : array
+    public function listInvalidProperties(): array
     {
         return [];
     }
@@ -203,7 +206,7 @@ class SubmitShippingLabelsRequest implements \ArrayAccess, \JsonSerializable, Mo
      *
      * @return bool True if all properties are valid
      */
-    public function valid() : bool
+    public function valid(): bool
     {
         return \count($this->listInvalidProperties()) === 0;
     }
@@ -213,7 +216,7 @@ class SubmitShippingLabelsRequest implements \ArrayAccess, \JsonSerializable, Mo
      *
      * @return null|\Plenty\AmazonPHP\SellingPartner\Model\VendorDirectFulfillmentShipping\ShippingLabelRequest[]
      */
-    public function getShippingLabelRequests() : ?array
+    public function getShippingLabelRequests(): ?array
     {
         return $this->container['shipping_label_requests'];
     }
@@ -223,7 +226,7 @@ class SubmitShippingLabelsRequest implements \ArrayAccess, \JsonSerializable, Mo
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\VendorDirectFulfillmentShipping\ShippingLabelRequest[] $shipping_label_requests shipping_label_requests
      */
-    public function setShippingLabelRequests(?array $shipping_label_requests) : self
+    public function setShippingLabelRequests(?array $shipping_label_requests): self
     {
         $this->container['shipping_label_requests'] = $shipping_label_requests;
 
@@ -235,7 +238,7 @@ class SubmitShippingLabelsRequest implements \ArrayAccess, \JsonSerializable, Mo
      *
      * @param int $offset Offset
      */
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -258,7 +261,7 @@ class SubmitShippingLabelsRequest implements \ArrayAccess, \JsonSerializable, Mo
      * @param null|int $offset Offset
      * @param mixed $value Value to be set
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         if (null === $offset) {
             $this->container[] = $value;
@@ -272,7 +275,7 @@ class SubmitShippingLabelsRequest implements \ArrayAccess, \JsonSerializable, Mo
      *
      * @param int $offset Offset
      */
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -285,7 +288,7 @@ class SubmitShippingLabelsRequest implements \ArrayAccess, \JsonSerializable, Mo
      * @return mixed returns data which can be serialized by json_encode(), which is a value
      *               of any type other than a resource
      */
-    public function jsonSerialize() : string
+    public function jsonSerialize(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }
@@ -293,7 +296,7 @@ class SubmitShippingLabelsRequest implements \ArrayAccess, \JsonSerializable, Mo
     /**
      * Gets a header-safe presentation of the object.
      */
-    public function toHeaderValue() : string
+    public function toHeaderValue(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }

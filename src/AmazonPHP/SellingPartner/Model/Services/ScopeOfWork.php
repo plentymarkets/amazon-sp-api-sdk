@@ -1,4 +1,7 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
+
 /**
  * ScopeOfWork.
  *
@@ -127,7 +130,7 @@ class ScopeOfWork implements \ArrayAccess, \JsonSerializable, ModelInterface, \S
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['asin'] = $data['asin'] ?? null;
         $this->container['title'] = $data['title'] ?? null;
@@ -140,7 +143,7 @@ class ScopeOfWork implements \ArrayAccess, \JsonSerializable, ModelInterface, \S
      *
      * @return string[]
      */
-    public static function openAPITypes() : array
+    public static function openAPITypes(): array
     {
         return self::$openAPITypes;
     }
@@ -150,7 +153,7 @@ class ScopeOfWork implements \ArrayAccess, \JsonSerializable, ModelInterface, \S
      *
      * @return null[]|string[]
      */
-    public static function openAPIFormats() : array
+    public static function openAPIFormats(): array
     {
         return self::$openAPIFormats;
     }
@@ -161,7 +164,7 @@ class ScopeOfWork implements \ArrayAccess, \JsonSerializable, ModelInterface, \S
      *
      * @return string[]
      */
-    public static function attributeMap() : array
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -171,7 +174,7 @@ class ScopeOfWork implements \ArrayAccess, \JsonSerializable, ModelInterface, \S
      *
      * @return string[]
      */
-    public static function setters() : array
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -181,7 +184,7 @@ class ScopeOfWork implements \ArrayAccess, \JsonSerializable, ModelInterface, \S
      *
      * @return string[]
      */
-    public static function getters() : array
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -189,7 +192,7 @@ class ScopeOfWork implements \ArrayAccess, \JsonSerializable, ModelInterface, \S
     /**
      * Gets the string presentation of the object.
      */
-    public function __toString() : string
+    public function __toString(): string
     {
         return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
@@ -200,7 +203,7 @@ class ScopeOfWork implements \ArrayAccess, \JsonSerializable, ModelInterface, \S
     /**
      * The original name of the model.
      */
-    public function getModelName() : string
+    public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
@@ -210,7 +213,7 @@ class ScopeOfWork implements \ArrayAccess, \JsonSerializable, ModelInterface, \S
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties() : array
+    public function listInvalidProperties(): array
     {
         return [];
     }
@@ -221,7 +224,7 @@ class ScopeOfWork implements \ArrayAccess, \JsonSerializable, ModelInterface, \S
      *
      * @return bool True if all properties are valid
      */
-    public function valid() : bool
+    public function valid(): bool
     {
         return \count($this->listInvalidProperties()) === 0;
     }
@@ -229,7 +232,7 @@ class ScopeOfWork implements \ArrayAccess, \JsonSerializable, ModelInterface, \S
     /**
      * Gets asin.
      */
-    public function getAsin() : ?string
+    public function getAsin(): ?string
     {
         return $this->container['asin'];
     }
@@ -239,7 +242,7 @@ class ScopeOfWork implements \ArrayAccess, \JsonSerializable, ModelInterface, \S
      *
      * @param null|string $asin the Amazon Standard Identification Number (ASIN) of the service job
      */
-    public function setAsin(?string $asin) : self
+    public function setAsin(?string $asin): self
     {
         $this->container['asin'] = $asin;
 
@@ -249,7 +252,7 @@ class ScopeOfWork implements \ArrayAccess, \JsonSerializable, ModelInterface, \S
     /**
      * Gets title.
      */
-    public function getTitle() : ?string
+    public function getTitle(): ?string
     {
         return $this->container['title'];
     }
@@ -259,7 +262,7 @@ class ScopeOfWork implements \ArrayAccess, \JsonSerializable, ModelInterface, \S
      *
      * @param null|string $title the title of the service job
      */
-    public function setTitle(?string $title) : self
+    public function setTitle(?string $title): self
     {
         $this->container['title'] = $title;
 
@@ -269,7 +272,7 @@ class ScopeOfWork implements \ArrayAccess, \JsonSerializable, ModelInterface, \S
     /**
      * Gets quantity.
      */
-    public function getQuantity() : ?int
+    public function getQuantity(): ?int
     {
         return $this->container['quantity'];
     }
@@ -279,7 +282,7 @@ class ScopeOfWork implements \ArrayAccess, \JsonSerializable, ModelInterface, \S
      *
      * @param null|int $quantity the number of service jobs
      */
-    public function setQuantity(?int $quantity) : self
+    public function setQuantity(?int $quantity): self
     {
         $this->container['quantity'] = $quantity;
 
@@ -291,7 +294,7 @@ class ScopeOfWork implements \ArrayAccess, \JsonSerializable, ModelInterface, \S
      *
      * @return null|string[]
      */
-    public function getRequiredSkills() : ?array
+    public function getRequiredSkills(): ?array
     {
         return $this->container['required_skills'];
     }
@@ -301,7 +304,7 @@ class ScopeOfWork implements \ArrayAccess, \JsonSerializable, ModelInterface, \S
      *
      * @param null|string[] $required_skills a list of skills required to perform the job
      */
-    public function setRequiredSkills(?array $required_skills) : self
+    public function setRequiredSkills(?array $required_skills): self
     {
         $this->container['required_skills'] = $required_skills;
 
@@ -313,7 +316,7 @@ class ScopeOfWork implements \ArrayAccess, \JsonSerializable, ModelInterface, \S
      *
      * @param int $offset Offset
      */
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -336,7 +339,7 @@ class ScopeOfWork implements \ArrayAccess, \JsonSerializable, ModelInterface, \S
      * @param null|int $offset Offset
      * @param mixed $value Value to be set
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         if (null === $offset) {
             $this->container[] = $value;
@@ -350,7 +353,7 @@ class ScopeOfWork implements \ArrayAccess, \JsonSerializable, ModelInterface, \S
      *
      * @param int $offset Offset
      */
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -363,7 +366,7 @@ class ScopeOfWork implements \ArrayAccess, \JsonSerializable, ModelInterface, \S
      * @return mixed returns data which can be serialized by json_encode(), which is a value
      *               of any type other than a resource
      */
-    public function jsonSerialize() : string
+    public function jsonSerialize(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }
@@ -371,7 +374,7 @@ class ScopeOfWork implements \ArrayAccess, \JsonSerializable, ModelInterface, \S
     /**
      * Gets a header-safe presentation of the object.
      */
-    public function toHeaderValue() : string
+    public function toHeaderValue(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }

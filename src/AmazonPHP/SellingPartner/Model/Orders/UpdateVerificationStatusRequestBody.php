@@ -1,4 +1,7 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
+
 /**
  * UpdateVerificationStatusRequestBody.
  *
@@ -122,7 +125,7 @@ class UpdateVerificationStatusRequestBody implements \ArrayAccess, \JsonSerializ
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['status'] = $data['status'] ?? null;
         $this->container['external_reviewer_id'] = $data['external_reviewer_id'] ?? null;
@@ -134,7 +137,7 @@ class UpdateVerificationStatusRequestBody implements \ArrayAccess, \JsonSerializ
      *
      * @return string[]
      */
-    public static function openAPITypes() : array
+    public static function openAPITypes(): array
     {
         return self::$openAPITypes;
     }
@@ -144,7 +147,7 @@ class UpdateVerificationStatusRequestBody implements \ArrayAccess, \JsonSerializ
      *
      * @return null[]|string[]
      */
-    public static function openAPIFormats() : array
+    public static function openAPIFormats(): array
     {
         return self::$openAPIFormats;
     }
@@ -155,7 +158,7 @@ class UpdateVerificationStatusRequestBody implements \ArrayAccess, \JsonSerializ
      *
      * @return string[]
      */
-    public static function attributeMap() : array
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -165,7 +168,7 @@ class UpdateVerificationStatusRequestBody implements \ArrayAccess, \JsonSerializ
      *
      * @return string[]
      */
-    public static function setters() : array
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -175,7 +178,7 @@ class UpdateVerificationStatusRequestBody implements \ArrayAccess, \JsonSerializ
      *
      * @return string[]
      */
-    public static function getters() : array
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -183,7 +186,7 @@ class UpdateVerificationStatusRequestBody implements \ArrayAccess, \JsonSerializ
     /**
      * Gets the string presentation of the object.
      */
-    public function __toString() : string
+    public function __toString(): string
     {
         return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
@@ -194,7 +197,7 @@ class UpdateVerificationStatusRequestBody implements \ArrayAccess, \JsonSerializ
     /**
      * The original name of the model.
      */
-    public function getModelName() : string
+    public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
@@ -204,7 +207,7 @@ class UpdateVerificationStatusRequestBody implements \ArrayAccess, \JsonSerializ
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties() : array
+    public function listInvalidProperties(): array
     {
         $invalidProperties = [];
 
@@ -225,7 +228,7 @@ class UpdateVerificationStatusRequestBody implements \ArrayAccess, \JsonSerializ
      *
      * @return bool True if all properties are valid
      */
-    public function valid() : bool
+    public function valid(): bool
     {
         return \count($this->listInvalidProperties()) === 0;
     }
@@ -233,7 +236,7 @@ class UpdateVerificationStatusRequestBody implements \ArrayAccess, \JsonSerializ
     /**
      * Gets status.
      */
-    public function getStatus() : VerificationStatus
+    public function getStatus(): VerificationStatus
     {
         return $this->container['status'];
     }
@@ -243,7 +246,7 @@ class UpdateVerificationStatusRequestBody implements \ArrayAccess, \JsonSerializ
      *
      * @param \Plenty\AmazonPHP\SellingPartner\Model\Orders\VerificationStatus $status status
      */
-    public function setStatus(VerificationStatus $status) : self
+    public function setStatus(VerificationStatus $status): self
     {
         $this->container['status'] = $status;
 
@@ -253,7 +256,7 @@ class UpdateVerificationStatusRequestBody implements \ArrayAccess, \JsonSerializ
     /**
      * Gets external_reviewer_id.
      */
-    public function getExternalReviewerId() : string
+    public function getExternalReviewerId(): string
     {
         return $this->container['external_reviewer_id'];
     }
@@ -263,7 +266,7 @@ class UpdateVerificationStatusRequestBody implements \ArrayAccess, \JsonSerializ
      *
      * @param string $external_reviewer_id the identifier for the order's regulated information reviewer
      */
-    public function setExternalReviewerId(string $external_reviewer_id) : self
+    public function setExternalReviewerId(string $external_reviewer_id): self
     {
         $this->container['external_reviewer_id'] = $external_reviewer_id;
 
@@ -273,7 +276,7 @@ class UpdateVerificationStatusRequestBody implements \ArrayAccess, \JsonSerializ
     /**
      * Gets rejection_reason_id.
      */
-    public function getRejectionReasonId() : ?string
+    public function getRejectionReasonId(): ?string
     {
         return $this->container['rejection_reason_id'];
     }
@@ -283,7 +286,7 @@ class UpdateVerificationStatusRequestBody implements \ArrayAccess, \JsonSerializ
      *
      * @param null|string $rejection_reason_id The unique identifier for the rejection reason used for rejecting the order's regulated information. Only required if the new status is rejected.
      */
-    public function setRejectionReasonId(?string $rejection_reason_id) : self
+    public function setRejectionReasonId(?string $rejection_reason_id): self
     {
         $this->container['rejection_reason_id'] = $rejection_reason_id;
 
@@ -295,7 +298,7 @@ class UpdateVerificationStatusRequestBody implements \ArrayAccess, \JsonSerializ
      *
      * @param int $offset Offset
      */
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -318,7 +321,7 @@ class UpdateVerificationStatusRequestBody implements \ArrayAccess, \JsonSerializ
      * @param null|int $offset Offset
      * @param mixed $value Value to be set
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         if (null === $offset) {
             $this->container[] = $value;
@@ -332,7 +335,7 @@ class UpdateVerificationStatusRequestBody implements \ArrayAccess, \JsonSerializ
      *
      * @param int $offset Offset
      */
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -345,7 +348,7 @@ class UpdateVerificationStatusRequestBody implements \ArrayAccess, \JsonSerializ
      * @return mixed returns data which can be serialized by json_encode(), which is a value
      *               of any type other than a resource
      */
-    public function jsonSerialize() : string
+    public function jsonSerialize(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }
@@ -353,7 +356,7 @@ class UpdateVerificationStatusRequestBody implements \ArrayAccess, \JsonSerializ
     /**
      * Gets a header-safe presentation of the object.
      */
-    public function toHeaderValue() : string
+    public function toHeaderValue(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }

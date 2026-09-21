@@ -1,4 +1,7 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
+
 /**
  * ConfirmPreorderResult.
  *
@@ -117,7 +120,7 @@ class ConfirmPreorderResult implements \ArrayAccess, \JsonSerializable, ModelInt
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['confirmed_need_by_date'] = $data['confirmed_need_by_date'] ?? null;
         $this->container['confirmed_fulfillable_date'] = $data['confirmed_fulfillable_date'] ?? null;
@@ -128,7 +131,7 @@ class ConfirmPreorderResult implements \ArrayAccess, \JsonSerializable, ModelInt
      *
      * @return string[]
      */
-    public static function openAPITypes() : array
+    public static function openAPITypes(): array
     {
         return self::$openAPITypes;
     }
@@ -138,7 +141,7 @@ class ConfirmPreorderResult implements \ArrayAccess, \JsonSerializable, ModelInt
      *
      * @return null[]|string[]
      */
-    public static function openAPIFormats() : array
+    public static function openAPIFormats(): array
     {
         return self::$openAPIFormats;
     }
@@ -149,7 +152,7 @@ class ConfirmPreorderResult implements \ArrayAccess, \JsonSerializable, ModelInt
      *
      * @return string[]
      */
-    public static function attributeMap() : array
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -159,7 +162,7 @@ class ConfirmPreorderResult implements \ArrayAccess, \JsonSerializable, ModelInt
      *
      * @return string[]
      */
-    public static function setters() : array
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -169,7 +172,7 @@ class ConfirmPreorderResult implements \ArrayAccess, \JsonSerializable, ModelInt
      *
      * @return string[]
      */
-    public static function getters() : array
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -177,7 +180,7 @@ class ConfirmPreorderResult implements \ArrayAccess, \JsonSerializable, ModelInt
     /**
      * Gets the string presentation of the object.
      */
-    public function __toString() : string
+    public function __toString(): string
     {
         return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
@@ -188,7 +191,7 @@ class ConfirmPreorderResult implements \ArrayAccess, \JsonSerializable, ModelInt
     /**
      * The original name of the model.
      */
-    public function getModelName() : string
+    public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
@@ -198,7 +201,7 @@ class ConfirmPreorderResult implements \ArrayAccess, \JsonSerializable, ModelInt
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties() : array
+    public function listInvalidProperties(): array
     {
         return [];
     }
@@ -209,7 +212,7 @@ class ConfirmPreorderResult implements \ArrayAccess, \JsonSerializable, ModelInt
      *
      * @return bool True if all properties are valid
      */
-    public function valid() : bool
+    public function valid(): bool
     {
         return \count($this->listInvalidProperties()) === 0;
     }
@@ -219,7 +222,7 @@ class ConfirmPreorderResult implements \ArrayAccess, \JsonSerializable, ModelInt
      *
      * @return null|\DateTime|\DateTimeImmutable
      */
-    public function getConfirmedNeedByDate() : ?\DateTimeInterface
+    public function getConfirmedNeedByDate(): ?\DateTimeInterface
     {
         return $this->container['confirmed_need_by_date'];
     }
@@ -229,7 +232,7 @@ class ConfirmPreorderResult implements \ArrayAccess, \JsonSerializable, ModelInt
      *
      * @param \DateTime|\DateTimeImmutable $confirmed_need_by_date confirmed_need_by_date
      */
-    public function setConfirmedNeedByDate(\DateTimeInterface $confirmed_need_by_date) : self
+    public function setConfirmedNeedByDate(\DateTimeInterface $confirmed_need_by_date): self
     {
         $this->container['confirmed_need_by_date'] = $confirmed_need_by_date;
 
@@ -241,7 +244,7 @@ class ConfirmPreorderResult implements \ArrayAccess, \JsonSerializable, ModelInt
      *
      * @return null|\DateTime|\DateTimeImmutable
      */
-    public function getConfirmedFulfillableDate() : ?\DateTimeInterface
+    public function getConfirmedFulfillableDate(): ?\DateTimeInterface
     {
         return $this->container['confirmed_fulfillable_date'];
     }
@@ -251,7 +254,7 @@ class ConfirmPreorderResult implements \ArrayAccess, \JsonSerializable, ModelInt
      *
      * @param \DateTime|\DateTimeImmutable $confirmed_fulfillable_date confirmed_fulfillable_date
      */
-    public function setConfirmedFulfillableDate(\DateTimeInterface $confirmed_fulfillable_date) : self
+    public function setConfirmedFulfillableDate(\DateTimeInterface $confirmed_fulfillable_date): self
     {
         $this->container['confirmed_fulfillable_date'] = $confirmed_fulfillable_date;
 
@@ -263,7 +266,7 @@ class ConfirmPreorderResult implements \ArrayAccess, \JsonSerializable, ModelInt
      *
      * @param int $offset Offset
      */
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -286,7 +289,7 @@ class ConfirmPreorderResult implements \ArrayAccess, \JsonSerializable, ModelInt
      * @param null|int $offset Offset
      * @param mixed $value Value to be set
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         if (null === $offset) {
             $this->container[] = $value;
@@ -300,7 +303,7 @@ class ConfirmPreorderResult implements \ArrayAccess, \JsonSerializable, ModelInt
      *
      * @param int $offset Offset
      */
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -313,7 +316,7 @@ class ConfirmPreorderResult implements \ArrayAccess, \JsonSerializable, ModelInt
      * @return mixed returns data which can be serialized by json_encode(), which is a value
      *               of any type other than a resource
      */
-    public function jsonSerialize() : string
+    public function jsonSerialize(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }
@@ -321,7 +324,7 @@ class ConfirmPreorderResult implements \ArrayAccess, \JsonSerializable, ModelInt
     /**
      * Gets a header-safe presentation of the object.
      */
-    public function toHeaderValue() : string
+    public function toHeaderValue(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }

@@ -1,4 +1,7 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
+
 /**
  * StandardTechSpecsModule.
  *
@@ -122,7 +125,7 @@ class StandardTechSpecsModule implements \ArrayAccess, \JsonSerializable, ModelI
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['headline'] = $data['headline'] ?? null;
         $this->container['specification_list'] = $data['specification_list'] ?? null;
@@ -134,7 +137,7 @@ class StandardTechSpecsModule implements \ArrayAccess, \JsonSerializable, ModelI
      *
      * @return string[]
      */
-    public static function openAPITypes() : array
+    public static function openAPITypes(): array
     {
         return self::$openAPITypes;
     }
@@ -144,7 +147,7 @@ class StandardTechSpecsModule implements \ArrayAccess, \JsonSerializable, ModelI
      *
      * @return null[]|string[]
      */
-    public static function openAPIFormats() : array
+    public static function openAPIFormats(): array
     {
         return self::$openAPIFormats;
     }
@@ -155,7 +158,7 @@ class StandardTechSpecsModule implements \ArrayAccess, \JsonSerializable, ModelI
      *
      * @return string[]
      */
-    public static function attributeMap() : array
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -165,7 +168,7 @@ class StandardTechSpecsModule implements \ArrayAccess, \JsonSerializable, ModelI
      *
      * @return string[]
      */
-    public static function setters() : array
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -175,7 +178,7 @@ class StandardTechSpecsModule implements \ArrayAccess, \JsonSerializable, ModelI
      *
      * @return string[]
      */
-    public static function getters() : array
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -183,7 +186,7 @@ class StandardTechSpecsModule implements \ArrayAccess, \JsonSerializable, ModelI
     /**
      * Gets the string presentation of the object.
      */
-    public function __toString() : string
+    public function __toString(): string
     {
         return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
@@ -194,7 +197,7 @@ class StandardTechSpecsModule implements \ArrayAccess, \JsonSerializable, ModelI
     /**
      * The original name of the model.
      */
-    public function getModelName() : string
+    public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
@@ -204,7 +207,7 @@ class StandardTechSpecsModule implements \ArrayAccess, \JsonSerializable, ModelI
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties() : array
+    public function listInvalidProperties(): array
     {
         $invalidProperties = [];
 
@@ -237,7 +240,7 @@ class StandardTechSpecsModule implements \ArrayAccess, \JsonSerializable, ModelI
      *
      * @return bool True if all properties are valid
      */
-    public function valid() : bool
+    public function valid(): bool
     {
         return \count($this->listInvalidProperties()) === 0;
     }
@@ -245,7 +248,7 @@ class StandardTechSpecsModule implements \ArrayAccess, \JsonSerializable, ModelI
     /**
      * Gets headline.
      */
-    public function getHeadline() : ?TextComponent
+    public function getHeadline(): ?TextComponent
     {
         return $this->container['headline'];
     }
@@ -255,7 +258,7 @@ class StandardTechSpecsModule implements \ArrayAccess, \JsonSerializable, ModelI
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\APlus\TextComponent $headline headline
      */
-    public function setHeadline(?TextComponent $headline) : self
+    public function setHeadline(?TextComponent $headline): self
     {
         $this->container['headline'] = $headline;
 
@@ -267,7 +270,7 @@ class StandardTechSpecsModule implements \ArrayAccess, \JsonSerializable, ModelI
      *
      * @return \Plenty\AmazonPHP\SellingPartner\Model\APlus\StandardTextPairBlock[]
      */
-    public function getSpecificationList() : array
+    public function getSpecificationList(): array
     {
         return $this->container['specification_list'];
     }
@@ -277,7 +280,7 @@ class StandardTechSpecsModule implements \ArrayAccess, \JsonSerializable, ModelI
      *
      * @param \Plenty\AmazonPHP\SellingPartner\Model\APlus\StandardTextPairBlock[] $specification_list the specification list
      */
-    public function setSpecificationList(array $specification_list) : self
+    public function setSpecificationList(array $specification_list): self
     {
         if ((\count($specification_list) > 16)) {
             throw new \InvalidArgumentException('invalid value for $specification_list when calling StandardTechSpecsModule., number of items must be less than or equal to 16.');
@@ -294,7 +297,7 @@ class StandardTechSpecsModule implements \ArrayAccess, \JsonSerializable, ModelI
     /**
      * Gets table_count.
      */
-    public function getTableCount() : ?int
+    public function getTableCount(): ?int
     {
         return $this->container['table_count'];
     }
@@ -304,7 +307,7 @@ class StandardTechSpecsModule implements \ArrayAccess, \JsonSerializable, ModelI
      *
      * @param null|int $table_count The number of tables to present. Features are evenly divided between the tables.
      */
-    public function setTableCount(?int $table_count) : self
+    public function setTableCount(?int $table_count): self
     {
         if (null !== $table_count && ($table_count > 2)) {
             throw new \InvalidArgumentException('invalid value for $table_count when calling StandardTechSpecsModule., must be smaller than or equal to 2.');
@@ -324,7 +327,7 @@ class StandardTechSpecsModule implements \ArrayAccess, \JsonSerializable, ModelI
      *
      * @param int $offset Offset
      */
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -347,7 +350,7 @@ class StandardTechSpecsModule implements \ArrayAccess, \JsonSerializable, ModelI
      * @param null|int $offset Offset
      * @param mixed $value Value to be set
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         if (null === $offset) {
             $this->container[] = $value;
@@ -361,7 +364,7 @@ class StandardTechSpecsModule implements \ArrayAccess, \JsonSerializable, ModelI
      *
      * @param int $offset Offset
      */
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -374,7 +377,7 @@ class StandardTechSpecsModule implements \ArrayAccess, \JsonSerializable, ModelI
      * @return mixed returns data which can be serialized by json_encode(), which is a value
      *               of any type other than a resource
      */
-    public function jsonSerialize() : string
+    public function jsonSerialize(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }
@@ -382,7 +385,7 @@ class StandardTechSpecsModule implements \ArrayAccess, \JsonSerializable, ModelI
     /**
      * Gets a header-safe presentation of the object.
      */
-    public function toHeaderValue() : string
+    public function toHeaderValue(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }

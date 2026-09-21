@@ -100,7 +100,7 @@ class Carrier implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInte
      * @param null|mixed[] $data Associated array of property values
      *                           initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['alpha_code'] = $data['alpha_code'] ?? null;
         $this->container['name'] = $data['name'] ?? null;
@@ -109,7 +109,7 @@ class Carrier implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInte
     /**
      * Array of property to type mappings. Used for (de)serialization.
      */
-    public static function openAPITypes() : array
+    public static function openAPITypes(): array
     {
         return self::$openAPITypes;
     }
@@ -117,7 +117,7 @@ class Carrier implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInte
     /**
      * Array of property to format mappings. Used for (de)serialization.
      */
-    public static function openAPIFormats() : array
+    public static function openAPIFormats(): array
     {
         return self::$openAPIFormats;
     }
@@ -126,7 +126,7 @@ class Carrier implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInte
      * Array of attributes where the key is the local name,
      * and the value is the original name.
      */
-    public static function attributeMap() : array
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -134,7 +134,7 @@ class Carrier implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInte
     /**
      * Array of attributes to setter functions (for deserialization of responses).
      */
-    public static function setters() : array
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -142,7 +142,7 @@ class Carrier implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInte
     /**
      * Array of attributes to getter functions (for serialization of requests).
      */
-    public static function getters() : array
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -150,7 +150,7 @@ class Carrier implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInte
     /**
      * Gets the string presentation of the object.
      */
-    public function __toString() : string
+    public function __toString(): string
     {
         return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
@@ -161,7 +161,7 @@ class Carrier implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInte
     /**
      * The original name of the model.
      */
-    public function getModelName() : string
+    public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
@@ -171,10 +171,10 @@ class Carrier implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInte
      *
      * @throws AssertionException
      */
-    public function listInvalidProperties() : array
+    public function listInvalidProperties(): array
     {
         $invalidProperties = [];
-         
+
         if (null !== $this->container['alpha_code'] && (\mb_strlen((string) $this->container['alpha_code']) > 1024)) {
             $invalidProperties[] = "invalid value for 'alpha_code', the character length must be smaller than or equal to 1024.";
         }
@@ -200,7 +200,7 @@ class Carrier implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInte
      *
      * @return bool True if all properties are valid
      */
-    public function valid() : bool
+    public function valid(): bool
     {
         return \count($this->listInvalidProperties()) === 0;
     }
@@ -208,7 +208,7 @@ class Carrier implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInte
     /**
      * Gets alpha_code.
      */
-    public function getAlphaCode() : ?string
+    public function getAlphaCode(): ?string
     {
         return $this->container['alpha_code'];
     }
@@ -218,7 +218,7 @@ class Carrier implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInte
      *
      * @param null|string $alpha_code The carrier code. For example, USPS or DHLEX.
      */
-    public function setAlphaCode(?string $alpha_code) : self
+    public function setAlphaCode(?string $alpha_code): self
     {
         $this->container['alpha_code'] = $alpha_code;
 
@@ -228,7 +228,7 @@ class Carrier implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInte
     /**
      * Gets name.
      */
-    public function getName() : ?string
+    public function getName(): ?string
     {
         return $this->container['name'];
     }
@@ -238,7 +238,7 @@ class Carrier implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInte
      *
      * @param null|string $name the name of the carrier
      */
-    public function setName(?string $name) : self
+    public function setName(?string $name): self
     {
         $this->container['name'] = $name;
 
@@ -248,7 +248,7 @@ class Carrier implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInte
     /**
      * Returns true if offset exists. False otherwise.
      */
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -259,7 +259,7 @@ class Carrier implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInte
      * @return null|mixed
      */
     #[\ReturnTypeWillChange]
-    public function offsetGet($offset) : mixed
+    public function offsetGet($offset): mixed
     {
         return $this->container[$offset] ?? null;
     }
@@ -267,7 +267,7 @@ class Carrier implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInte
     /**
      * Sets value based on offset.
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         if (null === $offset) {
             $this->container[] = $value;
@@ -279,7 +279,7 @@ class Carrier implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInte
     /**
      * Unsets offset.
      */
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -293,7 +293,7 @@ class Carrier implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInte
      *               of any type other than a resource
      */
     #[\ReturnTypeWillChange]
-    public function jsonSerialize() : string
+    public function jsonSerialize(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }
@@ -301,7 +301,7 @@ class Carrier implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInte
     /**
      * Gets a header-safe presentation of the object.
      */
-    public function toHeaderValue() : string
+    public function toHeaderValue(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }

@@ -1,4 +1,7 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
+
 /**
  * CreateWarrantyRequest.
  *
@@ -122,7 +125,7 @@ class CreateWarrantyRequest implements \ArrayAccess, \JsonSerializable, ModelInt
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['attachments'] = $data['attachments'] ?? null;
         $this->container['coverage_start_date'] = $data['coverage_start_date'] ?? null;
@@ -134,7 +137,7 @@ class CreateWarrantyRequest implements \ArrayAccess, \JsonSerializable, ModelInt
      *
      * @return string[]
      */
-    public static function openAPITypes() : array
+    public static function openAPITypes(): array
     {
         return self::$openAPITypes;
     }
@@ -144,7 +147,7 @@ class CreateWarrantyRequest implements \ArrayAccess, \JsonSerializable, ModelInt
      *
      * @return null[]|string[]
      */
-    public static function openAPIFormats() : array
+    public static function openAPIFormats(): array
     {
         return self::$openAPIFormats;
     }
@@ -155,7 +158,7 @@ class CreateWarrantyRequest implements \ArrayAccess, \JsonSerializable, ModelInt
      *
      * @return string[]
      */
-    public static function attributeMap() : array
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -165,7 +168,7 @@ class CreateWarrantyRequest implements \ArrayAccess, \JsonSerializable, ModelInt
      *
      * @return string[]
      */
-    public static function setters() : array
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -175,7 +178,7 @@ class CreateWarrantyRequest implements \ArrayAccess, \JsonSerializable, ModelInt
      *
      * @return string[]
      */
-    public static function getters() : array
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -183,7 +186,7 @@ class CreateWarrantyRequest implements \ArrayAccess, \JsonSerializable, ModelInt
     /**
      * Gets the string presentation of the object.
      */
-    public function __toString() : string
+    public function __toString(): string
     {
         return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
@@ -194,7 +197,7 @@ class CreateWarrantyRequest implements \ArrayAccess, \JsonSerializable, ModelInt
     /**
      * The original name of the model.
      */
-    public function getModelName() : string
+    public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
@@ -204,7 +207,7 @@ class CreateWarrantyRequest implements \ArrayAccess, \JsonSerializable, ModelInt
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties() : array
+    public function listInvalidProperties(): array
     {
         return [];
     }
@@ -215,7 +218,7 @@ class CreateWarrantyRequest implements \ArrayAccess, \JsonSerializable, ModelInt
      *
      * @return bool True if all properties are valid
      */
-    public function valid() : bool
+    public function valid(): bool
     {
         return \count($this->listInvalidProperties()) === 0;
     }
@@ -225,7 +228,7 @@ class CreateWarrantyRequest implements \ArrayAccess, \JsonSerializable, ModelInt
      *
      * @return null|\Plenty\AmazonPHP\SellingPartner\Model\Messaging\Attachment[]
      */
-    public function getAttachments() : ?array
+    public function getAttachments(): ?array
     {
         return $this->container['attachments'];
     }
@@ -235,7 +238,7 @@ class CreateWarrantyRequest implements \ArrayAccess, \JsonSerializable, ModelInt
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\Messaging\Attachment[] $attachments Attachments to include in the message to the buyer. If any text is included in the attachment, the text must be written in the buyer's language of preference, which can be retrieved from the GetAttributes operation.
      */
-    public function setAttachments(?array $attachments) : self
+    public function setAttachments(?array $attachments): self
     {
         $this->container['attachments'] = $attachments;
 
@@ -247,7 +250,7 @@ class CreateWarrantyRequest implements \ArrayAccess, \JsonSerializable, ModelInt
      *
      * @return null|\DateTime|\DateTimeImmutable
      */
-    public function getCoverageStartDate() : ?\DateTimeInterface
+    public function getCoverageStartDate(): ?\DateTimeInterface
     {
         return $this->container['coverage_start_date'];
     }
@@ -257,7 +260,7 @@ class CreateWarrantyRequest implements \ArrayAccess, \JsonSerializable, ModelInt
      *
      * @param \DateTime|\DateTimeImmutable $coverage_start_date the start date of the warranty coverage to include in the message to the buyer
      */
-    public function setCoverageStartDate(\DateTimeInterface $coverage_start_date) : self
+    public function setCoverageStartDate(\DateTimeInterface $coverage_start_date): self
     {
         $this->container['coverage_start_date'] = $coverage_start_date;
 
@@ -269,7 +272,7 @@ class CreateWarrantyRequest implements \ArrayAccess, \JsonSerializable, ModelInt
      *
      * @return null|\DateTime|\DateTimeImmutable
      */
-    public function getCoverageEndDate() : ?\DateTimeInterface
+    public function getCoverageEndDate(): ?\DateTimeInterface
     {
         return $this->container['coverage_end_date'];
     }
@@ -279,7 +282,7 @@ class CreateWarrantyRequest implements \ArrayAccess, \JsonSerializable, ModelInt
      *
      * @param \DateTime|\DateTimeImmutable $coverage_end_date the end date of the warranty coverage to include in the message to the buyer
      */
-    public function setCoverageEndDate(\DateTimeInterface $coverage_end_date) : self
+    public function setCoverageEndDate(\DateTimeInterface $coverage_end_date): self
     {
         $this->container['coverage_end_date'] = $coverage_end_date;
 
@@ -291,7 +294,7 @@ class CreateWarrantyRequest implements \ArrayAccess, \JsonSerializable, ModelInt
      *
      * @param int $offset Offset
      */
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -314,7 +317,7 @@ class CreateWarrantyRequest implements \ArrayAccess, \JsonSerializable, ModelInt
      * @param null|int $offset Offset
      * @param mixed $value Value to be set
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         if (null === $offset) {
             $this->container[] = $value;
@@ -328,7 +331,7 @@ class CreateWarrantyRequest implements \ArrayAccess, \JsonSerializable, ModelInt
      *
      * @param int $offset Offset
      */
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -341,7 +344,7 @@ class CreateWarrantyRequest implements \ArrayAccess, \JsonSerializable, ModelInt
      * @return mixed returns data which can be serialized by json_encode(), which is a value
      *               of any type other than a resource
      */
-    public function jsonSerialize() : string
+    public function jsonSerialize(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }
@@ -349,7 +352,7 @@ class CreateWarrantyRequest implements \ArrayAccess, \JsonSerializable, ModelInt
     /**
      * Gets a header-safe presentation of the object.
      */
-    public function toHeaderValue() : string
+    public function toHeaderValue(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }

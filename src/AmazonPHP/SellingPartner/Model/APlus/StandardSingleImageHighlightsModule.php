@@ -1,4 +1,7 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
+
 /**
  * StandardSingleImageHighlightsModule.
  *
@@ -137,7 +140,7 @@ class StandardSingleImageHighlightsModule implements \ArrayAccess, \JsonSerializ
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['image'] = $data['image'] ?? null;
         $this->container['headline'] = $data['headline'] ?? null;
@@ -152,7 +155,7 @@ class StandardSingleImageHighlightsModule implements \ArrayAccess, \JsonSerializ
      *
      * @return string[]
      */
-    public static function openAPITypes() : array
+    public static function openAPITypes(): array
     {
         return self::$openAPITypes;
     }
@@ -162,7 +165,7 @@ class StandardSingleImageHighlightsModule implements \ArrayAccess, \JsonSerializ
      *
      * @return null[]|string[]
      */
-    public static function openAPIFormats() : array
+    public static function openAPIFormats(): array
     {
         return self::$openAPIFormats;
     }
@@ -173,7 +176,7 @@ class StandardSingleImageHighlightsModule implements \ArrayAccess, \JsonSerializ
      *
      * @return string[]
      */
-    public static function attributeMap() : array
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -183,7 +186,7 @@ class StandardSingleImageHighlightsModule implements \ArrayAccess, \JsonSerializ
      *
      * @return string[]
      */
-    public static function setters() : array
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -193,7 +196,7 @@ class StandardSingleImageHighlightsModule implements \ArrayAccess, \JsonSerializ
      *
      * @return string[]
      */
-    public static function getters() : array
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -201,7 +204,7 @@ class StandardSingleImageHighlightsModule implements \ArrayAccess, \JsonSerializ
     /**
      * Gets the string presentation of the object.
      */
-    public function __toString() : string
+    public function __toString(): string
     {
         return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
@@ -212,7 +215,7 @@ class StandardSingleImageHighlightsModule implements \ArrayAccess, \JsonSerializ
     /**
      * The original name of the model.
      */
-    public function getModelName() : string
+    public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
@@ -222,7 +225,7 @@ class StandardSingleImageHighlightsModule implements \ArrayAccess, \JsonSerializ
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties() : array
+    public function listInvalidProperties(): array
     {
         return [];
     }
@@ -233,7 +236,7 @@ class StandardSingleImageHighlightsModule implements \ArrayAccess, \JsonSerializ
      *
      * @return bool True if all properties are valid
      */
-    public function valid() : bool
+    public function valid(): bool
     {
         return \count($this->listInvalidProperties()) === 0;
     }
@@ -241,7 +244,7 @@ class StandardSingleImageHighlightsModule implements \ArrayAccess, \JsonSerializ
     /**
      * Gets image.
      */
-    public function getImage() : ?ImageComponent
+    public function getImage(): ?ImageComponent
     {
         return $this->container['image'];
     }
@@ -251,7 +254,7 @@ class StandardSingleImageHighlightsModule implements \ArrayAccess, \JsonSerializ
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\APlus\ImageComponent $image image
      */
-    public function setImage(?ImageComponent $image) : self
+    public function setImage(?ImageComponent $image): self
     {
         $this->container['image'] = $image;
 
@@ -261,7 +264,7 @@ class StandardSingleImageHighlightsModule implements \ArrayAccess, \JsonSerializ
     /**
      * Gets headline.
      */
-    public function getHeadline() : ?TextComponent
+    public function getHeadline(): ?TextComponent
     {
         return $this->container['headline'];
     }
@@ -271,7 +274,7 @@ class StandardSingleImageHighlightsModule implements \ArrayAccess, \JsonSerializ
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\APlus\TextComponent $headline headline
      */
-    public function setHeadline(?TextComponent $headline) : self
+    public function setHeadline(?TextComponent $headline): self
     {
         $this->container['headline'] = $headline;
 
@@ -281,7 +284,7 @@ class StandardSingleImageHighlightsModule implements \ArrayAccess, \JsonSerializ
     /**
      * Gets text_block1.
      */
-    public function getTextBlock1() : ?StandardTextBlock
+    public function getTextBlock1(): ?StandardTextBlock
     {
         return $this->container['text_block1'];
     }
@@ -291,7 +294,7 @@ class StandardSingleImageHighlightsModule implements \ArrayAccess, \JsonSerializ
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\APlus\StandardTextBlock $text_block1 text_block1
      */
-    public function setTextBlock1(?StandardTextBlock $text_block1) : self
+    public function setTextBlock1(?StandardTextBlock $text_block1): self
     {
         $this->container['text_block1'] = $text_block1;
 
@@ -301,7 +304,7 @@ class StandardSingleImageHighlightsModule implements \ArrayAccess, \JsonSerializ
     /**
      * Gets text_block2.
      */
-    public function getTextBlock2() : ?StandardTextBlock
+    public function getTextBlock2(): ?StandardTextBlock
     {
         return $this->container['text_block2'];
     }
@@ -311,7 +314,7 @@ class StandardSingleImageHighlightsModule implements \ArrayAccess, \JsonSerializ
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\APlus\StandardTextBlock $text_block2 text_block2
      */
-    public function setTextBlock2(?StandardTextBlock $text_block2) : self
+    public function setTextBlock2(?StandardTextBlock $text_block2): self
     {
         $this->container['text_block2'] = $text_block2;
 
@@ -321,7 +324,7 @@ class StandardSingleImageHighlightsModule implements \ArrayAccess, \JsonSerializ
     /**
      * Gets text_block3.
      */
-    public function getTextBlock3() : ?StandardTextBlock
+    public function getTextBlock3(): ?StandardTextBlock
     {
         return $this->container['text_block3'];
     }
@@ -331,7 +334,7 @@ class StandardSingleImageHighlightsModule implements \ArrayAccess, \JsonSerializ
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\APlus\StandardTextBlock $text_block3 text_block3
      */
-    public function setTextBlock3(?StandardTextBlock $text_block3) : self
+    public function setTextBlock3(?StandardTextBlock $text_block3): self
     {
         $this->container['text_block3'] = $text_block3;
 
@@ -341,7 +344,7 @@ class StandardSingleImageHighlightsModule implements \ArrayAccess, \JsonSerializ
     /**
      * Gets bulleted_list_block.
      */
-    public function getBulletedListBlock() : ?StandardHeaderTextListBlock
+    public function getBulletedListBlock(): ?StandardHeaderTextListBlock
     {
         return $this->container['bulleted_list_block'];
     }
@@ -351,7 +354,7 @@ class StandardSingleImageHighlightsModule implements \ArrayAccess, \JsonSerializ
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\APlus\StandardHeaderTextListBlock $bulleted_list_block bulleted_list_block
      */
-    public function setBulletedListBlock(?StandardHeaderTextListBlock $bulleted_list_block) : self
+    public function setBulletedListBlock(?StandardHeaderTextListBlock $bulleted_list_block): self
     {
         $this->container['bulleted_list_block'] = $bulleted_list_block;
 
@@ -363,7 +366,7 @@ class StandardSingleImageHighlightsModule implements \ArrayAccess, \JsonSerializ
      *
      * @param int $offset Offset
      */
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -386,7 +389,7 @@ class StandardSingleImageHighlightsModule implements \ArrayAccess, \JsonSerializ
      * @param null|int $offset Offset
      * @param mixed $value Value to be set
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         if (null === $offset) {
             $this->container[] = $value;
@@ -400,7 +403,7 @@ class StandardSingleImageHighlightsModule implements \ArrayAccess, \JsonSerializ
      *
      * @param int $offset Offset
      */
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -413,7 +416,7 @@ class StandardSingleImageHighlightsModule implements \ArrayAccess, \JsonSerializ
      * @return mixed returns data which can be serialized by json_encode(), which is a value
      *               of any type other than a resource
      */
-    public function jsonSerialize() : string
+    public function jsonSerialize(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }
@@ -421,7 +424,7 @@ class StandardSingleImageHighlightsModule implements \ArrayAccess, \JsonSerializ
     /**
      * Gets a header-safe presentation of the object.
      */
-    public function toHeaderValue() : string
+    public function toHeaderValue(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }

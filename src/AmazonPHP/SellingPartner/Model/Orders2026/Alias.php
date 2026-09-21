@@ -179,7 +179,7 @@ class Alias implements ModelInterface, ArrayAccess, \JsonSerializable, \Stringab
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['alias_id'] = $data['alias_id'] ?? null;
         $this->container['alias_type'] = $data['alias_type'] ?? null;

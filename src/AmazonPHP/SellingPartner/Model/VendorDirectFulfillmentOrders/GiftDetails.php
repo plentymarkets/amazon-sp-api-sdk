@@ -1,4 +1,7 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
+
 /**
  * GiftDetails.
  *
@@ -117,7 +120,7 @@ class GiftDetails implements \ArrayAccess, \JsonSerializable, ModelInterface, \S
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['gift_message'] = $data['gift_message'] ?? null;
         $this->container['gift_wrap_id'] = $data['gift_wrap_id'] ?? null;
@@ -128,7 +131,7 @@ class GiftDetails implements \ArrayAccess, \JsonSerializable, ModelInterface, \S
      *
      * @return string[]
      */
-    public static function openAPITypes() : array
+    public static function openAPITypes(): array
     {
         return self::$openAPITypes;
     }
@@ -138,7 +141,7 @@ class GiftDetails implements \ArrayAccess, \JsonSerializable, ModelInterface, \S
      *
      * @return null[]|string[]
      */
-    public static function openAPIFormats() : array
+    public static function openAPIFormats(): array
     {
         return self::$openAPIFormats;
     }
@@ -149,7 +152,7 @@ class GiftDetails implements \ArrayAccess, \JsonSerializable, ModelInterface, \S
      *
      * @return string[]
      */
-    public static function attributeMap() : array
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -159,7 +162,7 @@ class GiftDetails implements \ArrayAccess, \JsonSerializable, ModelInterface, \S
      *
      * @return string[]
      */
-    public static function setters() : array
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -169,7 +172,7 @@ class GiftDetails implements \ArrayAccess, \JsonSerializable, ModelInterface, \S
      *
      * @return string[]
      */
-    public static function getters() : array
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -177,7 +180,7 @@ class GiftDetails implements \ArrayAccess, \JsonSerializable, ModelInterface, \S
     /**
      * Gets the string presentation of the object.
      */
-    public function __toString() : string
+    public function __toString(): string
     {
         return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
@@ -188,7 +191,7 @@ class GiftDetails implements \ArrayAccess, \JsonSerializable, ModelInterface, \S
     /**
      * The original name of the model.
      */
-    public function getModelName() : string
+    public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
@@ -198,7 +201,7 @@ class GiftDetails implements \ArrayAccess, \JsonSerializable, ModelInterface, \S
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties() : array
+    public function listInvalidProperties(): array
     {
         return [];
     }
@@ -209,7 +212,7 @@ class GiftDetails implements \ArrayAccess, \JsonSerializable, ModelInterface, \S
      *
      * @return bool True if all properties are valid
      */
-    public function valid() : bool
+    public function valid(): bool
     {
         return \count($this->listInvalidProperties()) === 0;
     }
@@ -217,7 +220,7 @@ class GiftDetails implements \ArrayAccess, \JsonSerializable, ModelInterface, \S
     /**
      * Gets gift_message.
      */
-    public function getGiftMessage() : ?string
+    public function getGiftMessage(): ?string
     {
         return $this->container['gift_message'];
     }
@@ -227,7 +230,7 @@ class GiftDetails implements \ArrayAccess, \JsonSerializable, ModelInterface, \S
      *
      * @param null|string $gift_message gift message to be printed in shipment
      */
-    public function setGiftMessage(?string $gift_message) : self
+    public function setGiftMessage(?string $gift_message): self
     {
         $this->container['gift_message'] = $gift_message;
 
@@ -237,7 +240,7 @@ class GiftDetails implements \ArrayAccess, \JsonSerializable, ModelInterface, \S
     /**
      * Gets gift_wrap_id.
      */
-    public function getGiftWrapId() : ?string
+    public function getGiftWrapId(): ?string
     {
         return $this->container['gift_wrap_id'];
     }
@@ -247,7 +250,7 @@ class GiftDetails implements \ArrayAccess, \JsonSerializable, ModelInterface, \S
      *
      * @param null|string $gift_wrap_id gift wrap identifier for the gift wrapping, if any
      */
-    public function setGiftWrapId(?string $gift_wrap_id) : self
+    public function setGiftWrapId(?string $gift_wrap_id): self
     {
         $this->container['gift_wrap_id'] = $gift_wrap_id;
 
@@ -259,7 +262,7 @@ class GiftDetails implements \ArrayAccess, \JsonSerializable, ModelInterface, \S
      *
      * @param int $offset Offset
      */
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -282,7 +285,7 @@ class GiftDetails implements \ArrayAccess, \JsonSerializable, ModelInterface, \S
      * @param null|int $offset Offset
      * @param mixed $value Value to be set
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         if (null === $offset) {
             $this->container[] = $value;
@@ -296,7 +299,7 @@ class GiftDetails implements \ArrayAccess, \JsonSerializable, ModelInterface, \S
      *
      * @param int $offset Offset
      */
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -309,7 +312,7 @@ class GiftDetails implements \ArrayAccess, \JsonSerializable, ModelInterface, \S
      * @return mixed returns data which can be serialized by json_encode(), which is a value
      *               of any type other than a resource
      */
-    public function jsonSerialize() : string
+    public function jsonSerialize(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }
@@ -317,7 +320,7 @@ class GiftDetails implements \ArrayAccess, \JsonSerializable, ModelInterface, \S
     /**
      * Gets a header-safe presentation of the object.
      */
-    public function toHeaderValue() : string
+    public function toHeaderValue(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }

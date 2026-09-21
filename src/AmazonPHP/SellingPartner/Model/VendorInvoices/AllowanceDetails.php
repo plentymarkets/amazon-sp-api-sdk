@@ -1,4 +1,7 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
+
 /**
  * AllowanceDetails.
  *
@@ -139,7 +142,7 @@ class AllowanceDetails implements \ArrayAccess, \JsonSerializable, ModelInterfac
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['type'] = $data['type'] ?? null;
         $this->container['description'] = $data['description'] ?? null;
@@ -152,7 +155,7 @@ class AllowanceDetails implements \ArrayAccess, \JsonSerializable, ModelInterfac
      *
      * @return string[]
      */
-    public static function openAPITypes() : array
+    public static function openAPITypes(): array
     {
         return self::$openAPITypes;
     }
@@ -162,7 +165,7 @@ class AllowanceDetails implements \ArrayAccess, \JsonSerializable, ModelInterfac
      *
      * @return null[]|string[]
      */
-    public static function openAPIFormats() : array
+    public static function openAPIFormats(): array
     {
         return self::$openAPIFormats;
     }
@@ -173,7 +176,7 @@ class AllowanceDetails implements \ArrayAccess, \JsonSerializable, ModelInterfac
      *
      * @return string[]
      */
-    public static function attributeMap() : array
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -183,7 +186,7 @@ class AllowanceDetails implements \ArrayAccess, \JsonSerializable, ModelInterfac
      *
      * @return string[]
      */
-    public static function setters() : array
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -193,7 +196,7 @@ class AllowanceDetails implements \ArrayAccess, \JsonSerializable, ModelInterfac
      *
      * @return string[]
      */
-    public static function getters() : array
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -201,7 +204,7 @@ class AllowanceDetails implements \ArrayAccess, \JsonSerializable, ModelInterfac
     /**
      * Gets the string presentation of the object.
      */
-    public function __toString() : string
+    public function __toString(): string
     {
         return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
@@ -212,7 +215,7 @@ class AllowanceDetails implements \ArrayAccess, \JsonSerializable, ModelInterfac
     /**
      * The original name of the model.
      */
-    public function getModelName() : string
+    public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
@@ -222,7 +225,7 @@ class AllowanceDetails implements \ArrayAccess, \JsonSerializable, ModelInterfac
      *
      * @return string[]
      */
-    public function getTypeAllowableValues() : array
+    public function getTypeAllowableValues(): array
     {
         return [
             self::TYPE_DISCOUNT,
@@ -239,7 +242,7 @@ class AllowanceDetails implements \ArrayAccess, \JsonSerializable, ModelInterfac
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties() : array
+    public function listInvalidProperties(): array
     {
         $invalidProperties = [];
 
@@ -269,7 +272,7 @@ class AllowanceDetails implements \ArrayAccess, \JsonSerializable, ModelInterfac
      *
      * @return bool True if all properties are valid
      */
-    public function valid() : bool
+    public function valid(): bool
     {
         return \count($this->listInvalidProperties()) === 0;
     }
@@ -277,7 +280,7 @@ class AllowanceDetails implements \ArrayAccess, \JsonSerializable, ModelInterfac
     /**
      * Gets type.
      */
-    public function getType() : string
+    public function getType(): string
     {
         return $this->container['type'];
     }
@@ -287,7 +290,7 @@ class AllowanceDetails implements \ArrayAccess, \JsonSerializable, ModelInterfac
      *
      * @param string $type type of the allowance applied
      */
-    public function setType(string $type) : self
+    public function setType(string $type): self
     {
         $allowedValues = $this->getTypeAllowableValues();
 
@@ -308,7 +311,7 @@ class AllowanceDetails implements \ArrayAccess, \JsonSerializable, ModelInterfac
     /**
      * Gets description.
      */
-    public function getDescription() : ?string
+    public function getDescription(): ?string
     {
         return $this->container['description'];
     }
@@ -318,7 +321,7 @@ class AllowanceDetails implements \ArrayAccess, \JsonSerializable, ModelInterfac
      *
      * @param null|string $description description of the allowance
      */
-    public function setDescription(?string $description) : self
+    public function setDescription(?string $description): self
     {
         $this->container['description'] = $description;
 
@@ -328,7 +331,7 @@ class AllowanceDetails implements \ArrayAccess, \JsonSerializable, ModelInterfac
     /**
      * Gets allowance_amount.
      */
-    public function getAllowanceAmount() : Money
+    public function getAllowanceAmount(): Money
     {
         return $this->container['allowance_amount'];
     }
@@ -338,7 +341,7 @@ class AllowanceDetails implements \ArrayAccess, \JsonSerializable, ModelInterfac
      *
      * @param \Plenty\AmazonPHP\SellingPartner\Model\VendorInvoices\Money $allowance_amount allowance_amount
      */
-    public function setAllowanceAmount(Money $allowance_amount) : self
+    public function setAllowanceAmount(Money $allowance_amount): self
     {
         $this->container['allowance_amount'] = $allowance_amount;
 
@@ -350,7 +353,7 @@ class AllowanceDetails implements \ArrayAccess, \JsonSerializable, ModelInterfac
      *
      * @return null|\Plenty\AmazonPHP\SellingPartner\Model\VendorInvoices\TaxDetails[]
      */
-    public function getTaxDetails() : ?array
+    public function getTaxDetails(): ?array
     {
         return $this->container['tax_details'];
     }
@@ -360,7 +363,7 @@ class AllowanceDetails implements \ArrayAccess, \JsonSerializable, ModelInterfac
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\VendorInvoices\TaxDetails[] $tax_details tax amount details applied on this allowance
      */
-    public function setTaxDetails(?array $tax_details) : self
+    public function setTaxDetails(?array $tax_details): self
     {
         $this->container['tax_details'] = $tax_details;
 
@@ -372,7 +375,7 @@ class AllowanceDetails implements \ArrayAccess, \JsonSerializable, ModelInterfac
      *
      * @param int $offset Offset
      */
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -395,7 +398,7 @@ class AllowanceDetails implements \ArrayAccess, \JsonSerializable, ModelInterfac
      * @param null|int $offset Offset
      * @param mixed $value Value to be set
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         if (null === $offset) {
             $this->container[] = $value;
@@ -409,7 +412,7 @@ class AllowanceDetails implements \ArrayAccess, \JsonSerializable, ModelInterfac
      *
      * @param int $offset Offset
      */
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -422,7 +425,7 @@ class AllowanceDetails implements \ArrayAccess, \JsonSerializable, ModelInterfac
      * @return mixed returns data which can be serialized by json_encode(), which is a value
      *               of any type other than a resource
      */
-    public function jsonSerialize() : string
+    public function jsonSerialize(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }
@@ -430,7 +433,7 @@ class AllowanceDetails implements \ArrayAccess, \JsonSerializable, ModelInterfac
     /**
      * Gets a header-safe presentation of the object.
      */
-    public function toHeaderValue() : string
+    public function toHeaderValue(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }

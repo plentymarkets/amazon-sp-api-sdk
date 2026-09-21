@@ -125,7 +125,7 @@ class CreateMarketplaceItemLabelsRequest implements \ArrayAccess, \JsonSerializa
      * @param null|mixed[] $data Associated array of property values
      *                           initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['height'] = $data['height'] ?? null;
         $this->container['label_type'] = $data['label_type'] ?? null;
@@ -139,7 +139,7 @@ class CreateMarketplaceItemLabelsRequest implements \ArrayAccess, \JsonSerializa
     /**
      * Array of property to type mappings. Used for (de)serialization.
      */
-    public static function openAPITypes() : array
+    public static function openAPITypes(): array
     {
         return self::$openAPITypes;
     }
@@ -147,7 +147,7 @@ class CreateMarketplaceItemLabelsRequest implements \ArrayAccess, \JsonSerializa
     /**
      * Array of property to format mappings. Used for (de)serialization.
      */
-    public static function openAPIFormats() : array
+    public static function openAPIFormats(): array
     {
         return self::$openAPIFormats;
     }
@@ -156,7 +156,7 @@ class CreateMarketplaceItemLabelsRequest implements \ArrayAccess, \JsonSerializa
      * Array of attributes where the key is the local name,
      * and the value is the original name.
      */
-    public static function attributeMap() : array
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -164,7 +164,7 @@ class CreateMarketplaceItemLabelsRequest implements \ArrayAccess, \JsonSerializa
     /**
      * Array of attributes to setter functions (for deserialization of responses).
      */
-    public static function setters() : array
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -172,7 +172,7 @@ class CreateMarketplaceItemLabelsRequest implements \ArrayAccess, \JsonSerializa
     /**
      * Array of attributes to getter functions (for serialization of requests).
      */
-    public static function getters() : array
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -180,7 +180,7 @@ class CreateMarketplaceItemLabelsRequest implements \ArrayAccess, \JsonSerializa
     /**
      * Gets the string presentation of the object.
      */
-    public function __toString() : string
+    public function __toString(): string
     {
         return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
@@ -191,7 +191,7 @@ class CreateMarketplaceItemLabelsRequest implements \ArrayAccess, \JsonSerializa
     /**
      * The original name of the model.
      */
-    public function getModelName() : string
+    public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
@@ -201,10 +201,10 @@ class CreateMarketplaceItemLabelsRequest implements \ArrayAccess, \JsonSerializa
      *
      * @throws AssertionException
      */
-    public function listInvalidProperties() : array
+    public function listInvalidProperties(): array
     {
         $invalidProperties = [];
-         
+
         if (null !== $this->container['height'] && ($this->container['height'] > 1E+2)) {
             $invalidProperties[] = "invalid value for 'height', must be smaller than or equal to 1E+2.";
         }
@@ -262,7 +262,7 @@ class CreateMarketplaceItemLabelsRequest implements \ArrayAccess, \JsonSerializa
      *
      * @return bool True if all properties are valid
      */
-    public function valid() : bool
+    public function valid(): bool
     {
         return \count($this->listInvalidProperties()) === 0;
     }
@@ -270,7 +270,7 @@ class CreateMarketplaceItemLabelsRequest implements \ArrayAccess, \JsonSerializa
     /**
      * Gets height.
      */
-    public function getHeight() : ?float
+    public function getHeight(): ?float
     {
         return $this->container['height'];
     }
@@ -280,7 +280,7 @@ class CreateMarketplaceItemLabelsRequest implements \ArrayAccess, \JsonSerializa
      *
      * @param null|float $height the height of the item label
      */
-    public function setHeight(?float $height) : self
+    public function setHeight(?float $height): self
     {
         $this->container['height'] = $height;
 
@@ -290,7 +290,7 @@ class CreateMarketplaceItemLabelsRequest implements \ArrayAccess, \JsonSerializa
     /**
      * Gets label_type.
      */
-    public function getLabelType() : LabelPrintType
+    public function getLabelType(): LabelPrintType
     {
         return $this->container['label_type'];
     }
@@ -300,7 +300,7 @@ class CreateMarketplaceItemLabelsRequest implements \ArrayAccess, \JsonSerializa
      *
      * @param LabelPrintType $label_type label_type
      */
-    public function setLabelType(LabelPrintType $label_type) : self
+    public function setLabelType(LabelPrintType $label_type): self
     {
         $this->container['label_type'] = $label_type;
 
@@ -310,7 +310,7 @@ class CreateMarketplaceItemLabelsRequest implements \ArrayAccess, \JsonSerializa
     /**
      * Gets locale_code.
      */
-    public function getLocaleCode() : ?string
+    public function getLocaleCode(): ?string
     {
         return $this->container['locale_code'];
     }
@@ -320,7 +320,7 @@ class CreateMarketplaceItemLabelsRequest implements \ArrayAccess, \JsonSerializa
      *
      * @param null|string $locale_code the locale code constructed from ISO 639 language code and ISO 3166-1 alpha-2 standard of country codes separated by an underscore character
      */
-    public function setLocaleCode(?string $locale_code) : self
+    public function setLocaleCode(?string $locale_code): self
     {
         $this->container['locale_code'] = $locale_code;
 
@@ -330,7 +330,7 @@ class CreateMarketplaceItemLabelsRequest implements \ArrayAccess, \JsonSerializa
     /**
      * Gets marketplace_id.
      */
-    public function getMarketplaceId() : string
+    public function getMarketplaceId(): string
     {
         return $this->container['marketplace_id'];
     }
@@ -340,7 +340,7 @@ class CreateMarketplaceItemLabelsRequest implements \ArrayAccess, \JsonSerializa
      *
      * @param string $marketplace_id The Marketplace ID. Refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids) for a list of possible values.
      */
-    public function setMarketplaceId(string $marketplace_id) : self
+    public function setMarketplaceId(string $marketplace_id): self
     {
         $this->container['marketplace_id'] = $marketplace_id;
 
@@ -352,7 +352,7 @@ class CreateMarketplaceItemLabelsRequest implements \ArrayAccess, \JsonSerializa
      *
      * @return MskuQuantity[]
      */
-    public function getMskuQuantities() : array
+    public function getMskuQuantities(): array
     {
         return $this->container['msku_quantities'];
     }
@@ -362,7 +362,7 @@ class CreateMarketplaceItemLabelsRequest implements \ArrayAccess, \JsonSerializa
      *
      * @param MskuQuantity[] $msku_quantities represents the quantity of an msku to print item labels for
      */
-    public function setMskuQuantities(array $msku_quantities) : self
+    public function setMskuQuantities(array $msku_quantities): self
     {
         $this->container['msku_quantities'] = $msku_quantities;
 
@@ -372,7 +372,7 @@ class CreateMarketplaceItemLabelsRequest implements \ArrayAccess, \JsonSerializa
     /**
      * Gets page_type.
      */
-    public function getPageType() : ?ItemLabelPageType
+    public function getPageType(): ?ItemLabelPageType
     {
         return $this->container['page_type'];
     }
@@ -382,7 +382,7 @@ class CreateMarketplaceItemLabelsRequest implements \ArrayAccess, \JsonSerializa
      *
      * @param null|ItemLabelPageType $page_type page_type
      */
-    public function setPageType(?ItemLabelPageType $page_type) : self
+    public function setPageType(?ItemLabelPageType $page_type): self
     {
         $this->container['page_type'] = $page_type;
 
@@ -392,7 +392,7 @@ class CreateMarketplaceItemLabelsRequest implements \ArrayAccess, \JsonSerializa
     /**
      * Gets width.
      */
-    public function getWidth() : ?float
+    public function getWidth(): ?float
     {
         return $this->container['width'];
     }
@@ -402,7 +402,7 @@ class CreateMarketplaceItemLabelsRequest implements \ArrayAccess, \JsonSerializa
      *
      * @param null|float $width the width of the item label
      */
-    public function setWidth(?float $width) : self
+    public function setWidth(?float $width): self
     {
         $this->container['width'] = $width;
 
@@ -412,7 +412,7 @@ class CreateMarketplaceItemLabelsRequest implements \ArrayAccess, \JsonSerializa
     /**
      * Returns true if offset exists. False otherwise.
      */
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -423,7 +423,7 @@ class CreateMarketplaceItemLabelsRequest implements \ArrayAccess, \JsonSerializa
      * @return null|mixed
      */
     #[\ReturnTypeWillChange]
-    public function offsetGet($offset) : mixed
+    public function offsetGet($offset): mixed
     {
         return $this->container[$offset] ?? null;
     }
@@ -431,7 +431,7 @@ class CreateMarketplaceItemLabelsRequest implements \ArrayAccess, \JsonSerializa
     /**
      * Sets value based on offset.
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         if (null === $offset) {
             $this->container[] = $value;
@@ -443,7 +443,7 @@ class CreateMarketplaceItemLabelsRequest implements \ArrayAccess, \JsonSerializa
     /**
      * Unsets offset.
      */
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -457,7 +457,7 @@ class CreateMarketplaceItemLabelsRequest implements \ArrayAccess, \JsonSerializa
      *               of any type other than a resource
      */
     #[\ReturnTypeWillChange]
-    public function jsonSerialize() : string
+    public function jsonSerialize(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }
@@ -465,7 +465,7 @@ class CreateMarketplaceItemLabelsRequest implements \ArrayAccess, \JsonSerializa
     /**
      * Gets a header-safe presentation of the object.
      */
-    public function toHeaderValue() : string
+    public function toHeaderValue(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }

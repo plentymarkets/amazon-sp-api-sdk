@@ -1,4 +1,7 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
+
 /**
  * ItemQuantity.
  *
@@ -126,7 +129,7 @@ class ItemQuantity implements \ArrayAccess, \JsonSerializable, ModelInterface, \
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['amount'] = $data['amount'] ?? null;
         $this->container['unit_of_measure'] = $data['unit_of_measure'] ?? null;
@@ -138,7 +141,7 @@ class ItemQuantity implements \ArrayAccess, \JsonSerializable, ModelInterface, \
      *
      * @return string[]
      */
-    public static function openAPITypes() : array
+    public static function openAPITypes(): array
     {
         return self::$openAPITypes;
     }
@@ -148,7 +151,7 @@ class ItemQuantity implements \ArrayAccess, \JsonSerializable, ModelInterface, \
      *
      * @return null[]|string[]
      */
-    public static function openAPIFormats() : array
+    public static function openAPIFormats(): array
     {
         return self::$openAPIFormats;
     }
@@ -159,7 +162,7 @@ class ItemQuantity implements \ArrayAccess, \JsonSerializable, ModelInterface, \
      *
      * @return string[]
      */
-    public static function attributeMap() : array
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -169,7 +172,7 @@ class ItemQuantity implements \ArrayAccess, \JsonSerializable, ModelInterface, \
      *
      * @return string[]
      */
-    public static function setters() : array
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -179,7 +182,7 @@ class ItemQuantity implements \ArrayAccess, \JsonSerializable, ModelInterface, \
      *
      * @return string[]
      */
-    public static function getters() : array
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -187,7 +190,7 @@ class ItemQuantity implements \ArrayAccess, \JsonSerializable, ModelInterface, \
     /**
      * Gets the string presentation of the object.
      */
-    public function __toString() : string
+    public function __toString(): string
     {
         return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
@@ -198,7 +201,7 @@ class ItemQuantity implements \ArrayAccess, \JsonSerializable, ModelInterface, \
     /**
      * The original name of the model.
      */
-    public function getModelName() : string
+    public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
@@ -208,7 +211,7 @@ class ItemQuantity implements \ArrayAccess, \JsonSerializable, ModelInterface, \
      *
      * @return string[]
      */
-    public function getUnitOfMeasureAllowableValues() : array
+    public function getUnitOfMeasureAllowableValues(): array
     {
         return [
             self::UNIT_OF_MEASURE_CASES,
@@ -221,7 +224,7 @@ class ItemQuantity implements \ArrayAccess, \JsonSerializable, ModelInterface, \
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties() : array
+    public function listInvalidProperties(): array
     {
         $invalidProperties = [];
 
@@ -251,7 +254,7 @@ class ItemQuantity implements \ArrayAccess, \JsonSerializable, ModelInterface, \
      *
      * @return bool True if all properties are valid
      */
-    public function valid() : bool
+    public function valid(): bool
     {
         return \count($this->listInvalidProperties()) === 0;
     }
@@ -259,7 +262,7 @@ class ItemQuantity implements \ArrayAccess, \JsonSerializable, ModelInterface, \
     /**
      * Gets amount.
      */
-    public function getAmount() : int
+    public function getAmount(): int
     {
         return $this->container['amount'];
     }
@@ -269,7 +272,7 @@ class ItemQuantity implements \ArrayAccess, \JsonSerializable, ModelInterface, \
      *
      * @param int $amount Quantity of an item. This value should not be zero.
      */
-    public function setAmount(int $amount) : self
+    public function setAmount(int $amount): self
     {
         $this->container['amount'] = $amount;
 
@@ -279,7 +282,7 @@ class ItemQuantity implements \ArrayAccess, \JsonSerializable, ModelInterface, \
     /**
      * Gets unit_of_measure.
      */
-    public function getUnitOfMeasure() : string
+    public function getUnitOfMeasure(): string
     {
         return $this->container['unit_of_measure'];
     }
@@ -289,7 +292,7 @@ class ItemQuantity implements \ArrayAccess, \JsonSerializable, ModelInterface, \
      *
      * @param string $unit_of_measure unit of measure for the quantity
      */
-    public function setUnitOfMeasure(string $unit_of_measure) : self
+    public function setUnitOfMeasure(string $unit_of_measure): self
     {
         $allowedValues = $this->getUnitOfMeasureAllowableValues();
 
@@ -310,7 +313,7 @@ class ItemQuantity implements \ArrayAccess, \JsonSerializable, ModelInterface, \
     /**
      * Gets unit_size.
      */
-    public function getUnitSize() : ?int
+    public function getUnitSize(): ?int
     {
         return $this->container['unit_size'];
     }
@@ -320,7 +323,7 @@ class ItemQuantity implements \ArrayAccess, \JsonSerializable, ModelInterface, \
      *
      * @param null|int $unit_size the case size, if the unit of measure value is Cases
      */
-    public function setUnitSize(?int $unit_size) : self
+    public function setUnitSize(?int $unit_size): self
     {
         $this->container['unit_size'] = $unit_size;
 
@@ -332,7 +335,7 @@ class ItemQuantity implements \ArrayAccess, \JsonSerializable, ModelInterface, \
      *
      * @param int $offset Offset
      */
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -355,7 +358,7 @@ class ItemQuantity implements \ArrayAccess, \JsonSerializable, ModelInterface, \
      * @param null|int $offset Offset
      * @param mixed $value Value to be set
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         if (null === $offset) {
             $this->container[] = $value;
@@ -369,7 +372,7 @@ class ItemQuantity implements \ArrayAccess, \JsonSerializable, ModelInterface, \
      *
      * @param int $offset Offset
      */
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -382,7 +385,7 @@ class ItemQuantity implements \ArrayAccess, \JsonSerializable, ModelInterface, \
      * @return mixed returns data which can be serialized by json_encode(), which is a value
      *               of any type other than a resource
      */
-    public function jsonSerialize() : string
+    public function jsonSerialize(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }
@@ -390,7 +393,7 @@ class ItemQuantity implements \ArrayAccess, \JsonSerializable, ModelInterface, \
     /**
      * Gets a header-safe presentation of the object.
      */
-    public function toHeaderValue() : string
+    public function toHeaderValue(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }

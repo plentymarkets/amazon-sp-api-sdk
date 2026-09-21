@@ -1,4 +1,7 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
+
 /**
  * Item.
  *
@@ -142,7 +145,7 @@ class Item implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringab
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['sku'] = $data['sku'] ?? null;
         $this->container['summaries'] = $data['summaries'] ?? null;
@@ -158,7 +161,7 @@ class Item implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringab
      *
      * @return string[]
      */
-    public static function openAPITypes() : array
+    public static function openAPITypes(): array
     {
         return self::$openAPITypes;
     }
@@ -168,7 +171,7 @@ class Item implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringab
      *
      * @return null[]|string[]
      */
-    public static function openAPIFormats() : array
+    public static function openAPIFormats(): array
     {
         return self::$openAPIFormats;
     }
@@ -179,7 +182,7 @@ class Item implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringab
      *
      * @return string[]
      */
-    public static function attributeMap() : array
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -189,7 +192,7 @@ class Item implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringab
      *
      * @return string[]
      */
-    public static function setters() : array
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -199,7 +202,7 @@ class Item implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringab
      *
      * @return string[]
      */
-    public static function getters() : array
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -207,7 +210,7 @@ class Item implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringab
     /**
      * Gets the string presentation of the object.
      */
-    public function __toString() : string
+    public function __toString(): string
     {
         return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
@@ -218,7 +221,7 @@ class Item implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringab
     /**
      * The original name of the model.
      */
-    public function getModelName() : string
+    public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
@@ -228,7 +231,7 @@ class Item implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringab
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties() : array
+    public function listInvalidProperties(): array
     {
         $invalidProperties = [];
 
@@ -245,7 +248,7 @@ class Item implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringab
      *
      * @return bool True if all properties are valid
      */
-    public function valid() : bool
+    public function valid(): bool
     {
         return \count($this->listInvalidProperties()) === 0;
     }
@@ -253,7 +256,7 @@ class Item implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringab
     /**
      * Gets sku.
      */
-    public function getSku() : string
+    public function getSku(): string
     {
         return $this->container['sku'];
     }
@@ -263,7 +266,7 @@ class Item implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringab
      *
      * @param string $sku a selling partner provided identifier for an Amazon listing
      */
-    public function setSku(string $sku) : self
+    public function setSku(string $sku): self
     {
         $this->container['sku'] = $sku;
 
@@ -275,7 +278,7 @@ class Item implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringab
      *
      * @return null|\Plenty\AmazonPHP\SellingPartner\Model\ListingsItems\ItemSummaryByMarketplace[]
      */
-    public function getSummaries() : ?array
+    public function getSummaries(): ?array
     {
         return $this->container['summaries'];
     }
@@ -285,7 +288,7 @@ class Item implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringab
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\ListingsItems\ItemSummaryByMarketplace[] $summaries summary details of a listings item
      */
-    public function setSummaries(?array $summaries) : self
+    public function setSummaries(?array $summaries): self
     {
         $this->container['summaries'] = $summaries;
 
@@ -295,7 +298,7 @@ class Item implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringab
     /**
      * Gets attributes.
      */
-    public function getAttributes() : ?object
+    public function getAttributes(): ?object
     {
         return $this->container['attributes'];
     }
@@ -305,7 +308,7 @@ class Item implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringab
      *
      * @param null|object $attributes JSON object containing structured listings item attribute data keyed by attribute name
      */
-    public function setAttributes(?object $attributes) : self
+    public function setAttributes(?object $attributes): self
     {
         $this->container['attributes'] = $attributes;
 
@@ -317,7 +320,7 @@ class Item implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringab
      *
      * @return null|\Plenty\AmazonPHP\SellingPartner\Model\ListingsItems\Issue[]
      */
-    public function getIssues() : ?array
+    public function getIssues(): ?array
     {
         return $this->container['issues'];
     }
@@ -327,7 +330,7 @@ class Item implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringab
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\ListingsItems\Issue[] $issues issues associated with the listings item
      */
-    public function setIssues(?array $issues) : self
+    public function setIssues(?array $issues): self
     {
         $this->container['issues'] = $issues;
 
@@ -339,7 +342,7 @@ class Item implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringab
      *
      * @return null|\Plenty\AmazonPHP\SellingPartner\Model\ListingsItems\ItemOfferByMarketplace[]
      */
-    public function getOffers() : ?array
+    public function getOffers(): ?array
     {
         return $this->container['offers'];
     }
@@ -349,7 +352,7 @@ class Item implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringab
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\ListingsItems\ItemOfferByMarketplace[] $offers offer details for the listings item
      */
-    public function setOffers(?array $offers) : self
+    public function setOffers(?array $offers): self
     {
         $this->container['offers'] = $offers;
 
@@ -361,7 +364,7 @@ class Item implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringab
      *
      * @return null|\Plenty\AmazonPHP\SellingPartner\Model\ListingsItems\FulfillmentAvailability[]
      */
-    public function getFulfillmentAvailability() : ?array
+    public function getFulfillmentAvailability(): ?array
     {
         return $this->container['fulfillment_availability'];
     }
@@ -371,7 +374,7 @@ class Item implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringab
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\ListingsItems\FulfillmentAvailability[] $fulfillment_availability fulfillment availability for the listings item
      */
-    public function setFulfillmentAvailability(?array $fulfillment_availability) : self
+    public function setFulfillmentAvailability(?array $fulfillment_availability): self
     {
         $this->container['fulfillment_availability'] = $fulfillment_availability;
 
@@ -381,7 +384,7 @@ class Item implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringab
     /**
      * Gets procurement.
      */
-    public function getProcurement() : ?ItemProcurement
+    public function getProcurement(): ?ItemProcurement
     {
         return $this->container['procurement'];
     }
@@ -391,7 +394,7 @@ class Item implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringab
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\ListingsItems\ItemProcurement $procurement procurement
      */
-    public function setProcurement(?ItemProcurement $procurement) : self
+    public function setProcurement(?ItemProcurement $procurement): self
     {
         $this->container['procurement'] = $procurement;
 
@@ -403,7 +406,7 @@ class Item implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringab
      *
      * @param int $offset Offset
      */
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -426,7 +429,7 @@ class Item implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringab
      * @param null|int $offset Offset
      * @param mixed $value Value to be set
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         if (null === $offset) {
             $this->container[] = $value;
@@ -440,7 +443,7 @@ class Item implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringab
      *
      * @param int $offset Offset
      */
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -453,7 +456,7 @@ class Item implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringab
      * @return mixed returns data which can be serialized by json_encode(), which is a value
      *               of any type other than a resource
      */
-    public function jsonSerialize() : string
+    public function jsonSerialize(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }
@@ -461,7 +464,7 @@ class Item implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringab
     /**
      * Gets a header-safe presentation of the object.
      */
-    public function toHeaderValue() : string
+    public function toHeaderValue(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }

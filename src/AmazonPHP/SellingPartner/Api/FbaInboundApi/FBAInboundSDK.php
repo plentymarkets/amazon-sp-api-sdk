@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Plenty\AmazonPHP\SellingPartner\Api\FbaInboundApi;
 
@@ -53,7 +55,7 @@ final class FBAInboundSDK
      * @throws \Plenty\AmazonPHP\SellingPartner\Exception\ApiException on non-2xx response
      * @throws \Plenty\AmazonPHP\SellingPartner\Exception\InvalidArgumentException
      */
-    public function getItemEligibilityPreview(AccessToken $accessToken, string $region, string $asin, string $program, array $marketplace_ids = null) : \Plenty\AmazonPHP\SellingPartner\Model\FBAInbound\GetItemEligibilityPreviewResponse
+    public function getItemEligibilityPreview(AccessToken $accessToken, string $region, string $asin, string $program, ?array $marketplace_ids = null): \Plenty\AmazonPHP\SellingPartner\Model\FBAInbound\GetItemEligibilityPreviewResponse
     {
         $request = $this->getItemEligibilityPreviewRequest($accessToken, $region, $asin, $program, $marketplace_ids);
 
@@ -150,7 +152,7 @@ final class FBAInboundSDK
      *
      * @throws \Plenty\AmazonPHP\SellingPartner\Exception\InvalidArgumentException
      */
-    public function getItemEligibilityPreviewRequest(AccessToken $accessToken, string $region, string $asin, string $program, array $marketplace_ids = null) : RequestInterface
+    public function getItemEligibilityPreviewRequest(AccessToken $accessToken, string $region, string $asin, string $program, ?array $marketplace_ids = null): RequestInterface
     {
         // verify the required parameter 'asin' is set
         if ($asin === null || (\is_array($asin) && \count($asin) === 0)) {

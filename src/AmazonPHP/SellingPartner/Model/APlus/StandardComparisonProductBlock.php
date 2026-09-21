@@ -1,4 +1,7 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
+
 /**
  * StandardComparisonProductBlock.
  *
@@ -137,7 +140,7 @@ class StandardComparisonProductBlock implements \ArrayAccess, \JsonSerializable,
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['position'] = $data['position'] ?? null;
         $this->container['image'] = $data['image'] ?? null;
@@ -152,7 +155,7 @@ class StandardComparisonProductBlock implements \ArrayAccess, \JsonSerializable,
      *
      * @return string[]
      */
-    public static function openAPITypes() : array
+    public static function openAPITypes(): array
     {
         return self::$openAPITypes;
     }
@@ -162,7 +165,7 @@ class StandardComparisonProductBlock implements \ArrayAccess, \JsonSerializable,
      *
      * @return null[]|string[]
      */
-    public static function openAPIFormats() : array
+    public static function openAPIFormats(): array
     {
         return self::$openAPIFormats;
     }
@@ -173,7 +176,7 @@ class StandardComparisonProductBlock implements \ArrayAccess, \JsonSerializable,
      *
      * @return string[]
      */
-    public static function attributeMap() : array
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -183,7 +186,7 @@ class StandardComparisonProductBlock implements \ArrayAccess, \JsonSerializable,
      *
      * @return string[]
      */
-    public static function setters() : array
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -193,7 +196,7 @@ class StandardComparisonProductBlock implements \ArrayAccess, \JsonSerializable,
      *
      * @return string[]
      */
-    public static function getters() : array
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -201,7 +204,7 @@ class StandardComparisonProductBlock implements \ArrayAccess, \JsonSerializable,
     /**
      * Gets the string presentation of the object.
      */
-    public function __toString() : string
+    public function __toString(): string
     {
         return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
@@ -212,7 +215,7 @@ class StandardComparisonProductBlock implements \ArrayAccess, \JsonSerializable,
     /**
      * The original name of the model.
      */
-    public function getModelName() : string
+    public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
@@ -222,7 +225,7 @@ class StandardComparisonProductBlock implements \ArrayAccess, \JsonSerializable,
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties() : array
+    public function listInvalidProperties(): array
     {
         $invalidProperties = [];
 
@@ -267,7 +270,7 @@ class StandardComparisonProductBlock implements \ArrayAccess, \JsonSerializable,
      *
      * @return bool True if all properties are valid
      */
-    public function valid() : bool
+    public function valid(): bool
     {
         return \count($this->listInvalidProperties()) === 0;
     }
@@ -275,7 +278,7 @@ class StandardComparisonProductBlock implements \ArrayAccess, \JsonSerializable,
     /**
      * Gets position.
      */
-    public function getPosition() : int
+    public function getPosition(): int
     {
         return $this->container['position'];
     }
@@ -285,7 +288,7 @@ class StandardComparisonProductBlock implements \ArrayAccess, \JsonSerializable,
      *
      * @param int $position The rank or index of this comparison product block within the module. Different blocks cannot occupy the same position within a single module.
      */
-    public function setPosition(int $position) : self
+    public function setPosition(int $position): self
     {
         if (($position > 6)) {
             throw new \InvalidArgumentException('invalid value for $position when calling StandardComparisonProductBlock., must be smaller than or equal to 6.');
@@ -303,7 +306,7 @@ class StandardComparisonProductBlock implements \ArrayAccess, \JsonSerializable,
     /**
      * Gets image.
      */
-    public function getImage() : ?ImageComponent
+    public function getImage(): ?ImageComponent
     {
         return $this->container['image'];
     }
@@ -313,7 +316,7 @@ class StandardComparisonProductBlock implements \ArrayAccess, \JsonSerializable,
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\APlus\ImageComponent $image image
      */
-    public function setImage(?ImageComponent $image) : self
+    public function setImage(?ImageComponent $image): self
     {
         $this->container['image'] = $image;
 
@@ -323,7 +326,7 @@ class StandardComparisonProductBlock implements \ArrayAccess, \JsonSerializable,
     /**
      * Gets title.
      */
-    public function getTitle() : ?string
+    public function getTitle(): ?string
     {
         return $this->container['title'];
     }
@@ -333,7 +336,7 @@ class StandardComparisonProductBlock implements \ArrayAccess, \JsonSerializable,
      *
      * @param null|string $title the comparison product title
      */
-    public function setTitle(?string $title) : self
+    public function setTitle(?string $title): self
     {
         if (null !== $title && (\mb_strlen($title) > 80)) {
             throw new \InvalidArgumentException('invalid length for $title when calling StandardComparisonProductBlock., must be smaller than or equal to 80.');
@@ -351,7 +354,7 @@ class StandardComparisonProductBlock implements \ArrayAccess, \JsonSerializable,
     /**
      * Gets asin.
      */
-    public function getAsin() : ?string
+    public function getAsin(): ?string
     {
         return $this->container['asin'];
     }
@@ -361,7 +364,7 @@ class StandardComparisonProductBlock implements \ArrayAccess, \JsonSerializable,
      *
      * @param null|string $asin the Amazon Standard Identification Number (ASIN)
      */
-    public function setAsin(?string $asin) : self
+    public function setAsin(?string $asin): self
     {
         if (null !== $asin && (\mb_strlen($asin) < 10)) {
             throw new \InvalidArgumentException('invalid length for $asin when calling StandardComparisonProductBlock., must be bigger than or equal to 10.');
@@ -375,7 +378,7 @@ class StandardComparisonProductBlock implements \ArrayAccess, \JsonSerializable,
     /**
      * Gets highlight.
      */
-    public function getHighlight() : ?bool
+    public function getHighlight(): ?bool
     {
         return $this->container['highlight'];
     }
@@ -385,7 +388,7 @@ class StandardComparisonProductBlock implements \ArrayAccess, \JsonSerializable,
      *
      * @param null|bool $highlight determines whether this block of content is visually highlighted
      */
-    public function setHighlight(?bool $highlight) : self
+    public function setHighlight(?bool $highlight): self
     {
         $this->container['highlight'] = $highlight;
 
@@ -397,7 +400,7 @@ class StandardComparisonProductBlock implements \ArrayAccess, \JsonSerializable,
      *
      * @return null|\Plenty\AmazonPHP\SellingPartner\Model\APlus\PlainTextItem[]
      */
-    public function getMetrics() : ?array
+    public function getMetrics(): ?array
     {
         return $this->container['metrics'];
     }
@@ -407,7 +410,7 @@ class StandardComparisonProductBlock implements \ArrayAccess, \JsonSerializable,
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\APlus\PlainTextItem[] $metrics comparison metrics for the product
      */
-    public function setMetrics(?array $metrics) : self
+    public function setMetrics(?array $metrics): self
     {
         if (null !== $metrics && (\count($metrics) > 10)) {
             throw new \InvalidArgumentException('invalid value for $metrics when calling StandardComparisonProductBlock., number of items must be less than or equal to 10.');
@@ -426,7 +429,7 @@ class StandardComparisonProductBlock implements \ArrayAccess, \JsonSerializable,
      *
      * @param int $offset Offset
      */
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -449,7 +452,7 @@ class StandardComparisonProductBlock implements \ArrayAccess, \JsonSerializable,
      * @param null|int $offset Offset
      * @param mixed $value Value to be set
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         if (null === $offset) {
             $this->container[] = $value;
@@ -463,7 +466,7 @@ class StandardComparisonProductBlock implements \ArrayAccess, \JsonSerializable,
      *
      * @param int $offset Offset
      */
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -476,7 +479,7 @@ class StandardComparisonProductBlock implements \ArrayAccess, \JsonSerializable,
      * @return mixed returns data which can be serialized by json_encode(), which is a value
      *               of any type other than a resource
      */
-    public function jsonSerialize() : string
+    public function jsonSerialize(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }
@@ -484,7 +487,7 @@ class StandardComparisonProductBlock implements \ArrayAccess, \JsonSerializable,
     /**
      * Gets a header-safe presentation of the object.
      */
-    public function toHeaderValue() : string
+    public function toHeaderValue(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }

@@ -1,4 +1,7 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
+
 /**
  * BoxContentsFeeDetails.
  *
@@ -122,7 +125,7 @@ class BoxContentsFeeDetails implements \ArrayAccess, \JsonSerializable, ModelInt
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['total_units'] = $data['total_units'] ?? null;
         $this->container['fee_per_unit'] = $data['fee_per_unit'] ?? null;
@@ -134,7 +137,7 @@ class BoxContentsFeeDetails implements \ArrayAccess, \JsonSerializable, ModelInt
      *
      * @return string[]
      */
-    public static function openAPITypes() : array
+    public static function openAPITypes(): array
     {
         return self::$openAPITypes;
     }
@@ -144,7 +147,7 @@ class BoxContentsFeeDetails implements \ArrayAccess, \JsonSerializable, ModelInt
      *
      * @return null[]|string[]
      */
-    public static function openAPIFormats() : array
+    public static function openAPIFormats(): array
     {
         return self::$openAPIFormats;
     }
@@ -155,7 +158,7 @@ class BoxContentsFeeDetails implements \ArrayAccess, \JsonSerializable, ModelInt
      *
      * @return string[]
      */
-    public static function attributeMap() : array
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -165,7 +168,7 @@ class BoxContentsFeeDetails implements \ArrayAccess, \JsonSerializable, ModelInt
      *
      * @return string[]
      */
-    public static function setters() : array
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -175,7 +178,7 @@ class BoxContentsFeeDetails implements \ArrayAccess, \JsonSerializable, ModelInt
      *
      * @return string[]
      */
-    public static function getters() : array
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -183,7 +186,7 @@ class BoxContentsFeeDetails implements \ArrayAccess, \JsonSerializable, ModelInt
     /**
      * Gets the string presentation of the object.
      */
-    public function __toString() : string
+    public function __toString(): string
     {
         return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
@@ -194,7 +197,7 @@ class BoxContentsFeeDetails implements \ArrayAccess, \JsonSerializable, ModelInt
     /**
      * The original name of the model.
      */
-    public function getModelName() : string
+    public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
@@ -204,7 +207,7 @@ class BoxContentsFeeDetails implements \ArrayAccess, \JsonSerializable, ModelInt
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties() : array
+    public function listInvalidProperties(): array
     {
         return [];
     }
@@ -215,7 +218,7 @@ class BoxContentsFeeDetails implements \ArrayAccess, \JsonSerializable, ModelInt
      *
      * @return bool True if all properties are valid
      */
-    public function valid() : bool
+    public function valid(): bool
     {
         return \count($this->listInvalidProperties()) === 0;
     }
@@ -223,7 +226,7 @@ class BoxContentsFeeDetails implements \ArrayAccess, \JsonSerializable, ModelInt
     /**
      * Gets total_units.
      */
-    public function getTotalUnits() : ?int
+    public function getTotalUnits(): ?int
     {
         return $this->container['total_units'];
     }
@@ -233,7 +236,7 @@ class BoxContentsFeeDetails implements \ArrayAccess, \JsonSerializable, ModelInt
      *
      * @param null|int $total_units the item quantity
      */
-    public function setTotalUnits(?int $total_units) : self
+    public function setTotalUnits(?int $total_units): self
     {
         $this->container['total_units'] = $total_units;
 
@@ -243,7 +246,7 @@ class BoxContentsFeeDetails implements \ArrayAccess, \JsonSerializable, ModelInt
     /**
      * Gets fee_per_unit.
      */
-    public function getFeePerUnit() : ?Amount
+    public function getFeePerUnit(): ?Amount
     {
         return $this->container['fee_per_unit'];
     }
@@ -253,7 +256,7 @@ class BoxContentsFeeDetails implements \ArrayAccess, \JsonSerializable, ModelInt
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound\Amount $fee_per_unit fee_per_unit
      */
-    public function setFeePerUnit(?Amount $fee_per_unit) : self
+    public function setFeePerUnit(?Amount $fee_per_unit): self
     {
         $this->container['fee_per_unit'] = $fee_per_unit;
 
@@ -263,7 +266,7 @@ class BoxContentsFeeDetails implements \ArrayAccess, \JsonSerializable, ModelInt
     /**
      * Gets total_fee.
      */
-    public function getTotalFee() : ?Amount
+    public function getTotalFee(): ?Amount
     {
         return $this->container['total_fee'];
     }
@@ -273,7 +276,7 @@ class BoxContentsFeeDetails implements \ArrayAccess, \JsonSerializable, ModelInt
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound\Amount $total_fee total_fee
      */
-    public function setTotalFee(?Amount $total_fee) : self
+    public function setTotalFee(?Amount $total_fee): self
     {
         $this->container['total_fee'] = $total_fee;
 
@@ -285,7 +288,7 @@ class BoxContentsFeeDetails implements \ArrayAccess, \JsonSerializable, ModelInt
      *
      * @param int $offset Offset
      */
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -308,7 +311,7 @@ class BoxContentsFeeDetails implements \ArrayAccess, \JsonSerializable, ModelInt
      * @param null|int $offset Offset
      * @param mixed $value Value to be set
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         if (null === $offset) {
             $this->container[] = $value;
@@ -322,7 +325,7 @@ class BoxContentsFeeDetails implements \ArrayAccess, \JsonSerializable, ModelInt
      *
      * @param int $offset Offset
      */
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -335,7 +338,7 @@ class BoxContentsFeeDetails implements \ArrayAccess, \JsonSerializable, ModelInt
      * @return mixed returns data which can be serialized by json_encode(), which is a value
      *               of any type other than a resource
      */
-    public function jsonSerialize() : string
+    public function jsonSerialize(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }
@@ -343,7 +346,7 @@ class BoxContentsFeeDetails implements \ArrayAccess, \JsonSerializable, ModelInt
     /**
      * Gets a header-safe presentation of the object.
      */
-    public function toHeaderValue() : string
+    public function toHeaderValue(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }

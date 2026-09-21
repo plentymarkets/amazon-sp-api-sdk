@@ -1,4 +1,7 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
+
 /**
  * PaymentExecutionDetailItem.
  *
@@ -117,7 +120,7 @@ class PaymentExecutionDetailItem implements \ArrayAccess, \JsonSerializable, Mod
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['payment'] = $data['payment'] ?? null;
         $this->container['payment_method'] = $data['payment_method'] ?? null;
@@ -128,7 +131,7 @@ class PaymentExecutionDetailItem implements \ArrayAccess, \JsonSerializable, Mod
      *
      * @return string[]
      */
-    public static function openAPITypes() : array
+    public static function openAPITypes(): array
     {
         return self::$openAPITypes;
     }
@@ -138,7 +141,7 @@ class PaymentExecutionDetailItem implements \ArrayAccess, \JsonSerializable, Mod
      *
      * @return null[]|string[]
      */
-    public static function openAPIFormats() : array
+    public static function openAPIFormats(): array
     {
         return self::$openAPIFormats;
     }
@@ -149,7 +152,7 @@ class PaymentExecutionDetailItem implements \ArrayAccess, \JsonSerializable, Mod
      *
      * @return string[]
      */
-    public static function attributeMap() : array
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -159,7 +162,7 @@ class PaymentExecutionDetailItem implements \ArrayAccess, \JsonSerializable, Mod
      *
      * @return string[]
      */
-    public static function setters() : array
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -169,7 +172,7 @@ class PaymentExecutionDetailItem implements \ArrayAccess, \JsonSerializable, Mod
      *
      * @return string[]
      */
-    public static function getters() : array
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -177,7 +180,7 @@ class PaymentExecutionDetailItem implements \ArrayAccess, \JsonSerializable, Mod
     /**
      * Gets the string presentation of the object.
      */
-    public function __toString() : string
+    public function __toString(): string
     {
         return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
@@ -188,7 +191,7 @@ class PaymentExecutionDetailItem implements \ArrayAccess, \JsonSerializable, Mod
     /**
      * The original name of the model.
      */
-    public function getModelName() : string
+    public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
@@ -198,7 +201,7 @@ class PaymentExecutionDetailItem implements \ArrayAccess, \JsonSerializable, Mod
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties() : array
+    public function listInvalidProperties(): array
     {
         $invalidProperties = [];
 
@@ -219,7 +222,7 @@ class PaymentExecutionDetailItem implements \ArrayAccess, \JsonSerializable, Mod
      *
      * @return bool True if all properties are valid
      */
-    public function valid() : bool
+    public function valid(): bool
     {
         return \count($this->listInvalidProperties()) === 0;
     }
@@ -227,7 +230,7 @@ class PaymentExecutionDetailItem implements \ArrayAccess, \JsonSerializable, Mod
     /**
      * Gets payment.
      */
-    public function getPayment() : Money
+    public function getPayment(): Money
     {
         return $this->container['payment'];
     }
@@ -237,7 +240,7 @@ class PaymentExecutionDetailItem implements \ArrayAccess, \JsonSerializable, Mod
      *
      * @param \Plenty\AmazonPHP\SellingPartner\Model\Orders\Money $payment payment
      */
-    public function setPayment(Money $payment) : self
+    public function setPayment(Money $payment): self
     {
         $this->container['payment'] = $payment;
 
@@ -247,7 +250,7 @@ class PaymentExecutionDetailItem implements \ArrayAccess, \JsonSerializable, Mod
     /**
      * Gets payment_method.
      */
-    public function getPaymentMethod() : string
+    public function getPaymentMethod(): string
     {
         return $this->container['payment_method'];
     }
@@ -257,7 +260,7 @@ class PaymentExecutionDetailItem implements \ArrayAccess, \JsonSerializable, Mod
      *
      * @param string $payment_method A sub-payment method for a COD order.  Possible values:  * COD - Cash On Delivery.  * GC - Gift Card.  * PointsAccount - Amazon Points.
      */
-    public function setPaymentMethod(string $payment_method) : self
+    public function setPaymentMethod(string $payment_method): self
     {
         $this->container['payment_method'] = $payment_method;
 
@@ -269,7 +272,7 @@ class PaymentExecutionDetailItem implements \ArrayAccess, \JsonSerializable, Mod
      *
      * @param int $offset Offset
      */
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -292,7 +295,7 @@ class PaymentExecutionDetailItem implements \ArrayAccess, \JsonSerializable, Mod
      * @param null|int $offset Offset
      * @param mixed $value Value to be set
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         if (null === $offset) {
             $this->container[] = $value;
@@ -306,7 +309,7 @@ class PaymentExecutionDetailItem implements \ArrayAccess, \JsonSerializable, Mod
      *
      * @param int $offset Offset
      */
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -319,7 +322,7 @@ class PaymentExecutionDetailItem implements \ArrayAccess, \JsonSerializable, Mod
      * @return mixed returns data which can be serialized by json_encode(), which is a value
      *               of any type other than a resource
      */
-    public function jsonSerialize() : string
+    public function jsonSerialize(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }
@@ -327,7 +330,7 @@ class PaymentExecutionDetailItem implements \ArrayAccess, \JsonSerializable, Mod
     /**
      * Gets a header-safe presentation of the object.
      */
-    public function toHeaderValue() : string
+    public function toHeaderValue(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }

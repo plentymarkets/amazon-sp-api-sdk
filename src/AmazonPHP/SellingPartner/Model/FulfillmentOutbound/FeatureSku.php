@@ -1,4 +1,7 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
+
 /**
  * FeatureSku.
  *
@@ -132,7 +135,7 @@ class FeatureSku implements \ArrayAccess, \JsonSerializable, ModelInterface, \St
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['seller_sku'] = $data['seller_sku'] ?? null;
         $this->container['fn_sku'] = $data['fn_sku'] ?? null;
@@ -146,7 +149,7 @@ class FeatureSku implements \ArrayAccess, \JsonSerializable, ModelInterface, \St
      *
      * @return string[]
      */
-    public static function openAPITypes() : array
+    public static function openAPITypes(): array
     {
         return self::$openAPITypes;
     }
@@ -156,7 +159,7 @@ class FeatureSku implements \ArrayAccess, \JsonSerializable, ModelInterface, \St
      *
      * @return null[]|string[]
      */
-    public static function openAPIFormats() : array
+    public static function openAPIFormats(): array
     {
         return self::$openAPIFormats;
     }
@@ -167,7 +170,7 @@ class FeatureSku implements \ArrayAccess, \JsonSerializable, ModelInterface, \St
      *
      * @return string[]
      */
-    public static function attributeMap() : array
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -177,7 +180,7 @@ class FeatureSku implements \ArrayAccess, \JsonSerializable, ModelInterface, \St
      *
      * @return string[]
      */
-    public static function setters() : array
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -187,7 +190,7 @@ class FeatureSku implements \ArrayAccess, \JsonSerializable, ModelInterface, \St
      *
      * @return string[]
      */
-    public static function getters() : array
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -195,7 +198,7 @@ class FeatureSku implements \ArrayAccess, \JsonSerializable, ModelInterface, \St
     /**
      * Gets the string presentation of the object.
      */
-    public function __toString() : string
+    public function __toString(): string
     {
         return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
@@ -206,7 +209,7 @@ class FeatureSku implements \ArrayAccess, \JsonSerializable, ModelInterface, \St
     /**
      * The original name of the model.
      */
-    public function getModelName() : string
+    public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
@@ -216,7 +219,7 @@ class FeatureSku implements \ArrayAccess, \JsonSerializable, ModelInterface, \St
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties() : array
+    public function listInvalidProperties(): array
     {
         return [];
     }
@@ -227,7 +230,7 @@ class FeatureSku implements \ArrayAccess, \JsonSerializable, ModelInterface, \St
      *
      * @return bool True if all properties are valid
      */
-    public function valid() : bool
+    public function valid(): bool
     {
         return \count($this->listInvalidProperties()) === 0;
     }
@@ -235,7 +238,7 @@ class FeatureSku implements \ArrayAccess, \JsonSerializable, ModelInterface, \St
     /**
      * Gets seller_sku.
      */
-    public function getSellerSku() : ?string
+    public function getSellerSku(): ?string
     {
         return $this->container['seller_sku'];
     }
@@ -245,7 +248,7 @@ class FeatureSku implements \ArrayAccess, \JsonSerializable, ModelInterface, \St
      *
      * @param null|string $seller_sku Used to identify an item in the given marketplace. SellerSKU is qualified by the seller's SellerId, which is included with every operation that you submit.
      */
-    public function setSellerSku(?string $seller_sku) : self
+    public function setSellerSku(?string $seller_sku): self
     {
         $this->container['seller_sku'] = $seller_sku;
 
@@ -255,7 +258,7 @@ class FeatureSku implements \ArrayAccess, \JsonSerializable, ModelInterface, \St
     /**
      * Gets fn_sku.
      */
-    public function getFnSku() : ?string
+    public function getFnSku(): ?string
     {
         return $this->container['fn_sku'];
     }
@@ -265,7 +268,7 @@ class FeatureSku implements \ArrayAccess, \JsonSerializable, ModelInterface, \St
      *
      * @param null|string $fn_sku the unique SKU used by Amazon's fulfillment network
      */
-    public function setFnSku(?string $fn_sku) : self
+    public function setFnSku(?string $fn_sku): self
     {
         $this->container['fn_sku'] = $fn_sku;
 
@@ -275,7 +278,7 @@ class FeatureSku implements \ArrayAccess, \JsonSerializable, ModelInterface, \St
     /**
      * Gets asin.
      */
-    public function getAsin() : ?string
+    public function getAsin(): ?string
     {
         return $this->container['asin'];
     }
@@ -285,7 +288,7 @@ class FeatureSku implements \ArrayAccess, \JsonSerializable, ModelInterface, \St
      *
      * @param null|string $asin the Amazon Standard Identification Number (ASIN) of the item
      */
-    public function setAsin(?string $asin) : self
+    public function setAsin(?string $asin): self
     {
         $this->container['asin'] = $asin;
 
@@ -295,7 +298,7 @@ class FeatureSku implements \ArrayAccess, \JsonSerializable, ModelInterface, \St
     /**
      * Gets sku_count.
      */
-    public function getSkuCount() : ?float
+    public function getSkuCount(): ?float
     {
         return $this->container['sku_count'];
     }
@@ -305,7 +308,7 @@ class FeatureSku implements \ArrayAccess, \JsonSerializable, ModelInterface, \St
      *
      * @param null|float $sku_count the number of SKUs available for this service
      */
-    public function setSkuCount(?float $sku_count) : self
+    public function setSkuCount(?float $sku_count): self
     {
         $this->container['sku_count'] = $sku_count;
 
@@ -317,7 +320,7 @@ class FeatureSku implements \ArrayAccess, \JsonSerializable, ModelInterface, \St
      *
      * @return null|string[]
      */
-    public function getOverlappingSkus() : ?array
+    public function getOverlappingSkus(): ?array
     {
         return $this->container['overlapping_skus'];
     }
@@ -327,7 +330,7 @@ class FeatureSku implements \ArrayAccess, \JsonSerializable, ModelInterface, \St
      *
      * @param null|string[] $overlapping_skus other seller SKUs that are shared across the same inventory
      */
-    public function setOverlappingSkus(?array $overlapping_skus) : self
+    public function setOverlappingSkus(?array $overlapping_skus): self
     {
         $this->container['overlapping_skus'] = $overlapping_skus;
 
@@ -339,7 +342,7 @@ class FeatureSku implements \ArrayAccess, \JsonSerializable, ModelInterface, \St
      *
      * @param int $offset Offset
      */
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -362,7 +365,7 @@ class FeatureSku implements \ArrayAccess, \JsonSerializable, ModelInterface, \St
      * @param null|int $offset Offset
      * @param mixed $value Value to be set
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         if (null === $offset) {
             $this->container[] = $value;
@@ -376,7 +379,7 @@ class FeatureSku implements \ArrayAccess, \JsonSerializable, ModelInterface, \St
      *
      * @param int $offset Offset
      */
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -389,7 +392,7 @@ class FeatureSku implements \ArrayAccess, \JsonSerializable, ModelInterface, \St
      * @return mixed returns data which can be serialized by json_encode(), which is a value
      *               of any type other than a resource
      */
-    public function jsonSerialize() : string
+    public function jsonSerialize(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }
@@ -397,7 +400,7 @@ class FeatureSku implements \ArrayAccess, \JsonSerializable, ModelInterface, \St
     /**
      * Gets a header-safe presentation of the object.
      */
-    public function toHeaderValue() : string
+    public function toHeaderValue(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }

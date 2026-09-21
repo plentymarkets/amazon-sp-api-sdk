@@ -179,7 +179,7 @@ class HourMinute implements ModelInterface, ArrayAccess, \JsonSerializable, \Str
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['hour'] = $data['hour'] ?? null;
         $this->container['minute'] = $data['minute'] ?? null;

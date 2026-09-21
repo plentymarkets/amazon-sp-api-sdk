@@ -1,4 +1,7 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
+
 /**
  * CreateSubscriptionRequest.
  *
@@ -122,7 +125,7 @@ class CreateSubscriptionRequest implements \ArrayAccess, \JsonSerializable, Mode
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['payload_version'] = $data['payload_version'] ?? null;
         $this->container['destination_id'] = $data['destination_id'] ?? null;
@@ -134,7 +137,7 @@ class CreateSubscriptionRequest implements \ArrayAccess, \JsonSerializable, Mode
      *
      * @return string[]
      */
-    public static function openAPITypes() : array
+    public static function openAPITypes(): array
     {
         return self::$openAPITypes;
     }
@@ -144,7 +147,7 @@ class CreateSubscriptionRequest implements \ArrayAccess, \JsonSerializable, Mode
      *
      * @return null[]|string[]
      */
-    public static function openAPIFormats() : array
+    public static function openAPIFormats(): array
     {
         return self::$openAPIFormats;
     }
@@ -155,7 +158,7 @@ class CreateSubscriptionRequest implements \ArrayAccess, \JsonSerializable, Mode
      *
      * @return string[]
      */
-    public static function attributeMap() : array
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -165,7 +168,7 @@ class CreateSubscriptionRequest implements \ArrayAccess, \JsonSerializable, Mode
      *
      * @return string[]
      */
-    public static function setters() : array
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -175,7 +178,7 @@ class CreateSubscriptionRequest implements \ArrayAccess, \JsonSerializable, Mode
      *
      * @return string[]
      */
-    public static function getters() : array
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -183,7 +186,7 @@ class CreateSubscriptionRequest implements \ArrayAccess, \JsonSerializable, Mode
     /**
      * Gets the string presentation of the object.
      */
-    public function __toString() : string
+    public function __toString(): string
     {
         return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
@@ -194,7 +197,7 @@ class CreateSubscriptionRequest implements \ArrayAccess, \JsonSerializable, Mode
     /**
      * The original name of the model.
      */
-    public function getModelName() : string
+    public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
@@ -204,7 +207,7 @@ class CreateSubscriptionRequest implements \ArrayAccess, \JsonSerializable, Mode
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties() : array
+    public function listInvalidProperties(): array
     {
         return [];
     }
@@ -215,7 +218,7 @@ class CreateSubscriptionRequest implements \ArrayAccess, \JsonSerializable, Mode
      *
      * @return bool True if all properties are valid
      */
-    public function valid() : bool
+    public function valid(): bool
     {
         return \count($this->listInvalidProperties()) === 0;
     }
@@ -223,7 +226,7 @@ class CreateSubscriptionRequest implements \ArrayAccess, \JsonSerializable, Mode
     /**
      * Gets payload_version.
      */
-    public function getPayloadVersion() : ?string
+    public function getPayloadVersion(): ?string
     {
         return $this->container['payload_version'];
     }
@@ -233,7 +236,7 @@ class CreateSubscriptionRequest implements \ArrayAccess, \JsonSerializable, Mode
      *
      * @param null|string $payload_version the version of the payload object to be used in the notification
      */
-    public function setPayloadVersion(?string $payload_version) : self
+    public function setPayloadVersion(?string $payload_version): self
     {
         $this->container['payload_version'] = $payload_version;
 
@@ -243,7 +246,7 @@ class CreateSubscriptionRequest implements \ArrayAccess, \JsonSerializable, Mode
     /**
      * Gets destination_id.
      */
-    public function getDestinationId() : ?string
+    public function getDestinationId(): ?string
     {
         return $this->container['destination_id'];
     }
@@ -253,7 +256,7 @@ class CreateSubscriptionRequest implements \ArrayAccess, \JsonSerializable, Mode
      *
      * @param null|string $destination_id the identifier for the destination where notifications will be delivered
      */
-    public function setDestinationId(?string $destination_id) : self
+    public function setDestinationId(?string $destination_id): self
     {
         $this->container['destination_id'] = $destination_id;
 
@@ -263,7 +266,7 @@ class CreateSubscriptionRequest implements \ArrayAccess, \JsonSerializable, Mode
     /**
      * Gets processing_directive.
      */
-    public function getProcessingDirective() : ?ProcessingDirective
+    public function getProcessingDirective(): ?ProcessingDirective
     {
         return $this->container['processing_directive'];
     }
@@ -273,7 +276,7 @@ class CreateSubscriptionRequest implements \ArrayAccess, \JsonSerializable, Mode
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\Notifications\ProcessingDirective $processing_directive processing_directive
      */
-    public function setProcessingDirective(?ProcessingDirective $processing_directive) : self
+    public function setProcessingDirective(?ProcessingDirective $processing_directive): self
     {
         $this->container['processing_directive'] = $processing_directive;
 
@@ -285,7 +288,7 @@ class CreateSubscriptionRequest implements \ArrayAccess, \JsonSerializable, Mode
      *
      * @param int $offset Offset
      */
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -308,7 +311,7 @@ class CreateSubscriptionRequest implements \ArrayAccess, \JsonSerializable, Mode
      * @param null|int $offset Offset
      * @param mixed $value Value to be set
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         if (null === $offset) {
             $this->container[] = $value;
@@ -322,7 +325,7 @@ class CreateSubscriptionRequest implements \ArrayAccess, \JsonSerializable, Mode
      *
      * @param int $offset Offset
      */
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -335,7 +338,7 @@ class CreateSubscriptionRequest implements \ArrayAccess, \JsonSerializable, Mode
      * @return mixed returns data which can be serialized by json_encode(), which is a value
      *               of any type other than a resource
      */
-    public function jsonSerialize() : string
+    public function jsonSerialize(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }
@@ -343,7 +346,7 @@ class CreateSubscriptionRequest implements \ArrayAccess, \JsonSerializable, Mode
     /**
      * Gets a header-safe presentation of the object.
      */
-    public function toHeaderValue() : string
+    public function toHeaderValue(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }

@@ -1,4 +1,7 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
+
 /**
  * ListingsItemPutRequest.
  *
@@ -128,7 +131,7 @@ class ListingsItemPutRequest implements \ArrayAccess, \JsonSerializable, ModelIn
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['product_type'] = $data['product_type'] ?? null;
         $this->container['requirements'] = $data['requirements'] ?? null;
@@ -140,7 +143,7 @@ class ListingsItemPutRequest implements \ArrayAccess, \JsonSerializable, ModelIn
      *
      * @return string[]
      */
-    public static function openAPITypes() : array
+    public static function openAPITypes(): array
     {
         return self::$openAPITypes;
     }
@@ -150,7 +153,7 @@ class ListingsItemPutRequest implements \ArrayAccess, \JsonSerializable, ModelIn
      *
      * @return null[]|string[]
      */
-    public static function openAPIFormats() : array
+    public static function openAPIFormats(): array
     {
         return self::$openAPIFormats;
     }
@@ -161,7 +164,7 @@ class ListingsItemPutRequest implements \ArrayAccess, \JsonSerializable, ModelIn
      *
      * @return string[]
      */
-    public static function attributeMap() : array
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -171,7 +174,7 @@ class ListingsItemPutRequest implements \ArrayAccess, \JsonSerializable, ModelIn
      *
      * @return string[]
      */
-    public static function setters() : array
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -181,7 +184,7 @@ class ListingsItemPutRequest implements \ArrayAccess, \JsonSerializable, ModelIn
      *
      * @return string[]
      */
-    public static function getters() : array
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -189,7 +192,7 @@ class ListingsItemPutRequest implements \ArrayAccess, \JsonSerializable, ModelIn
     /**
      * Gets the string presentation of the object.
      */
-    public function __toString() : string
+    public function __toString(): string
     {
         return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
@@ -200,7 +203,7 @@ class ListingsItemPutRequest implements \ArrayAccess, \JsonSerializable, ModelIn
     /**
      * The original name of the model.
      */
-    public function getModelName() : string
+    public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
@@ -210,7 +213,7 @@ class ListingsItemPutRequest implements \ArrayAccess, \JsonSerializable, ModelIn
      *
      * @return string[]
      */
-    public function getRequirementsAllowableValues() : array
+    public function getRequirementsAllowableValues(): array
     {
         return [
             self::REQUIREMENTS_LISTING,
@@ -224,7 +227,7 @@ class ListingsItemPutRequest implements \ArrayAccess, \JsonSerializable, ModelIn
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties() : array
+    public function listInvalidProperties(): array
     {
         $invalidProperties = [];
 
@@ -254,7 +257,7 @@ class ListingsItemPutRequest implements \ArrayAccess, \JsonSerializable, ModelIn
      *
      * @return bool True if all properties are valid
      */
-    public function valid() : bool
+    public function valid(): bool
     {
         return \count($this->listInvalidProperties()) === 0;
     }
@@ -262,7 +265,7 @@ class ListingsItemPutRequest implements \ArrayAccess, \JsonSerializable, ModelIn
     /**
      * Gets product_type.
      */
-    public function getProductType() : string
+    public function getProductType(): string
     {
         return $this->container['product_type'];
     }
@@ -272,7 +275,7 @@ class ListingsItemPutRequest implements \ArrayAccess, \JsonSerializable, ModelIn
      *
      * @param string $product_type the Amazon product type of the listings item
      */
-    public function setProductType(string $product_type) : self
+    public function setProductType(string $product_type): self
     {
         $this->container['product_type'] = $product_type;
 
@@ -282,7 +285,7 @@ class ListingsItemPutRequest implements \ArrayAccess, \JsonSerializable, ModelIn
     /**
      * Gets requirements.
      */
-    public function getRequirements() : ?string
+    public function getRequirements(): ?string
     {
         return $this->container['requirements'];
     }
@@ -292,7 +295,7 @@ class ListingsItemPutRequest implements \ArrayAccess, \JsonSerializable, ModelIn
      *
      * @param null|string $requirements the name of the requirements set for the provided data
      */
-    public function setRequirements(?string $requirements) : self
+    public function setRequirements(?string $requirements): self
     {
         $allowedValues = $this->getRequirementsAllowableValues();
 
@@ -313,7 +316,7 @@ class ListingsItemPutRequest implements \ArrayAccess, \JsonSerializable, ModelIn
     /**
      * Gets attributes.
      */
-    public function getAttributes() : object
+    public function getAttributes(): object
     {
         return $this->container['attributes'];
     }
@@ -323,7 +326,7 @@ class ListingsItemPutRequest implements \ArrayAccess, \JsonSerializable, ModelIn
      *
      * @param object $attributes JSON object containing structured listings item attribute data keyed by attribute name
      */
-    public function setAttributes(object $attributes) : self
+    public function setAttributes(object $attributes): self
     {
         $this->container['attributes'] = $attributes;
 
@@ -335,7 +338,7 @@ class ListingsItemPutRequest implements \ArrayAccess, \JsonSerializable, ModelIn
      *
      * @param int $offset Offset
      */
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -358,7 +361,7 @@ class ListingsItemPutRequest implements \ArrayAccess, \JsonSerializable, ModelIn
      * @param null|int $offset Offset
      * @param mixed $value Value to be set
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         if (null === $offset) {
             $this->container[] = $value;
@@ -372,7 +375,7 @@ class ListingsItemPutRequest implements \ArrayAccess, \JsonSerializable, ModelIn
      *
      * @param int $offset Offset
      */
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -385,7 +388,7 @@ class ListingsItemPutRequest implements \ArrayAccess, \JsonSerializable, ModelIn
      * @return mixed returns data which can be serialized by json_encode(), which is a value
      *               of any type other than a resource
      */
-    public function jsonSerialize() : string
+    public function jsonSerialize(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }
@@ -393,7 +396,7 @@ class ListingsItemPutRequest implements \ArrayAccess, \JsonSerializable, ModelIn
     /**
      * Gets a header-safe presentation of the object.
      */
-    public function toHeaderValue() : string
+    public function toHeaderValue(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }

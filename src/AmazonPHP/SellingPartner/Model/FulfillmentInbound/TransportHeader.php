@@ -1,4 +1,7 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
+
 /**
  * TransportHeader.
  *
@@ -127,7 +130,7 @@ class TransportHeader implements \ArrayAccess, \JsonSerializable, ModelInterface
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['seller_id'] = $data['seller_id'] ?? null;
         $this->container['shipment_id'] = $data['shipment_id'] ?? null;
@@ -140,7 +143,7 @@ class TransportHeader implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return string[]
      */
-    public static function openAPITypes() : array
+    public static function openAPITypes(): array
     {
         return self::$openAPITypes;
     }
@@ -150,7 +153,7 @@ class TransportHeader implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return null[]|string[]
      */
-    public static function openAPIFormats() : array
+    public static function openAPIFormats(): array
     {
         return self::$openAPIFormats;
     }
@@ -161,7 +164,7 @@ class TransportHeader implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return string[]
      */
-    public static function attributeMap() : array
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -171,7 +174,7 @@ class TransportHeader implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return string[]
      */
-    public static function setters() : array
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -181,7 +184,7 @@ class TransportHeader implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return string[]
      */
-    public static function getters() : array
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -189,7 +192,7 @@ class TransportHeader implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets the string presentation of the object.
      */
-    public function __toString() : string
+    public function __toString(): string
     {
         return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
@@ -200,7 +203,7 @@ class TransportHeader implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * The original name of the model.
      */
-    public function getModelName() : string
+    public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
@@ -210,7 +213,7 @@ class TransportHeader implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties() : array
+    public function listInvalidProperties(): array
     {
         $invalidProperties = [];
 
@@ -239,7 +242,7 @@ class TransportHeader implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return bool True if all properties are valid
      */
-    public function valid() : bool
+    public function valid(): bool
     {
         return \count($this->listInvalidProperties()) === 0;
     }
@@ -247,7 +250,7 @@ class TransportHeader implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets seller_id.
      */
-    public function getSellerId() : string
+    public function getSellerId(): string
     {
         return $this->container['seller_id'];
     }
@@ -257,7 +260,7 @@ class TransportHeader implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param string $seller_id the Amazon seller identifier
      */
-    public function setSellerId(string $seller_id) : self
+    public function setSellerId(string $seller_id): self
     {
         $this->container['seller_id'] = $seller_id;
 
@@ -267,7 +270,7 @@ class TransportHeader implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets shipment_id.
      */
-    public function getShipmentId() : string
+    public function getShipmentId(): string
     {
         return $this->container['shipment_id'];
     }
@@ -277,7 +280,7 @@ class TransportHeader implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param string $shipment_id a shipment identifier originally returned by the createInboundShipmentPlan operation
      */
-    public function setShipmentId(string $shipment_id) : self
+    public function setShipmentId(string $shipment_id): self
     {
         $this->container['shipment_id'] = $shipment_id;
 
@@ -287,7 +290,7 @@ class TransportHeader implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets is_partnered.
      */
-    public function getIsPartnered() : ?bool
+    public function getIsPartnered(): ?bool
     {
         return $this->container['is_partnered'];
     }
@@ -297,7 +300,7 @@ class TransportHeader implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param bool $is_partnered Indicates whether a putTransportDetails request is for a partnered carrier.  Possible values:  * true – Request is for an Amazon-partnered carrier.  * false – Request is for a non-Amazon-partnered carrier.
      */
-    public function setIsPartnered(bool $is_partnered) : self
+    public function setIsPartnered(bool $is_partnered): self
     {
         $this->container['is_partnered'] = $is_partnered;
 
@@ -307,7 +310,7 @@ class TransportHeader implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets shipment_type.
      */
-    public function getShipmentType() : ShipmentType
+    public function getShipmentType(): ShipmentType
     {
         return $this->container['shipment_type'];
     }
@@ -317,7 +320,7 @@ class TransportHeader implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound\ShipmentType $shipment_type shipment_type
      */
-    public function setShipmentType(ShipmentType $shipment_type) : self
+    public function setShipmentType(ShipmentType $shipment_type): self
     {
         $this->container['shipment_type'] = $shipment_type;
 
@@ -329,7 +332,7 @@ class TransportHeader implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param int $offset Offset
      */
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -352,7 +355,7 @@ class TransportHeader implements \ArrayAccess, \JsonSerializable, ModelInterface
      * @param null|int $offset Offset
      * @param mixed $value Value to be set
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         if (null === $offset) {
             $this->container[] = $value;
@@ -366,7 +369,7 @@ class TransportHeader implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param int $offset Offset
      */
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -379,7 +382,7 @@ class TransportHeader implements \ArrayAccess, \JsonSerializable, ModelInterface
      * @return mixed returns data which can be serialized by json_encode(), which is a value
      *               of any type other than a resource
      */
-    public function jsonSerialize() : string
+    public function jsonSerialize(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }
@@ -387,7 +390,7 @@ class TransportHeader implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets a header-safe presentation of the object.
      */
-    public function toHeaderValue() : string
+    public function toHeaderValue(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }

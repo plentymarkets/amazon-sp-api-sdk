@@ -135,7 +135,7 @@ class Box implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInterfac
      * @param null|mixed[] $data Associated array of property values
      *                           initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['box_id'] = $data['box_id'] ?? null;
         $this->container['content_information_source'] = $data['content_information_source'] ?? null;
@@ -151,7 +151,7 @@ class Box implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInterfac
     /**
      * Array of property to type mappings. Used for (de)serialization.
      */
-    public static function openAPITypes() : array
+    public static function openAPITypes(): array
     {
         return self::$openAPITypes;
     }
@@ -159,7 +159,7 @@ class Box implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInterfac
     /**
      * Array of property to format mappings. Used for (de)serialization.
      */
-    public static function openAPIFormats() : array
+    public static function openAPIFormats(): array
     {
         return self::$openAPIFormats;
     }
@@ -168,7 +168,7 @@ class Box implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInterfac
      * Array of attributes where the key is the local name,
      * and the value is the original name.
      */
-    public static function attributeMap() : array
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -176,7 +176,7 @@ class Box implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInterfac
     /**
      * Array of attributes to setter functions (for deserialization of responses).
      */
-    public static function setters() : array
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -184,7 +184,7 @@ class Box implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInterfac
     /**
      * Array of attributes to getter functions (for serialization of requests).
      */
-    public static function getters() : array
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -192,7 +192,7 @@ class Box implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInterfac
     /**
      * Gets the string presentation of the object.
      */
-    public function __toString() : string
+    public function __toString(): string
     {
         return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
@@ -203,7 +203,7 @@ class Box implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInterfac
     /**
      * The original name of the model.
      */
-    public function getModelName() : string
+    public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
@@ -213,10 +213,10 @@ class Box implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInterfac
      *
      * @throws AssertionException
      */
-    public function listInvalidProperties() : array
+    public function listInvalidProperties(): array
     {
         $invalidProperties = [];
-         
+
         if (null !== $this->container['box_id'] && (\mb_strlen((string) $this->container['box_id']) > 1024)) {
             $invalidProperties[] = "invalid value for 'box_id', the character length must be smaller than or equal to 1024.";
         }
@@ -278,7 +278,7 @@ class Box implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInterfac
      *
      * @return bool True if all properties are valid
      */
-    public function valid() : bool
+    public function valid(): bool
     {
         return \count($this->listInvalidProperties()) === 0;
     }
@@ -286,7 +286,7 @@ class Box implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInterfac
     /**
      * Gets box_id.
      */
-    public function getBoxId() : ?string
+    public function getBoxId(): ?string
     {
         return $this->container['box_id'];
     }
@@ -296,7 +296,7 @@ class Box implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInterfac
      *
      * @param null|string $box_id The ID provided by Amazon that identifies a given box. This ID is comprised of the external shipment ID (which is generated after transportation has been confirmed) and the index of the box.
      */
-    public function setBoxId(?string $box_id) : self
+    public function setBoxId(?string $box_id): self
     {
         $this->container['box_id'] = $box_id;
 
@@ -306,7 +306,7 @@ class Box implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInterfac
     /**
      * Gets content_information_source.
      */
-    public function getContentInformationSource() : ?string
+    public function getContentInformationSource(): ?string
     {
         return $this->container['content_information_source'];
     }
@@ -316,7 +316,7 @@ class Box implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInterfac
      *
      * @param null|string $content_information_source content_information_source
      */
-    public function setContentInformationSource(?string $content_information_source) : self
+    public function setContentInformationSource(?string $content_information_source): self
     {
         $this->container['content_information_source'] = $content_information_source;
 
@@ -326,7 +326,7 @@ class Box implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInterfac
     /**
      * Gets destination_region.
      */
-    public function getDestinationRegion() : ?Region
+    public function getDestinationRegion(): ?Region
     {
         return $this->container['destination_region'];
     }
@@ -336,7 +336,7 @@ class Box implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInterfac
      *
      * @param null|Region $destination_region destination_region
      */
-    public function setDestinationRegion(?Region $destination_region) : self
+    public function setDestinationRegion(?Region $destination_region): self
     {
         $this->container['destination_region'] = $destination_region;
 
@@ -346,7 +346,7 @@ class Box implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInterfac
     /**
      * Gets dimensions.
      */
-    public function getDimensions() : ?Dimensions
+    public function getDimensions(): ?Dimensions
     {
         return $this->container['dimensions'];
     }
@@ -356,7 +356,7 @@ class Box implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInterfac
      *
      * @param null|Dimensions $dimensions dimensions
      */
-    public function setDimensions(?Dimensions $dimensions) : self
+    public function setDimensions(?Dimensions $dimensions): self
     {
         $this->container['dimensions'] = $dimensions;
 
@@ -368,7 +368,7 @@ class Box implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInterfac
      *
      * @return null|Item[]
      */
-    public function getItems() : ?array
+    public function getItems(): ?array
     {
         return $this->container['items'];
     }
@@ -378,7 +378,7 @@ class Box implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInterfac
      *
      * @param null|Item[] $items items contained within the box
      */
-    public function setItems(?array $items) : self
+    public function setItems(?array $items): self
     {
         $this->container['items'] = $items;
 
@@ -388,7 +388,7 @@ class Box implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInterfac
     /**
      * Gets package_id.
      */
-    public function getPackageId() : string
+    public function getPackageId(): string
     {
         return $this->container['package_id'];
     }
@@ -398,7 +398,7 @@ class Box implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInterfac
      *
      * @param string $package_id primary key to uniquely identify a Package (Box or Pallet)
      */
-    public function setPackageId(string $package_id) : self
+    public function setPackageId(string $package_id): self
     {
         $this->container['package_id'] = $package_id;
 
@@ -408,7 +408,7 @@ class Box implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInterfac
     /**
      * Gets quantity.
      */
-    public function getQuantity() : ?int
+    public function getQuantity(): ?int
     {
         return $this->container['quantity'];
     }
@@ -418,7 +418,7 @@ class Box implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInterfac
      *
      * @param null|int $quantity the number of containers where all other properties like weight or dimensions are identical
      */
-    public function setQuantity(?int $quantity) : self
+    public function setQuantity(?int $quantity): self
     {
         $this->container['quantity'] = $quantity;
 
@@ -428,7 +428,7 @@ class Box implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInterfac
     /**
      * Gets template_name.
      */
-    public function getTemplateName() : ?string
+    public function getTemplateName(): ?string
     {
         return $this->container['template_name'];
     }
@@ -438,7 +438,7 @@ class Box implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInterfac
      *
      * @param null|string $template_name template name of the box
      */
-    public function setTemplateName(?string $template_name) : self
+    public function setTemplateName(?string $template_name): self
     {
         $this->container['template_name'] = $template_name;
 
@@ -448,7 +448,7 @@ class Box implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInterfac
     /**
      * Gets weight.
      */
-    public function getWeight() : ?Weight
+    public function getWeight(): ?Weight
     {
         return $this->container['weight'];
     }
@@ -458,7 +458,7 @@ class Box implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInterfac
      *
      * @param null|Weight $weight weight
      */
-    public function setWeight(?Weight $weight) : self
+    public function setWeight(?Weight $weight): self
     {
         $this->container['weight'] = $weight;
 
@@ -468,7 +468,7 @@ class Box implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInterfac
     /**
      * Returns true if offset exists. False otherwise.
      */
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -479,7 +479,7 @@ class Box implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInterfac
      * @return null|mixed
      */
     #[\ReturnTypeWillChange]
-    public function offsetGet($offset) : mixed
+    public function offsetGet($offset): mixed
     {
         return $this->container[$offset] ?? null;
     }
@@ -487,7 +487,7 @@ class Box implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInterfac
     /**
      * Sets value based on offset.
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         if (null === $offset) {
             $this->container[] = $value;
@@ -499,7 +499,7 @@ class Box implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInterfac
     /**
      * Unsets offset.
      */
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -513,7 +513,7 @@ class Box implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInterfac
      *               of any type other than a resource
      */
     #[\ReturnTypeWillChange]
-    public function jsonSerialize() : string
+    public function jsonSerialize(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }
@@ -521,7 +521,7 @@ class Box implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInterfac
     /**
      * Gets a header-safe presentation of the object.
      */
-    public function toHeaderValue() : string
+    public function toHeaderValue(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }

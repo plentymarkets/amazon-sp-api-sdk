@@ -1,4 +1,7 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
+
 /**
  * ItemDetails.
  *
@@ -140,7 +143,7 @@ class ItemDetails implements \ArrayAccess, \JsonSerializable, ModelInterface, \S
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['purchase_order_number'] = $data['purchase_order_number'] ?? null;
         $this->container['lot_number'] = $data['lot_number'] ?? null;
@@ -154,7 +157,7 @@ class ItemDetails implements \ArrayAccess, \JsonSerializable, ModelInterface, \S
      *
      * @return string[]
      */
-    public static function openAPITypes() : array
+    public static function openAPITypes(): array
     {
         return self::$openAPITypes;
     }
@@ -164,7 +167,7 @@ class ItemDetails implements \ArrayAccess, \JsonSerializable, ModelInterface, \S
      *
      * @return null[]|string[]
      */
-    public static function openAPIFormats() : array
+    public static function openAPIFormats(): array
     {
         return self::$openAPIFormats;
     }
@@ -175,7 +178,7 @@ class ItemDetails implements \ArrayAccess, \JsonSerializable, ModelInterface, \S
      *
      * @return string[]
      */
-    public static function attributeMap() : array
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -185,7 +188,7 @@ class ItemDetails implements \ArrayAccess, \JsonSerializable, ModelInterface, \S
      *
      * @return string[]
      */
-    public static function setters() : array
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -195,7 +198,7 @@ class ItemDetails implements \ArrayAccess, \JsonSerializable, ModelInterface, \S
      *
      * @return string[]
      */
-    public static function getters() : array
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -203,7 +206,7 @@ class ItemDetails implements \ArrayAccess, \JsonSerializable, ModelInterface, \S
     /**
      * Gets the string presentation of the object.
      */
-    public function __toString() : string
+    public function __toString(): string
     {
         return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
@@ -214,7 +217,7 @@ class ItemDetails implements \ArrayAccess, \JsonSerializable, ModelInterface, \S
     /**
      * The original name of the model.
      */
-    public function getModelName() : string
+    public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
@@ -224,7 +227,7 @@ class ItemDetails implements \ArrayAccess, \JsonSerializable, ModelInterface, \S
      *
      * @return string[]
      */
-    public function getHandlingCodeAllowableValues() : array
+    public function getHandlingCodeAllowableValues(): array
     {
         return [
             self::HANDLING_CODE_OVERSIZED,
@@ -239,7 +242,7 @@ class ItemDetails implements \ArrayAccess, \JsonSerializable, ModelInterface, \S
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties() : array
+    public function listInvalidProperties(): array
     {
         $invalidProperties = [];
 
@@ -262,7 +265,7 @@ class ItemDetails implements \ArrayAccess, \JsonSerializable, ModelInterface, \S
      *
      * @return bool True if all properties are valid
      */
-    public function valid() : bool
+    public function valid(): bool
     {
         return \count($this->listInvalidProperties()) === 0;
     }
@@ -270,7 +273,7 @@ class ItemDetails implements \ArrayAccess, \JsonSerializable, ModelInterface, \S
     /**
      * Gets purchase_order_number.
      */
-    public function getPurchaseOrderNumber() : ?string
+    public function getPurchaseOrderNumber(): ?string
     {
         return $this->container['purchase_order_number'];
     }
@@ -280,7 +283,7 @@ class ItemDetails implements \ArrayAccess, \JsonSerializable, ModelInterface, \S
      *
      * @param null|string $purchase_order_number The Amazon purchase order number for the shipment being confirmed. If the items in this shipment belong to multiple purchase order numbers that are in particular carton or pallet within the shipment, then provide the purchaseOrderNumber at the appropriate carton or pallet level. Formatting Notes: 8-character alpha-numeric code.
      */
-    public function setPurchaseOrderNumber(?string $purchase_order_number) : self
+    public function setPurchaseOrderNumber(?string $purchase_order_number): self
     {
         $this->container['purchase_order_number'] = $purchase_order_number;
 
@@ -290,7 +293,7 @@ class ItemDetails implements \ArrayAccess, \JsonSerializable, ModelInterface, \S
     /**
      * Gets lot_number.
      */
-    public function getLotNumber() : ?string
+    public function getLotNumber(): ?string
     {
         return $this->container['lot_number'];
     }
@@ -300,7 +303,7 @@ class ItemDetails implements \ArrayAccess, \JsonSerializable, ModelInterface, \S
      *
      * @param null|string $lot_number The batch or lot number associates an item with information the manufacturer considers relevant for traceability of the trade item to which the Element String is applied. The data may refer to the trade item itself or to items contained. This field is mandatory for all perishable items.
      */
-    public function setLotNumber(?string $lot_number) : self
+    public function setLotNumber(?string $lot_number): self
     {
         $this->container['lot_number'] = $lot_number;
 
@@ -310,7 +313,7 @@ class ItemDetails implements \ArrayAccess, \JsonSerializable, ModelInterface, \S
     /**
      * Gets expiry.
      */
-    public function getExpiry() : ?Expiry
+    public function getExpiry(): ?Expiry
     {
         return $this->container['expiry'];
     }
@@ -320,7 +323,7 @@ class ItemDetails implements \ArrayAccess, \JsonSerializable, ModelInterface, \S
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\VendorShipments\Expiry $expiry expiry
      */
-    public function setExpiry(?Expiry $expiry) : self
+    public function setExpiry(?Expiry $expiry): self
     {
         $this->container['expiry'] = $expiry;
 
@@ -330,7 +333,7 @@ class ItemDetails implements \ArrayAccess, \JsonSerializable, ModelInterface, \S
     /**
      * Gets maximum_retail_price.
      */
-    public function getMaximumRetailPrice() : ?Money
+    public function getMaximumRetailPrice(): ?Money
     {
         return $this->container['maximum_retail_price'];
     }
@@ -340,7 +343,7 @@ class ItemDetails implements \ArrayAccess, \JsonSerializable, ModelInterface, \S
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\VendorShipments\Money $maximum_retail_price maximum_retail_price
      */
-    public function setMaximumRetailPrice(?Money $maximum_retail_price) : self
+    public function setMaximumRetailPrice(?Money $maximum_retail_price): self
     {
         $this->container['maximum_retail_price'] = $maximum_retail_price;
 
@@ -350,7 +353,7 @@ class ItemDetails implements \ArrayAccess, \JsonSerializable, ModelInterface, \S
     /**
      * Gets handling_code.
      */
-    public function getHandlingCode() : ?string
+    public function getHandlingCode(): ?string
     {
         return $this->container['handling_code'];
     }
@@ -360,7 +363,7 @@ class ItemDetails implements \ArrayAccess, \JsonSerializable, ModelInterface, \S
      *
      * @param null|string $handling_code identification of the instructions on how specified item/carton/pallet should be handled
      */
-    public function setHandlingCode(?string $handling_code) : self
+    public function setHandlingCode(?string $handling_code): self
     {
         $allowedValues = $this->getHandlingCodeAllowableValues();
 
@@ -383,7 +386,7 @@ class ItemDetails implements \ArrayAccess, \JsonSerializable, ModelInterface, \S
      *
      * @param int $offset Offset
      */
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -406,7 +409,7 @@ class ItemDetails implements \ArrayAccess, \JsonSerializable, ModelInterface, \S
      * @param null|int $offset Offset
      * @param mixed $value Value to be set
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         if (null === $offset) {
             $this->container[] = $value;
@@ -420,7 +423,7 @@ class ItemDetails implements \ArrayAccess, \JsonSerializable, ModelInterface, \S
      *
      * @param int $offset Offset
      */
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -433,7 +436,7 @@ class ItemDetails implements \ArrayAccess, \JsonSerializable, ModelInterface, \S
      * @return mixed returns data which can be serialized by json_encode(), which is a value
      *               of any type other than a resource
      */
-    public function jsonSerialize() : string
+    public function jsonSerialize(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }
@@ -441,7 +444,7 @@ class ItemDetails implements \ArrayAccess, \JsonSerializable, ModelInterface, \S
     /**
      * Gets a header-safe presentation of the object.
      */
-    public function toHeaderValue() : string
+    public function toHeaderValue(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }

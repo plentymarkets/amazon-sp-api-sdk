@@ -1,4 +1,7 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
+
 /**
  * OrderItem.
  *
@@ -157,7 +160,7 @@ class OrderItem implements \ArrayAccess, \JsonSerializable, ModelInterface, \Str
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['item_sequence_number'] = $data['item_sequence_number'] ?? null;
         $this->container['buyer_product_identifier'] = $data['buyer_product_identifier'] ?? null;
@@ -176,7 +179,7 @@ class OrderItem implements \ArrayAccess, \JsonSerializable, ModelInterface, \Str
      *
      * @return string[]
      */
-    public static function openAPITypes() : array
+    public static function openAPITypes(): array
     {
         return self::$openAPITypes;
     }
@@ -186,7 +189,7 @@ class OrderItem implements \ArrayAccess, \JsonSerializable, ModelInterface, \Str
      *
      * @return null[]|string[]
      */
-    public static function openAPIFormats() : array
+    public static function openAPIFormats(): array
     {
         return self::$openAPIFormats;
     }
@@ -197,7 +200,7 @@ class OrderItem implements \ArrayAccess, \JsonSerializable, ModelInterface, \Str
      *
      * @return string[]
      */
-    public static function attributeMap() : array
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -207,7 +210,7 @@ class OrderItem implements \ArrayAccess, \JsonSerializable, ModelInterface, \Str
      *
      * @return string[]
      */
-    public static function setters() : array
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -217,7 +220,7 @@ class OrderItem implements \ArrayAccess, \JsonSerializable, ModelInterface, \Str
      *
      * @return string[]
      */
-    public static function getters() : array
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -225,7 +228,7 @@ class OrderItem implements \ArrayAccess, \JsonSerializable, ModelInterface, \Str
     /**
      * Gets the string presentation of the object.
      */
-    public function __toString() : string
+    public function __toString(): string
     {
         return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
@@ -236,7 +239,7 @@ class OrderItem implements \ArrayAccess, \JsonSerializable, ModelInterface, \Str
     /**
      * The original name of the model.
      */
-    public function getModelName() : string
+    public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
@@ -246,7 +249,7 @@ class OrderItem implements \ArrayAccess, \JsonSerializable, ModelInterface, \Str
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties() : array
+    public function listInvalidProperties(): array
     {
         $invalidProperties = [];
 
@@ -271,7 +274,7 @@ class OrderItem implements \ArrayAccess, \JsonSerializable, ModelInterface, \Str
      *
      * @return bool True if all properties are valid
      */
-    public function valid() : bool
+    public function valid(): bool
     {
         return \count($this->listInvalidProperties()) === 0;
     }
@@ -279,7 +282,7 @@ class OrderItem implements \ArrayAccess, \JsonSerializable, ModelInterface, \Str
     /**
      * Gets item_sequence_number.
      */
-    public function getItemSequenceNumber() : string
+    public function getItemSequenceNumber(): string
     {
         return $this->container['item_sequence_number'];
     }
@@ -289,7 +292,7 @@ class OrderItem implements \ArrayAccess, \JsonSerializable, ModelInterface, \Str
      *
      * @param string $item_sequence_number Numbering of the item on the purchase order. The first item will be 1, the second 2, and so on.
      */
-    public function setItemSequenceNumber(string $item_sequence_number) : self
+    public function setItemSequenceNumber(string $item_sequence_number): self
     {
         $this->container['item_sequence_number'] = $item_sequence_number;
 
@@ -299,7 +302,7 @@ class OrderItem implements \ArrayAccess, \JsonSerializable, ModelInterface, \Str
     /**
      * Gets buyer_product_identifier.
      */
-    public function getBuyerProductIdentifier() : ?string
+    public function getBuyerProductIdentifier(): ?string
     {
         return $this->container['buyer_product_identifier'];
     }
@@ -309,7 +312,7 @@ class OrderItem implements \ArrayAccess, \JsonSerializable, ModelInterface, \Str
      *
      * @param null|string $buyer_product_identifier buyer's standard identification number (ASIN) of an item
      */
-    public function setBuyerProductIdentifier(?string $buyer_product_identifier) : self
+    public function setBuyerProductIdentifier(?string $buyer_product_identifier): self
     {
         $this->container['buyer_product_identifier'] = $buyer_product_identifier;
 
@@ -319,7 +322,7 @@ class OrderItem implements \ArrayAccess, \JsonSerializable, ModelInterface, \Str
     /**
      * Gets vendor_product_identifier.
      */
-    public function getVendorProductIdentifier() : ?string
+    public function getVendorProductIdentifier(): ?string
     {
         return $this->container['vendor_product_identifier'];
     }
@@ -329,7 +332,7 @@ class OrderItem implements \ArrayAccess, \JsonSerializable, ModelInterface, \Str
      *
      * @param null|string $vendor_product_identifier the vendor selected product identification of the item
      */
-    public function setVendorProductIdentifier(?string $vendor_product_identifier) : self
+    public function setVendorProductIdentifier(?string $vendor_product_identifier): self
     {
         $this->container['vendor_product_identifier'] = $vendor_product_identifier;
 
@@ -339,7 +342,7 @@ class OrderItem implements \ArrayAccess, \JsonSerializable, ModelInterface, \Str
     /**
      * Gets title.
      */
-    public function getTitle() : ?string
+    public function getTitle(): ?string
     {
         return $this->container['title'];
     }
@@ -349,7 +352,7 @@ class OrderItem implements \ArrayAccess, \JsonSerializable, ModelInterface, \Str
      *
      * @param null|string $title title for the item
      */
-    public function setTitle(?string $title) : self
+    public function setTitle(?string $title): self
     {
         $this->container['title'] = $title;
 
@@ -359,7 +362,7 @@ class OrderItem implements \ArrayAccess, \JsonSerializable, ModelInterface, \Str
     /**
      * Gets ordered_quantity.
      */
-    public function getOrderedQuantity() : ItemQuantity
+    public function getOrderedQuantity(): ItemQuantity
     {
         return $this->container['ordered_quantity'];
     }
@@ -369,7 +372,7 @@ class OrderItem implements \ArrayAccess, \JsonSerializable, ModelInterface, \Str
      *
      * @param \Plenty\AmazonPHP\SellingPartner\Model\VendorDirectFulfillmentOrders\ItemQuantity $ordered_quantity ordered_quantity
      */
-    public function setOrderedQuantity(ItemQuantity $ordered_quantity) : self
+    public function setOrderedQuantity(ItemQuantity $ordered_quantity): self
     {
         $this->container['ordered_quantity'] = $ordered_quantity;
 
@@ -379,7 +382,7 @@ class OrderItem implements \ArrayAccess, \JsonSerializable, ModelInterface, \Str
     /**
      * Gets scheduled_delivery_shipment.
      */
-    public function getScheduledDeliveryShipment() : ?ScheduledDeliveryShipment
+    public function getScheduledDeliveryShipment(): ?ScheduledDeliveryShipment
     {
         return $this->container['scheduled_delivery_shipment'];
     }
@@ -389,7 +392,7 @@ class OrderItem implements \ArrayAccess, \JsonSerializable, ModelInterface, \Str
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\VendorDirectFulfillmentOrders\ScheduledDeliveryShipment $scheduled_delivery_shipment scheduled_delivery_shipment
      */
-    public function setScheduledDeliveryShipment(?ScheduledDeliveryShipment $scheduled_delivery_shipment) : self
+    public function setScheduledDeliveryShipment(?ScheduledDeliveryShipment $scheduled_delivery_shipment): self
     {
         $this->container['scheduled_delivery_shipment'] = $scheduled_delivery_shipment;
 
@@ -399,7 +402,7 @@ class OrderItem implements \ArrayAccess, \JsonSerializable, ModelInterface, \Str
     /**
      * Gets gift_details.
      */
-    public function getGiftDetails() : ?GiftDetails
+    public function getGiftDetails(): ?GiftDetails
     {
         return $this->container['gift_details'];
     }
@@ -409,7 +412,7 @@ class OrderItem implements \ArrayAccess, \JsonSerializable, ModelInterface, \Str
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\VendorDirectFulfillmentOrders\GiftDetails $gift_details gift_details
      */
-    public function setGiftDetails(?GiftDetails $gift_details) : self
+    public function setGiftDetails(?GiftDetails $gift_details): self
     {
         $this->container['gift_details'] = $gift_details;
 
@@ -419,7 +422,7 @@ class OrderItem implements \ArrayAccess, \JsonSerializable, ModelInterface, \Str
     /**
      * Gets net_price.
      */
-    public function getNetPrice() : Money
+    public function getNetPrice(): Money
     {
         return $this->container['net_price'];
     }
@@ -429,7 +432,7 @@ class OrderItem implements \ArrayAccess, \JsonSerializable, ModelInterface, \Str
      *
      * @param \Plenty\AmazonPHP\SellingPartner\Model\VendorDirectFulfillmentOrders\Money $net_price net_price
      */
-    public function setNetPrice(Money $net_price) : self
+    public function setNetPrice(Money $net_price): self
     {
         $this->container['net_price'] = $net_price;
 
@@ -439,7 +442,7 @@ class OrderItem implements \ArrayAccess, \JsonSerializable, ModelInterface, \Str
     /**
      * Gets tax_details.
      */
-    public function getTaxDetails() : ?TaxItemDetails
+    public function getTaxDetails(): ?TaxItemDetails
     {
         return $this->container['tax_details'];
     }
@@ -449,7 +452,7 @@ class OrderItem implements \ArrayAccess, \JsonSerializable, ModelInterface, \Str
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\VendorDirectFulfillmentOrders\TaxItemDetails $tax_details tax_details
      */
-    public function setTaxDetails(?TaxItemDetails $tax_details) : self
+    public function setTaxDetails(?TaxItemDetails $tax_details): self
     {
         $this->container['tax_details'] = $tax_details;
 
@@ -459,7 +462,7 @@ class OrderItem implements \ArrayAccess, \JsonSerializable, ModelInterface, \Str
     /**
      * Gets total_price.
      */
-    public function getTotalPrice() : ?Money
+    public function getTotalPrice(): ?Money
     {
         return $this->container['total_price'];
     }
@@ -469,7 +472,7 @@ class OrderItem implements \ArrayAccess, \JsonSerializable, ModelInterface, \Str
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\VendorDirectFulfillmentOrders\Money $total_price total_price
      */
-    public function setTotalPrice(?Money $total_price) : self
+    public function setTotalPrice(?Money $total_price): self
     {
         $this->container['total_price'] = $total_price;
 
@@ -481,7 +484,7 @@ class OrderItem implements \ArrayAccess, \JsonSerializable, ModelInterface, \Str
      *
      * @param int $offset Offset
      */
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -504,7 +507,7 @@ class OrderItem implements \ArrayAccess, \JsonSerializable, ModelInterface, \Str
      * @param null|int $offset Offset
      * @param mixed $value Value to be set
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         if (null === $offset) {
             $this->container[] = $value;
@@ -518,7 +521,7 @@ class OrderItem implements \ArrayAccess, \JsonSerializable, ModelInterface, \Str
      *
      * @param int $offset Offset
      */
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -531,7 +534,7 @@ class OrderItem implements \ArrayAccess, \JsonSerializable, ModelInterface, \Str
      * @return mixed returns data which can be serialized by json_encode(), which is a value
      *               of any type other than a resource
      */
-    public function jsonSerialize() : string
+    public function jsonSerialize(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }
@@ -539,7 +542,7 @@ class OrderItem implements \ArrayAccess, \JsonSerializable, ModelInterface, \Str
     /**
      * Gets a header-safe presentation of the object.
      */
-    public function toHeaderValue() : string
+    public function toHeaderValue(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }

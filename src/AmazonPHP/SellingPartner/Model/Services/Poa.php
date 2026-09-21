@@ -1,4 +1,7 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
+
 /**
  * Poa.
  *
@@ -140,7 +143,7 @@ class Poa implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringabl
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['appointment_time'] = $data['appointment_time'] ?? null;
         $this->container['technicians'] = $data['technicians'] ?? null;
@@ -154,7 +157,7 @@ class Poa implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringabl
      *
      * @return string[]
      */
-    public static function openAPITypes() : array
+    public static function openAPITypes(): array
     {
         return self::$openAPITypes;
     }
@@ -164,7 +167,7 @@ class Poa implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringabl
      *
      * @return null[]|string[]
      */
-    public static function openAPIFormats() : array
+    public static function openAPIFormats(): array
     {
         return self::$openAPIFormats;
     }
@@ -175,7 +178,7 @@ class Poa implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringabl
      *
      * @return string[]
      */
-    public static function attributeMap() : array
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -185,7 +188,7 @@ class Poa implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringabl
      *
      * @return string[]
      */
-    public static function setters() : array
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -195,7 +198,7 @@ class Poa implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringabl
      *
      * @return string[]
      */
-    public static function getters() : array
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -203,7 +206,7 @@ class Poa implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringabl
     /**
      * Gets the string presentation of the object.
      */
-    public function __toString() : string
+    public function __toString(): string
     {
         return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
@@ -214,7 +217,7 @@ class Poa implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringabl
     /**
      * The original name of the model.
      */
-    public function getModelName() : string
+    public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
@@ -224,7 +227,7 @@ class Poa implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringabl
      *
      * @return string[]
      */
-    public function getPoaTypeAllowableValues() : array
+    public function getPoaTypeAllowableValues(): array
     {
         return [
             self::POA_TYPE_NO_SIGNATURE_DUMMY_POS,
@@ -239,7 +242,7 @@ class Poa implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringabl
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties() : array
+    public function listInvalidProperties(): array
     {
         $invalidProperties = [];
 
@@ -270,7 +273,7 @@ class Poa implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringabl
      *
      * @return bool True if all properties are valid
      */
-    public function valid() : bool
+    public function valid(): bool
     {
         return \count($this->listInvalidProperties()) === 0;
     }
@@ -278,7 +281,7 @@ class Poa implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringabl
     /**
      * Gets appointment_time.
      */
-    public function getAppointmentTime() : ?AppointmentTime
+    public function getAppointmentTime(): ?AppointmentTime
     {
         return $this->container['appointment_time'];
     }
@@ -288,7 +291,7 @@ class Poa implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringabl
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\Services\AppointmentTime $appointment_time appointment_time
      */
-    public function setAppointmentTime(?AppointmentTime $appointment_time) : self
+    public function setAppointmentTime(?AppointmentTime $appointment_time): self
     {
         $this->container['appointment_time'] = $appointment_time;
 
@@ -300,7 +303,7 @@ class Poa implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringabl
      *
      * @return null|\Plenty\AmazonPHP\SellingPartner\Model\Services\Technician[]
      */
-    public function getTechnicians() : ?array
+    public function getTechnicians(): ?array
     {
         return $this->container['technicians'];
     }
@@ -310,7 +313,7 @@ class Poa implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringabl
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\Services\Technician[] $technicians a list of technicians
      */
-    public function setTechnicians(?array $technicians) : self
+    public function setTechnicians(?array $technicians): self
     {
         if (null !== $technicians && (\count($technicians) < 1)) {
             throw new \InvalidArgumentException('invalid length for $technicians when calling Poa., number of items must be greater than or equal to 1.');
@@ -323,7 +326,7 @@ class Poa implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringabl
     /**
      * Gets uploading_technician.
      */
-    public function getUploadingTechnician() : ?string
+    public function getUploadingTechnician(): ?string
     {
         return $this->container['uploading_technician'];
     }
@@ -333,7 +336,7 @@ class Poa implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringabl
      *
      * @param null|string $uploading_technician the identifier of the technician who uploaded the POA
      */
-    public function setUploadingTechnician(?string $uploading_technician) : self
+    public function setUploadingTechnician(?string $uploading_technician): self
     {
         if (null !== $uploading_technician && (!\preg_match('/^[A-Z0-9]*$/', $uploading_technician))) {
             throw new \InvalidArgumentException("invalid value for {$uploading_technician} when calling Poa., must conform to the pattern /^[A-Z0-9]*$/.");
@@ -349,7 +352,7 @@ class Poa implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringabl
      *
      * @return null|\DateTime|\DateTimeImmutable
      */
-    public function getUploadTime() : ?\DateTimeInterface
+    public function getUploadTime(): ?\DateTimeInterface
     {
         return $this->container['upload_time'];
     }
@@ -359,7 +362,7 @@ class Poa implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringabl
      *
      * @param \DateTime|\DateTimeImmutable $upload_time the date and time when the POA was uploaded, in ISO 8601 format
      */
-    public function setUploadTime(\DateTimeInterface $upload_time) : self
+    public function setUploadTime(\DateTimeInterface $upload_time): self
     {
         $this->container['upload_time'] = $upload_time;
 
@@ -369,7 +372,7 @@ class Poa implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringabl
     /**
      * Gets poa_type.
      */
-    public function getPoaType() : ?string
+    public function getPoaType(): ?string
     {
         return $this->container['poa_type'];
     }
@@ -379,7 +382,7 @@ class Poa implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringabl
      *
      * @param null|string $poa_type the type of POA uploaded
      */
-    public function setPoaType(?string $poa_type) : self
+    public function setPoaType(?string $poa_type): self
     {
         $allowedValues = $this->getPoaTypeAllowableValues();
 
@@ -402,7 +405,7 @@ class Poa implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringabl
      *
      * @param int $offset Offset
      */
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -425,7 +428,7 @@ class Poa implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringabl
      * @param null|int $offset Offset
      * @param mixed $value Value to be set
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         if (null === $offset) {
             $this->container[] = $value;
@@ -439,7 +442,7 @@ class Poa implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringabl
      *
      * @param int $offset Offset
      */
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -452,7 +455,7 @@ class Poa implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringabl
      * @return mixed returns data which can be serialized by json_encode(), which is a value
      *               of any type other than a resource
      */
-    public function jsonSerialize() : string
+    public function jsonSerialize(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }
@@ -460,7 +463,7 @@ class Poa implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringabl
     /**
      * Gets a header-safe presentation of the object.
      */
-    public function toHeaderValue() : string
+    public function toHeaderValue(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }

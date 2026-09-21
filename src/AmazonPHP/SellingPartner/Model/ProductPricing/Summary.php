@@ -1,4 +1,7 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
+
 /**
  * Summary.
  *
@@ -157,7 +160,7 @@ class Summary implements \ArrayAccess, \JsonSerializable, ModelInterface, \Strin
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['total_offer_count'] = $data['total_offer_count'] ?? null;
         $this->container['number_of_offers'] = $data['number_of_offers'] ?? null;
@@ -176,7 +179,7 @@ class Summary implements \ArrayAccess, \JsonSerializable, ModelInterface, \Strin
      *
      * @return string[]
      */
-    public static function openAPITypes() : array
+    public static function openAPITypes(): array
     {
         return self::$openAPITypes;
     }
@@ -186,7 +189,7 @@ class Summary implements \ArrayAccess, \JsonSerializable, ModelInterface, \Strin
      *
      * @return null[]|string[]
      */
-    public static function openAPIFormats() : array
+    public static function openAPIFormats(): array
     {
         return self::$openAPIFormats;
     }
@@ -197,7 +200,7 @@ class Summary implements \ArrayAccess, \JsonSerializable, ModelInterface, \Strin
      *
      * @return string[]
      */
-    public static function attributeMap() : array
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -207,7 +210,7 @@ class Summary implements \ArrayAccess, \JsonSerializable, ModelInterface, \Strin
      *
      * @return string[]
      */
-    public static function setters() : array
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -217,7 +220,7 @@ class Summary implements \ArrayAccess, \JsonSerializable, ModelInterface, \Strin
      *
      * @return string[]
      */
-    public static function getters() : array
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -225,7 +228,7 @@ class Summary implements \ArrayAccess, \JsonSerializable, ModelInterface, \Strin
     /**
      * Gets the string presentation of the object.
      */
-    public function __toString() : string
+    public function __toString(): string
     {
         return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
@@ -236,7 +239,7 @@ class Summary implements \ArrayAccess, \JsonSerializable, ModelInterface, \Strin
     /**
      * The original name of the model.
      */
-    public function getModelName() : string
+    public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
@@ -246,7 +249,7 @@ class Summary implements \ArrayAccess, \JsonSerializable, ModelInterface, \Strin
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties() : array
+    public function listInvalidProperties(): array
     {
         $invalidProperties = [];
 
@@ -263,7 +266,7 @@ class Summary implements \ArrayAccess, \JsonSerializable, ModelInterface, \Strin
      *
      * @return bool True if all properties are valid
      */
-    public function valid() : bool
+    public function valid(): bool
     {
         return \count($this->listInvalidProperties()) === 0;
     }
@@ -271,7 +274,7 @@ class Summary implements \ArrayAccess, \JsonSerializable, ModelInterface, \Strin
     /**
      * Gets total_offer_count.
      */
-    public function getTotalOfferCount() : int
+    public function getTotalOfferCount(): int
     {
         return $this->container['total_offer_count'];
     }
@@ -281,7 +284,7 @@ class Summary implements \ArrayAccess, \JsonSerializable, ModelInterface, \Strin
      *
      * @param int $total_offer_count the number of unique offers contained in NumberOfOffers
      */
-    public function setTotalOfferCount(int $total_offer_count) : self
+    public function setTotalOfferCount(int $total_offer_count): self
     {
         $this->container['total_offer_count'] = $total_offer_count;
 
@@ -293,7 +296,7 @@ class Summary implements \ArrayAccess, \JsonSerializable, ModelInterface, \Strin
      *
      * @return null|\Plenty\AmazonPHP\SellingPartner\Model\ProductPricing\OfferCountType[]
      */
-    public function getNumberOfOffers() : ?array
+    public function getNumberOfOffers(): ?array
     {
         return $this->container['number_of_offers'];
     }
@@ -303,7 +306,7 @@ class Summary implements \ArrayAccess, \JsonSerializable, ModelInterface, \Strin
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\ProductPricing\OfferCountType[] $number_of_offers number_of_offers
      */
-    public function setNumberOfOffers(?array $number_of_offers) : self
+    public function setNumberOfOffers(?array $number_of_offers): self
     {
         $this->container['number_of_offers'] = $number_of_offers;
 
@@ -315,7 +318,7 @@ class Summary implements \ArrayAccess, \JsonSerializable, ModelInterface, \Strin
      *
      * @return null|\Plenty\AmazonPHP\SellingPartner\Model\ProductPricing\LowestPriceType[]
      */
-    public function getLowestPrices() : ?array
+    public function getLowestPrices(): ?array
     {
         return $this->container['lowest_prices'];
     }
@@ -325,7 +328,7 @@ class Summary implements \ArrayAccess, \JsonSerializable, ModelInterface, \Strin
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\ProductPricing\LowestPriceType[] $lowest_prices lowest_prices
      */
-    public function setLowestPrices(?array $lowest_prices) : self
+    public function setLowestPrices(?array $lowest_prices): self
     {
         $this->container['lowest_prices'] = $lowest_prices;
 
@@ -337,7 +340,7 @@ class Summary implements \ArrayAccess, \JsonSerializable, ModelInterface, \Strin
      *
      * @return null|\Plenty\AmazonPHP\SellingPartner\Model\ProductPricing\BuyBoxPriceType[]
      */
-    public function getBuyBoxPrices() : ?array
+    public function getBuyBoxPrices(): ?array
     {
         return $this->container['buy_box_prices'];
     }
@@ -347,7 +350,7 @@ class Summary implements \ArrayAccess, \JsonSerializable, ModelInterface, \Strin
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\ProductPricing\BuyBoxPriceType[] $buy_box_prices buy_box_prices
      */
-    public function setBuyBoxPrices(?array $buy_box_prices) : self
+    public function setBuyBoxPrices(?array $buy_box_prices): self
     {
         $this->container['buy_box_prices'] = $buy_box_prices;
 
@@ -357,7 +360,7 @@ class Summary implements \ArrayAccess, \JsonSerializable, ModelInterface, \Strin
     /**
      * Gets list_price.
      */
-    public function getListPrice() : ?MoneyType
+    public function getListPrice(): ?MoneyType
     {
         return $this->container['list_price'];
     }
@@ -367,7 +370,7 @@ class Summary implements \ArrayAccess, \JsonSerializable, ModelInterface, \Strin
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\ProductPricing\MoneyType $list_price list_price
      */
-    public function setListPrice(?MoneyType $list_price) : self
+    public function setListPrice(?MoneyType $list_price): self
     {
         $this->container['list_price'] = $list_price;
 
@@ -377,7 +380,7 @@ class Summary implements \ArrayAccess, \JsonSerializable, ModelInterface, \Strin
     /**
      * Gets competitive_price_threshold.
      */
-    public function getCompetitivePriceThreshold() : ?MoneyType
+    public function getCompetitivePriceThreshold(): ?MoneyType
     {
         return $this->container['competitive_price_threshold'];
     }
@@ -387,7 +390,7 @@ class Summary implements \ArrayAccess, \JsonSerializable, ModelInterface, \Strin
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\ProductPricing\MoneyType $competitive_price_threshold competitive_price_threshold
      */
-    public function setCompetitivePriceThreshold(?MoneyType $competitive_price_threshold) : self
+    public function setCompetitivePriceThreshold(?MoneyType $competitive_price_threshold): self
     {
         $this->container['competitive_price_threshold'] = $competitive_price_threshold;
 
@@ -397,7 +400,7 @@ class Summary implements \ArrayAccess, \JsonSerializable, ModelInterface, \Strin
     /**
      * Gets suggested_lower_price_plus_shipping.
      */
-    public function getSuggestedLowerPricePlusShipping() : ?MoneyType
+    public function getSuggestedLowerPricePlusShipping(): ?MoneyType
     {
         return $this->container['suggested_lower_price_plus_shipping'];
     }
@@ -407,7 +410,7 @@ class Summary implements \ArrayAccess, \JsonSerializable, ModelInterface, \Strin
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\ProductPricing\MoneyType $suggested_lower_price_plus_shipping suggested_lower_price_plus_shipping
      */
-    public function setSuggestedLowerPricePlusShipping(?MoneyType $suggested_lower_price_plus_shipping) : self
+    public function setSuggestedLowerPricePlusShipping(?MoneyType $suggested_lower_price_plus_shipping): self
     {
         $this->container['suggested_lower_price_plus_shipping'] = $suggested_lower_price_plus_shipping;
 
@@ -419,7 +422,7 @@ class Summary implements \ArrayAccess, \JsonSerializable, ModelInterface, \Strin
      *
      * @return null|\Plenty\AmazonPHP\SellingPartner\Model\ProductPricing\SalesRankType[]
      */
-    public function getSalesRankings() : ?array
+    public function getSalesRankings(): ?array
     {
         return $this->container['sales_rankings'];
     }
@@ -429,7 +432,7 @@ class Summary implements \ArrayAccess, \JsonSerializable, ModelInterface, \Strin
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\ProductPricing\SalesRankType[] $sales_rankings a list of sales rank information for the item, by category
      */
-    public function setSalesRankings(?array $sales_rankings) : self
+    public function setSalesRankings(?array $sales_rankings): self
     {
         $this->container['sales_rankings'] = $sales_rankings;
 
@@ -441,7 +444,7 @@ class Summary implements \ArrayAccess, \JsonSerializable, ModelInterface, \Strin
      *
      * @return null|\Plenty\AmazonPHP\SellingPartner\Model\ProductPricing\OfferCountType[]
      */
-    public function getBuyBoxEligibleOffers() : ?array
+    public function getBuyBoxEligibleOffers(): ?array
     {
         return $this->container['buy_box_eligible_offers'];
     }
@@ -451,7 +454,7 @@ class Summary implements \ArrayAccess, \JsonSerializable, ModelInterface, \Strin
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\ProductPricing\OfferCountType[] $buy_box_eligible_offers buy_box_eligible_offers
      */
-    public function setBuyBoxEligibleOffers(?array $buy_box_eligible_offers) : self
+    public function setBuyBoxEligibleOffers(?array $buy_box_eligible_offers): self
     {
         $this->container['buy_box_eligible_offers'] = $buy_box_eligible_offers;
 
@@ -463,7 +466,7 @@ class Summary implements \ArrayAccess, \JsonSerializable, ModelInterface, \Strin
      *
      * @return null|\DateTime|\DateTimeImmutable
      */
-    public function getOffersAvailableTime() : ?\DateTimeInterface
+    public function getOffersAvailableTime(): ?\DateTimeInterface
     {
         return $this->container['offers_available_time'];
     }
@@ -473,7 +476,7 @@ class Summary implements \ArrayAccess, \JsonSerializable, ModelInterface, \Strin
      *
      * @param \DateTime|\DateTimeImmutable $offers_available_time when the status is ActiveButTooSoonForProcessing, this is the time when the offers will be available for processing
      */
-    public function setOffersAvailableTime(\DateTimeInterface $offers_available_time) : self
+    public function setOffersAvailableTime(\DateTimeInterface $offers_available_time): self
     {
         $this->container['offers_available_time'] = $offers_available_time;
 
@@ -485,7 +488,7 @@ class Summary implements \ArrayAccess, \JsonSerializable, ModelInterface, \Strin
      *
      * @param int $offset Offset
      */
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -508,7 +511,7 @@ class Summary implements \ArrayAccess, \JsonSerializable, ModelInterface, \Strin
      * @param null|int $offset Offset
      * @param mixed $value Value to be set
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         if (null === $offset) {
             $this->container[] = $value;
@@ -522,7 +525,7 @@ class Summary implements \ArrayAccess, \JsonSerializable, ModelInterface, \Strin
      *
      * @param int $offset Offset
      */
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -535,7 +538,7 @@ class Summary implements \ArrayAccess, \JsonSerializable, ModelInterface, \Strin
      * @return mixed returns data which can be serialized by json_encode(), which is a value
      *               of any type other than a resource
      */
-    public function jsonSerialize() : string
+    public function jsonSerialize(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }
@@ -543,7 +546,7 @@ class Summary implements \ArrayAccess, \JsonSerializable, ModelInterface, \Strin
     /**
      * Gets a header-safe presentation of the object.
      */
-    public function toHeaderValue() : string
+    public function toHeaderValue(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }

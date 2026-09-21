@@ -1,4 +1,7 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
+
 /**
  * ShippingServiceOptions.
  *
@@ -132,7 +135,7 @@ class ShippingServiceOptions implements \ArrayAccess, \JsonSerializable, ModelIn
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['delivery_experience'] = $data['delivery_experience'] ?? null;
         $this->container['declared_value'] = $data['declared_value'] ?? null;
@@ -146,7 +149,7 @@ class ShippingServiceOptions implements \ArrayAccess, \JsonSerializable, ModelIn
      *
      * @return string[]
      */
-    public static function openAPITypes() : array
+    public static function openAPITypes(): array
     {
         return self::$openAPITypes;
     }
@@ -156,7 +159,7 @@ class ShippingServiceOptions implements \ArrayAccess, \JsonSerializable, ModelIn
      *
      * @return null[]|string[]
      */
-    public static function openAPIFormats() : array
+    public static function openAPIFormats(): array
     {
         return self::$openAPIFormats;
     }
@@ -167,7 +170,7 @@ class ShippingServiceOptions implements \ArrayAccess, \JsonSerializable, ModelIn
      *
      * @return string[]
      */
-    public static function attributeMap() : array
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -177,7 +180,7 @@ class ShippingServiceOptions implements \ArrayAccess, \JsonSerializable, ModelIn
      *
      * @return string[]
      */
-    public static function setters() : array
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -187,7 +190,7 @@ class ShippingServiceOptions implements \ArrayAccess, \JsonSerializable, ModelIn
      *
      * @return string[]
      */
-    public static function getters() : array
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -195,7 +198,7 @@ class ShippingServiceOptions implements \ArrayAccess, \JsonSerializable, ModelIn
     /**
      * Gets the string presentation of the object.
      */
-    public function __toString() : string
+    public function __toString(): string
     {
         return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
@@ -206,7 +209,7 @@ class ShippingServiceOptions implements \ArrayAccess, \JsonSerializable, ModelIn
     /**
      * The original name of the model.
      */
-    public function getModelName() : string
+    public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
@@ -216,7 +219,7 @@ class ShippingServiceOptions implements \ArrayAccess, \JsonSerializable, ModelIn
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties() : array
+    public function listInvalidProperties(): array
     {
         $invalidProperties = [];
 
@@ -237,7 +240,7 @@ class ShippingServiceOptions implements \ArrayAccess, \JsonSerializable, ModelIn
      *
      * @return bool True if all properties are valid
      */
-    public function valid() : bool
+    public function valid(): bool
     {
         return \count($this->listInvalidProperties()) === 0;
     }
@@ -245,7 +248,7 @@ class ShippingServiceOptions implements \ArrayAccess, \JsonSerializable, ModelIn
     /**
      * Gets delivery_experience.
      */
-    public function getDeliveryExperience() : DeliveryExperienceType
+    public function getDeliveryExperience(): DeliveryExperienceType
     {
         return $this->container['delivery_experience'];
     }
@@ -255,7 +258,7 @@ class ShippingServiceOptions implements \ArrayAccess, \JsonSerializable, ModelIn
      *
      * @param \Plenty\AmazonPHP\SellingPartner\Model\MerchantFulfillment\DeliveryExperienceType $delivery_experience delivery_experience
      */
-    public function setDeliveryExperience(DeliveryExperienceType $delivery_experience) : self
+    public function setDeliveryExperience(DeliveryExperienceType $delivery_experience): self
     {
         $this->container['delivery_experience'] = $delivery_experience;
 
@@ -265,7 +268,7 @@ class ShippingServiceOptions implements \ArrayAccess, \JsonSerializable, ModelIn
     /**
      * Gets declared_value.
      */
-    public function getDeclaredValue() : ?CurrencyAmount
+    public function getDeclaredValue(): ?CurrencyAmount
     {
         return $this->container['declared_value'];
     }
@@ -275,7 +278,7 @@ class ShippingServiceOptions implements \ArrayAccess, \JsonSerializable, ModelIn
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\MerchantFulfillment\CurrencyAmount $declared_value declared_value
      */
-    public function setDeclaredValue(?CurrencyAmount $declared_value) : self
+    public function setDeclaredValue(?CurrencyAmount $declared_value): self
     {
         $this->container['declared_value'] = $declared_value;
 
@@ -285,7 +288,7 @@ class ShippingServiceOptions implements \ArrayAccess, \JsonSerializable, ModelIn
     /**
      * Gets carrier_will_pick_up.
      */
-    public function getCarrierWillPickUp() : bool
+    public function getCarrierWillPickUp(): bool
     {
         return $this->container['carrier_will_pick_up'];
     }
@@ -295,7 +298,7 @@ class ShippingServiceOptions implements \ArrayAccess, \JsonSerializable, ModelIn
      *
      * @param bool $carrier_will_pick_up When true, the carrier will pick up the package.  Note: Scheduled carrier pickup is available only using Dynamex (US), DPD (UK), and Royal Mail (UK).
      */
-    public function setCarrierWillPickUp(bool $carrier_will_pick_up) : self
+    public function setCarrierWillPickUp(bool $carrier_will_pick_up): self
     {
         $this->container['carrier_will_pick_up'] = $carrier_will_pick_up;
 
@@ -305,7 +308,7 @@ class ShippingServiceOptions implements \ArrayAccess, \JsonSerializable, ModelIn
     /**
      * Gets carrier_will_pick_up_option.
      */
-    public function getCarrierWillPickUpOption() : ?CarrierWillPickUpOption
+    public function getCarrierWillPickUpOption(): ?CarrierWillPickUpOption
     {
         return $this->container['carrier_will_pick_up_option'];
     }
@@ -315,7 +318,7 @@ class ShippingServiceOptions implements \ArrayAccess, \JsonSerializable, ModelIn
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\MerchantFulfillment\CarrierWillPickUpOption $carrier_will_pick_up_option carrier_will_pick_up_option
      */
-    public function setCarrierWillPickUpOption(?CarrierWillPickUpOption $carrier_will_pick_up_option) : self
+    public function setCarrierWillPickUpOption(?CarrierWillPickUpOption $carrier_will_pick_up_option): self
     {
         $this->container['carrier_will_pick_up_option'] = $carrier_will_pick_up_option;
 
@@ -325,7 +328,7 @@ class ShippingServiceOptions implements \ArrayAccess, \JsonSerializable, ModelIn
     /**
      * Gets label_format.
      */
-    public function getLabelFormat() : ?LabelFormat
+    public function getLabelFormat(): ?LabelFormat
     {
         return $this->container['label_format'];
     }
@@ -335,7 +338,7 @@ class ShippingServiceOptions implements \ArrayAccess, \JsonSerializable, ModelIn
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\MerchantFulfillment\LabelFormat $label_format label_format
      */
-    public function setLabelFormat(?LabelFormat $label_format) : self
+    public function setLabelFormat(?LabelFormat $label_format): self
     {
         $this->container['label_format'] = $label_format;
 
@@ -347,7 +350,7 @@ class ShippingServiceOptions implements \ArrayAccess, \JsonSerializable, ModelIn
      *
      * @param int $offset Offset
      */
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -370,7 +373,7 @@ class ShippingServiceOptions implements \ArrayAccess, \JsonSerializable, ModelIn
      * @param null|int $offset Offset
      * @param mixed $value Value to be set
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         if (null === $offset) {
             $this->container[] = $value;
@@ -384,7 +387,7 @@ class ShippingServiceOptions implements \ArrayAccess, \JsonSerializable, ModelIn
      *
      * @param int $offset Offset
      */
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -397,7 +400,7 @@ class ShippingServiceOptions implements \ArrayAccess, \JsonSerializable, ModelIn
      * @return mixed returns data which can be serialized by json_encode(), which is a value
      *               of any type other than a resource
      */
-    public function jsonSerialize() : string
+    public function jsonSerialize(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }
@@ -405,7 +408,7 @@ class ShippingServiceOptions implements \ArrayAccess, \JsonSerializable, ModelIn
     /**
      * Gets a header-safe presentation of the object.
      */
-    public function toHeaderValue() : string
+    public function toHeaderValue(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }

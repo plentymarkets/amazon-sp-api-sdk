@@ -1,4 +1,7 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
+
 /**
  * ShippingService.
  *
@@ -172,7 +175,7 @@ class ShippingService implements \ArrayAccess, \JsonSerializable, ModelInterface
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['shipping_service_name'] = $data['shipping_service_name'] ?? null;
         $this->container['carrier_name'] = $data['carrier_name'] ?? null;
@@ -194,7 +197,7 @@ class ShippingService implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return string[]
      */
-    public static function openAPITypes() : array
+    public static function openAPITypes(): array
     {
         return self::$openAPITypes;
     }
@@ -204,7 +207,7 @@ class ShippingService implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return null[]|string[]
      */
-    public static function openAPIFormats() : array
+    public static function openAPIFormats(): array
     {
         return self::$openAPIFormats;
     }
@@ -215,7 +218,7 @@ class ShippingService implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return string[]
      */
-    public static function attributeMap() : array
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -225,7 +228,7 @@ class ShippingService implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return string[]
      */
-    public static function setters() : array
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -235,7 +238,7 @@ class ShippingService implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return string[]
      */
-    public static function getters() : array
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -243,7 +246,7 @@ class ShippingService implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets the string presentation of the object.
      */
-    public function __toString() : string
+    public function __toString(): string
     {
         return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
@@ -254,7 +257,7 @@ class ShippingService implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * The original name of the model.
      */
-    public function getModelName() : string
+    public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
@@ -264,7 +267,7 @@ class ShippingService implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties() : array
+    public function listInvalidProperties(): array
     {
         $invalidProperties = [];
 
@@ -309,7 +312,7 @@ class ShippingService implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return bool True if all properties are valid
      */
-    public function valid() : bool
+    public function valid(): bool
     {
         return \count($this->listInvalidProperties()) === 0;
     }
@@ -317,7 +320,7 @@ class ShippingService implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets shipping_service_name.
      */
-    public function getShippingServiceName() : string
+    public function getShippingServiceName(): string
     {
         return $this->container['shipping_service_name'];
     }
@@ -327,7 +330,7 @@ class ShippingService implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param string $shipping_service_name A plain text representation of a carrier's shipping service. For example, \"UPS Ground\" or \"FedEx Standard Overnight\".
      */
-    public function setShippingServiceName(string $shipping_service_name) : self
+    public function setShippingServiceName(string $shipping_service_name): self
     {
         $this->container['shipping_service_name'] = $shipping_service_name;
 
@@ -337,7 +340,7 @@ class ShippingService implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets carrier_name.
      */
-    public function getCarrierName() : string
+    public function getCarrierName(): string
     {
         return $this->container['carrier_name'];
     }
@@ -347,7 +350,7 @@ class ShippingService implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param string $carrier_name the name of the carrier
      */
-    public function setCarrierName(string $carrier_name) : self
+    public function setCarrierName(string $carrier_name): self
     {
         $this->container['carrier_name'] = $carrier_name;
 
@@ -357,7 +360,7 @@ class ShippingService implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets shipping_service_id.
      */
-    public function getShippingServiceId() : string
+    public function getShippingServiceId(): string
     {
         return $this->container['shipping_service_id'];
     }
@@ -367,7 +370,7 @@ class ShippingService implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param string $shipping_service_id an Amazon-defined shipping service identifier
      */
-    public function setShippingServiceId(string $shipping_service_id) : self
+    public function setShippingServiceId(string $shipping_service_id): self
     {
         $this->container['shipping_service_id'] = $shipping_service_id;
 
@@ -377,7 +380,7 @@ class ShippingService implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets shipping_service_offer_id.
      */
-    public function getShippingServiceOfferId() : string
+    public function getShippingServiceOfferId(): string
     {
         return $this->container['shipping_service_offer_id'];
     }
@@ -387,7 +390,7 @@ class ShippingService implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param string $shipping_service_offer_id an Amazon-defined shipping service offer identifier
      */
-    public function setShippingServiceOfferId(string $shipping_service_offer_id) : self
+    public function setShippingServiceOfferId(string $shipping_service_offer_id): self
     {
         $this->container['shipping_service_offer_id'] = $shipping_service_offer_id;
 
@@ -399,7 +402,7 @@ class ShippingService implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return \DateTime|\DateTimeImmutable
      */
-    public function getShipDate() : \DateTimeInterface
+    public function getShipDate(): \DateTimeInterface
     {
         return $this->container['ship_date'];
     }
@@ -409,7 +412,7 @@ class ShippingService implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param \DateTime $ship_date ship_date
      */
-    public function setShipDate(\DateTimeInterface $ship_date) : self
+    public function setShipDate(\DateTimeInterface $ship_date): self
     {
         $this->container['ship_date'] = $ship_date;
 
@@ -421,7 +424,7 @@ class ShippingService implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return null|\DateTime|\DateTimeImmutable
      */
-    public function getEarliestEstimatedDeliveryDate() : ?\DateTimeInterface
+    public function getEarliestEstimatedDeliveryDate(): ?\DateTimeInterface
     {
         return $this->container['earliest_estimated_delivery_date'];
     }
@@ -431,7 +434,7 @@ class ShippingService implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param \DateTime|\DateTimeImmutable $earliest_estimated_delivery_date earliest_estimated_delivery_date
      */
-    public function setEarliestEstimatedDeliveryDate(\DateTimeInterface $earliest_estimated_delivery_date) : self
+    public function setEarliestEstimatedDeliveryDate(\DateTimeInterface $earliest_estimated_delivery_date): self
     {
         $this->container['earliest_estimated_delivery_date'] = $earliest_estimated_delivery_date;
 
@@ -443,7 +446,7 @@ class ShippingService implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return null|\DateTime|\DateTimeImmutable
      */
-    public function getLatestEstimatedDeliveryDate() : ?\DateTimeInterface
+    public function getLatestEstimatedDeliveryDate(): ?\DateTimeInterface
     {
         return $this->container['latest_estimated_delivery_date'];
     }
@@ -453,7 +456,7 @@ class ShippingService implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param \DateTime|\DateTimeImmutable $latest_estimated_delivery_date latest_estimated_delivery_date
      */
-    public function setLatestEstimatedDeliveryDate(\DateTimeInterface $latest_estimated_delivery_date) : self
+    public function setLatestEstimatedDeliveryDate(\DateTimeInterface $latest_estimated_delivery_date): self
     {
         $this->container['latest_estimated_delivery_date'] = $latest_estimated_delivery_date;
 
@@ -463,7 +466,7 @@ class ShippingService implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets rate.
      */
-    public function getRate() : CurrencyAmount
+    public function getRate(): CurrencyAmount
     {
         return $this->container['rate'];
     }
@@ -473,7 +476,7 @@ class ShippingService implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param \Plenty\AmazonPHP\SellingPartner\Model\MerchantFulfillment\CurrencyAmount $rate rate
      */
-    public function setRate(CurrencyAmount $rate) : self
+    public function setRate(CurrencyAmount $rate): self
     {
         $this->container['rate'] = $rate;
 
@@ -483,7 +486,7 @@ class ShippingService implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets shipping_service_options.
      */
-    public function getShippingServiceOptions() : ShippingServiceOptions
+    public function getShippingServiceOptions(): ShippingServiceOptions
     {
         return $this->container['shipping_service_options'];
     }
@@ -493,7 +496,7 @@ class ShippingService implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param \Plenty\AmazonPHP\SellingPartner\Model\MerchantFulfillment\ShippingServiceOptions $shipping_service_options shipping_service_options
      */
-    public function setShippingServiceOptions(ShippingServiceOptions $shipping_service_options) : self
+    public function setShippingServiceOptions(ShippingServiceOptions $shipping_service_options): self
     {
         $this->container['shipping_service_options'] = $shipping_service_options;
 
@@ -503,7 +506,7 @@ class ShippingService implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets available_shipping_service_options.
      */
-    public function getAvailableShippingServiceOptions() : ?AvailableShippingServiceOptions
+    public function getAvailableShippingServiceOptions(): ?AvailableShippingServiceOptions
     {
         return $this->container['available_shipping_service_options'];
     }
@@ -513,7 +516,7 @@ class ShippingService implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\MerchantFulfillment\AvailableShippingServiceOptions $available_shipping_service_options available_shipping_service_options
      */
-    public function setAvailableShippingServiceOptions(?AvailableShippingServiceOptions $available_shipping_service_options) : self
+    public function setAvailableShippingServiceOptions(?AvailableShippingServiceOptions $available_shipping_service_options): self
     {
         $this->container['available_shipping_service_options'] = $available_shipping_service_options;
 
@@ -525,7 +528,7 @@ class ShippingService implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return null|\Plenty\AmazonPHP\SellingPartner\Model\MerchantFulfillment\LabelFormat[]
      */
-    public function getAvailableLabelFormats() : ?array
+    public function getAvailableLabelFormats(): ?array
     {
         return $this->container['available_label_formats'];
     }
@@ -535,7 +538,7 @@ class ShippingService implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\MerchantFulfillment\LabelFormat[] $available_label_formats list of label formats
      */
-    public function setAvailableLabelFormats(?array $available_label_formats) : self
+    public function setAvailableLabelFormats(?array $available_label_formats): self
     {
         $this->container['available_label_formats'] = $available_label_formats;
 
@@ -547,7 +550,7 @@ class ShippingService implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return null|\Plenty\AmazonPHP\SellingPartner\Model\MerchantFulfillment\LabelFormatOption[]
      */
-    public function getAvailableFormatOptionsForLabel() : ?array
+    public function getAvailableFormatOptionsForLabel(): ?array
     {
         return $this->container['available_format_options_for_label'];
     }
@@ -557,7 +560,7 @@ class ShippingService implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\MerchantFulfillment\LabelFormatOption[] $available_format_options_for_label the available label formats
      */
-    public function setAvailableFormatOptionsForLabel(?array $available_format_options_for_label) : self
+    public function setAvailableFormatOptionsForLabel(?array $available_format_options_for_label): self
     {
         $this->container['available_format_options_for_label'] = $available_format_options_for_label;
 
@@ -567,7 +570,7 @@ class ShippingService implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets requires_additional_seller_inputs.
      */
-    public function getRequiresAdditionalSellerInputs() : bool
+    public function getRequiresAdditionalSellerInputs(): bool
     {
         return $this->container['requires_additional_seller_inputs'];
     }
@@ -577,7 +580,7 @@ class ShippingService implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param bool $requires_additional_seller_inputs when true, additional seller inputs are required
      */
-    public function setRequiresAdditionalSellerInputs(bool $requires_additional_seller_inputs) : self
+    public function setRequiresAdditionalSellerInputs(bool $requires_additional_seller_inputs): self
     {
         $this->container['requires_additional_seller_inputs'] = $requires_additional_seller_inputs;
 
@@ -589,7 +592,7 @@ class ShippingService implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param int $offset Offset
      */
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -612,7 +615,7 @@ class ShippingService implements \ArrayAccess, \JsonSerializable, ModelInterface
      * @param null|int $offset Offset
      * @param mixed $value Value to be set
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         if (null === $offset) {
             $this->container[] = $value;
@@ -626,7 +629,7 @@ class ShippingService implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param int $offset Offset
      */
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -639,7 +642,7 @@ class ShippingService implements \ArrayAccess, \JsonSerializable, ModelInterface
      * @return mixed returns data which can be serialized by json_encode(), which is a value
      *               of any type other than a resource
      */
-    public function jsonSerialize() : string
+    public function jsonSerialize(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }
@@ -647,7 +650,7 @@ class ShippingService implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets a header-safe presentation of the object.
      */
-    public function toHeaderValue() : string
+    public function toHeaderValue(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }

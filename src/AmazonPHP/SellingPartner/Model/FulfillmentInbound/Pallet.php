@@ -1,4 +1,7 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
+
 /**
  * Pallet.
  *
@@ -122,7 +125,7 @@ class Pallet implements \ArrayAccess, \JsonSerializable, ModelInterface, \String
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['dimensions'] = $data['dimensions'] ?? null;
         $this->container['weight'] = $data['weight'] ?? null;
@@ -134,7 +137,7 @@ class Pallet implements \ArrayAccess, \JsonSerializable, ModelInterface, \String
      *
      * @return string[]
      */
-    public static function openAPITypes() : array
+    public static function openAPITypes(): array
     {
         return self::$openAPITypes;
     }
@@ -144,7 +147,7 @@ class Pallet implements \ArrayAccess, \JsonSerializable, ModelInterface, \String
      *
      * @return null[]|string[]
      */
-    public static function openAPIFormats() : array
+    public static function openAPIFormats(): array
     {
         return self::$openAPIFormats;
     }
@@ -155,7 +158,7 @@ class Pallet implements \ArrayAccess, \JsonSerializable, ModelInterface, \String
      *
      * @return string[]
      */
-    public static function attributeMap() : array
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -165,7 +168,7 @@ class Pallet implements \ArrayAccess, \JsonSerializable, ModelInterface, \String
      *
      * @return string[]
      */
-    public static function setters() : array
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -175,7 +178,7 @@ class Pallet implements \ArrayAccess, \JsonSerializable, ModelInterface, \String
      *
      * @return string[]
      */
-    public static function getters() : array
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -183,7 +186,7 @@ class Pallet implements \ArrayAccess, \JsonSerializable, ModelInterface, \String
     /**
      * Gets the string presentation of the object.
      */
-    public function __toString() : string
+    public function __toString(): string
     {
         return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
@@ -194,7 +197,7 @@ class Pallet implements \ArrayAccess, \JsonSerializable, ModelInterface, \String
     /**
      * The original name of the model.
      */
-    public function getModelName() : string
+    public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
@@ -204,7 +207,7 @@ class Pallet implements \ArrayAccess, \JsonSerializable, ModelInterface, \String
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties() : array
+    public function listInvalidProperties(): array
     {
         $invalidProperties = [];
 
@@ -225,7 +228,7 @@ class Pallet implements \ArrayAccess, \JsonSerializable, ModelInterface, \String
      *
      * @return bool True if all properties are valid
      */
-    public function valid() : bool
+    public function valid(): bool
     {
         return \count($this->listInvalidProperties()) === 0;
     }
@@ -233,7 +236,7 @@ class Pallet implements \ArrayAccess, \JsonSerializable, ModelInterface, \String
     /**
      * Gets dimensions.
      */
-    public function getDimensions() : Dimensions
+    public function getDimensions(): Dimensions
     {
         return $this->container['dimensions'];
     }
@@ -243,7 +246,7 @@ class Pallet implements \ArrayAccess, \JsonSerializable, ModelInterface, \String
      *
      * @param \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound\Dimensions $dimensions dimensions
      */
-    public function setDimensions(Dimensions $dimensions) : self
+    public function setDimensions(Dimensions $dimensions): self
     {
         $this->container['dimensions'] = $dimensions;
 
@@ -253,7 +256,7 @@ class Pallet implements \ArrayAccess, \JsonSerializable, ModelInterface, \String
     /**
      * Gets weight.
      */
-    public function getWeight() : ?Weight
+    public function getWeight(): ?Weight
     {
         return $this->container['weight'];
     }
@@ -263,7 +266,7 @@ class Pallet implements \ArrayAccess, \JsonSerializable, ModelInterface, \String
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound\Weight $weight weight
      */
-    public function setWeight(?Weight $weight) : self
+    public function setWeight(?Weight $weight): self
     {
         $this->container['weight'] = $weight;
 
@@ -273,7 +276,7 @@ class Pallet implements \ArrayAccess, \JsonSerializable, ModelInterface, \String
     /**
      * Gets is_stacked.
      */
-    public function getIsStacked() : bool
+    public function getIsStacked(): bool
     {
         return $this->container['is_stacked'];
     }
@@ -283,7 +286,7 @@ class Pallet implements \ArrayAccess, \JsonSerializable, ModelInterface, \String
      *
      * @param bool $is_stacked indicates whether pallets will be stacked when carrier arrives for pick-up
      */
-    public function setIsStacked(bool $is_stacked) : self
+    public function setIsStacked(bool $is_stacked): self
     {
         $this->container['is_stacked'] = $is_stacked;
 
@@ -295,7 +298,7 @@ class Pallet implements \ArrayAccess, \JsonSerializable, ModelInterface, \String
      *
      * @param int $offset Offset
      */
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -318,7 +321,7 @@ class Pallet implements \ArrayAccess, \JsonSerializable, ModelInterface, \String
      * @param null|int $offset Offset
      * @param mixed $value Value to be set
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         if (null === $offset) {
             $this->container[] = $value;
@@ -332,7 +335,7 @@ class Pallet implements \ArrayAccess, \JsonSerializable, ModelInterface, \String
      *
      * @param int $offset Offset
      */
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -345,7 +348,7 @@ class Pallet implements \ArrayAccess, \JsonSerializable, ModelInterface, \String
      * @return mixed returns data which can be serialized by json_encode(), which is a value
      *               of any type other than a resource
      */
-    public function jsonSerialize() : string
+    public function jsonSerialize(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }
@@ -353,7 +356,7 @@ class Pallet implements \ArrayAccess, \JsonSerializable, ModelInterface, \String
     /**
      * Gets a header-safe presentation of the object.
      */
-    public function toHeaderValue() : string
+    public function toHeaderValue(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }

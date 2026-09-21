@@ -1,4 +1,7 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
+
 /**
  * ListingsItemSubmissionResponse.
  *
@@ -131,7 +134,7 @@ class ListingsItemSubmissionResponse implements \ArrayAccess, \JsonSerializable,
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['sku'] = $data['sku'] ?? null;
         $this->container['status'] = $data['status'] ?? null;
@@ -144,7 +147,7 @@ class ListingsItemSubmissionResponse implements \ArrayAccess, \JsonSerializable,
      *
      * @return string[]
      */
-    public static function openAPITypes() : array
+    public static function openAPITypes(): array
     {
         return self::$openAPITypes;
     }
@@ -154,7 +157,7 @@ class ListingsItemSubmissionResponse implements \ArrayAccess, \JsonSerializable,
      *
      * @return null[]|string[]
      */
-    public static function openAPIFormats() : array
+    public static function openAPIFormats(): array
     {
         return self::$openAPIFormats;
     }
@@ -165,7 +168,7 @@ class ListingsItemSubmissionResponse implements \ArrayAccess, \JsonSerializable,
      *
      * @return string[]
      */
-    public static function attributeMap() : array
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -175,7 +178,7 @@ class ListingsItemSubmissionResponse implements \ArrayAccess, \JsonSerializable,
      *
      * @return string[]
      */
-    public static function setters() : array
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -185,7 +188,7 @@ class ListingsItemSubmissionResponse implements \ArrayAccess, \JsonSerializable,
      *
      * @return string[]
      */
-    public static function getters() : array
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -193,7 +196,7 @@ class ListingsItemSubmissionResponse implements \ArrayAccess, \JsonSerializable,
     /**
      * Gets the string presentation of the object.
      */
-    public function __toString() : string
+    public function __toString(): string
     {
         return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
@@ -204,7 +207,7 @@ class ListingsItemSubmissionResponse implements \ArrayAccess, \JsonSerializable,
     /**
      * The original name of the model.
      */
-    public function getModelName() : string
+    public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
@@ -214,7 +217,7 @@ class ListingsItemSubmissionResponse implements \ArrayAccess, \JsonSerializable,
      *
      * @return string[]
      */
-    public function getStatusAllowableValues() : array
+    public function getStatusAllowableValues(): array
     {
         return [
             self::STATUS_ACCEPTED,
@@ -227,7 +230,7 @@ class ListingsItemSubmissionResponse implements \ArrayAccess, \JsonSerializable,
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties() : array
+    public function listInvalidProperties(): array
     {
         $invalidProperties = [];
 
@@ -261,7 +264,7 @@ class ListingsItemSubmissionResponse implements \ArrayAccess, \JsonSerializable,
      *
      * @return bool True if all properties are valid
      */
-    public function valid() : bool
+    public function valid(): bool
     {
         return \count($this->listInvalidProperties()) === 0;
     }
@@ -269,7 +272,7 @@ class ListingsItemSubmissionResponse implements \ArrayAccess, \JsonSerializable,
     /**
      * Gets sku.
      */
-    public function getSku() : string
+    public function getSku(): string
     {
         return $this->container['sku'];
     }
@@ -279,7 +282,7 @@ class ListingsItemSubmissionResponse implements \ArrayAccess, \JsonSerializable,
      *
      * @param string $sku a selling partner provided identifier for an Amazon listing
      */
-    public function setSku(string $sku) : self
+    public function setSku(string $sku): self
     {
         $this->container['sku'] = $sku;
 
@@ -289,7 +292,7 @@ class ListingsItemSubmissionResponse implements \ArrayAccess, \JsonSerializable,
     /**
      * Gets status.
      */
-    public function getStatus() : string
+    public function getStatus(): string
     {
         return $this->container['status'];
     }
@@ -299,7 +302,7 @@ class ListingsItemSubmissionResponse implements \ArrayAccess, \JsonSerializable,
      *
      * @param string $status the status of the listings item submission
      */
-    public function setStatus(string $status) : self
+    public function setStatus(string $status): self
     {
         $allowedValues = $this->getStatusAllowableValues();
 
@@ -320,7 +323,7 @@ class ListingsItemSubmissionResponse implements \ArrayAccess, \JsonSerializable,
     /**
      * Gets submission_id.
      */
-    public function getSubmissionId() : string
+    public function getSubmissionId(): string
     {
         return $this->container['submission_id'];
     }
@@ -330,7 +333,7 @@ class ListingsItemSubmissionResponse implements \ArrayAccess, \JsonSerializable,
      *
      * @param string $submission_id the unique identifier of the listings item submission
      */
-    public function setSubmissionId(string $submission_id) : self
+    public function setSubmissionId(string $submission_id): self
     {
         $this->container['submission_id'] = $submission_id;
 
@@ -342,7 +345,7 @@ class ListingsItemSubmissionResponse implements \ArrayAccess, \JsonSerializable,
      *
      * @return null|\Plenty\AmazonPHP\SellingPartner\Model\ListingsItems\Issue[]
      */
-    public function getIssues() : ?array
+    public function getIssues(): ?array
     {
         return $this->container['issues'];
     }
@@ -352,7 +355,7 @@ class ListingsItemSubmissionResponse implements \ArrayAccess, \JsonSerializable,
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\ListingsItems\Issue[] $issues listings item issues related to the listings item submission
      */
-    public function setIssues(?array $issues) : self
+    public function setIssues(?array $issues): self
     {
         $this->container['issues'] = $issues;
 
@@ -364,7 +367,7 @@ class ListingsItemSubmissionResponse implements \ArrayAccess, \JsonSerializable,
      *
      * @param int $offset Offset
      */
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -387,7 +390,7 @@ class ListingsItemSubmissionResponse implements \ArrayAccess, \JsonSerializable,
      * @param null|int $offset Offset
      * @param mixed $value Value to be set
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         if (null === $offset) {
             $this->container[] = $value;
@@ -401,7 +404,7 @@ class ListingsItemSubmissionResponse implements \ArrayAccess, \JsonSerializable,
      *
      * @param int $offset Offset
      */
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -414,7 +417,7 @@ class ListingsItemSubmissionResponse implements \ArrayAccess, \JsonSerializable,
      * @return mixed returns data which can be serialized by json_encode(), which is a value
      *               of any type other than a resource
      */
-    public function jsonSerialize() : string
+    public function jsonSerialize(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }
@@ -422,7 +425,7 @@ class ListingsItemSubmissionResponse implements \ArrayAccess, \JsonSerializable,
     /**
      * Gets a header-safe presentation of the object.
      */
-    public function toHeaderValue() : string
+    public function toHeaderValue(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }

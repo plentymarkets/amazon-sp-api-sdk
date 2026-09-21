@@ -1,4 +1,7 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
+
 /**
  * Dimensions.
  *
@@ -127,7 +130,7 @@ class Dimensions implements \ArrayAccess, \JsonSerializable, ModelInterface, \St
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['length'] = $data['length'] ?? null;
         $this->container['width'] = $data['width'] ?? null;
@@ -140,7 +143,7 @@ class Dimensions implements \ArrayAccess, \JsonSerializable, ModelInterface, \St
      *
      * @return string[]
      */
-    public static function openAPITypes() : array
+    public static function openAPITypes(): array
     {
         return self::$openAPITypes;
     }
@@ -150,7 +153,7 @@ class Dimensions implements \ArrayAccess, \JsonSerializable, ModelInterface, \St
      *
      * @return null[]|string[]
      */
-    public static function openAPIFormats() : array
+    public static function openAPIFormats(): array
     {
         return self::$openAPIFormats;
     }
@@ -161,7 +164,7 @@ class Dimensions implements \ArrayAccess, \JsonSerializable, ModelInterface, \St
      *
      * @return string[]
      */
-    public static function attributeMap() : array
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -171,7 +174,7 @@ class Dimensions implements \ArrayAccess, \JsonSerializable, ModelInterface, \St
      *
      * @return string[]
      */
-    public static function setters() : array
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -181,7 +184,7 @@ class Dimensions implements \ArrayAccess, \JsonSerializable, ModelInterface, \St
      *
      * @return string[]
      */
-    public static function getters() : array
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -189,7 +192,7 @@ class Dimensions implements \ArrayAccess, \JsonSerializable, ModelInterface, \St
     /**
      * Gets the string presentation of the object.
      */
-    public function __toString() : string
+    public function __toString(): string
     {
         return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
@@ -200,7 +203,7 @@ class Dimensions implements \ArrayAccess, \JsonSerializable, ModelInterface, \St
     /**
      * The original name of the model.
      */
-    public function getModelName() : string
+    public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
@@ -210,7 +213,7 @@ class Dimensions implements \ArrayAccess, \JsonSerializable, ModelInterface, \St
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties() : array
+    public function listInvalidProperties(): array
     {
         $invalidProperties = [];
 
@@ -239,7 +242,7 @@ class Dimensions implements \ArrayAccess, \JsonSerializable, ModelInterface, \St
      *
      * @return bool True if all properties are valid
      */
-    public function valid() : bool
+    public function valid(): bool
     {
         return \count($this->listInvalidProperties()) === 0;
     }
@@ -247,7 +250,7 @@ class Dimensions implements \ArrayAccess, \JsonSerializable, ModelInterface, \St
     /**
      * Gets length.
      */
-    public function getLength() : float
+    public function getLength(): float
     {
         return $this->container['length'];
     }
@@ -257,7 +260,7 @@ class Dimensions implements \ArrayAccess, \JsonSerializable, ModelInterface, \St
      *
      * @param float $length length
      */
-    public function setLength(float $length) : self
+    public function setLength(float $length): self
     {
         $this->container['length'] = $length;
 
@@ -267,7 +270,7 @@ class Dimensions implements \ArrayAccess, \JsonSerializable, ModelInterface, \St
     /**
      * Gets width.
      */
-    public function getWidth() : float
+    public function getWidth(): float
     {
         return $this->container['width'];
     }
@@ -277,7 +280,7 @@ class Dimensions implements \ArrayAccess, \JsonSerializable, ModelInterface, \St
      *
      * @param float $width width
      */
-    public function setWidth(float $width) : self
+    public function setWidth(float $width): self
     {
         $this->container['width'] = $width;
 
@@ -287,7 +290,7 @@ class Dimensions implements \ArrayAccess, \JsonSerializable, ModelInterface, \St
     /**
      * Gets height.
      */
-    public function getHeight() : float
+    public function getHeight(): float
     {
         return $this->container['height'];
     }
@@ -297,7 +300,7 @@ class Dimensions implements \ArrayAccess, \JsonSerializable, ModelInterface, \St
      *
      * @param float $height height
      */
-    public function setHeight(float $height) : self
+    public function setHeight(float $height): self
     {
         $this->container['height'] = $height;
 
@@ -307,7 +310,7 @@ class Dimensions implements \ArrayAccess, \JsonSerializable, ModelInterface, \St
     /**
      * Gets unit.
      */
-    public function getUnit() : UnitOfMeasurement
+    public function getUnit(): UnitOfMeasurement
     {
         return $this->container['unit'];
     }
@@ -317,7 +320,7 @@ class Dimensions implements \ArrayAccess, \JsonSerializable, ModelInterface, \St
      *
      * @param \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound\UnitOfMeasurement $unit unit
      */
-    public function setUnit(UnitOfMeasurement $unit) : self
+    public function setUnit(UnitOfMeasurement $unit): self
     {
         $this->container['unit'] = $unit;
 
@@ -329,7 +332,7 @@ class Dimensions implements \ArrayAccess, \JsonSerializable, ModelInterface, \St
      *
      * @param int $offset Offset
      */
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -352,7 +355,7 @@ class Dimensions implements \ArrayAccess, \JsonSerializable, ModelInterface, \St
      * @param null|int $offset Offset
      * @param mixed $value Value to be set
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         if (null === $offset) {
             $this->container[] = $value;
@@ -366,7 +369,7 @@ class Dimensions implements \ArrayAccess, \JsonSerializable, ModelInterface, \St
      *
      * @param int $offset Offset
      */
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -379,7 +382,7 @@ class Dimensions implements \ArrayAccess, \JsonSerializable, ModelInterface, \St
      * @return mixed returns data which can be serialized by json_encode(), which is a value
      *               of any type other than a resource
      */
-    public function jsonSerialize() : string
+    public function jsonSerialize(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }
@@ -387,7 +390,7 @@ class Dimensions implements \ArrayAccess, \JsonSerializable, ModelInterface, \St
     /**
      * Gets a header-safe presentation of the object.
      */
-    public function toHeaderValue() : string
+    public function toHeaderValue(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }

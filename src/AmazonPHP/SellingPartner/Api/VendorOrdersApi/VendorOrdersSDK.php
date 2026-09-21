@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Plenty\AmazonPHP\SellingPartner\Api\VendorOrdersApi;
 
@@ -63,7 +65,7 @@ final class VendorOrdersSDK
      * @throws \Plenty\AmazonPHP\SellingPartner\Exception\ApiException on non-2xx response
      * @throws \Plenty\AmazonPHP\SellingPartner\Exception\InvalidArgumentException
      */
-    public function getPurchaseOrder(AccessToken $accessToken, string $region, string $purchase_order_number) : \Plenty\AmazonPHP\SellingPartner\Model\VendorOrders\GetPurchaseOrderResponse
+    public function getPurchaseOrder(AccessToken $accessToken, string $region, string $purchase_order_number): \Plenty\AmazonPHP\SellingPartner\Model\VendorOrders\GetPurchaseOrderResponse
     {
         $request = $this->getPurchaseOrderRequest($accessToken, $region, $purchase_order_number);
 
@@ -158,7 +160,7 @@ final class VendorOrdersSDK
      *
      * @throws \Plenty\AmazonPHP\SellingPartner\Exception\InvalidArgumentException
      */
-    public function getPurchaseOrderRequest(AccessToken $accessToken, string $region, string $purchase_order_number) : RequestInterface
+    public function getPurchaseOrderRequest(AccessToken $accessToken, string $region, string $purchase_order_number): RequestInterface
     {
         // verify the required parameter 'purchase_order_number' is set
         if ($purchase_order_number === null || (\is_array($purchase_order_number) && \count($purchase_order_number) === 0)) {
@@ -262,7 +264,7 @@ final class VendorOrdersSDK
      * @throws \Plenty\AmazonPHP\SellingPartner\Exception\ApiException on non-2xx response
      * @throws \Plenty\AmazonPHP\SellingPartner\Exception\InvalidArgumentException
      */
-    public function getPurchaseOrders(AccessToken $accessToken, string $region, int $limit = null, \DateTimeInterface $created_after = null, \DateTimeInterface $created_before = null, string $sort_order = null, string $next_token = null, bool $include_details = null, \DateTimeInterface $changed_after = null, \DateTimeInterface $changed_before = null, string $po_item_state = null, bool $is_po_changed = null, string $purchase_order_state = null, string $ordering_vendor_code = null) : \Plenty\AmazonPHP\SellingPartner\Model\VendorOrders\GetPurchaseOrdersResponse
+    public function getPurchaseOrders(AccessToken $accessToken, string $region, ?int $limit = null, ?\DateTimeInterface $created_after = null, ?\DateTimeInterface $created_before = null, ?string $sort_order = null, ?string $next_token = null, ?bool $include_details = null, ?\DateTimeInterface $changed_after = null, ?\DateTimeInterface $changed_before = null, ?string $po_item_state = null, ?bool $is_po_changed = null, ?string $purchase_order_state = null, ?string $ordering_vendor_code = null): \Plenty\AmazonPHP\SellingPartner\Model\VendorOrders\GetPurchaseOrdersResponse
     {
         $request = $this->getPurchaseOrdersRequest($accessToken, $region, $limit, $created_after, $created_before, $sort_order, $next_token, $include_details, $changed_after, $changed_before, $po_item_state, $is_po_changed, $purchase_order_state, $ordering_vendor_code);
 
@@ -368,7 +370,7 @@ final class VendorOrdersSDK
      *
      * @throws \Plenty\AmazonPHP\SellingPartner\Exception\InvalidArgumentException
      */
-    public function getPurchaseOrdersRequest(AccessToken $accessToken, string $region, int $limit = null, \DateTimeInterface $created_after = null, \DateTimeInterface $created_before = null, string $sort_order = null, string $next_token = null, bool $include_details = null, \DateTimeInterface $changed_after = null, \DateTimeInterface $changed_before = null, string $po_item_state = null, bool $is_po_changed = null, string $purchase_order_state = null, string $ordering_vendor_code = null) : RequestInterface
+    public function getPurchaseOrdersRequest(AccessToken $accessToken, string $region, ?int $limit = null, ?\DateTimeInterface $created_after = null, ?\DateTimeInterface $created_before = null, ?string $sort_order = null, ?string $next_token = null, ?bool $include_details = null, ?\DateTimeInterface $changed_after = null, ?\DateTimeInterface $changed_before = null, ?string $po_item_state = null, ?bool $is_po_changed = null, ?string $purchase_order_state = null, ?string $ordering_vendor_code = null): RequestInterface
     {
         if ($limit !== null && $limit > 100) {
             throw new InvalidArgumentException('invalid value for "$limit" when calling VendorOrdersApi.getPurchaseOrders, must be smaller than or equal to 100.');
@@ -562,7 +564,7 @@ final class VendorOrdersSDK
      * @throws \Plenty\AmazonPHP\SellingPartner\Exception\ApiException on non-2xx response
      * @throws \Plenty\AmazonPHP\SellingPartner\Exception\InvalidArgumentException
      */
-    public function getPurchaseOrdersStatus(AccessToken $accessToken, string $region, int $limit = null, string $sort_order = null, string $next_token = null, \DateTimeInterface $created_after = null, \DateTimeInterface $created_before = null, \DateTimeInterface $updated_after = null, \DateTimeInterface $updated_before = null, string $purchase_order_number = null, string $purchase_order_status = null, string $item_confirmation_status = null, string $item_receive_status = null, string $ordering_vendor_code = null, string $ship_to_party_id = null) : \Plenty\AmazonPHP\SellingPartner\Model\VendorOrders\GetPurchaseOrdersStatusResponse
+    public function getPurchaseOrdersStatus(AccessToken $accessToken, string $region, ?int $limit = null, ?string $sort_order = null, ?string $next_token = null, ?\DateTimeInterface $created_after = null, ?\DateTimeInterface $created_before = null, ?\DateTimeInterface $updated_after = null, ?\DateTimeInterface $updated_before = null, ?string $purchase_order_number = null, ?string $purchase_order_status = null, ?string $item_confirmation_status = null, ?string $item_receive_status = null, ?string $ordering_vendor_code = null, ?string $ship_to_party_id = null): \Plenty\AmazonPHP\SellingPartner\Model\VendorOrders\GetPurchaseOrdersStatusResponse
     {
         $request = $this->getPurchaseOrdersStatusRequest($accessToken, $region, $limit, $sort_order, $next_token, $created_after, $created_before, $updated_after, $updated_before, $purchase_order_number, $purchase_order_status, $item_confirmation_status, $item_receive_status, $ordering_vendor_code, $ship_to_party_id);
 
@@ -669,7 +671,7 @@ final class VendorOrdersSDK
      *
      * @throws \Plenty\AmazonPHP\SellingPartner\Exception\InvalidArgumentException
      */
-    public function getPurchaseOrdersStatusRequest(AccessToken $accessToken, string $region, int $limit = null, string $sort_order = null, string $next_token = null, \DateTimeInterface $created_after = null, \DateTimeInterface $created_before = null, \DateTimeInterface $updated_after = null, \DateTimeInterface $updated_before = null, string $purchase_order_number = null, string $purchase_order_status = null, string $item_confirmation_status = null, string $item_receive_status = null, string $ordering_vendor_code = null, string $ship_to_party_id = null) : RequestInterface
+    public function getPurchaseOrdersStatusRequest(AccessToken $accessToken, string $region, ?int $limit = null, ?string $sort_order = null, ?string $next_token = null, ?\DateTimeInterface $created_after = null, ?\DateTimeInterface $created_before = null, ?\DateTimeInterface $updated_after = null, ?\DateTimeInterface $updated_before = null, ?string $purchase_order_number = null, ?string $purchase_order_status = null, ?string $item_confirmation_status = null, ?string $item_receive_status = null, ?string $ordering_vendor_code = null, ?string $ship_to_party_id = null): RequestInterface
     {
         if ($limit !== null && $limit > 100) {
             throw new InvalidArgumentException('invalid value for "$limit" when calling VendorOrdersApi.getPurchaseOrdersStatus, must be smaller than or equal to 100.');
@@ -859,7 +861,7 @@ final class VendorOrdersSDK
      * @throws \Plenty\AmazonPHP\SellingPartner\Exception\ApiException on non-2xx response
      * @throws \Plenty\AmazonPHP\SellingPartner\Exception\InvalidArgumentException
      */
-    public function submitAcknowledgement(AccessToken $accessToken, string $region, \Plenty\AmazonPHP\SellingPartner\Model\VendorOrders\SubmitAcknowledgementRequest $body) : \Plenty\AmazonPHP\SellingPartner\Model\VendorOrders\SubmitAcknowledgementResponse
+    public function submitAcknowledgement(AccessToken $accessToken, string $region, \Plenty\AmazonPHP\SellingPartner\Model\VendorOrders\SubmitAcknowledgementRequest $body): \Plenty\AmazonPHP\SellingPartner\Model\VendorOrders\SubmitAcknowledgementResponse
     {
         $request = $this->submitAcknowledgementRequest($accessToken, $region, $body);
 
@@ -954,7 +956,7 @@ final class VendorOrdersSDK
      *
      * @throws \Plenty\AmazonPHP\SellingPartner\Exception\InvalidArgumentException
      */
-    public function submitAcknowledgementRequest(AccessToken $accessToken, string $region, \Plenty\AmazonPHP\SellingPartner\Model\VendorOrders\SubmitAcknowledgementRequest $body) : RequestInterface
+    public function submitAcknowledgementRequest(AccessToken $accessToken, string $region, \Plenty\AmazonPHP\SellingPartner\Model\VendorOrders\SubmitAcknowledgementRequest $body): RequestInterface
     {
         // verify the required parameter 'body' is set
         if ($body === null || (\is_array($body) && \count($body) === 0)) {

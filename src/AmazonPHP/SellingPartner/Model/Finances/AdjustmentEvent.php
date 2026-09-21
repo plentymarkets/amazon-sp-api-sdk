@@ -1,4 +1,7 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
+
 /**
  * AdjustmentEvent.
  *
@@ -127,7 +130,7 @@ class AdjustmentEvent implements \ArrayAccess, \JsonSerializable, ModelInterface
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['adjustment_type'] = $data['adjustment_type'] ?? null;
         $this->container['posted_date'] = $data['posted_date'] ?? null;
@@ -140,7 +143,7 @@ class AdjustmentEvent implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return string[]
      */
-    public static function openAPITypes() : array
+    public static function openAPITypes(): array
     {
         return self::$openAPITypes;
     }
@@ -150,7 +153,7 @@ class AdjustmentEvent implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return null[]|string[]
      */
-    public static function openAPIFormats() : array
+    public static function openAPIFormats(): array
     {
         return self::$openAPIFormats;
     }
@@ -161,7 +164,7 @@ class AdjustmentEvent implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return string[]
      */
-    public static function attributeMap() : array
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -171,7 +174,7 @@ class AdjustmentEvent implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return string[]
      */
-    public static function setters() : array
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -181,7 +184,7 @@ class AdjustmentEvent implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return string[]
      */
-    public static function getters() : array
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -189,7 +192,7 @@ class AdjustmentEvent implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets the string presentation of the object.
      */
-    public function __toString() : string
+    public function __toString(): string
     {
         return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
@@ -200,7 +203,7 @@ class AdjustmentEvent implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * The original name of the model.
      */
-    public function getModelName() : string
+    public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
@@ -210,7 +213,7 @@ class AdjustmentEvent implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties() : array
+    public function listInvalidProperties(): array
     {
         return [];
     }
@@ -221,7 +224,7 @@ class AdjustmentEvent implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return bool True if all properties are valid
      */
-    public function valid() : bool
+    public function valid(): bool
     {
         return \count($this->listInvalidProperties()) === 0;
     }
@@ -229,7 +232,7 @@ class AdjustmentEvent implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets adjustment_type.
      */
-    public function getAdjustmentType() : ?string
+    public function getAdjustmentType(): ?string
     {
         return $this->container['adjustment_type'];
     }
@@ -239,7 +242,7 @@ class AdjustmentEvent implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param null|string $adjustment_type The type of adjustment.  Possible values:  * FBAInventoryReimbursement - An FBA inventory reimbursement to a seller's account. This occurs if a seller's inventory is damaged.  * ReserveEvent - A reserve event that is generated at the time of a settlement period closing. This occurs when some money from a seller's account is held back.  * PostageBilling - The amount paid by a seller for shipping labels.  * PostageRefund - The reimbursement of shipping labels purchased for orders that were canceled or refunded.  * LostOrDamagedReimbursement - An Amazon Easy Ship reimbursement to a seller's account for a package that we lost or damaged.  * CanceledButPickedUpReimbursement - An Amazon Easy Ship reimbursement to a seller's account. This occurs when a package is picked up and the order is subsequently canceled. This value is used only in the India marketplace.  * ReimbursementClawback - An Amazon Easy Ship reimbursement clawback from a seller's account. This occurs when a prior reimbursement is reversed. This value is used only in the India marketplace.  * SellerRewards - An award credited to a seller's account for their participation in an offer in the Seller Rewards program. Applies only to the India marketplace.
      */
-    public function setAdjustmentType(?string $adjustment_type) : self
+    public function setAdjustmentType(?string $adjustment_type): self
     {
         $this->container['adjustment_type'] = $adjustment_type;
 
@@ -251,7 +254,7 @@ class AdjustmentEvent implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return null|\DateTime|\DateTimeImmutable
      */
-    public function getPostedDate() : ?\DateTimeInterface
+    public function getPostedDate(): ?\DateTimeInterface
     {
         return $this->container['posted_date'];
     }
@@ -261,7 +264,7 @@ class AdjustmentEvent implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param \DateTime|\DateTimeImmutable $posted_date posted_date
      */
-    public function setPostedDate(\DateTimeInterface $posted_date) : self
+    public function setPostedDate(\DateTimeInterface $posted_date): self
     {
         $this->container['posted_date'] = $posted_date;
 
@@ -271,7 +274,7 @@ class AdjustmentEvent implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets adjustment_amount.
      */
-    public function getAdjustmentAmount() : ?Currency
+    public function getAdjustmentAmount(): ?Currency
     {
         return $this->container['adjustment_amount'];
     }
@@ -281,7 +284,7 @@ class AdjustmentEvent implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\Finances\Currency $adjustment_amount adjustment_amount
      */
-    public function setAdjustmentAmount(?Currency $adjustment_amount) : self
+    public function setAdjustmentAmount(?Currency $adjustment_amount): self
     {
         $this->container['adjustment_amount'] = $adjustment_amount;
 
@@ -293,7 +296,7 @@ class AdjustmentEvent implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return null|\Plenty\AmazonPHP\SellingPartner\Model\Finances\AdjustmentItem[]
      */
-    public function getAdjustmentItemList() : ?array
+    public function getAdjustmentItemList(): ?array
     {
         return $this->container['adjustment_item_list'];
     }
@@ -303,7 +306,7 @@ class AdjustmentEvent implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\Finances\AdjustmentItem[] $adjustment_item_list a list of information about items in an adjustment to the seller's account
      */
-    public function setAdjustmentItemList(?array $adjustment_item_list) : self
+    public function setAdjustmentItemList(?array $adjustment_item_list): self
     {
         $this->container['adjustment_item_list'] = $adjustment_item_list;
 
@@ -315,7 +318,7 @@ class AdjustmentEvent implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param int $offset Offset
      */
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -338,7 +341,7 @@ class AdjustmentEvent implements \ArrayAccess, \JsonSerializable, ModelInterface
      * @param null|int $offset Offset
      * @param mixed $value Value to be set
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         if (null === $offset) {
             $this->container[] = $value;
@@ -352,7 +355,7 @@ class AdjustmentEvent implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param int $offset Offset
      */
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -365,7 +368,7 @@ class AdjustmentEvent implements \ArrayAccess, \JsonSerializable, ModelInterface
      * @return mixed returns data which can be serialized by json_encode(), which is a value
      *               of any type other than a resource
      */
-    public function jsonSerialize() : string
+    public function jsonSerialize(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }
@@ -373,7 +376,7 @@ class AdjustmentEvent implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets a header-safe presentation of the object.
      */
-    public function toHeaderValue() : string
+    public function toHeaderValue(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }

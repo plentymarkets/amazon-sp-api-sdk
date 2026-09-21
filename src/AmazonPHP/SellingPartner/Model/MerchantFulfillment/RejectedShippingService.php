@@ -1,4 +1,7 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
+
 /**
  * RejectedShippingService.
  *
@@ -132,7 +135,7 @@ class RejectedShippingService implements \ArrayAccess, \JsonSerializable, ModelI
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['carrier_name'] = $data['carrier_name'] ?? null;
         $this->container['shipping_service_name'] = $data['shipping_service_name'] ?? null;
@@ -146,7 +149,7 @@ class RejectedShippingService implements \ArrayAccess, \JsonSerializable, ModelI
      *
      * @return string[]
      */
-    public static function openAPITypes() : array
+    public static function openAPITypes(): array
     {
         return self::$openAPITypes;
     }
@@ -156,7 +159,7 @@ class RejectedShippingService implements \ArrayAccess, \JsonSerializable, ModelI
      *
      * @return null[]|string[]
      */
-    public static function openAPIFormats() : array
+    public static function openAPIFormats(): array
     {
         return self::$openAPIFormats;
     }
@@ -167,7 +170,7 @@ class RejectedShippingService implements \ArrayAccess, \JsonSerializable, ModelI
      *
      * @return string[]
      */
-    public static function attributeMap() : array
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -177,7 +180,7 @@ class RejectedShippingService implements \ArrayAccess, \JsonSerializable, ModelI
      *
      * @return string[]
      */
-    public static function setters() : array
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -187,7 +190,7 @@ class RejectedShippingService implements \ArrayAccess, \JsonSerializable, ModelI
      *
      * @return string[]
      */
-    public static function getters() : array
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -195,7 +198,7 @@ class RejectedShippingService implements \ArrayAccess, \JsonSerializable, ModelI
     /**
      * Gets the string presentation of the object.
      */
-    public function __toString() : string
+    public function __toString(): string
     {
         return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
@@ -206,7 +209,7 @@ class RejectedShippingService implements \ArrayAccess, \JsonSerializable, ModelI
     /**
      * The original name of the model.
      */
-    public function getModelName() : string
+    public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
@@ -216,7 +219,7 @@ class RejectedShippingService implements \ArrayAccess, \JsonSerializable, ModelI
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties() : array
+    public function listInvalidProperties(): array
     {
         $invalidProperties = [];
 
@@ -245,7 +248,7 @@ class RejectedShippingService implements \ArrayAccess, \JsonSerializable, ModelI
      *
      * @return bool True if all properties are valid
      */
-    public function valid() : bool
+    public function valid(): bool
     {
         return \count($this->listInvalidProperties()) === 0;
     }
@@ -253,7 +256,7 @@ class RejectedShippingService implements \ArrayAccess, \JsonSerializable, ModelI
     /**
      * Gets carrier_name.
      */
-    public function getCarrierName() : string
+    public function getCarrierName(): string
     {
         return $this->container['carrier_name'];
     }
@@ -263,7 +266,7 @@ class RejectedShippingService implements \ArrayAccess, \JsonSerializable, ModelI
      *
      * @param string $carrier_name The rejected shipping carrier name. e.g. USPS
      */
-    public function setCarrierName(string $carrier_name) : self
+    public function setCarrierName(string $carrier_name): self
     {
         $this->container['carrier_name'] = $carrier_name;
 
@@ -273,7 +276,7 @@ class RejectedShippingService implements \ArrayAccess, \JsonSerializable, ModelI
     /**
      * Gets shipping_service_name.
      */
-    public function getShippingServiceName() : string
+    public function getShippingServiceName(): string
     {
         return $this->container['shipping_service_name'];
     }
@@ -283,7 +286,7 @@ class RejectedShippingService implements \ArrayAccess, \JsonSerializable, ModelI
      *
      * @param string $shipping_service_name The rejected shipping service localized name. e.g. FedEx Standard Overnight
      */
-    public function setShippingServiceName(string $shipping_service_name) : self
+    public function setShippingServiceName(string $shipping_service_name): self
     {
         $this->container['shipping_service_name'] = $shipping_service_name;
 
@@ -293,7 +296,7 @@ class RejectedShippingService implements \ArrayAccess, \JsonSerializable, ModelI
     /**
      * Gets shipping_service_id.
      */
-    public function getShippingServiceId() : string
+    public function getShippingServiceId(): string
     {
         return $this->container['shipping_service_id'];
     }
@@ -303,7 +306,7 @@ class RejectedShippingService implements \ArrayAccess, \JsonSerializable, ModelI
      *
      * @param string $shipping_service_id an Amazon-defined shipping service identifier
      */
-    public function setShippingServiceId(string $shipping_service_id) : self
+    public function setShippingServiceId(string $shipping_service_id): self
     {
         $this->container['shipping_service_id'] = $shipping_service_id;
 
@@ -313,7 +316,7 @@ class RejectedShippingService implements \ArrayAccess, \JsonSerializable, ModelI
     /**
      * Gets rejection_reason_code.
      */
-    public function getRejectionReasonCode() : string
+    public function getRejectionReasonCode(): string
     {
         return $this->container['rejection_reason_code'];
     }
@@ -323,7 +326,7 @@ class RejectedShippingService implements \ArrayAccess, \JsonSerializable, ModelI
      *
      * @param string $rejection_reason_code A reason code meant to be consumed programatically. e.g. CARRIER_CANNOT_SHIP_TO_POBOX
      */
-    public function setRejectionReasonCode(string $rejection_reason_code) : self
+    public function setRejectionReasonCode(string $rejection_reason_code): self
     {
         $this->container['rejection_reason_code'] = $rejection_reason_code;
 
@@ -333,7 +336,7 @@ class RejectedShippingService implements \ArrayAccess, \JsonSerializable, ModelI
     /**
      * Gets rejection_reason_message.
      */
-    public function getRejectionReasonMessage() : ?string
+    public function getRejectionReasonMessage(): ?string
     {
         return $this->container['rejection_reason_message'];
     }
@@ -343,7 +346,7 @@ class RejectedShippingService implements \ArrayAccess, \JsonSerializable, ModelI
      *
      * @param null|string $rejection_reason_message a localized human readable description of the rejected reason
      */
-    public function setRejectionReasonMessage(?string $rejection_reason_message) : self
+    public function setRejectionReasonMessage(?string $rejection_reason_message): self
     {
         $this->container['rejection_reason_message'] = $rejection_reason_message;
 
@@ -355,7 +358,7 @@ class RejectedShippingService implements \ArrayAccess, \JsonSerializable, ModelI
      *
      * @param int $offset Offset
      */
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -378,7 +381,7 @@ class RejectedShippingService implements \ArrayAccess, \JsonSerializable, ModelI
      * @param null|int $offset Offset
      * @param mixed $value Value to be set
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         if (null === $offset) {
             $this->container[] = $value;
@@ -392,7 +395,7 @@ class RejectedShippingService implements \ArrayAccess, \JsonSerializable, ModelI
      *
      * @param int $offset Offset
      */
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -405,7 +408,7 @@ class RejectedShippingService implements \ArrayAccess, \JsonSerializable, ModelI
      * @return mixed returns data which can be serialized by json_encode(), which is a value
      *               of any type other than a resource
      */
-    public function jsonSerialize() : string
+    public function jsonSerialize(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }
@@ -413,7 +416,7 @@ class RejectedShippingService implements \ArrayAccess, \JsonSerializable, ModelI
     /**
      * Gets a header-safe presentation of the object.
      */
-    public function toHeaderValue() : string
+    public function toHeaderValue(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }

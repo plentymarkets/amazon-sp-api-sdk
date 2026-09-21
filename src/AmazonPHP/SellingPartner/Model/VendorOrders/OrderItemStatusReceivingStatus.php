@@ -1,4 +1,7 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
+
 /**
  * OrderItemStatusReceivingStatus.
  *
@@ -128,7 +131,7 @@ class OrderItemStatusReceivingStatus implements \ArrayAccess, \JsonSerializable,
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['receive_status'] = $data['receive_status'] ?? null;
         $this->container['received_quantity'] = $data['received_quantity'] ?? null;
@@ -140,7 +143,7 @@ class OrderItemStatusReceivingStatus implements \ArrayAccess, \JsonSerializable,
      *
      * @return string[]
      */
-    public static function openAPITypes() : array
+    public static function openAPITypes(): array
     {
         return self::$openAPITypes;
     }
@@ -150,7 +153,7 @@ class OrderItemStatusReceivingStatus implements \ArrayAccess, \JsonSerializable,
      *
      * @return null[]|string[]
      */
-    public static function openAPIFormats() : array
+    public static function openAPIFormats(): array
     {
         return self::$openAPIFormats;
     }
@@ -161,7 +164,7 @@ class OrderItemStatusReceivingStatus implements \ArrayAccess, \JsonSerializable,
      *
      * @return string[]
      */
-    public static function attributeMap() : array
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -171,7 +174,7 @@ class OrderItemStatusReceivingStatus implements \ArrayAccess, \JsonSerializable,
      *
      * @return string[]
      */
-    public static function setters() : array
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -181,7 +184,7 @@ class OrderItemStatusReceivingStatus implements \ArrayAccess, \JsonSerializable,
      *
      * @return string[]
      */
-    public static function getters() : array
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -189,7 +192,7 @@ class OrderItemStatusReceivingStatus implements \ArrayAccess, \JsonSerializable,
     /**
      * Gets the string presentation of the object.
      */
-    public function __toString() : string
+    public function __toString(): string
     {
         return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
@@ -200,7 +203,7 @@ class OrderItemStatusReceivingStatus implements \ArrayAccess, \JsonSerializable,
     /**
      * The original name of the model.
      */
-    public function getModelName() : string
+    public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
@@ -210,7 +213,7 @@ class OrderItemStatusReceivingStatus implements \ArrayAccess, \JsonSerializable,
      *
      * @return string[]
      */
-    public function getReceiveStatusAllowableValues() : array
+    public function getReceiveStatusAllowableValues(): array
     {
         return [
             self::RECEIVE_STATUS_NOT_RECEIVED,
@@ -224,7 +227,7 @@ class OrderItemStatusReceivingStatus implements \ArrayAccess, \JsonSerializable,
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties() : array
+    public function listInvalidProperties(): array
     {
         $invalidProperties = [];
 
@@ -247,7 +250,7 @@ class OrderItemStatusReceivingStatus implements \ArrayAccess, \JsonSerializable,
      *
      * @return bool True if all properties are valid
      */
-    public function valid() : bool
+    public function valid(): bool
     {
         return \count($this->listInvalidProperties()) === 0;
     }
@@ -255,7 +258,7 @@ class OrderItemStatusReceivingStatus implements \ArrayAccess, \JsonSerializable,
     /**
      * Gets receive_status.
      */
-    public function getReceiveStatus() : ?string
+    public function getReceiveStatus(): ?string
     {
         return $this->container['receive_status'];
     }
@@ -265,7 +268,7 @@ class OrderItemStatusReceivingStatus implements \ArrayAccess, \JsonSerializable,
      *
      * @param null|string $receive_status receive status of the line item
      */
-    public function setReceiveStatus(?string $receive_status) : self
+    public function setReceiveStatus(?string $receive_status): self
     {
         $allowedValues = $this->getReceiveStatusAllowableValues();
 
@@ -286,7 +289,7 @@ class OrderItemStatusReceivingStatus implements \ArrayAccess, \JsonSerializable,
     /**
      * Gets received_quantity.
      */
-    public function getReceivedQuantity() : ?ItemQuantity
+    public function getReceivedQuantity(): ?ItemQuantity
     {
         return $this->container['received_quantity'];
     }
@@ -296,7 +299,7 @@ class OrderItemStatusReceivingStatus implements \ArrayAccess, \JsonSerializable,
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\VendorOrders\ItemQuantity $received_quantity received_quantity
      */
-    public function setReceivedQuantity(?ItemQuantity $received_quantity) : self
+    public function setReceivedQuantity(?ItemQuantity $received_quantity): self
     {
         $this->container['received_quantity'] = $received_quantity;
 
@@ -308,7 +311,7 @@ class OrderItemStatusReceivingStatus implements \ArrayAccess, \JsonSerializable,
      *
      * @return null|\DateTime|\DateTimeImmutable
      */
-    public function getLastReceiveDate() : ?\DateTimeInterface
+    public function getLastReceiveDate(): ?\DateTimeInterface
     {
         return $this->container['last_receive_date'];
     }
@@ -318,7 +321,7 @@ class OrderItemStatusReceivingStatus implements \ArrayAccess, \JsonSerializable,
      *
      * @param \DateTime|\DateTimeImmutable $last_receive_date The date when the most recent item was received at the buyer's warehouse. Must be in ISO-8601 date/time format.
      */
-    public function setLastReceiveDate(\DateTimeInterface $last_receive_date) : self
+    public function setLastReceiveDate(\DateTimeInterface $last_receive_date): self
     {
         $this->container['last_receive_date'] = $last_receive_date;
 
@@ -330,7 +333,7 @@ class OrderItemStatusReceivingStatus implements \ArrayAccess, \JsonSerializable,
      *
      * @param int $offset Offset
      */
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -353,7 +356,7 @@ class OrderItemStatusReceivingStatus implements \ArrayAccess, \JsonSerializable,
      * @param null|int $offset Offset
      * @param mixed $value Value to be set
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         if (null === $offset) {
             $this->container[] = $value;
@@ -367,7 +370,7 @@ class OrderItemStatusReceivingStatus implements \ArrayAccess, \JsonSerializable,
      *
      * @param int $offset Offset
      */
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -380,7 +383,7 @@ class OrderItemStatusReceivingStatus implements \ArrayAccess, \JsonSerializable,
      * @return mixed returns data which can be serialized by json_encode(), which is a value
      *               of any type other than a resource
      */
-    public function jsonSerialize() : string
+    public function jsonSerialize(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }
@@ -388,7 +391,7 @@ class OrderItemStatusReceivingStatus implements \ArrayAccess, \JsonSerializable,
     /**
      * Gets a header-safe presentation of the object.
      */
-    public function toHeaderValue() : string
+    public function toHeaderValue(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }

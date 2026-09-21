@@ -1,4 +1,7 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
+
 /**
  * InboundShipmentInfo.
  *
@@ -157,7 +160,7 @@ class InboundShipmentInfo implements \ArrayAccess, \JsonSerializable, ModelInter
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['shipment_id'] = $data['shipment_id'] ?? null;
         $this->container['shipment_name'] = $data['shipment_name'] ?? null;
@@ -176,7 +179,7 @@ class InboundShipmentInfo implements \ArrayAccess, \JsonSerializable, ModelInter
      *
      * @return string[]
      */
-    public static function openAPITypes() : array
+    public static function openAPITypes(): array
     {
         return self::$openAPITypes;
     }
@@ -186,7 +189,7 @@ class InboundShipmentInfo implements \ArrayAccess, \JsonSerializable, ModelInter
      *
      * @return null[]|string[]
      */
-    public static function openAPIFormats() : array
+    public static function openAPIFormats(): array
     {
         return self::$openAPIFormats;
     }
@@ -197,7 +200,7 @@ class InboundShipmentInfo implements \ArrayAccess, \JsonSerializable, ModelInter
      *
      * @return string[]
      */
-    public static function attributeMap() : array
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -207,7 +210,7 @@ class InboundShipmentInfo implements \ArrayAccess, \JsonSerializable, ModelInter
      *
      * @return string[]
      */
-    public static function setters() : array
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -217,7 +220,7 @@ class InboundShipmentInfo implements \ArrayAccess, \JsonSerializable, ModelInter
      *
      * @return string[]
      */
-    public static function getters() : array
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -225,7 +228,7 @@ class InboundShipmentInfo implements \ArrayAccess, \JsonSerializable, ModelInter
     /**
      * Gets the string presentation of the object.
      */
-    public function __toString() : string
+    public function __toString(): string
     {
         return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
@@ -236,7 +239,7 @@ class InboundShipmentInfo implements \ArrayAccess, \JsonSerializable, ModelInter
     /**
      * The original name of the model.
      */
-    public function getModelName() : string
+    public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
@@ -246,7 +249,7 @@ class InboundShipmentInfo implements \ArrayAccess, \JsonSerializable, ModelInter
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties() : array
+    public function listInvalidProperties(): array
     {
         $invalidProperties = [];
 
@@ -267,7 +270,7 @@ class InboundShipmentInfo implements \ArrayAccess, \JsonSerializable, ModelInter
      *
      * @return bool True if all properties are valid
      */
-    public function valid() : bool
+    public function valid(): bool
     {
         return \count($this->listInvalidProperties()) === 0;
     }
@@ -275,7 +278,7 @@ class InboundShipmentInfo implements \ArrayAccess, \JsonSerializable, ModelInter
     /**
      * Gets shipment_id.
      */
-    public function getShipmentId() : ?string
+    public function getShipmentId(): ?string
     {
         return $this->container['shipment_id'];
     }
@@ -285,7 +288,7 @@ class InboundShipmentInfo implements \ArrayAccess, \JsonSerializable, ModelInter
      *
      * @param null|string $shipment_id the shipment identifier submitted in the request
      */
-    public function setShipmentId(?string $shipment_id) : self
+    public function setShipmentId(?string $shipment_id): self
     {
         $this->container['shipment_id'] = $shipment_id;
 
@@ -295,7 +298,7 @@ class InboundShipmentInfo implements \ArrayAccess, \JsonSerializable, ModelInter
     /**
      * Gets shipment_name.
      */
-    public function getShipmentName() : ?string
+    public function getShipmentName(): ?string
     {
         return $this->container['shipment_name'];
     }
@@ -305,7 +308,7 @@ class InboundShipmentInfo implements \ArrayAccess, \JsonSerializable, ModelInter
      *
      * @param null|string $shipment_name the name for the inbound shipment
      */
-    public function setShipmentName(?string $shipment_name) : self
+    public function setShipmentName(?string $shipment_name): self
     {
         $this->container['shipment_name'] = $shipment_name;
 
@@ -315,7 +318,7 @@ class InboundShipmentInfo implements \ArrayAccess, \JsonSerializable, ModelInter
     /**
      * Gets ship_from_address.
      */
-    public function getShipFromAddress() : Address
+    public function getShipFromAddress(): Address
     {
         return $this->container['ship_from_address'];
     }
@@ -325,7 +328,7 @@ class InboundShipmentInfo implements \ArrayAccess, \JsonSerializable, ModelInter
      *
      * @param \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound\Address $ship_from_address ship_from_address
      */
-    public function setShipFromAddress(Address $ship_from_address) : self
+    public function setShipFromAddress(Address $ship_from_address): self
     {
         $this->container['ship_from_address'] = $ship_from_address;
 
@@ -335,7 +338,7 @@ class InboundShipmentInfo implements \ArrayAccess, \JsonSerializable, ModelInter
     /**
      * Gets destination_fulfillment_center_id.
      */
-    public function getDestinationFulfillmentCenterId() : ?string
+    public function getDestinationFulfillmentCenterId(): ?string
     {
         return $this->container['destination_fulfillment_center_id'];
     }
@@ -345,7 +348,7 @@ class InboundShipmentInfo implements \ArrayAccess, \JsonSerializable, ModelInter
      *
      * @param null|string $destination_fulfillment_center_id an Amazon fulfillment center identifier created by Amazon
      */
-    public function setDestinationFulfillmentCenterId(?string $destination_fulfillment_center_id) : self
+    public function setDestinationFulfillmentCenterId(?string $destination_fulfillment_center_id): self
     {
         $this->container['destination_fulfillment_center_id'] = $destination_fulfillment_center_id;
 
@@ -355,7 +358,7 @@ class InboundShipmentInfo implements \ArrayAccess, \JsonSerializable, ModelInter
     /**
      * Gets shipment_status.
      */
-    public function getShipmentStatus() : ?ShipmentStatus
+    public function getShipmentStatus(): ?ShipmentStatus
     {
         return $this->container['shipment_status'];
     }
@@ -365,7 +368,7 @@ class InboundShipmentInfo implements \ArrayAccess, \JsonSerializable, ModelInter
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound\ShipmentStatus $shipment_status shipment_status
      */
-    public function setShipmentStatus(?ShipmentStatus $shipment_status) : self
+    public function setShipmentStatus(?ShipmentStatus $shipment_status): self
     {
         $this->container['shipment_status'] = $shipment_status;
 
@@ -375,7 +378,7 @@ class InboundShipmentInfo implements \ArrayAccess, \JsonSerializable, ModelInter
     /**
      * Gets label_prep_type.
      */
-    public function getLabelPrepType() : ?LabelPrepType
+    public function getLabelPrepType(): ?LabelPrepType
     {
         return $this->container['label_prep_type'];
     }
@@ -385,7 +388,7 @@ class InboundShipmentInfo implements \ArrayAccess, \JsonSerializable, ModelInter
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound\LabelPrepType $label_prep_type label_prep_type
      */
-    public function setLabelPrepType(?LabelPrepType $label_prep_type) : self
+    public function setLabelPrepType(?LabelPrepType $label_prep_type): self
     {
         $this->container['label_prep_type'] = $label_prep_type;
 
@@ -395,7 +398,7 @@ class InboundShipmentInfo implements \ArrayAccess, \JsonSerializable, ModelInter
     /**
      * Gets are_cases_required.
      */
-    public function getAreCasesRequired() : bool
+    public function getAreCasesRequired(): bool
     {
         return $this->container['are_cases_required'];
     }
@@ -405,7 +408,7 @@ class InboundShipmentInfo implements \ArrayAccess, \JsonSerializable, ModelInter
      *
      * @param bool $are_cases_required Indicates whether or not an inbound shipment contains case-packed boxes. When AreCasesRequired = true for an inbound shipment, all items in the inbound shipment must be case packed.
      */
-    public function setAreCasesRequired(bool $are_cases_required) : self
+    public function setAreCasesRequired(bool $are_cases_required): self
     {
         $this->container['are_cases_required'] = $are_cases_required;
 
@@ -417,7 +420,7 @@ class InboundShipmentInfo implements \ArrayAccess, \JsonSerializable, ModelInter
      *
      * @return null|\DateTime|\DateTimeImmutable
      */
-    public function getConfirmedNeedByDate() : ?\DateTimeInterface
+    public function getConfirmedNeedByDate(): ?\DateTimeInterface
     {
         return $this->container['confirmed_need_by_date'];
     }
@@ -427,7 +430,7 @@ class InboundShipmentInfo implements \ArrayAccess, \JsonSerializable, ModelInter
      *
      * @param \DateTime|\DateTimeImmutable $confirmed_need_by_date confirmed_need_by_date
      */
-    public function setConfirmedNeedByDate(\DateTimeInterface $confirmed_need_by_date) : self
+    public function setConfirmedNeedByDate(\DateTimeInterface $confirmed_need_by_date): self
     {
         $this->container['confirmed_need_by_date'] = $confirmed_need_by_date;
 
@@ -437,7 +440,7 @@ class InboundShipmentInfo implements \ArrayAccess, \JsonSerializable, ModelInter
     /**
      * Gets box_contents_source.
      */
-    public function getBoxContentsSource() : ?BoxContentsSource
+    public function getBoxContentsSource(): ?BoxContentsSource
     {
         return $this->container['box_contents_source'];
     }
@@ -447,7 +450,7 @@ class InboundShipmentInfo implements \ArrayAccess, \JsonSerializable, ModelInter
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound\BoxContentsSource $box_contents_source box_contents_source
      */
-    public function setBoxContentsSource(?BoxContentsSource $box_contents_source) : self
+    public function setBoxContentsSource(?BoxContentsSource $box_contents_source): self
     {
         $this->container['box_contents_source'] = $box_contents_source;
 
@@ -457,7 +460,7 @@ class InboundShipmentInfo implements \ArrayAccess, \JsonSerializable, ModelInter
     /**
      * Gets estimated_box_contents_fee.
      */
-    public function getEstimatedBoxContentsFee() : ?BoxContentsFeeDetails
+    public function getEstimatedBoxContentsFee(): ?BoxContentsFeeDetails
     {
         return $this->container['estimated_box_contents_fee'];
     }
@@ -467,7 +470,7 @@ class InboundShipmentInfo implements \ArrayAccess, \JsonSerializable, ModelInter
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound\BoxContentsFeeDetails $estimated_box_contents_fee estimated_box_contents_fee
      */
-    public function setEstimatedBoxContentsFee(?BoxContentsFeeDetails $estimated_box_contents_fee) : self
+    public function setEstimatedBoxContentsFee(?BoxContentsFeeDetails $estimated_box_contents_fee): self
     {
         $this->container['estimated_box_contents_fee'] = $estimated_box_contents_fee;
 
@@ -479,7 +482,7 @@ class InboundShipmentInfo implements \ArrayAccess, \JsonSerializable, ModelInter
      *
      * @param int $offset Offset
      */
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -502,7 +505,7 @@ class InboundShipmentInfo implements \ArrayAccess, \JsonSerializable, ModelInter
      * @param null|int $offset Offset
      * @param mixed $value Value to be set
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         if (null === $offset) {
             $this->container[] = $value;
@@ -516,7 +519,7 @@ class InboundShipmentInfo implements \ArrayAccess, \JsonSerializable, ModelInter
      *
      * @param int $offset Offset
      */
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -529,7 +532,7 @@ class InboundShipmentInfo implements \ArrayAccess, \JsonSerializable, ModelInter
      * @return mixed returns data which can be serialized by json_encode(), which is a value
      *               of any type other than a resource
      */
-    public function jsonSerialize() : string
+    public function jsonSerialize(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }
@@ -537,7 +540,7 @@ class InboundShipmentInfo implements \ArrayAccess, \JsonSerializable, ModelInter
     /**
      * Gets a header-safe presentation of the object.
      */
-    public function toHeaderValue() : string
+    public function toHeaderValue(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }

@@ -110,7 +110,7 @@ class ComplianceDetail implements \ArrayAccess, \JsonSerializable, \Stringable, 
      * @param null|mixed[] $data Associated array of property values
      *                           initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['asin'] = $data['asin'] ?? null;
         $this->container['fnsku'] = $data['fnsku'] ?? null;
@@ -121,7 +121,7 @@ class ComplianceDetail implements \ArrayAccess, \JsonSerializable, \Stringable, 
     /**
      * Array of property to type mappings. Used for (de)serialization.
      */
-    public static function openAPITypes() : array
+    public static function openAPITypes(): array
     {
         return self::$openAPITypes;
     }
@@ -129,7 +129,7 @@ class ComplianceDetail implements \ArrayAccess, \JsonSerializable, \Stringable, 
     /**
      * Array of property to format mappings. Used for (de)serialization.
      */
-    public static function openAPIFormats() : array
+    public static function openAPIFormats(): array
     {
         return self::$openAPIFormats;
     }
@@ -138,7 +138,7 @@ class ComplianceDetail implements \ArrayAccess, \JsonSerializable, \Stringable, 
      * Array of attributes where the key is the local name,
      * and the value is the original name.
      */
-    public static function attributeMap() : array
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -146,7 +146,7 @@ class ComplianceDetail implements \ArrayAccess, \JsonSerializable, \Stringable, 
     /**
      * Array of attributes to setter functions (for deserialization of responses).
      */
-    public static function setters() : array
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -154,7 +154,7 @@ class ComplianceDetail implements \ArrayAccess, \JsonSerializable, \Stringable, 
     /**
      * Array of attributes to getter functions (for serialization of requests).
      */
-    public static function getters() : array
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -162,7 +162,7 @@ class ComplianceDetail implements \ArrayAccess, \JsonSerializable, \Stringable, 
     /**
      * Gets the string presentation of the object.
      */
-    public function __toString() : string
+    public function __toString(): string
     {
         return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
@@ -173,7 +173,7 @@ class ComplianceDetail implements \ArrayAccess, \JsonSerializable, \Stringable, 
     /**
      * The original name of the model.
      */
-    public function getModelName() : string
+    public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
@@ -183,10 +183,10 @@ class ComplianceDetail implements \ArrayAccess, \JsonSerializable, \Stringable, 
      *
      * @throws AssertionException
      */
-    public function listInvalidProperties() : array
+    public function listInvalidProperties(): array
     {
         $invalidProperties = [];
-         
+
         if (null !== $this->container['asin'] && (\mb_strlen((string) $this->container['asin']) > 10)) {
             $invalidProperties[] = "invalid value for 'asin', the character length must be smaller than or equal to 10.";
         }
@@ -224,7 +224,7 @@ class ComplianceDetail implements \ArrayAccess, \JsonSerializable, \Stringable, 
      *
      * @return bool True if all properties are valid
      */
-    public function valid() : bool
+    public function valid(): bool
     {
         return \count($this->listInvalidProperties()) === 0;
     }
@@ -232,7 +232,7 @@ class ComplianceDetail implements \ArrayAccess, \JsonSerializable, \Stringable, 
     /**
      * Gets asin.
      */
-    public function getAsin() : ?string
+    public function getAsin(): ?string
     {
         return $this->container['asin'];
     }
@@ -242,7 +242,7 @@ class ComplianceDetail implements \ArrayAccess, \JsonSerializable, \Stringable, 
      *
      * @param null|string $asin the Amazon Standard Identification Number, which identifies the detail page identifier
      */
-    public function setAsin(?string $asin) : self
+    public function setAsin(?string $asin): self
     {
         $this->container['asin'] = $asin;
 
@@ -252,7 +252,7 @@ class ComplianceDetail implements \ArrayAccess, \JsonSerializable, \Stringable, 
     /**
      * Gets fnsku.
      */
-    public function getFnsku() : ?string
+    public function getFnsku(): ?string
     {
         return $this->container['fnsku'];
     }
@@ -262,7 +262,7 @@ class ComplianceDetail implements \ArrayAccess, \JsonSerializable, \Stringable, 
      *
      * @param null|string $fnsku the Fulfillment Network SKU, which identifies a real fulfillable item with catalog data and condition
      */
-    public function setFnsku(?string $fnsku) : self
+    public function setFnsku(?string $fnsku): self
     {
         $this->container['fnsku'] = $fnsku;
 
@@ -272,7 +272,7 @@ class ComplianceDetail implements \ArrayAccess, \JsonSerializable, \Stringable, 
     /**
      * Gets msku.
      */
-    public function getMsku() : ?string
+    public function getMsku(): ?string
     {
         return $this->container['msku'];
     }
@@ -282,7 +282,7 @@ class ComplianceDetail implements \ArrayAccess, \JsonSerializable, \Stringable, 
      *
      * @param null|string $msku the merchant SKU, a merchant-supplied identifier for a specific SKU
      */
-    public function setMsku(?string $msku) : self
+    public function setMsku(?string $msku): self
     {
         $this->container['msku'] = $msku;
 
@@ -292,7 +292,7 @@ class ComplianceDetail implements \ArrayAccess, \JsonSerializable, \Stringable, 
     /**
      * Gets tax_details.
      */
-    public function getTaxDetails() : ?TaxDetails
+    public function getTaxDetails(): ?TaxDetails
     {
         return $this->container['tax_details'];
     }
@@ -302,7 +302,7 @@ class ComplianceDetail implements \ArrayAccess, \JsonSerializable, \Stringable, 
      *
      * @param null|TaxDetails $tax_details tax_details
      */
-    public function setTaxDetails(?TaxDetails $tax_details) : self
+    public function setTaxDetails(?TaxDetails $tax_details): self
     {
         $this->container['tax_details'] = $tax_details;
 
@@ -312,7 +312,7 @@ class ComplianceDetail implements \ArrayAccess, \JsonSerializable, \Stringable, 
     /**
      * Returns true if offset exists. False otherwise.
      */
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -323,7 +323,7 @@ class ComplianceDetail implements \ArrayAccess, \JsonSerializable, \Stringable, 
      * @return null|mixed
      */
     #[\ReturnTypeWillChange]
-    public function offsetGet($offset) : mixed
+    public function offsetGet($offset): mixed
     {
         return $this->container[$offset] ?? null;
     }
@@ -331,7 +331,7 @@ class ComplianceDetail implements \ArrayAccess, \JsonSerializable, \Stringable, 
     /**
      * Sets value based on offset.
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         if (null === $offset) {
             $this->container[] = $value;
@@ -343,7 +343,7 @@ class ComplianceDetail implements \ArrayAccess, \JsonSerializable, \Stringable, 
     /**
      * Unsets offset.
      */
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -357,7 +357,7 @@ class ComplianceDetail implements \ArrayAccess, \JsonSerializable, \Stringable, 
      *               of any type other than a resource
      */
     #[\ReturnTypeWillChange]
-    public function jsonSerialize() : string
+    public function jsonSerialize(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }
@@ -365,7 +365,7 @@ class ComplianceDetail implements \ArrayAccess, \JsonSerializable, \Stringable, 
     /**
      * Gets a header-safe presentation of the object.
      */
-    public function toHeaderValue() : string
+    public function toHeaderValue(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }

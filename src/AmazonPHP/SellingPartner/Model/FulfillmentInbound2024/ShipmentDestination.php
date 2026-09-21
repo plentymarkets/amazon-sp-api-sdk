@@ -105,7 +105,7 @@ class ShipmentDestination implements \ArrayAccess, \JsonSerializable, \Stringabl
      * @param null|mixed[] $data Associated array of property values
      *                           initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['address'] = $data['address'] ?? null;
         $this->container['destination_type'] = $data['destination_type'] ?? null;
@@ -115,7 +115,7 @@ class ShipmentDestination implements \ArrayAccess, \JsonSerializable, \Stringabl
     /**
      * Array of property to type mappings. Used for (de)serialization.
      */
-    public static function openAPITypes() : array
+    public static function openAPITypes(): array
     {
         return self::$openAPITypes;
     }
@@ -123,7 +123,7 @@ class ShipmentDestination implements \ArrayAccess, \JsonSerializable, \Stringabl
     /**
      * Array of property to format mappings. Used for (de)serialization.
      */
-    public static function openAPIFormats() : array
+    public static function openAPIFormats(): array
     {
         return self::$openAPIFormats;
     }
@@ -132,7 +132,7 @@ class ShipmentDestination implements \ArrayAccess, \JsonSerializable, \Stringabl
      * Array of attributes where the key is the local name,
      * and the value is the original name.
      */
-    public static function attributeMap() : array
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -140,7 +140,7 @@ class ShipmentDestination implements \ArrayAccess, \JsonSerializable, \Stringabl
     /**
      * Array of attributes to setter functions (for deserialization of responses).
      */
-    public static function setters() : array
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -148,7 +148,7 @@ class ShipmentDestination implements \ArrayAccess, \JsonSerializable, \Stringabl
     /**
      * Array of attributes to getter functions (for serialization of requests).
      */
-    public static function getters() : array
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -156,7 +156,7 @@ class ShipmentDestination implements \ArrayAccess, \JsonSerializable, \Stringabl
     /**
      * Gets the string presentation of the object.
      */
-    public function __toString() : string
+    public function __toString(): string
     {
         return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
@@ -167,7 +167,7 @@ class ShipmentDestination implements \ArrayAccess, \JsonSerializable, \Stringabl
     /**
      * The original name of the model.
      */
-    public function getModelName() : string
+    public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
@@ -177,10 +177,10 @@ class ShipmentDestination implements \ArrayAccess, \JsonSerializable, \Stringabl
      *
      * @throws AssertionException
      */
-    public function listInvalidProperties() : array
+    public function listInvalidProperties(): array
     {
         $invalidProperties = [];
-         
+
         if ($this->container['address'] !== null) {
             $this->container['address']->listInvalidProperties();
         }
@@ -214,7 +214,7 @@ class ShipmentDestination implements \ArrayAccess, \JsonSerializable, \Stringabl
      *
      * @return bool True if all properties are valid
      */
-    public function valid() : bool
+    public function valid(): bool
     {
         return \count($this->listInvalidProperties()) === 0;
     }
@@ -222,7 +222,7 @@ class ShipmentDestination implements \ArrayAccess, \JsonSerializable, \Stringabl
     /**
      * Gets address.
      */
-    public function getAddress() : ?Address
+    public function getAddress(): ?Address
     {
         return $this->container['address'];
     }
@@ -232,7 +232,7 @@ class ShipmentDestination implements \ArrayAccess, \JsonSerializable, \Stringabl
      *
      * @param null|Address $address address
      */
-    public function setAddress(?Address $address) : self
+    public function setAddress(?Address $address): self
     {
         $this->container['address'] = $address;
 
@@ -242,7 +242,7 @@ class ShipmentDestination implements \ArrayAccess, \JsonSerializable, \Stringabl
     /**
      * Gets destination_type.
      */
-    public function getDestinationType() : string
+    public function getDestinationType(): string
     {
         return $this->container['destination_type'];
     }
@@ -252,7 +252,7 @@ class ShipmentDestination implements \ArrayAccess, \JsonSerializable, \Stringabl
      *
      * @param string $destination_type The type of destination for this shipment. Can be: `AMAZON_OPTIMIZED`, `AMAZON_WAREHOUSE`.
      */
-    public function setDestinationType(string $destination_type) : self
+    public function setDestinationType(string $destination_type): self
     {
         $this->container['destination_type'] = $destination_type;
 
@@ -262,7 +262,7 @@ class ShipmentDestination implements \ArrayAccess, \JsonSerializable, \Stringabl
     /**
      * Gets warehouse_id.
      */
-    public function getWarehouseId() : ?string
+    public function getWarehouseId(): ?string
     {
         return $this->container['warehouse_id'];
     }
@@ -272,7 +272,7 @@ class ShipmentDestination implements \ArrayAccess, \JsonSerializable, \Stringabl
      *
      * @param null|string $warehouse_id The warehouse that the shipment should be sent to. Empty if the destination type is `AMAZON_OPTIMIZED`.
      */
-    public function setWarehouseId(?string $warehouse_id) : self
+    public function setWarehouseId(?string $warehouse_id): self
     {
         $this->container['warehouse_id'] = $warehouse_id;
 
@@ -282,7 +282,7 @@ class ShipmentDestination implements \ArrayAccess, \JsonSerializable, \Stringabl
     /**
      * Returns true if offset exists. False otherwise.
      */
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -293,7 +293,7 @@ class ShipmentDestination implements \ArrayAccess, \JsonSerializable, \Stringabl
      * @return null|mixed
      */
     #[\ReturnTypeWillChange]
-    public function offsetGet($offset) : mixed
+    public function offsetGet($offset): mixed
     {
         return $this->container[$offset] ?? null;
     }
@@ -301,7 +301,7 @@ class ShipmentDestination implements \ArrayAccess, \JsonSerializable, \Stringabl
     /**
      * Sets value based on offset.
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         if (null === $offset) {
             $this->container[] = $value;
@@ -313,7 +313,7 @@ class ShipmentDestination implements \ArrayAccess, \JsonSerializable, \Stringabl
     /**
      * Unsets offset.
      */
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -327,7 +327,7 @@ class ShipmentDestination implements \ArrayAccess, \JsonSerializable, \Stringabl
      *               of any type other than a resource
      */
     #[\ReturnTypeWillChange]
-    public function jsonSerialize() : string
+    public function jsonSerialize(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }
@@ -335,7 +335,7 @@ class ShipmentDestination implements \ArrayAccess, \JsonSerializable, \Stringabl
     /**
      * Gets a header-safe presentation of the object.
      */
-    public function toHeaderValue() : string
+    public function toHeaderValue(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }

@@ -1,4 +1,7 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
+
 /**
  * StandardComparisonTableModule.
  *
@@ -117,7 +120,7 @@ class StandardComparisonTableModule implements \ArrayAccess, \JsonSerializable, 
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['product_columns'] = $data['product_columns'] ?? null;
         $this->container['metric_row_labels'] = $data['metric_row_labels'] ?? null;
@@ -128,7 +131,7 @@ class StandardComparisonTableModule implements \ArrayAccess, \JsonSerializable, 
      *
      * @return string[]
      */
-    public static function openAPITypes() : array
+    public static function openAPITypes(): array
     {
         return self::$openAPITypes;
     }
@@ -138,7 +141,7 @@ class StandardComparisonTableModule implements \ArrayAccess, \JsonSerializable, 
      *
      * @return null[]|string[]
      */
-    public static function openAPIFormats() : array
+    public static function openAPIFormats(): array
     {
         return self::$openAPIFormats;
     }
@@ -149,7 +152,7 @@ class StandardComparisonTableModule implements \ArrayAccess, \JsonSerializable, 
      *
      * @return string[]
      */
-    public static function attributeMap() : array
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -159,7 +162,7 @@ class StandardComparisonTableModule implements \ArrayAccess, \JsonSerializable, 
      *
      * @return string[]
      */
-    public static function setters() : array
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -169,7 +172,7 @@ class StandardComparisonTableModule implements \ArrayAccess, \JsonSerializable, 
      *
      * @return string[]
      */
-    public static function getters() : array
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -177,7 +180,7 @@ class StandardComparisonTableModule implements \ArrayAccess, \JsonSerializable, 
     /**
      * Gets the string presentation of the object.
      */
-    public function __toString() : string
+    public function __toString(): string
     {
         return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
@@ -188,7 +191,7 @@ class StandardComparisonTableModule implements \ArrayAccess, \JsonSerializable, 
     /**
      * The original name of the model.
      */
-    public function getModelName() : string
+    public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
@@ -198,7 +201,7 @@ class StandardComparisonTableModule implements \ArrayAccess, \JsonSerializable, 
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties() : array
+    public function listInvalidProperties(): array
     {
         $invalidProperties = [];
 
@@ -227,7 +230,7 @@ class StandardComparisonTableModule implements \ArrayAccess, \JsonSerializable, 
      *
      * @return bool True if all properties are valid
      */
-    public function valid() : bool
+    public function valid(): bool
     {
         return \count($this->listInvalidProperties()) === 0;
     }
@@ -237,7 +240,7 @@ class StandardComparisonTableModule implements \ArrayAccess, \JsonSerializable, 
      *
      * @return null|\Plenty\AmazonPHP\SellingPartner\Model\APlus\StandardComparisonProductBlock[]
      */
-    public function getProductColumns() : ?array
+    public function getProductColumns(): ?array
     {
         return $this->container['product_columns'];
     }
@@ -247,7 +250,7 @@ class StandardComparisonTableModule implements \ArrayAccess, \JsonSerializable, 
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\APlus\StandardComparisonProductBlock[] $product_columns product_columns
      */
-    public function setProductColumns(?array $product_columns) : self
+    public function setProductColumns(?array $product_columns): self
     {
         if (null !== $product_columns && (\count($product_columns) > 6)) {
             throw new \InvalidArgumentException('invalid value for $product_columns when calling StandardComparisonTableModule., number of items must be less than or equal to 6.');
@@ -266,7 +269,7 @@ class StandardComparisonTableModule implements \ArrayAccess, \JsonSerializable, 
      *
      * @return null|\Plenty\AmazonPHP\SellingPartner\Model\APlus\PlainTextItem[]
      */
-    public function getMetricRowLabels() : ?array
+    public function getMetricRowLabels(): ?array
     {
         return $this->container['metric_row_labels'];
     }
@@ -276,7 +279,7 @@ class StandardComparisonTableModule implements \ArrayAccess, \JsonSerializable, 
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\APlus\PlainTextItem[] $metric_row_labels metric_row_labels
      */
-    public function setMetricRowLabels(?array $metric_row_labels) : self
+    public function setMetricRowLabels(?array $metric_row_labels): self
     {
         if (null !== $metric_row_labels && (\count($metric_row_labels) > 10)) {
             throw new \InvalidArgumentException('invalid value for $metric_row_labels when calling StandardComparisonTableModule., number of items must be less than or equal to 10.');
@@ -295,7 +298,7 @@ class StandardComparisonTableModule implements \ArrayAccess, \JsonSerializable, 
      *
      * @param int $offset Offset
      */
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -318,7 +321,7 @@ class StandardComparisonTableModule implements \ArrayAccess, \JsonSerializable, 
      * @param null|int $offset Offset
      * @param mixed $value Value to be set
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         if (null === $offset) {
             $this->container[] = $value;
@@ -332,7 +335,7 @@ class StandardComparisonTableModule implements \ArrayAccess, \JsonSerializable, 
      *
      * @param int $offset Offset
      */
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -345,7 +348,7 @@ class StandardComparisonTableModule implements \ArrayAccess, \JsonSerializable, 
      * @return mixed returns data which can be serialized by json_encode(), which is a value
      *               of any type other than a resource
      */
-    public function jsonSerialize() : string
+    public function jsonSerialize(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }
@@ -353,7 +356,7 @@ class StandardComparisonTableModule implements \ArrayAccess, \JsonSerializable, 
     /**
      * Gets a header-safe presentation of the object.
      */
-    public function toHeaderValue() : string
+    public function toHeaderValue(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }

@@ -105,7 +105,7 @@ class PackageGroupingInput implements \ArrayAccess, \JsonSerializable, \Stringab
      * @param null|mixed[] $data Associated array of property values
      *                           initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['boxes'] = $data['boxes'] ?? null;
         $this->container['packing_group_id'] = $data['packing_group_id'] ?? null;
@@ -115,7 +115,7 @@ class PackageGroupingInput implements \ArrayAccess, \JsonSerializable, \Stringab
     /**
      * Array of property to type mappings. Used for (de)serialization.
      */
-    public static function openAPITypes() : array
+    public static function openAPITypes(): array
     {
         return self::$openAPITypes;
     }
@@ -123,7 +123,7 @@ class PackageGroupingInput implements \ArrayAccess, \JsonSerializable, \Stringab
     /**
      * Array of property to format mappings. Used for (de)serialization.
      */
-    public static function openAPIFormats() : array
+    public static function openAPIFormats(): array
     {
         return self::$openAPIFormats;
     }
@@ -132,7 +132,7 @@ class PackageGroupingInput implements \ArrayAccess, \JsonSerializable, \Stringab
      * Array of attributes where the key is the local name,
      * and the value is the original name.
      */
-    public static function attributeMap() : array
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -140,7 +140,7 @@ class PackageGroupingInput implements \ArrayAccess, \JsonSerializable, \Stringab
     /**
      * Array of attributes to setter functions (for deserialization of responses).
      */
-    public static function setters() : array
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -148,7 +148,7 @@ class PackageGroupingInput implements \ArrayAccess, \JsonSerializable, \Stringab
     /**
      * Array of attributes to getter functions (for serialization of requests).
      */
-    public static function getters() : array
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -156,7 +156,7 @@ class PackageGroupingInput implements \ArrayAccess, \JsonSerializable, \Stringab
     /**
      * Gets the string presentation of the object.
      */
-    public function __toString() : string
+    public function __toString(): string
     {
         return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
@@ -167,7 +167,7 @@ class PackageGroupingInput implements \ArrayAccess, \JsonSerializable, \Stringab
     /**
      * The original name of the model.
      */
-    public function getModelName() : string
+    public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
@@ -177,10 +177,10 @@ class PackageGroupingInput implements \ArrayAccess, \JsonSerializable, \Stringab
      *
      * @throws AssertionException
      */
-    public function listInvalidProperties() : array
+    public function listInvalidProperties(): array
     {
         $invalidProperties = [];
-         
+
         if ($this->container['boxes'] === null) {
             $invalidProperties[] = "'boxes' can't be null";
         }
@@ -226,7 +226,7 @@ class PackageGroupingInput implements \ArrayAccess, \JsonSerializable, \Stringab
      *
      * @return bool True if all properties are valid
      */
-    public function valid() : bool
+    public function valid(): bool
     {
         return \count($this->listInvalidProperties()) === 0;
     }
@@ -236,7 +236,7 @@ class PackageGroupingInput implements \ArrayAccess, \JsonSerializable, \Stringab
      *
      * @return BoxInput[]
      */
-    public function getBoxes() : array
+    public function getBoxes(): array
     {
         return $this->container['boxes'];
     }
@@ -246,7 +246,7 @@ class PackageGroupingInput implements \ArrayAccess, \JsonSerializable, \Stringab
      *
      * @param BoxInput[] $boxes box level information being provided
      */
-    public function setBoxes(array $boxes) : self
+    public function setBoxes(array $boxes): self
     {
         $this->container['boxes'] = $boxes;
 
@@ -256,7 +256,7 @@ class PackageGroupingInput implements \ArrayAccess, \JsonSerializable, \Stringab
     /**
      * Gets packing_group_id.
      */
-    public function getPackingGroupId() : ?string
+    public function getPackingGroupId(): ?string
     {
         return $this->container['packing_group_id'];
     }
@@ -266,7 +266,7 @@ class PackageGroupingInput implements \ArrayAccess, \JsonSerializable, \Stringab
      *
      * @param null|string $packing_group_id The ID of the `packingGroup` that packages are grouped according to. The `PackingGroupId` can only be provided before placement confirmation, and it must belong to the confirmed `PackingOption`. One of `ShipmentId` or `PackingGroupId` must be provided with every request.
      */
-    public function setPackingGroupId(?string $packing_group_id) : self
+    public function setPackingGroupId(?string $packing_group_id): self
     {
         $this->container['packing_group_id'] = $packing_group_id;
 
@@ -276,7 +276,7 @@ class PackageGroupingInput implements \ArrayAccess, \JsonSerializable, \Stringab
     /**
      * Gets shipment_id.
      */
-    public function getShipmentId() : ?string
+    public function getShipmentId(): ?string
     {
         return $this->container['shipment_id'];
     }
@@ -286,7 +286,7 @@ class PackageGroupingInput implements \ArrayAccess, \JsonSerializable, \Stringab
      *
      * @param null|string $shipment_id The ID of the shipment that packages are grouped according to. The `ShipmentId` can only be provided after placement confirmation, and the shipment must belong to the confirmed placement option. One of `ShipmentId` or `PackingGroupId` must be provided with every request.
      */
-    public function setShipmentId(?string $shipment_id) : self
+    public function setShipmentId(?string $shipment_id): self
     {
         $this->container['shipment_id'] = $shipment_id;
 
@@ -296,7 +296,7 @@ class PackageGroupingInput implements \ArrayAccess, \JsonSerializable, \Stringab
     /**
      * Returns true if offset exists. False otherwise.
      */
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -307,7 +307,7 @@ class PackageGroupingInput implements \ArrayAccess, \JsonSerializable, \Stringab
      * @return null|mixed
      */
     #[\ReturnTypeWillChange]
-    public function offsetGet($offset) : mixed
+    public function offsetGet($offset): mixed
     {
         return $this->container[$offset] ?? null;
     }
@@ -315,7 +315,7 @@ class PackageGroupingInput implements \ArrayAccess, \JsonSerializable, \Stringab
     /**
      * Sets value based on offset.
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         if (null === $offset) {
             $this->container[] = $value;
@@ -327,7 +327,7 @@ class PackageGroupingInput implements \ArrayAccess, \JsonSerializable, \Stringab
     /**
      * Unsets offset.
      */
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -341,7 +341,7 @@ class PackageGroupingInput implements \ArrayAccess, \JsonSerializable, \Stringab
      *               of any type other than a resource
      */
     #[\ReturnTypeWillChange]
-    public function jsonSerialize() : string
+    public function jsonSerialize(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }
@@ -349,7 +349,7 @@ class PackageGroupingInput implements \ArrayAccess, \JsonSerializable, \Stringab
     /**
      * Gets a header-safe presentation of the object.
      */
-    public function toHeaderValue() : string
+    public function toHeaderValue(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }

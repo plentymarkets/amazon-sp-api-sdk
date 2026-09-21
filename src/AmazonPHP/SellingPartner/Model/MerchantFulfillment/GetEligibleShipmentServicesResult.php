@@ -1,4 +1,7 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
+
 /**
  * GetEligibleShipmentServicesResult.
  *
@@ -127,7 +130,7 @@ class GetEligibleShipmentServicesResult implements \ArrayAccess, \JsonSerializab
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['shipping_service_list'] = $data['shipping_service_list'] ?? null;
         $this->container['rejected_shipping_service_list'] = $data['rejected_shipping_service_list'] ?? null;
@@ -140,7 +143,7 @@ class GetEligibleShipmentServicesResult implements \ArrayAccess, \JsonSerializab
      *
      * @return string[]
      */
-    public static function openAPITypes() : array
+    public static function openAPITypes(): array
     {
         return self::$openAPITypes;
     }
@@ -150,7 +153,7 @@ class GetEligibleShipmentServicesResult implements \ArrayAccess, \JsonSerializab
      *
      * @return null[]|string[]
      */
-    public static function openAPIFormats() : array
+    public static function openAPIFormats(): array
     {
         return self::$openAPIFormats;
     }
@@ -161,7 +164,7 @@ class GetEligibleShipmentServicesResult implements \ArrayAccess, \JsonSerializab
      *
      * @return string[]
      */
-    public static function attributeMap() : array
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -171,7 +174,7 @@ class GetEligibleShipmentServicesResult implements \ArrayAccess, \JsonSerializab
      *
      * @return string[]
      */
-    public static function setters() : array
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -181,7 +184,7 @@ class GetEligibleShipmentServicesResult implements \ArrayAccess, \JsonSerializab
      *
      * @return string[]
      */
-    public static function getters() : array
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -189,7 +192,7 @@ class GetEligibleShipmentServicesResult implements \ArrayAccess, \JsonSerializab
     /**
      * Gets the string presentation of the object.
      */
-    public function __toString() : string
+    public function __toString(): string
     {
         return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
@@ -200,7 +203,7 @@ class GetEligibleShipmentServicesResult implements \ArrayAccess, \JsonSerializab
     /**
      * The original name of the model.
      */
-    public function getModelName() : string
+    public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
@@ -210,7 +213,7 @@ class GetEligibleShipmentServicesResult implements \ArrayAccess, \JsonSerializab
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties() : array
+    public function listInvalidProperties(): array
     {
         $invalidProperties = [];
 
@@ -227,7 +230,7 @@ class GetEligibleShipmentServicesResult implements \ArrayAccess, \JsonSerializab
      *
      * @return bool True if all properties are valid
      */
-    public function valid() : bool
+    public function valid(): bool
     {
         return \count($this->listInvalidProperties()) === 0;
     }
@@ -237,7 +240,7 @@ class GetEligibleShipmentServicesResult implements \ArrayAccess, \JsonSerializab
      *
      * @return \Plenty\AmazonPHP\SellingPartner\Model\MerchantFulfillment\ShippingService[]
      */
-    public function getShippingServiceList() : array
+    public function getShippingServiceList(): array
     {
         return $this->container['shipping_service_list'];
     }
@@ -247,7 +250,7 @@ class GetEligibleShipmentServicesResult implements \ArrayAccess, \JsonSerializab
      *
      * @param \Plenty\AmazonPHP\SellingPartner\Model\MerchantFulfillment\ShippingService[] $shipping_service_list a list of shipping services offers
      */
-    public function setShippingServiceList(array $shipping_service_list) : self
+    public function setShippingServiceList(array $shipping_service_list): self
     {
         $this->container['shipping_service_list'] = $shipping_service_list;
 
@@ -259,7 +262,7 @@ class GetEligibleShipmentServicesResult implements \ArrayAccess, \JsonSerializab
      *
      * @return null|\Plenty\AmazonPHP\SellingPartner\Model\MerchantFulfillment\RejectedShippingService[]
      */
-    public function getRejectedShippingServiceList() : ?array
+    public function getRejectedShippingServiceList(): ?array
     {
         return $this->container['rejected_shipping_service_list'];
     }
@@ -269,7 +272,7 @@ class GetEligibleShipmentServicesResult implements \ArrayAccess, \JsonSerializab
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\MerchantFulfillment\RejectedShippingService[] $rejected_shipping_service_list List of services that were for some reason unavailable for this request
      */
-    public function setRejectedShippingServiceList(?array $rejected_shipping_service_list) : self
+    public function setRejectedShippingServiceList(?array $rejected_shipping_service_list): self
     {
         $this->container['rejected_shipping_service_list'] = $rejected_shipping_service_list;
 
@@ -281,7 +284,7 @@ class GetEligibleShipmentServicesResult implements \ArrayAccess, \JsonSerializab
      *
      * @return null|\Plenty\AmazonPHP\SellingPartner\Model\MerchantFulfillment\TemporarilyUnavailableCarrier[]
      */
-    public function getTemporarilyUnavailableCarrierList() : ?array
+    public function getTemporarilyUnavailableCarrierList(): ?array
     {
         return $this->container['temporarily_unavailable_carrier_list'];
     }
@@ -291,7 +294,7 @@ class GetEligibleShipmentServicesResult implements \ArrayAccess, \JsonSerializab
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\MerchantFulfillment\TemporarilyUnavailableCarrier[] $temporarily_unavailable_carrier_list a list of temporarily unavailable carriers
      */
-    public function setTemporarilyUnavailableCarrierList(?array $temporarily_unavailable_carrier_list) : self
+    public function setTemporarilyUnavailableCarrierList(?array $temporarily_unavailable_carrier_list): self
     {
         $this->container['temporarily_unavailable_carrier_list'] = $temporarily_unavailable_carrier_list;
 
@@ -303,7 +306,7 @@ class GetEligibleShipmentServicesResult implements \ArrayAccess, \JsonSerializab
      *
      * @return null|\Plenty\AmazonPHP\SellingPartner\Model\MerchantFulfillment\TermsAndConditionsNotAcceptedCarrier[]
      */
-    public function getTermsAndConditionsNotAcceptedCarrierList() : ?array
+    public function getTermsAndConditionsNotAcceptedCarrierList(): ?array
     {
         return $this->container['terms_and_conditions_not_accepted_carrier_list'];
     }
@@ -313,7 +316,7 @@ class GetEligibleShipmentServicesResult implements \ArrayAccess, \JsonSerializab
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\MerchantFulfillment\TermsAndConditionsNotAcceptedCarrier[] $terms_and_conditions_not_accepted_carrier_list list of carriers whose terms and conditions were not accepted by the seller
      */
-    public function setTermsAndConditionsNotAcceptedCarrierList(?array $terms_and_conditions_not_accepted_carrier_list) : self
+    public function setTermsAndConditionsNotAcceptedCarrierList(?array $terms_and_conditions_not_accepted_carrier_list): self
     {
         $this->container['terms_and_conditions_not_accepted_carrier_list'] = $terms_and_conditions_not_accepted_carrier_list;
 
@@ -325,7 +328,7 @@ class GetEligibleShipmentServicesResult implements \ArrayAccess, \JsonSerializab
      *
      * @param int $offset Offset
      */
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -348,7 +351,7 @@ class GetEligibleShipmentServicesResult implements \ArrayAccess, \JsonSerializab
      * @param null|int $offset Offset
      * @param mixed $value Value to be set
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         if (null === $offset) {
             $this->container[] = $value;
@@ -362,7 +365,7 @@ class GetEligibleShipmentServicesResult implements \ArrayAccess, \JsonSerializab
      *
      * @param int $offset Offset
      */
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -375,7 +378,7 @@ class GetEligibleShipmentServicesResult implements \ArrayAccess, \JsonSerializab
      * @return mixed returns data which can be serialized by json_encode(), which is a value
      *               of any type other than a resource
      */
-    public function jsonSerialize() : string
+    public function jsonSerialize(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }
@@ -383,7 +386,7 @@ class GetEligibleShipmentServicesResult implements \ArrayAccess, \JsonSerializab
     /**
      * Gets a header-safe presentation of the object.
      */
-    public function toHeaderValue() : string
+    public function toHeaderValue(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }

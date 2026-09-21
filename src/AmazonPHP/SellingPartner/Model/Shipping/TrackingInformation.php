@@ -1,4 +1,7 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
+
 /**
  * TrackingInformation.
  *
@@ -127,7 +130,7 @@ class TrackingInformation implements \ArrayAccess, \JsonSerializable, ModelInter
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['tracking_id'] = $data['tracking_id'] ?? null;
         $this->container['summary'] = $data['summary'] ?? null;
@@ -140,7 +143,7 @@ class TrackingInformation implements \ArrayAccess, \JsonSerializable, ModelInter
      *
      * @return string[]
      */
-    public static function openAPITypes() : array
+    public static function openAPITypes(): array
     {
         return self::$openAPITypes;
     }
@@ -150,7 +153,7 @@ class TrackingInformation implements \ArrayAccess, \JsonSerializable, ModelInter
      *
      * @return null[]|string[]
      */
-    public static function openAPIFormats() : array
+    public static function openAPIFormats(): array
     {
         return self::$openAPIFormats;
     }
@@ -161,7 +164,7 @@ class TrackingInformation implements \ArrayAccess, \JsonSerializable, ModelInter
      *
      * @return string[]
      */
-    public static function attributeMap() : array
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -171,7 +174,7 @@ class TrackingInformation implements \ArrayAccess, \JsonSerializable, ModelInter
      *
      * @return string[]
      */
-    public static function setters() : array
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -181,7 +184,7 @@ class TrackingInformation implements \ArrayAccess, \JsonSerializable, ModelInter
      *
      * @return string[]
      */
-    public static function getters() : array
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -189,7 +192,7 @@ class TrackingInformation implements \ArrayAccess, \JsonSerializable, ModelInter
     /**
      * Gets the string presentation of the object.
      */
-    public function __toString() : string
+    public function __toString(): string
     {
         return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
@@ -200,7 +203,7 @@ class TrackingInformation implements \ArrayAccess, \JsonSerializable, ModelInter
     /**
      * The original name of the model.
      */
-    public function getModelName() : string
+    public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
@@ -210,7 +213,7 @@ class TrackingInformation implements \ArrayAccess, \JsonSerializable, ModelInter
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties() : array
+    public function listInvalidProperties(): array
     {
         $invalidProperties = [];
 
@@ -247,7 +250,7 @@ class TrackingInformation implements \ArrayAccess, \JsonSerializable, ModelInter
      *
      * @return bool True if all properties are valid
      */
-    public function valid() : bool
+    public function valid(): bool
     {
         return \count($this->listInvalidProperties()) === 0;
     }
@@ -255,7 +258,7 @@ class TrackingInformation implements \ArrayAccess, \JsonSerializable, ModelInter
     /**
      * Gets tracking_id.
      */
-    public function getTrackingId() : string
+    public function getTrackingId(): string
     {
         return $this->container['tracking_id'];
     }
@@ -265,7 +268,7 @@ class TrackingInformation implements \ArrayAccess, \JsonSerializable, ModelInter
      *
      * @param string $tracking_id The tracking id generated to each shipment. It contains a series of letters or digits or both.
      */
-    public function setTrackingId(string $tracking_id) : self
+    public function setTrackingId(string $tracking_id): self
     {
         if ((\mb_strlen($tracking_id) > 60)) {
             throw new \InvalidArgumentException('invalid length for $tracking_id when calling TrackingInformation., must be smaller than or equal to 60.');
@@ -283,7 +286,7 @@ class TrackingInformation implements \ArrayAccess, \JsonSerializable, ModelInter
     /**
      * Gets summary.
      */
-    public function getSummary() : TrackingSummary
+    public function getSummary(): TrackingSummary
     {
         return $this->container['summary'];
     }
@@ -293,7 +296,7 @@ class TrackingInformation implements \ArrayAccess, \JsonSerializable, ModelInter
      *
      * @param \Plenty\AmazonPHP\SellingPartner\Model\Shipping\TrackingSummary $summary summary
      */
-    public function setSummary(TrackingSummary $summary) : self
+    public function setSummary(TrackingSummary $summary): self
     {
         $this->container['summary'] = $summary;
 
@@ -305,7 +308,7 @@ class TrackingInformation implements \ArrayAccess, \JsonSerializable, ModelInter
      *
      * @return \DateTime|\DateTimeImmutable
      */
-    public function getPromisedDeliveryDate() : \DateTimeInterface
+    public function getPromisedDeliveryDate(): \DateTimeInterface
     {
         return $this->container['promised_delivery_date'];
     }
@@ -315,7 +318,7 @@ class TrackingInformation implements \ArrayAccess, \JsonSerializable, ModelInter
      *
      * @param \DateTime $promised_delivery_date the promised delivery date and time of a shipment
      */
-    public function setPromisedDeliveryDate(\DateTimeInterface $promised_delivery_date) : self
+    public function setPromisedDeliveryDate(\DateTimeInterface $promised_delivery_date): self
     {
         $this->container['promised_delivery_date'] = $promised_delivery_date;
 
@@ -327,7 +330,7 @@ class TrackingInformation implements \ArrayAccess, \JsonSerializable, ModelInter
      *
      * @return \Plenty\AmazonPHP\SellingPartner\Model\Shipping\Event[]
      */
-    public function getEventHistory() : array
+    public function getEventHistory(): array
     {
         return $this->container['event_history'];
     }
@@ -337,7 +340,7 @@ class TrackingInformation implements \ArrayAccess, \JsonSerializable, ModelInter
      *
      * @param \Plenty\AmazonPHP\SellingPartner\Model\Shipping\Event[] $event_history a list of events of a shipment
      */
-    public function setEventHistory(array $event_history) : self
+    public function setEventHistory(array $event_history): self
     {
         $this->container['event_history'] = $event_history;
 
@@ -349,7 +352,7 @@ class TrackingInformation implements \ArrayAccess, \JsonSerializable, ModelInter
      *
      * @param int $offset Offset
      */
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -372,7 +375,7 @@ class TrackingInformation implements \ArrayAccess, \JsonSerializable, ModelInter
      * @param null|int $offset Offset
      * @param mixed $value Value to be set
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         if (null === $offset) {
             $this->container[] = $value;
@@ -386,7 +389,7 @@ class TrackingInformation implements \ArrayAccess, \JsonSerializable, ModelInter
      *
      * @param int $offset Offset
      */
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -399,7 +402,7 @@ class TrackingInformation implements \ArrayAccess, \JsonSerializable, ModelInter
      * @return mixed returns data which can be serialized by json_encode(), which is a value
      *               of any type other than a resource
      */
-    public function jsonSerialize() : string
+    public function jsonSerialize(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }
@@ -407,7 +410,7 @@ class TrackingInformation implements \ArrayAccess, \JsonSerializable, ModelInter
     /**
      * Gets a header-safe presentation of the object.
      */
-    public function toHeaderValue() : string
+    public function toHeaderValue(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }

@@ -1,4 +1,7 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
+
 /**
  * CreateReportSpecification.
  *
@@ -132,7 +135,7 @@ class CreateReportSpecification implements \ArrayAccess, \JsonSerializable, Mode
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['report_options'] = $data['report_options'] ?? null;
         $this->container['report_type'] = $data['report_type'] ?? null;
@@ -146,7 +149,7 @@ class CreateReportSpecification implements \ArrayAccess, \JsonSerializable, Mode
      *
      * @return string[]
      */
-    public static function openAPITypes() : array
+    public static function openAPITypes(): array
     {
         return self::$openAPITypes;
     }
@@ -156,7 +159,7 @@ class CreateReportSpecification implements \ArrayAccess, \JsonSerializable, Mode
      *
      * @return null[]|string[]
      */
-    public static function openAPIFormats() : array
+    public static function openAPIFormats(): array
     {
         return self::$openAPIFormats;
     }
@@ -167,7 +170,7 @@ class CreateReportSpecification implements \ArrayAccess, \JsonSerializable, Mode
      *
      * @return string[]
      */
-    public static function attributeMap() : array
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -177,7 +180,7 @@ class CreateReportSpecification implements \ArrayAccess, \JsonSerializable, Mode
      *
      * @return string[]
      */
-    public static function setters() : array
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -187,7 +190,7 @@ class CreateReportSpecification implements \ArrayAccess, \JsonSerializable, Mode
      *
      * @return string[]
      */
-    public static function getters() : array
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -195,7 +198,7 @@ class CreateReportSpecification implements \ArrayAccess, \JsonSerializable, Mode
     /**
      * Gets the string presentation of the object.
      */
-    public function __toString() : string
+    public function __toString(): string
     {
         return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
@@ -206,7 +209,7 @@ class CreateReportSpecification implements \ArrayAccess, \JsonSerializable, Mode
     /**
      * The original name of the model.
      */
-    public function getModelName() : string
+    public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
@@ -216,7 +219,7 @@ class CreateReportSpecification implements \ArrayAccess, \JsonSerializable, Mode
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties() : array
+    public function listInvalidProperties(): array
     {
         $invalidProperties = [];
 
@@ -245,7 +248,7 @@ class CreateReportSpecification implements \ArrayAccess, \JsonSerializable, Mode
      *
      * @return bool True if all properties are valid
      */
-    public function valid() : bool
+    public function valid(): bool
     {
         return \count($this->listInvalidProperties()) === 0;
     }
@@ -255,7 +258,7 @@ class CreateReportSpecification implements \ArrayAccess, \JsonSerializable, Mode
      *
      * @return null|array<string,string>
      */
-    public function getReportOptions() : ?array
+    public function getReportOptions(): ?array
     {
         return $this->container['report_options'];
     }
@@ -265,7 +268,7 @@ class CreateReportSpecification implements \ArrayAccess, \JsonSerializable, Mode
      *
      * @param null|array<string,string> $report_options Additional information passed to reports. This varies by report type.
      */
-    public function setReportOptions(?array $report_options) : self
+    public function setReportOptions(?array $report_options): self
     {
         $this->container['report_options'] = $report_options;
 
@@ -275,7 +278,7 @@ class CreateReportSpecification implements \ArrayAccess, \JsonSerializable, Mode
     /**
      * Gets report_type.
      */
-    public function getReportType() : string
+    public function getReportType(): string
     {
         return $this->container['report_type'];
     }
@@ -285,7 +288,7 @@ class CreateReportSpecification implements \ArrayAccess, \JsonSerializable, Mode
      *
      * @param string $report_type the report type
      */
-    public function setReportType(string $report_type) : self
+    public function setReportType(string $report_type): self
     {
         $this->container['report_type'] = $report_type;
 
@@ -297,7 +300,7 @@ class CreateReportSpecification implements \ArrayAccess, \JsonSerializable, Mode
      *
      * @return null|\DateTime|\DateTimeImmutable
      */
-    public function getDataStartTime() : ?\DateTimeInterface
+    public function getDataStartTime(): ?\DateTimeInterface
     {
         return $this->container['data_start_time'];
     }
@@ -307,7 +310,7 @@ class CreateReportSpecification implements \ArrayAccess, \JsonSerializable, Mode
      *
      * @param \DateTime|\DateTimeImmutable $data_start_time The start of a date and time range, in ISO 8601 date time format, used for selecting the data to report. The default is now. The value must be prior to or equal to the current date and time. Not all report types make use of this.
      */
-    public function setDataStartTime(\DateTimeInterface $data_start_time) : self
+    public function setDataStartTime(\DateTimeInterface $data_start_time): self
     {
         $this->container['data_start_time'] = $data_start_time;
 
@@ -319,7 +322,7 @@ class CreateReportSpecification implements \ArrayAccess, \JsonSerializable, Mode
      *
      * @return null|\DateTime|\DateTimeImmutable
      */
-    public function getDataEndTime() : ?\DateTimeInterface
+    public function getDataEndTime(): ?\DateTimeInterface
     {
         return $this->container['data_end_time'];
     }
@@ -329,7 +332,7 @@ class CreateReportSpecification implements \ArrayAccess, \JsonSerializable, Mode
      *
      * @param \DateTime|\DateTimeImmutable $data_end_time The end of a date and time range, in ISO 8601 date time format, used for selecting the data to report. The default is now. The value must be prior to or equal to the current date and time. Not all report types make use of this.
      */
-    public function setDataEndTime(\DateTimeInterface $data_end_time) : self
+    public function setDataEndTime(\DateTimeInterface $data_end_time): self
     {
         $this->container['data_end_time'] = $data_end_time;
 
@@ -341,7 +344,7 @@ class CreateReportSpecification implements \ArrayAccess, \JsonSerializable, Mode
      *
      * @return string[]
      */
-    public function getMarketplaceIds() : array
+    public function getMarketplaceIds(): array
     {
         return $this->container['marketplace_ids'];
     }
@@ -351,7 +354,7 @@ class CreateReportSpecification implements \ArrayAccess, \JsonSerializable, Mode
      *
      * @param string[] $marketplace_ids A list of marketplace identifiers. The report document's contents will contain data for all of the specified marketplaces, unless the report type indicates otherwise.
      */
-    public function setMarketplaceIds(array $marketplace_ids) : self
+    public function setMarketplaceIds(array $marketplace_ids): self
     {
         if ((\count($marketplace_ids) > 25)) {
             throw new \InvalidArgumentException('invalid value for $marketplace_ids when calling CreateReportSpecification., number of items must be less than or equal to 25.');
@@ -370,7 +373,7 @@ class CreateReportSpecification implements \ArrayAccess, \JsonSerializable, Mode
      *
      * @param int $offset Offset
      */
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -393,7 +396,7 @@ class CreateReportSpecification implements \ArrayAccess, \JsonSerializable, Mode
      * @param null|int $offset Offset
      * @param mixed $value Value to be set
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         if (null === $offset) {
             $this->container[] = $value;
@@ -407,7 +410,7 @@ class CreateReportSpecification implements \ArrayAccess, \JsonSerializable, Mode
      *
      * @param int $offset Offset
      */
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -420,7 +423,7 @@ class CreateReportSpecification implements \ArrayAccess, \JsonSerializable, Mode
      * @return mixed returns data which can be serialized by json_encode(), which is a value
      *               of any type other than a resource
      */
-    public function jsonSerialize() : string
+    public function jsonSerialize(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }
@@ -428,7 +431,7 @@ class CreateReportSpecification implements \ArrayAccess, \JsonSerializable, Mode
     /**
      * Gets a header-safe presentation of the object.
      */
-    public function toHeaderValue() : string
+    public function toHeaderValue(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }

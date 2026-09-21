@@ -130,7 +130,7 @@ class Item implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInterfa
      * @param null|mixed[] $data Associated array of property values
      *                           initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['asin'] = $data['asin'] ?? null;
         $this->container['expiration'] = $data['expiration'] ?? null;
@@ -145,7 +145,7 @@ class Item implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInterfa
     /**
      * Array of property to type mappings. Used for (de)serialization.
      */
-    public static function openAPITypes() : array
+    public static function openAPITypes(): array
     {
         return self::$openAPITypes;
     }
@@ -153,7 +153,7 @@ class Item implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInterfa
     /**
      * Array of property to format mappings. Used for (de)serialization.
      */
-    public static function openAPIFormats() : array
+    public static function openAPIFormats(): array
     {
         return self::$openAPIFormats;
     }
@@ -162,7 +162,7 @@ class Item implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInterfa
      * Array of attributes where the key is the local name,
      * and the value is the original name.
      */
-    public static function attributeMap() : array
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -170,7 +170,7 @@ class Item implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInterfa
     /**
      * Array of attributes to setter functions (for deserialization of responses).
      */
-    public static function setters() : array
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -178,7 +178,7 @@ class Item implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInterfa
     /**
      * Array of attributes to getter functions (for serialization of requests).
      */
-    public static function getters() : array
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -186,7 +186,7 @@ class Item implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInterfa
     /**
      * Gets the string presentation of the object.
      */
-    public function __toString() : string
+    public function __toString(): string
     {
         return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
@@ -197,7 +197,7 @@ class Item implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInterfa
     /**
      * The original name of the model.
      */
-    public function getModelName() : string
+    public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
@@ -207,10 +207,10 @@ class Item implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInterfa
      *
      * @throws AssertionException
      */
-    public function listInvalidProperties() : array
+    public function listInvalidProperties(): array
     {
         $invalidProperties = [];
-         
+
         if ($this->container['asin'] === null) {
             $invalidProperties[] = "'asin' can't be null";
         }
@@ -296,7 +296,7 @@ class Item implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInterfa
      *
      * @return bool True if all properties are valid
      */
-    public function valid() : bool
+    public function valid(): bool
     {
         return \count($this->listInvalidProperties()) === 0;
     }
@@ -304,7 +304,7 @@ class Item implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInterfa
     /**
      * Gets asin.
      */
-    public function getAsin() : string
+    public function getAsin(): string
     {
         return $this->container['asin'];
     }
@@ -314,7 +314,7 @@ class Item implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInterfa
      *
      * @param string $asin the Amazon Standard Identification Number (ASIN) of the item
      */
-    public function setAsin(string $asin) : self
+    public function setAsin(string $asin): self
     {
         $this->container['asin'] = $asin;
 
@@ -324,7 +324,7 @@ class Item implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInterfa
     /**
      * Gets expiration.
      */
-    public function getExpiration() : ?string
+    public function getExpiration(): ?string
     {
         return $this->container['expiration'];
     }
@@ -334,7 +334,7 @@ class Item implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInterfa
      *
      * @param null|string $expiration The expiration date of the MSKU in ISO 8601 format. The same MSKU with different expiration dates cannot go into the same box.
      */
-    public function setExpiration(?string $expiration) : self
+    public function setExpiration(?string $expiration): self
     {
         $this->container['expiration'] = $expiration;
 
@@ -344,7 +344,7 @@ class Item implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInterfa
     /**
      * Gets fnsku.
      */
-    public function getFnsku() : string
+    public function getFnsku(): string
     {
         return $this->container['fnsku'];
     }
@@ -354,7 +354,7 @@ class Item implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInterfa
      *
      * @param string $fnsku a unique identifier assigned by Amazon to products stored in and fulfilled from an Amazon fulfillment center
      */
-    public function setFnsku(string $fnsku) : self
+    public function setFnsku(string $fnsku): self
     {
         $this->container['fnsku'] = $fnsku;
 
@@ -364,7 +364,7 @@ class Item implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInterfa
     /**
      * Gets label_owner.
      */
-    public function getLabelOwner() : string
+    public function getLabelOwner(): string
     {
         return $this->container['label_owner'];
     }
@@ -374,7 +374,7 @@ class Item implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInterfa
      *
      * @param string $label_owner Specifies who will label the items. Options include `AMAZON`, `SELLER`, and `NONE`.
      */
-    public function setLabelOwner(string $label_owner) : self
+    public function setLabelOwner(string $label_owner): self
     {
         $this->container['label_owner'] = $label_owner;
 
@@ -384,7 +384,7 @@ class Item implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInterfa
     /**
      * Gets manufacturing_lot_code.
      */
-    public function getManufacturingLotCode() : ?string
+    public function getManufacturingLotCode(): ?string
     {
         return $this->container['manufacturing_lot_code'];
     }
@@ -394,7 +394,7 @@ class Item implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInterfa
      *
      * @param null|string $manufacturing_lot_code the manufacturing lot code
      */
-    public function setManufacturingLotCode(?string $manufacturing_lot_code) : self
+    public function setManufacturingLotCode(?string $manufacturing_lot_code): self
     {
         $this->container['manufacturing_lot_code'] = $manufacturing_lot_code;
 
@@ -404,7 +404,7 @@ class Item implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInterfa
     /**
      * Gets msku.
      */
-    public function getMsku() : string
+    public function getMsku(): string
     {
         return $this->container['msku'];
     }
@@ -414,7 +414,7 @@ class Item implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInterfa
      *
      * @param string $msku the merchant defined SKU ID
      */
-    public function setMsku(string $msku) : self
+    public function setMsku(string $msku): self
     {
         $this->container['msku'] = $msku;
 
@@ -426,7 +426,7 @@ class Item implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInterfa
      *
      * @return PrepInstruction[]
      */
-    public function getPrepInstructions() : array
+    public function getPrepInstructions(): array
     {
         return $this->container['prep_instructions'];
     }
@@ -436,7 +436,7 @@ class Item implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInterfa
      *
      * @param PrepInstruction[] $prep_instructions special preparations that are required for an item
      */
-    public function setPrepInstructions(array $prep_instructions) : self
+    public function setPrepInstructions(array $prep_instructions): self
     {
         $this->container['prep_instructions'] = $prep_instructions;
 
@@ -446,7 +446,7 @@ class Item implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInterfa
     /**
      * Gets quantity.
      */
-    public function getQuantity() : int
+    public function getQuantity(): int
     {
         return $this->container['quantity'];
     }
@@ -456,7 +456,7 @@ class Item implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInterfa
      *
      * @param int $quantity the number of the specified MSKU
      */
-    public function setQuantity(int $quantity) : self
+    public function setQuantity(int $quantity): self
     {
         $this->container['quantity'] = $quantity;
 
@@ -466,7 +466,7 @@ class Item implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInterfa
     /**
      * Returns true if offset exists. False otherwise.
      */
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -477,7 +477,7 @@ class Item implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInterfa
      * @return null|mixed
      */
     #[\ReturnTypeWillChange]
-    public function offsetGet($offset) : mixed
+    public function offsetGet($offset): mixed
     {
         return $this->container[$offset] ?? null;
     }
@@ -485,7 +485,7 @@ class Item implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInterfa
     /**
      * Sets value based on offset.
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         if (null === $offset) {
             $this->container[] = $value;
@@ -497,7 +497,7 @@ class Item implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInterfa
     /**
      * Unsets offset.
      */
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -511,7 +511,7 @@ class Item implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInterfa
      *               of any type other than a resource
      */
     #[\ReturnTypeWillChange]
-    public function jsonSerialize() : string
+    public function jsonSerialize(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }
@@ -519,7 +519,7 @@ class Item implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInterfa
     /**
      * Gets a header-safe presentation of the object.
      */
-    public function toHeaderValue() : string
+    public function toHeaderValue(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }

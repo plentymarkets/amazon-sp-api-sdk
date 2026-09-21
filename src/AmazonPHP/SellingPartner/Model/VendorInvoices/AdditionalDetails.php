@@ -1,4 +1,7 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
+
 /**
  * AdditionalDetails.
  *
@@ -128,7 +131,7 @@ class AdditionalDetails implements \ArrayAccess, \JsonSerializable, ModelInterfa
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['type'] = $data['type'] ?? null;
         $this->container['detail'] = $data['detail'] ?? null;
@@ -140,7 +143,7 @@ class AdditionalDetails implements \ArrayAccess, \JsonSerializable, ModelInterfa
      *
      * @return string[]
      */
-    public static function openAPITypes() : array
+    public static function openAPITypes(): array
     {
         return self::$openAPITypes;
     }
@@ -150,7 +153,7 @@ class AdditionalDetails implements \ArrayAccess, \JsonSerializable, ModelInterfa
      *
      * @return null[]|string[]
      */
-    public static function openAPIFormats() : array
+    public static function openAPIFormats(): array
     {
         return self::$openAPIFormats;
     }
@@ -161,7 +164,7 @@ class AdditionalDetails implements \ArrayAccess, \JsonSerializable, ModelInterfa
      *
      * @return string[]
      */
-    public static function attributeMap() : array
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -171,7 +174,7 @@ class AdditionalDetails implements \ArrayAccess, \JsonSerializable, ModelInterfa
      *
      * @return string[]
      */
-    public static function setters() : array
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -181,7 +184,7 @@ class AdditionalDetails implements \ArrayAccess, \JsonSerializable, ModelInterfa
      *
      * @return string[]
      */
-    public static function getters() : array
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -189,7 +192,7 @@ class AdditionalDetails implements \ArrayAccess, \JsonSerializable, ModelInterfa
     /**
      * Gets the string presentation of the object.
      */
-    public function __toString() : string
+    public function __toString(): string
     {
         return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
@@ -200,7 +203,7 @@ class AdditionalDetails implements \ArrayAccess, \JsonSerializable, ModelInterfa
     /**
      * The original name of the model.
      */
-    public function getModelName() : string
+    public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
@@ -210,7 +213,7 @@ class AdditionalDetails implements \ArrayAccess, \JsonSerializable, ModelInterfa
      *
      * @return string[]
      */
-    public function getTypeAllowableValues() : array
+    public function getTypeAllowableValues(): array
     {
         return [
             self::TYPE_SUR,
@@ -224,7 +227,7 @@ class AdditionalDetails implements \ArrayAccess, \JsonSerializable, ModelInterfa
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties() : array
+    public function listInvalidProperties(): array
     {
         $invalidProperties = [];
 
@@ -254,7 +257,7 @@ class AdditionalDetails implements \ArrayAccess, \JsonSerializable, ModelInterfa
      *
      * @return bool True if all properties are valid
      */
-    public function valid() : bool
+    public function valid(): bool
     {
         return \count($this->listInvalidProperties()) === 0;
     }
@@ -262,7 +265,7 @@ class AdditionalDetails implements \ArrayAccess, \JsonSerializable, ModelInterfa
     /**
      * Gets type.
      */
-    public function getType() : string
+    public function getType(): string
     {
         return $this->container['type'];
     }
@@ -272,7 +275,7 @@ class AdditionalDetails implements \ArrayAccess, \JsonSerializable, ModelInterfa
      *
      * @param string $type the type of the additional information provided by the selling party
      */
-    public function setType(string $type) : self
+    public function setType(string $type): self
     {
         $allowedValues = $this->getTypeAllowableValues();
 
@@ -293,7 +296,7 @@ class AdditionalDetails implements \ArrayAccess, \JsonSerializable, ModelInterfa
     /**
      * Gets detail.
      */
-    public function getDetail() : string
+    public function getDetail(): string
     {
         return $this->container['detail'];
     }
@@ -303,7 +306,7 @@ class AdditionalDetails implements \ArrayAccess, \JsonSerializable, ModelInterfa
      *
      * @param string $detail the detail of the additional information provided by the selling party
      */
-    public function setDetail(string $detail) : self
+    public function setDetail(string $detail): self
     {
         $this->container['detail'] = $detail;
 
@@ -313,7 +316,7 @@ class AdditionalDetails implements \ArrayAccess, \JsonSerializable, ModelInterfa
     /**
      * Gets language_code.
      */
-    public function getLanguageCode() : ?string
+    public function getLanguageCode(): ?string
     {
         return $this->container['language_code'];
     }
@@ -323,7 +326,7 @@ class AdditionalDetails implements \ArrayAccess, \JsonSerializable, ModelInterfa
      *
      * @param null|string $language_code the language code of the additional information detail
      */
-    public function setLanguageCode(?string $language_code) : self
+    public function setLanguageCode(?string $language_code): self
     {
         $this->container['language_code'] = $language_code;
 
@@ -335,7 +338,7 @@ class AdditionalDetails implements \ArrayAccess, \JsonSerializable, ModelInterfa
      *
      * @param int $offset Offset
      */
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -358,7 +361,7 @@ class AdditionalDetails implements \ArrayAccess, \JsonSerializable, ModelInterfa
      * @param null|int $offset Offset
      * @param mixed $value Value to be set
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         if (null === $offset) {
             $this->container[] = $value;
@@ -372,7 +375,7 @@ class AdditionalDetails implements \ArrayAccess, \JsonSerializable, ModelInterfa
      *
      * @param int $offset Offset
      */
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -385,7 +388,7 @@ class AdditionalDetails implements \ArrayAccess, \JsonSerializable, ModelInterfa
      * @return mixed returns data which can be serialized by json_encode(), which is a value
      *               of any type other than a resource
      */
-    public function jsonSerialize() : string
+    public function jsonSerialize(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }
@@ -393,7 +396,7 @@ class AdditionalDetails implements \ArrayAccess, \JsonSerializable, ModelInterfa
     /**
      * Gets a header-safe presentation of the object.
      */
-    public function toHeaderValue() : string
+    public function toHeaderValue(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }

@@ -1,4 +1,7 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
+
 /**
  * AffordabilityExpenseEvent.
  *
@@ -152,7 +155,7 @@ class AffordabilityExpenseEvent implements \ArrayAccess, \JsonSerializable, Mode
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['amazon_order_id'] = $data['amazon_order_id'] ?? null;
         $this->container['posted_date'] = $data['posted_date'] ?? null;
@@ -170,7 +173,7 @@ class AffordabilityExpenseEvent implements \ArrayAccess, \JsonSerializable, Mode
      *
      * @return string[]
      */
-    public static function openAPITypes() : array
+    public static function openAPITypes(): array
     {
         return self::$openAPITypes;
     }
@@ -180,7 +183,7 @@ class AffordabilityExpenseEvent implements \ArrayAccess, \JsonSerializable, Mode
      *
      * @return null[]|string[]
      */
-    public static function openAPIFormats() : array
+    public static function openAPIFormats(): array
     {
         return self::$openAPIFormats;
     }
@@ -191,7 +194,7 @@ class AffordabilityExpenseEvent implements \ArrayAccess, \JsonSerializable, Mode
      *
      * @return string[]
      */
-    public static function attributeMap() : array
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -201,7 +204,7 @@ class AffordabilityExpenseEvent implements \ArrayAccess, \JsonSerializable, Mode
      *
      * @return string[]
      */
-    public static function setters() : array
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -211,7 +214,7 @@ class AffordabilityExpenseEvent implements \ArrayAccess, \JsonSerializable, Mode
      *
      * @return string[]
      */
-    public static function getters() : array
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -219,7 +222,7 @@ class AffordabilityExpenseEvent implements \ArrayAccess, \JsonSerializable, Mode
     /**
      * Gets the string presentation of the object.
      */
-    public function __toString() : string
+    public function __toString(): string
     {
         return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
@@ -230,7 +233,7 @@ class AffordabilityExpenseEvent implements \ArrayAccess, \JsonSerializable, Mode
     /**
      * The original name of the model.
      */
-    public function getModelName() : string
+    public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
@@ -240,7 +243,7 @@ class AffordabilityExpenseEvent implements \ArrayAccess, \JsonSerializable, Mode
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties() : array
+    public function listInvalidProperties(): array
     {
         $invalidProperties = [];
 
@@ -265,7 +268,7 @@ class AffordabilityExpenseEvent implements \ArrayAccess, \JsonSerializable, Mode
      *
      * @return bool True if all properties are valid
      */
-    public function valid() : bool
+    public function valid(): bool
     {
         return \count($this->listInvalidProperties()) === 0;
     }
@@ -273,7 +276,7 @@ class AffordabilityExpenseEvent implements \ArrayAccess, \JsonSerializable, Mode
     /**
      * Gets amazon_order_id.
      */
-    public function getAmazonOrderId() : ?string
+    public function getAmazonOrderId(): ?string
     {
         return $this->container['amazon_order_id'];
     }
@@ -283,7 +286,7 @@ class AffordabilityExpenseEvent implements \ArrayAccess, \JsonSerializable, Mode
      *
      * @param null|string $amazon_order_id an Amazon-defined identifier for an order
      */
-    public function setAmazonOrderId(?string $amazon_order_id) : self
+    public function setAmazonOrderId(?string $amazon_order_id): self
     {
         $this->container['amazon_order_id'] = $amazon_order_id;
 
@@ -295,7 +298,7 @@ class AffordabilityExpenseEvent implements \ArrayAccess, \JsonSerializable, Mode
      *
      * @return null|\DateTime|\DateTimeImmutable
      */
-    public function getPostedDate() : ?\DateTimeInterface
+    public function getPostedDate(): ?\DateTimeInterface
     {
         return $this->container['posted_date'];
     }
@@ -305,7 +308,7 @@ class AffordabilityExpenseEvent implements \ArrayAccess, \JsonSerializable, Mode
      *
      * @param \DateTime|\DateTimeImmutable $posted_date posted_date
      */
-    public function setPostedDate(\DateTimeInterface $posted_date) : self
+    public function setPostedDate(\DateTimeInterface $posted_date): self
     {
         $this->container['posted_date'] = $posted_date;
 
@@ -315,7 +318,7 @@ class AffordabilityExpenseEvent implements \ArrayAccess, \JsonSerializable, Mode
     /**
      * Gets marketplace_id.
      */
-    public function getMarketplaceId() : ?string
+    public function getMarketplaceId(): ?string
     {
         return $this->container['marketplace_id'];
     }
@@ -325,7 +328,7 @@ class AffordabilityExpenseEvent implements \ArrayAccess, \JsonSerializable, Mode
      *
      * @param null|string $marketplace_id an encrypted, Amazon-defined marketplace identifier
      */
-    public function setMarketplaceId(?string $marketplace_id) : self
+    public function setMarketplaceId(?string $marketplace_id): self
     {
         $this->container['marketplace_id'] = $marketplace_id;
 
@@ -335,7 +338,7 @@ class AffordabilityExpenseEvent implements \ArrayAccess, \JsonSerializable, Mode
     /**
      * Gets transaction_type.
      */
-    public function getTransactionType() : ?string
+    public function getTransactionType(): ?string
     {
         return $this->container['transaction_type'];
     }
@@ -345,7 +348,7 @@ class AffordabilityExpenseEvent implements \ArrayAccess, \JsonSerializable, Mode
      *
      * @param null|string $transaction_type Indicates the type of transaction.   Possible values:  * Charge - For an affordability promotion expense.  * Refund - For an affordability promotion expense reversal.
      */
-    public function setTransactionType(?string $transaction_type) : self
+    public function setTransactionType(?string $transaction_type): self
     {
         $this->container['transaction_type'] = $transaction_type;
 
@@ -355,7 +358,7 @@ class AffordabilityExpenseEvent implements \ArrayAccess, \JsonSerializable, Mode
     /**
      * Gets base_expense.
      */
-    public function getBaseExpense() : ?Currency
+    public function getBaseExpense(): ?Currency
     {
         return $this->container['base_expense'];
     }
@@ -365,7 +368,7 @@ class AffordabilityExpenseEvent implements \ArrayAccess, \JsonSerializable, Mode
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\Finances\Currency $base_expense base_expense
      */
-    public function setBaseExpense(?Currency $base_expense) : self
+    public function setBaseExpense(?Currency $base_expense): self
     {
         $this->container['base_expense'] = $base_expense;
 
@@ -375,7 +378,7 @@ class AffordabilityExpenseEvent implements \ArrayAccess, \JsonSerializable, Mode
     /**
      * Gets tax_type_cgst.
      */
-    public function getTaxTypeCgst() : Currency
+    public function getTaxTypeCgst(): Currency
     {
         return $this->container['tax_type_cgst'];
     }
@@ -385,7 +388,7 @@ class AffordabilityExpenseEvent implements \ArrayAccess, \JsonSerializable, Mode
      *
      * @param \Plenty\AmazonPHP\SellingPartner\Model\Finances\Currency $tax_type_cgst tax_type_cgst
      */
-    public function setTaxTypeCgst(Currency $tax_type_cgst) : self
+    public function setTaxTypeCgst(Currency $tax_type_cgst): self
     {
         $this->container['tax_type_cgst'] = $tax_type_cgst;
 
@@ -395,7 +398,7 @@ class AffordabilityExpenseEvent implements \ArrayAccess, \JsonSerializable, Mode
     /**
      * Gets tax_type_sgst.
      */
-    public function getTaxTypeSgst() : Currency
+    public function getTaxTypeSgst(): Currency
     {
         return $this->container['tax_type_sgst'];
     }
@@ -405,7 +408,7 @@ class AffordabilityExpenseEvent implements \ArrayAccess, \JsonSerializable, Mode
      *
      * @param \Plenty\AmazonPHP\SellingPartner\Model\Finances\Currency $tax_type_sgst tax_type_sgst
      */
-    public function setTaxTypeSgst(Currency $tax_type_sgst) : self
+    public function setTaxTypeSgst(Currency $tax_type_sgst): self
     {
         $this->container['tax_type_sgst'] = $tax_type_sgst;
 
@@ -415,7 +418,7 @@ class AffordabilityExpenseEvent implements \ArrayAccess, \JsonSerializable, Mode
     /**
      * Gets tax_type_igst.
      */
-    public function getTaxTypeIgst() : Currency
+    public function getTaxTypeIgst(): Currency
     {
         return $this->container['tax_type_igst'];
     }
@@ -425,7 +428,7 @@ class AffordabilityExpenseEvent implements \ArrayAccess, \JsonSerializable, Mode
      *
      * @param \Plenty\AmazonPHP\SellingPartner\Model\Finances\Currency $tax_type_igst tax_type_igst
      */
-    public function setTaxTypeIgst(Currency $tax_type_igst) : self
+    public function setTaxTypeIgst(Currency $tax_type_igst): self
     {
         $this->container['tax_type_igst'] = $tax_type_igst;
 
@@ -435,7 +438,7 @@ class AffordabilityExpenseEvent implements \ArrayAccess, \JsonSerializable, Mode
     /**
      * Gets total_expense.
      */
-    public function getTotalExpense() : ?Currency
+    public function getTotalExpense(): ?Currency
     {
         return $this->container['total_expense'];
     }
@@ -445,7 +448,7 @@ class AffordabilityExpenseEvent implements \ArrayAccess, \JsonSerializable, Mode
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\Finances\Currency $total_expense total_expense
      */
-    public function setTotalExpense(?Currency $total_expense) : self
+    public function setTotalExpense(?Currency $total_expense): self
     {
         $this->container['total_expense'] = $total_expense;
 
@@ -457,7 +460,7 @@ class AffordabilityExpenseEvent implements \ArrayAccess, \JsonSerializable, Mode
      *
      * @param int $offset Offset
      */
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -480,7 +483,7 @@ class AffordabilityExpenseEvent implements \ArrayAccess, \JsonSerializable, Mode
      * @param null|int $offset Offset
      * @param mixed $value Value to be set
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         if (null === $offset) {
             $this->container[] = $value;
@@ -494,7 +497,7 @@ class AffordabilityExpenseEvent implements \ArrayAccess, \JsonSerializable, Mode
      *
      * @param int $offset Offset
      */
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -507,7 +510,7 @@ class AffordabilityExpenseEvent implements \ArrayAccess, \JsonSerializable, Mode
      * @return mixed returns data which can be serialized by json_encode(), which is a value
      *               of any type other than a resource
      */
-    public function jsonSerialize() : string
+    public function jsonSerialize(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }
@@ -515,7 +518,7 @@ class AffordabilityExpenseEvent implements \ArrayAccess, \JsonSerializable, Mode
     /**
      * Gets a header-safe presentation of the object.
      */
-    public function toHeaderValue() : string
+    public function toHeaderValue(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }

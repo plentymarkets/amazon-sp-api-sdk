@@ -1,4 +1,7 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
+
 /**
  * CreateInboundShipmentPlanRequest.
  *
@@ -132,7 +135,7 @@ class CreateInboundShipmentPlanRequest implements \ArrayAccess, \JsonSerializabl
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['ship_from_address'] = $data['ship_from_address'] ?? null;
         $this->container['label_prep_preference'] = $data['label_prep_preference'] ?? null;
@@ -146,7 +149,7 @@ class CreateInboundShipmentPlanRequest implements \ArrayAccess, \JsonSerializabl
      *
      * @return string[]
      */
-    public static function openAPITypes() : array
+    public static function openAPITypes(): array
     {
         return self::$openAPITypes;
     }
@@ -156,7 +159,7 @@ class CreateInboundShipmentPlanRequest implements \ArrayAccess, \JsonSerializabl
      *
      * @return null[]|string[]
      */
-    public static function openAPIFormats() : array
+    public static function openAPIFormats(): array
     {
         return self::$openAPIFormats;
     }
@@ -167,7 +170,7 @@ class CreateInboundShipmentPlanRequest implements \ArrayAccess, \JsonSerializabl
      *
      * @return string[]
      */
-    public static function attributeMap() : array
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -177,7 +180,7 @@ class CreateInboundShipmentPlanRequest implements \ArrayAccess, \JsonSerializabl
      *
      * @return string[]
      */
-    public static function setters() : array
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -187,7 +190,7 @@ class CreateInboundShipmentPlanRequest implements \ArrayAccess, \JsonSerializabl
      *
      * @return string[]
      */
-    public static function getters() : array
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -195,7 +198,7 @@ class CreateInboundShipmentPlanRequest implements \ArrayAccess, \JsonSerializabl
     /**
      * Gets the string presentation of the object.
      */
-    public function __toString() : string
+    public function __toString(): string
     {
         return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
@@ -206,7 +209,7 @@ class CreateInboundShipmentPlanRequest implements \ArrayAccess, \JsonSerializabl
     /**
      * The original name of the model.
      */
-    public function getModelName() : string
+    public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
@@ -216,7 +219,7 @@ class CreateInboundShipmentPlanRequest implements \ArrayAccess, \JsonSerializabl
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties() : array
+    public function listInvalidProperties(): array
     {
         $invalidProperties = [];
 
@@ -241,7 +244,7 @@ class CreateInboundShipmentPlanRequest implements \ArrayAccess, \JsonSerializabl
      *
      * @return bool True if all properties are valid
      */
-    public function valid() : bool
+    public function valid(): bool
     {
         return \count($this->listInvalidProperties()) === 0;
     }
@@ -249,7 +252,7 @@ class CreateInboundShipmentPlanRequest implements \ArrayAccess, \JsonSerializabl
     /**
      * Gets ship_from_address.
      */
-    public function getShipFromAddress() : Address
+    public function getShipFromAddress(): Address
     {
         return $this->container['ship_from_address'];
     }
@@ -259,7 +262,7 @@ class CreateInboundShipmentPlanRequest implements \ArrayAccess, \JsonSerializabl
      *
      * @param \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound\Address $ship_from_address ship_from_address
      */
-    public function setShipFromAddress(Address $ship_from_address) : self
+    public function setShipFromAddress(Address $ship_from_address): self
     {
         $this->container['ship_from_address'] = $ship_from_address;
 
@@ -269,7 +272,7 @@ class CreateInboundShipmentPlanRequest implements \ArrayAccess, \JsonSerializabl
     /**
      * Gets label_prep_preference.
      */
-    public function getLabelPrepPreference() : LabelPrepPreference
+    public function getLabelPrepPreference(): LabelPrepPreference
     {
         return $this->container['label_prep_preference'];
     }
@@ -279,7 +282,7 @@ class CreateInboundShipmentPlanRequest implements \ArrayAccess, \JsonSerializabl
      *
      * @param \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound\LabelPrepPreference $label_prep_preference label_prep_preference
      */
-    public function setLabelPrepPreference(LabelPrepPreference $label_prep_preference) : self
+    public function setLabelPrepPreference(LabelPrepPreference $label_prep_preference): self
     {
         $this->container['label_prep_preference'] = $label_prep_preference;
 
@@ -289,7 +292,7 @@ class CreateInboundShipmentPlanRequest implements \ArrayAccess, \JsonSerializabl
     /**
      * Gets ship_to_country_code.
      */
-    public function getShipToCountryCode() : ?string
+    public function getShipToCountryCode(): ?string
     {
         return $this->container['ship_to_country_code'];
     }
@@ -299,7 +302,7 @@ class CreateInboundShipmentPlanRequest implements \ArrayAccess, \JsonSerializabl
      *
      * @param null|string $ship_to_country_code The two-character country code for the country where the inbound shipment is to be sent.  Note: Not required. Specifying both ShipToCountryCode and ShipToCountrySubdivisionCode returns an error.   Values:   ShipToCountryCode values for North America:  * CA – Canada  * MX - Mexico  * US - United States  ShipToCountryCode values for MCI sellers in Europe:  * DE – Germany  * ES – Spain  * FR – France  * GB – United Kingdom  * IT – Italy  Default: The country code for the seller's home marketplace.
      */
-    public function setShipToCountryCode(?string $ship_to_country_code) : self
+    public function setShipToCountryCode(?string $ship_to_country_code): self
     {
         $this->container['ship_to_country_code'] = $ship_to_country_code;
 
@@ -309,7 +312,7 @@ class CreateInboundShipmentPlanRequest implements \ArrayAccess, \JsonSerializabl
     /**
      * Gets ship_to_country_subdivision_code.
      */
-    public function getShipToCountrySubdivisionCode() : ?string
+    public function getShipToCountrySubdivisionCode(): ?string
     {
         return $this->container['ship_to_country_subdivision_code'];
     }
@@ -319,7 +322,7 @@ class CreateInboundShipmentPlanRequest implements \ArrayAccess, \JsonSerializabl
      *
      * @param null|string $ship_to_country_subdivision_code The two-character country code, followed by a dash and then up to three characters that represent the subdivision of the country where the inbound shipment is to be sent. For example, \"IN-MH\". In full ISO 3166-2 format.  Note: Not required. Specifying both ShipToCountryCode and ShipToCountrySubdivisionCode returns an error.
      */
-    public function setShipToCountrySubdivisionCode(?string $ship_to_country_subdivision_code) : self
+    public function setShipToCountrySubdivisionCode(?string $ship_to_country_subdivision_code): self
     {
         $this->container['ship_to_country_subdivision_code'] = $ship_to_country_subdivision_code;
 
@@ -331,7 +334,7 @@ class CreateInboundShipmentPlanRequest implements \ArrayAccess, \JsonSerializabl
      *
      * @return \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound\InboundShipmentPlanRequestItem[]
      */
-    public function getInboundShipmentPlanRequestItems() : array
+    public function getInboundShipmentPlanRequestItems(): array
     {
         return $this->container['inbound_shipment_plan_request_items'];
     }
@@ -341,7 +344,7 @@ class CreateInboundShipmentPlanRequest implements \ArrayAccess, \JsonSerializabl
      *
      * @param \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound\InboundShipmentPlanRequestItem[] $inbound_shipment_plan_request_items inbound_shipment_plan_request_items
      */
-    public function setInboundShipmentPlanRequestItems(array $inbound_shipment_plan_request_items) : self
+    public function setInboundShipmentPlanRequestItems(array $inbound_shipment_plan_request_items): self
     {
         $this->container['inbound_shipment_plan_request_items'] = $inbound_shipment_plan_request_items;
 
@@ -353,7 +356,7 @@ class CreateInboundShipmentPlanRequest implements \ArrayAccess, \JsonSerializabl
      *
      * @param int $offset Offset
      */
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -376,7 +379,7 @@ class CreateInboundShipmentPlanRequest implements \ArrayAccess, \JsonSerializabl
      * @param null|int $offset Offset
      * @param mixed $value Value to be set
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         if (null === $offset) {
             $this->container[] = $value;
@@ -390,7 +393,7 @@ class CreateInboundShipmentPlanRequest implements \ArrayAccess, \JsonSerializabl
      *
      * @param int $offset Offset
      */
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -403,7 +406,7 @@ class CreateInboundShipmentPlanRequest implements \ArrayAccess, \JsonSerializabl
      * @return mixed returns data which can be serialized by json_encode(), which is a value
      *               of any type other than a resource
      */
-    public function jsonSerialize() : string
+    public function jsonSerialize(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }
@@ -411,7 +414,7 @@ class CreateInboundShipmentPlanRequest implements \ArrayAccess, \JsonSerializabl
     /**
      * Gets a header-safe presentation of the object.
      */
-    public function toHeaderValue() : string
+    public function toHeaderValue(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }

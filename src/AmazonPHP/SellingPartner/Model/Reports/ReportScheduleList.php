@@ -1,4 +1,7 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
+
 /**
  * ReportScheduleList.
  *
@@ -112,7 +115,7 @@ class ReportScheduleList implements \ArrayAccess, \JsonSerializable, ModelInterf
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['report_schedules'] = $data['report_schedules'] ?? null;
     }
@@ -122,7 +125,7 @@ class ReportScheduleList implements \ArrayAccess, \JsonSerializable, ModelInterf
      *
      * @return string[]
      */
-    public static function openAPITypes() : array
+    public static function openAPITypes(): array
     {
         return self::$openAPITypes;
     }
@@ -132,7 +135,7 @@ class ReportScheduleList implements \ArrayAccess, \JsonSerializable, ModelInterf
      *
      * @return null[]|string[]
      */
-    public static function openAPIFormats() : array
+    public static function openAPIFormats(): array
     {
         return self::$openAPIFormats;
     }
@@ -143,7 +146,7 @@ class ReportScheduleList implements \ArrayAccess, \JsonSerializable, ModelInterf
      *
      * @return string[]
      */
-    public static function attributeMap() : array
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -153,7 +156,7 @@ class ReportScheduleList implements \ArrayAccess, \JsonSerializable, ModelInterf
      *
      * @return string[]
      */
-    public static function setters() : array
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -163,7 +166,7 @@ class ReportScheduleList implements \ArrayAccess, \JsonSerializable, ModelInterf
      *
      * @return string[]
      */
-    public static function getters() : array
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -171,7 +174,7 @@ class ReportScheduleList implements \ArrayAccess, \JsonSerializable, ModelInterf
     /**
      * Gets the string presentation of the object.
      */
-    public function __toString() : string
+    public function __toString(): string
     {
         return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
@@ -182,7 +185,7 @@ class ReportScheduleList implements \ArrayAccess, \JsonSerializable, ModelInterf
     /**
      * The original name of the model.
      */
-    public function getModelName() : string
+    public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
@@ -192,7 +195,7 @@ class ReportScheduleList implements \ArrayAccess, \JsonSerializable, ModelInterf
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties() : array
+    public function listInvalidProperties(): array
     {
         $invalidProperties = [];
 
@@ -209,7 +212,7 @@ class ReportScheduleList implements \ArrayAccess, \JsonSerializable, ModelInterf
      *
      * @return bool True if all properties are valid
      */
-    public function valid() : bool
+    public function valid(): bool
     {
         return \count($this->listInvalidProperties()) === 0;
     }
@@ -219,7 +222,7 @@ class ReportScheduleList implements \ArrayAccess, \JsonSerializable, ModelInterf
      *
      * @return \Plenty\AmazonPHP\SellingPartner\Model\Reports\ReportSchedule[]
      */
-    public function getReportSchedules() : array
+    public function getReportSchedules(): array
     {
         return $this->container['report_schedules'];
     }
@@ -229,7 +232,7 @@ class ReportScheduleList implements \ArrayAccess, \JsonSerializable, ModelInterf
      *
      * @param \Plenty\AmazonPHP\SellingPartner\Model\Reports\ReportSchedule[] $report_schedules report_schedules
      */
-    public function setReportSchedules(array $report_schedules) : self
+    public function setReportSchedules(array $report_schedules): self
     {
         $this->container['report_schedules'] = $report_schedules;
 
@@ -241,7 +244,7 @@ class ReportScheduleList implements \ArrayAccess, \JsonSerializable, ModelInterf
      *
      * @param int $offset Offset
      */
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -264,7 +267,7 @@ class ReportScheduleList implements \ArrayAccess, \JsonSerializable, ModelInterf
      * @param null|int $offset Offset
      * @param mixed $value Value to be set
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         if (null === $offset) {
             $this->container[] = $value;
@@ -278,7 +281,7 @@ class ReportScheduleList implements \ArrayAccess, \JsonSerializable, ModelInterf
      *
      * @param int $offset Offset
      */
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -291,7 +294,7 @@ class ReportScheduleList implements \ArrayAccess, \JsonSerializable, ModelInterf
      * @return mixed returns data which can be serialized by json_encode(), which is a value
      *               of any type other than a resource
      */
-    public function jsonSerialize() : string
+    public function jsonSerialize(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }
@@ -299,7 +302,7 @@ class ReportScheduleList implements \ArrayAccess, \JsonSerializable, ModelInterf
     /**
      * Gets a header-safe presentation of the object.
      */
-    public function toHeaderValue() : string
+    public function toHeaderValue(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }

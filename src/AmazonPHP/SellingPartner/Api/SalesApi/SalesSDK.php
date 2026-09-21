@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Plenty\AmazonPHP\SellingPartner\Api\SalesApi;
 
@@ -59,7 +61,7 @@ final class SalesSDK
      * @throws \Plenty\AmazonPHP\SellingPartner\Exception\ApiException on non-2xx response
      * @throws \Plenty\AmazonPHP\SellingPartner\Exception\InvalidArgumentException
      */
-    public function getOrderMetrics(AccessToken $accessToken, string $region, array $marketplace_ids, string $interval, string $granularity, string $granularity_time_zone = null, string $buyer_type = 'All', string $fulfillment_network = null, string $first_day_of_week = 'Monday', string $asin = null, string $sku = null) : \Plenty\AmazonPHP\SellingPartner\Model\Sales\GetOrderMetricsResponse
+    public function getOrderMetrics(AccessToken $accessToken, string $region, array $marketplace_ids, string $interval, string $granularity, ?string $granularity_time_zone = null, string $buyer_type = 'All', ?string $fulfillment_network = null, string $first_day_of_week = 'Monday', ?string $asin = null, ?string $sku = null): \Plenty\AmazonPHP\SellingPartner\Model\Sales\GetOrderMetricsResponse
     {
         $request = $this->getOrderMetricsRequest($accessToken, $region, $marketplace_ids, $interval, $granularity, $granularity_time_zone, $buyer_type, $fulfillment_network, $first_day_of_week, $asin, $sku);
 
@@ -162,7 +164,7 @@ final class SalesSDK
      *
      * @throws \Plenty\AmazonPHP\SellingPartner\Exception\InvalidArgumentException
      */
-    public function getOrderMetricsRequest(AccessToken $accessToken, string $region, array $marketplace_ids, string $interval, string $granularity, string $granularity_time_zone = null, string $buyer_type = 'All', string $fulfillment_network = null, string $first_day_of_week = 'Monday', string $asin = null, string $sku = null) : RequestInterface
+    public function getOrderMetricsRequest(AccessToken $accessToken, string $region, array $marketplace_ids, string $interval, string $granularity, ?string $granularity_time_zone = null, string $buyer_type = 'All', ?string $fulfillment_network = null, string $first_day_of_week = 'Monday', ?string $asin = null, ?string $sku = null): RequestInterface
     {
         // verify the required parameter 'marketplace_ids' is set
         if ($marketplace_ids === null || (\is_array($marketplace_ids) && \count($marketplace_ids) === 0)) {

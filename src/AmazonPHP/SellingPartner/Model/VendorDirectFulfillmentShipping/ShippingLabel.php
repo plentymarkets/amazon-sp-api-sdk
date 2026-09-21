@@ -1,4 +1,7 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
+
 /**
  * ShippingLabel.
  *
@@ -136,7 +139,7 @@ class ShippingLabel implements \ArrayAccess, \JsonSerializable, ModelInterface, 
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['purchase_order_number'] = $data['purchase_order_number'] ?? null;
         $this->container['selling_party'] = $data['selling_party'] ?? null;
@@ -150,7 +153,7 @@ class ShippingLabel implements \ArrayAccess, \JsonSerializable, ModelInterface, 
      *
      * @return string[]
      */
-    public static function openAPITypes() : array
+    public static function openAPITypes(): array
     {
         return self::$openAPITypes;
     }
@@ -160,7 +163,7 @@ class ShippingLabel implements \ArrayAccess, \JsonSerializable, ModelInterface, 
      *
      * @return null[]|string[]
      */
-    public static function openAPIFormats() : array
+    public static function openAPIFormats(): array
     {
         return self::$openAPIFormats;
     }
@@ -171,7 +174,7 @@ class ShippingLabel implements \ArrayAccess, \JsonSerializable, ModelInterface, 
      *
      * @return string[]
      */
-    public static function attributeMap() : array
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -181,7 +184,7 @@ class ShippingLabel implements \ArrayAccess, \JsonSerializable, ModelInterface, 
      *
      * @return string[]
      */
-    public static function setters() : array
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -191,7 +194,7 @@ class ShippingLabel implements \ArrayAccess, \JsonSerializable, ModelInterface, 
      *
      * @return string[]
      */
-    public static function getters() : array
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -199,7 +202,7 @@ class ShippingLabel implements \ArrayAccess, \JsonSerializable, ModelInterface, 
     /**
      * Gets the string presentation of the object.
      */
-    public function __toString() : string
+    public function __toString(): string
     {
         return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
@@ -210,7 +213,7 @@ class ShippingLabel implements \ArrayAccess, \JsonSerializable, ModelInterface, 
     /**
      * The original name of the model.
      */
-    public function getModelName() : string
+    public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
@@ -220,7 +223,7 @@ class ShippingLabel implements \ArrayAccess, \JsonSerializable, ModelInterface, 
      *
      * @return string[]
      */
-    public function getLabelFormatAllowableValues() : array
+    public function getLabelFormatAllowableValues(): array
     {
         return [
             self::LABEL_FORMAT_PNG,
@@ -233,7 +236,7 @@ class ShippingLabel implements \ArrayAccess, \JsonSerializable, ModelInterface, 
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties() : array
+    public function listInvalidProperties(): array
     {
         $invalidProperties = [];
 
@@ -279,7 +282,7 @@ class ShippingLabel implements \ArrayAccess, \JsonSerializable, ModelInterface, 
      *
      * @return bool True if all properties are valid
      */
-    public function valid() : bool
+    public function valid(): bool
     {
         return \count($this->listInvalidProperties()) === 0;
     }
@@ -287,7 +290,7 @@ class ShippingLabel implements \ArrayAccess, \JsonSerializable, ModelInterface, 
     /**
      * Gets purchase_order_number.
      */
-    public function getPurchaseOrderNumber() : string
+    public function getPurchaseOrderNumber(): string
     {
         return $this->container['purchase_order_number'];
     }
@@ -297,7 +300,7 @@ class ShippingLabel implements \ArrayAccess, \JsonSerializable, ModelInterface, 
      *
      * @param string $purchase_order_number this field will contain the Purchase Order Number for this order
      */
-    public function setPurchaseOrderNumber(string $purchase_order_number) : self
+    public function setPurchaseOrderNumber(string $purchase_order_number): self
     {
         if ((!\preg_match('/^[a-zA-Z0-9]+$/', $purchase_order_number))) {
             throw new \InvalidArgumentException("invalid value for {$purchase_order_number} when calling ShippingLabel., must conform to the pattern /^[a-zA-Z0-9]+$/.");
@@ -311,7 +314,7 @@ class ShippingLabel implements \ArrayAccess, \JsonSerializable, ModelInterface, 
     /**
      * Gets selling_party.
      */
-    public function getSellingParty() : PartyIdentification
+    public function getSellingParty(): PartyIdentification
     {
         return $this->container['selling_party'];
     }
@@ -321,7 +324,7 @@ class ShippingLabel implements \ArrayAccess, \JsonSerializable, ModelInterface, 
      *
      * @param \Plenty\AmazonPHP\SellingPartner\Model\VendorDirectFulfillmentShipping\PartyIdentification $selling_party selling_party
      */
-    public function setSellingParty(PartyIdentification $selling_party) : self
+    public function setSellingParty(PartyIdentification $selling_party): self
     {
         $this->container['selling_party'] = $selling_party;
 
@@ -331,7 +334,7 @@ class ShippingLabel implements \ArrayAccess, \JsonSerializable, ModelInterface, 
     /**
      * Gets ship_from_party.
      */
-    public function getShipFromParty() : PartyIdentification
+    public function getShipFromParty(): PartyIdentification
     {
         return $this->container['ship_from_party'];
     }
@@ -341,7 +344,7 @@ class ShippingLabel implements \ArrayAccess, \JsonSerializable, ModelInterface, 
      *
      * @param \Plenty\AmazonPHP\SellingPartner\Model\VendorDirectFulfillmentShipping\PartyIdentification $ship_from_party ship_from_party
      */
-    public function setShipFromParty(PartyIdentification $ship_from_party) : self
+    public function setShipFromParty(PartyIdentification $ship_from_party): self
     {
         $this->container['ship_from_party'] = $ship_from_party;
 
@@ -351,7 +354,7 @@ class ShippingLabel implements \ArrayAccess, \JsonSerializable, ModelInterface, 
     /**
      * Gets label_format.
      */
-    public function getLabelFormat() : string
+    public function getLabelFormat(): string
     {
         return $this->container['label_format'];
     }
@@ -361,7 +364,7 @@ class ShippingLabel implements \ArrayAccess, \JsonSerializable, ModelInterface, 
      *
      * @param string $label_format format of the label
      */
-    public function setLabelFormat(string $label_format) : self
+    public function setLabelFormat(string $label_format): self
     {
         $allowedValues = $this->getLabelFormatAllowableValues();
 
@@ -384,7 +387,7 @@ class ShippingLabel implements \ArrayAccess, \JsonSerializable, ModelInterface, 
      *
      * @return \Plenty\AmazonPHP\SellingPartner\Model\VendorDirectFulfillmentShipping\LabelData[]
      */
-    public function getLabelData() : array
+    public function getLabelData(): array
     {
         return $this->container['label_data'];
     }
@@ -394,7 +397,7 @@ class ShippingLabel implements \ArrayAccess, \JsonSerializable, ModelInterface, 
      *
      * @param \Plenty\AmazonPHP\SellingPartner\Model\VendorDirectFulfillmentShipping\LabelData[] $label_data provides the details of the packages in this shipment
      */
-    public function setLabelData(array $label_data) : self
+    public function setLabelData(array $label_data): self
     {
         $this->container['label_data'] = $label_data;
 
@@ -406,7 +409,7 @@ class ShippingLabel implements \ArrayAccess, \JsonSerializable, ModelInterface, 
      *
      * @param int $offset Offset
      */
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -429,7 +432,7 @@ class ShippingLabel implements \ArrayAccess, \JsonSerializable, ModelInterface, 
      * @param null|int $offset Offset
      * @param mixed $value Value to be set
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         if (null === $offset) {
             $this->container[] = $value;
@@ -443,7 +446,7 @@ class ShippingLabel implements \ArrayAccess, \JsonSerializable, ModelInterface, 
      *
      * @param int $offset Offset
      */
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -456,7 +459,7 @@ class ShippingLabel implements \ArrayAccess, \JsonSerializable, ModelInterface, 
      * @return mixed returns data which can be serialized by json_encode(), which is a value
      *               of any type other than a resource
      */
-    public function jsonSerialize() : string
+    public function jsonSerialize(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }
@@ -464,7 +467,7 @@ class ShippingLabel implements \ArrayAccess, \JsonSerializable, ModelInterface, 
     /**
      * Gets a header-safe presentation of the object.
      */
-    public function toHeaderValue() : string
+    public function toHeaderValue(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }

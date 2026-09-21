@@ -1,4 +1,7 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
+
 /**
  * RegulatedInformationField.
  *
@@ -131,7 +134,7 @@ class RegulatedInformationField implements \ArrayAccess, \JsonSerializable, Mode
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['field_id'] = $data['field_id'] ?? null;
         $this->container['field_label'] = $data['field_label'] ?? null;
@@ -144,7 +147,7 @@ class RegulatedInformationField implements \ArrayAccess, \JsonSerializable, Mode
      *
      * @return string[]
      */
-    public static function openAPITypes() : array
+    public static function openAPITypes(): array
     {
         return self::$openAPITypes;
     }
@@ -154,7 +157,7 @@ class RegulatedInformationField implements \ArrayAccess, \JsonSerializable, Mode
      *
      * @return null[]|string[]
      */
-    public static function openAPIFormats() : array
+    public static function openAPIFormats(): array
     {
         return self::$openAPIFormats;
     }
@@ -165,7 +168,7 @@ class RegulatedInformationField implements \ArrayAccess, \JsonSerializable, Mode
      *
      * @return string[]
      */
-    public static function attributeMap() : array
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -175,7 +178,7 @@ class RegulatedInformationField implements \ArrayAccess, \JsonSerializable, Mode
      *
      * @return string[]
      */
-    public static function setters() : array
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -185,7 +188,7 @@ class RegulatedInformationField implements \ArrayAccess, \JsonSerializable, Mode
      *
      * @return string[]
      */
-    public static function getters() : array
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -193,7 +196,7 @@ class RegulatedInformationField implements \ArrayAccess, \JsonSerializable, Mode
     /**
      * Gets the string presentation of the object.
      */
-    public function __toString() : string
+    public function __toString(): string
     {
         return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
@@ -204,7 +207,7 @@ class RegulatedInformationField implements \ArrayAccess, \JsonSerializable, Mode
     /**
      * The original name of the model.
      */
-    public function getModelName() : string
+    public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
@@ -214,7 +217,7 @@ class RegulatedInformationField implements \ArrayAccess, \JsonSerializable, Mode
      *
      * @return string[]
      */
-    public function getFieldTypeAllowableValues() : array
+    public function getFieldTypeAllowableValues(): array
     {
         return [
             self::FIELD_TYPE_TEXT,
@@ -227,7 +230,7 @@ class RegulatedInformationField implements \ArrayAccess, \JsonSerializable, Mode
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties() : array
+    public function listInvalidProperties(): array
     {
         $invalidProperties = [];
 
@@ -265,7 +268,7 @@ class RegulatedInformationField implements \ArrayAccess, \JsonSerializable, Mode
      *
      * @return bool True if all properties are valid
      */
-    public function valid() : bool
+    public function valid(): bool
     {
         return \count($this->listInvalidProperties()) === 0;
     }
@@ -273,7 +276,7 @@ class RegulatedInformationField implements \ArrayAccess, \JsonSerializable, Mode
     /**
      * Gets field_id.
      */
-    public function getFieldId() : string
+    public function getFieldId(): string
     {
         return $this->container['field_id'];
     }
@@ -283,7 +286,7 @@ class RegulatedInformationField implements \ArrayAccess, \JsonSerializable, Mode
      *
      * @param string $field_id the unique identifier for the field
      */
-    public function setFieldId(string $field_id) : self
+    public function setFieldId(string $field_id): self
     {
         $this->container['field_id'] = $field_id;
 
@@ -293,7 +296,7 @@ class RegulatedInformationField implements \ArrayAccess, \JsonSerializable, Mode
     /**
      * Gets field_label.
      */
-    public function getFieldLabel() : string
+    public function getFieldLabel(): string
     {
         return $this->container['field_label'];
     }
@@ -303,7 +306,7 @@ class RegulatedInformationField implements \ArrayAccess, \JsonSerializable, Mode
      *
      * @param string $field_label the human-readable name for the field
      */
-    public function setFieldLabel(string $field_label) : self
+    public function setFieldLabel(string $field_label): self
     {
         $this->container['field_label'] = $field_label;
 
@@ -313,7 +316,7 @@ class RegulatedInformationField implements \ArrayAccess, \JsonSerializable, Mode
     /**
      * Gets field_type.
      */
-    public function getFieldType() : string
+    public function getFieldType(): string
     {
         return $this->container['field_type'];
     }
@@ -323,7 +326,7 @@ class RegulatedInformationField implements \ArrayAccess, \JsonSerializable, Mode
      *
      * @param string $field_type the type of field the field
      */
-    public function setFieldType(string $field_type) : self
+    public function setFieldType(string $field_type): self
     {
         $allowedValues = $this->getFieldTypeAllowableValues();
 
@@ -344,7 +347,7 @@ class RegulatedInformationField implements \ArrayAccess, \JsonSerializable, Mode
     /**
      * Gets field_value.
      */
-    public function getFieldValue() : string
+    public function getFieldValue(): string
     {
         return $this->container['field_value'];
     }
@@ -354,7 +357,7 @@ class RegulatedInformationField implements \ArrayAccess, \JsonSerializable, Mode
      *
      * @param string $field_value The content of the field as collected in regulatory form. Note that FileAttachment type fields will contain an URL to download the attachment here.
      */
-    public function setFieldValue(string $field_value) : self
+    public function setFieldValue(string $field_value): self
     {
         $this->container['field_value'] = $field_value;
 
@@ -366,7 +369,7 @@ class RegulatedInformationField implements \ArrayAccess, \JsonSerializable, Mode
      *
      * @param int $offset Offset
      */
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -389,7 +392,7 @@ class RegulatedInformationField implements \ArrayAccess, \JsonSerializable, Mode
      * @param null|int $offset Offset
      * @param mixed $value Value to be set
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         if (null === $offset) {
             $this->container[] = $value;
@@ -403,7 +406,7 @@ class RegulatedInformationField implements \ArrayAccess, \JsonSerializable, Mode
      *
      * @param int $offset Offset
      */
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -416,7 +419,7 @@ class RegulatedInformationField implements \ArrayAccess, \JsonSerializable, Mode
      * @return mixed returns data which can be serialized by json_encode(), which is a value
      *               of any type other than a resource
      */
-    public function jsonSerialize() : string
+    public function jsonSerialize(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }
@@ -424,7 +427,7 @@ class RegulatedInformationField implements \ArrayAccess, \JsonSerializable, Mode
     /**
      * Gets a header-safe presentation of the object.
      */
-    public function toHeaderValue() : string
+    public function toHeaderValue(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }

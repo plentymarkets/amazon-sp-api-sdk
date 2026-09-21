@@ -1,4 +1,7 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
+
 /**
  * OrderMetricsInterval.
  *
@@ -137,7 +140,7 @@ class OrderMetricsInterval implements \ArrayAccess, \JsonSerializable, ModelInte
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['interval'] = $data['interval'] ?? null;
         $this->container['unit_count'] = $data['unit_count'] ?? null;
@@ -152,7 +155,7 @@ class OrderMetricsInterval implements \ArrayAccess, \JsonSerializable, ModelInte
      *
      * @return string[]
      */
-    public static function openAPITypes() : array
+    public static function openAPITypes(): array
     {
         return self::$openAPITypes;
     }
@@ -162,7 +165,7 @@ class OrderMetricsInterval implements \ArrayAccess, \JsonSerializable, ModelInte
      *
      * @return null[]|string[]
      */
-    public static function openAPIFormats() : array
+    public static function openAPIFormats(): array
     {
         return self::$openAPIFormats;
     }
@@ -173,7 +176,7 @@ class OrderMetricsInterval implements \ArrayAccess, \JsonSerializable, ModelInte
      *
      * @return string[]
      */
-    public static function attributeMap() : array
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -183,7 +186,7 @@ class OrderMetricsInterval implements \ArrayAccess, \JsonSerializable, ModelInte
      *
      * @return string[]
      */
-    public static function setters() : array
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -193,7 +196,7 @@ class OrderMetricsInterval implements \ArrayAccess, \JsonSerializable, ModelInte
      *
      * @return string[]
      */
-    public static function getters() : array
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -201,7 +204,7 @@ class OrderMetricsInterval implements \ArrayAccess, \JsonSerializable, ModelInte
     /**
      * Gets the string presentation of the object.
      */
-    public function __toString() : string
+    public function __toString(): string
     {
         return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
@@ -212,7 +215,7 @@ class OrderMetricsInterval implements \ArrayAccess, \JsonSerializable, ModelInte
     /**
      * The original name of the model.
      */
-    public function getModelName() : string
+    public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
@@ -222,7 +225,7 @@ class OrderMetricsInterval implements \ArrayAccess, \JsonSerializable, ModelInte
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties() : array
+    public function listInvalidProperties(): array
     {
         $invalidProperties = [];
 
@@ -259,7 +262,7 @@ class OrderMetricsInterval implements \ArrayAccess, \JsonSerializable, ModelInte
      *
      * @return bool True if all properties are valid
      */
-    public function valid() : bool
+    public function valid(): bool
     {
         return \count($this->listInvalidProperties()) === 0;
     }
@@ -267,7 +270,7 @@ class OrderMetricsInterval implements \ArrayAccess, \JsonSerializable, ModelInte
     /**
      * Gets interval.
      */
-    public function getInterval() : string
+    public function getInterval(): string
     {
         return $this->container['interval'];
     }
@@ -277,7 +280,7 @@ class OrderMetricsInterval implements \ArrayAccess, \JsonSerializable, ModelInte
      *
      * @param string $interval The interval of time based on requested granularity (ex. Hour, Day, etc.) If this is the first or the last interval from the list, it might contain incomplete data if the requested interval doesn't align with the requested granularity (ex. request interval 2018-09-01T02:00:00Z--2018-09-04T19:00:00Z and granularity day will result in Sept 1st UTC day and Sept 4th UTC days having partial data).
      */
-    public function setInterval(string $interval) : self
+    public function setInterval(string $interval): self
     {
         $this->container['interval'] = $interval;
 
@@ -287,7 +290,7 @@ class OrderMetricsInterval implements \ArrayAccess, \JsonSerializable, ModelInte
     /**
      * Gets unit_count.
      */
-    public function getUnitCount() : int
+    public function getUnitCount(): int
     {
         return $this->container['unit_count'];
     }
@@ -297,7 +300,7 @@ class OrderMetricsInterval implements \ArrayAccess, \JsonSerializable, ModelInte
      *
      * @param int $unit_count the number of units in orders based on the specified filters
      */
-    public function setUnitCount(int $unit_count) : self
+    public function setUnitCount(int $unit_count): self
     {
         $this->container['unit_count'] = $unit_count;
 
@@ -307,7 +310,7 @@ class OrderMetricsInterval implements \ArrayAccess, \JsonSerializable, ModelInte
     /**
      * Gets order_item_count.
      */
-    public function getOrderItemCount() : int
+    public function getOrderItemCount(): int
     {
         return $this->container['order_item_count'];
     }
@@ -317,7 +320,7 @@ class OrderMetricsInterval implements \ArrayAccess, \JsonSerializable, ModelInte
      *
      * @param int $order_item_count the number of order items based on the specified filters
      */
-    public function setOrderItemCount(int $order_item_count) : self
+    public function setOrderItemCount(int $order_item_count): self
     {
         $this->container['order_item_count'] = $order_item_count;
 
@@ -327,7 +330,7 @@ class OrderMetricsInterval implements \ArrayAccess, \JsonSerializable, ModelInte
     /**
      * Gets order_count.
      */
-    public function getOrderCount() : int
+    public function getOrderCount(): int
     {
         return $this->container['order_count'];
     }
@@ -337,7 +340,7 @@ class OrderMetricsInterval implements \ArrayAccess, \JsonSerializable, ModelInte
      *
      * @param int $order_count the number of orders based on the specified filters
      */
-    public function setOrderCount(int $order_count) : self
+    public function setOrderCount(int $order_count): self
     {
         $this->container['order_count'] = $order_count;
 
@@ -347,7 +350,7 @@ class OrderMetricsInterval implements \ArrayAccess, \JsonSerializable, ModelInte
     /**
      * Gets average_unit_price.
      */
-    public function getAverageUnitPrice() : Money
+    public function getAverageUnitPrice(): Money
     {
         return $this->container['average_unit_price'];
     }
@@ -357,7 +360,7 @@ class OrderMetricsInterval implements \ArrayAccess, \JsonSerializable, ModelInte
      *
      * @param \Plenty\AmazonPHP\SellingPartner\Model\Sales\Money $average_unit_price average_unit_price
      */
-    public function setAverageUnitPrice(Money $average_unit_price) : self
+    public function setAverageUnitPrice(Money $average_unit_price): self
     {
         $this->container['average_unit_price'] = $average_unit_price;
 
@@ -367,7 +370,7 @@ class OrderMetricsInterval implements \ArrayAccess, \JsonSerializable, ModelInte
     /**
      * Gets total_sales.
      */
-    public function getTotalSales() : Money
+    public function getTotalSales(): Money
     {
         return $this->container['total_sales'];
     }
@@ -377,7 +380,7 @@ class OrderMetricsInterval implements \ArrayAccess, \JsonSerializable, ModelInte
      *
      * @param \Plenty\AmazonPHP\SellingPartner\Model\Sales\Money $total_sales total_sales
      */
-    public function setTotalSales(Money $total_sales) : self
+    public function setTotalSales(Money $total_sales): self
     {
         $this->container['total_sales'] = $total_sales;
 
@@ -389,7 +392,7 @@ class OrderMetricsInterval implements \ArrayAccess, \JsonSerializable, ModelInte
      *
      * @param int $offset Offset
      */
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -412,7 +415,7 @@ class OrderMetricsInterval implements \ArrayAccess, \JsonSerializable, ModelInte
      * @param null|int $offset Offset
      * @param mixed $value Value to be set
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         if (null === $offset) {
             $this->container[] = $value;
@@ -426,7 +429,7 @@ class OrderMetricsInterval implements \ArrayAccess, \JsonSerializable, ModelInte
      *
      * @param int $offset Offset
      */
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -439,7 +442,7 @@ class OrderMetricsInterval implements \ArrayAccess, \JsonSerializable, ModelInte
      * @return mixed returns data which can be serialized by json_encode(), which is a value
      *               of any type other than a resource
      */
-    public function jsonSerialize() : string
+    public function jsonSerialize(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }
@@ -447,7 +450,7 @@ class OrderMetricsInterval implements \ArrayAccess, \JsonSerializable, ModelInte
     /**
      * Gets a header-safe presentation of the object.
      */
-    public function toHeaderValue() : string
+    public function toHeaderValue(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }

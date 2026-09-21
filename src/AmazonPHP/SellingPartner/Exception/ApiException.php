@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Plenty\AmazonPHP\SellingPartner\Exception;
 
@@ -34,7 +36,7 @@ final class ApiException extends Exception
      * @param null|\stdClass|string $responseBody HTTP decoded body of the server response either as \stdClass or string
      * @param null|\Throwable $previousException
      */
-    public function __construct(string $message = '', int $code = 0, array $responseHeaders = null, $responseBody = null, \Throwable $previousException = null)
+    public function __construct(string $message = '', int $code = 0, ?array $responseHeaders = null, $responseBody = null, ?\Throwable $previousException = null)
     {
         parent::__construct($message, $code, $previousException);
         $this->responseHeaders = $responseHeaders;
@@ -46,7 +48,7 @@ final class ApiException extends Exception
      *
      * @return null|string[] HTTP response header
      */
-    public function getResponseHeaders() : ?array
+    public function getResponseHeaders(): ?array
     {
         return $this->responseHeaders;
     }
@@ -66,7 +68,7 @@ final class ApiException extends Exception
      *
      * @param mixed $obj Deserialized response object
      */
-    public function setResponseObject($obj) : void
+    public function setResponseObject($obj): void
     {
         $this->responseObject = $obj;
     }

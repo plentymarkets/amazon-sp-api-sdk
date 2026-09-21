@@ -1,4 +1,7 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
+
 /**
  * PackedItem.
  *
@@ -127,7 +130,7 @@ class PackedItem implements \ArrayAccess, \JsonSerializable, ModelInterface, \St
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['item_sequence_number'] = $data['item_sequence_number'] ?? null;
         $this->container['buyer_product_identifier'] = $data['buyer_product_identifier'] ?? null;
@@ -140,7 +143,7 @@ class PackedItem implements \ArrayAccess, \JsonSerializable, ModelInterface, \St
      *
      * @return string[]
      */
-    public static function openAPITypes() : array
+    public static function openAPITypes(): array
     {
         return self::$openAPITypes;
     }
@@ -150,7 +153,7 @@ class PackedItem implements \ArrayAccess, \JsonSerializable, ModelInterface, \St
      *
      * @return null[]|string[]
      */
-    public static function openAPIFormats() : array
+    public static function openAPIFormats(): array
     {
         return self::$openAPIFormats;
     }
@@ -161,7 +164,7 @@ class PackedItem implements \ArrayAccess, \JsonSerializable, ModelInterface, \St
      *
      * @return string[]
      */
-    public static function attributeMap() : array
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -171,7 +174,7 @@ class PackedItem implements \ArrayAccess, \JsonSerializable, ModelInterface, \St
      *
      * @return string[]
      */
-    public static function setters() : array
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -181,7 +184,7 @@ class PackedItem implements \ArrayAccess, \JsonSerializable, ModelInterface, \St
      *
      * @return string[]
      */
-    public static function getters() : array
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -189,7 +192,7 @@ class PackedItem implements \ArrayAccess, \JsonSerializable, ModelInterface, \St
     /**
      * Gets the string presentation of the object.
      */
-    public function __toString() : string
+    public function __toString(): string
     {
         return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
@@ -200,7 +203,7 @@ class PackedItem implements \ArrayAccess, \JsonSerializable, ModelInterface, \St
     /**
      * The original name of the model.
      */
-    public function getModelName() : string
+    public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
@@ -210,7 +213,7 @@ class PackedItem implements \ArrayAccess, \JsonSerializable, ModelInterface, \St
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties() : array
+    public function listInvalidProperties(): array
     {
         $invalidProperties = [];
 
@@ -231,7 +234,7 @@ class PackedItem implements \ArrayAccess, \JsonSerializable, ModelInterface, \St
      *
      * @return bool True if all properties are valid
      */
-    public function valid() : bool
+    public function valid(): bool
     {
         return \count($this->listInvalidProperties()) === 0;
     }
@@ -239,7 +242,7 @@ class PackedItem implements \ArrayAccess, \JsonSerializable, ModelInterface, \St
     /**
      * Gets item_sequence_number.
      */
-    public function getItemSequenceNumber() : int
+    public function getItemSequenceNumber(): int
     {
         return $this->container['item_sequence_number'];
     }
@@ -249,7 +252,7 @@ class PackedItem implements \ArrayAccess, \JsonSerializable, ModelInterface, \St
      *
      * @param int $item_sequence_number Item Sequence Number for the item. This must be the same value as sent in the order for a given item.
      */
-    public function setItemSequenceNumber(int $item_sequence_number) : self
+    public function setItemSequenceNumber(int $item_sequence_number): self
     {
         $this->container['item_sequence_number'] = $item_sequence_number;
 
@@ -259,7 +262,7 @@ class PackedItem implements \ArrayAccess, \JsonSerializable, ModelInterface, \St
     /**
      * Gets buyer_product_identifier.
      */
-    public function getBuyerProductIdentifier() : ?string
+    public function getBuyerProductIdentifier(): ?string
     {
         return $this->container['buyer_product_identifier'];
     }
@@ -269,7 +272,7 @@ class PackedItem implements \ArrayAccess, \JsonSerializable, ModelInterface, \St
      *
      * @param null|string $buyer_product_identifier Buyer's Standard Identification Number (ASIN) of an item. Either buyerProductIdentifier or vendorProductIdentifier is required.
      */
-    public function setBuyerProductIdentifier(?string $buyer_product_identifier) : self
+    public function setBuyerProductIdentifier(?string $buyer_product_identifier): self
     {
         $this->container['buyer_product_identifier'] = $buyer_product_identifier;
 
@@ -279,7 +282,7 @@ class PackedItem implements \ArrayAccess, \JsonSerializable, ModelInterface, \St
     /**
      * Gets vendor_product_identifier.
      */
-    public function getVendorProductIdentifier() : ?string
+    public function getVendorProductIdentifier(): ?string
     {
         return $this->container['vendor_product_identifier'];
     }
@@ -289,7 +292,7 @@ class PackedItem implements \ArrayAccess, \JsonSerializable, ModelInterface, \St
      *
      * @param null|string $vendor_product_identifier The vendor selected product identification of the item. Should be the same as was sent in the Purchase Order, like SKU Number.
      */
-    public function setVendorProductIdentifier(?string $vendor_product_identifier) : self
+    public function setVendorProductIdentifier(?string $vendor_product_identifier): self
     {
         $this->container['vendor_product_identifier'] = $vendor_product_identifier;
 
@@ -299,7 +302,7 @@ class PackedItem implements \ArrayAccess, \JsonSerializable, ModelInterface, \St
     /**
      * Gets packed_quantity.
      */
-    public function getPackedQuantity() : ItemQuantity
+    public function getPackedQuantity(): ItemQuantity
     {
         return $this->container['packed_quantity'];
     }
@@ -309,7 +312,7 @@ class PackedItem implements \ArrayAccess, \JsonSerializable, ModelInterface, \St
      *
      * @param \Plenty\AmazonPHP\SellingPartner\Model\VendorDirectFulfillmentShipping\ItemQuantity $packed_quantity packed_quantity
      */
-    public function setPackedQuantity(ItemQuantity $packed_quantity) : self
+    public function setPackedQuantity(ItemQuantity $packed_quantity): self
     {
         $this->container['packed_quantity'] = $packed_quantity;
 
@@ -321,7 +324,7 @@ class PackedItem implements \ArrayAccess, \JsonSerializable, ModelInterface, \St
      *
      * @param int $offset Offset
      */
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -344,7 +347,7 @@ class PackedItem implements \ArrayAccess, \JsonSerializable, ModelInterface, \St
      * @param null|int $offset Offset
      * @param mixed $value Value to be set
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         if (null === $offset) {
             $this->container[] = $value;
@@ -358,7 +361,7 @@ class PackedItem implements \ArrayAccess, \JsonSerializable, ModelInterface, \St
      *
      * @param int $offset Offset
      */
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -371,7 +374,7 @@ class PackedItem implements \ArrayAccess, \JsonSerializable, ModelInterface, \St
      * @return mixed returns data which can be serialized by json_encode(), which is a value
      *               of any type other than a resource
      */
-    public function jsonSerialize() : string
+    public function jsonSerialize(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }
@@ -379,7 +382,7 @@ class PackedItem implements \ArrayAccess, \JsonSerializable, ModelInterface, \St
     /**
      * Gets a header-safe presentation of the object.
      */
-    public function toHeaderValue() : string
+    public function toHeaderValue(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }

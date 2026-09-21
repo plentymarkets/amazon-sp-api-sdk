@@ -1,4 +1,7 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
+
 /**
  * ResearchingQuantityEntry.
  *
@@ -123,7 +126,7 @@ class ResearchingQuantityEntry implements \ArrayAccess, \JsonSerializable, Model
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['name'] = $data['name'] ?? null;
         $this->container['quantity'] = $data['quantity'] ?? null;
@@ -134,7 +137,7 @@ class ResearchingQuantityEntry implements \ArrayAccess, \JsonSerializable, Model
      *
      * @return string[]
      */
-    public static function openAPITypes() : array
+    public static function openAPITypes(): array
     {
         return self::$openAPITypes;
     }
@@ -144,7 +147,7 @@ class ResearchingQuantityEntry implements \ArrayAccess, \JsonSerializable, Model
      *
      * @return null[]|string[]
      */
-    public static function openAPIFormats() : array
+    public static function openAPIFormats(): array
     {
         return self::$openAPIFormats;
     }
@@ -155,7 +158,7 @@ class ResearchingQuantityEntry implements \ArrayAccess, \JsonSerializable, Model
      *
      * @return string[]
      */
-    public static function attributeMap() : array
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -165,7 +168,7 @@ class ResearchingQuantityEntry implements \ArrayAccess, \JsonSerializable, Model
      *
      * @return string[]
      */
-    public static function setters() : array
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -175,7 +178,7 @@ class ResearchingQuantityEntry implements \ArrayAccess, \JsonSerializable, Model
      *
      * @return string[]
      */
-    public static function getters() : array
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -183,7 +186,7 @@ class ResearchingQuantityEntry implements \ArrayAccess, \JsonSerializable, Model
     /**
      * Gets the string presentation of the object.
      */
-    public function __toString() : string
+    public function __toString(): string
     {
         return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
@@ -194,7 +197,7 @@ class ResearchingQuantityEntry implements \ArrayAccess, \JsonSerializable, Model
     /**
      * The original name of the model.
      */
-    public function getModelName() : string
+    public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
@@ -204,7 +207,7 @@ class ResearchingQuantityEntry implements \ArrayAccess, \JsonSerializable, Model
      *
      * @return string[]
      */
-    public function getNameAllowableValues() : array
+    public function getNameAllowableValues(): array
     {
         return [
             self::NAME_RESEARCHING_QUANTITY_IN_SHORT_TERM,
@@ -218,7 +221,7 @@ class ResearchingQuantityEntry implements \ArrayAccess, \JsonSerializable, Model
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties() : array
+    public function listInvalidProperties(): array
     {
         $invalidProperties = [];
 
@@ -248,7 +251,7 @@ class ResearchingQuantityEntry implements \ArrayAccess, \JsonSerializable, Model
      *
      * @return bool True if all properties are valid
      */
-    public function valid() : bool
+    public function valid(): bool
     {
         return \count($this->listInvalidProperties()) === 0;
     }
@@ -256,7 +259,7 @@ class ResearchingQuantityEntry implements \ArrayAccess, \JsonSerializable, Model
     /**
      * Gets name.
      */
-    public function getName() : string
+    public function getName(): string
     {
         return $this->container['name'];
     }
@@ -266,7 +269,7 @@ class ResearchingQuantityEntry implements \ArrayAccess, \JsonSerializable, Model
      *
      * @param string $name the duration of the research
      */
-    public function setName(string $name) : self
+    public function setName(string $name): self
     {
         $allowedValues = $this->getNameAllowableValues();
 
@@ -287,7 +290,7 @@ class ResearchingQuantityEntry implements \ArrayAccess, \JsonSerializable, Model
     /**
      * Gets quantity.
      */
-    public function getQuantity() : int
+    public function getQuantity(): int
     {
         return $this->container['quantity'];
     }
@@ -297,7 +300,7 @@ class ResearchingQuantityEntry implements \ArrayAccess, \JsonSerializable, Model
      *
      * @param int $quantity the number of units
      */
-    public function setQuantity(int $quantity) : self
+    public function setQuantity(int $quantity): self
     {
         $this->container['quantity'] = $quantity;
 
@@ -309,7 +312,7 @@ class ResearchingQuantityEntry implements \ArrayAccess, \JsonSerializable, Model
      *
      * @param int $offset Offset
      */
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -332,7 +335,7 @@ class ResearchingQuantityEntry implements \ArrayAccess, \JsonSerializable, Model
      * @param null|int $offset Offset
      * @param mixed $value Value to be set
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         if (null === $offset) {
             $this->container[] = $value;
@@ -346,7 +349,7 @@ class ResearchingQuantityEntry implements \ArrayAccess, \JsonSerializable, Model
      *
      * @param int $offset Offset
      */
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -359,7 +362,7 @@ class ResearchingQuantityEntry implements \ArrayAccess, \JsonSerializable, Model
      * @return mixed returns data which can be serialized by json_encode(), which is a value
      *               of any type other than a resource
      */
-    public function jsonSerialize() : string
+    public function jsonSerialize(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }
@@ -367,7 +370,7 @@ class ResearchingQuantityEntry implements \ArrayAccess, \JsonSerializable, Model
     /**
      * Gets a header-safe presentation of the object.
      */
-    public function toHeaderValue() : string
+    public function toHeaderValue(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }

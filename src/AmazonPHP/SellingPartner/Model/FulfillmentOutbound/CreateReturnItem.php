@@ -1,4 +1,7 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
+
 /**
  * CreateReturnItem.
  *
@@ -132,7 +135,7 @@ class CreateReturnItem implements \ArrayAccess, \JsonSerializable, ModelInterfac
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['seller_return_item_id'] = $data['seller_return_item_id'] ?? null;
         $this->container['seller_fulfillment_order_item_id'] = $data['seller_fulfillment_order_item_id'] ?? null;
@@ -146,7 +149,7 @@ class CreateReturnItem implements \ArrayAccess, \JsonSerializable, ModelInterfac
      *
      * @return string[]
      */
-    public static function openAPITypes() : array
+    public static function openAPITypes(): array
     {
         return self::$openAPITypes;
     }
@@ -156,7 +159,7 @@ class CreateReturnItem implements \ArrayAccess, \JsonSerializable, ModelInterfac
      *
      * @return null[]|string[]
      */
-    public static function openAPIFormats() : array
+    public static function openAPIFormats(): array
     {
         return self::$openAPIFormats;
     }
@@ -167,7 +170,7 @@ class CreateReturnItem implements \ArrayAccess, \JsonSerializable, ModelInterfac
      *
      * @return string[]
      */
-    public static function attributeMap() : array
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -177,7 +180,7 @@ class CreateReturnItem implements \ArrayAccess, \JsonSerializable, ModelInterfac
      *
      * @return string[]
      */
-    public static function setters() : array
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -187,7 +190,7 @@ class CreateReturnItem implements \ArrayAccess, \JsonSerializable, ModelInterfac
      *
      * @return string[]
      */
-    public static function getters() : array
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -195,7 +198,7 @@ class CreateReturnItem implements \ArrayAccess, \JsonSerializable, ModelInterfac
     /**
      * Gets the string presentation of the object.
      */
-    public function __toString() : string
+    public function __toString(): string
     {
         return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
@@ -206,7 +209,7 @@ class CreateReturnItem implements \ArrayAccess, \JsonSerializable, ModelInterfac
     /**
      * The original name of the model.
      */
-    public function getModelName() : string
+    public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
@@ -216,7 +219,7 @@ class CreateReturnItem implements \ArrayAccess, \JsonSerializable, ModelInterfac
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties() : array
+    public function listInvalidProperties(): array
     {
         $invalidProperties = [];
 
@@ -253,7 +256,7 @@ class CreateReturnItem implements \ArrayAccess, \JsonSerializable, ModelInterfac
      *
      * @return bool True if all properties are valid
      */
-    public function valid() : bool
+    public function valid(): bool
     {
         return \count($this->listInvalidProperties()) === 0;
     }
@@ -261,7 +264,7 @@ class CreateReturnItem implements \ArrayAccess, \JsonSerializable, ModelInterfac
     /**
      * Gets seller_return_item_id.
      */
-    public function getSellerReturnItemId() : string
+    public function getSellerReturnItemId(): string
     {
         return $this->container['seller_return_item_id'];
     }
@@ -271,7 +274,7 @@ class CreateReturnItem implements \ArrayAccess, \JsonSerializable, ModelInterfac
      *
      * @param string $seller_return_item_id an identifier assigned by the seller to the return item
      */
-    public function setSellerReturnItemId(string $seller_return_item_id) : self
+    public function setSellerReturnItemId(string $seller_return_item_id): self
     {
         if ((\mb_strlen($seller_return_item_id) > 80)) {
             throw new \InvalidArgumentException('invalid length for $seller_return_item_id when calling CreateReturnItem., must be smaller than or equal to 80.');
@@ -285,7 +288,7 @@ class CreateReturnItem implements \ArrayAccess, \JsonSerializable, ModelInterfac
     /**
      * Gets seller_fulfillment_order_item_id.
      */
-    public function getSellerFulfillmentOrderItemId() : string
+    public function getSellerFulfillmentOrderItemId(): string
     {
         return $this->container['seller_fulfillment_order_item_id'];
     }
@@ -295,7 +298,7 @@ class CreateReturnItem implements \ArrayAccess, \JsonSerializable, ModelInterfac
      *
      * @param string $seller_fulfillment_order_item_id the identifier assigned to the item by the seller when the fulfillment order was created
      */
-    public function setSellerFulfillmentOrderItemId(string $seller_fulfillment_order_item_id) : self
+    public function setSellerFulfillmentOrderItemId(string $seller_fulfillment_order_item_id): self
     {
         $this->container['seller_fulfillment_order_item_id'] = $seller_fulfillment_order_item_id;
 
@@ -305,7 +308,7 @@ class CreateReturnItem implements \ArrayAccess, \JsonSerializable, ModelInterfac
     /**
      * Gets amazon_shipment_id.
      */
-    public function getAmazonShipmentId() : string
+    public function getAmazonShipmentId(): string
     {
         return $this->container['amazon_shipment_id'];
     }
@@ -315,7 +318,7 @@ class CreateReturnItem implements \ArrayAccess, \JsonSerializable, ModelInterfac
      *
      * @param string $amazon_shipment_id the identifier for the shipment that is associated with the return item
      */
-    public function setAmazonShipmentId(string $amazon_shipment_id) : self
+    public function setAmazonShipmentId(string $amazon_shipment_id): self
     {
         $this->container['amazon_shipment_id'] = $amazon_shipment_id;
 
@@ -325,7 +328,7 @@ class CreateReturnItem implements \ArrayAccess, \JsonSerializable, ModelInterfac
     /**
      * Gets return_reason_code.
      */
-    public function getReturnReasonCode() : string
+    public function getReturnReasonCode(): string
     {
         return $this->container['return_reason_code'];
     }
@@ -335,7 +338,7 @@ class CreateReturnItem implements \ArrayAccess, \JsonSerializable, ModelInterfac
      *
      * @param string $return_reason_code the return reason code assigned to the return item by the seller
      */
-    public function setReturnReasonCode(string $return_reason_code) : self
+    public function setReturnReasonCode(string $return_reason_code): self
     {
         $this->container['return_reason_code'] = $return_reason_code;
 
@@ -345,7 +348,7 @@ class CreateReturnItem implements \ArrayAccess, \JsonSerializable, ModelInterfac
     /**
      * Gets return_comment.
      */
-    public function getReturnComment() : ?string
+    public function getReturnComment(): ?string
     {
         return $this->container['return_comment'];
     }
@@ -355,7 +358,7 @@ class CreateReturnItem implements \ArrayAccess, \JsonSerializable, ModelInterfac
      *
      * @param null|string $return_comment an optional comment about the return item
      */
-    public function setReturnComment(?string $return_comment) : self
+    public function setReturnComment(?string $return_comment): self
     {
         if (null !== $return_comment && (\mb_strlen($return_comment) > 1000)) {
             throw new \InvalidArgumentException('invalid length for $return_comment when calling CreateReturnItem., must be smaller than or equal to 1000.');
@@ -371,7 +374,7 @@ class CreateReturnItem implements \ArrayAccess, \JsonSerializable, ModelInterfac
      *
      * @param int $offset Offset
      */
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -394,7 +397,7 @@ class CreateReturnItem implements \ArrayAccess, \JsonSerializable, ModelInterfac
      * @param null|int $offset Offset
      * @param mixed $value Value to be set
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         if (null === $offset) {
             $this->container[] = $value;
@@ -408,7 +411,7 @@ class CreateReturnItem implements \ArrayAccess, \JsonSerializable, ModelInterfac
      *
      * @param int $offset Offset
      */
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -421,7 +424,7 @@ class CreateReturnItem implements \ArrayAccess, \JsonSerializable, ModelInterfac
      * @return mixed returns data which can be serialized by json_encode(), which is a value
      *               of any type other than a resource
      */
-    public function jsonSerialize() : string
+    public function jsonSerialize(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }
@@ -429,7 +432,7 @@ class CreateReturnItem implements \ArrayAccess, \JsonSerializable, ModelInterfac
     /**
      * Gets a header-safe presentation of the object.
      */
-    public function toHeaderValue() : string
+    public function toHeaderValue(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }

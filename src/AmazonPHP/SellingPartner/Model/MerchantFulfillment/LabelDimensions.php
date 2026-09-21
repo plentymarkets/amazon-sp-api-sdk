@@ -1,4 +1,7 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
+
 /**
  * LabelDimensions.
  *
@@ -122,7 +125,7 @@ class LabelDimensions implements \ArrayAccess, \JsonSerializable, ModelInterface
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['length'] = $data['length'] ?? null;
         $this->container['width'] = $data['width'] ?? null;
@@ -134,7 +137,7 @@ class LabelDimensions implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return string[]
      */
-    public static function openAPITypes() : array
+    public static function openAPITypes(): array
     {
         return self::$openAPITypes;
     }
@@ -144,7 +147,7 @@ class LabelDimensions implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return null[]|string[]
      */
-    public static function openAPIFormats() : array
+    public static function openAPIFormats(): array
     {
         return self::$openAPIFormats;
     }
@@ -155,7 +158,7 @@ class LabelDimensions implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return string[]
      */
-    public static function attributeMap() : array
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -165,7 +168,7 @@ class LabelDimensions implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return string[]
      */
-    public static function setters() : array
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -175,7 +178,7 @@ class LabelDimensions implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return string[]
      */
-    public static function getters() : array
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -183,7 +186,7 @@ class LabelDimensions implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets the string presentation of the object.
      */
-    public function __toString() : string
+    public function __toString(): string
     {
         return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
@@ -194,7 +197,7 @@ class LabelDimensions implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * The original name of the model.
      */
-    public function getModelName() : string
+    public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
@@ -204,7 +207,7 @@ class LabelDimensions implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties() : array
+    public function listInvalidProperties(): array
     {
         $invalidProperties = [];
 
@@ -229,7 +232,7 @@ class LabelDimensions implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return bool True if all properties are valid
      */
-    public function valid() : bool
+    public function valid(): bool
     {
         return \count($this->listInvalidProperties()) === 0;
     }
@@ -237,7 +240,7 @@ class LabelDimensions implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets length.
      */
-    public function getLength() : float
+    public function getLength(): float
     {
         return $this->container['length'];
     }
@@ -247,7 +250,7 @@ class LabelDimensions implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param float $length a label dimension
      */
-    public function setLength(float $length) : self
+    public function setLength(float $length): self
     {
         $this->container['length'] = $length;
 
@@ -257,7 +260,7 @@ class LabelDimensions implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets width.
      */
-    public function getWidth() : float
+    public function getWidth(): float
     {
         return $this->container['width'];
     }
@@ -267,7 +270,7 @@ class LabelDimensions implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param float $width a label dimension
      */
-    public function setWidth(float $width) : self
+    public function setWidth(float $width): self
     {
         $this->container['width'] = $width;
 
@@ -277,7 +280,7 @@ class LabelDimensions implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets unit.
      */
-    public function getUnit() : UnitOfLength
+    public function getUnit(): UnitOfLength
     {
         return $this->container['unit'];
     }
@@ -287,7 +290,7 @@ class LabelDimensions implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param \Plenty\AmazonPHP\SellingPartner\Model\MerchantFulfillment\UnitOfLength $unit unit
      */
-    public function setUnit(UnitOfLength $unit) : self
+    public function setUnit(UnitOfLength $unit): self
     {
         $this->container['unit'] = $unit;
 
@@ -299,7 +302,7 @@ class LabelDimensions implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param int $offset Offset
      */
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -322,7 +325,7 @@ class LabelDimensions implements \ArrayAccess, \JsonSerializable, ModelInterface
      * @param null|int $offset Offset
      * @param mixed $value Value to be set
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         if (null === $offset) {
             $this->container[] = $value;
@@ -336,7 +339,7 @@ class LabelDimensions implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param int $offset Offset
      */
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -349,7 +352,7 @@ class LabelDimensions implements \ArrayAccess, \JsonSerializable, ModelInterface
      * @return mixed returns data which can be serialized by json_encode(), which is a value
      *               of any type other than a resource
      */
-    public function jsonSerialize() : string
+    public function jsonSerialize(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }
@@ -357,7 +360,7 @@ class LabelDimensions implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets a header-safe presentation of the object.
      */
-    public function toHeaderValue() : string
+    public function toHeaderValue(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }

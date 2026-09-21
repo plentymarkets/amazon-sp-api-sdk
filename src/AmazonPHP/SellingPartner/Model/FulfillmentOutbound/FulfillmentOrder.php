@@ -1,4 +1,7 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
+
 /**
  * FulfillmentOrder.
  *
@@ -187,7 +190,7 @@ class FulfillmentOrder implements \ArrayAccess, \JsonSerializable, ModelInterfac
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['seller_fulfillment_order_id'] = $data['seller_fulfillment_order_id'] ?? null;
         $this->container['marketplace_id'] = $data['marketplace_id'] ?? null;
@@ -212,7 +215,7 @@ class FulfillmentOrder implements \ArrayAccess, \JsonSerializable, ModelInterfac
      *
      * @return string[]
      */
-    public static function openAPITypes() : array
+    public static function openAPITypes(): array
     {
         return self::$openAPITypes;
     }
@@ -222,7 +225,7 @@ class FulfillmentOrder implements \ArrayAccess, \JsonSerializable, ModelInterfac
      *
      * @return null[]|string[]
      */
-    public static function openAPIFormats() : array
+    public static function openAPIFormats(): array
     {
         return self::$openAPIFormats;
     }
@@ -233,7 +236,7 @@ class FulfillmentOrder implements \ArrayAccess, \JsonSerializable, ModelInterfac
      *
      * @return string[]
      */
-    public static function attributeMap() : array
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -243,7 +246,7 @@ class FulfillmentOrder implements \ArrayAccess, \JsonSerializable, ModelInterfac
      *
      * @return string[]
      */
-    public static function setters() : array
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -253,7 +256,7 @@ class FulfillmentOrder implements \ArrayAccess, \JsonSerializable, ModelInterfac
      *
      * @return string[]
      */
-    public static function getters() : array
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -261,7 +264,7 @@ class FulfillmentOrder implements \ArrayAccess, \JsonSerializable, ModelInterfac
     /**
      * Gets the string presentation of the object.
      */
-    public function __toString() : string
+    public function __toString(): string
     {
         return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
@@ -272,7 +275,7 @@ class FulfillmentOrder implements \ArrayAccess, \JsonSerializable, ModelInterfac
     /**
      * The original name of the model.
      */
-    public function getModelName() : string
+    public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
@@ -282,7 +285,7 @@ class FulfillmentOrder implements \ArrayAccess, \JsonSerializable, ModelInterfac
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties() : array
+    public function listInvalidProperties(): array
     {
         $invalidProperties = [];
 
@@ -335,7 +338,7 @@ class FulfillmentOrder implements \ArrayAccess, \JsonSerializable, ModelInterfac
      *
      * @return bool True if all properties are valid
      */
-    public function valid() : bool
+    public function valid(): bool
     {
         return \count($this->listInvalidProperties()) === 0;
     }
@@ -343,7 +346,7 @@ class FulfillmentOrder implements \ArrayAccess, \JsonSerializable, ModelInterfac
     /**
      * Gets seller_fulfillment_order_id.
      */
-    public function getSellerFulfillmentOrderId() : string
+    public function getSellerFulfillmentOrderId(): string
     {
         return $this->container['seller_fulfillment_order_id'];
     }
@@ -353,7 +356,7 @@ class FulfillmentOrder implements \ArrayAccess, \JsonSerializable, ModelInterfac
      *
      * @param string $seller_fulfillment_order_id the fulfillment order identifier submitted with the createFulfillmentOrder operation
      */
-    public function setSellerFulfillmentOrderId(string $seller_fulfillment_order_id) : self
+    public function setSellerFulfillmentOrderId(string $seller_fulfillment_order_id): self
     {
         $this->container['seller_fulfillment_order_id'] = $seller_fulfillment_order_id;
 
@@ -363,7 +366,7 @@ class FulfillmentOrder implements \ArrayAccess, \JsonSerializable, ModelInterfac
     /**
      * Gets marketplace_id.
      */
-    public function getMarketplaceId() : string
+    public function getMarketplaceId(): string
     {
         return $this->container['marketplace_id'];
     }
@@ -373,7 +376,7 @@ class FulfillmentOrder implements \ArrayAccess, \JsonSerializable, ModelInterfac
      *
      * @param string $marketplace_id the identifier for the marketplace the fulfillment order is placed against
      */
-    public function setMarketplaceId(string $marketplace_id) : self
+    public function setMarketplaceId(string $marketplace_id): self
     {
         $this->container['marketplace_id'] = $marketplace_id;
 
@@ -383,7 +386,7 @@ class FulfillmentOrder implements \ArrayAccess, \JsonSerializable, ModelInterfac
     /**
      * Gets displayable_order_id.
      */
-    public function getDisplayableOrderId() : string
+    public function getDisplayableOrderId(): string
     {
         return $this->container['displayable_order_id'];
     }
@@ -393,7 +396,7 @@ class FulfillmentOrder implements \ArrayAccess, \JsonSerializable, ModelInterfac
      *
      * @param string $displayable_order_id A fulfillment order identifier submitted with the createFulfillmentOrder operation. Displays as the order identifier in recipient-facing materials such as the packing slip.
      */
-    public function setDisplayableOrderId(string $displayable_order_id) : self
+    public function setDisplayableOrderId(string $displayable_order_id): self
     {
         $this->container['displayable_order_id'] = $displayable_order_id;
 
@@ -405,7 +408,7 @@ class FulfillmentOrder implements \ArrayAccess, \JsonSerializable, ModelInterfac
      *
      * @return \DateTime|\DateTimeImmutable
      */
-    public function getDisplayableOrderDate() : \DateTimeInterface
+    public function getDisplayableOrderDate(): \DateTimeInterface
     {
         return $this->container['displayable_order_date'];
     }
@@ -415,7 +418,7 @@ class FulfillmentOrder implements \ArrayAccess, \JsonSerializable, ModelInterfac
      *
      * @param \DateTime $displayable_order_date displayable_order_date
      */
-    public function setDisplayableOrderDate(\DateTimeInterface $displayable_order_date) : self
+    public function setDisplayableOrderDate(\DateTimeInterface $displayable_order_date): self
     {
         $this->container['displayable_order_date'] = $displayable_order_date;
 
@@ -425,7 +428,7 @@ class FulfillmentOrder implements \ArrayAccess, \JsonSerializable, ModelInterfac
     /**
      * Gets displayable_order_comment.
      */
-    public function getDisplayableOrderComment() : string
+    public function getDisplayableOrderComment(): string
     {
         return $this->container['displayable_order_comment'];
     }
@@ -435,7 +438,7 @@ class FulfillmentOrder implements \ArrayAccess, \JsonSerializable, ModelInterfac
      *
      * @param string $displayable_order_comment A text block submitted with the createFulfillmentOrder operation. Displays in recipient-facing materials such as the packing slip.
      */
-    public function setDisplayableOrderComment(string $displayable_order_comment) : self
+    public function setDisplayableOrderComment(string $displayable_order_comment): self
     {
         $this->container['displayable_order_comment'] = $displayable_order_comment;
 
@@ -445,7 +448,7 @@ class FulfillmentOrder implements \ArrayAccess, \JsonSerializable, ModelInterfac
     /**
      * Gets shipping_speed_category.
      */
-    public function getShippingSpeedCategory() : ShippingSpeedCategory
+    public function getShippingSpeedCategory(): ShippingSpeedCategory
     {
         return $this->container['shipping_speed_category'];
     }
@@ -455,7 +458,7 @@ class FulfillmentOrder implements \ArrayAccess, \JsonSerializable, ModelInterfac
      *
      * @param \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentOutbound\ShippingSpeedCategory $shipping_speed_category shipping_speed_category
      */
-    public function setShippingSpeedCategory(ShippingSpeedCategory $shipping_speed_category) : self
+    public function setShippingSpeedCategory(ShippingSpeedCategory $shipping_speed_category): self
     {
         $this->container['shipping_speed_category'] = $shipping_speed_category;
 
@@ -465,7 +468,7 @@ class FulfillmentOrder implements \ArrayAccess, \JsonSerializable, ModelInterfac
     /**
      * Gets delivery_window.
      */
-    public function getDeliveryWindow() : ?DeliveryWindow
+    public function getDeliveryWindow(): ?DeliveryWindow
     {
         return $this->container['delivery_window'];
     }
@@ -475,7 +478,7 @@ class FulfillmentOrder implements \ArrayAccess, \JsonSerializable, ModelInterfac
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentOutbound\DeliveryWindow $delivery_window delivery_window
      */
-    public function setDeliveryWindow(?DeliveryWindow $delivery_window) : self
+    public function setDeliveryWindow(?DeliveryWindow $delivery_window): self
     {
         $this->container['delivery_window'] = $delivery_window;
 
@@ -485,7 +488,7 @@ class FulfillmentOrder implements \ArrayAccess, \JsonSerializable, ModelInterfac
     /**
      * Gets destination_address.
      */
-    public function getDestinationAddress() : Address
+    public function getDestinationAddress(): Address
     {
         return $this->container['destination_address'];
     }
@@ -495,7 +498,7 @@ class FulfillmentOrder implements \ArrayAccess, \JsonSerializable, ModelInterfac
      *
      * @param \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentOutbound\Address $destination_address destination_address
      */
-    public function setDestinationAddress(Address $destination_address) : self
+    public function setDestinationAddress(Address $destination_address): self
     {
         $this->container['destination_address'] = $destination_address;
 
@@ -505,7 +508,7 @@ class FulfillmentOrder implements \ArrayAccess, \JsonSerializable, ModelInterfac
     /**
      * Gets fulfillment_action.
      */
-    public function getFulfillmentAction() : ?FulfillmentAction
+    public function getFulfillmentAction(): ?FulfillmentAction
     {
         return $this->container['fulfillment_action'];
     }
@@ -515,7 +518,7 @@ class FulfillmentOrder implements \ArrayAccess, \JsonSerializable, ModelInterfac
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentOutbound\FulfillmentAction $fulfillment_action fulfillment_action
      */
-    public function setFulfillmentAction(?FulfillmentAction $fulfillment_action) : self
+    public function setFulfillmentAction(?FulfillmentAction $fulfillment_action): self
     {
         $this->container['fulfillment_action'] = $fulfillment_action;
 
@@ -525,7 +528,7 @@ class FulfillmentOrder implements \ArrayAccess, \JsonSerializable, ModelInterfac
     /**
      * Gets fulfillment_policy.
      */
-    public function getFulfillmentPolicy() : ?FulfillmentPolicy
+    public function getFulfillmentPolicy(): ?FulfillmentPolicy
     {
         return $this->container['fulfillment_policy'];
     }
@@ -535,7 +538,7 @@ class FulfillmentOrder implements \ArrayAccess, \JsonSerializable, ModelInterfac
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentOutbound\FulfillmentPolicy $fulfillment_policy fulfillment_policy
      */
-    public function setFulfillmentPolicy(?FulfillmentPolicy $fulfillment_policy) : self
+    public function setFulfillmentPolicy(?FulfillmentPolicy $fulfillment_policy): self
     {
         $this->container['fulfillment_policy'] = $fulfillment_policy;
 
@@ -545,7 +548,7 @@ class FulfillmentOrder implements \ArrayAccess, \JsonSerializable, ModelInterfac
     /**
      * Gets cod_settings.
      */
-    public function getCodSettings() : ?CODSettings
+    public function getCodSettings(): ?CODSettings
     {
         return $this->container['cod_settings'];
     }
@@ -555,7 +558,7 @@ class FulfillmentOrder implements \ArrayAccess, \JsonSerializable, ModelInterfac
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentOutbound\CODSettings $cod_settings cod_settings
      */
-    public function setCodSettings(?CODSettings $cod_settings) : self
+    public function setCodSettings(?CODSettings $cod_settings): self
     {
         $this->container['cod_settings'] = $cod_settings;
 
@@ -567,7 +570,7 @@ class FulfillmentOrder implements \ArrayAccess, \JsonSerializable, ModelInterfac
      *
      * @return \DateTime|\DateTimeImmutable
      */
-    public function getReceivedDate() : \DateTimeInterface
+    public function getReceivedDate(): \DateTimeInterface
     {
         return $this->container['received_date'];
     }
@@ -577,7 +580,7 @@ class FulfillmentOrder implements \ArrayAccess, \JsonSerializable, ModelInterfac
      *
      * @param \DateTime $received_date received_date
      */
-    public function setReceivedDate(\DateTimeInterface $received_date) : self
+    public function setReceivedDate(\DateTimeInterface $received_date): self
     {
         $this->container['received_date'] = $received_date;
 
@@ -587,7 +590,7 @@ class FulfillmentOrder implements \ArrayAccess, \JsonSerializable, ModelInterfac
     /**
      * Gets fulfillment_order_status.
      */
-    public function getFulfillmentOrderStatus() : FulfillmentOrderStatus
+    public function getFulfillmentOrderStatus(): FulfillmentOrderStatus
     {
         return $this->container['fulfillment_order_status'];
     }
@@ -597,7 +600,7 @@ class FulfillmentOrder implements \ArrayAccess, \JsonSerializable, ModelInterfac
      *
      * @param \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentOutbound\FulfillmentOrderStatus $fulfillment_order_status fulfillment_order_status
      */
-    public function setFulfillmentOrderStatus(FulfillmentOrderStatus $fulfillment_order_status) : self
+    public function setFulfillmentOrderStatus(FulfillmentOrderStatus $fulfillment_order_status): self
     {
         $this->container['fulfillment_order_status'] = $fulfillment_order_status;
 
@@ -609,7 +612,7 @@ class FulfillmentOrder implements \ArrayAccess, \JsonSerializable, ModelInterfac
      *
      * @return \DateTime|\DateTimeImmutable
      */
-    public function getStatusUpdatedDate() : \DateTimeInterface
+    public function getStatusUpdatedDate(): \DateTimeInterface
     {
         return $this->container['status_updated_date'];
     }
@@ -619,7 +622,7 @@ class FulfillmentOrder implements \ArrayAccess, \JsonSerializable, ModelInterfac
      *
      * @param \DateTime $status_updated_date status_updated_date
      */
-    public function setStatusUpdatedDate(\DateTimeInterface $status_updated_date) : self
+    public function setStatusUpdatedDate(\DateTimeInterface $status_updated_date): self
     {
         $this->container['status_updated_date'] = $status_updated_date;
 
@@ -631,7 +634,7 @@ class FulfillmentOrder implements \ArrayAccess, \JsonSerializable, ModelInterfac
      *
      * @return null|string[]
      */
-    public function getNotificationEmails() : ?array
+    public function getNotificationEmails(): ?array
     {
         return $this->container['notification_emails'];
     }
@@ -641,7 +644,7 @@ class FulfillmentOrder implements \ArrayAccess, \JsonSerializable, ModelInterfac
      *
      * @param null|string[] $notification_emails a list of email addresses that the seller provides that are used by Amazon to send ship-complete notifications to recipients on behalf of the seller
      */
-    public function setNotificationEmails(?array $notification_emails) : self
+    public function setNotificationEmails(?array $notification_emails): self
     {
         $this->container['notification_emails'] = $notification_emails;
 
@@ -653,7 +656,7 @@ class FulfillmentOrder implements \ArrayAccess, \JsonSerializable, ModelInterfac
      *
      * @return null|\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentOutbound\FeatureSettings[]
      */
-    public function getFeatureConstraints() : ?array
+    public function getFeatureConstraints(): ?array
     {
         return $this->container['feature_constraints'];
     }
@@ -663,7 +666,7 @@ class FulfillmentOrder implements \ArrayAccess, \JsonSerializable, ModelInterfac
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentOutbound\FeatureSettings[] $feature_constraints a list of features and their fulfillment policies to apply to the order
      */
-    public function setFeatureConstraints(?array $feature_constraints) : self
+    public function setFeatureConstraints(?array $feature_constraints): self
     {
         $this->container['feature_constraints'] = $feature_constraints;
 
@@ -675,7 +678,7 @@ class FulfillmentOrder implements \ArrayAccess, \JsonSerializable, ModelInterfac
      *
      * @param int $offset Offset
      */
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -698,7 +701,7 @@ class FulfillmentOrder implements \ArrayAccess, \JsonSerializable, ModelInterfac
      * @param null|int $offset Offset
      * @param mixed $value Value to be set
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         if (null === $offset) {
             $this->container[] = $value;
@@ -712,7 +715,7 @@ class FulfillmentOrder implements \ArrayAccess, \JsonSerializable, ModelInterfac
      *
      * @param int $offset Offset
      */
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -725,7 +728,7 @@ class FulfillmentOrder implements \ArrayAccess, \JsonSerializable, ModelInterfac
      * @return mixed returns data which can be serialized by json_encode(), which is a value
      *               of any type other than a resource
      */
-    public function jsonSerialize() : string
+    public function jsonSerialize(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }
@@ -733,7 +736,7 @@ class FulfillmentOrder implements \ArrayAccess, \JsonSerializable, ModelInterfac
     /**
      * Gets a header-safe presentation of the object.
      */
-    public function toHeaderValue() : string
+    public function toHeaderValue(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }

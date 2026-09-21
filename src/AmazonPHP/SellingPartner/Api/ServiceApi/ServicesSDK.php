@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Plenty\AmazonPHP\SellingPartner\Api\ServiceApi;
 
@@ -72,7 +74,7 @@ final class ServicesSDK
      * @throws \Plenty\AmazonPHP\SellingPartner\Exception\ApiException on non-2xx response
      * @throws \Plenty\AmazonPHP\SellingPartner\Exception\InvalidArgumentException
      */
-    public function addAppointmentForServiceJobByServiceJobId(AccessToken $accessToken, string $region, string $service_job_id, \Plenty\AmazonPHP\SellingPartner\Model\Services\AddAppointmentRequest $body) : \Plenty\AmazonPHP\SellingPartner\Model\Services\SetAppointmentResponse
+    public function addAppointmentForServiceJobByServiceJobId(AccessToken $accessToken, string $region, string $service_job_id, \Plenty\AmazonPHP\SellingPartner\Model\Services\AddAppointmentRequest $body): \Plenty\AmazonPHP\SellingPartner\Model\Services\SetAppointmentResponse
     {
         $request = $this->addAppointmentForServiceJobByServiceJobIdRequest($accessToken, $region, $service_job_id, $body);
 
@@ -168,7 +170,7 @@ final class ServicesSDK
      *
      * @throws \Plenty\AmazonPHP\SellingPartner\Exception\InvalidArgumentException
      */
-    public function addAppointmentForServiceJobByServiceJobIdRequest(AccessToken $accessToken, string $region, string $service_job_id, \Plenty\AmazonPHP\SellingPartner\Model\Services\AddAppointmentRequest $body) : RequestInterface
+    public function addAppointmentForServiceJobByServiceJobIdRequest(AccessToken $accessToken, string $region, string $service_job_id, \Plenty\AmazonPHP\SellingPartner\Model\Services\AddAppointmentRequest $body): RequestInterface
     {
         // verify the required parameter 'service_job_id' is set
         if ($service_job_id === null || (\is_array($service_job_id) && \count($service_job_id) === 0)) {
@@ -285,7 +287,7 @@ final class ServicesSDK
      * @throws \Plenty\AmazonPHP\SellingPartner\Exception\ApiException on non-2xx response
      * @throws \Plenty\AmazonPHP\SellingPartner\Exception\InvalidArgumentException
      */
-    public function cancelServiceJobByServiceJobId(AccessToken $accessToken, string $region, string $service_job_id, string $cancellation_reason_code) : \Plenty\AmazonPHP\SellingPartner\Model\Services\CancelServiceJobByServiceJobIdResponse
+    public function cancelServiceJobByServiceJobId(AccessToken $accessToken, string $region, string $service_job_id, string $cancellation_reason_code): \Plenty\AmazonPHP\SellingPartner\Model\Services\CancelServiceJobByServiceJobIdResponse
     {
         $request = $this->cancelServiceJobByServiceJobIdRequest($accessToken, $region, $service_job_id, $cancellation_reason_code);
 
@@ -381,7 +383,7 @@ final class ServicesSDK
      *
      * @throws \Plenty\AmazonPHP\SellingPartner\Exception\InvalidArgumentException
      */
-    public function cancelServiceJobByServiceJobIdRequest(AccessToken $accessToken, string $region, string $service_job_id, string $cancellation_reason_code) : RequestInterface
+    public function cancelServiceJobByServiceJobIdRequest(AccessToken $accessToken, string $region, string $service_job_id, string $cancellation_reason_code): RequestInterface
     {
         // verify the required parameter 'service_job_id' is set
         if ($service_job_id === null || (\is_array($service_job_id) && \count($service_job_id) === 0)) {
@@ -510,7 +512,7 @@ final class ServicesSDK
      * @throws \Plenty\AmazonPHP\SellingPartner\Exception\ApiException on non-2xx response
      * @throws \Plenty\AmazonPHP\SellingPartner\Exception\InvalidArgumentException
      */
-    public function completeServiceJobByServiceJobId(AccessToken $accessToken, string $region, string $service_job_id) : \Plenty\AmazonPHP\SellingPartner\Model\Services\CompleteServiceJobByServiceJobIdResponse
+    public function completeServiceJobByServiceJobId(AccessToken $accessToken, string $region, string $service_job_id): \Plenty\AmazonPHP\SellingPartner\Model\Services\CompleteServiceJobByServiceJobIdResponse
     {
         $request = $this->completeServiceJobByServiceJobIdRequest($accessToken, $region, $service_job_id);
 
@@ -605,7 +607,7 @@ final class ServicesSDK
      *
      * @throws \Plenty\AmazonPHP\SellingPartner\Exception\InvalidArgumentException
      */
-    public function completeServiceJobByServiceJobIdRequest(AccessToken $accessToken, string $region, string $service_job_id) : RequestInterface
+    public function completeServiceJobByServiceJobIdRequest(AccessToken $accessToken, string $region, string $service_job_id): RequestInterface
     {
         // verify the required parameter 'service_job_id' is set
         if ($service_job_id === null || (\is_array($service_job_id) && \count($service_job_id) === 0)) {
@@ -706,7 +708,7 @@ final class ServicesSDK
      * @throws \Plenty\AmazonPHP\SellingPartner\Exception\ApiException on non-2xx response
      * @throws \Plenty\AmazonPHP\SellingPartner\Exception\InvalidArgumentException
      */
-    public function getServiceJobByServiceJobId(AccessToken $accessToken, string $region, string $service_job_id) : \Plenty\AmazonPHP\SellingPartner\Model\Services\GetServiceJobByServiceJobIdResponse
+    public function getServiceJobByServiceJobId(AccessToken $accessToken, string $region, string $service_job_id): \Plenty\AmazonPHP\SellingPartner\Model\Services\GetServiceJobByServiceJobIdResponse
     {
         $request = $this->getServiceJobByServiceJobIdRequest($accessToken, $region, $service_job_id);
 
@@ -801,7 +803,7 @@ final class ServicesSDK
      *
      * @throws \Plenty\AmazonPHP\SellingPartner\Exception\InvalidArgumentException
      */
-    public function getServiceJobByServiceJobIdRequest(AccessToken $accessToken, string $region, string $service_job_id) : RequestInterface
+    public function getServiceJobByServiceJobIdRequest(AccessToken $accessToken, string $region, string $service_job_id): RequestInterface
     {
         // verify the required parameter 'service_job_id' is set
         if ($service_job_id === null || (\is_array($service_job_id) && \count($service_job_id) === 0)) {
@@ -914,7 +916,7 @@ final class ServicesSDK
      * @throws \Plenty\AmazonPHP\SellingPartner\Exception\ApiException on non-2xx response
      * @throws \Plenty\AmazonPHP\SellingPartner\Exception\InvalidArgumentException
      */
-    public function getServiceJobs(AccessToken $accessToken, string $region, array $marketplace_ids, array $service_order_ids = null, array $service_job_status = null, string $page_token = null, int $page_size = 20, string $sort_field = null, string $sort_order = null, string $created_after = null, string $created_before = null, string $last_updated_after = null, string $last_updated_before = null, string $schedule_start_date = null, string $schedule_end_date = null) : \Plenty\AmazonPHP\SellingPartner\Model\Services\GetServiceJobsResponse
+    public function getServiceJobs(AccessToken $accessToken, string $region, array $marketplace_ids, ?array $service_order_ids = null, ?array $service_job_status = null, ?string $page_token = null, int $page_size = 20, ?string $sort_field = null, ?string $sort_order = null, ?string $created_after = null, ?string $created_before = null, ?string $last_updated_after = null, ?string $last_updated_before = null, ?string $schedule_start_date = null, ?string $schedule_end_date = null): \Plenty\AmazonPHP\SellingPartner\Model\Services\GetServiceJobsResponse
     {
         $request = $this->getServiceJobsRequest($accessToken, $region, $marketplace_ids, $service_order_ids, $service_job_status, $page_token, $page_size, $sort_field, $sort_order, $created_after, $created_before, $last_updated_after, $last_updated_before, $schedule_start_date, $schedule_end_date);
 
@@ -1021,7 +1023,7 @@ final class ServicesSDK
      *
      * @throws \Plenty\AmazonPHP\SellingPartner\Exception\InvalidArgumentException
      */
-    public function getServiceJobsRequest(AccessToken $accessToken, string $region, array $marketplace_ids, array $service_order_ids = null, array $service_job_status = null, string $page_token = null, int $page_size = 20, string $sort_field = null, string $sort_order = null, string $created_after = null, string $created_before = null, string $last_updated_after = null, string $last_updated_before = null, string $schedule_start_date = null, string $schedule_end_date = null) : RequestInterface
+    public function getServiceJobsRequest(AccessToken $accessToken, string $region, array $marketplace_ids, ?array $service_order_ids = null, ?array $service_job_status = null, ?string $page_token = null, int $page_size = 20, ?string $sort_field = null, ?string $sort_order = null, ?string $created_after = null, ?string $created_before = null, ?string $last_updated_after = null, ?string $last_updated_before = null, ?string $schedule_start_date = null, ?string $schedule_end_date = null): RequestInterface
     {
         // verify the required parameter 'marketplace_ids' is set
         if ($marketplace_ids === null || (\is_array($marketplace_ids) && \count($marketplace_ids) === 0)) {
@@ -1232,7 +1234,7 @@ final class ServicesSDK
      * @throws \Plenty\AmazonPHP\SellingPartner\Exception\ApiException on non-2xx response
      * @throws \Plenty\AmazonPHP\SellingPartner\Exception\InvalidArgumentException
      */
-    public function rescheduleAppointmentForServiceJobByServiceJobId(AccessToken $accessToken, string $region, string $service_job_id, string $appointment_id, \Plenty\AmazonPHP\SellingPartner\Model\Services\RescheduleAppointmentRequest $body) : \Plenty\AmazonPHP\SellingPartner\Model\Services\SetAppointmentResponse
+    public function rescheduleAppointmentForServiceJobByServiceJobId(AccessToken $accessToken, string $region, string $service_job_id, string $appointment_id, \Plenty\AmazonPHP\SellingPartner\Model\Services\RescheduleAppointmentRequest $body): \Plenty\AmazonPHP\SellingPartner\Model\Services\SetAppointmentResponse
     {
         $request = $this->rescheduleAppointmentForServiceJobByServiceJobIdRequest($accessToken, $region, $service_job_id, $appointment_id, $body);
 
@@ -1329,7 +1331,7 @@ final class ServicesSDK
      *
      * @throws \Plenty\AmazonPHP\SellingPartner\Exception\InvalidArgumentException
      */
-    public function rescheduleAppointmentForServiceJobByServiceJobIdRequest(AccessToken $accessToken, string $region, string $service_job_id, string $appointment_id, \Plenty\AmazonPHP\SellingPartner\Model\Services\RescheduleAppointmentRequest $body) : RequestInterface
+    public function rescheduleAppointmentForServiceJobByServiceJobIdRequest(AccessToken $accessToken, string $region, string $service_job_id, string $appointment_id, \Plenty\AmazonPHP\SellingPartner\Model\Services\RescheduleAppointmentRequest $body): RequestInterface
     {
         // verify the required parameter 'service_job_id' is set
         if ($service_job_id === null || (\is_array($service_job_id) && \count($service_job_id) === 0)) {

@@ -1,4 +1,7 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
+
 /**
  * GetSchemaResponse.
  *
@@ -122,7 +125,7 @@ class GetSchemaResponse implements \ArrayAccess, \JsonSerializable, ModelInterfa
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['_links'] = $data['_links'] ?? null;
         $this->container['payload'] = $data['payload'] ?? null;
@@ -134,7 +137,7 @@ class GetSchemaResponse implements \ArrayAccess, \JsonSerializable, ModelInterfa
      *
      * @return string[]
      */
-    public static function openAPITypes() : array
+    public static function openAPITypes(): array
     {
         return self::$openAPITypes;
     }
@@ -144,7 +147,7 @@ class GetSchemaResponse implements \ArrayAccess, \JsonSerializable, ModelInterfa
      *
      * @return null[]|string[]
      */
-    public static function openAPIFormats() : array
+    public static function openAPIFormats(): array
     {
         return self::$openAPIFormats;
     }
@@ -155,7 +158,7 @@ class GetSchemaResponse implements \ArrayAccess, \JsonSerializable, ModelInterfa
      *
      * @return string[]
      */
-    public static function attributeMap() : array
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -165,7 +168,7 @@ class GetSchemaResponse implements \ArrayAccess, \JsonSerializable, ModelInterfa
      *
      * @return string[]
      */
-    public static function setters() : array
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -175,7 +178,7 @@ class GetSchemaResponse implements \ArrayAccess, \JsonSerializable, ModelInterfa
      *
      * @return string[]
      */
-    public static function getters() : array
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -183,7 +186,7 @@ class GetSchemaResponse implements \ArrayAccess, \JsonSerializable, ModelInterfa
     /**
      * Gets the string presentation of the object.
      */
-    public function __toString() : string
+    public function __toString(): string
     {
         return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
@@ -194,7 +197,7 @@ class GetSchemaResponse implements \ArrayAccess, \JsonSerializable, ModelInterfa
     /**
      * The original name of the model.
      */
-    public function getModelName() : string
+    public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
@@ -204,7 +207,7 @@ class GetSchemaResponse implements \ArrayAccess, \JsonSerializable, ModelInterfa
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties() : array
+    public function listInvalidProperties(): array
     {
         return [];
     }
@@ -215,7 +218,7 @@ class GetSchemaResponse implements \ArrayAccess, \JsonSerializable, ModelInterfa
      *
      * @return bool True if all properties are valid
      */
-    public function valid() : bool
+    public function valid(): bool
     {
         return \count($this->listInvalidProperties()) === 0;
     }
@@ -223,7 +226,7 @@ class GetSchemaResponse implements \ArrayAccess, \JsonSerializable, ModelInterfa
     /**
      * Gets _links.
      */
-    public function getLinks() : ?GetSchemaResponseLinks
+    public function getLinks(): ?GetSchemaResponseLinks
     {
         return $this->container['_links'];
     }
@@ -233,7 +236,7 @@ class GetSchemaResponse implements \ArrayAccess, \JsonSerializable, ModelInterfa
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\Solicitations\GetSchemaResponseLinks $_links _links
      */
-    public function setLinks(?GetSchemaResponseLinks $_links) : self
+    public function setLinks(?GetSchemaResponseLinks $_links): self
     {
         $this->container['_links'] = $_links;
 
@@ -245,7 +248,7 @@ class GetSchemaResponse implements \ArrayAccess, \JsonSerializable, ModelInterfa
      *
      * @return null|array<string,object>
      */
-    public function getPayload() : ?array
+    public function getPayload(): ?array
     {
         return $this->container['payload'];
     }
@@ -255,7 +258,7 @@ class GetSchemaResponse implements \ArrayAccess, \JsonSerializable, ModelInterfa
      *
      * @param null|array<string,object> $payload A JSON schema document describing the expected payload of the action. This object can be validated against <a href=http://json-schema.org/draft-04/schema>http://json-schema.org/draft-04/schema</a>.
      */
-    public function setPayload(?array $payload) : self
+    public function setPayload(?array $payload): self
     {
         $this->container['payload'] = $payload;
 
@@ -267,7 +270,7 @@ class GetSchemaResponse implements \ArrayAccess, \JsonSerializable, ModelInterfa
      *
      * @return null|\Plenty\AmazonPHP\SellingPartner\Model\Solicitations\Error[]
      */
-    public function getErrors() : ?array
+    public function getErrors(): ?array
     {
         return $this->container['errors'];
     }
@@ -277,7 +280,7 @@ class GetSchemaResponse implements \ArrayAccess, \JsonSerializable, ModelInterfa
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\Solicitations\Error[] $errors a list of error responses returned when a request is unsuccessful
      */
-    public function setErrors(?array $errors) : self
+    public function setErrors(?array $errors): self
     {
         $this->container['errors'] = $errors;
 
@@ -289,7 +292,7 @@ class GetSchemaResponse implements \ArrayAccess, \JsonSerializable, ModelInterfa
      *
      * @param int $offset Offset
      */
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -312,7 +315,7 @@ class GetSchemaResponse implements \ArrayAccess, \JsonSerializable, ModelInterfa
      * @param null|int $offset Offset
      * @param mixed $value Value to be set
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         if (null === $offset) {
             $this->container[] = $value;
@@ -326,7 +329,7 @@ class GetSchemaResponse implements \ArrayAccess, \JsonSerializable, ModelInterfa
      *
      * @param int $offset Offset
      */
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -339,7 +342,7 @@ class GetSchemaResponse implements \ArrayAccess, \JsonSerializable, ModelInterfa
      * @return mixed returns data which can be serialized by json_encode(), which is a value
      *               of any type other than a resource
      */
-    public function jsonSerialize() : string
+    public function jsonSerialize(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }
@@ -347,7 +350,7 @@ class GetSchemaResponse implements \ArrayAccess, \JsonSerializable, ModelInterfa
     /**
      * Gets a header-safe presentation of the object.
      */
-    public function toHeaderValue() : string
+    public function toHeaderValue(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }

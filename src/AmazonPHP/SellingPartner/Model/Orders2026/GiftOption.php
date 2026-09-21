@@ -179,7 +179,7 @@ class GiftOption implements ModelInterface, ArrayAccess, \JsonSerializable, \Str
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['gift_message'] = $data['gift_message'] ?? null;
         $this->container['gift_wrap_level'] = $data['gift_wrap_level'] ?? null;

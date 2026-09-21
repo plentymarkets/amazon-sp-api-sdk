@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Plenty\AmazonPHP\SellingPartner\Api\VendorOrdersApi;
 
@@ -59,7 +61,7 @@ final class VendorDirectFulfillmentOrdersSDK
      * @throws \Plenty\AmazonPHP\SellingPartner\Exception\ApiException on non-2xx response
      * @throws \Plenty\AmazonPHP\SellingPartner\Exception\InvalidArgumentException
      */
-    public function getOrder(AccessToken $accessToken, string $region, string $purchase_order_number) : \Plenty\AmazonPHP\SellingPartner\Model\VendorDirectFulfillmentOrders\Order
+    public function getOrder(AccessToken $accessToken, string $region, string $purchase_order_number): \Plenty\AmazonPHP\SellingPartner\Model\VendorDirectFulfillmentOrders\Order
     {
         $request = $this->getOrderRequest($accessToken, $region, $purchase_order_number);
 
@@ -154,7 +156,7 @@ final class VendorDirectFulfillmentOrdersSDK
      *
      * @throws \Plenty\AmazonPHP\SellingPartner\Exception\InvalidArgumentException
      */
-    public function getOrderRequest(AccessToken $accessToken, string $region, string $purchase_order_number) : RequestInterface
+    public function getOrderRequest(AccessToken $accessToken, string $region, string $purchase_order_number): RequestInterface
     {
         // verify the required parameter 'purchase_order_number' is set
         if ($purchase_order_number === null || (\is_array($purchase_order_number) && \count($purchase_order_number) === 0)) {
@@ -254,7 +256,7 @@ final class VendorDirectFulfillmentOrdersSDK
      * @throws \Plenty\AmazonPHP\SellingPartner\Exception\ApiException on non-2xx response
      * @throws \Plenty\AmazonPHP\SellingPartner\Exception\InvalidArgumentException
      */
-    public function getOrders(AccessToken $accessToken, string $region, \DateTimeInterface $created_after, \DateTimeInterface $created_before, string $ship_from_party_id = null, string $status = null, int $limit = null, string $sort_order = null, string $next_token = null, bool $include_details = true) : \Plenty\AmazonPHP\SellingPartner\Model\VendorDirectFulfillmentOrders\OrderList
+    public function getOrders(AccessToken $accessToken, string $region, \DateTimeInterface $created_after, \DateTimeInterface $created_before, ?string $ship_from_party_id = null, ?string $status = null, ?int $limit = null, ?string $sort_order = null, ?string $next_token = null, bool $include_details = true): \Plenty\AmazonPHP\SellingPartner\Model\VendorDirectFulfillmentOrders\OrderList
     {
         $request = $this->getOrdersRequest($accessToken, $region, $created_after, $created_before, $ship_from_party_id, $status, $limit, $sort_order, $next_token, $include_details);
 
@@ -356,7 +358,7 @@ final class VendorDirectFulfillmentOrdersSDK
      *
      * @throws \Plenty\AmazonPHP\SellingPartner\Exception\InvalidArgumentException
      */
-    public function getOrdersRequest(AccessToken $accessToken, string $region, \DateTimeInterface $created_after, \DateTimeInterface $created_before, string $ship_from_party_id = null, string $status = null, int $limit = null, string $sort_order = null, string $next_token = null, bool $include_details = true) : RequestInterface
+    public function getOrdersRequest(AccessToken $accessToken, string $region, \DateTimeInterface $created_after, \DateTimeInterface $created_before, ?string $ship_from_party_id = null, ?string $status = null, ?int $limit = null, ?string $sort_order = null, ?string $next_token = null, bool $include_details = true): RequestInterface
     {
         // verify the required parameter 'created_after' is set
         if ($created_after === null || (\is_array($created_after) && \count($created_after) === 0)) {
@@ -519,7 +521,7 @@ final class VendorDirectFulfillmentOrdersSDK
      * @throws \Plenty\AmazonPHP\SellingPartner\Exception\ApiException on non-2xx response
      * @throws \Plenty\AmazonPHP\SellingPartner\Exception\InvalidArgumentException
      */
-    public function submitAcknowledgement(AccessToken $accessToken, string $region, \Plenty\AmazonPHP\SellingPartner\Model\VendorDirectFulfillmentOrders\SubmitAcknowledgementRequest $body) : \Plenty\AmazonPHP\SellingPartner\Model\VendorDirectFulfillmentOrders\TransactionId
+    public function submitAcknowledgement(AccessToken $accessToken, string $region, \Plenty\AmazonPHP\SellingPartner\Model\VendorDirectFulfillmentOrders\SubmitAcknowledgementRequest $body): \Plenty\AmazonPHP\SellingPartner\Model\VendorDirectFulfillmentOrders\TransactionId
     {
         $request = $this->submitAcknowledgementRequest($accessToken, $region, $body);
 
@@ -614,7 +616,7 @@ final class VendorDirectFulfillmentOrdersSDK
      *
      * @throws \Plenty\AmazonPHP\SellingPartner\Exception\InvalidArgumentException
      */
-    public function submitAcknowledgementRequest(AccessToken $accessToken, string $region, \Plenty\AmazonPHP\SellingPartner\Model\VendorDirectFulfillmentOrders\SubmitAcknowledgementRequest $body) : RequestInterface
+    public function submitAcknowledgementRequest(AccessToken $accessToken, string $region, \Plenty\AmazonPHP\SellingPartner\Model\VendorDirectFulfillmentOrders\SubmitAcknowledgementRequest $body): RequestInterface
     {
         // verify the required parameter 'body' is set
         if ($body === null || (\is_array($body) && \count($body) === 0)) {

@@ -1,4 +1,7 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
+
 /**
  * CreateFeedSpecification.
  *
@@ -127,7 +130,7 @@ class CreateFeedSpecification implements \ArrayAccess, \JsonSerializable, ModelI
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['feed_type'] = $data['feed_type'] ?? null;
         $this->container['marketplace_ids'] = $data['marketplace_ids'] ?? null;
@@ -140,7 +143,7 @@ class CreateFeedSpecification implements \ArrayAccess, \JsonSerializable, ModelI
      *
      * @return string[]
      */
-    public static function openAPITypes() : array
+    public static function openAPITypes(): array
     {
         return self::$openAPITypes;
     }
@@ -150,7 +153,7 @@ class CreateFeedSpecification implements \ArrayAccess, \JsonSerializable, ModelI
      *
      * @return null[]|string[]
      */
-    public static function openAPIFormats() : array
+    public static function openAPIFormats(): array
     {
         return self::$openAPIFormats;
     }
@@ -161,7 +164,7 @@ class CreateFeedSpecification implements \ArrayAccess, \JsonSerializable, ModelI
      *
      * @return string[]
      */
-    public static function attributeMap() : array
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -171,7 +174,7 @@ class CreateFeedSpecification implements \ArrayAccess, \JsonSerializable, ModelI
      *
      * @return string[]
      */
-    public static function setters() : array
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -181,7 +184,7 @@ class CreateFeedSpecification implements \ArrayAccess, \JsonSerializable, ModelI
      *
      * @return string[]
      */
-    public static function getters() : array
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -189,7 +192,7 @@ class CreateFeedSpecification implements \ArrayAccess, \JsonSerializable, ModelI
     /**
      * Gets the string presentation of the object.
      */
-    public function __toString() : string
+    public function __toString(): string
     {
         return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
@@ -200,7 +203,7 @@ class CreateFeedSpecification implements \ArrayAccess, \JsonSerializable, ModelI
     /**
      * The original name of the model.
      */
-    public function getModelName() : string
+    public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
@@ -210,7 +213,7 @@ class CreateFeedSpecification implements \ArrayAccess, \JsonSerializable, ModelI
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties() : array
+    public function listInvalidProperties(): array
     {
         $invalidProperties = [];
 
@@ -243,7 +246,7 @@ class CreateFeedSpecification implements \ArrayAccess, \JsonSerializable, ModelI
      *
      * @return bool True if all properties are valid
      */
-    public function valid() : bool
+    public function valid(): bool
     {
         return \count($this->listInvalidProperties()) === 0;
     }
@@ -251,7 +254,7 @@ class CreateFeedSpecification implements \ArrayAccess, \JsonSerializable, ModelI
     /**
      * Gets feed_type.
      */
-    public function getFeedType() : string
+    public function getFeedType(): string
     {
         return $this->container['feed_type'];
     }
@@ -261,7 +264,7 @@ class CreateFeedSpecification implements \ArrayAccess, \JsonSerializable, ModelI
      *
      * @param string $feed_type the feed type
      */
-    public function setFeedType(string $feed_type) : self
+    public function setFeedType(string $feed_type): self
     {
         $this->container['feed_type'] = $feed_type;
 
@@ -273,7 +276,7 @@ class CreateFeedSpecification implements \ArrayAccess, \JsonSerializable, ModelI
      *
      * @return string[]
      */
-    public function getMarketplaceIds() : array
+    public function getMarketplaceIds(): array
     {
         return $this->container['marketplace_ids'];
     }
@@ -283,7 +286,7 @@ class CreateFeedSpecification implements \ArrayAccess, \JsonSerializable, ModelI
      *
      * @param string[] $marketplace_ids a list of identifiers for marketplaces that you want the feed to be applied to
      */
-    public function setMarketplaceIds(array $marketplace_ids) : self
+    public function setMarketplaceIds(array $marketplace_ids): self
     {
         if ((\count($marketplace_ids) > 25)) {
             throw new \InvalidArgumentException('invalid value for $marketplace_ids when calling CreateFeedSpecification., number of items must be less than or equal to 25.');
@@ -300,7 +303,7 @@ class CreateFeedSpecification implements \ArrayAccess, \JsonSerializable, ModelI
     /**
      * Gets input_feed_document_id.
      */
-    public function getInputFeedDocumentId() : string
+    public function getInputFeedDocumentId(): string
     {
         return $this->container['input_feed_document_id'];
     }
@@ -310,7 +313,7 @@ class CreateFeedSpecification implements \ArrayAccess, \JsonSerializable, ModelI
      *
      * @param string $input_feed_document_id The document identifier returned by the createFeedDocument operation. Upload the feed document contents before calling the createFeed operation.
      */
-    public function setInputFeedDocumentId(string $input_feed_document_id) : self
+    public function setInputFeedDocumentId(string $input_feed_document_id): self
     {
         $this->container['input_feed_document_id'] = $input_feed_document_id;
 
@@ -322,7 +325,7 @@ class CreateFeedSpecification implements \ArrayAccess, \JsonSerializable, ModelI
      *
      * @return null|array<string,string>
      */
-    public function getFeedOptions() : ?array
+    public function getFeedOptions(): ?array
     {
         return $this->container['feed_options'];
     }
@@ -332,7 +335,7 @@ class CreateFeedSpecification implements \ArrayAccess, \JsonSerializable, ModelI
      *
      * @param null|array<string,string> $feed_options Additional options to control the feed. These vary by feed type.
      */
-    public function setFeedOptions(?array $feed_options) : self
+    public function setFeedOptions(?array $feed_options): self
     {
         $this->container['feed_options'] = $feed_options;
 
@@ -344,7 +347,7 @@ class CreateFeedSpecification implements \ArrayAccess, \JsonSerializable, ModelI
      *
      * @param int $offset Offset
      */
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -367,7 +370,7 @@ class CreateFeedSpecification implements \ArrayAccess, \JsonSerializable, ModelI
      * @param null|int $offset Offset
      * @param mixed $value Value to be set
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         if (null === $offset) {
             $this->container[] = $value;
@@ -381,7 +384,7 @@ class CreateFeedSpecification implements \ArrayAccess, \JsonSerializable, ModelI
      *
      * @param int $offset Offset
      */
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -394,7 +397,7 @@ class CreateFeedSpecification implements \ArrayAccess, \JsonSerializable, ModelI
      * @return mixed returns data which can be serialized by json_encode(), which is a value
      *               of any type other than a resource
      */
-    public function jsonSerialize() : string
+    public function jsonSerialize(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }
@@ -402,7 +405,7 @@ class CreateFeedSpecification implements \ArrayAccess, \JsonSerializable, ModelI
     /**
      * Gets a header-safe presentation of the object.
      */
-    public function toHeaderValue() : string
+    public function toHeaderValue(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }

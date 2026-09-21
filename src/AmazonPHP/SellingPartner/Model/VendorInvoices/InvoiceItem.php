@@ -1,4 +1,7 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
+
 /**
  * InvoiceItem.
  *
@@ -162,7 +165,7 @@ class InvoiceItem implements \ArrayAccess, \JsonSerializable, ModelInterface, \S
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['item_sequence_number'] = $data['item_sequence_number'] ?? null;
         $this->container['amazon_product_identifier'] = $data['amazon_product_identifier'] ?? null;
@@ -182,7 +185,7 @@ class InvoiceItem implements \ArrayAccess, \JsonSerializable, ModelInterface, \S
      *
      * @return string[]
      */
-    public static function openAPITypes() : array
+    public static function openAPITypes(): array
     {
         return self::$openAPITypes;
     }
@@ -192,7 +195,7 @@ class InvoiceItem implements \ArrayAccess, \JsonSerializable, ModelInterface, \S
      *
      * @return null[]|string[]
      */
-    public static function openAPIFormats() : array
+    public static function openAPIFormats(): array
     {
         return self::$openAPIFormats;
     }
@@ -203,7 +206,7 @@ class InvoiceItem implements \ArrayAccess, \JsonSerializable, ModelInterface, \S
      *
      * @return string[]
      */
-    public static function attributeMap() : array
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -213,7 +216,7 @@ class InvoiceItem implements \ArrayAccess, \JsonSerializable, ModelInterface, \S
      *
      * @return string[]
      */
-    public static function setters() : array
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -223,7 +226,7 @@ class InvoiceItem implements \ArrayAccess, \JsonSerializable, ModelInterface, \S
      *
      * @return string[]
      */
-    public static function getters() : array
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -231,7 +234,7 @@ class InvoiceItem implements \ArrayAccess, \JsonSerializable, ModelInterface, \S
     /**
      * Gets the string presentation of the object.
      */
-    public function __toString() : string
+    public function __toString(): string
     {
         return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
@@ -242,7 +245,7 @@ class InvoiceItem implements \ArrayAccess, \JsonSerializable, ModelInterface, \S
     /**
      * The original name of the model.
      */
-    public function getModelName() : string
+    public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
@@ -252,7 +255,7 @@ class InvoiceItem implements \ArrayAccess, \JsonSerializable, ModelInterface, \S
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties() : array
+    public function listInvalidProperties(): array
     {
         $invalidProperties = [];
 
@@ -277,7 +280,7 @@ class InvoiceItem implements \ArrayAccess, \JsonSerializable, ModelInterface, \S
      *
      * @return bool True if all properties are valid
      */
-    public function valid() : bool
+    public function valid(): bool
     {
         return \count($this->listInvalidProperties()) === 0;
     }
@@ -285,7 +288,7 @@ class InvoiceItem implements \ArrayAccess, \JsonSerializable, ModelInterface, \S
     /**
      * Gets item_sequence_number.
      */
-    public function getItemSequenceNumber() : int
+    public function getItemSequenceNumber(): int
     {
         return $this->container['item_sequence_number'];
     }
@@ -295,7 +298,7 @@ class InvoiceItem implements \ArrayAccess, \JsonSerializable, ModelInterface, \S
      *
      * @param int $item_sequence_number unique number related to this line item
      */
-    public function setItemSequenceNumber(int $item_sequence_number) : self
+    public function setItemSequenceNumber(int $item_sequence_number): self
     {
         $this->container['item_sequence_number'] = $item_sequence_number;
 
@@ -305,7 +308,7 @@ class InvoiceItem implements \ArrayAccess, \JsonSerializable, ModelInterface, \S
     /**
      * Gets amazon_product_identifier.
      */
-    public function getAmazonProductIdentifier() : ?string
+    public function getAmazonProductIdentifier(): ?string
     {
         return $this->container['amazon_product_identifier'];
     }
@@ -315,7 +318,7 @@ class InvoiceItem implements \ArrayAccess, \JsonSerializable, ModelInterface, \S
      *
      * @param null|string $amazon_product_identifier amazon Standard Identification Number (ASIN) of an item
      */
-    public function setAmazonProductIdentifier(?string $amazon_product_identifier) : self
+    public function setAmazonProductIdentifier(?string $amazon_product_identifier): self
     {
         $this->container['amazon_product_identifier'] = $amazon_product_identifier;
 
@@ -325,7 +328,7 @@ class InvoiceItem implements \ArrayAccess, \JsonSerializable, ModelInterface, \S
     /**
      * Gets vendor_product_identifier.
      */
-    public function getVendorProductIdentifier() : ?string
+    public function getVendorProductIdentifier(): ?string
     {
         return $this->container['vendor_product_identifier'];
     }
@@ -335,7 +338,7 @@ class InvoiceItem implements \ArrayAccess, \JsonSerializable, ModelInterface, \S
      *
      * @param null|string $vendor_product_identifier The vendor selected product identifier of the item. Should be the same as was provided in the purchase order.
      */
-    public function setVendorProductIdentifier(?string $vendor_product_identifier) : self
+    public function setVendorProductIdentifier(?string $vendor_product_identifier): self
     {
         $this->container['vendor_product_identifier'] = $vendor_product_identifier;
 
@@ -345,7 +348,7 @@ class InvoiceItem implements \ArrayAccess, \JsonSerializable, ModelInterface, \S
     /**
      * Gets invoiced_quantity.
      */
-    public function getInvoicedQuantity() : ItemQuantity
+    public function getInvoicedQuantity(): ItemQuantity
     {
         return $this->container['invoiced_quantity'];
     }
@@ -355,7 +358,7 @@ class InvoiceItem implements \ArrayAccess, \JsonSerializable, ModelInterface, \S
      *
      * @param \Plenty\AmazonPHP\SellingPartner\Model\VendorInvoices\ItemQuantity $invoiced_quantity invoiced_quantity
      */
-    public function setInvoicedQuantity(ItemQuantity $invoiced_quantity) : self
+    public function setInvoicedQuantity(ItemQuantity $invoiced_quantity): self
     {
         $this->container['invoiced_quantity'] = $invoiced_quantity;
 
@@ -365,7 +368,7 @@ class InvoiceItem implements \ArrayAccess, \JsonSerializable, ModelInterface, \S
     /**
      * Gets net_cost.
      */
-    public function getNetCost() : Money
+    public function getNetCost(): Money
     {
         return $this->container['net_cost'];
     }
@@ -375,7 +378,7 @@ class InvoiceItem implements \ArrayAccess, \JsonSerializable, ModelInterface, \S
      *
      * @param \Plenty\AmazonPHP\SellingPartner\Model\VendorInvoices\Money $net_cost net_cost
      */
-    public function setNetCost(Money $net_cost) : self
+    public function setNetCost(Money $net_cost): self
     {
         $this->container['net_cost'] = $net_cost;
 
@@ -385,7 +388,7 @@ class InvoiceItem implements \ArrayAccess, \JsonSerializable, ModelInterface, \S
     /**
      * Gets purchase_order_number.
      */
-    public function getPurchaseOrderNumber() : ?string
+    public function getPurchaseOrderNumber(): ?string
     {
         return $this->container['purchase_order_number'];
     }
@@ -395,7 +398,7 @@ class InvoiceItem implements \ArrayAccess, \JsonSerializable, ModelInterface, \S
      *
      * @param null|string $purchase_order_number The Amazon purchase order number for this invoiced line item. Formatting Notes: 8-character alpha-numeric code. This value is mandatory only when invoiceType is Invoice, and is not required when invoiceType is CreditNote.
      */
-    public function setPurchaseOrderNumber(?string $purchase_order_number) : self
+    public function setPurchaseOrderNumber(?string $purchase_order_number): self
     {
         $this->container['purchase_order_number'] = $purchase_order_number;
 
@@ -405,7 +408,7 @@ class InvoiceItem implements \ArrayAccess, \JsonSerializable, ModelInterface, \S
     /**
      * Gets hsn_code.
      */
-    public function getHsnCode() : ?string
+    public function getHsnCode(): ?string
     {
         return $this->container['hsn_code'];
     }
@@ -415,7 +418,7 @@ class InvoiceItem implements \ArrayAccess, \JsonSerializable, ModelInterface, \S
      *
      * @param null|string $hsn_code HSN Tax code. The HSN number cannot contain alphabets.
      */
-    public function setHsnCode(?string $hsn_code) : self
+    public function setHsnCode(?string $hsn_code): self
     {
         $this->container['hsn_code'] = $hsn_code;
 
@@ -425,7 +428,7 @@ class InvoiceItem implements \ArrayAccess, \JsonSerializable, ModelInterface, \S
     /**
      * Gets credit_note_details.
      */
-    public function getCreditNoteDetails() : ?CreditNoteDetails
+    public function getCreditNoteDetails(): ?CreditNoteDetails
     {
         return $this->container['credit_note_details'];
     }
@@ -435,7 +438,7 @@ class InvoiceItem implements \ArrayAccess, \JsonSerializable, ModelInterface, \S
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\VendorInvoices\CreditNoteDetails $credit_note_details credit_note_details
      */
-    public function setCreditNoteDetails(?CreditNoteDetails $credit_note_details) : self
+    public function setCreditNoteDetails(?CreditNoteDetails $credit_note_details): self
     {
         $this->container['credit_note_details'] = $credit_note_details;
 
@@ -447,7 +450,7 @@ class InvoiceItem implements \ArrayAccess, \JsonSerializable, ModelInterface, \S
      *
      * @return null|\Plenty\AmazonPHP\SellingPartner\Model\VendorInvoices\TaxDetails[]
      */
-    public function getTaxDetails() : ?array
+    public function getTaxDetails(): ?array
     {
         return $this->container['tax_details'];
     }
@@ -457,7 +460,7 @@ class InvoiceItem implements \ArrayAccess, \JsonSerializable, ModelInterface, \S
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\VendorInvoices\TaxDetails[] $tax_details individual tax details per line item
      */
-    public function setTaxDetails(?array $tax_details) : self
+    public function setTaxDetails(?array $tax_details): self
     {
         $this->container['tax_details'] = $tax_details;
 
@@ -469,7 +472,7 @@ class InvoiceItem implements \ArrayAccess, \JsonSerializable, ModelInterface, \S
      *
      * @return null|\Plenty\AmazonPHP\SellingPartner\Model\VendorInvoices\ChargeDetails[]
      */
-    public function getChargeDetails() : ?array
+    public function getChargeDetails(): ?array
     {
         return $this->container['charge_details'];
     }
@@ -479,7 +482,7 @@ class InvoiceItem implements \ArrayAccess, \JsonSerializable, ModelInterface, \S
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\VendorInvoices\ChargeDetails[] $charge_details individual charge details per line item
      */
-    public function setChargeDetails(?array $charge_details) : self
+    public function setChargeDetails(?array $charge_details): self
     {
         $this->container['charge_details'] = $charge_details;
 
@@ -491,7 +494,7 @@ class InvoiceItem implements \ArrayAccess, \JsonSerializable, ModelInterface, \S
      *
      * @return null|\Plenty\AmazonPHP\SellingPartner\Model\VendorInvoices\AllowanceDetails[]
      */
-    public function getAllowanceDetails() : ?array
+    public function getAllowanceDetails(): ?array
     {
         return $this->container['allowance_details'];
     }
@@ -501,7 +504,7 @@ class InvoiceItem implements \ArrayAccess, \JsonSerializable, ModelInterface, \S
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\VendorInvoices\AllowanceDetails[] $allowance_details individual allowance details per line item
      */
-    public function setAllowanceDetails(?array $allowance_details) : self
+    public function setAllowanceDetails(?array $allowance_details): self
     {
         $this->container['allowance_details'] = $allowance_details;
 
@@ -513,7 +516,7 @@ class InvoiceItem implements \ArrayAccess, \JsonSerializable, ModelInterface, \S
      *
      * @param int $offset Offset
      */
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -536,7 +539,7 @@ class InvoiceItem implements \ArrayAccess, \JsonSerializable, ModelInterface, \S
      * @param null|int $offset Offset
      * @param mixed $value Value to be set
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         if (null === $offset) {
             $this->container[] = $value;
@@ -550,7 +553,7 @@ class InvoiceItem implements \ArrayAccess, \JsonSerializable, ModelInterface, \S
      *
      * @param int $offset Offset
      */
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -563,7 +566,7 @@ class InvoiceItem implements \ArrayAccess, \JsonSerializable, ModelInterface, \S
      * @return mixed returns data which can be serialized by json_encode(), which is a value
      *               of any type other than a resource
      */
-    public function jsonSerialize() : string
+    public function jsonSerialize(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }
@@ -571,7 +574,7 @@ class InvoiceItem implements \ArrayAccess, \JsonSerializable, ModelInterface, \S
     /**
      * Gets a header-safe presentation of the object.
      */
-    public function toHeaderValue() : string
+    public function toHeaderValue(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }

@@ -1,4 +1,7 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
+
 /**
  * InboundShipmentHeader.
  *
@@ -142,7 +145,7 @@ class InboundShipmentHeader implements \ArrayAccess, \JsonSerializable, ModelInt
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['shipment_name'] = $data['shipment_name'] ?? null;
         $this->container['ship_from_address'] = $data['ship_from_address'] ?? null;
@@ -158,7 +161,7 @@ class InboundShipmentHeader implements \ArrayAccess, \JsonSerializable, ModelInt
      *
      * @return string[]
      */
-    public static function openAPITypes() : array
+    public static function openAPITypes(): array
     {
         return self::$openAPITypes;
     }
@@ -168,7 +171,7 @@ class InboundShipmentHeader implements \ArrayAccess, \JsonSerializable, ModelInt
      *
      * @return null[]|string[]
      */
-    public static function openAPIFormats() : array
+    public static function openAPIFormats(): array
     {
         return self::$openAPIFormats;
     }
@@ -179,7 +182,7 @@ class InboundShipmentHeader implements \ArrayAccess, \JsonSerializable, ModelInt
      *
      * @return string[]
      */
-    public static function attributeMap() : array
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -189,7 +192,7 @@ class InboundShipmentHeader implements \ArrayAccess, \JsonSerializable, ModelInt
      *
      * @return string[]
      */
-    public static function setters() : array
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -199,7 +202,7 @@ class InboundShipmentHeader implements \ArrayAccess, \JsonSerializable, ModelInt
      *
      * @return string[]
      */
-    public static function getters() : array
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -207,7 +210,7 @@ class InboundShipmentHeader implements \ArrayAccess, \JsonSerializable, ModelInt
     /**
      * Gets the string presentation of the object.
      */
-    public function __toString() : string
+    public function __toString(): string
     {
         return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
@@ -218,7 +221,7 @@ class InboundShipmentHeader implements \ArrayAccess, \JsonSerializable, ModelInt
     /**
      * The original name of the model.
      */
-    public function getModelName() : string
+    public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
@@ -228,7 +231,7 @@ class InboundShipmentHeader implements \ArrayAccess, \JsonSerializable, ModelInt
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties() : array
+    public function listInvalidProperties(): array
     {
         $invalidProperties = [];
 
@@ -261,7 +264,7 @@ class InboundShipmentHeader implements \ArrayAccess, \JsonSerializable, ModelInt
      *
      * @return bool True if all properties are valid
      */
-    public function valid() : bool
+    public function valid(): bool
     {
         return \count($this->listInvalidProperties()) === 0;
     }
@@ -269,7 +272,7 @@ class InboundShipmentHeader implements \ArrayAccess, \JsonSerializable, ModelInt
     /**
      * Gets shipment_name.
      */
-    public function getShipmentName() : string
+    public function getShipmentName(): string
     {
         return $this->container['shipment_name'];
     }
@@ -279,7 +282,7 @@ class InboundShipmentHeader implements \ArrayAccess, \JsonSerializable, ModelInt
      *
      * @param string $shipment_name The name for the shipment. Use a naming convention that helps distinguish between shipments over time, such as the date the shipment was created.
      */
-    public function setShipmentName(string $shipment_name) : self
+    public function setShipmentName(string $shipment_name): self
     {
         $this->container['shipment_name'] = $shipment_name;
 
@@ -289,7 +292,7 @@ class InboundShipmentHeader implements \ArrayAccess, \JsonSerializable, ModelInt
     /**
      * Gets ship_from_address.
      */
-    public function getShipFromAddress() : Address
+    public function getShipFromAddress(): Address
     {
         return $this->container['ship_from_address'];
     }
@@ -299,7 +302,7 @@ class InboundShipmentHeader implements \ArrayAccess, \JsonSerializable, ModelInt
      *
      * @param \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound\Address $ship_from_address ship_from_address
      */
-    public function setShipFromAddress(Address $ship_from_address) : self
+    public function setShipFromAddress(Address $ship_from_address): self
     {
         $this->container['ship_from_address'] = $ship_from_address;
 
@@ -309,7 +312,7 @@ class InboundShipmentHeader implements \ArrayAccess, \JsonSerializable, ModelInt
     /**
      * Gets destination_fulfillment_center_id.
      */
-    public function getDestinationFulfillmentCenterId() : string
+    public function getDestinationFulfillmentCenterId(): string
     {
         return $this->container['destination_fulfillment_center_id'];
     }
@@ -319,7 +322,7 @@ class InboundShipmentHeader implements \ArrayAccess, \JsonSerializable, ModelInt
      *
      * @param string $destination_fulfillment_center_id The identifier for the fulfillment center to which the shipment will be shipped. Get this value from the InboundShipmentPlan object in the response returned by the createInboundShipmentPlan operation.
      */
-    public function setDestinationFulfillmentCenterId(string $destination_fulfillment_center_id) : self
+    public function setDestinationFulfillmentCenterId(string $destination_fulfillment_center_id): self
     {
         $this->container['destination_fulfillment_center_id'] = $destination_fulfillment_center_id;
 
@@ -329,7 +332,7 @@ class InboundShipmentHeader implements \ArrayAccess, \JsonSerializable, ModelInt
     /**
      * Gets are_cases_required.
      */
-    public function getAreCasesRequired() : ?bool
+    public function getAreCasesRequired(): ?bool
     {
         return $this->container['are_cases_required'];
     }
@@ -339,7 +342,7 @@ class InboundShipmentHeader implements \ArrayAccess, \JsonSerializable, ModelInt
      *
      * @param null|bool $are_cases_required Indicates whether or not an inbound shipment contains case-packed boxes. Note: A shipment must contain either all case-packed boxes or all individually packed boxes.  Possible values:  true - All boxes in the shipment must be case packed.  false - All boxes in the shipment must be individually packed.  Note: If AreCasesRequired = true for an inbound shipment, then the value of QuantityInCase must be greater than zero for every item in the shipment. Otherwise the service returns an error.
      */
-    public function setAreCasesRequired(?bool $are_cases_required) : self
+    public function setAreCasesRequired(?bool $are_cases_required): self
     {
         $this->container['are_cases_required'] = $are_cases_required;
 
@@ -349,7 +352,7 @@ class InboundShipmentHeader implements \ArrayAccess, \JsonSerializable, ModelInt
     /**
      * Gets shipment_status.
      */
-    public function getShipmentStatus() : ShipmentStatus
+    public function getShipmentStatus(): ShipmentStatus
     {
         return $this->container['shipment_status'];
     }
@@ -359,7 +362,7 @@ class InboundShipmentHeader implements \ArrayAccess, \JsonSerializable, ModelInt
      *
      * @param \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound\ShipmentStatus $shipment_status shipment_status
      */
-    public function setShipmentStatus(ShipmentStatus $shipment_status) : self
+    public function setShipmentStatus(ShipmentStatus $shipment_status): self
     {
         $this->container['shipment_status'] = $shipment_status;
 
@@ -369,7 +372,7 @@ class InboundShipmentHeader implements \ArrayAccess, \JsonSerializable, ModelInt
     /**
      * Gets label_prep_preference.
      */
-    public function getLabelPrepPreference() : LabelPrepPreference
+    public function getLabelPrepPreference(): LabelPrepPreference
     {
         return $this->container['label_prep_preference'];
     }
@@ -379,7 +382,7 @@ class InboundShipmentHeader implements \ArrayAccess, \JsonSerializable, ModelInt
      *
      * @param \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound\LabelPrepPreference $label_prep_preference label_prep_preference
      */
-    public function setLabelPrepPreference(LabelPrepPreference $label_prep_preference) : self
+    public function setLabelPrepPreference(LabelPrepPreference $label_prep_preference): self
     {
         $this->container['label_prep_preference'] = $label_prep_preference;
 
@@ -389,7 +392,7 @@ class InboundShipmentHeader implements \ArrayAccess, \JsonSerializable, ModelInt
     /**
      * Gets intended_box_contents_source.
      */
-    public function getIntendedBoxContentsSource() : ?IntendedBoxContentsSource
+    public function getIntendedBoxContentsSource(): ?IntendedBoxContentsSource
     {
         return $this->container['intended_box_contents_source'];
     }
@@ -399,7 +402,7 @@ class InboundShipmentHeader implements \ArrayAccess, \JsonSerializable, ModelInt
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound\IntendedBoxContentsSource $intended_box_contents_source intended_box_contents_source
      */
-    public function setIntendedBoxContentsSource(?IntendedBoxContentsSource $intended_box_contents_source) : self
+    public function setIntendedBoxContentsSource(?IntendedBoxContentsSource $intended_box_contents_source): self
     {
         $this->container['intended_box_contents_source'] = $intended_box_contents_source;
 
@@ -411,7 +414,7 @@ class InboundShipmentHeader implements \ArrayAccess, \JsonSerializable, ModelInt
      *
      * @param int $offset Offset
      */
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -434,7 +437,7 @@ class InboundShipmentHeader implements \ArrayAccess, \JsonSerializable, ModelInt
      * @param null|int $offset Offset
      * @param mixed $value Value to be set
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         if (null === $offset) {
             $this->container[] = $value;
@@ -448,7 +451,7 @@ class InboundShipmentHeader implements \ArrayAccess, \JsonSerializable, ModelInt
      *
      * @param int $offset Offset
      */
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -461,7 +464,7 @@ class InboundShipmentHeader implements \ArrayAccess, \JsonSerializable, ModelInt
      * @return mixed returns data which can be serialized by json_encode(), which is a value
      *               of any type other than a resource
      */
-    public function jsonSerialize() : string
+    public function jsonSerialize(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }
@@ -469,7 +472,7 @@ class InboundShipmentHeader implements \ArrayAccess, \JsonSerializable, ModelInt
     /**
      * Gets a header-safe presentation of the object.
      */
-    public function toHeaderValue() : string
+    public function toHeaderValue(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }

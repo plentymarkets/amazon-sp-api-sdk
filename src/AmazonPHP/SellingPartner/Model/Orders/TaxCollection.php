@@ -1,4 +1,7 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
+
 /**
  * TaxCollection.
  *
@@ -121,7 +124,7 @@ class TaxCollection implements \ArrayAccess, \JsonSerializable, ModelInterface, 
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['model'] = $data['model'] ?? null;
         $this->container['responsible_party'] = $data['responsible_party'] ?? null;
@@ -132,7 +135,7 @@ class TaxCollection implements \ArrayAccess, \JsonSerializable, ModelInterface, 
      *
      * @return string[]
      */
-    public static function openAPITypes() : array
+    public static function openAPITypes(): array
     {
         return self::$openAPITypes;
     }
@@ -142,7 +145,7 @@ class TaxCollection implements \ArrayAccess, \JsonSerializable, ModelInterface, 
      *
      * @return null[]|string[]
      */
-    public static function openAPIFormats() : array
+    public static function openAPIFormats(): array
     {
         return self::$openAPIFormats;
     }
@@ -153,7 +156,7 @@ class TaxCollection implements \ArrayAccess, \JsonSerializable, ModelInterface, 
      *
      * @return string[]
      */
-    public static function attributeMap() : array
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -163,7 +166,7 @@ class TaxCollection implements \ArrayAccess, \JsonSerializable, ModelInterface, 
      *
      * @return string[]
      */
-    public static function setters() : array
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -173,7 +176,7 @@ class TaxCollection implements \ArrayAccess, \JsonSerializable, ModelInterface, 
      *
      * @return string[]
      */
-    public static function getters() : array
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -181,7 +184,7 @@ class TaxCollection implements \ArrayAccess, \JsonSerializable, ModelInterface, 
     /**
      * Gets the string presentation of the object.
      */
-    public function __toString() : string
+    public function __toString(): string
     {
         return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
@@ -192,7 +195,7 @@ class TaxCollection implements \ArrayAccess, \JsonSerializable, ModelInterface, 
     /**
      * The original name of the model.
      */
-    public function getModelName() : string
+    public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
@@ -202,7 +205,7 @@ class TaxCollection implements \ArrayAccess, \JsonSerializable, ModelInterface, 
      *
      * @return string[]
      */
-    public function getModelAllowableValues() : array
+    public function getModelAllowableValues(): array
     {
         return [
             self::MODEL_MARKETPLACE_FACILITATOR,
@@ -214,7 +217,7 @@ class TaxCollection implements \ArrayAccess, \JsonSerializable, ModelInterface, 
      *
      * @return string[]
      */
-    public function getResponsiblePartyAllowableValues() : array
+    public function getResponsiblePartyAllowableValues(): array
     {
         return [
             self::RESPONSIBLE_PARTY_AMAZON_SERVICES_INC,
@@ -226,7 +229,7 @@ class TaxCollection implements \ArrayAccess, \JsonSerializable, ModelInterface, 
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties() : array
+    public function listInvalidProperties(): array
     {
         $invalidProperties = [];
 
@@ -259,7 +262,7 @@ class TaxCollection implements \ArrayAccess, \JsonSerializable, ModelInterface, 
      *
      * @return bool True if all properties are valid
      */
-    public function valid() : bool
+    public function valid(): bool
     {
         return \count($this->listInvalidProperties()) === 0;
     }
@@ -267,7 +270,7 @@ class TaxCollection implements \ArrayAccess, \JsonSerializable, ModelInterface, 
     /**
      * Gets model.
      */
-    public function getModel() : ?string
+    public function getModel(): ?string
     {
         return $this->container['model'];
     }
@@ -277,7 +280,7 @@ class TaxCollection implements \ArrayAccess, \JsonSerializable, ModelInterface, 
      *
      * @param null|string $model the tax collection model applied to the item
      */
-    public function setModel(?string $model) : self
+    public function setModel(?string $model): self
     {
         $allowedValues = $this->getModelAllowableValues();
 
@@ -298,7 +301,7 @@ class TaxCollection implements \ArrayAccess, \JsonSerializable, ModelInterface, 
     /**
      * Gets responsible_party.
      */
-    public function getResponsibleParty() : ?string
+    public function getResponsibleParty(): ?string
     {
         return $this->container['responsible_party'];
     }
@@ -308,7 +311,7 @@ class TaxCollection implements \ArrayAccess, \JsonSerializable, ModelInterface, 
      *
      * @param null|string $responsible_party the party responsible for withholding the taxes and remitting them to the taxing authority
      */
-    public function setResponsibleParty(?string $responsible_party) : self
+    public function setResponsibleParty(?string $responsible_party): self
     {
         $allowedValues = $this->getResponsiblePartyAllowableValues();
 
@@ -331,7 +334,7 @@ class TaxCollection implements \ArrayAccess, \JsonSerializable, ModelInterface, 
      *
      * @param int $offset Offset
      */
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -354,7 +357,7 @@ class TaxCollection implements \ArrayAccess, \JsonSerializable, ModelInterface, 
      * @param null|int $offset Offset
      * @param mixed $value Value to be set
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         if (null === $offset) {
             $this->container[] = $value;
@@ -368,7 +371,7 @@ class TaxCollection implements \ArrayAccess, \JsonSerializable, ModelInterface, 
      *
      * @param int $offset Offset
      */
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -381,7 +384,7 @@ class TaxCollection implements \ArrayAccess, \JsonSerializable, ModelInterface, 
      * @return mixed returns data which can be serialized by json_encode(), which is a value
      *               of any type other than a resource
      */
-    public function jsonSerialize() : string
+    public function jsonSerialize(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }
@@ -389,7 +392,7 @@ class TaxCollection implements \ArrayAccess, \JsonSerializable, ModelInterface, 
     /**
      * Gets a header-safe presentation of the object.
      */
-    public function toHeaderValue() : string
+    public function toHeaderValue(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }

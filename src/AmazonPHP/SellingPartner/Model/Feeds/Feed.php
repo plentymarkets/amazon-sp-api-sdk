@@ -1,4 +1,7 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
+
 /**
  * Feed.
  *
@@ -157,7 +160,7 @@ class Feed implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringab
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['feed_id'] = $data['feed_id'] ?? null;
         $this->container['feed_type'] = $data['feed_type'] ?? null;
@@ -174,7 +177,7 @@ class Feed implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringab
      *
      * @return string[]
      */
-    public static function openAPITypes() : array
+    public static function openAPITypes(): array
     {
         return self::$openAPITypes;
     }
@@ -184,7 +187,7 @@ class Feed implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringab
      *
      * @return null[]|string[]
      */
-    public static function openAPIFormats() : array
+    public static function openAPIFormats(): array
     {
         return self::$openAPIFormats;
     }
@@ -195,7 +198,7 @@ class Feed implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringab
      *
      * @return string[]
      */
-    public static function attributeMap() : array
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -205,7 +208,7 @@ class Feed implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringab
      *
      * @return string[]
      */
-    public static function setters() : array
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -215,7 +218,7 @@ class Feed implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringab
      *
      * @return string[]
      */
-    public static function getters() : array
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -223,7 +226,7 @@ class Feed implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringab
     /**
      * Gets the string presentation of the object.
      */
-    public function __toString() : string
+    public function __toString(): string
     {
         return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
@@ -234,7 +237,7 @@ class Feed implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringab
     /**
      * The original name of the model.
      */
-    public function getModelName() : string
+    public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
@@ -244,7 +247,7 @@ class Feed implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringab
      *
      * @return string[]
      */
-    public function getProcessingStatusAllowableValues() : array
+    public function getProcessingStatusAllowableValues(): array
     {
         return [
             self::PROCESSING_STATUS_CANCELLED,
@@ -260,7 +263,7 @@ class Feed implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringab
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties() : array
+    public function listInvalidProperties(): array
     {
         $invalidProperties = [];
 
@@ -298,7 +301,7 @@ class Feed implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringab
      *
      * @return bool True if all properties are valid
      */
-    public function valid() : bool
+    public function valid(): bool
     {
         return \count($this->listInvalidProperties()) === 0;
     }
@@ -306,7 +309,7 @@ class Feed implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringab
     /**
      * Gets feed_id.
      */
-    public function getFeedId() : string
+    public function getFeedId(): string
     {
         return $this->container['feed_id'];
     }
@@ -316,7 +319,7 @@ class Feed implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringab
      *
      * @param string $feed_id The identifier for the feed. This identifier is unique only in combination with a seller ID.
      */
-    public function setFeedId(string $feed_id) : self
+    public function setFeedId(string $feed_id): self
     {
         $this->container['feed_id'] = $feed_id;
 
@@ -326,7 +329,7 @@ class Feed implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringab
     /**
      * Gets feed_type.
      */
-    public function getFeedType() : string
+    public function getFeedType(): string
     {
         return $this->container['feed_type'];
     }
@@ -336,7 +339,7 @@ class Feed implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringab
      *
      * @param string $feed_type the feed type
      */
-    public function setFeedType(string $feed_type) : self
+    public function setFeedType(string $feed_type): self
     {
         $this->container['feed_type'] = $feed_type;
 
@@ -348,7 +351,7 @@ class Feed implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringab
      *
      * @return null|string[]
      */
-    public function getMarketplaceIds() : ?array
+    public function getMarketplaceIds(): ?array
     {
         return $this->container['marketplace_ids'];
     }
@@ -358,7 +361,7 @@ class Feed implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringab
      *
      * @param null|string[] $marketplace_ids a list of identifiers for the marketplaces that the feed is applied to
      */
-    public function setMarketplaceIds(?array $marketplace_ids) : self
+    public function setMarketplaceIds(?array $marketplace_ids): self
     {
         $this->container['marketplace_ids'] = $marketplace_ids;
 
@@ -370,7 +373,7 @@ class Feed implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringab
      *
      * @return \DateTime|\DateTimeImmutable
      */
-    public function getCreatedTime() : \DateTimeInterface
+    public function getCreatedTime(): \DateTimeInterface
     {
         return $this->container['created_time'];
     }
@@ -380,7 +383,7 @@ class Feed implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringab
      *
      * @param \DateTime $created_time the date and time when the feed was created, in ISO 8601 date time format
      */
-    public function setCreatedTime(\DateTimeInterface $created_time) : self
+    public function setCreatedTime(\DateTimeInterface $created_time): self
     {
         $this->container['created_time'] = $created_time;
 
@@ -390,7 +393,7 @@ class Feed implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringab
     /**
      * Gets processing_status.
      */
-    public function getProcessingStatus() : string
+    public function getProcessingStatus(): string
     {
         return $this->container['processing_status'];
     }
@@ -400,7 +403,7 @@ class Feed implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringab
      *
      * @param string $processing_status the processing status of the feed
      */
-    public function setProcessingStatus(string $processing_status) : self
+    public function setProcessingStatus(string $processing_status): self
     {
         $allowedValues = $this->getProcessingStatusAllowableValues();
 
@@ -423,7 +426,7 @@ class Feed implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringab
      *
      * @return null|\DateTime|\DateTimeImmutable
      */
-    public function getProcessingStartTime() : ?\DateTimeInterface
+    public function getProcessingStartTime(): ?\DateTimeInterface
     {
         return $this->container['processing_start_time'];
     }
@@ -433,7 +436,7 @@ class Feed implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringab
      *
      * @param \DateTime|\DateTimeImmutable $processing_start_time the date and time when feed processing started, in ISO 8601 date time format
      */
-    public function setProcessingStartTime(\DateTimeInterface $processing_start_time) : self
+    public function setProcessingStartTime(\DateTimeInterface $processing_start_time): self
     {
         $this->container['processing_start_time'] = $processing_start_time;
 
@@ -445,7 +448,7 @@ class Feed implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringab
      *
      * @return null|\DateTime|\DateTimeImmutable
      */
-    public function getProcessingEndTime() : ?\DateTimeInterface
+    public function getProcessingEndTime(): ?\DateTimeInterface
     {
         return $this->container['processing_end_time'];
     }
@@ -455,7 +458,7 @@ class Feed implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringab
      *
      * @param \DateTime|\DateTimeImmutable $processing_end_time the date and time when feed processing completed, in ISO 8601 date time format
      */
-    public function setProcessingEndTime(\DateTimeInterface $processing_end_time) : self
+    public function setProcessingEndTime(\DateTimeInterface $processing_end_time): self
     {
         $this->container['processing_end_time'] = $processing_end_time;
 
@@ -465,7 +468,7 @@ class Feed implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringab
     /**
      * Gets result_feed_document_id.
      */
-    public function getResultFeedDocumentId() : ?string
+    public function getResultFeedDocumentId(): ?string
     {
         return $this->container['result_feed_document_id'];
     }
@@ -475,7 +478,7 @@ class Feed implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringab
      *
      * @param null|string $result_feed_document_id The identifier for the feed document. This identifier is unique only in combination with a seller ID.
      */
-    public function setResultFeedDocumentId(?string $result_feed_document_id) : self
+    public function setResultFeedDocumentId(?string $result_feed_document_id): self
     {
         $this->container['result_feed_document_id'] = $result_feed_document_id;
 
@@ -487,7 +490,7 @@ class Feed implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringab
      *
      * @param int $offset Offset
      */
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -510,7 +513,7 @@ class Feed implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringab
      * @param null|int $offset Offset
      * @param mixed $value Value to be set
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         if (null === $offset) {
             $this->container[] = $value;
@@ -524,7 +527,7 @@ class Feed implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringab
      *
      * @param int $offset Offset
      */
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -537,7 +540,7 @@ class Feed implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringab
      * @return mixed returns data which can be serialized by json_encode(), which is a value
      *               of any type other than a resource
      */
-    public function jsonSerialize() : string
+    public function jsonSerialize(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }
@@ -545,7 +548,7 @@ class Feed implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringab
     /**
      * Gets a header-safe presentation of the object.
      */
-    public function toHeaderValue() : string
+    public function toHeaderValue(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }

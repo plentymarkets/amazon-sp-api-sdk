@@ -1,4 +1,7 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
+
 /**
  * CreateShipmentResult.
  *
@@ -117,7 +120,7 @@ class CreateShipmentResult implements \ArrayAccess, \JsonSerializable, ModelInte
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['shipment_id'] = $data['shipment_id'] ?? null;
         $this->container['eligible_rates'] = $data['eligible_rates'] ?? null;
@@ -128,7 +131,7 @@ class CreateShipmentResult implements \ArrayAccess, \JsonSerializable, ModelInte
      *
      * @return string[]
      */
-    public static function openAPITypes() : array
+    public static function openAPITypes(): array
     {
         return self::$openAPITypes;
     }
@@ -138,7 +141,7 @@ class CreateShipmentResult implements \ArrayAccess, \JsonSerializable, ModelInte
      *
      * @return null[]|string[]
      */
-    public static function openAPIFormats() : array
+    public static function openAPIFormats(): array
     {
         return self::$openAPIFormats;
     }
@@ -149,7 +152,7 @@ class CreateShipmentResult implements \ArrayAccess, \JsonSerializable, ModelInte
      *
      * @return string[]
      */
-    public static function attributeMap() : array
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -159,7 +162,7 @@ class CreateShipmentResult implements \ArrayAccess, \JsonSerializable, ModelInte
      *
      * @return string[]
      */
-    public static function setters() : array
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -169,7 +172,7 @@ class CreateShipmentResult implements \ArrayAccess, \JsonSerializable, ModelInte
      *
      * @return string[]
      */
-    public static function getters() : array
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -177,7 +180,7 @@ class CreateShipmentResult implements \ArrayAccess, \JsonSerializable, ModelInte
     /**
      * Gets the string presentation of the object.
      */
-    public function __toString() : string
+    public function __toString(): string
     {
         return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
@@ -188,7 +191,7 @@ class CreateShipmentResult implements \ArrayAccess, \JsonSerializable, ModelInte
     /**
      * The original name of the model.
      */
-    public function getModelName() : string
+    public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
@@ -198,7 +201,7 @@ class CreateShipmentResult implements \ArrayAccess, \JsonSerializable, ModelInte
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties() : array
+    public function listInvalidProperties(): array
     {
         $invalidProperties = [];
 
@@ -219,7 +222,7 @@ class CreateShipmentResult implements \ArrayAccess, \JsonSerializable, ModelInte
      *
      * @return bool True if all properties are valid
      */
-    public function valid() : bool
+    public function valid(): bool
     {
         return \count($this->listInvalidProperties()) === 0;
     }
@@ -227,7 +230,7 @@ class CreateShipmentResult implements \ArrayAccess, \JsonSerializable, ModelInte
     /**
      * Gets shipment_id.
      */
-    public function getShipmentId() : string
+    public function getShipmentId(): string
     {
         return $this->container['shipment_id'];
     }
@@ -237,7 +240,7 @@ class CreateShipmentResult implements \ArrayAccess, \JsonSerializable, ModelInte
      *
      * @param string $shipment_id the unique shipment identifier
      */
-    public function setShipmentId(string $shipment_id) : self
+    public function setShipmentId(string $shipment_id): self
     {
         $this->container['shipment_id'] = $shipment_id;
 
@@ -249,7 +252,7 @@ class CreateShipmentResult implements \ArrayAccess, \JsonSerializable, ModelInte
      *
      * @return \Plenty\AmazonPHP\SellingPartner\Model\Shipping\Rate[]
      */
-    public function getEligibleRates() : array
+    public function getEligibleRates(): array
     {
         return $this->container['eligible_rates'];
     }
@@ -259,7 +262,7 @@ class CreateShipmentResult implements \ArrayAccess, \JsonSerializable, ModelInte
      *
      * @param \Plenty\AmazonPHP\SellingPartner\Model\Shipping\Rate[] $eligible_rates a list of all the available rates that can be used to send the shipment
      */
-    public function setEligibleRates(array $eligible_rates) : self
+    public function setEligibleRates(array $eligible_rates): self
     {
         $this->container['eligible_rates'] = $eligible_rates;
 
@@ -271,7 +274,7 @@ class CreateShipmentResult implements \ArrayAccess, \JsonSerializable, ModelInte
      *
      * @param int $offset Offset
      */
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -294,7 +297,7 @@ class CreateShipmentResult implements \ArrayAccess, \JsonSerializable, ModelInte
      * @param null|int $offset Offset
      * @param mixed $value Value to be set
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         if (null === $offset) {
             $this->container[] = $value;
@@ -308,7 +311,7 @@ class CreateShipmentResult implements \ArrayAccess, \JsonSerializable, ModelInte
      *
      * @param int $offset Offset
      */
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -321,7 +324,7 @@ class CreateShipmentResult implements \ArrayAccess, \JsonSerializable, ModelInte
      * @return mixed returns data which can be serialized by json_encode(), which is a value
      *               of any type other than a resource
      */
-    public function jsonSerialize() : string
+    public function jsonSerialize(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }
@@ -329,7 +332,7 @@ class CreateShipmentResult implements \ArrayAccess, \JsonSerializable, ModelInte
     /**
      * Gets a header-safe presentation of the object.
      */
-    public function toHeaderValue() : string
+    public function toHeaderValue(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }

@@ -1,4 +1,7 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
+
 /**
  * AdditionalSellerInput.
  *
@@ -152,7 +155,7 @@ class AdditionalSellerInput implements \ArrayAccess, \JsonSerializable, ModelInt
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['data_type'] = $data['data_type'] ?? null;
         $this->container['value_as_string'] = $data['value_as_string'] ?? null;
@@ -170,7 +173,7 @@ class AdditionalSellerInput implements \ArrayAccess, \JsonSerializable, ModelInt
      *
      * @return string[]
      */
-    public static function openAPITypes() : array
+    public static function openAPITypes(): array
     {
         return self::$openAPITypes;
     }
@@ -180,7 +183,7 @@ class AdditionalSellerInput implements \ArrayAccess, \JsonSerializable, ModelInt
      *
      * @return null[]|string[]
      */
-    public static function openAPIFormats() : array
+    public static function openAPIFormats(): array
     {
         return self::$openAPIFormats;
     }
@@ -191,7 +194,7 @@ class AdditionalSellerInput implements \ArrayAccess, \JsonSerializable, ModelInt
      *
      * @return string[]
      */
-    public static function attributeMap() : array
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -201,7 +204,7 @@ class AdditionalSellerInput implements \ArrayAccess, \JsonSerializable, ModelInt
      *
      * @return string[]
      */
-    public static function setters() : array
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -211,7 +214,7 @@ class AdditionalSellerInput implements \ArrayAccess, \JsonSerializable, ModelInt
      *
      * @return string[]
      */
-    public static function getters() : array
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -219,7 +222,7 @@ class AdditionalSellerInput implements \ArrayAccess, \JsonSerializable, ModelInt
     /**
      * Gets the string presentation of the object.
      */
-    public function __toString() : string
+    public function __toString(): string
     {
         return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
@@ -230,7 +233,7 @@ class AdditionalSellerInput implements \ArrayAccess, \JsonSerializable, ModelInt
     /**
      * The original name of the model.
      */
-    public function getModelName() : string
+    public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
@@ -240,7 +243,7 @@ class AdditionalSellerInput implements \ArrayAccess, \JsonSerializable, ModelInt
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties() : array
+    public function listInvalidProperties(): array
     {
         return [];
     }
@@ -251,7 +254,7 @@ class AdditionalSellerInput implements \ArrayAccess, \JsonSerializable, ModelInt
      *
      * @return bool True if all properties are valid
      */
-    public function valid() : bool
+    public function valid(): bool
     {
         return \count($this->listInvalidProperties()) === 0;
     }
@@ -259,7 +262,7 @@ class AdditionalSellerInput implements \ArrayAccess, \JsonSerializable, ModelInt
     /**
      * Gets data_type.
      */
-    public function getDataType() : ?string
+    public function getDataType(): ?string
     {
         return $this->container['data_type'];
     }
@@ -269,7 +272,7 @@ class AdditionalSellerInput implements \ArrayAccess, \JsonSerializable, ModelInt
      *
      * @param null|string $data_type the data type of the additional information
      */
-    public function setDataType(?string $data_type) : self
+    public function setDataType(?string $data_type): self
     {
         $this->container['data_type'] = $data_type;
 
@@ -279,7 +282,7 @@ class AdditionalSellerInput implements \ArrayAccess, \JsonSerializable, ModelInt
     /**
      * Gets value_as_string.
      */
-    public function getValueAsString() : ?string
+    public function getValueAsString(): ?string
     {
         return $this->container['value_as_string'];
     }
@@ -289,7 +292,7 @@ class AdditionalSellerInput implements \ArrayAccess, \JsonSerializable, ModelInt
      *
      * @param null|string $value_as_string the value when the data type is string
      */
-    public function setValueAsString(?string $value_as_string) : self
+    public function setValueAsString(?string $value_as_string): self
     {
         $this->container['value_as_string'] = $value_as_string;
 
@@ -299,7 +302,7 @@ class AdditionalSellerInput implements \ArrayAccess, \JsonSerializable, ModelInt
     /**
      * Gets value_as_boolean.
      */
-    public function getValueAsBoolean() : ?bool
+    public function getValueAsBoolean(): ?bool
     {
         return $this->container['value_as_boolean'];
     }
@@ -309,7 +312,7 @@ class AdditionalSellerInput implements \ArrayAccess, \JsonSerializable, ModelInt
      *
      * @param null|bool $value_as_boolean the value when the data type is boolean
      */
-    public function setValueAsBoolean(?bool $value_as_boolean) : self
+    public function setValueAsBoolean(?bool $value_as_boolean): self
     {
         $this->container['value_as_boolean'] = $value_as_boolean;
 
@@ -319,7 +322,7 @@ class AdditionalSellerInput implements \ArrayAccess, \JsonSerializable, ModelInt
     /**
      * Gets value_as_integer.
      */
-    public function getValueAsInteger() : ?int
+    public function getValueAsInteger(): ?int
     {
         return $this->container['value_as_integer'];
     }
@@ -329,7 +332,7 @@ class AdditionalSellerInput implements \ArrayAccess, \JsonSerializable, ModelInt
      *
      * @param null|int $value_as_integer the value when the data type is integer
      */
-    public function setValueAsInteger(?int $value_as_integer) : self
+    public function setValueAsInteger(?int $value_as_integer): self
     {
         $this->container['value_as_integer'] = $value_as_integer;
 
@@ -341,7 +344,7 @@ class AdditionalSellerInput implements \ArrayAccess, \JsonSerializable, ModelInt
      *
      * @return null|\DateTime|\DateTimeImmutable
      */
-    public function getValueAsTimestamp() : ?\DateTimeInterface
+    public function getValueAsTimestamp(): ?\DateTimeInterface
     {
         return $this->container['value_as_timestamp'];
     }
@@ -351,7 +354,7 @@ class AdditionalSellerInput implements \ArrayAccess, \JsonSerializable, ModelInt
      *
      * @param \DateTime|\DateTimeImmutable $value_as_timestamp value_as_timestamp
      */
-    public function setValueAsTimestamp(\DateTimeInterface $value_as_timestamp) : self
+    public function setValueAsTimestamp(\DateTimeInterface $value_as_timestamp): self
     {
         $this->container['value_as_timestamp'] = $value_as_timestamp;
 
@@ -361,7 +364,7 @@ class AdditionalSellerInput implements \ArrayAccess, \JsonSerializable, ModelInt
     /**
      * Gets value_as_address.
      */
-    public function getValueAsAddress() : ?Address
+    public function getValueAsAddress(): ?Address
     {
         return $this->container['value_as_address'];
     }
@@ -371,7 +374,7 @@ class AdditionalSellerInput implements \ArrayAccess, \JsonSerializable, ModelInt
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\MerchantFulfillment\Address $value_as_address value_as_address
      */
-    public function setValueAsAddress(?Address $value_as_address) : self
+    public function setValueAsAddress(?Address $value_as_address): self
     {
         $this->container['value_as_address'] = $value_as_address;
 
@@ -381,7 +384,7 @@ class AdditionalSellerInput implements \ArrayAccess, \JsonSerializable, ModelInt
     /**
      * Gets value_as_weight.
      */
-    public function getValueAsWeight() : ?Weight
+    public function getValueAsWeight(): ?Weight
     {
         return $this->container['value_as_weight'];
     }
@@ -391,7 +394,7 @@ class AdditionalSellerInput implements \ArrayAccess, \JsonSerializable, ModelInt
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\MerchantFulfillment\Weight $value_as_weight value_as_weight
      */
-    public function setValueAsWeight(?Weight $value_as_weight) : self
+    public function setValueAsWeight(?Weight $value_as_weight): self
     {
         $this->container['value_as_weight'] = $value_as_weight;
 
@@ -401,7 +404,7 @@ class AdditionalSellerInput implements \ArrayAccess, \JsonSerializable, ModelInt
     /**
      * Gets value_as_dimension.
      */
-    public function getValueAsDimension() : ?Length
+    public function getValueAsDimension(): ?Length
     {
         return $this->container['value_as_dimension'];
     }
@@ -411,7 +414,7 @@ class AdditionalSellerInput implements \ArrayAccess, \JsonSerializable, ModelInt
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\MerchantFulfillment\Length $value_as_dimension value_as_dimension
      */
-    public function setValueAsDimension(?Length $value_as_dimension) : self
+    public function setValueAsDimension(?Length $value_as_dimension): self
     {
         $this->container['value_as_dimension'] = $value_as_dimension;
 
@@ -421,7 +424,7 @@ class AdditionalSellerInput implements \ArrayAccess, \JsonSerializable, ModelInt
     /**
      * Gets value_as_currency.
      */
-    public function getValueAsCurrency() : ?CurrencyAmount
+    public function getValueAsCurrency(): ?CurrencyAmount
     {
         return $this->container['value_as_currency'];
     }
@@ -431,7 +434,7 @@ class AdditionalSellerInput implements \ArrayAccess, \JsonSerializable, ModelInt
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\MerchantFulfillment\CurrencyAmount $value_as_currency value_as_currency
      */
-    public function setValueAsCurrency(?CurrencyAmount $value_as_currency) : self
+    public function setValueAsCurrency(?CurrencyAmount $value_as_currency): self
     {
         $this->container['value_as_currency'] = $value_as_currency;
 
@@ -443,7 +446,7 @@ class AdditionalSellerInput implements \ArrayAccess, \JsonSerializable, ModelInt
      *
      * @param int $offset Offset
      */
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -466,7 +469,7 @@ class AdditionalSellerInput implements \ArrayAccess, \JsonSerializable, ModelInt
      * @param null|int $offset Offset
      * @param mixed $value Value to be set
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         if (null === $offset) {
             $this->container[] = $value;
@@ -480,7 +483,7 @@ class AdditionalSellerInput implements \ArrayAccess, \JsonSerializable, ModelInt
      *
      * @param int $offset Offset
      */
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -493,7 +496,7 @@ class AdditionalSellerInput implements \ArrayAccess, \JsonSerializable, ModelInt
      * @return mixed returns data which can be serialized by json_encode(), which is a value
      *               of any type other than a resource
      */
-    public function jsonSerialize() : string
+    public function jsonSerialize(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }
@@ -501,7 +504,7 @@ class AdditionalSellerInput implements \ArrayAccess, \JsonSerializable, ModelInt
     /**
      * Gets a header-safe presentation of the object.
      */
-    public function toHeaderValue() : string
+    public function toHeaderValue(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }

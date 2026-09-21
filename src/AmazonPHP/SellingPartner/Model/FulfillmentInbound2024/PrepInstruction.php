@@ -105,7 +105,7 @@ class PrepInstruction implements \ArrayAccess, \JsonSerializable, \Stringable, M
      * @param null|mixed[] $data Associated array of property values
      *                           initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['fee'] = $data['fee'] ?? null;
         $this->container['prep_owner'] = $data['prep_owner'] ?? null;
@@ -115,7 +115,7 @@ class PrepInstruction implements \ArrayAccess, \JsonSerializable, \Stringable, M
     /**
      * Array of property to type mappings. Used for (de)serialization.
      */
-    public static function openAPITypes() : array
+    public static function openAPITypes(): array
     {
         return self::$openAPITypes;
     }
@@ -123,7 +123,7 @@ class PrepInstruction implements \ArrayAccess, \JsonSerializable, \Stringable, M
     /**
      * Array of property to format mappings. Used for (de)serialization.
      */
-    public static function openAPIFormats() : array
+    public static function openAPIFormats(): array
     {
         return self::$openAPIFormats;
     }
@@ -132,7 +132,7 @@ class PrepInstruction implements \ArrayAccess, \JsonSerializable, \Stringable, M
      * Array of attributes where the key is the local name,
      * and the value is the original name.
      */
-    public static function attributeMap() : array
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -140,7 +140,7 @@ class PrepInstruction implements \ArrayAccess, \JsonSerializable, \Stringable, M
     /**
      * Array of attributes to setter functions (for deserialization of responses).
      */
-    public static function setters() : array
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -148,7 +148,7 @@ class PrepInstruction implements \ArrayAccess, \JsonSerializable, \Stringable, M
     /**
      * Array of attributes to getter functions (for serialization of requests).
      */
-    public static function getters() : array
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -156,7 +156,7 @@ class PrepInstruction implements \ArrayAccess, \JsonSerializable, \Stringable, M
     /**
      * Gets the string presentation of the object.
      */
-    public function __toString() : string
+    public function __toString(): string
     {
         return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
@@ -167,7 +167,7 @@ class PrepInstruction implements \ArrayAccess, \JsonSerializable, \Stringable, M
     /**
      * The original name of the model.
      */
-    public function getModelName() : string
+    public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
@@ -177,10 +177,10 @@ class PrepInstruction implements \ArrayAccess, \JsonSerializable, \Stringable, M
      *
      * @throws AssertionException
      */
-    public function listInvalidProperties() : array
+    public function listInvalidProperties(): array
     {
         $invalidProperties = [];
-         
+
         if ($this->container['fee'] !== null) {
             $this->container['fee']->listInvalidProperties();
         }
@@ -210,7 +210,7 @@ class PrepInstruction implements \ArrayAccess, \JsonSerializable, \Stringable, M
      *
      * @return bool True if all properties are valid
      */
-    public function valid() : bool
+    public function valid(): bool
     {
         return \count($this->listInvalidProperties()) === 0;
     }
@@ -218,7 +218,7 @@ class PrepInstruction implements \ArrayAccess, \JsonSerializable, \Stringable, M
     /**
      * Gets fee.
      */
-    public function getFee() : ?Currency
+    public function getFee(): ?Currency
     {
         return $this->container['fee'];
     }
@@ -228,7 +228,7 @@ class PrepInstruction implements \ArrayAccess, \JsonSerializable, \Stringable, M
      *
      * @param null|Currency $fee fee
      */
-    public function setFee(?Currency $fee) : self
+    public function setFee(?Currency $fee): self
     {
         $this->container['fee'] = $fee;
 
@@ -238,7 +238,7 @@ class PrepInstruction implements \ArrayAccess, \JsonSerializable, \Stringable, M
     /**
      * Gets prep_owner.
      */
-    public function getPrepOwner() : ?string
+    public function getPrepOwner(): ?string
     {
         return $this->container['prep_owner'];
     }
@@ -248,7 +248,7 @@ class PrepInstruction implements \ArrayAccess, \JsonSerializable, \Stringable, M
      *
      * @param null|string $prep_owner In some situations, special preparations are required for items and this field reflects the owner of the preparations. Options include `AMAZON`, `SELLER` or `NONE`.
      */
-    public function setPrepOwner(?string $prep_owner) : self
+    public function setPrepOwner(?string $prep_owner): self
     {
         $this->container['prep_owner'] = $prep_owner;
 
@@ -258,7 +258,7 @@ class PrepInstruction implements \ArrayAccess, \JsonSerializable, \Stringable, M
     /**
      * Gets prep_type.
      */
-    public function getPrepType() : ?string
+    public function getPrepType(): ?string
     {
         return $this->container['prep_type'];
     }
@@ -268,7 +268,7 @@ class PrepInstruction implements \ArrayAccess, \JsonSerializable, \Stringable, M
      *
      * @param null|string $prep_type Type of preparation that should be done. Can be: `ITEM_LABELING`, `ITEM_BUBBLEWRAP`, `ITEM_POLYBAGGING`, `ITEM_TAPING`, `ITEM_BLACK_SHRINKWRAP`, `ITEM_HANG_GARMENT`, `ITEM_BOXING`, `ITEM_SETCREAT`, `ITEM_RMOVHANG`, `ITEM_SUFFOSTK`, `ITEM_CAP_SEALING`, `ITEM_DEBUNDLE`, `ITEM_SETSTK`, `ITEM_SIOC`, `ITEM_NO_PREP`, `ADULT`, `BABY`, `TEXTILE`, `HANGER`, `FRAGILE`, `LIQUID`, `SHARP`, `SMALL`, `PERFORATED`, `GRANULAR`, `SET`, `FC_PROVIDED`, `UNKNOWN`, `NONE`.
      */
-    public function setPrepType(?string $prep_type) : self
+    public function setPrepType(?string $prep_type): self
     {
         $this->container['prep_type'] = $prep_type;
 
@@ -278,7 +278,7 @@ class PrepInstruction implements \ArrayAccess, \JsonSerializable, \Stringable, M
     /**
      * Returns true if offset exists. False otherwise.
      */
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -289,7 +289,7 @@ class PrepInstruction implements \ArrayAccess, \JsonSerializable, \Stringable, M
      * @return null|mixed
      */
     #[\ReturnTypeWillChange]
-    public function offsetGet($offset) : mixed
+    public function offsetGet($offset): mixed
     {
         return $this->container[$offset] ?? null;
     }
@@ -297,7 +297,7 @@ class PrepInstruction implements \ArrayAccess, \JsonSerializable, \Stringable, M
     /**
      * Sets value based on offset.
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         if (null === $offset) {
             $this->container[] = $value;
@@ -309,7 +309,7 @@ class PrepInstruction implements \ArrayAccess, \JsonSerializable, \Stringable, M
     /**
      * Unsets offset.
      */
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -323,7 +323,7 @@ class PrepInstruction implements \ArrayAccess, \JsonSerializable, \Stringable, M
      *               of any type other than a resource
      */
     #[\ReturnTypeWillChange]
-    public function jsonSerialize() : string
+    public function jsonSerialize(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }
@@ -331,7 +331,7 @@ class PrepInstruction implements \ArrayAccess, \JsonSerializable, \Stringable, M
     /**
      * Gets a header-safe presentation of the object.
      */
-    public function toHeaderValue() : string
+    public function toHeaderValue(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }

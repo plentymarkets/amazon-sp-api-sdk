@@ -1,4 +1,7 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
+
 /**
  * TrackingAddress.
  *
@@ -122,7 +125,7 @@ class TrackingAddress implements \ArrayAccess, \JsonSerializable, ModelInterface
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['city'] = $data['city'] ?? null;
         $this->container['state'] = $data['state'] ?? null;
@@ -134,7 +137,7 @@ class TrackingAddress implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return string[]
      */
-    public static function openAPITypes() : array
+    public static function openAPITypes(): array
     {
         return self::$openAPITypes;
     }
@@ -144,7 +147,7 @@ class TrackingAddress implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return null[]|string[]
      */
-    public static function openAPIFormats() : array
+    public static function openAPIFormats(): array
     {
         return self::$openAPIFormats;
     }
@@ -155,7 +158,7 @@ class TrackingAddress implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return string[]
      */
-    public static function attributeMap() : array
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -165,7 +168,7 @@ class TrackingAddress implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return string[]
      */
-    public static function setters() : array
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -175,7 +178,7 @@ class TrackingAddress implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return string[]
      */
-    public static function getters() : array
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -183,7 +186,7 @@ class TrackingAddress implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets the string presentation of the object.
      */
-    public function __toString() : string
+    public function __toString(): string
     {
         return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
@@ -194,7 +197,7 @@ class TrackingAddress implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * The original name of the model.
      */
-    public function getModelName() : string
+    public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
@@ -204,7 +207,7 @@ class TrackingAddress implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties() : array
+    public function listInvalidProperties(): array
     {
         $invalidProperties = [];
 
@@ -241,7 +244,7 @@ class TrackingAddress implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return bool True if all properties are valid
      */
-    public function valid() : bool
+    public function valid(): bool
     {
         return \count($this->listInvalidProperties()) === 0;
     }
@@ -249,7 +252,7 @@ class TrackingAddress implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets city.
      */
-    public function getCity() : string
+    public function getCity(): string
     {
         return $this->container['city'];
     }
@@ -259,7 +262,7 @@ class TrackingAddress implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param string $city the city
      */
-    public function setCity(string $city) : self
+    public function setCity(string $city): self
     {
         if ((\mb_strlen($city) > 150)) {
             throw new \InvalidArgumentException('invalid length for $city when calling TrackingAddress., must be smaller than or equal to 150.');
@@ -273,7 +276,7 @@ class TrackingAddress implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets state.
      */
-    public function getState() : string
+    public function getState(): string
     {
         return $this->container['state'];
     }
@@ -283,7 +286,7 @@ class TrackingAddress implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param string $state the state
      */
-    public function setState(string $state) : self
+    public function setState(string $state): self
     {
         if ((\mb_strlen($state) > 150)) {
             throw new \InvalidArgumentException('invalid length for $state when calling TrackingAddress., must be smaller than or equal to 150.');
@@ -297,7 +300,7 @@ class TrackingAddress implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets country.
      */
-    public function getCountry() : string
+    public function getCountry(): string
     {
         return $this->container['country'];
     }
@@ -307,7 +310,7 @@ class TrackingAddress implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param string $country the country
      */
-    public function setCountry(string $country) : self
+    public function setCountry(string $country): self
     {
         if ((\mb_strlen($country) > 6)) {
             throw new \InvalidArgumentException('invalid length for $country when calling TrackingAddress., must be smaller than or equal to 6.');
@@ -323,7 +326,7 @@ class TrackingAddress implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param int $offset Offset
      */
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -346,7 +349,7 @@ class TrackingAddress implements \ArrayAccess, \JsonSerializable, ModelInterface
      * @param null|int $offset Offset
      * @param mixed $value Value to be set
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         if (null === $offset) {
             $this->container[] = $value;
@@ -360,7 +363,7 @@ class TrackingAddress implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param int $offset Offset
      */
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -373,7 +376,7 @@ class TrackingAddress implements \ArrayAccess, \JsonSerializable, ModelInterface
      * @return mixed returns data which can be serialized by json_encode(), which is a value
      *               of any type other than a resource
      */
-    public function jsonSerialize() : string
+    public function jsonSerialize(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }
@@ -381,7 +384,7 @@ class TrackingAddress implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets a header-safe presentation of the object.
      */
-    public function toHeaderValue() : string
+    public function toHeaderValue(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }

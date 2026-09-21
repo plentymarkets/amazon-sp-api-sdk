@@ -1,4 +1,7 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
+
 /**
  * GetPricingResponse.
  *
@@ -117,7 +120,7 @@ class GetPricingResponse implements \ArrayAccess, \JsonSerializable, ModelInterf
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['payload'] = $data['payload'] ?? null;
         $this->container['errors'] = $data['errors'] ?? null;
@@ -128,7 +131,7 @@ class GetPricingResponse implements \ArrayAccess, \JsonSerializable, ModelInterf
      *
      * @return string[]
      */
-    public static function openAPITypes() : array
+    public static function openAPITypes(): array
     {
         return self::$openAPITypes;
     }
@@ -138,7 +141,7 @@ class GetPricingResponse implements \ArrayAccess, \JsonSerializable, ModelInterf
      *
      * @return null[]|string[]
      */
-    public static function openAPIFormats() : array
+    public static function openAPIFormats(): array
     {
         return self::$openAPIFormats;
     }
@@ -149,7 +152,7 @@ class GetPricingResponse implements \ArrayAccess, \JsonSerializable, ModelInterf
      *
      * @return string[]
      */
-    public static function attributeMap() : array
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -159,7 +162,7 @@ class GetPricingResponse implements \ArrayAccess, \JsonSerializable, ModelInterf
      *
      * @return string[]
      */
-    public static function setters() : array
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -169,7 +172,7 @@ class GetPricingResponse implements \ArrayAccess, \JsonSerializable, ModelInterf
      *
      * @return string[]
      */
-    public static function getters() : array
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -177,7 +180,7 @@ class GetPricingResponse implements \ArrayAccess, \JsonSerializable, ModelInterf
     /**
      * Gets the string presentation of the object.
      */
-    public function __toString() : string
+    public function __toString(): string
     {
         return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
@@ -188,7 +191,7 @@ class GetPricingResponse implements \ArrayAccess, \JsonSerializable, ModelInterf
     /**
      * The original name of the model.
      */
-    public function getModelName() : string
+    public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
@@ -198,7 +201,7 @@ class GetPricingResponse implements \ArrayAccess, \JsonSerializable, ModelInterf
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties() : array
+    public function listInvalidProperties(): array
     {
         $invalidProperties = [];
 
@@ -215,7 +218,7 @@ class GetPricingResponse implements \ArrayAccess, \JsonSerializable, ModelInterf
      *
      * @return bool True if all properties are valid
      */
-    public function valid() : bool
+    public function valid(): bool
     {
         return \count($this->listInvalidProperties()) === 0;
     }
@@ -225,7 +228,7 @@ class GetPricingResponse implements \ArrayAccess, \JsonSerializable, ModelInterf
      *
      * @return null|\Plenty\AmazonPHP\SellingPartner\Model\ProductPricing\Price[]
      */
-    public function getPayload() : ?array
+    public function getPayload(): ?array
     {
         return $this->container['payload'];
     }
@@ -235,7 +238,7 @@ class GetPricingResponse implements \ArrayAccess, \JsonSerializable, ModelInterf
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\ProductPricing\Price[] $payload payload
      */
-    public function setPayload(?array $payload) : self
+    public function setPayload(?array $payload): self
     {
         if (null !== $payload && (\count($payload) > 20)) {
             throw new \InvalidArgumentException('invalid value for $payload when calling GetPricingResponse., number of items must be less than or equal to 20.');
@@ -250,7 +253,7 @@ class GetPricingResponse implements \ArrayAccess, \JsonSerializable, ModelInterf
      *
      * @return null|\Plenty\AmazonPHP\SellingPartner\Model\ProductPricing\Error[]
      */
-    public function getErrors() : ?array
+    public function getErrors(): ?array
     {
         return $this->container['errors'];
     }
@@ -260,7 +263,7 @@ class GetPricingResponse implements \ArrayAccess, \JsonSerializable, ModelInterf
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\ProductPricing\Error[] $errors a list of error responses returned when a request is unsuccessful
      */
-    public function setErrors(?array $errors) : self
+    public function setErrors(?array $errors): self
     {
         $this->container['errors'] = $errors;
 
@@ -272,7 +275,7 @@ class GetPricingResponse implements \ArrayAccess, \JsonSerializable, ModelInterf
      *
      * @param int $offset Offset
      */
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -295,7 +298,7 @@ class GetPricingResponse implements \ArrayAccess, \JsonSerializable, ModelInterf
      * @param null|int $offset Offset
      * @param mixed $value Value to be set
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         if (null === $offset) {
             $this->container[] = $value;
@@ -309,7 +312,7 @@ class GetPricingResponse implements \ArrayAccess, \JsonSerializable, ModelInterf
      *
      * @param int $offset Offset
      */
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -322,7 +325,7 @@ class GetPricingResponse implements \ArrayAccess, \JsonSerializable, ModelInterf
      * @return mixed returns data which can be serialized by json_encode(), which is a value
      *               of any type other than a resource
      */
-    public function jsonSerialize() : string
+    public function jsonSerialize(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }
@@ -330,7 +333,7 @@ class GetPricingResponse implements \ArrayAccess, \JsonSerializable, ModelInterf
     /**
      * Gets a header-safe presentation of the object.
      */
-    public function toHeaderValue() : string
+    public function toHeaderValue(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }

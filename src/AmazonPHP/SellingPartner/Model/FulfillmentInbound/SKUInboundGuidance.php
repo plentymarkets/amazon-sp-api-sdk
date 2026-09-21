@@ -1,4 +1,7 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
+
 /**
  * SKUInboundGuidance.
  *
@@ -127,7 +130,7 @@ class SKUInboundGuidance implements \ArrayAccess, \JsonSerializable, ModelInterf
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['seller_sku'] = $data['seller_sku'] ?? null;
         $this->container['asin'] = $data['asin'] ?? null;
@@ -140,7 +143,7 @@ class SKUInboundGuidance implements \ArrayAccess, \JsonSerializable, ModelInterf
      *
      * @return string[]
      */
-    public static function openAPITypes() : array
+    public static function openAPITypes(): array
     {
         return self::$openAPITypes;
     }
@@ -150,7 +153,7 @@ class SKUInboundGuidance implements \ArrayAccess, \JsonSerializable, ModelInterf
      *
      * @return null[]|string[]
      */
-    public static function openAPIFormats() : array
+    public static function openAPIFormats(): array
     {
         return self::$openAPIFormats;
     }
@@ -161,7 +164,7 @@ class SKUInboundGuidance implements \ArrayAccess, \JsonSerializable, ModelInterf
      *
      * @return string[]
      */
-    public static function attributeMap() : array
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -171,7 +174,7 @@ class SKUInboundGuidance implements \ArrayAccess, \JsonSerializable, ModelInterf
      *
      * @return string[]
      */
-    public static function setters() : array
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -181,7 +184,7 @@ class SKUInboundGuidance implements \ArrayAccess, \JsonSerializable, ModelInterf
      *
      * @return string[]
      */
-    public static function getters() : array
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -189,7 +192,7 @@ class SKUInboundGuidance implements \ArrayAccess, \JsonSerializable, ModelInterf
     /**
      * Gets the string presentation of the object.
      */
-    public function __toString() : string
+    public function __toString(): string
     {
         return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
@@ -200,7 +203,7 @@ class SKUInboundGuidance implements \ArrayAccess, \JsonSerializable, ModelInterf
     /**
      * The original name of the model.
      */
-    public function getModelName() : string
+    public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
@@ -210,7 +213,7 @@ class SKUInboundGuidance implements \ArrayAccess, \JsonSerializable, ModelInterf
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties() : array
+    public function listInvalidProperties(): array
     {
         $invalidProperties = [];
 
@@ -235,7 +238,7 @@ class SKUInboundGuidance implements \ArrayAccess, \JsonSerializable, ModelInterf
      *
      * @return bool True if all properties are valid
      */
-    public function valid() : bool
+    public function valid(): bool
     {
         return \count($this->listInvalidProperties()) === 0;
     }
@@ -243,7 +246,7 @@ class SKUInboundGuidance implements \ArrayAccess, \JsonSerializable, ModelInterf
     /**
      * Gets seller_sku.
      */
-    public function getSellerSku() : string
+    public function getSellerSku(): string
     {
         return $this->container['seller_sku'];
     }
@@ -253,7 +256,7 @@ class SKUInboundGuidance implements \ArrayAccess, \JsonSerializable, ModelInterf
      *
      * @param string $seller_sku the seller SKU of the item
      */
-    public function setSellerSku(string $seller_sku) : self
+    public function setSellerSku(string $seller_sku): self
     {
         $this->container['seller_sku'] = $seller_sku;
 
@@ -263,7 +266,7 @@ class SKUInboundGuidance implements \ArrayAccess, \JsonSerializable, ModelInterf
     /**
      * Gets asin.
      */
-    public function getAsin() : string
+    public function getAsin(): string
     {
         return $this->container['asin'];
     }
@@ -273,7 +276,7 @@ class SKUInboundGuidance implements \ArrayAccess, \JsonSerializable, ModelInterf
      *
      * @param string $asin the Amazon Standard Identification Number (ASIN) of the item
      */
-    public function setAsin(string $asin) : self
+    public function setAsin(string $asin): self
     {
         $this->container['asin'] = $asin;
 
@@ -283,7 +286,7 @@ class SKUInboundGuidance implements \ArrayAccess, \JsonSerializable, ModelInterf
     /**
      * Gets inbound_guidance.
      */
-    public function getInboundGuidance() : InboundGuidance
+    public function getInboundGuidance(): InboundGuidance
     {
         return $this->container['inbound_guidance'];
     }
@@ -293,7 +296,7 @@ class SKUInboundGuidance implements \ArrayAccess, \JsonSerializable, ModelInterf
      *
      * @param \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound\InboundGuidance $inbound_guidance inbound_guidance
      */
-    public function setInboundGuidance(InboundGuidance $inbound_guidance) : self
+    public function setInboundGuidance(InboundGuidance $inbound_guidance): self
     {
         $this->container['inbound_guidance'] = $inbound_guidance;
 
@@ -305,7 +308,7 @@ class SKUInboundGuidance implements \ArrayAccess, \JsonSerializable, ModelInterf
      *
      * @return null|\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound\GuidanceReason[]
      */
-    public function getGuidanceReasonList() : ?array
+    public function getGuidanceReasonList(): ?array
     {
         return $this->container['guidance_reason_list'];
     }
@@ -315,7 +318,7 @@ class SKUInboundGuidance implements \ArrayAccess, \JsonSerializable, ModelInterf
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound\GuidanceReason[] $guidance_reason_list a list of inbound guidance reason information
      */
-    public function setGuidanceReasonList(?array $guidance_reason_list) : self
+    public function setGuidanceReasonList(?array $guidance_reason_list): self
     {
         $this->container['guidance_reason_list'] = $guidance_reason_list;
 
@@ -327,7 +330,7 @@ class SKUInboundGuidance implements \ArrayAccess, \JsonSerializable, ModelInterf
      *
      * @param int $offset Offset
      */
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -350,7 +353,7 @@ class SKUInboundGuidance implements \ArrayAccess, \JsonSerializable, ModelInterf
      * @param null|int $offset Offset
      * @param mixed $value Value to be set
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         if (null === $offset) {
             $this->container[] = $value;
@@ -364,7 +367,7 @@ class SKUInboundGuidance implements \ArrayAccess, \JsonSerializable, ModelInterf
      *
      * @param int $offset Offset
      */
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -377,7 +380,7 @@ class SKUInboundGuidance implements \ArrayAccess, \JsonSerializable, ModelInterf
      * @return mixed returns data which can be serialized by json_encode(), which is a value
      *               of any type other than a resource
      */
-    public function jsonSerialize() : string
+    public function jsonSerialize(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }
@@ -385,7 +388,7 @@ class SKUInboundGuidance implements \ArrayAccess, \JsonSerializable, ModelInterf
     /**
      * Gets a header-safe presentation of the object.
      */
-    public function toHeaderValue() : string
+    public function toHeaderValue(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }

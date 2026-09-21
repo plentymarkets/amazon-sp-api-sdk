@@ -46,14 +46,14 @@ final class LoggerConfiguration
         ];
     }
 
-    public function setDefaultLogLevel(string $logLevel) : self
+    public function setDefaultLogLevel(string $logLevel): self
     {
         $this->defaultLogLevel = $logLevel;
 
         return $this;
     }
 
-    public function setLogLevel(string $api, string $operation, string $logLevel) : self
+    public function setLogLevel(string $api, string $operation, string $logLevel): self
     {
         if (!isset($this->customLogLevels[$api])) {
             $this->customLogLevels[$api] = [];
@@ -66,12 +66,12 @@ final class LoggerConfiguration
         return $this;
     }
 
-    public function logLevel(string $api, string $operation) : string
+    public function logLevel(string $api, string $operation): string
     {
         return $this->customLogLevels[$api][$operation] ?? $this->defaultLogLevel;
     }
 
-    public function skipAPI(string $api) : self
+    public function skipAPI(string $api): self
     {
         if (!\in_array($api, $this->skippedAPIs, true)) {
             $this->skippedAPIs[] = $api;
@@ -80,7 +80,7 @@ final class LoggerConfiguration
         return $this;
     }
 
-    public function enableAPI(string $api) : self
+    public function enableAPI(string $api): self
     {
         $apiKey = \array_search($api, $this->skippedAPIs, true);
 
@@ -93,9 +93,9 @@ final class LoggerConfiguration
         return $this;
     }
 
-    public function skipAPIOperation(string $api, string $operation) : self
+    public function skipAPIOperation(string $api, string $operation): self
     {
-        if(!isset($this->skippedAPIOperations[$api]) || !is_array($this->skippedAPIOperations[$api])) {
+        if (!isset($this->skippedAPIOperations[$api]) || !is_array($this->skippedAPIOperations[$api])) {
             $this->skippedAPIOperations[$api] = [];
         }
 
@@ -106,7 +106,7 @@ final class LoggerConfiguration
         return $this;
     }
 
-    public function enableAPIOperation(string $api, string $operation) : self
+    public function enableAPIOperation(string $api, string $operation): self
     {
         if (!isset($this->skippedAPIOperations[$api])) {
             return $this;
@@ -125,7 +125,7 @@ final class LoggerConfiguration
         return $this;
     }
 
-    public function isSkipped(string $api, string $operation = null) : bool
+    public function isSkipped(string $api, ?string $operation = null): bool
     {
         if (\in_array($api, $this->skippedAPIs, true)) {
             return true;
@@ -134,7 +134,7 @@ final class LoggerConfiguration
         return \in_array($operation, $this->skippedAPIOperations[$api] ?? [], true);
     }
 
-    public function addSkippedHeader(string $headerName) : self
+    public function addSkippedHeader(string $headerName): self
     {
         if (!\in_array(\strtolower($headerName), $this->skipHttpHeaders, true)) {
             $this->skipHttpHeaders[] = \strtolower($headerName);
@@ -143,7 +143,7 @@ final class LoggerConfiguration
         return $this;
     }
 
-    public function removeSkippedHeader(string $headerName) : self
+    public function removeSkippedHeader(string $headerName): self
     {
         $headerKey = \array_search(\strtolower($headerName), $this->skipHttpHeaders, true);
 
@@ -157,7 +157,7 @@ final class LoggerConfiguration
     /**
      * @return string[]
      */
-    public function skipHeaders() : array
+    public function skipHeaders(): array
     {
         return $this->skipHttpHeaders;
     }

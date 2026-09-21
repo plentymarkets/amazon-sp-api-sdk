@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Plenty\AmazonPHP\SellingPartner\Api\UploadsApi;
 
@@ -54,7 +56,7 @@ final class UploadsSDK
      * @throws \Plenty\AmazonPHP\SellingPartner\Exception\ApiException on non-2xx response
      * @throws \Plenty\AmazonPHP\SellingPartner\Exception\InvalidArgumentException
      */
-    public function createUploadDestinationForResource(AccessToken $accessToken, string $region, array $marketplace_ids, string $content_md5, string $resource, string $content_type = null) : \Plenty\AmazonPHP\SellingPartner\Model\Uploads\CreateUploadDestinationResponse
+    public function createUploadDestinationForResource(AccessToken $accessToken, string $region, array $marketplace_ids, string $content_md5, string $resource, ?string $content_type = null): \Plenty\AmazonPHP\SellingPartner\Model\Uploads\CreateUploadDestinationResponse
     {
         $request = $this->createUploadDestinationForResourceRequest($accessToken, $region, $marketplace_ids, $content_md5, $resource, $content_type);
 
@@ -152,7 +154,7 @@ final class UploadsSDK
      *
      * @throws \Plenty\AmazonPHP\SellingPartner\Exception\InvalidArgumentException
      */
-    public function createUploadDestinationForResourceRequest(AccessToken $accessToken, string $region, array $marketplace_ids, string $content_md5, string $resource, string $content_type = null) : RequestInterface
+    public function createUploadDestinationForResourceRequest(AccessToken $accessToken, string $region, array $marketplace_ids, string $content_md5, string $resource, ?string $content_type = null): RequestInterface
     {
         // verify the required parameter 'marketplace_ids' is set
         if ($marketplace_ids === null || (\is_array($marketplace_ids) && \count($marketplace_ids) === 0)) {

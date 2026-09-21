@@ -1,4 +1,7 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
+
 /**
  * ItemOffersResponse.
  *
@@ -127,7 +130,7 @@ class ItemOffersResponse implements \ArrayAccess, \JsonSerializable, ModelInterf
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['headers'] = $data['headers'] ?? null;
         $this->container['status'] = $data['status'] ?? null;
@@ -140,7 +143,7 @@ class ItemOffersResponse implements \ArrayAccess, \JsonSerializable, ModelInterf
      *
      * @return string[]
      */
-    public static function openAPITypes() : array
+    public static function openAPITypes(): array
     {
         return self::$openAPITypes;
     }
@@ -150,7 +153,7 @@ class ItemOffersResponse implements \ArrayAccess, \JsonSerializable, ModelInterf
      *
      * @return null[]|string[]
      */
-    public static function openAPIFormats() : array
+    public static function openAPIFormats(): array
     {
         return self::$openAPIFormats;
     }
@@ -161,7 +164,7 @@ class ItemOffersResponse implements \ArrayAccess, \JsonSerializable, ModelInterf
      *
      * @return string[]
      */
-    public static function attributeMap() : array
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -171,7 +174,7 @@ class ItemOffersResponse implements \ArrayAccess, \JsonSerializable, ModelInterf
      *
      * @return string[]
      */
-    public static function setters() : array
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -181,7 +184,7 @@ class ItemOffersResponse implements \ArrayAccess, \JsonSerializable, ModelInterf
      *
      * @return string[]
      */
-    public static function getters() : array
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -189,7 +192,7 @@ class ItemOffersResponse implements \ArrayAccess, \JsonSerializable, ModelInterf
     /**
      * Gets the string presentation of the object.
      */
-    public function __toString() : string
+    public function __toString(): string
     {
         return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
@@ -200,7 +203,7 @@ class ItemOffersResponse implements \ArrayAccess, \JsonSerializable, ModelInterf
     /**
      * The original name of the model.
      */
-    public function getModelName() : string
+    public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
@@ -210,7 +213,7 @@ class ItemOffersResponse implements \ArrayAccess, \JsonSerializable, ModelInterf
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties() : array
+    public function listInvalidProperties(): array
     {
         $invalidProperties = [];
 
@@ -231,7 +234,7 @@ class ItemOffersResponse implements \ArrayAccess, \JsonSerializable, ModelInterf
      *
      * @return bool True if all properties are valid
      */
-    public function valid() : bool
+    public function valid(): bool
     {
         return \count($this->listInvalidProperties()) === 0;
     }
@@ -239,7 +242,7 @@ class ItemOffersResponse implements \ArrayAccess, \JsonSerializable, ModelInterf
     /**
      * Gets headers.
      */
-    public function getHeaders() : ?HttpResponseHeaders
+    public function getHeaders(): ?HttpResponseHeaders
     {
         return $this->container['headers'];
     }
@@ -249,7 +252,7 @@ class ItemOffersResponse implements \ArrayAccess, \JsonSerializable, ModelInterf
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\ProductPricing\HttpResponseHeaders $headers headers
      */
-    public function setHeaders(?HttpResponseHeaders $headers) : self
+    public function setHeaders(?HttpResponseHeaders $headers): self
     {
         $this->container['headers'] = $headers;
 
@@ -259,7 +262,7 @@ class ItemOffersResponse implements \ArrayAccess, \JsonSerializable, ModelInterf
     /**
      * Gets status.
      */
-    public function getStatus() : ?GetOffersHttpStatusLine
+    public function getStatus(): ?GetOffersHttpStatusLine
     {
         return $this->container['status'];
     }
@@ -269,7 +272,7 @@ class ItemOffersResponse implements \ArrayAccess, \JsonSerializable, ModelInterf
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\ProductPricing\GetOffersHttpStatusLine $status status
      */
-    public function setStatus(?GetOffersHttpStatusLine $status) : self
+    public function setStatus(?GetOffersHttpStatusLine $status): self
     {
         $this->container['status'] = $status;
 
@@ -279,7 +282,7 @@ class ItemOffersResponse implements \ArrayAccess, \JsonSerializable, ModelInterf
     /**
      * Gets body.
      */
-    public function getBody() : GetOffersResponse
+    public function getBody(): GetOffersResponse
     {
         return $this->container['body'];
     }
@@ -289,7 +292,7 @@ class ItemOffersResponse implements \ArrayAccess, \JsonSerializable, ModelInterf
      *
      * @param \Plenty\AmazonPHP\SellingPartner\Model\ProductPricing\GetOffersResponse $body body
      */
-    public function setBody(GetOffersResponse $body) : self
+    public function setBody(GetOffersResponse $body): self
     {
         $this->container['body'] = $body;
 
@@ -299,7 +302,7 @@ class ItemOffersResponse implements \ArrayAccess, \JsonSerializable, ModelInterf
     /**
      * Gets request.
      */
-    public function getRequest() : ItemOffersRequestParams
+    public function getRequest(): ItemOffersRequestParams
     {
         return $this->container['request'];
     }
@@ -309,7 +312,7 @@ class ItemOffersResponse implements \ArrayAccess, \JsonSerializable, ModelInterf
      *
      * @param \Plenty\AmazonPHP\SellingPartner\Model\ProductPricing\ItemOffersRequestParams $request request
      */
-    public function setRequest(ItemOffersRequestParams $request) : self
+    public function setRequest(ItemOffersRequestParams $request): self
     {
         $this->container['request'] = $request;
 
@@ -321,7 +324,7 @@ class ItemOffersResponse implements \ArrayAccess, \JsonSerializable, ModelInterf
      *
      * @param int $offset Offset
      */
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -344,7 +347,7 @@ class ItemOffersResponse implements \ArrayAccess, \JsonSerializable, ModelInterf
      * @param null|int $offset Offset
      * @param mixed $value Value to be set
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         if (null === $offset) {
             $this->container[] = $value;
@@ -358,7 +361,7 @@ class ItemOffersResponse implements \ArrayAccess, \JsonSerializable, ModelInterf
      *
      * @param int $offset Offset
      */
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -371,7 +374,7 @@ class ItemOffersResponse implements \ArrayAccess, \JsonSerializable, ModelInterf
      * @return mixed returns data which can be serialized by json_encode(), which is a value
      *               of any type other than a resource
      */
-    public function jsonSerialize() : string
+    public function jsonSerialize(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }
@@ -379,7 +382,7 @@ class ItemOffersResponse implements \ArrayAccess, \JsonSerializable, ModelInterf
     /**
      * Gets a header-safe presentation of the object.
      */
-    public function toHeaderValue() : string
+    public function toHeaderValue(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }

@@ -179,7 +179,7 @@ class TimeWindow implements ModelInterface, ArrayAccess, \JsonSerializable, \Str
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['start_time'] = $data['start_time'] ?? null;
         $this->container['end_time'] = $data['end_time'] ?? null;
