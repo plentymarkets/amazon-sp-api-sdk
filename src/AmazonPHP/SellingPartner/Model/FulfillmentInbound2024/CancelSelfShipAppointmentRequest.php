@@ -38,7 +38,7 @@ class CancelSelfShipAppointmentRequest implements \ArrayAccess, \JsonSerializabl
      * @var string[]
      */
     protected static array $openAPITypes = [
-        'reason_comment' => '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound2024\ReasonComment',
+        'reason_comment' => \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound2024\ReasonComment::class,
     ];
 
     /**
@@ -95,7 +95,7 @@ class CancelSelfShipAppointmentRequest implements \ArrayAccess, \JsonSerializabl
      * @param null|mixed[] $data Associated array of property values
      *                           initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['reason_comment'] = $data['reason_comment'] ?? null;
     }
@@ -103,7 +103,7 @@ class CancelSelfShipAppointmentRequest implements \ArrayAccess, \JsonSerializabl
     /**
      * Array of property to type mappings. Used for (de)serialization.
      */
-    public static function openAPITypes() : array
+    public static function openAPITypes(): array
     {
         return self::$openAPITypes;
     }
@@ -111,7 +111,7 @@ class CancelSelfShipAppointmentRequest implements \ArrayAccess, \JsonSerializabl
     /**
      * Array of property to format mappings. Used for (de)serialization.
      */
-    public static function openAPIFormats() : array
+    public static function openAPIFormats(): array
     {
         return self::$openAPIFormats;
     }
@@ -120,7 +120,7 @@ class CancelSelfShipAppointmentRequest implements \ArrayAccess, \JsonSerializabl
      * Array of attributes where the key is the local name,
      * and the value is the original name.
      */
-    public static function attributeMap() : array
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -128,7 +128,7 @@ class CancelSelfShipAppointmentRequest implements \ArrayAccess, \JsonSerializabl
     /**
      * Array of attributes to setter functions (for deserialization of responses).
      */
-    public static function setters() : array
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -136,7 +136,7 @@ class CancelSelfShipAppointmentRequest implements \ArrayAccess, \JsonSerializabl
     /**
      * Array of attributes to getter functions (for serialization of requests).
      */
-    public static function getters() : array
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -144,7 +144,7 @@ class CancelSelfShipAppointmentRequest implements \ArrayAccess, \JsonSerializabl
     /**
      * Gets the string presentation of the object.
      */
-    public function __toString() : string
+    public function __toString(): string
     {
         return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
@@ -155,7 +155,7 @@ class CancelSelfShipAppointmentRequest implements \ArrayAccess, \JsonSerializabl
     /**
      * The original name of the model.
      */
-    public function getModelName() : string
+    public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
@@ -165,7 +165,7 @@ class CancelSelfShipAppointmentRequest implements \ArrayAccess, \JsonSerializabl
      *
      * @throws AssertionException
      */
-    public function listInvalidProperties() : array
+    public function listInvalidProperties(): array
     {
         return [];
     }
@@ -176,7 +176,7 @@ class CancelSelfShipAppointmentRequest implements \ArrayAccess, \JsonSerializabl
      *
      * @return bool True if all properties are valid
      */
-    public function valid() : bool
+    public function valid(): bool
     {
         return \count($this->listInvalidProperties()) === 0;
     }
@@ -184,7 +184,7 @@ class CancelSelfShipAppointmentRequest implements \ArrayAccess, \JsonSerializabl
     /**
      * Gets reason_comment.
      */
-    public function getReasonComment() : ?ReasonComment
+    public function getReasonComment(): ?ReasonComment
     {
         return $this->container['reason_comment'];
     }
@@ -194,7 +194,7 @@ class CancelSelfShipAppointmentRequest implements \ArrayAccess, \JsonSerializabl
      *
      * @param null|ReasonComment $reason_comment reason_comment
      */
-    public function setReasonComment(?ReasonComment $reason_comment) : self
+    public function setReasonComment(?ReasonComment $reason_comment): self
     {
         $this->container['reason_comment'] = $reason_comment;
 
@@ -204,7 +204,7 @@ class CancelSelfShipAppointmentRequest implements \ArrayAccess, \JsonSerializabl
     /**
      * Returns true if offset exists. False otherwise.
      */
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -215,7 +215,7 @@ class CancelSelfShipAppointmentRequest implements \ArrayAccess, \JsonSerializabl
      * @return null|mixed
      */
     #[\ReturnTypeWillChange]
-    public function offsetGet($offset) : mixed
+    public function offsetGet($offset): mixed
     {
         return $this->container[$offset] ?? null;
     }
@@ -223,7 +223,7 @@ class CancelSelfShipAppointmentRequest implements \ArrayAccess, \JsonSerializabl
     /**
      * Sets value based on offset.
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         if (null === $offset) {
             $this->container[] = $value;
@@ -235,7 +235,7 @@ class CancelSelfShipAppointmentRequest implements \ArrayAccess, \JsonSerializabl
     /**
      * Unsets offset.
      */
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -249,7 +249,7 @@ class CancelSelfShipAppointmentRequest implements \ArrayAccess, \JsonSerializabl
      *               of any type other than a resource
      */
     #[\ReturnTypeWillChange]
-    public function jsonSerialize() : string
+    public function jsonSerialize(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }
@@ -257,7 +257,7 @@ class CancelSelfShipAppointmentRequest implements \ArrayAccess, \JsonSerializabl
     /**
      * Gets a header-safe presentation of the object.
      */
-    public function toHeaderValue() : string
+    public function toHeaderValue(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }

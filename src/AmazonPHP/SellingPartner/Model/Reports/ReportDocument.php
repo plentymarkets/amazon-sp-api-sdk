@@ -1,4 +1,7 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
+
 /**
  * ReportDocument.
  *
@@ -40,7 +43,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class ReportDocument implements \ArrayAccess, \JsonSerializable, ModelInterface
+class ReportDocument implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -124,7 +127,7 @@ class ReportDocument implements \ArrayAccess, \JsonSerializable, ModelInterface
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['report_document_id'] = $data['report_document_id'] ?? null;
         $this->container['url'] = $data['url'] ?? null;
@@ -136,7 +139,7 @@ class ReportDocument implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return string[]
      */
-    public static function openAPITypes() : array
+    public static function openAPITypes(): array
     {
         return self::$openAPITypes;
     }
@@ -146,7 +149,7 @@ class ReportDocument implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return null[]|string[]
      */
-    public static function openAPIFormats() : array
+    public static function openAPIFormats(): array
     {
         return self::$openAPIFormats;
     }
@@ -157,7 +160,7 @@ class ReportDocument implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return string[]
      */
-    public static function attributeMap() : array
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -167,7 +170,7 @@ class ReportDocument implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return string[]
      */
-    public static function setters() : array
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -177,7 +180,7 @@ class ReportDocument implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return string[]
      */
-    public static function getters() : array
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -185,9 +188,9 @@ class ReportDocument implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets the string presentation of the object.
      */
-    public function __toString() : string
+    public function __toString(): string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );
@@ -196,7 +199,7 @@ class ReportDocument implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * The original name of the model.
      */
-    public function getModelName() : string
+    public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
@@ -206,7 +209,7 @@ class ReportDocument implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return string[]
      */
-    public function getCompressionAlgorithmAllowableValues() : array
+    public function getCompressionAlgorithmAllowableValues(): array
     {
         return [
             self::COMPRESSION_ALGORITHM_GZIP,
@@ -218,7 +221,7 @@ class ReportDocument implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties() : array
+    public function listInvalidProperties(): array
     {
         $invalidProperties = [];
 
@@ -248,7 +251,7 @@ class ReportDocument implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return bool True if all properties are valid
      */
-    public function valid() : bool
+    public function valid(): bool
     {
         return \count($this->listInvalidProperties()) === 0;
     }
@@ -256,7 +259,7 @@ class ReportDocument implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets report_document_id.
      */
-    public function getReportDocumentId() : string
+    public function getReportDocumentId(): string
     {
         return $this->container['report_document_id'];
     }
@@ -266,7 +269,7 @@ class ReportDocument implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param string $report_document_id The identifier for the report document. This identifier is unique only in combination with a seller ID.
      */
-    public function setReportDocumentId(string $report_document_id) : self
+    public function setReportDocumentId(string $report_document_id): self
     {
         $this->container['report_document_id'] = $report_document_id;
 
@@ -276,7 +279,7 @@ class ReportDocument implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets url.
      */
-    public function getUrl() : string
+    public function getUrl(): string
     {
         return $this->container['url'];
     }
@@ -286,7 +289,7 @@ class ReportDocument implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param string $url A presigned URL for the report document. This URL expires after 5 minutes.
      */
-    public function setUrl(string $url) : self
+    public function setUrl(string $url): self
     {
         $this->container['url'] = $url;
 
@@ -296,7 +299,7 @@ class ReportDocument implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets compression_algorithm.
      */
-    public function getCompressionAlgorithm() : ?string
+    public function getCompressionAlgorithm(): ?string
     {
         return $this->container['compression_algorithm'];
     }
@@ -306,7 +309,7 @@ class ReportDocument implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param null|string $compression_algorithm if present, the report document contents have been compressed with the provided algorithm
      */
-    public function setCompressionAlgorithm(?string $compression_algorithm) : self
+    public function setCompressionAlgorithm(?string $compression_algorithm): self
     {
         $allowedValues = $this->getCompressionAlgorithmAllowableValues();
 
@@ -329,7 +332,7 @@ class ReportDocument implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param int $offset Offset
      */
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -352,7 +355,7 @@ class ReportDocument implements \ArrayAccess, \JsonSerializable, ModelInterface
      * @param null|int $offset Offset
      * @param mixed $value Value to be set
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         if (null === $offset) {
             $this->container[] = $value;
@@ -366,7 +369,7 @@ class ReportDocument implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param int $offset Offset
      */
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -379,7 +382,7 @@ class ReportDocument implements \ArrayAccess, \JsonSerializable, ModelInterface
      * @return mixed returns data which can be serialized by json_encode(), which is a value
      *               of any type other than a resource
      */
-    public function jsonSerialize() : string
+    public function jsonSerialize(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }
@@ -387,7 +390,7 @@ class ReportDocument implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets a header-safe presentation of the object.
      */
-    public function toHeaderValue() : string
+    public function toHeaderValue(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }

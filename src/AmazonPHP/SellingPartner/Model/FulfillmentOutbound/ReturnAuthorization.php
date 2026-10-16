@@ -1,4 +1,7 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
+
 /**
  * ReturnAuthorization.
  *
@@ -40,7 +43,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class ReturnAuthorization implements \ArrayAccess, \JsonSerializable, ModelInterface
+class ReturnAuthorization implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -59,7 +62,7 @@ class ReturnAuthorization implements \ArrayAccess, \JsonSerializable, ModelInter
     protected static /** [COMPAT] array */ $openAPITypes = [
         'return_authorization_id' => 'string',
         'fulfillment_center_id' => 'string',
-        'return_to_address' => '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentOutbound\Address',
+        'return_to_address' => \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentOutbound\Address::class,
         'amazon_rma_id' => 'string',
         'rma_page_url' => 'string',
     ];
@@ -132,7 +135,7 @@ class ReturnAuthorization implements \ArrayAccess, \JsonSerializable, ModelInter
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['return_authorization_id'] = $data['return_authorization_id'] ?? null;
         $this->container['fulfillment_center_id'] = $data['fulfillment_center_id'] ?? null;
@@ -146,7 +149,7 @@ class ReturnAuthorization implements \ArrayAccess, \JsonSerializable, ModelInter
      *
      * @return string[]
      */
-    public static function openAPITypes() : array
+    public static function openAPITypes(): array
     {
         return self::$openAPITypes;
     }
@@ -156,7 +159,7 @@ class ReturnAuthorization implements \ArrayAccess, \JsonSerializable, ModelInter
      *
      * @return null[]|string[]
      */
-    public static function openAPIFormats() : array
+    public static function openAPIFormats(): array
     {
         return self::$openAPIFormats;
     }
@@ -167,7 +170,7 @@ class ReturnAuthorization implements \ArrayAccess, \JsonSerializable, ModelInter
      *
      * @return string[]
      */
-    public static function attributeMap() : array
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -177,7 +180,7 @@ class ReturnAuthorization implements \ArrayAccess, \JsonSerializable, ModelInter
      *
      * @return string[]
      */
-    public static function setters() : array
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -187,7 +190,7 @@ class ReturnAuthorization implements \ArrayAccess, \JsonSerializable, ModelInter
      *
      * @return string[]
      */
-    public static function getters() : array
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -195,9 +198,9 @@ class ReturnAuthorization implements \ArrayAccess, \JsonSerializable, ModelInter
     /**
      * Gets the string presentation of the object.
      */
-    public function __toString() : string
+    public function __toString(): string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );
@@ -206,7 +209,7 @@ class ReturnAuthorization implements \ArrayAccess, \JsonSerializable, ModelInter
     /**
      * The original name of the model.
      */
-    public function getModelName() : string
+    public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
@@ -216,7 +219,7 @@ class ReturnAuthorization implements \ArrayAccess, \JsonSerializable, ModelInter
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties() : array
+    public function listInvalidProperties(): array
     {
         $invalidProperties = [];
 
@@ -249,7 +252,7 @@ class ReturnAuthorization implements \ArrayAccess, \JsonSerializable, ModelInter
      *
      * @return bool True if all properties are valid
      */
-    public function valid() : bool
+    public function valid(): bool
     {
         return \count($this->listInvalidProperties()) === 0;
     }
@@ -257,7 +260,7 @@ class ReturnAuthorization implements \ArrayAccess, \JsonSerializable, ModelInter
     /**
      * Gets return_authorization_id.
      */
-    public function getReturnAuthorizationId() : string
+    public function getReturnAuthorizationId(): string
     {
         return $this->container['return_authorization_id'];
     }
@@ -267,7 +270,7 @@ class ReturnAuthorization implements \ArrayAccess, \JsonSerializable, ModelInter
      *
      * @param string $return_authorization_id An identifier for the return authorization. This identifier associates return items with the return authorization used to return them.
      */
-    public function setReturnAuthorizationId(string $return_authorization_id) : self
+    public function setReturnAuthorizationId(string $return_authorization_id): self
     {
         $this->container['return_authorization_id'] = $return_authorization_id;
 
@@ -277,7 +280,7 @@ class ReturnAuthorization implements \ArrayAccess, \JsonSerializable, ModelInter
     /**
      * Gets fulfillment_center_id.
      */
-    public function getFulfillmentCenterId() : string
+    public function getFulfillmentCenterId(): string
     {
         return $this->container['fulfillment_center_id'];
     }
@@ -287,7 +290,7 @@ class ReturnAuthorization implements \ArrayAccess, \JsonSerializable, ModelInter
      *
      * @param string $fulfillment_center_id an identifier for the Amazon fulfillment center that the return items should be sent to
      */
-    public function setFulfillmentCenterId(string $fulfillment_center_id) : self
+    public function setFulfillmentCenterId(string $fulfillment_center_id): self
     {
         $this->container['fulfillment_center_id'] = $fulfillment_center_id;
 
@@ -297,7 +300,7 @@ class ReturnAuthorization implements \ArrayAccess, \JsonSerializable, ModelInter
     /**
      * Gets return_to_address.
      */
-    public function getReturnToAddress() : Address
+    public function getReturnToAddress(): Address
     {
         return $this->container['return_to_address'];
     }
@@ -307,7 +310,7 @@ class ReturnAuthorization implements \ArrayAccess, \JsonSerializable, ModelInter
      *
      * @param \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentOutbound\Address $return_to_address return_to_address
      */
-    public function setReturnToAddress(Address $return_to_address) : self
+    public function setReturnToAddress(Address $return_to_address): self
     {
         $this->container['return_to_address'] = $return_to_address;
 
@@ -317,7 +320,7 @@ class ReturnAuthorization implements \ArrayAccess, \JsonSerializable, ModelInter
     /**
      * Gets amazon_rma_id.
      */
-    public function getAmazonRmaId() : string
+    public function getAmazonRmaId(): string
     {
         return $this->container['amazon_rma_id'];
     }
@@ -327,7 +330,7 @@ class ReturnAuthorization implements \ArrayAccess, \JsonSerializable, ModelInter
      *
      * @param string $amazon_rma_id the return merchandise authorization (RMA) that Amazon needs to process the return
      */
-    public function setAmazonRmaId(string $amazon_rma_id) : self
+    public function setAmazonRmaId(string $amazon_rma_id): self
     {
         $this->container['amazon_rma_id'] = $amazon_rma_id;
 
@@ -337,7 +340,7 @@ class ReturnAuthorization implements \ArrayAccess, \JsonSerializable, ModelInter
     /**
      * Gets rma_page_url.
      */
-    public function getRmaPageUrl() : string
+    public function getRmaPageUrl(): string
     {
         return $this->container['rma_page_url'];
     }
@@ -347,7 +350,7 @@ class ReturnAuthorization implements \ArrayAccess, \JsonSerializable, ModelInter
      *
      * @param string $rma_page_url A URL for a web page that contains the return authorization barcode and the mailing label. This does not include pre-paid shipping.
      */
-    public function setRmaPageUrl(string $rma_page_url) : self
+    public function setRmaPageUrl(string $rma_page_url): self
     {
         $this->container['rma_page_url'] = $rma_page_url;
 
@@ -359,7 +362,7 @@ class ReturnAuthorization implements \ArrayAccess, \JsonSerializable, ModelInter
      *
      * @param int $offset Offset
      */
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -382,7 +385,7 @@ class ReturnAuthorization implements \ArrayAccess, \JsonSerializable, ModelInter
      * @param null|int $offset Offset
      * @param mixed $value Value to be set
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         if (null === $offset) {
             $this->container[] = $value;
@@ -396,7 +399,7 @@ class ReturnAuthorization implements \ArrayAccess, \JsonSerializable, ModelInter
      *
      * @param int $offset Offset
      */
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -409,7 +412,7 @@ class ReturnAuthorization implements \ArrayAccess, \JsonSerializable, ModelInter
      * @return mixed returns data which can be serialized by json_encode(), which is a value
      *               of any type other than a resource
      */
-    public function jsonSerialize() : string
+    public function jsonSerialize(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }
@@ -417,7 +420,7 @@ class ReturnAuthorization implements \ArrayAccess, \JsonSerializable, ModelInter
     /**
      * Gets a header-safe presentation of the object.
      */
-    public function toHeaderValue() : string
+    public function toHeaderValue(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }

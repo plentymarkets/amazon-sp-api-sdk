@@ -19,6 +19,7 @@ use Plenty\AmazonPHP\SellingPartner\Api\FbaInventoryApi\FBAInventorySDK;
 use Plenty\AmazonPHP\SellingPartner\Api\FbaOutboundApi\FulfillmentOutboundSDK;
 use Plenty\AmazonPHP\SellingPartner\Api\FeedsApi\FeedsSDK;
 use Plenty\AmazonPHP\SellingPartner\Api\FeesApi\ProductFeesSDK;
+use Plenty\AmazonPHP\SellingPartner\Api\GetOrderApi;
 use Plenty\AmazonPHP\SellingPartner\Api\ListingsApi\ListingsItemsSDK;
 use Plenty\AmazonPHP\SellingPartner\Api\MerchantFulfillmentApi\MerchantFulfillmentSDK;
 use Plenty\AmazonPHP\SellingPartner\Api\MessagingApi\MessagingSDK;
@@ -27,6 +28,7 @@ use Plenty\AmazonPHP\SellingPartner\Api\OrdersV0Api;
 use Plenty\AmazonPHP\SellingPartner\Api\ProductPricingApi\ProductPricingSDK;
 use Plenty\AmazonPHP\SellingPartner\Api\ReportsApi\ReportsSDK;
 use Plenty\AmazonPHP\SellingPartner\Api\SalesApi\SalesSDK;
+use Plenty\AmazonPHP\SellingPartner\Api\SearchOrdersApi;
 use Plenty\AmazonPHP\SellingPartner\Api\SellersApi\SellersSDK;
 use Plenty\AmazonPHP\SellingPartner\Api\ServiceApi\ServicesSDK;
 use Plenty\AmazonPHP\SellingPartner\Api\ShipmentApi;
@@ -196,6 +198,16 @@ final class SellingPartnerSDK
     public function orderShipment() : ShipmentApi\OrdersSDK
     {
         return $this->instantiateSDK(ShipmentApi\OrdersSDK::class);
+    }
+
+    public function getOrder2026() : GetOrderApi\OrdersSDK2026
+    {
+        return $this->instantiateSDK(GetOrderApi\OrdersSDK2026::class);
+    }
+
+    public function searchOrders2026() : SearchOrdersApi\OrdersSDK2026
+    {
+        return $this->instantiateSDK(SearchOrdersApi\OrdersSDK2026::class);
     }
 
     public function productFees() : ProductFeesSDK

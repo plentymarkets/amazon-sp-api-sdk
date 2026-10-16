@@ -100,7 +100,7 @@ class LtlTrackingDetail implements \ArrayAccess, \JsonSerializable, \Stringable,
      * @param null|mixed[] $data Associated array of property values
      *                           initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['bill_of_lading_number'] = $data['bill_of_lading_number'] ?? null;
         $this->container['freight_bill_number'] = $data['freight_bill_number'] ?? null;
@@ -109,7 +109,7 @@ class LtlTrackingDetail implements \ArrayAccess, \JsonSerializable, \Stringable,
     /**
      * Array of property to type mappings. Used for (de)serialization.
      */
-    public static function openAPITypes() : array
+    public static function openAPITypes(): array
     {
         return self::$openAPITypes;
     }
@@ -117,7 +117,7 @@ class LtlTrackingDetail implements \ArrayAccess, \JsonSerializable, \Stringable,
     /**
      * Array of property to format mappings. Used for (de)serialization.
      */
-    public static function openAPIFormats() : array
+    public static function openAPIFormats(): array
     {
         return self::$openAPIFormats;
     }
@@ -126,7 +126,7 @@ class LtlTrackingDetail implements \ArrayAccess, \JsonSerializable, \Stringable,
      * Array of attributes where the key is the local name,
      * and the value is the original name.
      */
-    public static function attributeMap() : array
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -134,7 +134,7 @@ class LtlTrackingDetail implements \ArrayAccess, \JsonSerializable, \Stringable,
     /**
      * Array of attributes to setter functions (for deserialization of responses).
      */
-    public static function setters() : array
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -142,7 +142,7 @@ class LtlTrackingDetail implements \ArrayAccess, \JsonSerializable, \Stringable,
     /**
      * Array of attributes to getter functions (for serialization of requests).
      */
-    public static function getters() : array
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -150,7 +150,7 @@ class LtlTrackingDetail implements \ArrayAccess, \JsonSerializable, \Stringable,
     /**
      * Gets the string presentation of the object.
      */
-    public function __toString() : string
+    public function __toString(): string
     {
         return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
@@ -161,7 +161,7 @@ class LtlTrackingDetail implements \ArrayAccess, \JsonSerializable, \Stringable,
     /**
      * The original name of the model.
      */
-    public function getModelName() : string
+    public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
@@ -171,10 +171,10 @@ class LtlTrackingDetail implements \ArrayAccess, \JsonSerializable, \Stringable,
      *
      * @throws AssertionException
      */
-    public function listInvalidProperties() : array
+    public function listInvalidProperties(): array
     {
         $invalidProperties = [];
-         
+
         if (null !== $this->container['bill_of_lading_number'] && (\mb_strlen((string) $this->container['bill_of_lading_number']) > 1024)) {
             $invalidProperties[] = "invalid value for 'bill_of_lading_number', the character length must be smaller than or equal to 1024.";
         }
@@ -192,7 +192,7 @@ class LtlTrackingDetail implements \ArrayAccess, \JsonSerializable, \Stringable,
      *
      * @return bool True if all properties are valid
      */
-    public function valid() : bool
+    public function valid(): bool
     {
         return \count($this->listInvalidProperties()) === 0;
     }
@@ -200,7 +200,7 @@ class LtlTrackingDetail implements \ArrayAccess, \JsonSerializable, \Stringable,
     /**
      * Gets bill_of_lading_number.
      */
-    public function getBillOfLadingNumber() : ?string
+    public function getBillOfLadingNumber(): ?string
     {
         return $this->container['bill_of_lading_number'];
     }
@@ -210,7 +210,7 @@ class LtlTrackingDetail implements \ArrayAccess, \JsonSerializable, \Stringable,
      *
      * @param null|string $bill_of_lading_number the number of the carrier shipment acknowledgement document
      */
-    public function setBillOfLadingNumber(?string $bill_of_lading_number) : self
+    public function setBillOfLadingNumber(?string $bill_of_lading_number): self
     {
         $this->container['bill_of_lading_number'] = $bill_of_lading_number;
 
@@ -222,7 +222,7 @@ class LtlTrackingDetail implements \ArrayAccess, \JsonSerializable, \Stringable,
      *
      * @return null|string[]
      */
-    public function getFreightBillNumber() : ?array
+    public function getFreightBillNumber(): ?array
     {
         return $this->container['freight_bill_number'];
     }
@@ -232,7 +232,7 @@ class LtlTrackingDetail implements \ArrayAccess, \JsonSerializable, \Stringable,
      *
      * @param null|string[] $freight_bill_number the number associated with the freight bill
      */
-    public function setFreightBillNumber(?array $freight_bill_number) : self
+    public function setFreightBillNumber(?array $freight_bill_number): self
     {
         $this->container['freight_bill_number'] = $freight_bill_number;
 
@@ -242,7 +242,7 @@ class LtlTrackingDetail implements \ArrayAccess, \JsonSerializable, \Stringable,
     /**
      * Returns true if offset exists. False otherwise.
      */
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -253,7 +253,7 @@ class LtlTrackingDetail implements \ArrayAccess, \JsonSerializable, \Stringable,
      * @return null|mixed
      */
     #[\ReturnTypeWillChange]
-    public function offsetGet($offset) : mixed
+    public function offsetGet($offset): mixed
     {
         return $this->container[$offset] ?? null;
     }
@@ -261,7 +261,7 @@ class LtlTrackingDetail implements \ArrayAccess, \JsonSerializable, \Stringable,
     /**
      * Sets value based on offset.
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         if (null === $offset) {
             $this->container[] = $value;
@@ -273,7 +273,7 @@ class LtlTrackingDetail implements \ArrayAccess, \JsonSerializable, \Stringable,
     /**
      * Unsets offset.
      */
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -287,7 +287,7 @@ class LtlTrackingDetail implements \ArrayAccess, \JsonSerializable, \Stringable,
      *               of any type other than a resource
      */
     #[\ReturnTypeWillChange]
-    public function jsonSerialize() : string
+    public function jsonSerialize(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }
@@ -295,7 +295,7 @@ class LtlTrackingDetail implements \ArrayAccess, \JsonSerializable, \Stringable,
     /**
      * Gets a header-safe presentation of the object.
      */
-    public function toHeaderValue() : string
+    public function toHeaderValue(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }

@@ -39,7 +39,7 @@ class UpdateItemComplianceDetailsRequest implements \ArrayAccess, \JsonSerializa
      */
     protected static array $openAPITypes = [
         'msku' => 'string',
-        'tax_details' => '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound2024\TaxDetails',
+        'tax_details' => \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound2024\TaxDetails::class,
     ];
 
     /**
@@ -100,7 +100,7 @@ class UpdateItemComplianceDetailsRequest implements \ArrayAccess, \JsonSerializa
      * @param null|mixed[] $data Associated array of property values
      *                           initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['msku'] = $data['msku'] ?? null;
         $this->container['tax_details'] = $data['tax_details'] ?? null;
@@ -109,7 +109,7 @@ class UpdateItemComplianceDetailsRequest implements \ArrayAccess, \JsonSerializa
     /**
      * Array of property to type mappings. Used for (de)serialization.
      */
-    public static function openAPITypes() : array
+    public static function openAPITypes(): array
     {
         return self::$openAPITypes;
     }
@@ -117,7 +117,7 @@ class UpdateItemComplianceDetailsRequest implements \ArrayAccess, \JsonSerializa
     /**
      * Array of property to format mappings. Used for (de)serialization.
      */
-    public static function openAPIFormats() : array
+    public static function openAPIFormats(): array
     {
         return self::$openAPIFormats;
     }
@@ -126,7 +126,7 @@ class UpdateItemComplianceDetailsRequest implements \ArrayAccess, \JsonSerializa
      * Array of attributes where the key is the local name,
      * and the value is the original name.
      */
-    public static function attributeMap() : array
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -134,7 +134,7 @@ class UpdateItemComplianceDetailsRequest implements \ArrayAccess, \JsonSerializa
     /**
      * Array of attributes to setter functions (for deserialization of responses).
      */
-    public static function setters() : array
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -142,7 +142,7 @@ class UpdateItemComplianceDetailsRequest implements \ArrayAccess, \JsonSerializa
     /**
      * Array of attributes to getter functions (for serialization of requests).
      */
-    public static function getters() : array
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -150,7 +150,7 @@ class UpdateItemComplianceDetailsRequest implements \ArrayAccess, \JsonSerializa
     /**
      * Gets the string presentation of the object.
      */
-    public function __toString() : string
+    public function __toString(): string
     {
         return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
@@ -161,7 +161,7 @@ class UpdateItemComplianceDetailsRequest implements \ArrayAccess, \JsonSerializa
     /**
      * The original name of the model.
      */
-    public function getModelName() : string
+    public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
@@ -171,10 +171,10 @@ class UpdateItemComplianceDetailsRequest implements \ArrayAccess, \JsonSerializa
      *
      * @throws AssertionException
      */
-    public function listInvalidProperties() : array
+    public function listInvalidProperties(): array
     {
         $invalidProperties = [];
-         
+
         if ($this->container['msku'] === null) {
             $invalidProperties[] = "'msku' can't be null";
         }
@@ -202,7 +202,7 @@ class UpdateItemComplianceDetailsRequest implements \ArrayAccess, \JsonSerializa
      *
      * @return bool True if all properties are valid
      */
-    public function valid() : bool
+    public function valid(): bool
     {
         return \count($this->listInvalidProperties()) === 0;
     }
@@ -210,7 +210,7 @@ class UpdateItemComplianceDetailsRequest implements \ArrayAccess, \JsonSerializa
     /**
      * Gets msku.
      */
-    public function getMsku() : string
+    public function getMsku(): string
     {
         return $this->container['msku'];
     }
@@ -220,7 +220,7 @@ class UpdateItemComplianceDetailsRequest implements \ArrayAccess, \JsonSerializa
      *
      * @param string $msku the merchant SKU, a merchant-supplied identifier for a specific SKU
      */
-    public function setMsku(string $msku) : self
+    public function setMsku(string $msku): self
     {
         $this->container['msku'] = $msku;
 
@@ -230,7 +230,7 @@ class UpdateItemComplianceDetailsRequest implements \ArrayAccess, \JsonSerializa
     /**
      * Gets tax_details.
      */
-    public function getTaxDetails() : TaxDetails
+    public function getTaxDetails(): TaxDetails
     {
         return $this->container['tax_details'];
     }
@@ -240,7 +240,7 @@ class UpdateItemComplianceDetailsRequest implements \ArrayAccess, \JsonSerializa
      *
      * @param TaxDetails $tax_details tax_details
      */
-    public function setTaxDetails(TaxDetails $tax_details) : self
+    public function setTaxDetails(TaxDetails $tax_details): self
     {
         $this->container['tax_details'] = $tax_details;
 
@@ -250,7 +250,7 @@ class UpdateItemComplianceDetailsRequest implements \ArrayAccess, \JsonSerializa
     /**
      * Returns true if offset exists. False otherwise.
      */
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -261,7 +261,7 @@ class UpdateItemComplianceDetailsRequest implements \ArrayAccess, \JsonSerializa
      * @return null|mixed
      */
     #[\ReturnTypeWillChange]
-    public function offsetGet($offset) : mixed
+    public function offsetGet($offset): mixed
     {
         return $this->container[$offset] ?? null;
     }
@@ -269,7 +269,7 @@ class UpdateItemComplianceDetailsRequest implements \ArrayAccess, \JsonSerializa
     /**
      * Sets value based on offset.
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         if (null === $offset) {
             $this->container[] = $value;
@@ -281,7 +281,7 @@ class UpdateItemComplianceDetailsRequest implements \ArrayAccess, \JsonSerializa
     /**
      * Unsets offset.
      */
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -295,7 +295,7 @@ class UpdateItemComplianceDetailsRequest implements \ArrayAccess, \JsonSerializa
      *               of any type other than a resource
      */
     #[\ReturnTypeWillChange]
-    public function jsonSerialize() : string
+    public function jsonSerialize(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }
@@ -303,7 +303,7 @@ class UpdateItemComplianceDetailsRequest implements \ArrayAccess, \JsonSerializa
     /**
      * Gets a header-safe presentation of the object.
      */
-    public function toHeaderValue() : string
+    public function toHeaderValue(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }

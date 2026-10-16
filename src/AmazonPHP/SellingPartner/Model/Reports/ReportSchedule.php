@@ -1,4 +1,7 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
+
 /**
  * ReportSchedule.
  *
@@ -40,7 +43,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class ReportSchedule implements \ArrayAccess, \JsonSerializable, ModelInterface
+class ReportSchedule implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -137,7 +140,7 @@ class ReportSchedule implements \ArrayAccess, \JsonSerializable, ModelInterface
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['report_schedule_id'] = $data['report_schedule_id'] ?? null;
         $this->container['report_type'] = $data['report_type'] ?? null;
@@ -152,7 +155,7 @@ class ReportSchedule implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return string[]
      */
-    public static function openAPITypes() : array
+    public static function openAPITypes(): array
     {
         return self::$openAPITypes;
     }
@@ -162,7 +165,7 @@ class ReportSchedule implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return null[]|string[]
      */
-    public static function openAPIFormats() : array
+    public static function openAPIFormats(): array
     {
         return self::$openAPIFormats;
     }
@@ -173,7 +176,7 @@ class ReportSchedule implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return string[]
      */
-    public static function attributeMap() : array
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -183,7 +186,7 @@ class ReportSchedule implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return string[]
      */
-    public static function setters() : array
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -193,7 +196,7 @@ class ReportSchedule implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return string[]
      */
-    public static function getters() : array
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -201,9 +204,9 @@ class ReportSchedule implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets the string presentation of the object.
      */
-    public function __toString() : string
+    public function __toString(): string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );
@@ -212,7 +215,7 @@ class ReportSchedule implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * The original name of the model.
      */
-    public function getModelName() : string
+    public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
@@ -222,7 +225,7 @@ class ReportSchedule implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties() : array
+    public function listInvalidProperties(): array
     {
         $invalidProperties = [];
 
@@ -247,7 +250,7 @@ class ReportSchedule implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return bool True if all properties are valid
      */
-    public function valid() : bool
+    public function valid(): bool
     {
         return \count($this->listInvalidProperties()) === 0;
     }
@@ -255,7 +258,7 @@ class ReportSchedule implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets report_schedule_id.
      */
-    public function getReportScheduleId() : string
+    public function getReportScheduleId(): string
     {
         return $this->container['report_schedule_id'];
     }
@@ -265,7 +268,7 @@ class ReportSchedule implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param string $report_schedule_id The identifier for the report schedule. This identifier is unique only in combination with a seller ID.
      */
-    public function setReportScheduleId(string $report_schedule_id) : self
+    public function setReportScheduleId(string $report_schedule_id): self
     {
         $this->container['report_schedule_id'] = $report_schedule_id;
 
@@ -275,7 +278,7 @@ class ReportSchedule implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets report_type.
      */
-    public function getReportType() : string
+    public function getReportType(): string
     {
         return $this->container['report_type'];
     }
@@ -285,7 +288,7 @@ class ReportSchedule implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param string $report_type the report type
      */
-    public function setReportType(string $report_type) : self
+    public function setReportType(string $report_type): self
     {
         $this->container['report_type'] = $report_type;
 
@@ -297,7 +300,7 @@ class ReportSchedule implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return null|string[]
      */
-    public function getMarketplaceIds() : ?array
+    public function getMarketplaceIds(): ?array
     {
         return $this->container['marketplace_ids'];
     }
@@ -307,7 +310,7 @@ class ReportSchedule implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param null|string[] $marketplace_ids A list of marketplace identifiers. The report document's contents will contain data for all of the specified marketplaces, unless the report type indicates otherwise.
      */
-    public function setMarketplaceIds(?array $marketplace_ids) : self
+    public function setMarketplaceIds(?array $marketplace_ids): self
     {
         $this->container['marketplace_ids'] = $marketplace_ids;
 
@@ -319,7 +322,7 @@ class ReportSchedule implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return null|array<string,string>
      */
-    public function getReportOptions() : ?array
+    public function getReportOptions(): ?array
     {
         return $this->container['report_options'];
     }
@@ -329,7 +332,7 @@ class ReportSchedule implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param null|array<string,string> $report_options Additional information passed to reports. This varies by report type.
      */
-    public function setReportOptions(?array $report_options) : self
+    public function setReportOptions(?array $report_options): self
     {
         $this->container['report_options'] = $report_options;
 
@@ -339,7 +342,7 @@ class ReportSchedule implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets period.
      */
-    public function getPeriod() : string
+    public function getPeriod(): string
     {
         return $this->container['period'];
     }
@@ -349,7 +352,7 @@ class ReportSchedule implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param string $period an ISO 8601 period value that indicates how often a report should be created
      */
-    public function setPeriod(string $period) : self
+    public function setPeriod(string $period): self
     {
         $this->container['period'] = $period;
 
@@ -361,7 +364,7 @@ class ReportSchedule implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return null|\DateTime|\DateTimeImmutable
      */
-    public function getNextReportCreationTime() : ?\DateTimeInterface
+    public function getNextReportCreationTime(): ?\DateTimeInterface
     {
         return $this->container['next_report_creation_time'];
     }
@@ -371,7 +374,7 @@ class ReportSchedule implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param \DateTime|\DateTimeImmutable $next_report_creation_time the date and time when the schedule will create its next report, in ISO 8601 date time format
      */
-    public function setNextReportCreationTime(\DateTimeInterface $next_report_creation_time) : self
+    public function setNextReportCreationTime(\DateTimeInterface $next_report_creation_time): self
     {
         $this->container['next_report_creation_time'] = $next_report_creation_time;
 
@@ -383,7 +386,7 @@ class ReportSchedule implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param int $offset Offset
      */
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -406,7 +409,7 @@ class ReportSchedule implements \ArrayAccess, \JsonSerializable, ModelInterface
      * @param null|int $offset Offset
      * @param mixed $value Value to be set
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         if (null === $offset) {
             $this->container[] = $value;
@@ -420,7 +423,7 @@ class ReportSchedule implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param int $offset Offset
      */
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -433,7 +436,7 @@ class ReportSchedule implements \ArrayAccess, \JsonSerializable, ModelInterface
      * @return mixed returns data which can be serialized by json_encode(), which is a value
      *               of any type other than a resource
      */
-    public function jsonSerialize() : string
+    public function jsonSerialize(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }
@@ -441,7 +444,7 @@ class ReportSchedule implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets a header-safe presentation of the object.
      */
-    public function toHeaderValue() : string
+    public function toHeaderValue(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }

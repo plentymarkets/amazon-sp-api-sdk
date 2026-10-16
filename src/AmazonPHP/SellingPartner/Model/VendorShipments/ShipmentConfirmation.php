@@ -1,4 +1,7 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
+
 /**
  * ShipmentConfirmation.
  *
@@ -40,7 +43,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class ShipmentConfirmation implements \ArrayAccess, \JsonSerializable, ModelInterface
+class ShipmentConfirmation implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -85,16 +88,16 @@ class ShipmentConfirmation implements \ArrayAccess, \JsonSerializable, ModelInte
         'shipment_confirmation_type' => 'string',
         'shipment_type' => 'string',
         'shipment_structure' => 'string',
-        'transportation_details' => '\Plenty\AmazonPHP\SellingPartner\Model\VendorShipments\TransportationDetails',
+        'transportation_details' => \Plenty\AmazonPHP\SellingPartner\Model\VendorShipments\TransportationDetails::class,
         'amazon_reference_number' => 'string',
         'shipment_confirmation_date' => '\DateTime',
         'shipped_date' => '\DateTime',
         'estimated_delivery_date' => '\DateTime',
-        'selling_party' => '\Plenty\AmazonPHP\SellingPartner\Model\VendorShipments\PartyIdentification',
-        'ship_from_party' => '\Plenty\AmazonPHP\SellingPartner\Model\VendorShipments\PartyIdentification',
-        'ship_to_party' => '\Plenty\AmazonPHP\SellingPartner\Model\VendorShipments\PartyIdentification',
-        'shipment_measurements' => '\Plenty\AmazonPHP\SellingPartner\Model\VendorShipments\ShipmentMeasurements',
-        'import_details' => '\Plenty\AmazonPHP\SellingPartner\Model\VendorShipments\ImportDetails',
+        'selling_party' => \Plenty\AmazonPHP\SellingPartner\Model\VendorShipments\PartyIdentification::class,
+        'ship_from_party' => \Plenty\AmazonPHP\SellingPartner\Model\VendorShipments\PartyIdentification::class,
+        'ship_to_party' => \Plenty\AmazonPHP\SellingPartner\Model\VendorShipments\PartyIdentification::class,
+        'shipment_measurements' => \Plenty\AmazonPHP\SellingPartner\Model\VendorShipments\ShipmentMeasurements::class,
+        'import_details' => \Plenty\AmazonPHP\SellingPartner\Model\VendorShipments\ImportDetails::class,
         'shipped_items' => '\Plenty\AmazonPHP\SellingPartner\Model\VendorShipments\Item[]',
         'cartons' => '\Plenty\AmazonPHP\SellingPartner\Model\VendorShipments\Carton[]',
         'pallets' => '\Plenty\AmazonPHP\SellingPartner\Model\VendorShipments\Pallet[]',
@@ -216,7 +219,7 @@ class ShipmentConfirmation implements \ArrayAccess, \JsonSerializable, ModelInte
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['shipment_identifier'] = $data['shipment_identifier'] ?? null;
         $this->container['shipment_confirmation_type'] = $data['shipment_confirmation_type'] ?? null;
@@ -242,7 +245,7 @@ class ShipmentConfirmation implements \ArrayAccess, \JsonSerializable, ModelInte
      *
      * @return string[]
      */
-    public static function openAPITypes() : array
+    public static function openAPITypes(): array
     {
         return self::$openAPITypes;
     }
@@ -252,7 +255,7 @@ class ShipmentConfirmation implements \ArrayAccess, \JsonSerializable, ModelInte
      *
      * @return null[]|string[]
      */
-    public static function openAPIFormats() : array
+    public static function openAPIFormats(): array
     {
         return self::$openAPIFormats;
     }
@@ -263,7 +266,7 @@ class ShipmentConfirmation implements \ArrayAccess, \JsonSerializable, ModelInte
      *
      * @return string[]
      */
-    public static function attributeMap() : array
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -273,7 +276,7 @@ class ShipmentConfirmation implements \ArrayAccess, \JsonSerializable, ModelInte
      *
      * @return string[]
      */
-    public static function setters() : array
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -283,7 +286,7 @@ class ShipmentConfirmation implements \ArrayAccess, \JsonSerializable, ModelInte
      *
      * @return string[]
      */
-    public static function getters() : array
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -291,9 +294,9 @@ class ShipmentConfirmation implements \ArrayAccess, \JsonSerializable, ModelInte
     /**
      * Gets the string presentation of the object.
      */
-    public function __toString() : string
+    public function __toString(): string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );
@@ -302,7 +305,7 @@ class ShipmentConfirmation implements \ArrayAccess, \JsonSerializable, ModelInte
     /**
      * The original name of the model.
      */
-    public function getModelName() : string
+    public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
@@ -312,7 +315,7 @@ class ShipmentConfirmation implements \ArrayAccess, \JsonSerializable, ModelInte
      *
      * @return string[]
      */
-    public function getShipmentConfirmationTypeAllowableValues() : array
+    public function getShipmentConfirmationTypeAllowableValues(): array
     {
         return [
             self::SHIPMENT_CONFIRMATION_TYPE_ORIGINAL,
@@ -325,7 +328,7 @@ class ShipmentConfirmation implements \ArrayAccess, \JsonSerializable, ModelInte
      *
      * @return string[]
      */
-    public function getShipmentTypeAllowableValues() : array
+    public function getShipmentTypeAllowableValues(): array
     {
         return [
             self::SHIPMENT_TYPE_TRUCK_LOAD,
@@ -339,7 +342,7 @@ class ShipmentConfirmation implements \ArrayAccess, \JsonSerializable, ModelInte
      *
      * @return string[]
      */
-    public function getShipmentStructureAllowableValues() : array
+    public function getShipmentStructureAllowableValues(): array
     {
         return [
             self::SHIPMENT_STRUCTURE_PALLETIZED_ASSORTMENT_CASE,
@@ -357,7 +360,7 @@ class ShipmentConfirmation implements \ArrayAccess, \JsonSerializable, ModelInte
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties() : array
+    public function listInvalidProperties(): array
     {
         $invalidProperties = [];
 
@@ -427,7 +430,7 @@ class ShipmentConfirmation implements \ArrayAccess, \JsonSerializable, ModelInte
      *
      * @return bool True if all properties are valid
      */
-    public function valid() : bool
+    public function valid(): bool
     {
         return \count($this->listInvalidProperties()) === 0;
     }
@@ -435,7 +438,7 @@ class ShipmentConfirmation implements \ArrayAccess, \JsonSerializable, ModelInte
     /**
      * Gets shipment_identifier.
      */
-    public function getShipmentIdentifier() : string
+    public function getShipmentIdentifier(): string
     {
         return $this->container['shipment_identifier'];
     }
@@ -445,7 +448,7 @@ class ShipmentConfirmation implements \ArrayAccess, \JsonSerializable, ModelInte
      *
      * @param string $shipment_identifier unique shipment ID (not used over the last 365 days)
      */
-    public function setShipmentIdentifier(string $shipment_identifier) : self
+    public function setShipmentIdentifier(string $shipment_identifier): self
     {
         $this->container['shipment_identifier'] = $shipment_identifier;
 
@@ -455,7 +458,7 @@ class ShipmentConfirmation implements \ArrayAccess, \JsonSerializable, ModelInte
     /**
      * Gets shipment_confirmation_type.
      */
-    public function getShipmentConfirmationType() : string
+    public function getShipmentConfirmationType(): string
     {
         return $this->container['shipment_confirmation_type'];
     }
@@ -465,7 +468,7 @@ class ShipmentConfirmation implements \ArrayAccess, \JsonSerializable, ModelInte
      *
      * @param string $shipment_confirmation_type Indicates if this shipment confirmation is the initial confirmation, or intended to replace an already posted shipment confirmation. If replacing an existing shipment confirmation, be sure to provide the identical shipmentIdentifier and sellingParty information as in the previous confirmation.
      */
-    public function setShipmentConfirmationType(string $shipment_confirmation_type) : self
+    public function setShipmentConfirmationType(string $shipment_confirmation_type): self
     {
         $allowedValues = $this->getShipmentConfirmationTypeAllowableValues();
 
@@ -486,7 +489,7 @@ class ShipmentConfirmation implements \ArrayAccess, \JsonSerializable, ModelInte
     /**
      * Gets shipment_type.
      */
-    public function getShipmentType() : ?string
+    public function getShipmentType(): ?string
     {
         return $this->container['shipment_type'];
     }
@@ -496,7 +499,7 @@ class ShipmentConfirmation implements \ArrayAccess, \JsonSerializable, ModelInte
      *
      * @param null|string $shipment_type the type of shipment
      */
-    public function setShipmentType(?string $shipment_type) : self
+    public function setShipmentType(?string $shipment_type): self
     {
         $allowedValues = $this->getShipmentTypeAllowableValues();
 
@@ -517,7 +520,7 @@ class ShipmentConfirmation implements \ArrayAccess, \JsonSerializable, ModelInte
     /**
      * Gets shipment_structure.
      */
-    public function getShipmentStructure() : ?string
+    public function getShipmentStructure(): ?string
     {
         return $this->container['shipment_structure'];
     }
@@ -527,7 +530,7 @@ class ShipmentConfirmation implements \ArrayAccess, \JsonSerializable, ModelInte
      *
      * @param null|string $shipment_structure shipment hierarchical structure
      */
-    public function setShipmentStructure(?string $shipment_structure) : self
+    public function setShipmentStructure(?string $shipment_structure): self
     {
         $allowedValues = $this->getShipmentStructureAllowableValues();
 
@@ -548,7 +551,7 @@ class ShipmentConfirmation implements \ArrayAccess, \JsonSerializable, ModelInte
     /**
      * Gets transportation_details.
      */
-    public function getTransportationDetails() : ?TransportationDetails
+    public function getTransportationDetails(): ?TransportationDetails
     {
         return $this->container['transportation_details'];
     }
@@ -558,7 +561,7 @@ class ShipmentConfirmation implements \ArrayAccess, \JsonSerializable, ModelInte
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\VendorShipments\TransportationDetails $transportation_details transportation_details
      */
-    public function setTransportationDetails(?TransportationDetails $transportation_details) : self
+    public function setTransportationDetails(?TransportationDetails $transportation_details): self
     {
         $this->container['transportation_details'] = $transportation_details;
 
@@ -568,7 +571,7 @@ class ShipmentConfirmation implements \ArrayAccess, \JsonSerializable, ModelInte
     /**
      * Gets amazon_reference_number.
      */
-    public function getAmazonReferenceNumber() : ?string
+    public function getAmazonReferenceNumber(): ?string
     {
         return $this->container['amazon_reference_number'];
     }
@@ -578,7 +581,7 @@ class ShipmentConfirmation implements \ArrayAccess, \JsonSerializable, ModelInte
      *
      * @param null|string $amazon_reference_number The Amazon Reference Number is a unique identifier generated by Amazon for all Collect/WePay shipments when you submit  a routing request. This field is mandatory for Collect/WePay shipments.
      */
-    public function setAmazonReferenceNumber(?string $amazon_reference_number) : self
+    public function setAmazonReferenceNumber(?string $amazon_reference_number): self
     {
         $this->container['amazon_reference_number'] = $amazon_reference_number;
 
@@ -590,7 +593,7 @@ class ShipmentConfirmation implements \ArrayAccess, \JsonSerializable, ModelInte
      *
      * @return \DateTime|\DateTimeImmutable
      */
-    public function getShipmentConfirmationDate() : \DateTimeInterface
+    public function getShipmentConfirmationDate(): \DateTimeInterface
     {
         return $this->container['shipment_confirmation_date'];
     }
@@ -600,7 +603,7 @@ class ShipmentConfirmation implements \ArrayAccess, \JsonSerializable, ModelInte
      *
      * @param \DateTime $shipment_confirmation_date date on which the shipment confirmation was submitted
      */
-    public function setShipmentConfirmationDate(\DateTimeInterface $shipment_confirmation_date) : self
+    public function setShipmentConfirmationDate(\DateTimeInterface $shipment_confirmation_date): self
     {
         $this->container['shipment_confirmation_date'] = $shipment_confirmation_date;
 
@@ -612,7 +615,7 @@ class ShipmentConfirmation implements \ArrayAccess, \JsonSerializable, ModelInte
      *
      * @return null|\DateTime|\DateTimeImmutable
      */
-    public function getShippedDate() : ?\DateTimeInterface
+    public function getShippedDate(): ?\DateTimeInterface
     {
         return $this->container['shipped_date'];
     }
@@ -622,7 +625,7 @@ class ShipmentConfirmation implements \ArrayAccess, \JsonSerializable, ModelInte
      *
      * @param \DateTime|\DateTimeImmutable $shipped_date The date and time of the departure of the shipment from the vendor's location. Vendors are requested to send ASNs within 30 minutes of departure from their warehouse/distribution center or at least 6 hours prior to the appointment time at the Amazon destination warehouse, whichever is sooner. Shipped date mentioned in the shipment confirmation should not be in the future.
      */
-    public function setShippedDate(\DateTimeInterface $shipped_date) : self
+    public function setShippedDate(\DateTimeInterface $shipped_date): self
     {
         $this->container['shipped_date'] = $shipped_date;
 
@@ -634,7 +637,7 @@ class ShipmentConfirmation implements \ArrayAccess, \JsonSerializable, ModelInte
      *
      * @return null|\DateTime|\DateTimeImmutable
      */
-    public function getEstimatedDeliveryDate() : ?\DateTimeInterface
+    public function getEstimatedDeliveryDate(): ?\DateTimeInterface
     {
         return $this->container['estimated_delivery_date'];
     }
@@ -644,7 +647,7 @@ class ShipmentConfirmation implements \ArrayAccess, \JsonSerializable, ModelInte
      *
      * @param \DateTime|\DateTimeImmutable $estimated_delivery_date The date and time on which the shipment is expected to reach buyer's warehouse. It needs to be an estimate based on the average transit time between ship from location and the destination. The exact appointment time will be provided by the buyer and is potentially not known when creating the shipment confirmation.
      */
-    public function setEstimatedDeliveryDate(\DateTimeInterface $estimated_delivery_date) : self
+    public function setEstimatedDeliveryDate(\DateTimeInterface $estimated_delivery_date): self
     {
         $this->container['estimated_delivery_date'] = $estimated_delivery_date;
 
@@ -654,7 +657,7 @@ class ShipmentConfirmation implements \ArrayAccess, \JsonSerializable, ModelInte
     /**
      * Gets selling_party.
      */
-    public function getSellingParty() : PartyIdentification
+    public function getSellingParty(): PartyIdentification
     {
         return $this->container['selling_party'];
     }
@@ -664,7 +667,7 @@ class ShipmentConfirmation implements \ArrayAccess, \JsonSerializable, ModelInte
      *
      * @param \Plenty\AmazonPHP\SellingPartner\Model\VendorShipments\PartyIdentification $selling_party selling_party
      */
-    public function setSellingParty(PartyIdentification $selling_party) : self
+    public function setSellingParty(PartyIdentification $selling_party): self
     {
         $this->container['selling_party'] = $selling_party;
 
@@ -674,7 +677,7 @@ class ShipmentConfirmation implements \ArrayAccess, \JsonSerializable, ModelInte
     /**
      * Gets ship_from_party.
      */
-    public function getShipFromParty() : PartyIdentification
+    public function getShipFromParty(): PartyIdentification
     {
         return $this->container['ship_from_party'];
     }
@@ -684,7 +687,7 @@ class ShipmentConfirmation implements \ArrayAccess, \JsonSerializable, ModelInte
      *
      * @param \Plenty\AmazonPHP\SellingPartner\Model\VendorShipments\PartyIdentification $ship_from_party ship_from_party
      */
-    public function setShipFromParty(PartyIdentification $ship_from_party) : self
+    public function setShipFromParty(PartyIdentification $ship_from_party): self
     {
         $this->container['ship_from_party'] = $ship_from_party;
 
@@ -694,7 +697,7 @@ class ShipmentConfirmation implements \ArrayAccess, \JsonSerializable, ModelInte
     /**
      * Gets ship_to_party.
      */
-    public function getShipToParty() : PartyIdentification
+    public function getShipToParty(): PartyIdentification
     {
         return $this->container['ship_to_party'];
     }
@@ -704,7 +707,7 @@ class ShipmentConfirmation implements \ArrayAccess, \JsonSerializable, ModelInte
      *
      * @param \Plenty\AmazonPHP\SellingPartner\Model\VendorShipments\PartyIdentification $ship_to_party ship_to_party
      */
-    public function setShipToParty(PartyIdentification $ship_to_party) : self
+    public function setShipToParty(PartyIdentification $ship_to_party): self
     {
         $this->container['ship_to_party'] = $ship_to_party;
 
@@ -714,7 +717,7 @@ class ShipmentConfirmation implements \ArrayAccess, \JsonSerializable, ModelInte
     /**
      * Gets shipment_measurements.
      */
-    public function getShipmentMeasurements() : ?ShipmentMeasurements
+    public function getShipmentMeasurements(): ?ShipmentMeasurements
     {
         return $this->container['shipment_measurements'];
     }
@@ -724,7 +727,7 @@ class ShipmentConfirmation implements \ArrayAccess, \JsonSerializable, ModelInte
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\VendorShipments\ShipmentMeasurements $shipment_measurements shipment_measurements
      */
-    public function setShipmentMeasurements(?ShipmentMeasurements $shipment_measurements) : self
+    public function setShipmentMeasurements(?ShipmentMeasurements $shipment_measurements): self
     {
         $this->container['shipment_measurements'] = $shipment_measurements;
 
@@ -734,7 +737,7 @@ class ShipmentConfirmation implements \ArrayAccess, \JsonSerializable, ModelInte
     /**
      * Gets import_details.
      */
-    public function getImportDetails() : ?ImportDetails
+    public function getImportDetails(): ?ImportDetails
     {
         return $this->container['import_details'];
     }
@@ -744,7 +747,7 @@ class ShipmentConfirmation implements \ArrayAccess, \JsonSerializable, ModelInte
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\VendorShipments\ImportDetails $import_details import_details
      */
-    public function setImportDetails(?ImportDetails $import_details) : self
+    public function setImportDetails(?ImportDetails $import_details): self
     {
         $this->container['import_details'] = $import_details;
 
@@ -756,7 +759,7 @@ class ShipmentConfirmation implements \ArrayAccess, \JsonSerializable, ModelInte
      *
      * @return \Plenty\AmazonPHP\SellingPartner\Model\VendorShipments\Item[]
      */
-    public function getShippedItems() : array
+    public function getShippedItems(): array
     {
         return $this->container['shipped_items'];
     }
@@ -766,7 +769,7 @@ class ShipmentConfirmation implements \ArrayAccess, \JsonSerializable, ModelInte
      *
      * @param \Plenty\AmazonPHP\SellingPartner\Model\VendorShipments\Item[] $shipped_items A list of the items in this shipment and their associated details. If any of the item detail fields are common at a carton or a pallet level, provide them at the corresponding carton or pallet level.
      */
-    public function setShippedItems(array $shipped_items) : self
+    public function setShippedItems(array $shipped_items): self
     {
         $this->container['shipped_items'] = $shipped_items;
 
@@ -778,7 +781,7 @@ class ShipmentConfirmation implements \ArrayAccess, \JsonSerializable, ModelInte
      *
      * @return null|\Plenty\AmazonPHP\SellingPartner\Model\VendorShipments\Carton[]
      */
-    public function getCartons() : ?array
+    public function getCartons(): ?array
     {
         return $this->container['cartons'];
     }
@@ -788,7 +791,7 @@ class ShipmentConfirmation implements \ArrayAccess, \JsonSerializable, ModelInte
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\VendorShipments\Carton[] $cartons a list of the cartons in this shipment
      */
-    public function setCartons(?array $cartons) : self
+    public function setCartons(?array $cartons): self
     {
         $this->container['cartons'] = $cartons;
 
@@ -800,7 +803,7 @@ class ShipmentConfirmation implements \ArrayAccess, \JsonSerializable, ModelInte
      *
      * @return null|\Plenty\AmazonPHP\SellingPartner\Model\VendorShipments\Pallet[]
      */
-    public function getPallets() : ?array
+    public function getPallets(): ?array
     {
         return $this->container['pallets'];
     }
@@ -810,7 +813,7 @@ class ShipmentConfirmation implements \ArrayAccess, \JsonSerializable, ModelInte
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\VendorShipments\Pallet[] $pallets a list of the pallets in this shipment
      */
-    public function setPallets(?array $pallets) : self
+    public function setPallets(?array $pallets): self
     {
         $this->container['pallets'] = $pallets;
 
@@ -822,7 +825,7 @@ class ShipmentConfirmation implements \ArrayAccess, \JsonSerializable, ModelInte
      *
      * @param int $offset Offset
      */
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -845,7 +848,7 @@ class ShipmentConfirmation implements \ArrayAccess, \JsonSerializable, ModelInte
      * @param null|int $offset Offset
      * @param mixed $value Value to be set
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         if (null === $offset) {
             $this->container[] = $value;
@@ -859,7 +862,7 @@ class ShipmentConfirmation implements \ArrayAccess, \JsonSerializable, ModelInte
      *
      * @param int $offset Offset
      */
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -872,7 +875,7 @@ class ShipmentConfirmation implements \ArrayAccess, \JsonSerializable, ModelInte
      * @return mixed returns data which can be serialized by json_encode(), which is a value
      *               of any type other than a resource
      */
-    public function jsonSerialize() : string
+    public function jsonSerialize(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }
@@ -880,7 +883,7 @@ class ShipmentConfirmation implements \ArrayAccess, \JsonSerializable, ModelInte
     /**
      * Gets a header-safe presentation of the object.
      */
-    public function toHeaderValue() : string
+    public function toHeaderValue(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }

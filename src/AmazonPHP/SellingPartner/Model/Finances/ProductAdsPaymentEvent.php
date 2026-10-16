@@ -1,4 +1,7 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
+
 /**
  * ProductAdsPaymentEvent.
  *
@@ -40,7 +43,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class ProductAdsPaymentEvent implements \ArrayAccess, \JsonSerializable, ModelInterface
+class ProductAdsPaymentEvent implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -60,9 +63,9 @@ class ProductAdsPaymentEvent implements \ArrayAccess, \JsonSerializable, ModelIn
         'posted_date' => '\DateTime',
         'transaction_type' => 'string',
         'invoice_id' => 'string',
-        'base_value' => '\Plenty\AmazonPHP\SellingPartner\Model\Finances\Currency',
-        'tax_value' => '\Plenty\AmazonPHP\SellingPartner\Model\Finances\Currency',
-        'transaction_value' => '\Plenty\AmazonPHP\SellingPartner\Model\Finances\Currency',
+        'base_value' => \Plenty\AmazonPHP\SellingPartner\Model\Finances\Currency::class,
+        'tax_value' => \Plenty\AmazonPHP\SellingPartner\Model\Finances\Currency::class,
+        'transaction_value' => \Plenty\AmazonPHP\SellingPartner\Model\Finances\Currency::class,
     ];
 
     /**
@@ -137,7 +140,7 @@ class ProductAdsPaymentEvent implements \ArrayAccess, \JsonSerializable, ModelIn
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['posted_date'] = $data['posted_date'] ?? null;
         $this->container['transaction_type'] = $data['transaction_type'] ?? null;
@@ -152,7 +155,7 @@ class ProductAdsPaymentEvent implements \ArrayAccess, \JsonSerializable, ModelIn
      *
      * @return string[]
      */
-    public static function openAPITypes() : array
+    public static function openAPITypes(): array
     {
         return self::$openAPITypes;
     }
@@ -162,7 +165,7 @@ class ProductAdsPaymentEvent implements \ArrayAccess, \JsonSerializable, ModelIn
      *
      * @return null[]|string[]
      */
-    public static function openAPIFormats() : array
+    public static function openAPIFormats(): array
     {
         return self::$openAPIFormats;
     }
@@ -173,7 +176,7 @@ class ProductAdsPaymentEvent implements \ArrayAccess, \JsonSerializable, ModelIn
      *
      * @return string[]
      */
-    public static function attributeMap() : array
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -183,7 +186,7 @@ class ProductAdsPaymentEvent implements \ArrayAccess, \JsonSerializable, ModelIn
      *
      * @return string[]
      */
-    public static function setters() : array
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -193,7 +196,7 @@ class ProductAdsPaymentEvent implements \ArrayAccess, \JsonSerializable, ModelIn
      *
      * @return string[]
      */
-    public static function getters() : array
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -201,9 +204,9 @@ class ProductAdsPaymentEvent implements \ArrayAccess, \JsonSerializable, ModelIn
     /**
      * Gets the string presentation of the object.
      */
-    public function __toString() : string
+    public function __toString(): string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );
@@ -212,7 +215,7 @@ class ProductAdsPaymentEvent implements \ArrayAccess, \JsonSerializable, ModelIn
     /**
      * The original name of the model.
      */
-    public function getModelName() : string
+    public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
@@ -222,7 +225,7 @@ class ProductAdsPaymentEvent implements \ArrayAccess, \JsonSerializable, ModelIn
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties() : array
+    public function listInvalidProperties(): array
     {
         return [];
     }
@@ -233,7 +236,7 @@ class ProductAdsPaymentEvent implements \ArrayAccess, \JsonSerializable, ModelIn
      *
      * @return bool True if all properties are valid
      */
-    public function valid() : bool
+    public function valid(): bool
     {
         return \count($this->listInvalidProperties()) === 0;
     }
@@ -243,7 +246,7 @@ class ProductAdsPaymentEvent implements \ArrayAccess, \JsonSerializable, ModelIn
      *
      * @return null|\DateTime|\DateTimeImmutable
      */
-    public function getPostedDate() : ?\DateTimeInterface
+    public function getPostedDate(): ?\DateTimeInterface
     {
         return $this->container['posted_date'];
     }
@@ -253,7 +256,7 @@ class ProductAdsPaymentEvent implements \ArrayAccess, \JsonSerializable, ModelIn
      *
      * @param \DateTime|\DateTimeImmutable $posted_date posted_date
      */
-    public function setPostedDate(\DateTimeInterface $posted_date) : self
+    public function setPostedDate(\DateTimeInterface $posted_date): self
     {
         $this->container['posted_date'] = $posted_date;
 
@@ -263,7 +266,7 @@ class ProductAdsPaymentEvent implements \ArrayAccess, \JsonSerializable, ModelIn
     /**
      * Gets transaction_type.
      */
-    public function getTransactionType() : ?string
+    public function getTransactionType(): ?string
     {
         return $this->container['transaction_type'];
     }
@@ -273,7 +276,7 @@ class ProductAdsPaymentEvent implements \ArrayAccess, \JsonSerializable, ModelIn
      *
      * @param null|string $transaction_type Indicates if the transaction is for a charge or a refund.  Possible values:  * charge - Charge  * refund - Refund
      */
-    public function setTransactionType(?string $transaction_type) : self
+    public function setTransactionType(?string $transaction_type): self
     {
         $this->container['transaction_type'] = $transaction_type;
 
@@ -283,7 +286,7 @@ class ProductAdsPaymentEvent implements \ArrayAccess, \JsonSerializable, ModelIn
     /**
      * Gets invoice_id.
      */
-    public function getInvoiceId() : ?string
+    public function getInvoiceId(): ?string
     {
         return $this->container['invoice_id'];
     }
@@ -293,7 +296,7 @@ class ProductAdsPaymentEvent implements \ArrayAccess, \JsonSerializable, ModelIn
      *
      * @param null|string $invoice_id identifier for the invoice that the transaction appears in
      */
-    public function setInvoiceId(?string $invoice_id) : self
+    public function setInvoiceId(?string $invoice_id): self
     {
         $this->container['invoice_id'] = $invoice_id;
 
@@ -303,7 +306,7 @@ class ProductAdsPaymentEvent implements \ArrayAccess, \JsonSerializable, ModelIn
     /**
      * Gets base_value.
      */
-    public function getBaseValue() : ?Currency
+    public function getBaseValue(): ?Currency
     {
         return $this->container['base_value'];
     }
@@ -313,7 +316,7 @@ class ProductAdsPaymentEvent implements \ArrayAccess, \JsonSerializable, ModelIn
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\Finances\Currency $base_value base_value
      */
-    public function setBaseValue(?Currency $base_value) : self
+    public function setBaseValue(?Currency $base_value): self
     {
         $this->container['base_value'] = $base_value;
 
@@ -323,7 +326,7 @@ class ProductAdsPaymentEvent implements \ArrayAccess, \JsonSerializable, ModelIn
     /**
      * Gets tax_value.
      */
-    public function getTaxValue() : ?Currency
+    public function getTaxValue(): ?Currency
     {
         return $this->container['tax_value'];
     }
@@ -333,7 +336,7 @@ class ProductAdsPaymentEvent implements \ArrayAccess, \JsonSerializable, ModelIn
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\Finances\Currency $tax_value tax_value
      */
-    public function setTaxValue(?Currency $tax_value) : self
+    public function setTaxValue(?Currency $tax_value): self
     {
         $this->container['tax_value'] = $tax_value;
 
@@ -343,7 +346,7 @@ class ProductAdsPaymentEvent implements \ArrayAccess, \JsonSerializable, ModelIn
     /**
      * Gets transaction_value.
      */
-    public function getTransactionValue() : ?Currency
+    public function getTransactionValue(): ?Currency
     {
         return $this->container['transaction_value'];
     }
@@ -353,7 +356,7 @@ class ProductAdsPaymentEvent implements \ArrayAccess, \JsonSerializable, ModelIn
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\Finances\Currency $transaction_value transaction_value
      */
-    public function setTransactionValue(?Currency $transaction_value) : self
+    public function setTransactionValue(?Currency $transaction_value): self
     {
         $this->container['transaction_value'] = $transaction_value;
 
@@ -365,7 +368,7 @@ class ProductAdsPaymentEvent implements \ArrayAccess, \JsonSerializable, ModelIn
      *
      * @param int $offset Offset
      */
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -388,7 +391,7 @@ class ProductAdsPaymentEvent implements \ArrayAccess, \JsonSerializable, ModelIn
      * @param null|int $offset Offset
      * @param mixed $value Value to be set
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         if (null === $offset) {
             $this->container[] = $value;
@@ -402,7 +405,7 @@ class ProductAdsPaymentEvent implements \ArrayAccess, \JsonSerializable, ModelIn
      *
      * @param int $offset Offset
      */
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -415,7 +418,7 @@ class ProductAdsPaymentEvent implements \ArrayAccess, \JsonSerializable, ModelIn
      * @return mixed returns data which can be serialized by json_encode(), which is a value
      *               of any type other than a resource
      */
-    public function jsonSerialize() : string
+    public function jsonSerialize(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }
@@ -423,7 +426,7 @@ class ProductAdsPaymentEvent implements \ArrayAccess, \JsonSerializable, ModelIn
     /**
      * Gets a header-safe presentation of the object.
      */
-    public function toHeaderValue() : string
+    public function toHeaderValue(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }

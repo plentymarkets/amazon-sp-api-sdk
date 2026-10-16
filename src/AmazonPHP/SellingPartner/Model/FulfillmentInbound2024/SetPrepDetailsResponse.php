@@ -2,10 +2,9 @@
 
 declare(strict_types=1);
 
-
 namespace Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound2024;
 
-use \ArrayAccess;
+use ArrayAccess;
 use Plenty\AmazonPHP\SellingPartner\Exception\AssertionException;
 use Plenty\AmazonPHP\SellingPartner\ModelInterface;
 use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
@@ -24,7 +23,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class SetPrepDetailsResponse implements ModelInterface, ArrayAccess, \JsonSerializable
+class SetPrepDetailsResponse implements ModelInterface, ArrayAccess, \JsonSerializable, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -60,7 +59,7 @@ class SetPrepDetailsResponse implements ModelInterface, ArrayAccess, \JsonSerial
      *
      * @return array
      */
-    public static function openAPITypes() : array
+    public static function openAPITypes(): array
     {
         return self::$openAPITypes;
     }
@@ -70,7 +69,7 @@ class SetPrepDetailsResponse implements ModelInterface, ArrayAccess, \JsonSerial
      *
      * @return array
      */
-    public static function openAPIFormats() : array
+    public static function openAPIFormats(): array
     {
         return self::$openAPIFormats;
     }
@@ -109,7 +108,7 @@ class SetPrepDetailsResponse implements ModelInterface, ArrayAccess, \JsonSerial
      *
      * @return array
      */
-    public static function attributeMap() : array
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -119,7 +118,7 @@ class SetPrepDetailsResponse implements ModelInterface, ArrayAccess, \JsonSerial
      *
      * @return array
      */
-    public static function setters() : array
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -129,7 +128,7 @@ class SetPrepDetailsResponse implements ModelInterface, ArrayAccess, \JsonSerial
      *
      * @return array
      */
-    public static function getters() : array
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -139,7 +138,7 @@ class SetPrepDetailsResponse implements ModelInterface, ArrayAccess, \JsonSerial
      *
      * @return string
      */
-    public function getModelName() : string
+    public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
@@ -158,7 +157,7 @@ class SetPrepDetailsResponse implements ModelInterface, ArrayAccess, \JsonSerial
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['operation_id'] = $data['operation_id'] ?? null;
     }
@@ -168,7 +167,7 @@ class SetPrepDetailsResponse implements ModelInterface, ArrayAccess, \JsonSerial
      *
      * @throws AssertionException
      */
-    public function validate() : void
+    public function validate(): void
     {
         if ($this->container['operation_id'] === null) {
             throw new AssertionException("'operation_id' can't be null");
@@ -185,7 +184,6 @@ class SetPrepDetailsResponse implements ModelInterface, ArrayAccess, \JsonSerial
         if (!preg_match("/^[a-zA-Z0-9-]*$/", $this->container['operation_id'])) {
             throw new AssertionException("invalid value for 'operation_id', must be conform to the pattern /^[a-zA-Z0-9-]*$/.");
         }
-
     }
 
     /**
@@ -193,7 +191,7 @@ class SetPrepDetailsResponse implements ModelInterface, ArrayAccess, \JsonSerial
      *
      * @throws AssertionException
      */
-    public function listInvalidProperties() : array
+    public function listInvalidProperties(): array
     {
         return [];
     }
@@ -204,7 +202,7 @@ class SetPrepDetailsResponse implements ModelInterface, ArrayAccess, \JsonSerial
      *
      * @return bool True if all properties are valid
      */
-    public function valid() : bool
+    public function valid(): bool
     {
         return \count($this->listInvalidProperties()) === 0;
     }
@@ -226,7 +224,7 @@ class SetPrepDetailsResponse implements ModelInterface, ArrayAccess, \JsonSerial
      *
      * @return self
      */
-    public function setOperationId($operation_id) : self
+    public function setOperationId($operation_id): self
     {
         $this->container['operation_id'] = $operation_id;
 
@@ -237,7 +235,7 @@ class SetPrepDetailsResponse implements ModelInterface, ArrayAccess, \JsonSerial
      *
      * @return boolean
      */
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -248,7 +246,7 @@ class SetPrepDetailsResponse implements ModelInterface, ArrayAccess, \JsonSerial
      * @return mixed|null
      */
     #[\ReturnTypeWillChange]
-    public function offsetGet($offset)
+    public function offsetGet($offset): mixed
     {
         return $this->container[$offset] ?? null;
     }
@@ -258,7 +256,7 @@ class SetPrepDetailsResponse implements ModelInterface, ArrayAccess, \JsonSerial
      *
      * @return void
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         if (is_null($offset)) {
             $this->container[] = $value;
@@ -272,7 +270,7 @@ class SetPrepDetailsResponse implements ModelInterface, ArrayAccess, \JsonSerial
      *
      * @return void
      */
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -285,9 +283,9 @@ class SetPrepDetailsResponse implements ModelInterface, ArrayAccess, \JsonSerial
      * of any type other than a resource.
      */
     #[\ReturnTypeWillChange]
-    public function jsonSerialize() : string
+    public function jsonSerialize(): string
     {
-       return \json_encode(ObjectSerializer::sanitizeForSerialization($this));
+        return \json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }
 
     /**
@@ -295,9 +293,9 @@ class SetPrepDetailsResponse implements ModelInterface, ArrayAccess, \JsonSerial
      *
      * @return string
      */
-    public function __toString() : string
+    public function __toString(): string
     {
-        return json_encode(
+        return (string) json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );
@@ -308,9 +306,8 @@ class SetPrepDetailsResponse implements ModelInterface, ArrayAccess, \JsonSerial
      *
      * @return string
      */
-    public function toHeaderValue() : string
+    public function toHeaderValue(): string
     {
         return json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }
 }
-

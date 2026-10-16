@@ -1,4 +1,7 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
+
 /**
  * ItemOfferByMarketplace.
  *
@@ -40,7 +43,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class ItemOfferByMarketplace implements \ArrayAccess, \JsonSerializable, ModelInterface
+class ItemOfferByMarketplace implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -63,8 +66,8 @@ class ItemOfferByMarketplace implements \ArrayAccess, \JsonSerializable, ModelIn
     protected static /** [COMPAT] array */ $openAPITypes = [
         'marketplace_id' => 'string',
         'offer_type' => 'string',
-        'price' => '\Plenty\AmazonPHP\SellingPartner\Model\ListingsItems\Money',
-        'points' => '\Plenty\AmazonPHP\SellingPartner\Model\ListingsItems\Points',
+        'price' => \Plenty\AmazonPHP\SellingPartner\Model\ListingsItems\Money::class,
+        'points' => \Plenty\AmazonPHP\SellingPartner\Model\ListingsItems\Points::class,
     ];
 
     /**
@@ -131,7 +134,7 @@ class ItemOfferByMarketplace implements \ArrayAccess, \JsonSerializable, ModelIn
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['marketplace_id'] = $data['marketplace_id'] ?? null;
         $this->container['offer_type'] = $data['offer_type'] ?? null;
@@ -144,7 +147,7 @@ class ItemOfferByMarketplace implements \ArrayAccess, \JsonSerializable, ModelIn
      *
      * @return string[]
      */
-    public static function openAPITypes() : array
+    public static function openAPITypes(): array
     {
         return self::$openAPITypes;
     }
@@ -154,7 +157,7 @@ class ItemOfferByMarketplace implements \ArrayAccess, \JsonSerializable, ModelIn
      *
      * @return null[]|string[]
      */
-    public static function openAPIFormats() : array
+    public static function openAPIFormats(): array
     {
         return self::$openAPIFormats;
     }
@@ -165,7 +168,7 @@ class ItemOfferByMarketplace implements \ArrayAccess, \JsonSerializable, ModelIn
      *
      * @return string[]
      */
-    public static function attributeMap() : array
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -175,7 +178,7 @@ class ItemOfferByMarketplace implements \ArrayAccess, \JsonSerializable, ModelIn
      *
      * @return string[]
      */
-    public static function setters() : array
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -185,7 +188,7 @@ class ItemOfferByMarketplace implements \ArrayAccess, \JsonSerializable, ModelIn
      *
      * @return string[]
      */
-    public static function getters() : array
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -193,9 +196,9 @@ class ItemOfferByMarketplace implements \ArrayAccess, \JsonSerializable, ModelIn
     /**
      * Gets the string presentation of the object.
      */
-    public function __toString() : string
+    public function __toString(): string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );
@@ -204,7 +207,7 @@ class ItemOfferByMarketplace implements \ArrayAccess, \JsonSerializable, ModelIn
     /**
      * The original name of the model.
      */
-    public function getModelName() : string
+    public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
@@ -214,7 +217,7 @@ class ItemOfferByMarketplace implements \ArrayAccess, \JsonSerializable, ModelIn
      *
      * @return string[]
      */
-    public function getOfferTypeAllowableValues() : array
+    public function getOfferTypeAllowableValues(): array
     {
         return [
             self::OFFER_TYPE_B2_C,
@@ -227,7 +230,7 @@ class ItemOfferByMarketplace implements \ArrayAccess, \JsonSerializable, ModelIn
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties() : array
+    public function listInvalidProperties(): array
     {
         $invalidProperties = [];
 
@@ -261,7 +264,7 @@ class ItemOfferByMarketplace implements \ArrayAccess, \JsonSerializable, ModelIn
      *
      * @return bool True if all properties are valid
      */
-    public function valid() : bool
+    public function valid(): bool
     {
         return \count($this->listInvalidProperties()) === 0;
     }
@@ -269,7 +272,7 @@ class ItemOfferByMarketplace implements \ArrayAccess, \JsonSerializable, ModelIn
     /**
      * Gets marketplace_id.
      */
-    public function getMarketplaceId() : string
+    public function getMarketplaceId(): string
     {
         return $this->container['marketplace_id'];
     }
@@ -279,7 +282,7 @@ class ItemOfferByMarketplace implements \ArrayAccess, \JsonSerializable, ModelIn
      *
      * @param string $marketplace_id amazon marketplace identifier
      */
-    public function setMarketplaceId(string $marketplace_id) : self
+    public function setMarketplaceId(string $marketplace_id): self
     {
         $this->container['marketplace_id'] = $marketplace_id;
 
@@ -289,7 +292,7 @@ class ItemOfferByMarketplace implements \ArrayAccess, \JsonSerializable, ModelIn
     /**
      * Gets offer_type.
      */
-    public function getOfferType() : string
+    public function getOfferType(): string
     {
         return $this->container['offer_type'];
     }
@@ -299,7 +302,7 @@ class ItemOfferByMarketplace implements \ArrayAccess, \JsonSerializable, ModelIn
      *
      * @param string $offer_type type of offer for the listings item
      */
-    public function setOfferType(string $offer_type) : self
+    public function setOfferType(string $offer_type): self
     {
         $allowedValues = $this->getOfferTypeAllowableValues();
 
@@ -320,7 +323,7 @@ class ItemOfferByMarketplace implements \ArrayAccess, \JsonSerializable, ModelIn
     /**
      * Gets price.
      */
-    public function getPrice() : Money
+    public function getPrice(): Money
     {
         return $this->container['price'];
     }
@@ -330,7 +333,7 @@ class ItemOfferByMarketplace implements \ArrayAccess, \JsonSerializable, ModelIn
      *
      * @param \Plenty\AmazonPHP\SellingPartner\Model\ListingsItems\Money $price price
      */
-    public function setPrice(Money $price) : self
+    public function setPrice(Money $price): self
     {
         $this->container['price'] = $price;
 
@@ -340,7 +343,7 @@ class ItemOfferByMarketplace implements \ArrayAccess, \JsonSerializable, ModelIn
     /**
      * Gets points.
      */
-    public function getPoints() : ?Points
+    public function getPoints(): ?Points
     {
         return $this->container['points'];
     }
@@ -350,7 +353,7 @@ class ItemOfferByMarketplace implements \ArrayAccess, \JsonSerializable, ModelIn
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\ListingsItems\Points $points points
      */
-    public function setPoints(?Points $points) : self
+    public function setPoints(?Points $points): self
     {
         $this->container['points'] = $points;
 
@@ -362,7 +365,7 @@ class ItemOfferByMarketplace implements \ArrayAccess, \JsonSerializable, ModelIn
      *
      * @param int $offset Offset
      */
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -385,7 +388,7 @@ class ItemOfferByMarketplace implements \ArrayAccess, \JsonSerializable, ModelIn
      * @param null|int $offset Offset
      * @param mixed $value Value to be set
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         if (null === $offset) {
             $this->container[] = $value;
@@ -399,7 +402,7 @@ class ItemOfferByMarketplace implements \ArrayAccess, \JsonSerializable, ModelIn
      *
      * @param int $offset Offset
      */
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -412,7 +415,7 @@ class ItemOfferByMarketplace implements \ArrayAccess, \JsonSerializable, ModelIn
      * @return mixed returns data which can be serialized by json_encode(), which is a value
      *               of any type other than a resource
      */
-    public function jsonSerialize() : string
+    public function jsonSerialize(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }
@@ -420,7 +423,7 @@ class ItemOfferByMarketplace implements \ArrayAccess, \JsonSerializable, ModelIn
     /**
      * Gets a header-safe presentation of the object.
      */
-    public function toHeaderValue() : string
+    public function toHeaderValue(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }

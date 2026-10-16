@@ -1,4 +1,7 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
+
 /**
  * GetInboundGuidanceResult.
  *
@@ -40,7 +43,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class GetInboundGuidanceResult implements \ArrayAccess, \JsonSerializable, ModelInterface
+class GetInboundGuidanceResult implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -127,7 +130,7 @@ class GetInboundGuidanceResult implements \ArrayAccess, \JsonSerializable, Model
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['sku_inbound_guidance_list'] = $data['sku_inbound_guidance_list'] ?? null;
         $this->container['invalid_sku_list'] = $data['invalid_sku_list'] ?? null;
@@ -140,7 +143,7 @@ class GetInboundGuidanceResult implements \ArrayAccess, \JsonSerializable, Model
      *
      * @return string[]
      */
-    public static function openAPITypes() : array
+    public static function openAPITypes(): array
     {
         return self::$openAPITypes;
     }
@@ -150,7 +153,7 @@ class GetInboundGuidanceResult implements \ArrayAccess, \JsonSerializable, Model
      *
      * @return null[]|string[]
      */
-    public static function openAPIFormats() : array
+    public static function openAPIFormats(): array
     {
         return self::$openAPIFormats;
     }
@@ -161,7 +164,7 @@ class GetInboundGuidanceResult implements \ArrayAccess, \JsonSerializable, Model
      *
      * @return string[]
      */
-    public static function attributeMap() : array
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -171,7 +174,7 @@ class GetInboundGuidanceResult implements \ArrayAccess, \JsonSerializable, Model
      *
      * @return string[]
      */
-    public static function setters() : array
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -181,7 +184,7 @@ class GetInboundGuidanceResult implements \ArrayAccess, \JsonSerializable, Model
      *
      * @return string[]
      */
-    public static function getters() : array
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -189,9 +192,9 @@ class GetInboundGuidanceResult implements \ArrayAccess, \JsonSerializable, Model
     /**
      * Gets the string presentation of the object.
      */
-    public function __toString() : string
+    public function __toString(): string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );
@@ -200,7 +203,7 @@ class GetInboundGuidanceResult implements \ArrayAccess, \JsonSerializable, Model
     /**
      * The original name of the model.
      */
-    public function getModelName() : string
+    public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
@@ -210,7 +213,7 @@ class GetInboundGuidanceResult implements \ArrayAccess, \JsonSerializable, Model
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties() : array
+    public function listInvalidProperties(): array
     {
         return [];
     }
@@ -221,7 +224,7 @@ class GetInboundGuidanceResult implements \ArrayAccess, \JsonSerializable, Model
      *
      * @return bool True if all properties are valid
      */
-    public function valid() : bool
+    public function valid(): bool
     {
         return \count($this->listInvalidProperties()) === 0;
     }
@@ -231,7 +234,7 @@ class GetInboundGuidanceResult implements \ArrayAccess, \JsonSerializable, Model
      *
      * @return null|\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound\SKUInboundGuidance[]
      */
-    public function getSkuInboundGuidanceList() : ?array
+    public function getSkuInboundGuidanceList(): ?array
     {
         return $this->container['sku_inbound_guidance_list'];
     }
@@ -241,7 +244,7 @@ class GetInboundGuidanceResult implements \ArrayAccess, \JsonSerializable, Model
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound\SKUInboundGuidance[] $sku_inbound_guidance_list a list of SKU inbound guidance information
      */
-    public function setSkuInboundGuidanceList(?array $sku_inbound_guidance_list) : self
+    public function setSkuInboundGuidanceList(?array $sku_inbound_guidance_list): self
     {
         $this->container['sku_inbound_guidance_list'] = $sku_inbound_guidance_list;
 
@@ -253,7 +256,7 @@ class GetInboundGuidanceResult implements \ArrayAccess, \JsonSerializable, Model
      *
      * @return null|\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound\InvalidSKU[]
      */
-    public function getInvalidSkuList() : ?array
+    public function getInvalidSkuList(): ?array
     {
         return $this->container['invalid_sku_list'];
     }
@@ -263,7 +266,7 @@ class GetInboundGuidanceResult implements \ArrayAccess, \JsonSerializable, Model
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound\InvalidSKU[] $invalid_sku_list a list of invalid SKU values and the reason they are invalid
      */
-    public function setInvalidSkuList(?array $invalid_sku_list) : self
+    public function setInvalidSkuList(?array $invalid_sku_list): self
     {
         $this->container['invalid_sku_list'] = $invalid_sku_list;
 
@@ -275,7 +278,7 @@ class GetInboundGuidanceResult implements \ArrayAccess, \JsonSerializable, Model
      *
      * @return null|\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound\ASINInboundGuidance[]
      */
-    public function getAsinInboundGuidanceList() : ?array
+    public function getAsinInboundGuidanceList(): ?array
     {
         return $this->container['asin_inbound_guidance_list'];
     }
@@ -285,7 +288,7 @@ class GetInboundGuidanceResult implements \ArrayAccess, \JsonSerializable, Model
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound\ASINInboundGuidance[] $asin_inbound_guidance_list a list of ASINs and their associated inbound guidance
      */
-    public function setAsinInboundGuidanceList(?array $asin_inbound_guidance_list) : self
+    public function setAsinInboundGuidanceList(?array $asin_inbound_guidance_list): self
     {
         $this->container['asin_inbound_guidance_list'] = $asin_inbound_guidance_list;
 
@@ -297,7 +300,7 @@ class GetInboundGuidanceResult implements \ArrayAccess, \JsonSerializable, Model
      *
      * @return null|\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound\InvalidASIN[]
      */
-    public function getInvalidAsinList() : ?array
+    public function getInvalidAsinList(): ?array
     {
         return $this->container['invalid_asin_list'];
     }
@@ -307,7 +310,7 @@ class GetInboundGuidanceResult implements \ArrayAccess, \JsonSerializable, Model
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound\InvalidASIN[] $invalid_asin_list a list of invalid ASIN values and the reasons they are invalid
      */
-    public function setInvalidAsinList(?array $invalid_asin_list) : self
+    public function setInvalidAsinList(?array $invalid_asin_list): self
     {
         $this->container['invalid_asin_list'] = $invalid_asin_list;
 
@@ -319,7 +322,7 @@ class GetInboundGuidanceResult implements \ArrayAccess, \JsonSerializable, Model
      *
      * @param int $offset Offset
      */
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -342,7 +345,7 @@ class GetInboundGuidanceResult implements \ArrayAccess, \JsonSerializable, Model
      * @param null|int $offset Offset
      * @param mixed $value Value to be set
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         if (null === $offset) {
             $this->container[] = $value;
@@ -356,7 +359,7 @@ class GetInboundGuidanceResult implements \ArrayAccess, \JsonSerializable, Model
      *
      * @param int $offset Offset
      */
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -369,7 +372,7 @@ class GetInboundGuidanceResult implements \ArrayAccess, \JsonSerializable, Model
      * @return mixed returns data which can be serialized by json_encode(), which is a value
      *               of any type other than a resource
      */
-    public function jsonSerialize() : string
+    public function jsonSerialize(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }
@@ -377,7 +380,7 @@ class GetInboundGuidanceResult implements \ArrayAccess, \JsonSerializable, Model
     /**
      * Gets a header-safe presentation of the object.
      */
-    public function toHeaderValue() : string
+    public function toHeaderValue(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }

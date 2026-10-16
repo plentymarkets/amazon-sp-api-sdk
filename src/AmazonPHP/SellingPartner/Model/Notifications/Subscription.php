@@ -1,4 +1,7 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
+
 /**
  * Subscription.
  *
@@ -40,7 +43,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class Subscription implements \ArrayAccess, \JsonSerializable, ModelInterface
+class Subscription implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -60,7 +63,7 @@ class Subscription implements \ArrayAccess, \JsonSerializable, ModelInterface
         'subscription_id' => 'string',
         'payload_version' => 'string',
         'destination_id' => 'string',
-        'processing_directive' => '\Plenty\AmazonPHP\SellingPartner\Model\Notifications\ProcessingDirective',
+        'processing_directive' => \Plenty\AmazonPHP\SellingPartner\Model\Notifications\ProcessingDirective::class,
     ];
 
     /**
@@ -127,7 +130,7 @@ class Subscription implements \ArrayAccess, \JsonSerializable, ModelInterface
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['subscription_id'] = $data['subscription_id'] ?? null;
         $this->container['payload_version'] = $data['payload_version'] ?? null;
@@ -140,7 +143,7 @@ class Subscription implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return string[]
      */
-    public static function openAPITypes() : array
+    public static function openAPITypes(): array
     {
         return self::$openAPITypes;
     }
@@ -150,7 +153,7 @@ class Subscription implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return null[]|string[]
      */
-    public static function openAPIFormats() : array
+    public static function openAPIFormats(): array
     {
         return self::$openAPIFormats;
     }
@@ -161,7 +164,7 @@ class Subscription implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return string[]
      */
-    public static function attributeMap() : array
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -171,7 +174,7 @@ class Subscription implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return string[]
      */
-    public static function setters() : array
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -181,7 +184,7 @@ class Subscription implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return string[]
      */
-    public static function getters() : array
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -189,9 +192,9 @@ class Subscription implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets the string presentation of the object.
      */
-    public function __toString() : string
+    public function __toString(): string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );
@@ -200,7 +203,7 @@ class Subscription implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * The original name of the model.
      */
-    public function getModelName() : string
+    public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
@@ -210,7 +213,7 @@ class Subscription implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties() : array
+    public function listInvalidProperties(): array
     {
         $invalidProperties = [];
 
@@ -235,7 +238,7 @@ class Subscription implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return bool True if all properties are valid
      */
-    public function valid() : bool
+    public function valid(): bool
     {
         return \count($this->listInvalidProperties()) === 0;
     }
@@ -243,7 +246,7 @@ class Subscription implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets subscription_id.
      */
-    public function getSubscriptionId() : string
+    public function getSubscriptionId(): string
     {
         return $this->container['subscription_id'];
     }
@@ -253,7 +256,7 @@ class Subscription implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param string $subscription_id the subscription identifier generated when the subscription is created
      */
-    public function setSubscriptionId(string $subscription_id) : self
+    public function setSubscriptionId(string $subscription_id): self
     {
         $this->container['subscription_id'] = $subscription_id;
 
@@ -263,7 +266,7 @@ class Subscription implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets payload_version.
      */
-    public function getPayloadVersion() : string
+    public function getPayloadVersion(): string
     {
         return $this->container['payload_version'];
     }
@@ -273,7 +276,7 @@ class Subscription implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param string $payload_version the version of the payload object to be used in the notification
      */
-    public function setPayloadVersion(string $payload_version) : self
+    public function setPayloadVersion(string $payload_version): self
     {
         $this->container['payload_version'] = $payload_version;
 
@@ -283,7 +286,7 @@ class Subscription implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets destination_id.
      */
-    public function getDestinationId() : string
+    public function getDestinationId(): string
     {
         return $this->container['destination_id'];
     }
@@ -293,7 +296,7 @@ class Subscription implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param string $destination_id the identifier for the destination where notifications will be delivered
      */
-    public function setDestinationId(string $destination_id) : self
+    public function setDestinationId(string $destination_id): self
     {
         $this->container['destination_id'] = $destination_id;
 
@@ -303,7 +306,7 @@ class Subscription implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets processing_directive.
      */
-    public function getProcessingDirective() : ?ProcessingDirective
+    public function getProcessingDirective(): ?ProcessingDirective
     {
         return $this->container['processing_directive'];
     }
@@ -313,7 +316,7 @@ class Subscription implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\Notifications\ProcessingDirective $processing_directive processing_directive
      */
-    public function setProcessingDirective(?ProcessingDirective $processing_directive) : self
+    public function setProcessingDirective(?ProcessingDirective $processing_directive): self
     {
         $this->container['processing_directive'] = $processing_directive;
 
@@ -325,7 +328,7 @@ class Subscription implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param int $offset Offset
      */
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -348,7 +351,7 @@ class Subscription implements \ArrayAccess, \JsonSerializable, ModelInterface
      * @param null|int $offset Offset
      * @param mixed $value Value to be set
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         if (null === $offset) {
             $this->container[] = $value;
@@ -362,7 +365,7 @@ class Subscription implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param int $offset Offset
      */
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -375,7 +378,7 @@ class Subscription implements \ArrayAccess, \JsonSerializable, ModelInterface
      * @return mixed returns data which can be serialized by json_encode(), which is a value
      *               of any type other than a resource
      */
-    public function jsonSerialize() : string
+    public function jsonSerialize(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }
@@ -383,7 +386,7 @@ class Subscription implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets a header-safe presentation of the object.
      */
-    public function toHeaderValue() : string
+    public function toHeaderValue(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }

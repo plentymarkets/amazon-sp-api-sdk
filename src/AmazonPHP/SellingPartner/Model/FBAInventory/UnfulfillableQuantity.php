@@ -1,4 +1,7 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
+
 /**
  * UnfulfillableQuantity.
  *
@@ -40,7 +43,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class UnfulfillableQuantity implements \ArrayAccess, \JsonSerializable, ModelInterface
+class UnfulfillableQuantity implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -142,7 +145,7 @@ class UnfulfillableQuantity implements \ArrayAccess, \JsonSerializable, ModelInt
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['total_unfulfillable_quantity'] = $data['total_unfulfillable_quantity'] ?? null;
         $this->container['customer_damaged_quantity'] = $data['customer_damaged_quantity'] ?? null;
@@ -158,7 +161,7 @@ class UnfulfillableQuantity implements \ArrayAccess, \JsonSerializable, ModelInt
      *
      * @return string[]
      */
-    public static function openAPITypes() : array
+    public static function openAPITypes(): array
     {
         return self::$openAPITypes;
     }
@@ -168,7 +171,7 @@ class UnfulfillableQuantity implements \ArrayAccess, \JsonSerializable, ModelInt
      *
      * @return null[]|string[]
      */
-    public static function openAPIFormats() : array
+    public static function openAPIFormats(): array
     {
         return self::$openAPIFormats;
     }
@@ -179,7 +182,7 @@ class UnfulfillableQuantity implements \ArrayAccess, \JsonSerializable, ModelInt
      *
      * @return string[]
      */
-    public static function attributeMap() : array
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -189,7 +192,7 @@ class UnfulfillableQuantity implements \ArrayAccess, \JsonSerializable, ModelInt
      *
      * @return string[]
      */
-    public static function setters() : array
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -199,7 +202,7 @@ class UnfulfillableQuantity implements \ArrayAccess, \JsonSerializable, ModelInt
      *
      * @return string[]
      */
-    public static function getters() : array
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -207,9 +210,9 @@ class UnfulfillableQuantity implements \ArrayAccess, \JsonSerializable, ModelInt
     /**
      * Gets the string presentation of the object.
      */
-    public function __toString() : string
+    public function __toString(): string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );
@@ -218,7 +221,7 @@ class UnfulfillableQuantity implements \ArrayAccess, \JsonSerializable, ModelInt
     /**
      * The original name of the model.
      */
-    public function getModelName() : string
+    public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
@@ -228,7 +231,7 @@ class UnfulfillableQuantity implements \ArrayAccess, \JsonSerializable, ModelInt
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties() : array
+    public function listInvalidProperties(): array
     {
         return [];
     }
@@ -239,7 +242,7 @@ class UnfulfillableQuantity implements \ArrayAccess, \JsonSerializable, ModelInt
      *
      * @return bool True if all properties are valid
      */
-    public function valid() : bool
+    public function valid(): bool
     {
         return \count($this->listInvalidProperties()) === 0;
     }
@@ -247,7 +250,7 @@ class UnfulfillableQuantity implements \ArrayAccess, \JsonSerializable, ModelInt
     /**
      * Gets total_unfulfillable_quantity.
      */
-    public function getTotalUnfulfillableQuantity() : ?int
+    public function getTotalUnfulfillableQuantity(): ?int
     {
         return $this->container['total_unfulfillable_quantity'];
     }
@@ -257,7 +260,7 @@ class UnfulfillableQuantity implements \ArrayAccess, \JsonSerializable, ModelInt
      *
      * @param null|int $total_unfulfillable_quantity the total number of units in Amazon's fulfillment network in unsellable condition
      */
-    public function setTotalUnfulfillableQuantity(?int $total_unfulfillable_quantity) : self
+    public function setTotalUnfulfillableQuantity(?int $total_unfulfillable_quantity): self
     {
         $this->container['total_unfulfillable_quantity'] = $total_unfulfillable_quantity;
 
@@ -267,7 +270,7 @@ class UnfulfillableQuantity implements \ArrayAccess, \JsonSerializable, ModelInt
     /**
      * Gets customer_damaged_quantity.
      */
-    public function getCustomerDamagedQuantity() : ?int
+    public function getCustomerDamagedQuantity(): ?int
     {
         return $this->container['customer_damaged_quantity'];
     }
@@ -277,7 +280,7 @@ class UnfulfillableQuantity implements \ArrayAccess, \JsonSerializable, ModelInt
      *
      * @param null|int $customer_damaged_quantity the number of units in customer damaged disposition
      */
-    public function setCustomerDamagedQuantity(?int $customer_damaged_quantity) : self
+    public function setCustomerDamagedQuantity(?int $customer_damaged_quantity): self
     {
         $this->container['customer_damaged_quantity'] = $customer_damaged_quantity;
 
@@ -287,7 +290,7 @@ class UnfulfillableQuantity implements \ArrayAccess, \JsonSerializable, ModelInt
     /**
      * Gets warehouse_damaged_quantity.
      */
-    public function getWarehouseDamagedQuantity() : ?int
+    public function getWarehouseDamagedQuantity(): ?int
     {
         return $this->container['warehouse_damaged_quantity'];
     }
@@ -297,7 +300,7 @@ class UnfulfillableQuantity implements \ArrayAccess, \JsonSerializable, ModelInt
      *
      * @param null|int $warehouse_damaged_quantity the number of units in warehouse damaged disposition
      */
-    public function setWarehouseDamagedQuantity(?int $warehouse_damaged_quantity) : self
+    public function setWarehouseDamagedQuantity(?int $warehouse_damaged_quantity): self
     {
         $this->container['warehouse_damaged_quantity'] = $warehouse_damaged_quantity;
 
@@ -307,7 +310,7 @@ class UnfulfillableQuantity implements \ArrayAccess, \JsonSerializable, ModelInt
     /**
      * Gets distributor_damaged_quantity.
      */
-    public function getDistributorDamagedQuantity() : ?int
+    public function getDistributorDamagedQuantity(): ?int
     {
         return $this->container['distributor_damaged_quantity'];
     }
@@ -317,7 +320,7 @@ class UnfulfillableQuantity implements \ArrayAccess, \JsonSerializable, ModelInt
      *
      * @param null|int $distributor_damaged_quantity the number of units in distributor damaged disposition
      */
-    public function setDistributorDamagedQuantity(?int $distributor_damaged_quantity) : self
+    public function setDistributorDamagedQuantity(?int $distributor_damaged_quantity): self
     {
         $this->container['distributor_damaged_quantity'] = $distributor_damaged_quantity;
 
@@ -327,7 +330,7 @@ class UnfulfillableQuantity implements \ArrayAccess, \JsonSerializable, ModelInt
     /**
      * Gets carrier_damaged_quantity.
      */
-    public function getCarrierDamagedQuantity() : ?int
+    public function getCarrierDamagedQuantity(): ?int
     {
         return $this->container['carrier_damaged_quantity'];
     }
@@ -337,7 +340,7 @@ class UnfulfillableQuantity implements \ArrayAccess, \JsonSerializable, ModelInt
      *
      * @param null|int $carrier_damaged_quantity the number of units in carrier damaged disposition
      */
-    public function setCarrierDamagedQuantity(?int $carrier_damaged_quantity) : self
+    public function setCarrierDamagedQuantity(?int $carrier_damaged_quantity): self
     {
         $this->container['carrier_damaged_quantity'] = $carrier_damaged_quantity;
 
@@ -347,7 +350,7 @@ class UnfulfillableQuantity implements \ArrayAccess, \JsonSerializable, ModelInt
     /**
      * Gets defective_quantity.
      */
-    public function getDefectiveQuantity() : ?int
+    public function getDefectiveQuantity(): ?int
     {
         return $this->container['defective_quantity'];
     }
@@ -357,7 +360,7 @@ class UnfulfillableQuantity implements \ArrayAccess, \JsonSerializable, ModelInt
      *
      * @param null|int $defective_quantity the number of units in defective disposition
      */
-    public function setDefectiveQuantity(?int $defective_quantity) : self
+    public function setDefectiveQuantity(?int $defective_quantity): self
     {
         $this->container['defective_quantity'] = $defective_quantity;
 
@@ -367,7 +370,7 @@ class UnfulfillableQuantity implements \ArrayAccess, \JsonSerializable, ModelInt
     /**
      * Gets expired_quantity.
      */
-    public function getExpiredQuantity() : ?int
+    public function getExpiredQuantity(): ?int
     {
         return $this->container['expired_quantity'];
     }
@@ -377,7 +380,7 @@ class UnfulfillableQuantity implements \ArrayAccess, \JsonSerializable, ModelInt
      *
      * @param null|int $expired_quantity the number of units in expired disposition
      */
-    public function setExpiredQuantity(?int $expired_quantity) : self
+    public function setExpiredQuantity(?int $expired_quantity): self
     {
         $this->container['expired_quantity'] = $expired_quantity;
 
@@ -389,7 +392,7 @@ class UnfulfillableQuantity implements \ArrayAccess, \JsonSerializable, ModelInt
      *
      * @param int $offset Offset
      */
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -412,7 +415,7 @@ class UnfulfillableQuantity implements \ArrayAccess, \JsonSerializable, ModelInt
      * @param null|int $offset Offset
      * @param mixed $value Value to be set
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         if (null === $offset) {
             $this->container[] = $value;
@@ -426,7 +429,7 @@ class UnfulfillableQuantity implements \ArrayAccess, \JsonSerializable, ModelInt
      *
      * @param int $offset Offset
      */
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -439,7 +442,7 @@ class UnfulfillableQuantity implements \ArrayAccess, \JsonSerializable, ModelInt
      * @return mixed returns data which can be serialized by json_encode(), which is a value
      *               of any type other than a resource
      */
-    public function jsonSerialize() : string
+    public function jsonSerialize(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }
@@ -447,7 +450,7 @@ class UnfulfillableQuantity implements \ArrayAccess, \JsonSerializable, ModelInt
     /**
      * Gets a header-safe presentation of the object.
      */
-    public function toHeaderValue() : string
+    public function toHeaderValue(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }

@@ -1,4 +1,7 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
+
 /**
  * ItemBuyerInfo.
  *
@@ -40,7 +43,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class ItemBuyerInfo implements \ArrayAccess, \JsonSerializable, ModelInterface
+class ItemBuyerInfo implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -57,9 +60,9 @@ class ItemBuyerInfo implements \ArrayAccess, \JsonSerializable, ModelInterface
      * @var string[]
      */
     protected static /** [COMPAT] array */ $openAPITypes = [
-        'buyer_customized_info' => '\Plenty\AmazonPHP\SellingPartner\Model\Orders\BuyerCustomizedInfoDetail',
-        'gift_wrap_price' => '\Plenty\AmazonPHP\SellingPartner\Model\Orders\Money',
-        'gift_wrap_tax' => '\Plenty\AmazonPHP\SellingPartner\Model\Orders\Money',
+        'buyer_customized_info' => \Plenty\AmazonPHP\SellingPartner\Model\Orders\BuyerCustomizedInfoDetail::class,
+        'gift_wrap_price' => \Plenty\AmazonPHP\SellingPartner\Model\Orders\Money::class,
+        'gift_wrap_tax' => \Plenty\AmazonPHP\SellingPartner\Model\Orders\Money::class,
         'gift_message_text' => 'string',
         'gift_wrap_level' => 'string',
     ];
@@ -132,7 +135,7 @@ class ItemBuyerInfo implements \ArrayAccess, \JsonSerializable, ModelInterface
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['buyer_customized_info'] = $data['buyer_customized_info'] ?? null;
         $this->container['gift_wrap_price'] = $data['gift_wrap_price'] ?? null;
@@ -146,7 +149,7 @@ class ItemBuyerInfo implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return string[]
      */
-    public static function openAPITypes() : array
+    public static function openAPITypes(): array
     {
         return self::$openAPITypes;
     }
@@ -156,7 +159,7 @@ class ItemBuyerInfo implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return null[]|string[]
      */
-    public static function openAPIFormats() : array
+    public static function openAPIFormats(): array
     {
         return self::$openAPIFormats;
     }
@@ -167,7 +170,7 @@ class ItemBuyerInfo implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return string[]
      */
-    public static function attributeMap() : array
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -177,7 +180,7 @@ class ItemBuyerInfo implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return string[]
      */
-    public static function setters() : array
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -187,7 +190,7 @@ class ItemBuyerInfo implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return string[]
      */
-    public static function getters() : array
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -195,9 +198,9 @@ class ItemBuyerInfo implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets the string presentation of the object.
      */
-    public function __toString() : string
+    public function __toString(): string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );
@@ -206,7 +209,7 @@ class ItemBuyerInfo implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * The original name of the model.
      */
-    public function getModelName() : string
+    public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
@@ -216,7 +219,7 @@ class ItemBuyerInfo implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties() : array
+    public function listInvalidProperties(): array
     {
         return [];
     }
@@ -227,7 +230,7 @@ class ItemBuyerInfo implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return bool True if all properties are valid
      */
-    public function valid() : bool
+    public function valid(): bool
     {
         return \count($this->listInvalidProperties()) === 0;
     }
@@ -235,7 +238,7 @@ class ItemBuyerInfo implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets buyer_customized_info.
      */
-    public function getBuyerCustomizedInfo() : ?BuyerCustomizedInfoDetail
+    public function getBuyerCustomizedInfo(): ?BuyerCustomizedInfoDetail
     {
         return $this->container['buyer_customized_info'];
     }
@@ -245,7 +248,7 @@ class ItemBuyerInfo implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\Orders\BuyerCustomizedInfoDetail $buyer_customized_info buyer_customized_info
      */
-    public function setBuyerCustomizedInfo(?BuyerCustomizedInfoDetail $buyer_customized_info) : self
+    public function setBuyerCustomizedInfo(?BuyerCustomizedInfoDetail $buyer_customized_info): self
     {
         $this->container['buyer_customized_info'] = $buyer_customized_info;
 
@@ -255,7 +258,7 @@ class ItemBuyerInfo implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets gift_wrap_price.
      */
-    public function getGiftWrapPrice() : ?Money
+    public function getGiftWrapPrice(): ?Money
     {
         return $this->container['gift_wrap_price'];
     }
@@ -265,7 +268,7 @@ class ItemBuyerInfo implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\Orders\Money $gift_wrap_price gift_wrap_price
      */
-    public function setGiftWrapPrice(?Money $gift_wrap_price) : self
+    public function setGiftWrapPrice(?Money $gift_wrap_price): self
     {
         $this->container['gift_wrap_price'] = $gift_wrap_price;
 
@@ -275,7 +278,7 @@ class ItemBuyerInfo implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets gift_wrap_tax.
      */
-    public function getGiftWrapTax() : ?Money
+    public function getGiftWrapTax(): ?Money
     {
         return $this->container['gift_wrap_tax'];
     }
@@ -285,7 +288,7 @@ class ItemBuyerInfo implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\Orders\Money $gift_wrap_tax gift_wrap_tax
      */
-    public function setGiftWrapTax(?Money $gift_wrap_tax) : self
+    public function setGiftWrapTax(?Money $gift_wrap_tax): self
     {
         $this->container['gift_wrap_tax'] = $gift_wrap_tax;
 
@@ -295,7 +298,7 @@ class ItemBuyerInfo implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets gift_message_text.
      */
-    public function getGiftMessageText() : ?string
+    public function getGiftMessageText(): ?string
     {
         return $this->container['gift_message_text'];
     }
@@ -305,7 +308,7 @@ class ItemBuyerInfo implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param null|string $gift_message_text a gift message provided by the buyer
      */
-    public function setGiftMessageText(?string $gift_message_text) : self
+    public function setGiftMessageText(?string $gift_message_text): self
     {
         $this->container['gift_message_text'] = $gift_message_text;
 
@@ -315,7 +318,7 @@ class ItemBuyerInfo implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets gift_wrap_level.
      */
-    public function getGiftWrapLevel() : ?string
+    public function getGiftWrapLevel(): ?string
     {
         return $this->container['gift_wrap_level'];
     }
@@ -325,7 +328,7 @@ class ItemBuyerInfo implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param null|string $gift_wrap_level the gift wrap level specified by the buyer
      */
-    public function setGiftWrapLevel(?string $gift_wrap_level) : self
+    public function setGiftWrapLevel(?string $gift_wrap_level): self
     {
         $this->container['gift_wrap_level'] = $gift_wrap_level;
 
@@ -337,7 +340,7 @@ class ItemBuyerInfo implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param int $offset Offset
      */
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -360,7 +363,7 @@ class ItemBuyerInfo implements \ArrayAccess, \JsonSerializable, ModelInterface
      * @param null|int $offset Offset
      * @param mixed $value Value to be set
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         if (null === $offset) {
             $this->container[] = $value;
@@ -374,7 +377,7 @@ class ItemBuyerInfo implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param int $offset Offset
      */
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -387,7 +390,7 @@ class ItemBuyerInfo implements \ArrayAccess, \JsonSerializable, ModelInterface
      * @return mixed returns data which can be serialized by json_encode(), which is a value
      *               of any type other than a resource
      */
-    public function jsonSerialize() : string
+    public function jsonSerialize(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }
@@ -395,7 +398,7 @@ class ItemBuyerInfo implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets a header-safe presentation of the object.
      */
-    public function toHeaderValue() : string
+    public function toHeaderValue(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }

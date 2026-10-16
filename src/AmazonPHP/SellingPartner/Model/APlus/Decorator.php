@@ -1,4 +1,7 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
+
 /**
  * Decorator.
  *
@@ -40,7 +43,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class Decorator implements \ArrayAccess, \JsonSerializable, ModelInterface
+class Decorator implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -57,7 +60,7 @@ class Decorator implements \ArrayAccess, \JsonSerializable, ModelInterface
      * @var string[]
      */
     protected static /** [COMPAT] array */ $openAPITypes = [
-        'type' => '\Plenty\AmazonPHP\SellingPartner\Model\APlus\DecoratorType',
+        'type' => \Plenty\AmazonPHP\SellingPartner\Model\APlus\DecoratorType::class,
         'offset' => 'int',
         'length' => 'int',
         'depth' => 'int',
@@ -127,7 +130,7 @@ class Decorator implements \ArrayAccess, \JsonSerializable, ModelInterface
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['type'] = $data['type'] ?? null;
         $this->container['offset'] = $data['offset'] ?? null;
@@ -140,7 +143,7 @@ class Decorator implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return string[]
      */
-    public static function openAPITypes() : array
+    public static function openAPITypes(): array
     {
         return self::$openAPITypes;
     }
@@ -150,7 +153,7 @@ class Decorator implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return null[]|string[]
      */
-    public static function openAPIFormats() : array
+    public static function openAPIFormats(): array
     {
         return self::$openAPIFormats;
     }
@@ -161,7 +164,7 @@ class Decorator implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return string[]
      */
-    public static function attributeMap() : array
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -171,7 +174,7 @@ class Decorator implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return string[]
      */
-    public static function setters() : array
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -181,7 +184,7 @@ class Decorator implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return string[]
      */
-    public static function getters() : array
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -189,9 +192,9 @@ class Decorator implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets the string presentation of the object.
      */
-    public function __toString() : string
+    public function __toString(): string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );
@@ -200,7 +203,7 @@ class Decorator implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * The original name of the model.
      */
-    public function getModelName() : string
+    public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
@@ -210,7 +213,7 @@ class Decorator implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties() : array
+    public function listInvalidProperties(): array
     {
         $invalidProperties = [];
 
@@ -247,7 +250,7 @@ class Decorator implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return bool True if all properties are valid
      */
-    public function valid() : bool
+    public function valid(): bool
     {
         return \count($this->listInvalidProperties()) === 0;
     }
@@ -255,7 +258,7 @@ class Decorator implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets type.
      */
-    public function getType() : ?DecoratorType
+    public function getType(): ?DecoratorType
     {
         return $this->container['type'];
     }
@@ -265,7 +268,7 @@ class Decorator implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\APlus\DecoratorType $type type
      */
-    public function setType(?DecoratorType $type) : self
+    public function setType(?DecoratorType $type): self
     {
         $this->container['type'] = $type;
 
@@ -275,7 +278,7 @@ class Decorator implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets offset.
      */
-    public function getOffset() : ?int
+    public function getOffset(): ?int
     {
         return $this->container['offset'];
     }
@@ -285,7 +288,7 @@ class Decorator implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param null|int $offset The starting character of this decorator within the content string. Use zero for the first character.
      */
-    public function setOffset(?int $offset) : self
+    public function setOffset(?int $offset): self
     {
         if (null !== $offset && ($offset > 10000)) {
             throw new \InvalidArgumentException('invalid value for $offset when calling Decorator., must be smaller than or equal to 10000.');
@@ -303,7 +306,7 @@ class Decorator implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets length.
      */
-    public function getLength() : ?int
+    public function getLength(): ?int
     {
         return $this->container['length'];
     }
@@ -313,7 +316,7 @@ class Decorator implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param null|int $length The number of content characters to alter with this decorator. Decorators such as line breaks can have zero length and fit between characters.
      */
-    public function setLength(?int $length) : self
+    public function setLength(?int $length): self
     {
         if (null !== $length && ($length > 10000)) {
             throw new \InvalidArgumentException('invalid value for $length when calling Decorator., must be smaller than or equal to 10000.');
@@ -331,7 +334,7 @@ class Decorator implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets depth.
      */
-    public function getDepth() : ?int
+    public function getDepth(): ?int
     {
         return $this->container['depth'];
     }
@@ -341,7 +344,7 @@ class Decorator implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param null|int $depth The relative intensity or variation of this decorator. Decorators such as bullet-points, for example, can have multiple indentation depths.
      */
-    public function setDepth(?int $depth) : self
+    public function setDepth(?int $depth): self
     {
         if (null !== $depth && ($depth > 100)) {
             throw new \InvalidArgumentException('invalid value for $depth when calling Decorator., must be smaller than or equal to 100.');
@@ -361,7 +364,7 @@ class Decorator implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param int $offset Offset
      */
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -384,7 +387,7 @@ class Decorator implements \ArrayAccess, \JsonSerializable, ModelInterface
      * @param null|int $offset Offset
      * @param mixed $value Value to be set
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         if (null === $offset) {
             $this->container[] = $value;
@@ -398,7 +401,7 @@ class Decorator implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param int $offset Offset
      */
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -411,7 +414,7 @@ class Decorator implements \ArrayAccess, \JsonSerializable, ModelInterface
      * @return mixed returns data which can be serialized by json_encode(), which is a value
      *               of any type other than a resource
      */
-    public function jsonSerialize() : string
+    public function jsonSerialize(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }
@@ -419,7 +422,7 @@ class Decorator implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets a header-safe presentation of the object.
      */
-    public function toHeaderValue() : string
+    public function toHeaderValue(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }

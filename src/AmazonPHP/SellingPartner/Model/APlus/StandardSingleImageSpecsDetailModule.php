@@ -1,4 +1,7 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
+
 /**
  * StandardSingleImageSpecsDetailModule.
  *
@@ -40,7 +43,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class StandardSingleImageSpecsDetailModule implements \ArrayAccess, \JsonSerializable, ModelInterface
+class StandardSingleImageSpecsDetailModule implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -57,14 +60,14 @@ class StandardSingleImageSpecsDetailModule implements \ArrayAccess, \JsonSeriali
      * @var string[]
      */
     protected static /** [COMPAT] array */ $openAPITypes = [
-        'headline' => '\Plenty\AmazonPHP\SellingPartner\Model\APlus\TextComponent',
-        'image' => '\Plenty\AmazonPHP\SellingPartner\Model\APlus\ImageComponent',
-        'description_headline' => '\Plenty\AmazonPHP\SellingPartner\Model\APlus\TextComponent',
-        'description_block1' => '\Plenty\AmazonPHP\SellingPartner\Model\APlus\StandardTextBlock',
-        'description_block2' => '\Plenty\AmazonPHP\SellingPartner\Model\APlus\StandardTextBlock',
-        'specification_headline' => '\Plenty\AmazonPHP\SellingPartner\Model\APlus\TextComponent',
-        'specification_list_block' => '\Plenty\AmazonPHP\SellingPartner\Model\APlus\StandardHeaderTextListBlock',
-        'specification_text_block' => '\Plenty\AmazonPHP\SellingPartner\Model\APlus\StandardTextBlock',
+        'headline' => \Plenty\AmazonPHP\SellingPartner\Model\APlus\TextComponent::class,
+        'image' => \Plenty\AmazonPHP\SellingPartner\Model\APlus\ImageComponent::class,
+        'description_headline' => \Plenty\AmazonPHP\SellingPartner\Model\APlus\TextComponent::class,
+        'description_block1' => \Plenty\AmazonPHP\SellingPartner\Model\APlus\StandardTextBlock::class,
+        'description_block2' => \Plenty\AmazonPHP\SellingPartner\Model\APlus\StandardTextBlock::class,
+        'specification_headline' => \Plenty\AmazonPHP\SellingPartner\Model\APlus\TextComponent::class,
+        'specification_list_block' => \Plenty\AmazonPHP\SellingPartner\Model\APlus\StandardHeaderTextListBlock::class,
+        'specification_text_block' => \Plenty\AmazonPHP\SellingPartner\Model\APlus\StandardTextBlock::class,
     ];
 
     /**
@@ -147,7 +150,7 @@ class StandardSingleImageSpecsDetailModule implements \ArrayAccess, \JsonSeriali
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['headline'] = $data['headline'] ?? null;
         $this->container['image'] = $data['image'] ?? null;
@@ -164,7 +167,7 @@ class StandardSingleImageSpecsDetailModule implements \ArrayAccess, \JsonSeriali
      *
      * @return string[]
      */
-    public static function openAPITypes() : array
+    public static function openAPITypes(): array
     {
         return self::$openAPITypes;
     }
@@ -174,7 +177,7 @@ class StandardSingleImageSpecsDetailModule implements \ArrayAccess, \JsonSeriali
      *
      * @return null[]|string[]
      */
-    public static function openAPIFormats() : array
+    public static function openAPIFormats(): array
     {
         return self::$openAPIFormats;
     }
@@ -185,7 +188,7 @@ class StandardSingleImageSpecsDetailModule implements \ArrayAccess, \JsonSeriali
      *
      * @return string[]
      */
-    public static function attributeMap() : array
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -195,7 +198,7 @@ class StandardSingleImageSpecsDetailModule implements \ArrayAccess, \JsonSeriali
      *
      * @return string[]
      */
-    public static function setters() : array
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -205,7 +208,7 @@ class StandardSingleImageSpecsDetailModule implements \ArrayAccess, \JsonSeriali
      *
      * @return string[]
      */
-    public static function getters() : array
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -213,9 +216,9 @@ class StandardSingleImageSpecsDetailModule implements \ArrayAccess, \JsonSeriali
     /**
      * Gets the string presentation of the object.
      */
-    public function __toString() : string
+    public function __toString(): string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );
@@ -224,7 +227,7 @@ class StandardSingleImageSpecsDetailModule implements \ArrayAccess, \JsonSeriali
     /**
      * The original name of the model.
      */
-    public function getModelName() : string
+    public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
@@ -234,7 +237,7 @@ class StandardSingleImageSpecsDetailModule implements \ArrayAccess, \JsonSeriali
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties() : array
+    public function listInvalidProperties(): array
     {
         return [];
     }
@@ -245,7 +248,7 @@ class StandardSingleImageSpecsDetailModule implements \ArrayAccess, \JsonSeriali
      *
      * @return bool True if all properties are valid
      */
-    public function valid() : bool
+    public function valid(): bool
     {
         return \count($this->listInvalidProperties()) === 0;
     }
@@ -253,7 +256,7 @@ class StandardSingleImageSpecsDetailModule implements \ArrayAccess, \JsonSeriali
     /**
      * Gets headline.
      */
-    public function getHeadline() : ?TextComponent
+    public function getHeadline(): ?TextComponent
     {
         return $this->container['headline'];
     }
@@ -263,7 +266,7 @@ class StandardSingleImageSpecsDetailModule implements \ArrayAccess, \JsonSeriali
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\APlus\TextComponent $headline headline
      */
-    public function setHeadline(?TextComponent $headline) : self
+    public function setHeadline(?TextComponent $headline): self
     {
         $this->container['headline'] = $headline;
 
@@ -273,7 +276,7 @@ class StandardSingleImageSpecsDetailModule implements \ArrayAccess, \JsonSeriali
     /**
      * Gets image.
      */
-    public function getImage() : ?ImageComponent
+    public function getImage(): ?ImageComponent
     {
         return $this->container['image'];
     }
@@ -283,7 +286,7 @@ class StandardSingleImageSpecsDetailModule implements \ArrayAccess, \JsonSeriali
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\APlus\ImageComponent $image image
      */
-    public function setImage(?ImageComponent $image) : self
+    public function setImage(?ImageComponent $image): self
     {
         $this->container['image'] = $image;
 
@@ -293,7 +296,7 @@ class StandardSingleImageSpecsDetailModule implements \ArrayAccess, \JsonSeriali
     /**
      * Gets description_headline.
      */
-    public function getDescriptionHeadline() : ?TextComponent
+    public function getDescriptionHeadline(): ?TextComponent
     {
         return $this->container['description_headline'];
     }
@@ -303,7 +306,7 @@ class StandardSingleImageSpecsDetailModule implements \ArrayAccess, \JsonSeriali
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\APlus\TextComponent $description_headline description_headline
      */
-    public function setDescriptionHeadline(?TextComponent $description_headline) : self
+    public function setDescriptionHeadline(?TextComponent $description_headline): self
     {
         $this->container['description_headline'] = $description_headline;
 
@@ -313,7 +316,7 @@ class StandardSingleImageSpecsDetailModule implements \ArrayAccess, \JsonSeriali
     /**
      * Gets description_block1.
      */
-    public function getDescriptionBlock1() : ?StandardTextBlock
+    public function getDescriptionBlock1(): ?StandardTextBlock
     {
         return $this->container['description_block1'];
     }
@@ -323,7 +326,7 @@ class StandardSingleImageSpecsDetailModule implements \ArrayAccess, \JsonSeriali
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\APlus\StandardTextBlock $description_block1 description_block1
      */
-    public function setDescriptionBlock1(?StandardTextBlock $description_block1) : self
+    public function setDescriptionBlock1(?StandardTextBlock $description_block1): self
     {
         $this->container['description_block1'] = $description_block1;
 
@@ -333,7 +336,7 @@ class StandardSingleImageSpecsDetailModule implements \ArrayAccess, \JsonSeriali
     /**
      * Gets description_block2.
      */
-    public function getDescriptionBlock2() : ?StandardTextBlock
+    public function getDescriptionBlock2(): ?StandardTextBlock
     {
         return $this->container['description_block2'];
     }
@@ -343,7 +346,7 @@ class StandardSingleImageSpecsDetailModule implements \ArrayAccess, \JsonSeriali
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\APlus\StandardTextBlock $description_block2 description_block2
      */
-    public function setDescriptionBlock2(?StandardTextBlock $description_block2) : self
+    public function setDescriptionBlock2(?StandardTextBlock $description_block2): self
     {
         $this->container['description_block2'] = $description_block2;
 
@@ -353,7 +356,7 @@ class StandardSingleImageSpecsDetailModule implements \ArrayAccess, \JsonSeriali
     /**
      * Gets specification_headline.
      */
-    public function getSpecificationHeadline() : ?TextComponent
+    public function getSpecificationHeadline(): ?TextComponent
     {
         return $this->container['specification_headline'];
     }
@@ -363,7 +366,7 @@ class StandardSingleImageSpecsDetailModule implements \ArrayAccess, \JsonSeriali
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\APlus\TextComponent $specification_headline specification_headline
      */
-    public function setSpecificationHeadline(?TextComponent $specification_headline) : self
+    public function setSpecificationHeadline(?TextComponent $specification_headline): self
     {
         $this->container['specification_headline'] = $specification_headline;
 
@@ -373,7 +376,7 @@ class StandardSingleImageSpecsDetailModule implements \ArrayAccess, \JsonSeriali
     /**
      * Gets specification_list_block.
      */
-    public function getSpecificationListBlock() : ?StandardHeaderTextListBlock
+    public function getSpecificationListBlock(): ?StandardHeaderTextListBlock
     {
         return $this->container['specification_list_block'];
     }
@@ -383,7 +386,7 @@ class StandardSingleImageSpecsDetailModule implements \ArrayAccess, \JsonSeriali
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\APlus\StandardHeaderTextListBlock $specification_list_block specification_list_block
      */
-    public function setSpecificationListBlock(?StandardHeaderTextListBlock $specification_list_block) : self
+    public function setSpecificationListBlock(?StandardHeaderTextListBlock $specification_list_block): self
     {
         $this->container['specification_list_block'] = $specification_list_block;
 
@@ -393,7 +396,7 @@ class StandardSingleImageSpecsDetailModule implements \ArrayAccess, \JsonSeriali
     /**
      * Gets specification_text_block.
      */
-    public function getSpecificationTextBlock() : ?StandardTextBlock
+    public function getSpecificationTextBlock(): ?StandardTextBlock
     {
         return $this->container['specification_text_block'];
     }
@@ -403,7 +406,7 @@ class StandardSingleImageSpecsDetailModule implements \ArrayAccess, \JsonSeriali
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\APlus\StandardTextBlock $specification_text_block specification_text_block
      */
-    public function setSpecificationTextBlock(?StandardTextBlock $specification_text_block) : self
+    public function setSpecificationTextBlock(?StandardTextBlock $specification_text_block): self
     {
         $this->container['specification_text_block'] = $specification_text_block;
 
@@ -415,7 +418,7 @@ class StandardSingleImageSpecsDetailModule implements \ArrayAccess, \JsonSeriali
      *
      * @param int $offset Offset
      */
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -438,7 +441,7 @@ class StandardSingleImageSpecsDetailModule implements \ArrayAccess, \JsonSeriali
      * @param null|int $offset Offset
      * @param mixed $value Value to be set
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         if (null === $offset) {
             $this->container[] = $value;
@@ -452,7 +455,7 @@ class StandardSingleImageSpecsDetailModule implements \ArrayAccess, \JsonSeriali
      *
      * @param int $offset Offset
      */
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -465,7 +468,7 @@ class StandardSingleImageSpecsDetailModule implements \ArrayAccess, \JsonSeriali
      * @return mixed returns data which can be serialized by json_encode(), which is a value
      *               of any type other than a resource
      */
-    public function jsonSerialize() : string
+    public function jsonSerialize(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }
@@ -473,7 +476,7 @@ class StandardSingleImageSpecsDetailModule implements \ArrayAccess, \JsonSeriali
     /**
      * Gets a header-safe presentation of the object.
      */
-    public function toHeaderValue() : string
+    public function toHeaderValue(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }

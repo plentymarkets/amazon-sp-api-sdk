@@ -38,7 +38,7 @@ class ListPlacementOptionsResponse implements \ArrayAccess, \JsonSerializable, \
      * @var string[]
      */
     protected static array $openAPITypes = [
-        'pagination' => '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound2024\Pagination',
+        'pagination' => \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound2024\Pagination::class,
         'placement_options' => '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound2024\PlacementOption[]',
     ];
 
@@ -100,7 +100,7 @@ class ListPlacementOptionsResponse implements \ArrayAccess, \JsonSerializable, \
      * @param null|mixed[] $data Associated array of property values
      *                           initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['pagination'] = $data['pagination'] ?? null;
         $this->container['placement_options'] = $data['placement_options'] ?? null;
@@ -109,7 +109,7 @@ class ListPlacementOptionsResponse implements \ArrayAccess, \JsonSerializable, \
     /**
      * Array of property to type mappings. Used for (de)serialization.
      */
-    public static function openAPITypes() : array
+    public static function openAPITypes(): array
     {
         return self::$openAPITypes;
     }
@@ -117,7 +117,7 @@ class ListPlacementOptionsResponse implements \ArrayAccess, \JsonSerializable, \
     /**
      * Array of property to format mappings. Used for (de)serialization.
      */
-    public static function openAPIFormats() : array
+    public static function openAPIFormats(): array
     {
         return self::$openAPIFormats;
     }
@@ -126,7 +126,7 @@ class ListPlacementOptionsResponse implements \ArrayAccess, \JsonSerializable, \
      * Array of attributes where the key is the local name,
      * and the value is the original name.
      */
-    public static function attributeMap() : array
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -134,7 +134,7 @@ class ListPlacementOptionsResponse implements \ArrayAccess, \JsonSerializable, \
     /**
      * Array of attributes to setter functions (for deserialization of responses).
      */
-    public static function setters() : array
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -142,7 +142,7 @@ class ListPlacementOptionsResponse implements \ArrayAccess, \JsonSerializable, \
     /**
      * Array of attributes to getter functions (for serialization of requests).
      */
-    public static function getters() : array
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -150,7 +150,7 @@ class ListPlacementOptionsResponse implements \ArrayAccess, \JsonSerializable, \
     /**
      * Gets the string presentation of the object.
      */
-    public function __toString() : string
+    public function __toString(): string
     {
         return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
@@ -161,7 +161,7 @@ class ListPlacementOptionsResponse implements \ArrayAccess, \JsonSerializable, \
     /**
      * The original name of the model.
      */
-    public function getModelName() : string
+    public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
@@ -171,10 +171,10 @@ class ListPlacementOptionsResponse implements \ArrayAccess, \JsonSerializable, \
      *
      * @throws AssertionException
      */
-    public function listInvalidProperties() : array
+    public function listInvalidProperties(): array
     {
         $invalidProperties = [];
-         
+
         if ($this->container['pagination'] !== null) {
             $this->container['pagination']->listInvalidProperties();
         }
@@ -192,7 +192,7 @@ class ListPlacementOptionsResponse implements \ArrayAccess, \JsonSerializable, \
      *
      * @return bool True if all properties are valid
      */
-    public function valid() : bool
+    public function valid(): bool
     {
         return \count($this->listInvalidProperties()) === 0;
     }
@@ -200,7 +200,7 @@ class ListPlacementOptionsResponse implements \ArrayAccess, \JsonSerializable, \
     /**
      * Gets pagination.
      */
-    public function getPagination() : ?Pagination
+    public function getPagination(): ?Pagination
     {
         return $this->container['pagination'];
     }
@@ -210,7 +210,7 @@ class ListPlacementOptionsResponse implements \ArrayAccess, \JsonSerializable, \
      *
      * @param null|Pagination $pagination pagination
      */
-    public function setPagination(?Pagination $pagination) : self
+    public function setPagination(?Pagination $pagination): self
     {
         $this->container['pagination'] = $pagination;
 
@@ -222,7 +222,7 @@ class ListPlacementOptionsResponse implements \ArrayAccess, \JsonSerializable, \
      *
      * @return PlacementOption[]
      */
-    public function getPlacementOptions() : array
+    public function getPlacementOptions(): array
     {
         return $this->container['placement_options'];
     }
@@ -232,7 +232,7 @@ class ListPlacementOptionsResponse implements \ArrayAccess, \JsonSerializable, \
      *
      * @param PlacementOption[] $placement_options placement options generated for the inbound plan
      */
-    public function setPlacementOptions(array $placement_options) : self
+    public function setPlacementOptions(array $placement_options): self
     {
         $this->container['placement_options'] = $placement_options;
 
@@ -242,7 +242,7 @@ class ListPlacementOptionsResponse implements \ArrayAccess, \JsonSerializable, \
     /**
      * Returns true if offset exists. False otherwise.
      */
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -253,7 +253,7 @@ class ListPlacementOptionsResponse implements \ArrayAccess, \JsonSerializable, \
      * @return null|mixed
      */
     #[\ReturnTypeWillChange]
-    public function offsetGet($offset) : mixed
+    public function offsetGet($offset): mixed
     {
         return $this->container[$offset] ?? null;
     }
@@ -261,7 +261,7 @@ class ListPlacementOptionsResponse implements \ArrayAccess, \JsonSerializable, \
     /**
      * Sets value based on offset.
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         if (null === $offset) {
             $this->container[] = $value;
@@ -273,7 +273,7 @@ class ListPlacementOptionsResponse implements \ArrayAccess, \JsonSerializable, \
     /**
      * Unsets offset.
      */
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -287,7 +287,7 @@ class ListPlacementOptionsResponse implements \ArrayAccess, \JsonSerializable, \
      *               of any type other than a resource
      */
     #[\ReturnTypeWillChange]
-    public function jsonSerialize() : string
+    public function jsonSerialize(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }
@@ -295,7 +295,7 @@ class ListPlacementOptionsResponse implements \ArrayAccess, \JsonSerializable, \
     /**
      * Gets a header-safe presentation of the object.
      */
-    public function toHeaderValue() : string
+    public function toHeaderValue(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }

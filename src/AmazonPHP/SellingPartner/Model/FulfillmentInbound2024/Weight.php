@@ -38,7 +38,7 @@ class Weight implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInter
      * @var string[]
      */
     protected static array $openAPITypes = [
-        'unit' => '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound2024\UnitOfWeight',
+        'unit' => \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound2024\UnitOfWeight::class,
         'value' => 'float',
     ];
 
@@ -100,7 +100,7 @@ class Weight implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInter
      * @param null|mixed[] $data Associated array of property values
      *                           initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['unit'] = $data['unit'] ?? null;
         $this->container['value'] = $data['value'] ?? null;
@@ -109,7 +109,7 @@ class Weight implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInter
     /**
      * Array of property to type mappings. Used for (de)serialization.
      */
-    public static function openAPITypes() : array
+    public static function openAPITypes(): array
     {
         return self::$openAPITypes;
     }
@@ -117,7 +117,7 @@ class Weight implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInter
     /**
      * Array of property to format mappings. Used for (de)serialization.
      */
-    public static function openAPIFormats() : array
+    public static function openAPIFormats(): array
     {
         return self::$openAPIFormats;
     }
@@ -126,7 +126,7 @@ class Weight implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInter
      * Array of attributes where the key is the local name,
      * and the value is the original name.
      */
-    public static function attributeMap() : array
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -134,7 +134,7 @@ class Weight implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInter
     /**
      * Array of attributes to setter functions (for deserialization of responses).
      */
-    public static function setters() : array
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -142,7 +142,7 @@ class Weight implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInter
     /**
      * Array of attributes to getter functions (for serialization of requests).
      */
-    public static function getters() : array
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -150,7 +150,7 @@ class Weight implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInter
     /**
      * Gets the string presentation of the object.
      */
-    public function __toString() : string
+    public function __toString(): string
     {
         return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
@@ -161,7 +161,7 @@ class Weight implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInter
     /**
      * The original name of the model.
      */
-    public function getModelName() : string
+    public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
@@ -171,10 +171,10 @@ class Weight implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInter
      *
      * @throws AssertionException
      */
-    public function listInvalidProperties() : array
+    public function listInvalidProperties(): array
     {
         $invalidProperties = [];
-         
+
         if ($this->container['unit'] === null) {
             $invalidProperties[] = "'unit' can't be null";
         }
@@ -200,7 +200,7 @@ class Weight implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInter
      *
      * @return bool True if all properties are valid
      */
-    public function valid() : bool
+    public function valid(): bool
     {
         return \count($this->listInvalidProperties()) === 0;
     }
@@ -208,7 +208,7 @@ class Weight implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInter
     /**
      * Gets unit.
      */
-    public function getUnit() : UnitOfWeight
+    public function getUnit(): UnitOfWeight
     {
         return $this->container['unit'];
     }
@@ -218,7 +218,7 @@ class Weight implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInter
      *
      * @param UnitOfWeight $unit unit
      */
-    public function setUnit(UnitOfWeight $unit) : self
+    public function setUnit(UnitOfWeight $unit): self
     {
         $this->container['unit'] = $unit;
 
@@ -228,7 +228,7 @@ class Weight implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInter
     /**
      * Gets value.
      */
-    public function getValue() : float
+    public function getValue(): float
     {
         return $this->container['value'];
     }
@@ -238,7 +238,7 @@ class Weight implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInter
      *
      * @param float $value value of a weight
      */
-    public function setValue(float $value) : self
+    public function setValue(float $value): self
     {
         $this->container['value'] = $value;
 
@@ -248,7 +248,7 @@ class Weight implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInter
     /**
      * Returns true if offset exists. False otherwise.
      */
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -259,7 +259,7 @@ class Weight implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInter
      * @return null|mixed
      */
     #[\ReturnTypeWillChange]
-    public function offsetGet($offset) : mixed
+    public function offsetGet($offset): mixed
     {
         return $this->container[$offset] ?? null;
     }
@@ -267,7 +267,7 @@ class Weight implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInter
     /**
      * Sets value based on offset.
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         if (null === $offset) {
             $this->container[] = $value;
@@ -279,7 +279,7 @@ class Weight implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInter
     /**
      * Unsets offset.
      */
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -293,7 +293,7 @@ class Weight implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInter
      *               of any type other than a resource
      */
     #[\ReturnTypeWillChange]
-    public function jsonSerialize() : string
+    public function jsonSerialize(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }
@@ -301,7 +301,7 @@ class Weight implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInter
     /**
      * Gets a header-safe presentation of the object.
      */
-    public function toHeaderValue() : string
+    public function toHeaderValue(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }

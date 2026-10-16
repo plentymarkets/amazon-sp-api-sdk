@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Plenty\AmazonPHP\SellingPartner;
 
@@ -13,7 +15,7 @@ final class ObjectSerializer
      *
      * @param string $format the new date format to use
      */
-    public static function setDateTimeFormat(string $format) : void
+    public static function setDateTimeFormat(string $format): void
     {
         self::$dateTimeFormat = $format;
     }
@@ -27,7 +29,7 @@ final class ObjectSerializer
      *
      * @return null|array|object|scalar serialized form of $data
      */
-    public static function sanitizeForSerialization($data, string $type = null, string $format = null)
+    public static function sanitizeForSerialization($data, ?string $type = null, ?string $format = null)
     {
         if (\is_scalar($data) || null === $data) {
             return $data;
@@ -96,7 +98,7 @@ final class ObjectSerializer
      *
      * @return mixed|string the sanitized filename
      */
-    public static function sanitizeFilename(string $filename)
+    public static function sanitizeFilename(string $filename): string
     {
         if (\preg_match("/.*[\/\\\\](.*)$/", $filename, $match)) {
             return $match[1];
@@ -113,7 +115,7 @@ final class ObjectSerializer
      *
      * @return string the serialized object
      */
-    public static function toPathValue(string $value) : string
+    public static function toPathValue(string $value): string
     {
         return \rawurlencode(self::toString($value));
     }
@@ -128,7 +130,7 @@ final class ObjectSerializer
      *
      * @return string the serialized object
      */
-    public static function toQueryValue($object) : string
+    public static function toQueryValue($object): string
     {
         if (\is_array($object)) {
             return \implode(',', $object);
@@ -166,7 +168,7 @@ final class ObjectSerializer
      *
      * @return bool|string the form string
      */
-    public static function toFormValue($value)
+    public static function toFormValue($value): string|false
     {
         if ($value instanceof \SplFileObject) {
             return $value->getRealPath();
@@ -185,7 +187,7 @@ final class ObjectSerializer
      *
      * @return string the header string
      */
-    public static function toString($value) : string
+    public static function toString($value): string
     {
         if ($value instanceof \DateTimeInterface) { // datetime in ISO8601 format
             return $value->format(self::$dateTimeFormat);
@@ -208,7 +210,7 @@ final class ObjectSerializer
      *
      * @return null|string|void
      */
-    public static function serializeCollection(array $collection, string $style, bool $allowCollectionFormatMulti = false)
+    public static function serializeCollection(array $collection, string $style, bool $allowCollectionFormatMulti = false): ?string
     {
         if ($allowCollectionFormatMulti && ('multi' === $style)) {
             // http_build_query() almost does the job for us. We just
@@ -216,24 +218,12 @@ final class ObjectSerializer
             return \preg_replace('/%5B[0-9]+%5D=/', '=', \http_build_query($collection, '', '&'));
         }
 
-        switch ($style) {
-            case 'pipeDelimited':
-            case 'pipes':
-                return \implode('|', $collection);
-
-            case 'tsv':
-                return \implode("\t", $collection);
-
-            case 'spaceDelimited':
-            case 'ssv':
-                return \implode(' ', $collection);
-
-            case 'simple':
-            case 'csv':
-                // Deliberate fall through. CSV is default format.
-            default:
-                return \implode(',', $collection);
-        }
+        return match ($style) {
+            'pipeDelimited', 'pipes' => \implode('|', $collection),
+            'tsv' => \implode("\t", $collection),
+            'spaceDelimited', 'ssv' => \implode(' ', $collection),
+            default => \implode(',', $collection),
+        };
     }
 
     /**
@@ -246,7 +236,7 @@ final class ObjectSerializer
      *
      * @return T
      */
-    public static function deserialize(Configuration $configuration, $data, string $class, array $httpHeaders = null)
+    public static function deserialize(Configuration $configuration, $data, string $class, ?array $httpHeaders = null)
     {
         if (null === $data) {
             return null;
@@ -303,7 +293,7 @@ final class ObjectSerializer
             if (!empty($data)) {
                 try {
                     return new \DateTimeImmutable($data);
-                } catch (\Exception $exception) {
+                } catch (\Exception) {
                     // Some API's return a date-time with too high nanosecond
                     // precision for php's DateTime to handle. This conversion
                     // (string -> unix timestamp -> DateTime) is a workaround
@@ -317,7 +307,6 @@ final class ObjectSerializer
 
         /** @psalm-suppress ParadoxicalCondition */
         if (\in_array($class, ['DateTime', 'DateTimeImmutable', 'bool', 'boolean', 'byte', 'double', 'float', 'int', 'integer', 'mixed', 'number', 'object', 'string', 'void'], true)) {
-
             $validSetTypes = ['boolean', 'bool', 'integer', 'int', 'float', 'double', 'string', 'array', 'object', 'null'];
 
             if (\in_array($class, $validSetTypes, true)) {
@@ -329,8 +318,10 @@ final class ObjectSerializer
         }
         if ($class === '\SplFileObject') {
             // determine file name
-            if (\array_key_exists('Content-Disposition', $httpHeaders) &&
-                \preg_match('/inline; filename=[\'"]?([^\'"\s]+)[\'"]?$/i', $httpHeaders['Content-Disposition'], $match)) {
+            if (
+                \array_key_exists('Content-Disposition', $httpHeaders) &&
+                \preg_match('/inline; filename=[\'"]?([^\'"\s]+)[\'"]?$/i', $httpHeaders['Content-Disposition'], $match)
+            ) {
                 $filename = $configuration->tmpFolderPath() . DIRECTORY_SEPARATOR . self::sanitizeFilename($match[1]);
             } else {
                 $filename = \tempnam($configuration->tmpFolderPath(), '');
@@ -358,7 +349,7 @@ final class ObjectSerializer
 
         try {
             $data = \is_string($data) ? \json_decode($data, null, 512, JSON_THROW_ON_ERROR) : $data;
-        } catch (\JsonException $e) {
+        } catch (\JsonException) {
         }
 
         // If a discriminator is defined and points to a valid subclass, use it.

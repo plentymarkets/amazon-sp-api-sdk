@@ -1,4 +1,7 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
+
 /**
  * PostContentDocumentResponseAllOf.
  *
@@ -40,7 +43,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class PostContentDocumentResponseAllOf implements \ArrayAccess, \JsonSerializable, ModelInterface
+class PostContentDocumentResponseAllOf implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -112,7 +115,7 @@ class PostContentDocumentResponseAllOf implements \ArrayAccess, \JsonSerializabl
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['content_reference_key'] = $data['content_reference_key'] ?? null;
     }
@@ -122,7 +125,7 @@ class PostContentDocumentResponseAllOf implements \ArrayAccess, \JsonSerializabl
      *
      * @return string[]
      */
-    public static function openAPITypes() : array
+    public static function openAPITypes(): array
     {
         return self::$openAPITypes;
     }
@@ -132,7 +135,7 @@ class PostContentDocumentResponseAllOf implements \ArrayAccess, \JsonSerializabl
      *
      * @return null[]|string[]
      */
-    public static function openAPIFormats() : array
+    public static function openAPIFormats(): array
     {
         return self::$openAPIFormats;
     }
@@ -143,7 +146,7 @@ class PostContentDocumentResponseAllOf implements \ArrayAccess, \JsonSerializabl
      *
      * @return string[]
      */
-    public static function attributeMap() : array
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -153,7 +156,7 @@ class PostContentDocumentResponseAllOf implements \ArrayAccess, \JsonSerializabl
      *
      * @return string[]
      */
-    public static function setters() : array
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -163,7 +166,7 @@ class PostContentDocumentResponseAllOf implements \ArrayAccess, \JsonSerializabl
      *
      * @return string[]
      */
-    public static function getters() : array
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -171,9 +174,9 @@ class PostContentDocumentResponseAllOf implements \ArrayAccess, \JsonSerializabl
     /**
      * Gets the string presentation of the object.
      */
-    public function __toString() : string
+    public function __toString(): string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );
@@ -182,7 +185,7 @@ class PostContentDocumentResponseAllOf implements \ArrayAccess, \JsonSerializabl
     /**
      * The original name of the model.
      */
-    public function getModelName() : string
+    public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
@@ -192,7 +195,7 @@ class PostContentDocumentResponseAllOf implements \ArrayAccess, \JsonSerializabl
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties() : array
+    public function listInvalidProperties(): array
     {
         $invalidProperties = [];
 
@@ -213,7 +216,7 @@ class PostContentDocumentResponseAllOf implements \ArrayAccess, \JsonSerializabl
      *
      * @return bool True if all properties are valid
      */
-    public function valid() : bool
+    public function valid(): bool
     {
         return \count($this->listInvalidProperties()) === 0;
     }
@@ -221,7 +224,7 @@ class PostContentDocumentResponseAllOf implements \ArrayAccess, \JsonSerializabl
     /**
      * Gets content_reference_key.
      */
-    public function getContentReferenceKey() : string
+    public function getContentReferenceKey(): string
     {
         return $this->container['content_reference_key'];
     }
@@ -231,7 +234,7 @@ class PostContentDocumentResponseAllOf implements \ArrayAccess, \JsonSerializabl
      *
      * @param string $content_reference_key A unique reference key for the A+ Content document. A content reference key cannot form a permalink and may change in the future. A content reference key is not guaranteed to match any A+ content identifier.
      */
-    public function setContentReferenceKey(string $content_reference_key) : self
+    public function setContentReferenceKey(string $content_reference_key): self
     {
         if ((\mb_strlen($content_reference_key) < 1)) {
             throw new \InvalidArgumentException('invalid length for $content_reference_key when calling PostContentDocumentResponseAllOf., must be bigger than or equal to 1.');
@@ -247,7 +250,7 @@ class PostContentDocumentResponseAllOf implements \ArrayAccess, \JsonSerializabl
      *
      * @param int $offset Offset
      */
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -270,7 +273,7 @@ class PostContentDocumentResponseAllOf implements \ArrayAccess, \JsonSerializabl
      * @param null|int $offset Offset
      * @param mixed $value Value to be set
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         if (null === $offset) {
             $this->container[] = $value;
@@ -284,7 +287,7 @@ class PostContentDocumentResponseAllOf implements \ArrayAccess, \JsonSerializabl
      *
      * @param int $offset Offset
      */
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -297,7 +300,7 @@ class PostContentDocumentResponseAllOf implements \ArrayAccess, \JsonSerializabl
      * @return mixed returns data which can be serialized by json_encode(), which is a value
      *               of any type other than a resource
      */
-    public function jsonSerialize() : string
+    public function jsonSerialize(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }
@@ -305,7 +308,7 @@ class PostContentDocumentResponseAllOf implements \ArrayAccess, \JsonSerializabl
     /**
      * Gets a header-safe presentation of the object.
      */
-    public function toHeaderValue() : string
+    public function toHeaderValue(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }

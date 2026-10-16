@@ -1,4 +1,7 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
+
 /**
  * FeesEstimateByIdRequest.
  *
@@ -40,7 +43,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class FeesEstimateByIdRequest implements \ArrayAccess, \JsonSerializable, ModelInterface
+class FeesEstimateByIdRequest implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -57,8 +60,8 @@ class FeesEstimateByIdRequest implements \ArrayAccess, \JsonSerializable, ModelI
      * @var string[]
      */
     protected static /** [COMPAT] array */ $openAPITypes = [
-        'fees_estimate_request' => '\Plenty\AmazonPHP\SellingPartner\Model\ProductFees\FeesEstimateRequest',
-        'id_type' => '\Plenty\AmazonPHP\SellingPartner\Model\ProductFees\IdType',
+        'fees_estimate_request' => \Plenty\AmazonPHP\SellingPartner\Model\ProductFees\FeesEstimateRequest::class,
+        'id_type' => \Plenty\AmazonPHP\SellingPartner\Model\ProductFees\IdType::class,
         'id_value' => 'string',
     ];
 
@@ -122,7 +125,7 @@ class FeesEstimateByIdRequest implements \ArrayAccess, \JsonSerializable, ModelI
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['fees_estimate_request'] = $data['fees_estimate_request'] ?? null;
         $this->container['id_type'] = $data['id_type'] ?? null;
@@ -134,7 +137,7 @@ class FeesEstimateByIdRequest implements \ArrayAccess, \JsonSerializable, ModelI
      *
      * @return string[]
      */
-    public static function openAPITypes() : array
+    public static function openAPITypes(): array
     {
         return self::$openAPITypes;
     }
@@ -144,7 +147,7 @@ class FeesEstimateByIdRequest implements \ArrayAccess, \JsonSerializable, ModelI
      *
      * @return null[]|string[]
      */
-    public static function openAPIFormats() : array
+    public static function openAPIFormats(): array
     {
         return self::$openAPIFormats;
     }
@@ -155,7 +158,7 @@ class FeesEstimateByIdRequest implements \ArrayAccess, \JsonSerializable, ModelI
      *
      * @return string[]
      */
-    public static function attributeMap() : array
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -165,7 +168,7 @@ class FeesEstimateByIdRequest implements \ArrayAccess, \JsonSerializable, ModelI
      *
      * @return string[]
      */
-    public static function setters() : array
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -175,7 +178,7 @@ class FeesEstimateByIdRequest implements \ArrayAccess, \JsonSerializable, ModelI
      *
      * @return string[]
      */
-    public static function getters() : array
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -183,9 +186,9 @@ class FeesEstimateByIdRequest implements \ArrayAccess, \JsonSerializable, ModelI
     /**
      * Gets the string presentation of the object.
      */
-    public function __toString() : string
+    public function __toString(): string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );
@@ -194,7 +197,7 @@ class FeesEstimateByIdRequest implements \ArrayAccess, \JsonSerializable, ModelI
     /**
      * The original name of the model.
      */
-    public function getModelName() : string
+    public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
@@ -204,7 +207,7 @@ class FeesEstimateByIdRequest implements \ArrayAccess, \JsonSerializable, ModelI
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties() : array
+    public function listInvalidProperties(): array
     {
         $invalidProperties = [];
 
@@ -225,7 +228,7 @@ class FeesEstimateByIdRequest implements \ArrayAccess, \JsonSerializable, ModelI
      *
      * @return bool True if all properties are valid
      */
-    public function valid() : bool
+    public function valid(): bool
     {
         return \count($this->listInvalidProperties()) === 0;
     }
@@ -233,7 +236,7 @@ class FeesEstimateByIdRequest implements \ArrayAccess, \JsonSerializable, ModelI
     /**
      * Gets fees_estimate_request.
      */
-    public function getFeesEstimateRequest() : ?FeesEstimateRequest
+    public function getFeesEstimateRequest(): ?FeesEstimateRequest
     {
         return $this->container['fees_estimate_request'];
     }
@@ -243,7 +246,7 @@ class FeesEstimateByIdRequest implements \ArrayAccess, \JsonSerializable, ModelI
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\ProductFees\FeesEstimateRequest $fees_estimate_request fees_estimate_request
      */
-    public function setFeesEstimateRequest(?FeesEstimateRequest $fees_estimate_request) : self
+    public function setFeesEstimateRequest(?FeesEstimateRequest $fees_estimate_request): self
     {
         $this->container['fees_estimate_request'] = $fees_estimate_request;
 
@@ -253,7 +256,7 @@ class FeesEstimateByIdRequest implements \ArrayAccess, \JsonSerializable, ModelI
     /**
      * Gets id_type.
      */
-    public function getIdType() : IdType
+    public function getIdType(): IdType
     {
         return $this->container['id_type'];
     }
@@ -263,7 +266,7 @@ class FeesEstimateByIdRequest implements \ArrayAccess, \JsonSerializable, ModelI
      *
      * @param \Plenty\AmazonPHP\SellingPartner\Model\ProductFees\IdType $id_type id_type
      */
-    public function setIdType(IdType $id_type) : self
+    public function setIdType(IdType $id_type): self
     {
         $this->container['id_type'] = $id_type;
 
@@ -273,7 +276,7 @@ class FeesEstimateByIdRequest implements \ArrayAccess, \JsonSerializable, ModelI
     /**
      * Gets id_value.
      */
-    public function getIdValue() : string
+    public function getIdValue(): string
     {
         return $this->container['id_value'];
     }
@@ -283,7 +286,7 @@ class FeesEstimateByIdRequest implements \ArrayAccess, \JsonSerializable, ModelI
      *
      * @param string $id_value the item identifier
      */
-    public function setIdValue(string $id_value) : self
+    public function setIdValue(string $id_value): self
     {
         $this->container['id_value'] = $id_value;
 
@@ -295,7 +298,7 @@ class FeesEstimateByIdRequest implements \ArrayAccess, \JsonSerializable, ModelI
      *
      * @param int $offset Offset
      */
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -318,7 +321,7 @@ class FeesEstimateByIdRequest implements \ArrayAccess, \JsonSerializable, ModelI
      * @param null|int $offset Offset
      * @param mixed $value Value to be set
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         if (null === $offset) {
             $this->container[] = $value;
@@ -332,7 +335,7 @@ class FeesEstimateByIdRequest implements \ArrayAccess, \JsonSerializable, ModelI
      *
      * @param int $offset Offset
      */
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -345,7 +348,7 @@ class FeesEstimateByIdRequest implements \ArrayAccess, \JsonSerializable, ModelI
      * @return mixed returns data which can be serialized by json_encode(), which is a value
      *               of any type other than a resource
      */
-    public function jsonSerialize() : string
+    public function jsonSerialize(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }
@@ -353,7 +356,7 @@ class FeesEstimateByIdRequest implements \ArrayAccess, \JsonSerializable, ModelI
     /**
      * Gets a header-safe presentation of the object.
      */
-    public function toHeaderValue() : string
+    public function toHeaderValue(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }

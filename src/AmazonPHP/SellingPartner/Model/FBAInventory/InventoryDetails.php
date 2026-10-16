@@ -1,4 +1,7 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
+
 /**
  * InventoryDetails.
  *
@@ -40,7 +43,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class InventoryDetails implements \ArrayAccess, \JsonSerializable, ModelInterface
+class InventoryDetails implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -61,9 +64,9 @@ class InventoryDetails implements \ArrayAccess, \JsonSerializable, ModelInterfac
         'inbound_working_quantity' => 'int',
         'inbound_shipped_quantity' => 'int',
         'inbound_receiving_quantity' => 'int',
-        'reserved_quantity' => '\Plenty\AmazonPHP\SellingPartner\Model\FBAInventory\ReservedQuantity',
-        'researching_quantity' => '\Plenty\AmazonPHP\SellingPartner\Model\FBAInventory\ResearchingQuantity',
-        'unfulfillable_quantity' => '\Plenty\AmazonPHP\SellingPartner\Model\FBAInventory\UnfulfillableQuantity',
+        'reserved_quantity' => \Plenty\AmazonPHP\SellingPartner\Model\FBAInventory\ReservedQuantity::class,
+        'researching_quantity' => \Plenty\AmazonPHP\SellingPartner\Model\FBAInventory\ResearchingQuantity::class,
+        'unfulfillable_quantity' => \Plenty\AmazonPHP\SellingPartner\Model\FBAInventory\UnfulfillableQuantity::class,
     ];
 
     /**
@@ -142,7 +145,7 @@ class InventoryDetails implements \ArrayAccess, \JsonSerializable, ModelInterfac
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['fulfillable_quantity'] = $data['fulfillable_quantity'] ?? null;
         $this->container['inbound_working_quantity'] = $data['inbound_working_quantity'] ?? null;
@@ -158,7 +161,7 @@ class InventoryDetails implements \ArrayAccess, \JsonSerializable, ModelInterfac
      *
      * @return string[]
      */
-    public static function openAPITypes() : array
+    public static function openAPITypes(): array
     {
         return self::$openAPITypes;
     }
@@ -168,7 +171,7 @@ class InventoryDetails implements \ArrayAccess, \JsonSerializable, ModelInterfac
      *
      * @return null[]|string[]
      */
-    public static function openAPIFormats() : array
+    public static function openAPIFormats(): array
     {
         return self::$openAPIFormats;
     }
@@ -179,7 +182,7 @@ class InventoryDetails implements \ArrayAccess, \JsonSerializable, ModelInterfac
      *
      * @return string[]
      */
-    public static function attributeMap() : array
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -189,7 +192,7 @@ class InventoryDetails implements \ArrayAccess, \JsonSerializable, ModelInterfac
      *
      * @return string[]
      */
-    public static function setters() : array
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -199,7 +202,7 @@ class InventoryDetails implements \ArrayAccess, \JsonSerializable, ModelInterfac
      *
      * @return string[]
      */
-    public static function getters() : array
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -207,9 +210,9 @@ class InventoryDetails implements \ArrayAccess, \JsonSerializable, ModelInterfac
     /**
      * Gets the string presentation of the object.
      */
-    public function __toString() : string
+    public function __toString(): string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );
@@ -218,7 +221,7 @@ class InventoryDetails implements \ArrayAccess, \JsonSerializable, ModelInterfac
     /**
      * The original name of the model.
      */
-    public function getModelName() : string
+    public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
@@ -228,7 +231,7 @@ class InventoryDetails implements \ArrayAccess, \JsonSerializable, ModelInterfac
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties() : array
+    public function listInvalidProperties(): array
     {
         return [];
     }
@@ -239,7 +242,7 @@ class InventoryDetails implements \ArrayAccess, \JsonSerializable, ModelInterfac
      *
      * @return bool True if all properties are valid
      */
-    public function valid() : bool
+    public function valid(): bool
     {
         return \count($this->listInvalidProperties()) === 0;
     }
@@ -247,7 +250,7 @@ class InventoryDetails implements \ArrayAccess, \JsonSerializable, ModelInterfac
     /**
      * Gets fulfillable_quantity.
      */
-    public function getFulfillableQuantity() : ?int
+    public function getFulfillableQuantity(): ?int
     {
         return $this->container['fulfillable_quantity'];
     }
@@ -257,7 +260,7 @@ class InventoryDetails implements \ArrayAccess, \JsonSerializable, ModelInterfac
      *
      * @param null|int $fulfillable_quantity the item quantity that can be picked, packed, and shipped
      */
-    public function setFulfillableQuantity(?int $fulfillable_quantity) : self
+    public function setFulfillableQuantity(?int $fulfillable_quantity): self
     {
         $this->container['fulfillable_quantity'] = $fulfillable_quantity;
 
@@ -267,7 +270,7 @@ class InventoryDetails implements \ArrayAccess, \JsonSerializable, ModelInterfac
     /**
      * Gets inbound_working_quantity.
      */
-    public function getInboundWorkingQuantity() : ?int
+    public function getInboundWorkingQuantity(): ?int
     {
         return $this->container['inbound_working_quantity'];
     }
@@ -277,7 +280,7 @@ class InventoryDetails implements \ArrayAccess, \JsonSerializable, ModelInterfac
      *
      * @param null|int $inbound_working_quantity the number of units in an inbound shipment for which you have notified Amazon
      */
-    public function setInboundWorkingQuantity(?int $inbound_working_quantity) : self
+    public function setInboundWorkingQuantity(?int $inbound_working_quantity): self
     {
         $this->container['inbound_working_quantity'] = $inbound_working_quantity;
 
@@ -287,7 +290,7 @@ class InventoryDetails implements \ArrayAccess, \JsonSerializable, ModelInterfac
     /**
      * Gets inbound_shipped_quantity.
      */
-    public function getInboundShippedQuantity() : ?int
+    public function getInboundShippedQuantity(): ?int
     {
         return $this->container['inbound_shipped_quantity'];
     }
@@ -297,7 +300,7 @@ class InventoryDetails implements \ArrayAccess, \JsonSerializable, ModelInterfac
      *
      * @param null|int $inbound_shipped_quantity the number of units in an inbound shipment that you have notified Amazon about and have provided a tracking number
      */
-    public function setInboundShippedQuantity(?int $inbound_shipped_quantity) : self
+    public function setInboundShippedQuantity(?int $inbound_shipped_quantity): self
     {
         $this->container['inbound_shipped_quantity'] = $inbound_shipped_quantity;
 
@@ -307,7 +310,7 @@ class InventoryDetails implements \ArrayAccess, \JsonSerializable, ModelInterfac
     /**
      * Gets inbound_receiving_quantity.
      */
-    public function getInboundReceivingQuantity() : ?int
+    public function getInboundReceivingQuantity(): ?int
     {
         return $this->container['inbound_receiving_quantity'];
     }
@@ -317,7 +320,7 @@ class InventoryDetails implements \ArrayAccess, \JsonSerializable, ModelInterfac
      *
      * @param null|int $inbound_receiving_quantity the number of units that have not yet been received at an Amazon fulfillment center for processing, but are part of an inbound shipment with some units that have already been received and processed
      */
-    public function setInboundReceivingQuantity(?int $inbound_receiving_quantity) : self
+    public function setInboundReceivingQuantity(?int $inbound_receiving_quantity): self
     {
         $this->container['inbound_receiving_quantity'] = $inbound_receiving_quantity;
 
@@ -327,7 +330,7 @@ class InventoryDetails implements \ArrayAccess, \JsonSerializable, ModelInterfac
     /**
      * Gets reserved_quantity.
      */
-    public function getReservedQuantity() : ?ReservedQuantity
+    public function getReservedQuantity(): ?ReservedQuantity
     {
         return $this->container['reserved_quantity'];
     }
@@ -337,7 +340,7 @@ class InventoryDetails implements \ArrayAccess, \JsonSerializable, ModelInterfac
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\FBAInventory\ReservedQuantity $reserved_quantity reserved_quantity
      */
-    public function setReservedQuantity(?ReservedQuantity $reserved_quantity) : self
+    public function setReservedQuantity(?ReservedQuantity $reserved_quantity): self
     {
         $this->container['reserved_quantity'] = $reserved_quantity;
 
@@ -347,7 +350,7 @@ class InventoryDetails implements \ArrayAccess, \JsonSerializable, ModelInterfac
     /**
      * Gets researching_quantity.
      */
-    public function getResearchingQuantity() : ?ResearchingQuantity
+    public function getResearchingQuantity(): ?ResearchingQuantity
     {
         return $this->container['researching_quantity'];
     }
@@ -357,7 +360,7 @@ class InventoryDetails implements \ArrayAccess, \JsonSerializable, ModelInterfac
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\FBAInventory\ResearchingQuantity $researching_quantity researching_quantity
      */
-    public function setResearchingQuantity(?ResearchingQuantity $researching_quantity) : self
+    public function setResearchingQuantity(?ResearchingQuantity $researching_quantity): self
     {
         $this->container['researching_quantity'] = $researching_quantity;
 
@@ -367,7 +370,7 @@ class InventoryDetails implements \ArrayAccess, \JsonSerializable, ModelInterfac
     /**
      * Gets unfulfillable_quantity.
      */
-    public function getUnfulfillableQuantity() : ?UnfulfillableQuantity
+    public function getUnfulfillableQuantity(): ?UnfulfillableQuantity
     {
         return $this->container['unfulfillable_quantity'];
     }
@@ -377,7 +380,7 @@ class InventoryDetails implements \ArrayAccess, \JsonSerializable, ModelInterfac
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\FBAInventory\UnfulfillableQuantity $unfulfillable_quantity unfulfillable_quantity
      */
-    public function setUnfulfillableQuantity(?UnfulfillableQuantity $unfulfillable_quantity) : self
+    public function setUnfulfillableQuantity(?UnfulfillableQuantity $unfulfillable_quantity): self
     {
         $this->container['unfulfillable_quantity'] = $unfulfillable_quantity;
 
@@ -389,7 +392,7 @@ class InventoryDetails implements \ArrayAccess, \JsonSerializable, ModelInterfac
      *
      * @param int $offset Offset
      */
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -412,7 +415,7 @@ class InventoryDetails implements \ArrayAccess, \JsonSerializable, ModelInterfac
      * @param null|int $offset Offset
      * @param mixed $value Value to be set
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         if (null === $offset) {
             $this->container[] = $value;
@@ -426,7 +429,7 @@ class InventoryDetails implements \ArrayAccess, \JsonSerializable, ModelInterfac
      *
      * @param int $offset Offset
      */
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -439,7 +442,7 @@ class InventoryDetails implements \ArrayAccess, \JsonSerializable, ModelInterfac
      * @return mixed returns data which can be serialized by json_encode(), which is a value
      *               of any type other than a resource
      */
-    public function jsonSerialize() : string
+    public function jsonSerialize(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }
@@ -447,7 +450,7 @@ class InventoryDetails implements \ArrayAccess, \JsonSerializable, ModelInterfac
     /**
      * Gets a header-safe presentation of the object.
      */
-    public function toHeaderValue() : string
+    public function toHeaderValue(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }

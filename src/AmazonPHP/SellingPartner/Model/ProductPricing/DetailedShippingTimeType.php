@@ -1,4 +1,7 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
+
 /**
  * DetailedShippingTimeType.
  *
@@ -40,7 +43,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class DetailedShippingTimeType implements \ArrayAccess, \JsonSerializable, ModelInterface
+class DetailedShippingTimeType implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -133,7 +136,7 @@ class DetailedShippingTimeType implements \ArrayAccess, \JsonSerializable, Model
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['minimum_hours'] = $data['minimum_hours'] ?? null;
         $this->container['maximum_hours'] = $data['maximum_hours'] ?? null;
@@ -146,7 +149,7 @@ class DetailedShippingTimeType implements \ArrayAccess, \JsonSerializable, Model
      *
      * @return string[]
      */
-    public static function openAPITypes() : array
+    public static function openAPITypes(): array
     {
         return self::$openAPITypes;
     }
@@ -156,7 +159,7 @@ class DetailedShippingTimeType implements \ArrayAccess, \JsonSerializable, Model
      *
      * @return null[]|string[]
      */
-    public static function openAPIFormats() : array
+    public static function openAPIFormats(): array
     {
         return self::$openAPIFormats;
     }
@@ -167,7 +170,7 @@ class DetailedShippingTimeType implements \ArrayAccess, \JsonSerializable, Model
      *
      * @return string[]
      */
-    public static function attributeMap() : array
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -177,7 +180,7 @@ class DetailedShippingTimeType implements \ArrayAccess, \JsonSerializable, Model
      *
      * @return string[]
      */
-    public static function setters() : array
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -187,7 +190,7 @@ class DetailedShippingTimeType implements \ArrayAccess, \JsonSerializable, Model
      *
      * @return string[]
      */
-    public static function getters() : array
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -195,9 +198,9 @@ class DetailedShippingTimeType implements \ArrayAccess, \JsonSerializable, Model
     /**
      * Gets the string presentation of the object.
      */
-    public function __toString() : string
+    public function __toString(): string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );
@@ -206,7 +209,7 @@ class DetailedShippingTimeType implements \ArrayAccess, \JsonSerializable, Model
     /**
      * The original name of the model.
      */
-    public function getModelName() : string
+    public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
@@ -216,7 +219,7 @@ class DetailedShippingTimeType implements \ArrayAccess, \JsonSerializable, Model
      *
      * @return string[]
      */
-    public function getAvailabilityTypeAllowableValues() : array
+    public function getAvailabilityTypeAllowableValues(): array
     {
         return [
             self::AVAILABILITY_TYPE_NOW,
@@ -230,7 +233,7 @@ class DetailedShippingTimeType implements \ArrayAccess, \JsonSerializable, Model
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties() : array
+    public function listInvalidProperties(): array
     {
         $invalidProperties = [];
 
@@ -253,7 +256,7 @@ class DetailedShippingTimeType implements \ArrayAccess, \JsonSerializable, Model
      *
      * @return bool True if all properties are valid
      */
-    public function valid() : bool
+    public function valid(): bool
     {
         return \count($this->listInvalidProperties()) === 0;
     }
@@ -261,7 +264,7 @@ class DetailedShippingTimeType implements \ArrayAccess, \JsonSerializable, Model
     /**
      * Gets minimum_hours.
      */
-    public function getMinimumHours() : ?int
+    public function getMinimumHours(): ?int
     {
         return $this->container['minimum_hours'];
     }
@@ -271,7 +274,7 @@ class DetailedShippingTimeType implements \ArrayAccess, \JsonSerializable, Model
      *
      * @param null|int $minimum_hours the minimum time, in hours, that the item will likely be shipped after the order has been placed
      */
-    public function setMinimumHours(?int $minimum_hours) : self
+    public function setMinimumHours(?int $minimum_hours): self
     {
         $this->container['minimum_hours'] = $minimum_hours;
 
@@ -281,7 +284,7 @@ class DetailedShippingTimeType implements \ArrayAccess, \JsonSerializable, Model
     /**
      * Gets maximum_hours.
      */
-    public function getMaximumHours() : ?int
+    public function getMaximumHours(): ?int
     {
         return $this->container['maximum_hours'];
     }
@@ -291,7 +294,7 @@ class DetailedShippingTimeType implements \ArrayAccess, \JsonSerializable, Model
      *
      * @param null|int $maximum_hours the maximum time, in hours, that the item will likely be shipped after the order has been placed
      */
-    public function setMaximumHours(?int $maximum_hours) : self
+    public function setMaximumHours(?int $maximum_hours): self
     {
         $this->container['maximum_hours'] = $maximum_hours;
 
@@ -301,7 +304,7 @@ class DetailedShippingTimeType implements \ArrayAccess, \JsonSerializable, Model
     /**
      * Gets available_date.
      */
-    public function getAvailableDate() : ?string
+    public function getAvailableDate(): ?string
     {
         return $this->container['available_date'];
     }
@@ -311,7 +314,7 @@ class DetailedShippingTimeType implements \ArrayAccess, \JsonSerializable, Model
      *
      * @param null|string $available_date The date when the item will be available for shipping. Only displayed for items that are not currently available for shipping.
      */
-    public function setAvailableDate(?string $available_date) : self
+    public function setAvailableDate(?string $available_date): self
     {
         $this->container['available_date'] = $available_date;
 
@@ -321,7 +324,7 @@ class DetailedShippingTimeType implements \ArrayAccess, \JsonSerializable, Model
     /**
      * Gets availability_type.
      */
-    public function getAvailabilityType() : ?string
+    public function getAvailabilityType(): ?string
     {
         return $this->container['availability_type'];
     }
@@ -331,7 +334,7 @@ class DetailedShippingTimeType implements \ArrayAccess, \JsonSerializable, Model
      *
      * @param null|string $availability_type Indicates whether the item is available for shipping now, or on a known or an unknown date in the future. If known, the availableDate property indicates the date that the item will be available for shipping. Possible values: NOW, FUTURE_WITHOUT_DATE, FUTURE_WITH_DATE.
      */
-    public function setAvailabilityType(?string $availability_type) : self
+    public function setAvailabilityType(?string $availability_type): self
     {
         $allowedValues = $this->getAvailabilityTypeAllowableValues();
 
@@ -354,7 +357,7 @@ class DetailedShippingTimeType implements \ArrayAccess, \JsonSerializable, Model
      *
      * @param int $offset Offset
      */
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -377,7 +380,7 @@ class DetailedShippingTimeType implements \ArrayAccess, \JsonSerializable, Model
      * @param null|int $offset Offset
      * @param mixed $value Value to be set
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         if (null === $offset) {
             $this->container[] = $value;
@@ -391,7 +394,7 @@ class DetailedShippingTimeType implements \ArrayAccess, \JsonSerializable, Model
      *
      * @param int $offset Offset
      */
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -404,7 +407,7 @@ class DetailedShippingTimeType implements \ArrayAccess, \JsonSerializable, Model
      * @return mixed returns data which can be serialized by json_encode(), which is a value
      *               of any type other than a resource
      */
-    public function jsonSerialize() : string
+    public function jsonSerialize(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }
@@ -412,7 +415,7 @@ class DetailedShippingTimeType implements \ArrayAccess, \JsonSerializable, Model
     /**
      * Gets a header-safe presentation of the object.
      */
-    public function toHeaderValue() : string
+    public function toHeaderValue(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * BusinessContext
  *
@@ -27,7 +28,7 @@
 
 namespace Plenty\AmazonPHP\SellingPartner\Model\Finances2024;
 
-use \ArrayAccess;
+use ArrayAccess;
 use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
 use Plenty\AmazonPHP\SellingPartner\ModelInterface;
 
@@ -39,7 +40,7 @@ use Plenty\AmazonPHP\SellingPartner\ModelInterface;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class BusinessContext implements ModelInterface, ArrayAccess, \JsonSerializable
+class BusinessContext implements ModelInterface, ArrayAccess, \JsonSerializable, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -75,7 +76,7 @@ class BusinessContext implements ModelInterface, ArrayAccess, \JsonSerializable
      *
      * @return array
      */
-    public static function openAPITypes() : array
+    public static function openAPITypes(): array
     {
         return self::$openAPITypes;
     }
@@ -85,7 +86,7 @@ class BusinessContext implements ModelInterface, ArrayAccess, \JsonSerializable
      *
      * @return array
      */
-    public static function openAPIFormats() : array
+    public static function openAPIFormats(): array
     {
         return self::$openAPIFormats;
     }
@@ -124,7 +125,7 @@ class BusinessContext implements ModelInterface, ArrayAccess, \JsonSerializable
      *
      * @return array
      */
-    public static function attributeMap() : array
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -134,7 +135,7 @@ class BusinessContext implements ModelInterface, ArrayAccess, \JsonSerializable
      *
      * @return array
      */
-    public static function setters() : array
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -144,7 +145,7 @@ class BusinessContext implements ModelInterface, ArrayAccess, \JsonSerializable
      *
      * @return array
      */
-    public static function getters() : array
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -154,19 +155,19 @@ class BusinessContext implements ModelInterface, ArrayAccess, \JsonSerializable
      *
      * @return string
      */
-    public function getModelName() : string
+    public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
 
-    const STORE_NAME_AMAZON_HAUL = 'AMAZON_HAUL';
+    public const STORE_NAME_AMAZON_HAUL = 'AMAZON_HAUL';
 
     /**
      * Gets allowable values of the enum
      *
      * @return string[]
      */
-    public function getStoreNameAllowableValues() : array
+    public function getStoreNameAllowableValues(): array
     {
         return [
             self::STORE_NAME_AMAZON_HAUL,
@@ -186,7 +187,7 @@ class BusinessContext implements ModelInterface, ArrayAccess, \JsonSerializable
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['store_name'] = $data['store_name'] ?? null;
     }
@@ -196,7 +197,7 @@ class BusinessContext implements ModelInterface, ArrayAccess, \JsonSerializable
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties() : array
+    public function listInvalidProperties(): array
     {
         $invalidProperties = [];
 
@@ -218,7 +219,7 @@ class BusinessContext implements ModelInterface, ArrayAccess, \JsonSerializable
      *
      * @return bool True if all properties are valid
      */
-    public function valid() : bool
+    public function valid(): bool
     {
         return count($this->listInvalidProperties()) === 0;
     }
@@ -241,18 +242,16 @@ class BusinessContext implements ModelInterface, ArrayAccess, \JsonSerializable
      *
      * @return self
      */
-    public function setStoreName($store_name) : self
+    public function setStoreName($store_name): self
     {
-        $allowedValues = $this->getStoreNameAllowableValues();
-        if (!is_null($store_name) && !in_array($store_name, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'store_name', must be one of '%s'",
-                    $store_name,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
+        // Deliberately not validated against getStoreNameAllowableValues(): this setter runs
+        // during response deserialization (ObjectSerializer::deserialize()), not
+        // request-building, so Amazon adding a new store name we don't know about yet is
+        // expected forward-compatible behaviour, not a client bug. Throwing here would abort
+        // deserialization of the entire response for one unrecognized value (see the
+        // relatedIdentifierName/itemRelatedIdentifierName incidents on the sibling models in
+        // this same directory). listInvalidProperties()/valid() still flag unknown values for
+        // callers who want to check.
         $this->container['store_name'] = $store_name;
 
         return $this;
@@ -264,7 +263,7 @@ class BusinessContext implements ModelInterface, ArrayAccess, \JsonSerializable
      *
      * @return boolean
      */
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -276,7 +275,7 @@ class BusinessContext implements ModelInterface, ArrayAccess, \JsonSerializable
      *
      * @return mixed|null
      */
-    public function offsetGet($offset)
+    public function offsetGet($offset): mixed
     {
         return $this->container[$offset] ?? null;
     }
@@ -289,7 +288,7 @@ class BusinessContext implements ModelInterface, ArrayAccess, \JsonSerializable
      *
      * @return void
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         if (is_null($offset)) {
             $this->container[] = $value;
@@ -305,7 +304,7 @@ class BusinessContext implements ModelInterface, ArrayAccess, \JsonSerializable
      *
      * @return void
      */
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -317,9 +316,9 @@ class BusinessContext implements ModelInterface, ArrayAccess, \JsonSerializable
      * @return mixed Returns data which can be serialized by json_encode(), which is a value
      * of any type other than a resource.
      */
-    public function jsonSerialize() : string
+    public function jsonSerialize(): string
     {
-       return \json_encode(ObjectSerializer::sanitizeForSerialization($this));
+        return \json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }
 
     /**
@@ -327,9 +326,9 @@ class BusinessContext implements ModelInterface, ArrayAccess, \JsonSerializable
      *
      * @return string
      */
-    public function __toString() : string
+    public function __toString(): string
     {
-        return json_encode(
+        return (string) json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );
@@ -340,7 +339,7 @@ class BusinessContext implements ModelInterface, ArrayAccess, \JsonSerializable
      *
      * @return string
      */
-    public function toHeaderValue() : string
+    public function toHeaderValue(): string
     {
         return json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }

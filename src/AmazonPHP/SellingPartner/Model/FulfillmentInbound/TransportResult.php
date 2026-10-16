@@ -1,4 +1,7 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
+
 /**
  * TransportResult.
  *
@@ -40,7 +43,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class TransportResult implements \ArrayAccess, \JsonSerializable, ModelInterface
+class TransportResult implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -57,7 +60,7 @@ class TransportResult implements \ArrayAccess, \JsonSerializable, ModelInterface
      * @var string[]
      */
     protected static /** [COMPAT] array */ $openAPITypes = [
-        'transport_status' => '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound\TransportStatus',
+        'transport_status' => \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound\TransportStatus::class,
         'error_code' => 'string',
         'error_description' => 'string',
     ];
@@ -122,7 +125,7 @@ class TransportResult implements \ArrayAccess, \JsonSerializable, ModelInterface
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['transport_status'] = $data['transport_status'] ?? null;
         $this->container['error_code'] = $data['error_code'] ?? null;
@@ -134,7 +137,7 @@ class TransportResult implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return string[]
      */
-    public static function openAPITypes() : array
+    public static function openAPITypes(): array
     {
         return self::$openAPITypes;
     }
@@ -144,7 +147,7 @@ class TransportResult implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return null[]|string[]
      */
-    public static function openAPIFormats() : array
+    public static function openAPIFormats(): array
     {
         return self::$openAPIFormats;
     }
@@ -155,7 +158,7 @@ class TransportResult implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return string[]
      */
-    public static function attributeMap() : array
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -165,7 +168,7 @@ class TransportResult implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return string[]
      */
-    public static function setters() : array
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -175,7 +178,7 @@ class TransportResult implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return string[]
      */
-    public static function getters() : array
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -183,9 +186,9 @@ class TransportResult implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets the string presentation of the object.
      */
-    public function __toString() : string
+    public function __toString(): string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );
@@ -194,7 +197,7 @@ class TransportResult implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * The original name of the model.
      */
-    public function getModelName() : string
+    public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
@@ -204,7 +207,7 @@ class TransportResult implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties() : array
+    public function listInvalidProperties(): array
     {
         $invalidProperties = [];
 
@@ -221,7 +224,7 @@ class TransportResult implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return bool True if all properties are valid
      */
-    public function valid() : bool
+    public function valid(): bool
     {
         return \count($this->listInvalidProperties()) === 0;
     }
@@ -229,7 +232,7 @@ class TransportResult implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets transport_status.
      */
-    public function getTransportStatus() : TransportStatus
+    public function getTransportStatus(): TransportStatus
     {
         return $this->container['transport_status'];
     }
@@ -239,7 +242,7 @@ class TransportResult implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound\TransportStatus $transport_status transport_status
      */
-    public function setTransportStatus(TransportStatus $transport_status) : self
+    public function setTransportStatus(TransportStatus $transport_status): self
     {
         $this->container['transport_status'] = $transport_status;
 
@@ -249,7 +252,7 @@ class TransportResult implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets error_code.
      */
-    public function getErrorCode() : ?string
+    public function getErrorCode(): ?string
     {
         return $this->container['error_code'];
     }
@@ -259,7 +262,7 @@ class TransportResult implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param null|string $error_code an error code that identifies the type of error that occured
      */
-    public function setErrorCode(?string $error_code) : self
+    public function setErrorCode(?string $error_code): self
     {
         $this->container['error_code'] = $error_code;
 
@@ -269,7 +272,7 @@ class TransportResult implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets error_description.
      */
-    public function getErrorDescription() : ?string
+    public function getErrorDescription(): ?string
     {
         return $this->container['error_description'];
     }
@@ -279,7 +282,7 @@ class TransportResult implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param null|string $error_description a message that describes the error condition
      */
-    public function setErrorDescription(?string $error_description) : self
+    public function setErrorDescription(?string $error_description): self
     {
         $this->container['error_description'] = $error_description;
 
@@ -291,7 +294,7 @@ class TransportResult implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param int $offset Offset
      */
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -314,7 +317,7 @@ class TransportResult implements \ArrayAccess, \JsonSerializable, ModelInterface
      * @param null|int $offset Offset
      * @param mixed $value Value to be set
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         if (null === $offset) {
             $this->container[] = $value;
@@ -328,7 +331,7 @@ class TransportResult implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param int $offset Offset
      */
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -341,7 +344,7 @@ class TransportResult implements \ArrayAccess, \JsonSerializable, ModelInterface
      * @return mixed returns data which can be serialized by json_encode(), which is a value
      *               of any type other than a resource
      */
-    public function jsonSerialize() : string
+    public function jsonSerialize(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }
@@ -349,7 +352,7 @@ class TransportResult implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets a header-safe presentation of the object.
      */
-    public function toHeaderValue() : string
+    public function toHeaderValue(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }

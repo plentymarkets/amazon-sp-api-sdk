@@ -1,4 +1,7 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
+
 /**
  * Attachment.
  *
@@ -40,7 +43,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class Attachment implements \ArrayAccess, \JsonSerializable, ModelInterface
+class Attachment implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -117,7 +120,7 @@ class Attachment implements \ArrayAccess, \JsonSerializable, ModelInterface
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['upload_destination_id'] = $data['upload_destination_id'] ?? null;
         $this->container['file_name'] = $data['file_name'] ?? null;
@@ -128,7 +131,7 @@ class Attachment implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return string[]
      */
-    public static function openAPITypes() : array
+    public static function openAPITypes(): array
     {
         return self::$openAPITypes;
     }
@@ -138,7 +141,7 @@ class Attachment implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return null[]|string[]
      */
-    public static function openAPIFormats() : array
+    public static function openAPIFormats(): array
     {
         return self::$openAPIFormats;
     }
@@ -149,7 +152,7 @@ class Attachment implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return string[]
      */
-    public static function attributeMap() : array
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -159,7 +162,7 @@ class Attachment implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return string[]
      */
-    public static function setters() : array
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -169,7 +172,7 @@ class Attachment implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return string[]
      */
-    public static function getters() : array
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -177,9 +180,9 @@ class Attachment implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets the string presentation of the object.
      */
-    public function __toString() : string
+    public function __toString(): string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );
@@ -188,7 +191,7 @@ class Attachment implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * The original name of the model.
      */
-    public function getModelName() : string
+    public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
@@ -198,7 +201,7 @@ class Attachment implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties() : array
+    public function listInvalidProperties(): array
     {
         $invalidProperties = [];
 
@@ -219,7 +222,7 @@ class Attachment implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return bool True if all properties are valid
      */
-    public function valid() : bool
+    public function valid(): bool
     {
         return \count($this->listInvalidProperties()) === 0;
     }
@@ -227,7 +230,7 @@ class Attachment implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets upload_destination_id.
      */
-    public function getUploadDestinationId() : string
+    public function getUploadDestinationId(): string
     {
         return $this->container['upload_destination_id'];
     }
@@ -237,7 +240,7 @@ class Attachment implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param string $upload_destination_id The identifier of the upload destination. Get this value by calling the createUploadDestination operation of the Uploads API.
      */
-    public function setUploadDestinationId(string $upload_destination_id) : self
+    public function setUploadDestinationId(string $upload_destination_id): self
     {
         $this->container['upload_destination_id'] = $upload_destination_id;
 
@@ -247,7 +250,7 @@ class Attachment implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets file_name.
      */
-    public function getFileName() : string
+    public function getFileName(): string
     {
         return $this->container['file_name'];
     }
@@ -257,7 +260,7 @@ class Attachment implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param string $file_name The name of the file, including the extension. This is the file name that will appear in the message. This does not need to match the file name of the file that you uploaded.
      */
-    public function setFileName(string $file_name) : self
+    public function setFileName(string $file_name): self
     {
         $this->container['file_name'] = $file_name;
 
@@ -269,7 +272,7 @@ class Attachment implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param int $offset Offset
      */
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -292,7 +295,7 @@ class Attachment implements \ArrayAccess, \JsonSerializable, ModelInterface
      * @param null|int $offset Offset
      * @param mixed $value Value to be set
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         if (null === $offset) {
             $this->container[] = $value;
@@ -306,7 +309,7 @@ class Attachment implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param int $offset Offset
      */
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -319,7 +322,7 @@ class Attachment implements \ArrayAccess, \JsonSerializable, ModelInterface
      * @return mixed returns data which can be serialized by json_encode(), which is a value
      *               of any type other than a resource
      */
-    public function jsonSerialize() : string
+    public function jsonSerialize(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }
@@ -327,7 +330,7 @@ class Attachment implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets a header-safe presentation of the object.
      */
-    public function toHeaderValue() : string
+    public function toHeaderValue(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }

@@ -38,11 +38,11 @@ class BoxInput implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInt
      * @var string[]
      */
     protected static array $openAPITypes = [
-        'content_information_source' => '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound2024\BoxContentInformationSource',
-        'dimensions' => '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound2024\Dimensions',
+        'content_information_source' => \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound2024\BoxContentInformationSource::class,
+        'dimensions' => \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound2024\Dimensions::class,
         'items' => '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound2024\ItemInput[]',
         'quantity' => 'int',
-        'weight' => '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound2024\Weight',
+        'weight' => \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound2024\Weight::class,
     ];
 
     /**
@@ -115,7 +115,7 @@ class BoxInput implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInt
      * @param null|mixed[] $data Associated array of property values
      *                           initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['content_information_source'] = $data['content_information_source'] ?? null;
         $this->container['dimensions'] = $data['dimensions'] ?? null;
@@ -127,7 +127,7 @@ class BoxInput implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInt
     /**
      * Array of property to type mappings. Used for (de)serialization.
      */
-    public static function openAPITypes() : array
+    public static function openAPITypes(): array
     {
         return self::$openAPITypes;
     }
@@ -135,7 +135,7 @@ class BoxInput implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInt
     /**
      * Array of property to format mappings. Used for (de)serialization.
      */
-    public static function openAPIFormats() : array
+    public static function openAPIFormats(): array
     {
         return self::$openAPIFormats;
     }
@@ -144,7 +144,7 @@ class BoxInput implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInt
      * Array of attributes where the key is the local name,
      * and the value is the original name.
      */
-    public static function attributeMap() : array
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -152,7 +152,7 @@ class BoxInput implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInt
     /**
      * Array of attributes to setter functions (for deserialization of responses).
      */
-    public static function setters() : array
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -160,7 +160,7 @@ class BoxInput implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInt
     /**
      * Array of attributes to getter functions (for serialization of requests).
      */
-    public static function getters() : array
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -168,7 +168,7 @@ class BoxInput implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInt
     /**
      * Gets the string presentation of the object.
      */
-    public function __toString() : string
+    public function __toString(): string
     {
         return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
@@ -179,7 +179,7 @@ class BoxInput implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInt
     /**
      * The original name of the model.
      */
-    public function getModelName() : string
+    public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
@@ -189,10 +189,10 @@ class BoxInput implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInt
      *
      * @throws AssertionException
      */
-    public function listInvalidProperties() : array
+    public function listInvalidProperties(): array
     {
         $invalidProperties = [];
-         
+
         if ($this->container['content_information_source'] === null) {
             $invalidProperties[] = "'content_information_source' can't be null";
         }
@@ -230,7 +230,7 @@ class BoxInput implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInt
      *
      * @return bool True if all properties are valid
      */
-    public function valid() : bool
+    public function valid(): bool
     {
         return \count($this->listInvalidProperties()) === 0;
     }
@@ -238,7 +238,7 @@ class BoxInput implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInt
     /**
      * Gets content_information_source.
      */
-    public function getContentInformationSource() : BoxContentInformationSource
+    public function getContentInformationSource(): BoxContentInformationSource
     {
         return $this->container['content_information_source'];
     }
@@ -248,7 +248,7 @@ class BoxInput implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInt
      *
      * @param BoxContentInformationSource $content_information_source content_information_source
      */
-    public function setContentInformationSource(BoxContentInformationSource $content_information_source) : self
+    public function setContentInformationSource(BoxContentInformationSource $content_information_source): self
     {
         $this->container['content_information_source'] = $content_information_source;
 
@@ -258,7 +258,7 @@ class BoxInput implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInt
     /**
      * Gets dimensions.
      */
-    public function getDimensions() : Dimensions
+    public function getDimensions(): Dimensions
     {
         return $this->container['dimensions'];
     }
@@ -268,7 +268,7 @@ class BoxInput implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInt
      *
      * @param Dimensions $dimensions dimensions
      */
-    public function setDimensions(Dimensions $dimensions) : self
+    public function setDimensions(Dimensions $dimensions): self
     {
         $this->container['dimensions'] = $dimensions;
 
@@ -280,7 +280,7 @@ class BoxInput implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInt
      *
      * @return null|ItemInput[]
      */
-    public function getItems() : ?array
+    public function getItems(): ?array
     {
         return $this->container['items'];
     }
@@ -290,7 +290,7 @@ class BoxInput implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInt
      *
      * @param null|ItemInput[] $items The items and their quantity in the box. This must be empty if the box `contentInformationSource` is `BARCODE_2D` or `MANUAL_PROCESS`.
      */
-    public function setItems(?array $items) : self
+    public function setItems(?array $items): self
     {
         $this->container['items'] = $items;
 
@@ -300,7 +300,7 @@ class BoxInput implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInt
     /**
      * Gets quantity.
      */
-    public function getQuantity() : int
+    public function getQuantity(): int
     {
         return $this->container['quantity'];
     }
@@ -310,7 +310,7 @@ class BoxInput implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInt
      *
      * @param int $quantity the number of containers where all other properties like weight or dimensions are identical
      */
-    public function setQuantity(int $quantity) : self
+    public function setQuantity(int $quantity): self
     {
         $this->container['quantity'] = $quantity;
 
@@ -320,7 +320,7 @@ class BoxInput implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInt
     /**
      * Gets weight.
      */
-    public function getWeight() : Weight
+    public function getWeight(): Weight
     {
         return $this->container['weight'];
     }
@@ -330,7 +330,7 @@ class BoxInput implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInt
      *
      * @param Weight $weight weight
      */
-    public function setWeight(Weight $weight) : self
+    public function setWeight(Weight $weight): self
     {
         $this->container['weight'] = $weight;
 
@@ -340,7 +340,7 @@ class BoxInput implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInt
     /**
      * Returns true if offset exists. False otherwise.
      */
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -351,7 +351,7 @@ class BoxInput implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInt
      * @return null|mixed
      */
     #[\ReturnTypeWillChange]
-    public function offsetGet($offset) : mixed
+    public function offsetGet($offset): mixed
     {
         return $this->container[$offset] ?? null;
     }
@@ -359,7 +359,7 @@ class BoxInput implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInt
     /**
      * Sets value based on offset.
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         if (null === $offset) {
             $this->container[] = $value;
@@ -371,7 +371,7 @@ class BoxInput implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInt
     /**
      * Unsets offset.
      */
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -385,7 +385,7 @@ class BoxInput implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInt
      *               of any type other than a resource
      */
     #[\ReturnTypeWillChange]
-    public function jsonSerialize() : string
+    public function jsonSerialize(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }
@@ -393,7 +393,7 @@ class BoxInput implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInt
     /**
      * Gets a header-safe presentation of the object.
      */
-    public function toHeaderValue() : string
+    public function toHeaderValue(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }

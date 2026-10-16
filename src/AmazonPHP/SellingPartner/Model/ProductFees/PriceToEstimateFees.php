@@ -1,4 +1,7 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
+
 /**
  * PriceToEstimateFees.
  *
@@ -40,7 +43,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class PriceToEstimateFees implements \ArrayAccess, \JsonSerializable, ModelInterface
+class PriceToEstimateFees implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -57,9 +60,9 @@ class PriceToEstimateFees implements \ArrayAccess, \JsonSerializable, ModelInter
      * @var string[]
      */
     protected static /** [COMPAT] array */ $openAPITypes = [
-        'listing_price' => '\Plenty\AmazonPHP\SellingPartner\Model\ProductFees\MoneyType',
-        'shipping' => '\Plenty\AmazonPHP\SellingPartner\Model\ProductFees\MoneyType',
-        'points' => '\Plenty\AmazonPHP\SellingPartner\Model\ProductFees\Points',
+        'listing_price' => \Plenty\AmazonPHP\SellingPartner\Model\ProductFees\MoneyType::class,
+        'shipping' => \Plenty\AmazonPHP\SellingPartner\Model\ProductFees\MoneyType::class,
+        'points' => \Plenty\AmazonPHP\SellingPartner\Model\ProductFees\Points::class,
     ];
 
     /**
@@ -122,7 +125,7 @@ class PriceToEstimateFees implements \ArrayAccess, \JsonSerializable, ModelInter
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['listing_price'] = $data['listing_price'] ?? null;
         $this->container['shipping'] = $data['shipping'] ?? null;
@@ -134,7 +137,7 @@ class PriceToEstimateFees implements \ArrayAccess, \JsonSerializable, ModelInter
      *
      * @return string[]
      */
-    public static function openAPITypes() : array
+    public static function openAPITypes(): array
     {
         return self::$openAPITypes;
     }
@@ -144,7 +147,7 @@ class PriceToEstimateFees implements \ArrayAccess, \JsonSerializable, ModelInter
      *
      * @return null[]|string[]
      */
-    public static function openAPIFormats() : array
+    public static function openAPIFormats(): array
     {
         return self::$openAPIFormats;
     }
@@ -155,7 +158,7 @@ class PriceToEstimateFees implements \ArrayAccess, \JsonSerializable, ModelInter
      *
      * @return string[]
      */
-    public static function attributeMap() : array
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -165,7 +168,7 @@ class PriceToEstimateFees implements \ArrayAccess, \JsonSerializable, ModelInter
      *
      * @return string[]
      */
-    public static function setters() : array
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -175,7 +178,7 @@ class PriceToEstimateFees implements \ArrayAccess, \JsonSerializable, ModelInter
      *
      * @return string[]
      */
-    public static function getters() : array
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -183,9 +186,9 @@ class PriceToEstimateFees implements \ArrayAccess, \JsonSerializable, ModelInter
     /**
      * Gets the string presentation of the object.
      */
-    public function __toString() : string
+    public function __toString(): string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );
@@ -194,7 +197,7 @@ class PriceToEstimateFees implements \ArrayAccess, \JsonSerializable, ModelInter
     /**
      * The original name of the model.
      */
-    public function getModelName() : string
+    public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
@@ -204,7 +207,7 @@ class PriceToEstimateFees implements \ArrayAccess, \JsonSerializable, ModelInter
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties() : array
+    public function listInvalidProperties(): array
     {
         $invalidProperties = [];
 
@@ -221,7 +224,7 @@ class PriceToEstimateFees implements \ArrayAccess, \JsonSerializable, ModelInter
      *
      * @return bool True if all properties are valid
      */
-    public function valid() : bool
+    public function valid(): bool
     {
         return \count($this->listInvalidProperties()) === 0;
     }
@@ -229,7 +232,7 @@ class PriceToEstimateFees implements \ArrayAccess, \JsonSerializable, ModelInter
     /**
      * Gets listing_price.
      */
-    public function getListingPrice() : MoneyType
+    public function getListingPrice(): MoneyType
     {
         return $this->container['listing_price'];
     }
@@ -239,7 +242,7 @@ class PriceToEstimateFees implements \ArrayAccess, \JsonSerializable, ModelInter
      *
      * @param \Plenty\AmazonPHP\SellingPartner\Model\ProductFees\MoneyType $listing_price listing_price
      */
-    public function setListingPrice(MoneyType $listing_price) : self
+    public function setListingPrice(MoneyType $listing_price): self
     {
         $this->container['listing_price'] = $listing_price;
 
@@ -249,7 +252,7 @@ class PriceToEstimateFees implements \ArrayAccess, \JsonSerializable, ModelInter
     /**
      * Gets shipping.
      */
-    public function getShipping() : ?MoneyType
+    public function getShipping(): ?MoneyType
     {
         return $this->container['shipping'];
     }
@@ -259,7 +262,7 @@ class PriceToEstimateFees implements \ArrayAccess, \JsonSerializable, ModelInter
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\ProductFees\MoneyType $shipping shipping
      */
-    public function setShipping(?MoneyType $shipping) : self
+    public function setShipping(?MoneyType $shipping): self
     {
         $this->container['shipping'] = $shipping;
 
@@ -269,7 +272,7 @@ class PriceToEstimateFees implements \ArrayAccess, \JsonSerializable, ModelInter
     /**
      * Gets points.
      */
-    public function getPoints() : ?Points
+    public function getPoints(): ?Points
     {
         return $this->container['points'];
     }
@@ -279,7 +282,7 @@ class PriceToEstimateFees implements \ArrayAccess, \JsonSerializable, ModelInter
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\ProductFees\Points $points points
      */
-    public function setPoints(?Points $points) : self
+    public function setPoints(?Points $points): self
     {
         $this->container['points'] = $points;
 
@@ -291,7 +294,7 @@ class PriceToEstimateFees implements \ArrayAccess, \JsonSerializable, ModelInter
      *
      * @param int $offset Offset
      */
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -314,7 +317,7 @@ class PriceToEstimateFees implements \ArrayAccess, \JsonSerializable, ModelInter
      * @param null|int $offset Offset
      * @param mixed $value Value to be set
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         if (null === $offset) {
             $this->container[] = $value;
@@ -328,7 +331,7 @@ class PriceToEstimateFees implements \ArrayAccess, \JsonSerializable, ModelInter
      *
      * @param int $offset Offset
      */
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -341,7 +344,7 @@ class PriceToEstimateFees implements \ArrayAccess, \JsonSerializable, ModelInter
      * @return mixed returns data which can be serialized by json_encode(), which is a value
      *               of any type other than a resource
      */
-    public function jsonSerialize() : string
+    public function jsonSerialize(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }
@@ -349,7 +352,7 @@ class PriceToEstimateFees implements \ArrayAccess, \JsonSerializable, ModelInter
     /**
      * Gets a header-safe presentation of the object.
      */
-    public function toHeaderValue() : string
+    public function toHeaderValue(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }

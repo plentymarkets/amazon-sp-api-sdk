@@ -100,7 +100,7 @@ class SelfShipAppointmentSlotsAvailability implements \ArrayAccess, \JsonSeriali
      * @param null|mixed[] $data Associated array of property values
      *                           initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['expires_at'] = $data['expires_at'] ?? null;
         $this->container['slots'] = $data['slots'] ?? null;
@@ -109,7 +109,7 @@ class SelfShipAppointmentSlotsAvailability implements \ArrayAccess, \JsonSeriali
     /**
      * Array of property to type mappings. Used for (de)serialization.
      */
-    public static function openAPITypes() : array
+    public static function openAPITypes(): array
     {
         return self::$openAPITypes;
     }
@@ -117,7 +117,7 @@ class SelfShipAppointmentSlotsAvailability implements \ArrayAccess, \JsonSeriali
     /**
      * Array of property to format mappings. Used for (de)serialization.
      */
-    public static function openAPIFormats() : array
+    public static function openAPIFormats(): array
     {
         return self::$openAPIFormats;
     }
@@ -126,7 +126,7 @@ class SelfShipAppointmentSlotsAvailability implements \ArrayAccess, \JsonSeriali
      * Array of attributes where the key is the local name,
      * and the value is the original name.
      */
-    public static function attributeMap() : array
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -134,7 +134,7 @@ class SelfShipAppointmentSlotsAvailability implements \ArrayAccess, \JsonSeriali
     /**
      * Array of attributes to setter functions (for deserialization of responses).
      */
-    public static function setters() : array
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -142,7 +142,7 @@ class SelfShipAppointmentSlotsAvailability implements \ArrayAccess, \JsonSeriali
     /**
      * Array of attributes to getter functions (for serialization of requests).
      */
-    public static function getters() : array
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -150,7 +150,7 @@ class SelfShipAppointmentSlotsAvailability implements \ArrayAccess, \JsonSeriali
     /**
      * Gets the string presentation of the object.
      */
-    public function __toString() : string
+    public function __toString(): string
     {
         return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
@@ -161,7 +161,7 @@ class SelfShipAppointmentSlotsAvailability implements \ArrayAccess, \JsonSeriali
     /**
      * The original name of the model.
      */
-    public function getModelName() : string
+    public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
@@ -171,7 +171,7 @@ class SelfShipAppointmentSlotsAvailability implements \ArrayAccess, \JsonSeriali
      *
      * @throws AssertionException
      */
-    public function listInvalidProperties() : array
+    public function listInvalidProperties(): array
     {
         return [];
     }
@@ -182,7 +182,7 @@ class SelfShipAppointmentSlotsAvailability implements \ArrayAccess, \JsonSeriali
      *
      * @return bool True if all properties are valid
      */
-    public function valid() : bool
+    public function valid(): bool
     {
         return \count($this->listInvalidProperties()) === 0;
     }
@@ -190,7 +190,7 @@ class SelfShipAppointmentSlotsAvailability implements \ArrayAccess, \JsonSeriali
     /**
      * Gets expires_at.
      */
-    public function getExpiresAt() : ?\DateTimeInterface
+    public function getExpiresAt(): ?\DateTimeInterface
     {
         return $this->container['expires_at'];
     }
@@ -200,7 +200,7 @@ class SelfShipAppointmentSlotsAvailability implements \ArrayAccess, \JsonSeriali
      *
      * @param null|\DateTimeInterface $expires_at The ISO 8601 datetime with pattern `yyyy-MM-ddTHH:mm:ss.sssZ`.
      */
-    public function setExpiresAt(?\DateTimeInterface $expires_at) : self
+    public function setExpiresAt(?\DateTimeInterface $expires_at): self
     {
         $this->container['expires_at'] = $expires_at;
 
@@ -212,7 +212,7 @@ class SelfShipAppointmentSlotsAvailability implements \ArrayAccess, \JsonSeriali
      *
      * @return null|AppointmentSlot[]
      */
-    public function getSlots() : ?array
+    public function getSlots(): ?array
     {
         return $this->container['slots'];
     }
@@ -222,7 +222,7 @@ class SelfShipAppointmentSlotsAvailability implements \ArrayAccess, \JsonSeriali
      *
      * @param null|AppointmentSlot[] $slots list of appointment slots
      */
-    public function setSlots(?array $slots) : self
+    public function setSlots(?array $slots): self
     {
         $this->container['slots'] = $slots;
 
@@ -232,7 +232,7 @@ class SelfShipAppointmentSlotsAvailability implements \ArrayAccess, \JsonSeriali
     /**
      * Returns true if offset exists. False otherwise.
      */
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -243,7 +243,7 @@ class SelfShipAppointmentSlotsAvailability implements \ArrayAccess, \JsonSeriali
      * @return null|mixed
      */
     #[\ReturnTypeWillChange]
-    public function offsetGet($offset) : mixed
+    public function offsetGet($offset): mixed
     {
         return $this->container[$offset] ?? null;
     }
@@ -251,7 +251,7 @@ class SelfShipAppointmentSlotsAvailability implements \ArrayAccess, \JsonSeriali
     /**
      * Sets value based on offset.
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         if (null === $offset) {
             $this->container[] = $value;
@@ -263,7 +263,7 @@ class SelfShipAppointmentSlotsAvailability implements \ArrayAccess, \JsonSeriali
     /**
      * Unsets offset.
      */
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -277,7 +277,7 @@ class SelfShipAppointmentSlotsAvailability implements \ArrayAccess, \JsonSeriali
      *               of any type other than a resource
      */
     #[\ReturnTypeWillChange]
-    public function jsonSerialize() : string
+    public function jsonSerialize(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }
@@ -285,7 +285,7 @@ class SelfShipAppointmentSlotsAvailability implements \ArrayAccess, \JsonSeriali
     /**
      * Gets a header-safe presentation of the object.
      */
-    public function toHeaderValue() : string
+    public function toHeaderValue(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }

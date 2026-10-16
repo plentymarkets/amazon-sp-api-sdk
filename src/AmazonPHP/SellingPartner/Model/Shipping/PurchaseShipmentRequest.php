@@ -1,4 +1,7 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
+
 /**
  * PurchaseShipmentRequest.
  *
@@ -40,7 +43,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class PurchaseShipmentRequest implements \ArrayAccess, \JsonSerializable, ModelInterface
+class PurchaseShipmentRequest implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -58,12 +61,12 @@ class PurchaseShipmentRequest implements \ArrayAccess, \JsonSerializable, ModelI
      */
     protected static /** [COMPAT] array */ $openAPITypes = [
         'client_reference_id' => 'string',
-        'ship_to' => '\Plenty\AmazonPHP\SellingPartner\Model\Shipping\Address',
-        'ship_from' => '\Plenty\AmazonPHP\SellingPartner\Model\Shipping\Address',
+        'ship_to' => \Plenty\AmazonPHP\SellingPartner\Model\Shipping\Address::class,
+        'ship_from' => \Plenty\AmazonPHP\SellingPartner\Model\Shipping\Address::class,
         'ship_date' => '\DateTime',
-        'service_type' => '\Plenty\AmazonPHP\SellingPartner\Model\Shipping\ServiceType',
+        'service_type' => \Plenty\AmazonPHP\SellingPartner\Model\Shipping\ServiceType::class,
         'containers' => '\Plenty\AmazonPHP\SellingPartner\Model\Shipping\Container[]',
-        'label_specification' => '\Plenty\AmazonPHP\SellingPartner\Model\Shipping\LabelSpecification',
+        'label_specification' => \Plenty\AmazonPHP\SellingPartner\Model\Shipping\LabelSpecification::class,
     ];
 
     /**
@@ -142,7 +145,7 @@ class PurchaseShipmentRequest implements \ArrayAccess, \JsonSerializable, ModelI
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['client_reference_id'] = $data['client_reference_id'] ?? null;
         $this->container['ship_to'] = $data['ship_to'] ?? null;
@@ -158,7 +161,7 @@ class PurchaseShipmentRequest implements \ArrayAccess, \JsonSerializable, ModelI
      *
      * @return string[]
      */
-    public static function openAPITypes() : array
+    public static function openAPITypes(): array
     {
         return self::$openAPITypes;
     }
@@ -168,7 +171,7 @@ class PurchaseShipmentRequest implements \ArrayAccess, \JsonSerializable, ModelI
      *
      * @return null[]|string[]
      */
-    public static function openAPIFormats() : array
+    public static function openAPIFormats(): array
     {
         return self::$openAPIFormats;
     }
@@ -179,7 +182,7 @@ class PurchaseShipmentRequest implements \ArrayAccess, \JsonSerializable, ModelI
      *
      * @return string[]
      */
-    public static function attributeMap() : array
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -189,7 +192,7 @@ class PurchaseShipmentRequest implements \ArrayAccess, \JsonSerializable, ModelI
      *
      * @return string[]
      */
-    public static function setters() : array
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -199,7 +202,7 @@ class PurchaseShipmentRequest implements \ArrayAccess, \JsonSerializable, ModelI
      *
      * @return string[]
      */
-    public static function getters() : array
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -207,9 +210,9 @@ class PurchaseShipmentRequest implements \ArrayAccess, \JsonSerializable, ModelI
     /**
      * Gets the string presentation of the object.
      */
-    public function __toString() : string
+    public function __toString(): string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );
@@ -218,7 +221,7 @@ class PurchaseShipmentRequest implements \ArrayAccess, \JsonSerializable, ModelI
     /**
      * The original name of the model.
      */
-    public function getModelName() : string
+    public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
@@ -228,7 +231,7 @@ class PurchaseShipmentRequest implements \ArrayAccess, \JsonSerializable, ModelI
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties() : array
+    public function listInvalidProperties(): array
     {
         $invalidProperties = [];
 
@@ -269,7 +272,7 @@ class PurchaseShipmentRequest implements \ArrayAccess, \JsonSerializable, ModelI
      *
      * @return bool True if all properties are valid
      */
-    public function valid() : bool
+    public function valid(): bool
     {
         return \count($this->listInvalidProperties()) === 0;
     }
@@ -277,7 +280,7 @@ class PurchaseShipmentRequest implements \ArrayAccess, \JsonSerializable, ModelI
     /**
      * Gets client_reference_id.
      */
-    public function getClientReferenceId() : string
+    public function getClientReferenceId(): string
     {
         return $this->container['client_reference_id'];
     }
@@ -287,7 +290,7 @@ class PurchaseShipmentRequest implements \ArrayAccess, \JsonSerializable, ModelI
      *
      * @param string $client_reference_id client reference id
      */
-    public function setClientReferenceId(string $client_reference_id) : self
+    public function setClientReferenceId(string $client_reference_id): self
     {
         if ((\mb_strlen($client_reference_id) > 40)) {
             throw new \InvalidArgumentException('invalid length for $client_reference_id when calling PurchaseShipmentRequest., must be smaller than or equal to 40.');
@@ -301,7 +304,7 @@ class PurchaseShipmentRequest implements \ArrayAccess, \JsonSerializable, ModelI
     /**
      * Gets ship_to.
      */
-    public function getShipTo() : Address
+    public function getShipTo(): Address
     {
         return $this->container['ship_to'];
     }
@@ -311,7 +314,7 @@ class PurchaseShipmentRequest implements \ArrayAccess, \JsonSerializable, ModelI
      *
      * @param \Plenty\AmazonPHP\SellingPartner\Model\Shipping\Address $ship_to ship_to
      */
-    public function setShipTo(Address $ship_to) : self
+    public function setShipTo(Address $ship_to): self
     {
         $this->container['ship_to'] = $ship_to;
 
@@ -321,7 +324,7 @@ class PurchaseShipmentRequest implements \ArrayAccess, \JsonSerializable, ModelI
     /**
      * Gets ship_from.
      */
-    public function getShipFrom() : Address
+    public function getShipFrom(): Address
     {
         return $this->container['ship_from'];
     }
@@ -331,7 +334,7 @@ class PurchaseShipmentRequest implements \ArrayAccess, \JsonSerializable, ModelI
      *
      * @param \Plenty\AmazonPHP\SellingPartner\Model\Shipping\Address $ship_from ship_from
      */
-    public function setShipFrom(Address $ship_from) : self
+    public function setShipFrom(Address $ship_from): self
     {
         $this->container['ship_from'] = $ship_from;
 
@@ -343,7 +346,7 @@ class PurchaseShipmentRequest implements \ArrayAccess, \JsonSerializable, ModelI
      *
      * @return null|\DateTime|\DateTimeImmutable
      */
-    public function getShipDate() : ?\DateTimeInterface
+    public function getShipDate(): ?\DateTimeInterface
     {
         return $this->container['ship_date'];
     }
@@ -353,7 +356,7 @@ class PurchaseShipmentRequest implements \ArrayAccess, \JsonSerializable, ModelI
      *
      * @param \DateTime|\DateTimeImmutable $ship_date The start date and time. This defaults to the current date and time.
      */
-    public function setShipDate(\DateTimeInterface $ship_date) : self
+    public function setShipDate(\DateTimeInterface $ship_date): self
     {
         $this->container['ship_date'] = $ship_date;
 
@@ -363,7 +366,7 @@ class PurchaseShipmentRequest implements \ArrayAccess, \JsonSerializable, ModelI
     /**
      * Gets service_type.
      */
-    public function getServiceType() : ServiceType
+    public function getServiceType(): ServiceType
     {
         return $this->container['service_type'];
     }
@@ -373,7 +376,7 @@ class PurchaseShipmentRequest implements \ArrayAccess, \JsonSerializable, ModelI
      *
      * @param \Plenty\AmazonPHP\SellingPartner\Model\Shipping\ServiceType $service_type service_type
      */
-    public function setServiceType(ServiceType $service_type) : self
+    public function setServiceType(ServiceType $service_type): self
     {
         $this->container['service_type'] = $service_type;
 
@@ -385,7 +388,7 @@ class PurchaseShipmentRequest implements \ArrayAccess, \JsonSerializable, ModelI
      *
      * @return \Plenty\AmazonPHP\SellingPartner\Model\Shipping\Container[]
      */
-    public function getContainers() : array
+    public function getContainers(): array
     {
         return $this->container['containers'];
     }
@@ -395,7 +398,7 @@ class PurchaseShipmentRequest implements \ArrayAccess, \JsonSerializable, ModelI
      *
      * @param \Plenty\AmazonPHP\SellingPartner\Model\Shipping\Container[] $containers a list of container
      */
-    public function setContainers(array $containers) : self
+    public function setContainers(array $containers): self
     {
         $this->container['containers'] = $containers;
 
@@ -405,7 +408,7 @@ class PurchaseShipmentRequest implements \ArrayAccess, \JsonSerializable, ModelI
     /**
      * Gets label_specification.
      */
-    public function getLabelSpecification() : LabelSpecification
+    public function getLabelSpecification(): LabelSpecification
     {
         return $this->container['label_specification'];
     }
@@ -415,7 +418,7 @@ class PurchaseShipmentRequest implements \ArrayAccess, \JsonSerializable, ModelI
      *
      * @param \Plenty\AmazonPHP\SellingPartner\Model\Shipping\LabelSpecification $label_specification label_specification
      */
-    public function setLabelSpecification(LabelSpecification $label_specification) : self
+    public function setLabelSpecification(LabelSpecification $label_specification): self
     {
         $this->container['label_specification'] = $label_specification;
 
@@ -427,7 +430,7 @@ class PurchaseShipmentRequest implements \ArrayAccess, \JsonSerializable, ModelI
      *
      * @param int $offset Offset
      */
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -450,7 +453,7 @@ class PurchaseShipmentRequest implements \ArrayAccess, \JsonSerializable, ModelI
      * @param null|int $offset Offset
      * @param mixed $value Value to be set
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         if (null === $offset) {
             $this->container[] = $value;
@@ -464,7 +467,7 @@ class PurchaseShipmentRequest implements \ArrayAccess, \JsonSerializable, ModelI
      *
      * @param int $offset Offset
      */
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -477,7 +480,7 @@ class PurchaseShipmentRequest implements \ArrayAccess, \JsonSerializable, ModelI
      * @return mixed returns data which can be serialized by json_encode(), which is a value
      *               of any type other than a resource
      */
-    public function jsonSerialize() : string
+    public function jsonSerialize(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }
@@ -485,7 +488,7 @@ class PurchaseShipmentRequest implements \ArrayAccess, \JsonSerializable, ModelI
     /**
      * Gets a header-safe presentation of the object.
      */
-    public function toHeaderValue() : string
+    public function toHeaderValue(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }

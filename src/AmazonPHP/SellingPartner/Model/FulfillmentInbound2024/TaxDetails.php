@@ -38,7 +38,7 @@ class TaxDetails implements \ArrayAccess, \JsonSerializable, \Stringable, ModelI
      * @var string[]
      */
     protected static array $openAPITypes = [
-        'declared_value' => '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound2024\Currency',
+        'declared_value' => \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound2024\Currency::class,
         'hsn_code' => 'string',
         'tax_rates' => '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound2024\TaxRate[]',
     ];
@@ -105,7 +105,7 @@ class TaxDetails implements \ArrayAccess, \JsonSerializable, \Stringable, ModelI
      * @param null|mixed[] $data Associated array of property values
      *                           initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['declared_value'] = $data['declared_value'] ?? null;
         $this->container['hsn_code'] = $data['hsn_code'] ?? null;
@@ -115,7 +115,7 @@ class TaxDetails implements \ArrayAccess, \JsonSerializable, \Stringable, ModelI
     /**
      * Array of property to type mappings. Used for (de)serialization.
      */
-    public static function openAPITypes() : array
+    public static function openAPITypes(): array
     {
         return self::$openAPITypes;
     }
@@ -123,7 +123,7 @@ class TaxDetails implements \ArrayAccess, \JsonSerializable, \Stringable, ModelI
     /**
      * Array of property to format mappings. Used for (de)serialization.
      */
-    public static function openAPIFormats() : array
+    public static function openAPIFormats(): array
     {
         return self::$openAPIFormats;
     }
@@ -132,7 +132,7 @@ class TaxDetails implements \ArrayAccess, \JsonSerializable, \Stringable, ModelI
      * Array of attributes where the key is the local name,
      * and the value is the original name.
      */
-    public static function attributeMap() : array
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -140,7 +140,7 @@ class TaxDetails implements \ArrayAccess, \JsonSerializable, \Stringable, ModelI
     /**
      * Array of attributes to setter functions (for deserialization of responses).
      */
-    public static function setters() : array
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -148,7 +148,7 @@ class TaxDetails implements \ArrayAccess, \JsonSerializable, \Stringable, ModelI
     /**
      * Array of attributes to getter functions (for serialization of requests).
      */
-    public static function getters() : array
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -156,7 +156,7 @@ class TaxDetails implements \ArrayAccess, \JsonSerializable, \Stringable, ModelI
     /**
      * Gets the string presentation of the object.
      */
-    public function __toString() : string
+    public function __toString(): string
     {
         return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
@@ -167,7 +167,7 @@ class TaxDetails implements \ArrayAccess, \JsonSerializable, \Stringable, ModelI
     /**
      * The original name of the model.
      */
-    public function getModelName() : string
+    public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
@@ -177,10 +177,10 @@ class TaxDetails implements \ArrayAccess, \JsonSerializable, \Stringable, ModelI
      *
      * @throws AssertionException
      */
-    public function listInvalidProperties() : array
+    public function listInvalidProperties(): array
     {
         $invalidProperties = [];
-         
+
         if ($this->container['declared_value'] !== null) {
             $this->container['declared_value']->listInvalidProperties();
         }
@@ -202,7 +202,7 @@ class TaxDetails implements \ArrayAccess, \JsonSerializable, \Stringable, ModelI
      *
      * @return bool True if all properties are valid
      */
-    public function valid() : bool
+    public function valid(): bool
     {
         return \count($this->listInvalidProperties()) === 0;
     }
@@ -210,7 +210,7 @@ class TaxDetails implements \ArrayAccess, \JsonSerializable, \Stringable, ModelI
     /**
      * Gets declared_value.
      */
-    public function getDeclaredValue() : ?Currency
+    public function getDeclaredValue(): ?Currency
     {
         return $this->container['declared_value'];
     }
@@ -220,7 +220,7 @@ class TaxDetails implements \ArrayAccess, \JsonSerializable, \Stringable, ModelI
      *
      * @param null|Currency $declared_value declared_value
      */
-    public function setDeclaredValue(?Currency $declared_value) : self
+    public function setDeclaredValue(?Currency $declared_value): self
     {
         $this->container['declared_value'] = $declared_value;
 
@@ -230,7 +230,7 @@ class TaxDetails implements \ArrayAccess, \JsonSerializable, \Stringable, ModelI
     /**
      * Gets hsn_code.
      */
-    public function getHsnCode() : ?string
+    public function getHsnCode(): ?string
     {
         return $this->container['hsn_code'];
     }
@@ -240,7 +240,7 @@ class TaxDetails implements \ArrayAccess, \JsonSerializable, \Stringable, ModelI
      *
      * @param null|string $hsn_code harmonized System of Nomenclature code
      */
-    public function setHsnCode(?string $hsn_code) : self
+    public function setHsnCode(?string $hsn_code): self
     {
         $this->container['hsn_code'] = $hsn_code;
 
@@ -252,7 +252,7 @@ class TaxDetails implements \ArrayAccess, \JsonSerializable, \Stringable, ModelI
      *
      * @return null|TaxRate[]
      */
-    public function getTaxRates() : ?array
+    public function getTaxRates(): ?array
     {
         return $this->container['tax_rates'];
     }
@@ -262,7 +262,7 @@ class TaxDetails implements \ArrayAccess, \JsonSerializable, \Stringable, ModelI
      *
      * @param null|TaxRate[] $tax_rates list of tax rates
      */
-    public function setTaxRates(?array $tax_rates) : self
+    public function setTaxRates(?array $tax_rates): self
     {
         $this->container['tax_rates'] = $tax_rates;
 
@@ -272,7 +272,7 @@ class TaxDetails implements \ArrayAccess, \JsonSerializable, \Stringable, ModelI
     /**
      * Returns true if offset exists. False otherwise.
      */
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -283,7 +283,7 @@ class TaxDetails implements \ArrayAccess, \JsonSerializable, \Stringable, ModelI
      * @return null|mixed
      */
     #[\ReturnTypeWillChange]
-    public function offsetGet($offset) : mixed
+    public function offsetGet($offset): mixed
     {
         return $this->container[$offset] ?? null;
     }
@@ -291,7 +291,7 @@ class TaxDetails implements \ArrayAccess, \JsonSerializable, \Stringable, ModelI
     /**
      * Sets value based on offset.
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         if (null === $offset) {
             $this->container[] = $value;
@@ -303,7 +303,7 @@ class TaxDetails implements \ArrayAccess, \JsonSerializable, \Stringable, ModelI
     /**
      * Unsets offset.
      */
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -317,7 +317,7 @@ class TaxDetails implements \ArrayAccess, \JsonSerializable, \Stringable, ModelI
      *               of any type other than a resource
      */
     #[\ReturnTypeWillChange]
-    public function jsonSerialize() : string
+    public function jsonSerialize(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }
@@ -325,7 +325,7 @@ class TaxDetails implements \ArrayAccess, \JsonSerializable, \Stringable, ModelI
     /**
      * Gets a header-safe presentation of the object.
      */
-    public function toHeaderValue() : string
+    public function toHeaderValue(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }

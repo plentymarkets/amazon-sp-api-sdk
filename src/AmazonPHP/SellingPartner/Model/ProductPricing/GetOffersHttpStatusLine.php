@@ -1,4 +1,7 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
+
 /**
  * GetOffersHttpStatusLine.
  *
@@ -40,7 +43,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class GetOffersHttpStatusLine implements \ArrayAccess, \JsonSerializable, ModelInterface
+class GetOffersHttpStatusLine implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -117,7 +120,7 @@ class GetOffersHttpStatusLine implements \ArrayAccess, \JsonSerializable, ModelI
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['status_code'] = $data['status_code'] ?? null;
         $this->container['reason_phrase'] = $data['reason_phrase'] ?? null;
@@ -128,7 +131,7 @@ class GetOffersHttpStatusLine implements \ArrayAccess, \JsonSerializable, ModelI
      *
      * @return string[]
      */
-    public static function openAPITypes() : array
+    public static function openAPITypes(): array
     {
         return self::$openAPITypes;
     }
@@ -138,7 +141,7 @@ class GetOffersHttpStatusLine implements \ArrayAccess, \JsonSerializable, ModelI
      *
      * @return null[]|string[]
      */
-    public static function openAPIFormats() : array
+    public static function openAPIFormats(): array
     {
         return self::$openAPIFormats;
     }
@@ -149,7 +152,7 @@ class GetOffersHttpStatusLine implements \ArrayAccess, \JsonSerializable, ModelI
      *
      * @return string[]
      */
-    public static function attributeMap() : array
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -159,7 +162,7 @@ class GetOffersHttpStatusLine implements \ArrayAccess, \JsonSerializable, ModelI
      *
      * @return string[]
      */
-    public static function setters() : array
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -169,7 +172,7 @@ class GetOffersHttpStatusLine implements \ArrayAccess, \JsonSerializable, ModelI
      *
      * @return string[]
      */
-    public static function getters() : array
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -177,9 +180,9 @@ class GetOffersHttpStatusLine implements \ArrayAccess, \JsonSerializable, ModelI
     /**
      * Gets the string presentation of the object.
      */
-    public function __toString() : string
+    public function __toString(): string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );
@@ -188,7 +191,7 @@ class GetOffersHttpStatusLine implements \ArrayAccess, \JsonSerializable, ModelI
     /**
      * The original name of the model.
      */
-    public function getModelName() : string
+    public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
@@ -198,7 +201,7 @@ class GetOffersHttpStatusLine implements \ArrayAccess, \JsonSerializable, ModelI
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties() : array
+    public function listInvalidProperties(): array
     {
         $invalidProperties = [];
 
@@ -219,7 +222,7 @@ class GetOffersHttpStatusLine implements \ArrayAccess, \JsonSerializable, ModelI
      *
      * @return bool True if all properties are valid
      */
-    public function valid() : bool
+    public function valid(): bool
     {
         return \count($this->listInvalidProperties()) === 0;
     }
@@ -227,7 +230,7 @@ class GetOffersHttpStatusLine implements \ArrayAccess, \JsonSerializable, ModelI
     /**
      * Gets status_code.
      */
-    public function getStatusCode() : ?int
+    public function getStatusCode(): ?int
     {
         return $this->container['status_code'];
     }
@@ -237,7 +240,7 @@ class GetOffersHttpStatusLine implements \ArrayAccess, \JsonSerializable, ModelI
      *
      * @param null|int $status_code the HTTP response Status Code
      */
-    public function setStatusCode(?int $status_code) : self
+    public function setStatusCode(?int $status_code): self
     {
         if (null !== $status_code && ($status_code > 599)) {
             throw new \InvalidArgumentException('invalid value for $status_code when calling GetOffersHttpStatusLine., must be smaller than or equal to 599.');
@@ -255,7 +258,7 @@ class GetOffersHttpStatusLine implements \ArrayAccess, \JsonSerializable, ModelI
     /**
      * Gets reason_phrase.
      */
-    public function getReasonPhrase() : ?string
+    public function getReasonPhrase(): ?string
     {
         return $this->container['reason_phrase'];
     }
@@ -265,7 +268,7 @@ class GetOffersHttpStatusLine implements \ArrayAccess, \JsonSerializable, ModelI
      *
      * @param null|string $reason_phrase the HTTP response Reason-Phase
      */
-    public function setReasonPhrase(?string $reason_phrase) : self
+    public function setReasonPhrase(?string $reason_phrase): self
     {
         $this->container['reason_phrase'] = $reason_phrase;
 
@@ -277,7 +280,7 @@ class GetOffersHttpStatusLine implements \ArrayAccess, \JsonSerializable, ModelI
      *
      * @param int $offset Offset
      */
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -300,7 +303,7 @@ class GetOffersHttpStatusLine implements \ArrayAccess, \JsonSerializable, ModelI
      * @param null|int $offset Offset
      * @param mixed $value Value to be set
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         if (null === $offset) {
             $this->container[] = $value;
@@ -314,7 +317,7 @@ class GetOffersHttpStatusLine implements \ArrayAccess, \JsonSerializable, ModelI
      *
      * @param int $offset Offset
      */
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -327,7 +330,7 @@ class GetOffersHttpStatusLine implements \ArrayAccess, \JsonSerializable, ModelI
      * @return mixed returns data which can be serialized by json_encode(), which is a value
      *               of any type other than a resource
      */
-    public function jsonSerialize() : string
+    public function jsonSerialize(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }
@@ -335,7 +338,7 @@ class GetOffersHttpStatusLine implements \ArrayAccess, \JsonSerializable, ModelI
     /**
      * Gets a header-safe presentation of the object.
      */
-    public function toHeaderValue() : string
+    public function toHeaderValue(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }

@@ -1,4 +1,7 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
+
 /**
  * ChargeDetails.
  *
@@ -40,7 +43,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class ChargeDetails implements \ArrayAccess, \JsonSerializable, ModelInterface
+class ChargeDetails implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -72,7 +75,7 @@ class ChargeDetails implements \ArrayAccess, \JsonSerializable, ModelInterface
      */
     protected static /** [COMPAT] array */ $openAPITypes = [
         'type' => 'string',
-        'charge_amount' => '\Plenty\AmazonPHP\SellingPartner\Model\VendorDirectFulfillmentPayments\Money',
+        'charge_amount' => \Plenty\AmazonPHP\SellingPartner\Model\VendorDirectFulfillmentPayments\Money::class,
         'tax_details' => '\Plenty\AmazonPHP\SellingPartner\Model\VendorDirectFulfillmentPayments\TaxDetail[]',
     ];
 
@@ -136,7 +139,7 @@ class ChargeDetails implements \ArrayAccess, \JsonSerializable, ModelInterface
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['type'] = $data['type'] ?? null;
         $this->container['charge_amount'] = $data['charge_amount'] ?? null;
@@ -148,7 +151,7 @@ class ChargeDetails implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return string[]
      */
-    public static function openAPITypes() : array
+    public static function openAPITypes(): array
     {
         return self::$openAPITypes;
     }
@@ -158,7 +161,7 @@ class ChargeDetails implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return null[]|string[]
      */
-    public static function openAPIFormats() : array
+    public static function openAPIFormats(): array
     {
         return self::$openAPIFormats;
     }
@@ -169,7 +172,7 @@ class ChargeDetails implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return string[]
      */
-    public static function attributeMap() : array
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -179,7 +182,7 @@ class ChargeDetails implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return string[]
      */
-    public static function setters() : array
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -189,7 +192,7 @@ class ChargeDetails implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return string[]
      */
-    public static function getters() : array
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -197,9 +200,9 @@ class ChargeDetails implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets the string presentation of the object.
      */
-    public function __toString() : string
+    public function __toString(): string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );
@@ -208,7 +211,7 @@ class ChargeDetails implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * The original name of the model.
      */
-    public function getModelName() : string
+    public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
@@ -218,7 +221,7 @@ class ChargeDetails implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return string[]
      */
-    public function getTypeAllowableValues() : array
+    public function getTypeAllowableValues(): array
     {
         return [
             self::TYPE_GIFTWRAP,
@@ -236,7 +239,7 @@ class ChargeDetails implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties() : array
+    public function listInvalidProperties(): array
     {
         $invalidProperties = [];
 
@@ -266,7 +269,7 @@ class ChargeDetails implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return bool True if all properties are valid
      */
-    public function valid() : bool
+    public function valid(): bool
     {
         return \count($this->listInvalidProperties()) === 0;
     }
@@ -274,7 +277,7 @@ class ChargeDetails implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets type.
      */
-    public function getType() : string
+    public function getType(): string
     {
         return $this->container['type'];
     }
@@ -284,7 +287,7 @@ class ChargeDetails implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param string $type type of charge applied
      */
-    public function setType(string $type) : self
+    public function setType(string $type): self
     {
         $allowedValues = $this->getTypeAllowableValues();
 
@@ -305,7 +308,7 @@ class ChargeDetails implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets charge_amount.
      */
-    public function getChargeAmount() : Money
+    public function getChargeAmount(): Money
     {
         return $this->container['charge_amount'];
     }
@@ -315,7 +318,7 @@ class ChargeDetails implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param \Plenty\AmazonPHP\SellingPartner\Model\VendorDirectFulfillmentPayments\Money $charge_amount charge_amount
      */
-    public function setChargeAmount(Money $charge_amount) : self
+    public function setChargeAmount(Money $charge_amount): self
     {
         $this->container['charge_amount'] = $charge_amount;
 
@@ -327,7 +330,7 @@ class ChargeDetails implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return null|\Plenty\AmazonPHP\SellingPartner\Model\VendorDirectFulfillmentPayments\TaxDetail[]
      */
-    public function getTaxDetails() : ?array
+    public function getTaxDetails(): ?array
     {
         return $this->container['tax_details'];
     }
@@ -337,7 +340,7 @@ class ChargeDetails implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\VendorDirectFulfillmentPayments\TaxDetail[] $tax_details individual tax details per line item
      */
-    public function setTaxDetails(?array $tax_details) : self
+    public function setTaxDetails(?array $tax_details): self
     {
         $this->container['tax_details'] = $tax_details;
 
@@ -349,7 +352,7 @@ class ChargeDetails implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param int $offset Offset
      */
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -372,7 +375,7 @@ class ChargeDetails implements \ArrayAccess, \JsonSerializable, ModelInterface
      * @param null|int $offset Offset
      * @param mixed $value Value to be set
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         if (null === $offset) {
             $this->container[] = $value;
@@ -386,7 +389,7 @@ class ChargeDetails implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param int $offset Offset
      */
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -399,7 +402,7 @@ class ChargeDetails implements \ArrayAccess, \JsonSerializable, ModelInterface
      * @return mixed returns data which can be serialized by json_encode(), which is a value
      *               of any type other than a resource
      */
-    public function jsonSerialize() : string
+    public function jsonSerialize(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }
@@ -407,7 +410,7 @@ class ChargeDetails implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets a header-safe presentation of the object.
      */
-    public function toHeaderValue() : string
+    public function toHeaderValue(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }

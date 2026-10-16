@@ -1,4 +1,7 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
+
 /**
  * OrderItemBuyerInfo.
  *
@@ -40,7 +43,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class OrderItemBuyerInfo implements \ArrayAccess, \JsonSerializable, ModelInterface
+class OrderItemBuyerInfo implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -58,9 +61,9 @@ class OrderItemBuyerInfo implements \ArrayAccess, \JsonSerializable, ModelInterf
      */
     protected static /** [COMPAT] array */ $openAPITypes = [
         'order_item_id' => 'string',
-        'buyer_customized_info' => '\Plenty\AmazonPHP\SellingPartner\Model\Orders\BuyerCustomizedInfoDetail',
-        'gift_wrap_price' => '\Plenty\AmazonPHP\SellingPartner\Model\Orders\Money',
-        'gift_wrap_tax' => '\Plenty\AmazonPHP\SellingPartner\Model\Orders\Money',
+        'buyer_customized_info' => \Plenty\AmazonPHP\SellingPartner\Model\Orders\BuyerCustomizedInfoDetail::class,
+        'gift_wrap_price' => \Plenty\AmazonPHP\SellingPartner\Model\Orders\Money::class,
+        'gift_wrap_tax' => \Plenty\AmazonPHP\SellingPartner\Model\Orders\Money::class,
         'gift_message_text' => 'string',
         'gift_wrap_level' => 'string',
     ];
@@ -137,7 +140,7 @@ class OrderItemBuyerInfo implements \ArrayAccess, \JsonSerializable, ModelInterf
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['order_item_id'] = $data['order_item_id'] ?? null;
         $this->container['buyer_customized_info'] = $data['buyer_customized_info'] ?? null;
@@ -152,7 +155,7 @@ class OrderItemBuyerInfo implements \ArrayAccess, \JsonSerializable, ModelInterf
      *
      * @return string[]
      */
-    public static function openAPITypes() : array
+    public static function openAPITypes(): array
     {
         return self::$openAPITypes;
     }
@@ -162,7 +165,7 @@ class OrderItemBuyerInfo implements \ArrayAccess, \JsonSerializable, ModelInterf
      *
      * @return null[]|string[]
      */
-    public static function openAPIFormats() : array
+    public static function openAPIFormats(): array
     {
         return self::$openAPIFormats;
     }
@@ -173,7 +176,7 @@ class OrderItemBuyerInfo implements \ArrayAccess, \JsonSerializable, ModelInterf
      *
      * @return string[]
      */
-    public static function attributeMap() : array
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -183,7 +186,7 @@ class OrderItemBuyerInfo implements \ArrayAccess, \JsonSerializable, ModelInterf
      *
      * @return string[]
      */
-    public static function setters() : array
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -193,7 +196,7 @@ class OrderItemBuyerInfo implements \ArrayAccess, \JsonSerializable, ModelInterf
      *
      * @return string[]
      */
-    public static function getters() : array
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -201,9 +204,9 @@ class OrderItemBuyerInfo implements \ArrayAccess, \JsonSerializable, ModelInterf
     /**
      * Gets the string presentation of the object.
      */
-    public function __toString() : string
+    public function __toString(): string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );
@@ -212,7 +215,7 @@ class OrderItemBuyerInfo implements \ArrayAccess, \JsonSerializable, ModelInterf
     /**
      * The original name of the model.
      */
-    public function getModelName() : string
+    public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
@@ -222,7 +225,7 @@ class OrderItemBuyerInfo implements \ArrayAccess, \JsonSerializable, ModelInterf
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties() : array
+    public function listInvalidProperties(): array
     {
         $invalidProperties = [];
 
@@ -239,7 +242,7 @@ class OrderItemBuyerInfo implements \ArrayAccess, \JsonSerializable, ModelInterf
      *
      * @return bool True if all properties are valid
      */
-    public function valid() : bool
+    public function valid(): bool
     {
         return \count($this->listInvalidProperties()) === 0;
     }
@@ -247,7 +250,7 @@ class OrderItemBuyerInfo implements \ArrayAccess, \JsonSerializable, ModelInterf
     /**
      * Gets order_item_id.
      */
-    public function getOrderItemId() : string
+    public function getOrderItemId(): string
     {
         return $this->container['order_item_id'];
     }
@@ -257,7 +260,7 @@ class OrderItemBuyerInfo implements \ArrayAccess, \JsonSerializable, ModelInterf
      *
      * @param string $order_item_id an Amazon-defined order item identifier
      */
-    public function setOrderItemId(string $order_item_id) : self
+    public function setOrderItemId(string $order_item_id): self
     {
         $this->container['order_item_id'] = $order_item_id;
 
@@ -267,7 +270,7 @@ class OrderItemBuyerInfo implements \ArrayAccess, \JsonSerializable, ModelInterf
     /**
      * Gets buyer_customized_info.
      */
-    public function getBuyerCustomizedInfo() : ?BuyerCustomizedInfoDetail
+    public function getBuyerCustomizedInfo(): ?BuyerCustomizedInfoDetail
     {
         return $this->container['buyer_customized_info'];
     }
@@ -277,7 +280,7 @@ class OrderItemBuyerInfo implements \ArrayAccess, \JsonSerializable, ModelInterf
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\Orders\BuyerCustomizedInfoDetail $buyer_customized_info buyer_customized_info
      */
-    public function setBuyerCustomizedInfo(?BuyerCustomizedInfoDetail $buyer_customized_info) : self
+    public function setBuyerCustomizedInfo(?BuyerCustomizedInfoDetail $buyer_customized_info): self
     {
         $this->container['buyer_customized_info'] = $buyer_customized_info;
 
@@ -287,7 +290,7 @@ class OrderItemBuyerInfo implements \ArrayAccess, \JsonSerializable, ModelInterf
     /**
      * Gets gift_wrap_price.
      */
-    public function getGiftWrapPrice() : ?Money
+    public function getGiftWrapPrice(): ?Money
     {
         return $this->container['gift_wrap_price'];
     }
@@ -297,7 +300,7 @@ class OrderItemBuyerInfo implements \ArrayAccess, \JsonSerializable, ModelInterf
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\Orders\Money $gift_wrap_price gift_wrap_price
      */
-    public function setGiftWrapPrice(?Money $gift_wrap_price) : self
+    public function setGiftWrapPrice(?Money $gift_wrap_price): self
     {
         $this->container['gift_wrap_price'] = $gift_wrap_price;
 
@@ -307,7 +310,7 @@ class OrderItemBuyerInfo implements \ArrayAccess, \JsonSerializable, ModelInterf
     /**
      * Gets gift_wrap_tax.
      */
-    public function getGiftWrapTax() : ?Money
+    public function getGiftWrapTax(): ?Money
     {
         return $this->container['gift_wrap_tax'];
     }
@@ -317,7 +320,7 @@ class OrderItemBuyerInfo implements \ArrayAccess, \JsonSerializable, ModelInterf
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\Orders\Money $gift_wrap_tax gift_wrap_tax
      */
-    public function setGiftWrapTax(?Money $gift_wrap_tax) : self
+    public function setGiftWrapTax(?Money $gift_wrap_tax): self
     {
         $this->container['gift_wrap_tax'] = $gift_wrap_tax;
 
@@ -327,7 +330,7 @@ class OrderItemBuyerInfo implements \ArrayAccess, \JsonSerializable, ModelInterf
     /**
      * Gets gift_message_text.
      */
-    public function getGiftMessageText() : ?string
+    public function getGiftMessageText(): ?string
     {
         return $this->container['gift_message_text'];
     }
@@ -337,7 +340,7 @@ class OrderItemBuyerInfo implements \ArrayAccess, \JsonSerializable, ModelInterf
      *
      * @param null|string $gift_message_text a gift message provided by the buyer
      */
-    public function setGiftMessageText(?string $gift_message_text) : self
+    public function setGiftMessageText(?string $gift_message_text): self
     {
         $this->container['gift_message_text'] = $gift_message_text;
 
@@ -347,7 +350,7 @@ class OrderItemBuyerInfo implements \ArrayAccess, \JsonSerializable, ModelInterf
     /**
      * Gets gift_wrap_level.
      */
-    public function getGiftWrapLevel() : ?string
+    public function getGiftWrapLevel(): ?string
     {
         return $this->container['gift_wrap_level'];
     }
@@ -357,7 +360,7 @@ class OrderItemBuyerInfo implements \ArrayAccess, \JsonSerializable, ModelInterf
      *
      * @param null|string $gift_wrap_level the gift wrap level specified by the buyer
      */
-    public function setGiftWrapLevel(?string $gift_wrap_level) : self
+    public function setGiftWrapLevel(?string $gift_wrap_level): self
     {
         $this->container['gift_wrap_level'] = $gift_wrap_level;
 
@@ -369,7 +372,7 @@ class OrderItemBuyerInfo implements \ArrayAccess, \JsonSerializable, ModelInterf
      *
      * @param int $offset Offset
      */
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -392,7 +395,7 @@ class OrderItemBuyerInfo implements \ArrayAccess, \JsonSerializable, ModelInterf
      * @param null|int $offset Offset
      * @param mixed $value Value to be set
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         if (null === $offset) {
             $this->container[] = $value;
@@ -406,7 +409,7 @@ class OrderItemBuyerInfo implements \ArrayAccess, \JsonSerializable, ModelInterf
      *
      * @param int $offset Offset
      */
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -419,7 +422,7 @@ class OrderItemBuyerInfo implements \ArrayAccess, \JsonSerializable, ModelInterf
      * @return mixed returns data which can be serialized by json_encode(), which is a value
      *               of any type other than a resource
      */
-    public function jsonSerialize() : string
+    public function jsonSerialize(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }
@@ -427,7 +430,7 @@ class OrderItemBuyerInfo implements \ArrayAccess, \JsonSerializable, ModelInterf
     /**
      * Gets a header-safe presentation of the object.
      */
-    public function toHeaderValue() : string
+    public function toHeaderValue(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }

@@ -38,10 +38,10 @@ class TransportationOption implements \ArrayAccess, \JsonSerializable, \Stringab
      * @var string[]
      */
     protected static array $openAPITypes = [
-        'carrier' => '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound2024\Carrier',
-        'carrier_appointment' => '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound2024\CarrierAppointment',
+        'carrier' => \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound2024\Carrier::class,
+        'carrier_appointment' => \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound2024\CarrierAppointment::class,
         'preconditions' => 'string[]',
-        'quote' => '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound2024\Quote',
+        'quote' => \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound2024\Quote::class,
         'shipment_id' => 'string',
         'shipping_mode' => 'string',
         'shipping_solution' => 'string',
@@ -130,7 +130,7 @@ class TransportationOption implements \ArrayAccess, \JsonSerializable, \Stringab
      * @param null|mixed[] $data Associated array of property values
      *                           initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['carrier'] = $data['carrier'] ?? null;
         $this->container['carrier_appointment'] = $data['carrier_appointment'] ?? null;
@@ -145,7 +145,7 @@ class TransportationOption implements \ArrayAccess, \JsonSerializable, \Stringab
     /**
      * Array of property to type mappings. Used for (de)serialization.
      */
-    public static function openAPITypes() : array
+    public static function openAPITypes(): array
     {
         return self::$openAPITypes;
     }
@@ -153,7 +153,7 @@ class TransportationOption implements \ArrayAccess, \JsonSerializable, \Stringab
     /**
      * Array of property to format mappings. Used for (de)serialization.
      */
-    public static function openAPIFormats() : array
+    public static function openAPIFormats(): array
     {
         return self::$openAPIFormats;
     }
@@ -162,7 +162,7 @@ class TransportationOption implements \ArrayAccess, \JsonSerializable, \Stringab
      * Array of attributes where the key is the local name,
      * and the value is the original name.
      */
-    public static function attributeMap() : array
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -170,7 +170,7 @@ class TransportationOption implements \ArrayAccess, \JsonSerializable, \Stringab
     /**
      * Array of attributes to setter functions (for deserialization of responses).
      */
-    public static function setters() : array
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -178,7 +178,7 @@ class TransportationOption implements \ArrayAccess, \JsonSerializable, \Stringab
     /**
      * Array of attributes to getter functions (for serialization of requests).
      */
-    public static function getters() : array
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -186,7 +186,7 @@ class TransportationOption implements \ArrayAccess, \JsonSerializable, \Stringab
     /**
      * Gets the string presentation of the object.
      */
-    public function __toString() : string
+    public function __toString(): string
     {
         return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
@@ -197,7 +197,7 @@ class TransportationOption implements \ArrayAccess, \JsonSerializable, \Stringab
     /**
      * The original name of the model.
      */
-    public function getModelName() : string
+    public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
@@ -207,10 +207,10 @@ class TransportationOption implements \ArrayAccess, \JsonSerializable, \Stringab
      *
      * @throws AssertionException
      */
-    public function listInvalidProperties() : array
+    public function listInvalidProperties(): array
     {
         $invalidProperties = [];
-         
+
         if ($this->container['carrier'] === null) {
             $invalidProperties[] = "'carrier' can't be null";
         }
@@ -294,7 +294,7 @@ class TransportationOption implements \ArrayAccess, \JsonSerializable, \Stringab
      *
      * @return bool True if all properties are valid
      */
-    public function valid() : bool
+    public function valid(): bool
     {
         return \count($this->listInvalidProperties()) === 0;
     }
@@ -302,7 +302,7 @@ class TransportationOption implements \ArrayAccess, \JsonSerializable, \Stringab
     /**
      * Gets carrier.
      */
-    public function getCarrier() : Carrier
+    public function getCarrier(): Carrier
     {
         return $this->container['carrier'];
     }
@@ -312,7 +312,7 @@ class TransportationOption implements \ArrayAccess, \JsonSerializable, \Stringab
      *
      * @param Carrier $carrier carrier
      */
-    public function setCarrier(Carrier $carrier) : self
+    public function setCarrier(Carrier $carrier): self
     {
         $this->container['carrier'] = $carrier;
 
@@ -322,7 +322,7 @@ class TransportationOption implements \ArrayAccess, \JsonSerializable, \Stringab
     /**
      * Gets carrier_appointment.
      */
-    public function getCarrierAppointment() : ?CarrierAppointment
+    public function getCarrierAppointment(): ?CarrierAppointment
     {
         return $this->container['carrier_appointment'];
     }
@@ -332,7 +332,7 @@ class TransportationOption implements \ArrayAccess, \JsonSerializable, \Stringab
      *
      * @param null|CarrierAppointment $carrier_appointment carrier_appointment
      */
-    public function setCarrierAppointment(?CarrierAppointment $carrier_appointment) : self
+    public function setCarrierAppointment(?CarrierAppointment $carrier_appointment): self
     {
         $this->container['carrier_appointment'] = $carrier_appointment;
 
@@ -344,7 +344,7 @@ class TransportationOption implements \ArrayAccess, \JsonSerializable, \Stringab
      *
      * @return string[]
      */
-    public function getPreconditions() : array
+    public function getPreconditions(): array
     {
         return $this->container['preconditions'];
     }
@@ -354,7 +354,7 @@ class TransportationOption implements \ArrayAccess, \JsonSerializable, \Stringab
      *
      * @param string[] $preconditions identifies a list of preconditions for confirming the transportation option
      */
-    public function setPreconditions(array $preconditions) : self
+    public function setPreconditions(array $preconditions): self
     {
         $this->container['preconditions'] = $preconditions;
 
@@ -364,7 +364,7 @@ class TransportationOption implements \ArrayAccess, \JsonSerializable, \Stringab
     /**
      * Gets quote.
      */
-    public function getQuote() : ?Quote
+    public function getQuote(): ?Quote
     {
         return $this->container['quote'];
     }
@@ -374,7 +374,7 @@ class TransportationOption implements \ArrayAccess, \JsonSerializable, \Stringab
      *
      * @param null|Quote $quote quote
      */
-    public function setQuote(?Quote $quote) : self
+    public function setQuote(?Quote $quote): self
     {
         $this->container['quote'] = $quote;
 
@@ -384,7 +384,7 @@ class TransportationOption implements \ArrayAccess, \JsonSerializable, \Stringab
     /**
      * Gets shipment_id.
      */
-    public function getShipmentId() : string
+    public function getShipmentId(): string
     {
         return $this->container['shipment_id'];
     }
@@ -394,7 +394,7 @@ class TransportationOption implements \ArrayAccess, \JsonSerializable, \Stringab
      *
      * @param string $shipment_id Identifier of a shipment. A shipment contains the boxes and units being inbounded.
      */
-    public function setShipmentId(string $shipment_id) : self
+    public function setShipmentId(string $shipment_id): self
     {
         $this->container['shipment_id'] = $shipment_id;
 
@@ -404,7 +404,7 @@ class TransportationOption implements \ArrayAccess, \JsonSerializable, \Stringab
     /**
      * Gets shipping_mode.
      */
-    public function getShippingMode() : string
+    public function getShippingMode(): string
     {
         return $this->container['shipping_mode'];
     }
@@ -414,7 +414,7 @@ class TransportationOption implements \ArrayAccess, \JsonSerializable, \Stringab
      *
      * @param string $shipping_mode Mode of shipment transportation that this option will provide. Can be: `GROUND_SMALL_PARCEL`, `FREIGHT_LTL`, `FREIGHT_FTL_PALLET`, `FREIGHT_FTL_NONPALLET`, `OCEAN_LCL`, `OCEAN_FCL`, `AIR_SMALL_PARCEL`, `AIR_SMALL_PARCEL_EXPRESS`.
      */
-    public function setShippingMode(string $shipping_mode) : self
+    public function setShippingMode(string $shipping_mode): self
     {
         $this->container['shipping_mode'] = $shipping_mode;
 
@@ -424,7 +424,7 @@ class TransportationOption implements \ArrayAccess, \JsonSerializable, \Stringab
     /**
      * Gets shipping_solution.
      */
-    public function getShippingSolution() : string
+    public function getShippingSolution(): string
     {
         return $this->container['shipping_solution'];
     }
@@ -434,7 +434,7 @@ class TransportationOption implements \ArrayAccess, \JsonSerializable, \Stringab
      *
      * @param string $shipping_solution Shipping program for the option. Can be: `AMAZON_PARTNERED_CARRIER`, `USE_YOUR_OWN_CARRIER`.
      */
-    public function setShippingSolution(string $shipping_solution) : self
+    public function setShippingSolution(string $shipping_solution): self
     {
         $this->container['shipping_solution'] = $shipping_solution;
 
@@ -444,7 +444,7 @@ class TransportationOption implements \ArrayAccess, \JsonSerializable, \Stringab
     /**
      * Gets transportation_option_id.
      */
-    public function getTransportationOptionId() : string
+    public function getTransportationOptionId(): string
     {
         return $this->container['transportation_option_id'];
     }
@@ -454,7 +454,7 @@ class TransportationOption implements \ArrayAccess, \JsonSerializable, \Stringab
      *
      * @param string $transportation_option_id Identifier of a transportation option. A transportation option represent one option for how to send a shipment.
      */
-    public function setTransportationOptionId(string $transportation_option_id) : self
+    public function setTransportationOptionId(string $transportation_option_id): self
     {
         $this->container['transportation_option_id'] = $transportation_option_id;
 
@@ -464,7 +464,7 @@ class TransportationOption implements \ArrayAccess, \JsonSerializable, \Stringab
     /**
      * Returns true if offset exists. False otherwise.
      */
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -475,7 +475,7 @@ class TransportationOption implements \ArrayAccess, \JsonSerializable, \Stringab
      * @return null|mixed
      */
     #[\ReturnTypeWillChange]
-    public function offsetGet($offset) : mixed
+    public function offsetGet($offset): mixed
     {
         return $this->container[$offset] ?? null;
     }
@@ -483,7 +483,7 @@ class TransportationOption implements \ArrayAccess, \JsonSerializable, \Stringab
     /**
      * Sets value based on offset.
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         if (null === $offset) {
             $this->container[] = $value;
@@ -495,7 +495,7 @@ class TransportationOption implements \ArrayAccess, \JsonSerializable, \Stringab
     /**
      * Unsets offset.
      */
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -509,7 +509,7 @@ class TransportationOption implements \ArrayAccess, \JsonSerializable, \Stringab
      *               of any type other than a resource
      */
     #[\ReturnTypeWillChange]
-    public function jsonSerialize() : string
+    public function jsonSerialize(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }
@@ -517,7 +517,7 @@ class TransportationOption implements \ArrayAccess, \JsonSerializable, \Stringab
     /**
      * Gets a header-safe presentation of the object.
      */
-    public function toHeaderValue() : string
+    public function toHeaderValue(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }

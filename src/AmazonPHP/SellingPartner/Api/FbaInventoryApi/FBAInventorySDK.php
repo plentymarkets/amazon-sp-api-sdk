@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Plenty\AmazonPHP\SellingPartner\Api\FbaInventoryApi;
 
@@ -57,7 +59,7 @@ final class FBAInventorySDK
      * @throws \Plenty\AmazonPHP\SellingPartner\Exception\ApiException on non-2xx response
      * @throws \Plenty\AmazonPHP\SellingPartner\Exception\InvalidArgumentException
      */
-    public function getInventorySummaries(AccessToken $accessToken, string $region, string $granularity_type, string $granularity_id, array $marketplace_ids, bool $details = false, \DateTimeInterface $start_date_time = null, array $seller_skus = null, string $next_token = null) : \Plenty\AmazonPHP\SellingPartner\Model\FBAInventory\GetInventorySummariesResponse
+    public function getInventorySummaries(AccessToken $accessToken, string $region, string $granularity_type, string $granularity_id, array $marketplace_ids, bool $details = false, ?\DateTimeInterface $start_date_time = null, ?array $seller_skus = null, ?string $next_token = null): \Plenty\AmazonPHP\SellingPartner\Model\FBAInventory\GetInventorySummariesResponse
     {
         $request = $this->getInventorySummariesRequest($accessToken, $region, $granularity_type, $granularity_id, $marketplace_ids, $details, $start_date_time, $seller_skus, $next_token);
 
@@ -139,7 +141,7 @@ final class FBAInventorySDK
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            '\Plenty\AmazonPHP\SellingPartner\Model\FBAInventory\GetInventorySummariesResponse',
+            \Plenty\AmazonPHP\SellingPartner\Model\FBAInventory\GetInventorySummariesResponse::class,
             []
         );
     }
@@ -158,7 +160,7 @@ final class FBAInventorySDK
      *
      * @throws \Plenty\AmazonPHP\SellingPartner\Exception\InvalidArgumentException
      */
-    public function getInventorySummariesRequest(AccessToken $accessToken, string $region, string $granularity_type, string $granularity_id, array $marketplace_ids, bool $details = false, \DateTimeInterface $start_date_time = null, array $seller_skus = null, string $next_token = null) : RequestInterface
+    public function getInventorySummariesRequest(AccessToken $accessToken, string $region, string $granularity_type, string $granularity_id, array $marketplace_ids, bool $details = false, ?\DateTimeInterface $start_date_time = null, ?array $seller_skus = null, ?string $next_token = null): RequestInterface
     {
         // verify the required parameter 'granularity_type' is set
         if ($granularity_type === null || (\is_array($granularity_type) && \count($granularity_type) === 0)) {

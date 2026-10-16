@@ -1,4 +1,7 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
+
 /**
  * PriceType.
  *
@@ -40,7 +43,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class PriceType implements \ArrayAccess, \JsonSerializable, ModelInterface
+class PriceType implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -57,10 +60,10 @@ class PriceType implements \ArrayAccess, \JsonSerializable, ModelInterface
      * @var string[]
      */
     protected static /** [COMPAT] array */ $openAPITypes = [
-        'landed_price' => '\Plenty\AmazonPHP\SellingPartner\Model\ProductPricing\MoneyType',
-        'listing_price' => '\Plenty\AmazonPHP\SellingPartner\Model\ProductPricing\MoneyType',
-        'shipping' => '\Plenty\AmazonPHP\SellingPartner\Model\ProductPricing\MoneyType',
-        'points' => '\Plenty\AmazonPHP\SellingPartner\Model\ProductPricing\Points',
+        'landed_price' => \Plenty\AmazonPHP\SellingPartner\Model\ProductPricing\MoneyType::class,
+        'listing_price' => \Plenty\AmazonPHP\SellingPartner\Model\ProductPricing\MoneyType::class,
+        'shipping' => \Plenty\AmazonPHP\SellingPartner\Model\ProductPricing\MoneyType::class,
+        'points' => \Plenty\AmazonPHP\SellingPartner\Model\ProductPricing\Points::class,
     ];
 
     /**
@@ -127,7 +130,7 @@ class PriceType implements \ArrayAccess, \JsonSerializable, ModelInterface
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['landed_price'] = $data['landed_price'] ?? null;
         $this->container['listing_price'] = $data['listing_price'] ?? null;
@@ -140,7 +143,7 @@ class PriceType implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return string[]
      */
-    public static function openAPITypes() : array
+    public static function openAPITypes(): array
     {
         return self::$openAPITypes;
     }
@@ -150,7 +153,7 @@ class PriceType implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return null[]|string[]
      */
-    public static function openAPIFormats() : array
+    public static function openAPIFormats(): array
     {
         return self::$openAPIFormats;
     }
@@ -161,7 +164,7 @@ class PriceType implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return string[]
      */
-    public static function attributeMap() : array
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -171,7 +174,7 @@ class PriceType implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return string[]
      */
-    public static function setters() : array
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -181,7 +184,7 @@ class PriceType implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return string[]
      */
-    public static function getters() : array
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -189,9 +192,9 @@ class PriceType implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets the string presentation of the object.
      */
-    public function __toString() : string
+    public function __toString(): string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );
@@ -200,7 +203,7 @@ class PriceType implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * The original name of the model.
      */
-    public function getModelName() : string
+    public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
@@ -210,7 +213,7 @@ class PriceType implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties() : array
+    public function listInvalidProperties(): array
     {
         $invalidProperties = [];
 
@@ -227,7 +230,7 @@ class PriceType implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return bool True if all properties are valid
      */
-    public function valid() : bool
+    public function valid(): bool
     {
         return \count($this->listInvalidProperties()) === 0;
     }
@@ -235,7 +238,7 @@ class PriceType implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets landed_price.
      */
-    public function getLandedPrice() : ?MoneyType
+    public function getLandedPrice(): ?MoneyType
     {
         return $this->container['landed_price'];
     }
@@ -245,7 +248,7 @@ class PriceType implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\ProductPricing\MoneyType $landed_price landed_price
      */
-    public function setLandedPrice(?MoneyType $landed_price) : self
+    public function setLandedPrice(?MoneyType $landed_price): self
     {
         $this->container['landed_price'] = $landed_price;
 
@@ -255,7 +258,7 @@ class PriceType implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets listing_price.
      */
-    public function getListingPrice() : MoneyType
+    public function getListingPrice(): MoneyType
     {
         return $this->container['listing_price'];
     }
@@ -265,7 +268,7 @@ class PriceType implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param \Plenty\AmazonPHP\SellingPartner\Model\ProductPricing\MoneyType $listing_price listing_price
      */
-    public function setListingPrice(MoneyType $listing_price) : self
+    public function setListingPrice(MoneyType $listing_price): self
     {
         $this->container['listing_price'] = $listing_price;
 
@@ -275,7 +278,7 @@ class PriceType implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets shipping.
      */
-    public function getShipping() : ?MoneyType
+    public function getShipping(): ?MoneyType
     {
         return $this->container['shipping'];
     }
@@ -285,7 +288,7 @@ class PriceType implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\ProductPricing\MoneyType $shipping shipping
      */
-    public function setShipping(?MoneyType $shipping) : self
+    public function setShipping(?MoneyType $shipping): self
     {
         $this->container['shipping'] = $shipping;
 
@@ -295,7 +298,7 @@ class PriceType implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets points.
      */
-    public function getPoints() : ?Points
+    public function getPoints(): ?Points
     {
         return $this->container['points'];
     }
@@ -305,7 +308,7 @@ class PriceType implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\ProductPricing\Points $points points
      */
-    public function setPoints(?Points $points) : self
+    public function setPoints(?Points $points): self
     {
         $this->container['points'] = $points;
 
@@ -317,7 +320,7 @@ class PriceType implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param int $offset Offset
      */
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -340,7 +343,7 @@ class PriceType implements \ArrayAccess, \JsonSerializable, ModelInterface
      * @param null|int $offset Offset
      * @param mixed $value Value to be set
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         if (null === $offset) {
             $this->container[] = $value;
@@ -354,7 +357,7 @@ class PriceType implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param int $offset Offset
      */
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -367,7 +370,7 @@ class PriceType implements \ArrayAccess, \JsonSerializable, ModelInterface
      * @return mixed returns data which can be serialized by json_encode(), which is a value
      *               of any type other than a resource
      */
-    public function jsonSerialize() : string
+    public function jsonSerialize(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }
@@ -375,7 +378,7 @@ class PriceType implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets a header-safe presentation of the object.
      */
-    public function toHeaderValue() : string
+    public function toHeaderValue(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }

@@ -1,4 +1,7 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
+
 /**
  * DebtRecoveryEvent.
  *
@@ -40,7 +43,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class DebtRecoveryEvent implements \ArrayAccess, \JsonSerializable, ModelInterface
+class DebtRecoveryEvent implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -58,8 +61,8 @@ class DebtRecoveryEvent implements \ArrayAccess, \JsonSerializable, ModelInterfa
      */
     protected static /** [COMPAT] array */ $openAPITypes = [
         'debt_recovery_type' => 'string',
-        'recovery_amount' => '\Plenty\AmazonPHP\SellingPartner\Model\Finances\Currency',
-        'over_payment_credit' => '\Plenty\AmazonPHP\SellingPartner\Model\Finances\Currency',
+        'recovery_amount' => \Plenty\AmazonPHP\SellingPartner\Model\Finances\Currency::class,
+        'over_payment_credit' => \Plenty\AmazonPHP\SellingPartner\Model\Finances\Currency::class,
         'debt_recovery_item_list' => '\Plenty\AmazonPHP\SellingPartner\Model\Finances\DebtRecoveryItem[]',
         'charge_instrument_list' => '\Plenty\AmazonPHP\SellingPartner\Model\Finances\ChargeInstrument[]',
     ];
@@ -132,7 +135,7 @@ class DebtRecoveryEvent implements \ArrayAccess, \JsonSerializable, ModelInterfa
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['debt_recovery_type'] = $data['debt_recovery_type'] ?? null;
         $this->container['recovery_amount'] = $data['recovery_amount'] ?? null;
@@ -146,7 +149,7 @@ class DebtRecoveryEvent implements \ArrayAccess, \JsonSerializable, ModelInterfa
      *
      * @return string[]
      */
-    public static function openAPITypes() : array
+    public static function openAPITypes(): array
     {
         return self::$openAPITypes;
     }
@@ -156,7 +159,7 @@ class DebtRecoveryEvent implements \ArrayAccess, \JsonSerializable, ModelInterfa
      *
      * @return null[]|string[]
      */
-    public static function openAPIFormats() : array
+    public static function openAPIFormats(): array
     {
         return self::$openAPIFormats;
     }
@@ -167,7 +170,7 @@ class DebtRecoveryEvent implements \ArrayAccess, \JsonSerializable, ModelInterfa
      *
      * @return string[]
      */
-    public static function attributeMap() : array
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -177,7 +180,7 @@ class DebtRecoveryEvent implements \ArrayAccess, \JsonSerializable, ModelInterfa
      *
      * @return string[]
      */
-    public static function setters() : array
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -187,7 +190,7 @@ class DebtRecoveryEvent implements \ArrayAccess, \JsonSerializable, ModelInterfa
      *
      * @return string[]
      */
-    public static function getters() : array
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -195,9 +198,9 @@ class DebtRecoveryEvent implements \ArrayAccess, \JsonSerializable, ModelInterfa
     /**
      * Gets the string presentation of the object.
      */
-    public function __toString() : string
+    public function __toString(): string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );
@@ -206,7 +209,7 @@ class DebtRecoveryEvent implements \ArrayAccess, \JsonSerializable, ModelInterfa
     /**
      * The original name of the model.
      */
-    public function getModelName() : string
+    public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
@@ -216,7 +219,7 @@ class DebtRecoveryEvent implements \ArrayAccess, \JsonSerializable, ModelInterfa
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties() : array
+    public function listInvalidProperties(): array
     {
         return [];
     }
@@ -227,7 +230,7 @@ class DebtRecoveryEvent implements \ArrayAccess, \JsonSerializable, ModelInterfa
      *
      * @return bool True if all properties are valid
      */
-    public function valid() : bool
+    public function valid(): bool
     {
         return \count($this->listInvalidProperties()) === 0;
     }
@@ -235,7 +238,7 @@ class DebtRecoveryEvent implements \ArrayAccess, \JsonSerializable, ModelInterfa
     /**
      * Gets debt_recovery_type.
      */
-    public function getDebtRecoveryType() : ?string
+    public function getDebtRecoveryType(): ?string
     {
         return $this->container['debt_recovery_type'];
     }
@@ -245,7 +248,7 @@ class DebtRecoveryEvent implements \ArrayAccess, \JsonSerializable, ModelInterfa
      *
      * @param null|string $debt_recovery_type The debt recovery type.  Possible values:  * DebtPayment  * DebtPaymentFailure  *DebtAdjustment
      */
-    public function setDebtRecoveryType(?string $debt_recovery_type) : self
+    public function setDebtRecoveryType(?string $debt_recovery_type): self
     {
         $this->container['debt_recovery_type'] = $debt_recovery_type;
 
@@ -255,7 +258,7 @@ class DebtRecoveryEvent implements \ArrayAccess, \JsonSerializable, ModelInterfa
     /**
      * Gets recovery_amount.
      */
-    public function getRecoveryAmount() : ?Currency
+    public function getRecoveryAmount(): ?Currency
     {
         return $this->container['recovery_amount'];
     }
@@ -265,7 +268,7 @@ class DebtRecoveryEvent implements \ArrayAccess, \JsonSerializable, ModelInterfa
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\Finances\Currency $recovery_amount recovery_amount
      */
-    public function setRecoveryAmount(?Currency $recovery_amount) : self
+    public function setRecoveryAmount(?Currency $recovery_amount): self
     {
         $this->container['recovery_amount'] = $recovery_amount;
 
@@ -275,7 +278,7 @@ class DebtRecoveryEvent implements \ArrayAccess, \JsonSerializable, ModelInterfa
     /**
      * Gets over_payment_credit.
      */
-    public function getOverPaymentCredit() : ?Currency
+    public function getOverPaymentCredit(): ?Currency
     {
         return $this->container['over_payment_credit'];
     }
@@ -285,7 +288,7 @@ class DebtRecoveryEvent implements \ArrayAccess, \JsonSerializable, ModelInterfa
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\Finances\Currency $over_payment_credit over_payment_credit
      */
-    public function setOverPaymentCredit(?Currency $over_payment_credit) : self
+    public function setOverPaymentCredit(?Currency $over_payment_credit): self
     {
         $this->container['over_payment_credit'] = $over_payment_credit;
 
@@ -297,7 +300,7 @@ class DebtRecoveryEvent implements \ArrayAccess, \JsonSerializable, ModelInterfa
      *
      * @return null|\Plenty\AmazonPHP\SellingPartner\Model\Finances\DebtRecoveryItem[]
      */
-    public function getDebtRecoveryItemList() : ?array
+    public function getDebtRecoveryItemList(): ?array
     {
         return $this->container['debt_recovery_item_list'];
     }
@@ -307,7 +310,7 @@ class DebtRecoveryEvent implements \ArrayAccess, \JsonSerializable, ModelInterfa
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\Finances\DebtRecoveryItem[] $debt_recovery_item_list a list of debt recovery item information
      */
-    public function setDebtRecoveryItemList(?array $debt_recovery_item_list) : self
+    public function setDebtRecoveryItemList(?array $debt_recovery_item_list): self
     {
         $this->container['debt_recovery_item_list'] = $debt_recovery_item_list;
 
@@ -319,7 +322,7 @@ class DebtRecoveryEvent implements \ArrayAccess, \JsonSerializable, ModelInterfa
      *
      * @return null|\Plenty\AmazonPHP\SellingPartner\Model\Finances\ChargeInstrument[]
      */
-    public function getChargeInstrumentList() : ?array
+    public function getChargeInstrumentList(): ?array
     {
         return $this->container['charge_instrument_list'];
     }
@@ -329,7 +332,7 @@ class DebtRecoveryEvent implements \ArrayAccess, \JsonSerializable, ModelInterfa
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\Finances\ChargeInstrument[] $charge_instrument_list a list of payment instruments
      */
-    public function setChargeInstrumentList(?array $charge_instrument_list) : self
+    public function setChargeInstrumentList(?array $charge_instrument_list): self
     {
         $this->container['charge_instrument_list'] = $charge_instrument_list;
 
@@ -341,7 +344,7 @@ class DebtRecoveryEvent implements \ArrayAccess, \JsonSerializable, ModelInterfa
      *
      * @param int $offset Offset
      */
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -364,7 +367,7 @@ class DebtRecoveryEvent implements \ArrayAccess, \JsonSerializable, ModelInterfa
      * @param null|int $offset Offset
      * @param mixed $value Value to be set
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         if (null === $offset) {
             $this->container[] = $value;
@@ -378,7 +381,7 @@ class DebtRecoveryEvent implements \ArrayAccess, \JsonSerializable, ModelInterfa
      *
      * @param int $offset Offset
      */
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -391,7 +394,7 @@ class DebtRecoveryEvent implements \ArrayAccess, \JsonSerializable, ModelInterfa
      * @return mixed returns data which can be serialized by json_encode(), which is a value
      *               of any type other than a resource
      */
-    public function jsonSerialize() : string
+    public function jsonSerialize(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }
@@ -399,7 +402,7 @@ class DebtRecoveryEvent implements \ArrayAccess, \JsonSerializable, ModelInterfa
     /**
      * Gets a header-safe presentation of the object.
      */
-    public function toHeaderValue() : string
+    public function toHeaderValue(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }

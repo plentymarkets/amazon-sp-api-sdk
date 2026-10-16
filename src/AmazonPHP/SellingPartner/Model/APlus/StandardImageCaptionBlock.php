@@ -1,4 +1,7 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
+
 /**
  * StandardImageCaptionBlock.
  *
@@ -40,7 +43,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class StandardImageCaptionBlock implements \ArrayAccess, \JsonSerializable, ModelInterface
+class StandardImageCaptionBlock implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -57,8 +60,8 @@ class StandardImageCaptionBlock implements \ArrayAccess, \JsonSerializable, Mode
      * @var string[]
      */
     protected static /** [COMPAT] array */ $openAPITypes = [
-        'image' => '\Plenty\AmazonPHP\SellingPartner\Model\APlus\ImageComponent',
-        'caption' => '\Plenty\AmazonPHP\SellingPartner\Model\APlus\TextComponent',
+        'image' => \Plenty\AmazonPHP\SellingPartner\Model\APlus\ImageComponent::class,
+        'caption' => \Plenty\AmazonPHP\SellingPartner\Model\APlus\TextComponent::class,
     ];
 
     /**
@@ -117,7 +120,7 @@ class StandardImageCaptionBlock implements \ArrayAccess, \JsonSerializable, Mode
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['image'] = $data['image'] ?? null;
         $this->container['caption'] = $data['caption'] ?? null;
@@ -128,7 +131,7 @@ class StandardImageCaptionBlock implements \ArrayAccess, \JsonSerializable, Mode
      *
      * @return string[]
      */
-    public static function openAPITypes() : array
+    public static function openAPITypes(): array
     {
         return self::$openAPITypes;
     }
@@ -138,7 +141,7 @@ class StandardImageCaptionBlock implements \ArrayAccess, \JsonSerializable, Mode
      *
      * @return null[]|string[]
      */
-    public static function openAPIFormats() : array
+    public static function openAPIFormats(): array
     {
         return self::$openAPIFormats;
     }
@@ -149,7 +152,7 @@ class StandardImageCaptionBlock implements \ArrayAccess, \JsonSerializable, Mode
      *
      * @return string[]
      */
-    public static function attributeMap() : array
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -159,7 +162,7 @@ class StandardImageCaptionBlock implements \ArrayAccess, \JsonSerializable, Mode
      *
      * @return string[]
      */
-    public static function setters() : array
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -169,7 +172,7 @@ class StandardImageCaptionBlock implements \ArrayAccess, \JsonSerializable, Mode
      *
      * @return string[]
      */
-    public static function getters() : array
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -177,9 +180,9 @@ class StandardImageCaptionBlock implements \ArrayAccess, \JsonSerializable, Mode
     /**
      * Gets the string presentation of the object.
      */
-    public function __toString() : string
+    public function __toString(): string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );
@@ -188,7 +191,7 @@ class StandardImageCaptionBlock implements \ArrayAccess, \JsonSerializable, Mode
     /**
      * The original name of the model.
      */
-    public function getModelName() : string
+    public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
@@ -198,7 +201,7 @@ class StandardImageCaptionBlock implements \ArrayAccess, \JsonSerializable, Mode
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties() : array
+    public function listInvalidProperties(): array
     {
         return [];
     }
@@ -209,7 +212,7 @@ class StandardImageCaptionBlock implements \ArrayAccess, \JsonSerializable, Mode
      *
      * @return bool True if all properties are valid
      */
-    public function valid() : bool
+    public function valid(): bool
     {
         return \count($this->listInvalidProperties()) === 0;
     }
@@ -217,7 +220,7 @@ class StandardImageCaptionBlock implements \ArrayAccess, \JsonSerializable, Mode
     /**
      * Gets image.
      */
-    public function getImage() : ?ImageComponent
+    public function getImage(): ?ImageComponent
     {
         return $this->container['image'];
     }
@@ -227,7 +230,7 @@ class StandardImageCaptionBlock implements \ArrayAccess, \JsonSerializable, Mode
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\APlus\ImageComponent $image image
      */
-    public function setImage(?ImageComponent $image) : self
+    public function setImage(?ImageComponent $image): self
     {
         $this->container['image'] = $image;
 
@@ -237,7 +240,7 @@ class StandardImageCaptionBlock implements \ArrayAccess, \JsonSerializable, Mode
     /**
      * Gets caption.
      */
-    public function getCaption() : ?TextComponent
+    public function getCaption(): ?TextComponent
     {
         return $this->container['caption'];
     }
@@ -247,7 +250,7 @@ class StandardImageCaptionBlock implements \ArrayAccess, \JsonSerializable, Mode
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\APlus\TextComponent $caption caption
      */
-    public function setCaption(?TextComponent $caption) : self
+    public function setCaption(?TextComponent $caption): self
     {
         $this->container['caption'] = $caption;
 
@@ -259,7 +262,7 @@ class StandardImageCaptionBlock implements \ArrayAccess, \JsonSerializable, Mode
      *
      * @param int $offset Offset
      */
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -282,7 +285,7 @@ class StandardImageCaptionBlock implements \ArrayAccess, \JsonSerializable, Mode
      * @param null|int $offset Offset
      * @param mixed $value Value to be set
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         if (null === $offset) {
             $this->container[] = $value;
@@ -296,7 +299,7 @@ class StandardImageCaptionBlock implements \ArrayAccess, \JsonSerializable, Mode
      *
      * @param int $offset Offset
      */
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -309,7 +312,7 @@ class StandardImageCaptionBlock implements \ArrayAccess, \JsonSerializable, Mode
      * @return mixed returns data which can be serialized by json_encode(), which is a value
      *               of any type other than a resource
      */
-    public function jsonSerialize() : string
+    public function jsonSerialize(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }
@@ -317,7 +320,7 @@ class StandardImageCaptionBlock implements \ArrayAccess, \JsonSerializable, Mode
     /**
      * Gets a header-safe presentation of the object.
      */
-    public function toHeaderValue() : string
+    public function toHeaderValue(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }

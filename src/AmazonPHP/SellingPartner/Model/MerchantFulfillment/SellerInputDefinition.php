@@ -1,4 +1,7 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
+
 /**
  * SellerInputDefinition.
  *
@@ -40,7 +43,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class SellerInputDefinition implements \ArrayAccess, \JsonSerializable, ModelInterface
+class SellerInputDefinition implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -61,8 +64,8 @@ class SellerInputDefinition implements \ArrayAccess, \JsonSerializable, ModelInt
         'data_type' => 'string',
         'constraints' => '\Plenty\AmazonPHP\SellingPartner\Model\MerchantFulfillment\Constraint[]',
         'input_display_text' => 'string',
-        'input_target' => '\Plenty\AmazonPHP\SellingPartner\Model\MerchantFulfillment\InputTargetType',
-        'stored_value' => '\Plenty\AmazonPHP\SellingPartner\Model\MerchantFulfillment\AdditionalSellerInput',
+        'input_target' => \Plenty\AmazonPHP\SellingPartner\Model\MerchantFulfillment\InputTargetType::class,
+        'stored_value' => \Plenty\AmazonPHP\SellingPartner\Model\MerchantFulfillment\AdditionalSellerInput::class,
         'restricted_set_values' => 'string[]',
     ];
 
@@ -142,7 +145,7 @@ class SellerInputDefinition implements \ArrayAccess, \JsonSerializable, ModelInt
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['is_required'] = $data['is_required'] ?? null;
         $this->container['data_type'] = $data['data_type'] ?? null;
@@ -158,7 +161,7 @@ class SellerInputDefinition implements \ArrayAccess, \JsonSerializable, ModelInt
      *
      * @return string[]
      */
-    public static function openAPITypes() : array
+    public static function openAPITypes(): array
     {
         return self::$openAPITypes;
     }
@@ -168,7 +171,7 @@ class SellerInputDefinition implements \ArrayAccess, \JsonSerializable, ModelInt
      *
      * @return null[]|string[]
      */
-    public static function openAPIFormats() : array
+    public static function openAPIFormats(): array
     {
         return self::$openAPIFormats;
     }
@@ -179,7 +182,7 @@ class SellerInputDefinition implements \ArrayAccess, \JsonSerializable, ModelInt
      *
      * @return string[]
      */
-    public static function attributeMap() : array
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -189,7 +192,7 @@ class SellerInputDefinition implements \ArrayAccess, \JsonSerializable, ModelInt
      *
      * @return string[]
      */
-    public static function setters() : array
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -199,7 +202,7 @@ class SellerInputDefinition implements \ArrayAccess, \JsonSerializable, ModelInt
      *
      * @return string[]
      */
-    public static function getters() : array
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -207,9 +210,9 @@ class SellerInputDefinition implements \ArrayAccess, \JsonSerializable, ModelInt
     /**
      * Gets the string presentation of the object.
      */
-    public function __toString() : string
+    public function __toString(): string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );
@@ -218,7 +221,7 @@ class SellerInputDefinition implements \ArrayAccess, \JsonSerializable, ModelInt
     /**
      * The original name of the model.
      */
-    public function getModelName() : string
+    public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
@@ -228,7 +231,7 @@ class SellerInputDefinition implements \ArrayAccess, \JsonSerializable, ModelInt
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties() : array
+    public function listInvalidProperties(): array
     {
         $invalidProperties = [];
 
@@ -261,7 +264,7 @@ class SellerInputDefinition implements \ArrayAccess, \JsonSerializable, ModelInt
      *
      * @return bool True if all properties are valid
      */
-    public function valid() : bool
+    public function valid(): bool
     {
         return \count($this->listInvalidProperties()) === 0;
     }
@@ -269,7 +272,7 @@ class SellerInputDefinition implements \ArrayAccess, \JsonSerializable, ModelInt
     /**
      * Gets is_required.
      */
-    public function getIsRequired() : bool
+    public function getIsRequired(): bool
     {
         return $this->container['is_required'];
     }
@@ -279,7 +282,7 @@ class SellerInputDefinition implements \ArrayAccess, \JsonSerializable, ModelInt
      *
      * @param bool $is_required when true, the additional input field is required
      */
-    public function setIsRequired(bool $is_required) : self
+    public function setIsRequired(bool $is_required): self
     {
         $this->container['is_required'] = $is_required;
 
@@ -289,7 +292,7 @@ class SellerInputDefinition implements \ArrayAccess, \JsonSerializable, ModelInt
     /**
      * Gets data_type.
      */
-    public function getDataType() : string
+    public function getDataType(): string
     {
         return $this->container['data_type'];
     }
@@ -299,7 +302,7 @@ class SellerInputDefinition implements \ArrayAccess, \JsonSerializable, ModelInt
      *
      * @param string $data_type the data type of the additional input field
      */
-    public function setDataType(string $data_type) : self
+    public function setDataType(string $data_type): self
     {
         $this->container['data_type'] = $data_type;
 
@@ -311,7 +314,7 @@ class SellerInputDefinition implements \ArrayAccess, \JsonSerializable, ModelInt
      *
      * @return \Plenty\AmazonPHP\SellingPartner\Model\MerchantFulfillment\Constraint[]
      */
-    public function getConstraints() : array
+    public function getConstraints(): array
     {
         return $this->container['constraints'];
     }
@@ -321,7 +324,7 @@ class SellerInputDefinition implements \ArrayAccess, \JsonSerializable, ModelInt
      *
      * @param \Plenty\AmazonPHP\SellingPartner\Model\MerchantFulfillment\Constraint[] $constraints list of constraints
      */
-    public function setConstraints(array $constraints) : self
+    public function setConstraints(array $constraints): self
     {
         $this->container['constraints'] = $constraints;
 
@@ -331,7 +334,7 @@ class SellerInputDefinition implements \ArrayAccess, \JsonSerializable, ModelInt
     /**
      * Gets input_display_text.
      */
-    public function getInputDisplayText() : string
+    public function getInputDisplayText(): string
     {
         return $this->container['input_display_text'];
     }
@@ -341,7 +344,7 @@ class SellerInputDefinition implements \ArrayAccess, \JsonSerializable, ModelInt
      *
      * @param string $input_display_text the display text for the additional input field
      */
-    public function setInputDisplayText(string $input_display_text) : self
+    public function setInputDisplayText(string $input_display_text): self
     {
         $this->container['input_display_text'] = $input_display_text;
 
@@ -351,7 +354,7 @@ class SellerInputDefinition implements \ArrayAccess, \JsonSerializable, ModelInt
     /**
      * Gets input_target.
      */
-    public function getInputTarget() : ?InputTargetType
+    public function getInputTarget(): ?InputTargetType
     {
         return $this->container['input_target'];
     }
@@ -361,7 +364,7 @@ class SellerInputDefinition implements \ArrayAccess, \JsonSerializable, ModelInt
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\MerchantFulfillment\InputTargetType $input_target input_target
      */
-    public function setInputTarget(?InputTargetType $input_target) : self
+    public function setInputTarget(?InputTargetType $input_target): self
     {
         $this->container['input_target'] = $input_target;
 
@@ -371,7 +374,7 @@ class SellerInputDefinition implements \ArrayAccess, \JsonSerializable, ModelInt
     /**
      * Gets stored_value.
      */
-    public function getStoredValue() : AdditionalSellerInput
+    public function getStoredValue(): AdditionalSellerInput
     {
         return $this->container['stored_value'];
     }
@@ -381,7 +384,7 @@ class SellerInputDefinition implements \ArrayAccess, \JsonSerializable, ModelInt
      *
      * @param \Plenty\AmazonPHP\SellingPartner\Model\MerchantFulfillment\AdditionalSellerInput $stored_value stored_value
      */
-    public function setStoredValue(AdditionalSellerInput $stored_value) : self
+    public function setStoredValue(AdditionalSellerInput $stored_value): self
     {
         $this->container['stored_value'] = $stored_value;
 
@@ -393,7 +396,7 @@ class SellerInputDefinition implements \ArrayAccess, \JsonSerializable, ModelInt
      *
      * @return null|string[]
      */
-    public function getRestrictedSetValues() : ?array
+    public function getRestrictedSetValues(): ?array
     {
         return $this->container['restricted_set_values'];
     }
@@ -403,7 +406,7 @@ class SellerInputDefinition implements \ArrayAccess, \JsonSerializable, ModelInt
      *
      * @param null|string[] $restricted_set_values the set of fixed values in an additional seller input
      */
-    public function setRestrictedSetValues(?array $restricted_set_values) : self
+    public function setRestrictedSetValues(?array $restricted_set_values): self
     {
         $this->container['restricted_set_values'] = $restricted_set_values;
 
@@ -415,7 +418,7 @@ class SellerInputDefinition implements \ArrayAccess, \JsonSerializable, ModelInt
      *
      * @param int $offset Offset
      */
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -438,7 +441,7 @@ class SellerInputDefinition implements \ArrayAccess, \JsonSerializable, ModelInt
      * @param null|int $offset Offset
      * @param mixed $value Value to be set
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         if (null === $offset) {
             $this->container[] = $value;
@@ -452,7 +455,7 @@ class SellerInputDefinition implements \ArrayAccess, \JsonSerializable, ModelInt
      *
      * @param int $offset Offset
      */
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -465,7 +468,7 @@ class SellerInputDefinition implements \ArrayAccess, \JsonSerializable, ModelInt
      * @return mixed returns data which can be serialized by json_encode(), which is a value
      *               of any type other than a resource
      */
-    public function jsonSerialize() : string
+    public function jsonSerialize(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }
@@ -473,7 +476,7 @@ class SellerInputDefinition implements \ArrayAccess, \JsonSerializable, ModelInt
     /**
      * Gets a header-safe presentation of the object.
      */
-    public function toHeaderValue() : string
+    public function toHeaderValue(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }

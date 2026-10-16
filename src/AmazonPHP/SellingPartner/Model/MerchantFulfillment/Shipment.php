@@ -1,4 +1,7 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
+
 /**
  * Shipment.
  *
@@ -40,7 +43,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class Shipment implements \ArrayAccess, \JsonSerializable, ModelInterface
+class Shipment implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -61,14 +64,14 @@ class Shipment implements \ArrayAccess, \JsonSerializable, ModelInterface
         'amazon_order_id' => 'string',
         'seller_order_id' => 'string',
         'item_list' => '\Plenty\AmazonPHP\SellingPartner\Model\MerchantFulfillment\Item[]',
-        'ship_from_address' => '\Plenty\AmazonPHP\SellingPartner\Model\MerchantFulfillment\Address',
-        'ship_to_address' => '\Plenty\AmazonPHP\SellingPartner\Model\MerchantFulfillment\Address',
-        'package_dimensions' => '\Plenty\AmazonPHP\SellingPartner\Model\MerchantFulfillment\PackageDimensions',
-        'weight' => '\Plenty\AmazonPHP\SellingPartner\Model\MerchantFulfillment\Weight',
-        'insurance' => '\Plenty\AmazonPHP\SellingPartner\Model\MerchantFulfillment\CurrencyAmount',
-        'shipping_service' => '\Plenty\AmazonPHP\SellingPartner\Model\MerchantFulfillment\ShippingService',
-        'label' => '\Plenty\AmazonPHP\SellingPartner\Model\MerchantFulfillment\Label',
-        'status' => '\Plenty\AmazonPHP\SellingPartner\Model\MerchantFulfillment\ShipmentStatus',
+        'ship_from_address' => \Plenty\AmazonPHP\SellingPartner\Model\MerchantFulfillment\Address::class,
+        'ship_to_address' => \Plenty\AmazonPHP\SellingPartner\Model\MerchantFulfillment\Address::class,
+        'package_dimensions' => \Plenty\AmazonPHP\SellingPartner\Model\MerchantFulfillment\PackageDimensions::class,
+        'weight' => \Plenty\AmazonPHP\SellingPartner\Model\MerchantFulfillment\Weight::class,
+        'insurance' => \Plenty\AmazonPHP\SellingPartner\Model\MerchantFulfillment\CurrencyAmount::class,
+        'shipping_service' => \Plenty\AmazonPHP\SellingPartner\Model\MerchantFulfillment\ShippingService::class,
+        'label' => \Plenty\AmazonPHP\SellingPartner\Model\MerchantFulfillment\Label::class,
+        'status' => \Plenty\AmazonPHP\SellingPartner\Model\MerchantFulfillment\ShipmentStatus::class,
         'tracking_id' => 'string',
         'created_date' => '\DateTime',
         'last_updated_date' => '\DateTime',
@@ -182,7 +185,7 @@ class Shipment implements \ArrayAccess, \JsonSerializable, ModelInterface
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['shipment_id'] = $data['shipment_id'] ?? null;
         $this->container['amazon_order_id'] = $data['amazon_order_id'] ?? null;
@@ -206,7 +209,7 @@ class Shipment implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return string[]
      */
-    public static function openAPITypes() : array
+    public static function openAPITypes(): array
     {
         return self::$openAPITypes;
     }
@@ -216,7 +219,7 @@ class Shipment implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return null[]|string[]
      */
-    public static function openAPIFormats() : array
+    public static function openAPIFormats(): array
     {
         return self::$openAPIFormats;
     }
@@ -227,7 +230,7 @@ class Shipment implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return string[]
      */
-    public static function attributeMap() : array
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -237,7 +240,7 @@ class Shipment implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return string[]
      */
-    public static function setters() : array
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -247,7 +250,7 @@ class Shipment implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return string[]
      */
-    public static function getters() : array
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -255,9 +258,9 @@ class Shipment implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets the string presentation of the object.
      */
-    public function __toString() : string
+    public function __toString(): string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );
@@ -266,7 +269,7 @@ class Shipment implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * The original name of the model.
      */
-    public function getModelName() : string
+    public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
@@ -276,7 +279,7 @@ class Shipment implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties() : array
+    public function listInvalidProperties(): array
     {
         $invalidProperties = [];
 
@@ -341,7 +344,7 @@ class Shipment implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return bool True if all properties are valid
      */
-    public function valid() : bool
+    public function valid(): bool
     {
         return \count($this->listInvalidProperties()) === 0;
     }
@@ -349,7 +352,7 @@ class Shipment implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets shipment_id.
      */
-    public function getShipmentId() : string
+    public function getShipmentId(): string
     {
         return $this->container['shipment_id'];
     }
@@ -359,7 +362,7 @@ class Shipment implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param string $shipment_id an Amazon-defined shipment identifier
      */
-    public function setShipmentId(string $shipment_id) : self
+    public function setShipmentId(string $shipment_id): self
     {
         $this->container['shipment_id'] = $shipment_id;
 
@@ -369,7 +372,7 @@ class Shipment implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets amazon_order_id.
      */
-    public function getAmazonOrderId() : string
+    public function getAmazonOrderId(): string
     {
         return $this->container['amazon_order_id'];
     }
@@ -379,7 +382,7 @@ class Shipment implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param string $amazon_order_id an Amazon-defined order identifier, in 3-7-7 format
      */
-    public function setAmazonOrderId(string $amazon_order_id) : self
+    public function setAmazonOrderId(string $amazon_order_id): self
     {
         $this->container['amazon_order_id'] = $amazon_order_id;
 
@@ -389,7 +392,7 @@ class Shipment implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets seller_order_id.
      */
-    public function getSellerOrderId() : ?string
+    public function getSellerOrderId(): ?string
     {
         return $this->container['seller_order_id'];
     }
@@ -399,7 +402,7 @@ class Shipment implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param null|string $seller_order_id a seller-defined order identifier
      */
-    public function setSellerOrderId(?string $seller_order_id) : self
+    public function setSellerOrderId(?string $seller_order_id): self
     {
         if (null !== $seller_order_id && (\mb_strlen($seller_order_id) > 64)) {
             throw new \InvalidArgumentException('invalid length for $seller_order_id when calling Shipment., must be smaller than or equal to 64.');
@@ -415,7 +418,7 @@ class Shipment implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return \Plenty\AmazonPHP\SellingPartner\Model\MerchantFulfillment\Item[]
      */
-    public function getItemList() : array
+    public function getItemList(): array
     {
         return $this->container['item_list'];
     }
@@ -425,7 +428,7 @@ class Shipment implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param \Plenty\AmazonPHP\SellingPartner\Model\MerchantFulfillment\Item[] $item_list the list of items to be included in a shipment
      */
-    public function setItemList(array $item_list) : self
+    public function setItemList(array $item_list): self
     {
         $this->container['item_list'] = $item_list;
 
@@ -435,7 +438,7 @@ class Shipment implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets ship_from_address.
      */
-    public function getShipFromAddress() : Address
+    public function getShipFromAddress(): Address
     {
         return $this->container['ship_from_address'];
     }
@@ -445,7 +448,7 @@ class Shipment implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param \Plenty\AmazonPHP\SellingPartner\Model\MerchantFulfillment\Address $ship_from_address ship_from_address
      */
-    public function setShipFromAddress(Address $ship_from_address) : self
+    public function setShipFromAddress(Address $ship_from_address): self
     {
         $this->container['ship_from_address'] = $ship_from_address;
 
@@ -455,7 +458,7 @@ class Shipment implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets ship_to_address.
      */
-    public function getShipToAddress() : Address
+    public function getShipToAddress(): Address
     {
         return $this->container['ship_to_address'];
     }
@@ -465,7 +468,7 @@ class Shipment implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param \Plenty\AmazonPHP\SellingPartner\Model\MerchantFulfillment\Address $ship_to_address ship_to_address
      */
-    public function setShipToAddress(Address $ship_to_address) : self
+    public function setShipToAddress(Address $ship_to_address): self
     {
         $this->container['ship_to_address'] = $ship_to_address;
 
@@ -475,7 +478,7 @@ class Shipment implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets package_dimensions.
      */
-    public function getPackageDimensions() : PackageDimensions
+    public function getPackageDimensions(): PackageDimensions
     {
         return $this->container['package_dimensions'];
     }
@@ -485,7 +488,7 @@ class Shipment implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param \Plenty\AmazonPHP\SellingPartner\Model\MerchantFulfillment\PackageDimensions $package_dimensions package_dimensions
      */
-    public function setPackageDimensions(PackageDimensions $package_dimensions) : self
+    public function setPackageDimensions(PackageDimensions $package_dimensions): self
     {
         $this->container['package_dimensions'] = $package_dimensions;
 
@@ -495,7 +498,7 @@ class Shipment implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets weight.
      */
-    public function getWeight() : Weight
+    public function getWeight(): Weight
     {
         return $this->container['weight'];
     }
@@ -505,7 +508,7 @@ class Shipment implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param \Plenty\AmazonPHP\SellingPartner\Model\MerchantFulfillment\Weight $weight weight
      */
-    public function setWeight(Weight $weight) : self
+    public function setWeight(Weight $weight): self
     {
         $this->container['weight'] = $weight;
 
@@ -515,7 +518,7 @@ class Shipment implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets insurance.
      */
-    public function getInsurance() : CurrencyAmount
+    public function getInsurance(): CurrencyAmount
     {
         return $this->container['insurance'];
     }
@@ -525,7 +528,7 @@ class Shipment implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param \Plenty\AmazonPHP\SellingPartner\Model\MerchantFulfillment\CurrencyAmount $insurance insurance
      */
-    public function setInsurance(CurrencyAmount $insurance) : self
+    public function setInsurance(CurrencyAmount $insurance): self
     {
         $this->container['insurance'] = $insurance;
 
@@ -535,7 +538,7 @@ class Shipment implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets shipping_service.
      */
-    public function getShippingService() : ShippingService
+    public function getShippingService(): ShippingService
     {
         return $this->container['shipping_service'];
     }
@@ -545,7 +548,7 @@ class Shipment implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param \Plenty\AmazonPHP\SellingPartner\Model\MerchantFulfillment\ShippingService $shipping_service shipping_service
      */
-    public function setShippingService(ShippingService $shipping_service) : self
+    public function setShippingService(ShippingService $shipping_service): self
     {
         $this->container['shipping_service'] = $shipping_service;
 
@@ -555,7 +558,7 @@ class Shipment implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets label.
      */
-    public function getLabel() : Label
+    public function getLabel(): Label
     {
         return $this->container['label'];
     }
@@ -565,7 +568,7 @@ class Shipment implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param \Plenty\AmazonPHP\SellingPartner\Model\MerchantFulfillment\Label $label label
      */
-    public function setLabel(Label $label) : self
+    public function setLabel(Label $label): self
     {
         $this->container['label'] = $label;
 
@@ -575,7 +578,7 @@ class Shipment implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets status.
      */
-    public function getStatus() : ShipmentStatus
+    public function getStatus(): ShipmentStatus
     {
         return $this->container['status'];
     }
@@ -585,7 +588,7 @@ class Shipment implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param \Plenty\AmazonPHP\SellingPartner\Model\MerchantFulfillment\ShipmentStatus $status status
      */
-    public function setStatus(ShipmentStatus $status) : self
+    public function setStatus(ShipmentStatus $status): self
     {
         $this->container['status'] = $status;
 
@@ -595,7 +598,7 @@ class Shipment implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets tracking_id.
      */
-    public function getTrackingId() : ?string
+    public function getTrackingId(): ?string
     {
         return $this->container['tracking_id'];
     }
@@ -605,7 +608,7 @@ class Shipment implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param null|string $tracking_id the shipment tracking identifier provided by the carrier
      */
-    public function setTrackingId(?string $tracking_id) : self
+    public function setTrackingId(?string $tracking_id): self
     {
         $this->container['tracking_id'] = $tracking_id;
 
@@ -617,7 +620,7 @@ class Shipment implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return \DateTime|\DateTimeImmutable
      */
-    public function getCreatedDate() : \DateTimeInterface
+    public function getCreatedDate(): \DateTimeInterface
     {
         return $this->container['created_date'];
     }
@@ -627,7 +630,7 @@ class Shipment implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param \DateTime $created_date created_date
      */
-    public function setCreatedDate(\DateTimeInterface $created_date) : self
+    public function setCreatedDate(\DateTimeInterface $created_date): self
     {
         $this->container['created_date'] = $created_date;
 
@@ -639,7 +642,7 @@ class Shipment implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return null|\DateTime|\DateTimeImmutable
      */
-    public function getLastUpdatedDate() : ?\DateTimeInterface
+    public function getLastUpdatedDate(): ?\DateTimeInterface
     {
         return $this->container['last_updated_date'];
     }
@@ -649,7 +652,7 @@ class Shipment implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param \DateTime|\DateTimeImmutable $last_updated_date last_updated_date
      */
-    public function setLastUpdatedDate(\DateTimeInterface $last_updated_date) : self
+    public function setLastUpdatedDate(\DateTimeInterface $last_updated_date): self
     {
         $this->container['last_updated_date'] = $last_updated_date;
 
@@ -661,7 +664,7 @@ class Shipment implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param int $offset Offset
      */
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -684,7 +687,7 @@ class Shipment implements \ArrayAccess, \JsonSerializable, ModelInterface
      * @param null|int $offset Offset
      * @param mixed $value Value to be set
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         if (null === $offset) {
             $this->container[] = $value;
@@ -698,7 +701,7 @@ class Shipment implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param int $offset Offset
      */
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -711,7 +714,7 @@ class Shipment implements \ArrayAccess, \JsonSerializable, ModelInterface
      * @return mixed returns data which can be serialized by json_encode(), which is a value
      *               of any type other than a resource
      */
-    public function jsonSerialize() : string
+    public function jsonSerialize(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }
@@ -719,7 +722,7 @@ class Shipment implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets a header-safe presentation of the object.
      */
-    public function toHeaderValue() : string
+    public function toHeaderValue(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }

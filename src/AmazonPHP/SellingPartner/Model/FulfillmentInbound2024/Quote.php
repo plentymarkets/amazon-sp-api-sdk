@@ -38,7 +38,7 @@ class Quote implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInterf
      * @var string[]
      */
     protected static array $openAPITypes = [
-        'cost' => '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound2024\Currency',
+        'cost' => \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound2024\Currency::class,
         'expiration' => '\DateTimeInterface',
         'voidable_until' => '\DateTimeInterface',
     ];
@@ -105,7 +105,7 @@ class Quote implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInterf
      * @param null|mixed[] $data Associated array of property values
      *                           initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['cost'] = $data['cost'] ?? null;
         $this->container['expiration'] = $data['expiration'] ?? null;
@@ -115,7 +115,7 @@ class Quote implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInterf
     /**
      * Array of property to type mappings. Used for (de)serialization.
      */
-    public static function openAPITypes() : array
+    public static function openAPITypes(): array
     {
         return self::$openAPITypes;
     }
@@ -123,7 +123,7 @@ class Quote implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInterf
     /**
      * Array of property to format mappings. Used for (de)serialization.
      */
-    public static function openAPIFormats() : array
+    public static function openAPIFormats(): array
     {
         return self::$openAPIFormats;
     }
@@ -132,7 +132,7 @@ class Quote implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInterf
      * Array of attributes where the key is the local name,
      * and the value is the original name.
      */
-    public static function attributeMap() : array
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -140,7 +140,7 @@ class Quote implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInterf
     /**
      * Array of attributes to setter functions (for deserialization of responses).
      */
-    public static function setters() : array
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -148,7 +148,7 @@ class Quote implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInterf
     /**
      * Array of attributes to getter functions (for serialization of requests).
      */
-    public static function getters() : array
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -156,7 +156,7 @@ class Quote implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInterf
     /**
      * Gets the string presentation of the object.
      */
-    public function __toString() : string
+    public function __toString(): string
     {
         return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
@@ -167,7 +167,7 @@ class Quote implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInterf
     /**
      * The original name of the model.
      */
-    public function getModelName() : string
+    public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
@@ -177,10 +177,10 @@ class Quote implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInterf
      *
      * @throws AssertionException
      */
-    public function listInvalidProperties() : array
+    public function listInvalidProperties(): array
     {
         $invalidProperties = [];
-         
+
         if ($this->container['cost'] === null) {
             $invalidProperties[] = "'cost' can't be null";
         }
@@ -196,7 +196,7 @@ class Quote implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInterf
      *
      * @return bool True if all properties are valid
      */
-    public function valid() : bool
+    public function valid(): bool
     {
         return \count($this->listInvalidProperties()) === 0;
     }
@@ -204,7 +204,7 @@ class Quote implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInterf
     /**
      * Gets cost.
      */
-    public function getCost() : Currency
+    public function getCost(): Currency
     {
         return $this->container['cost'];
     }
@@ -214,7 +214,7 @@ class Quote implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInterf
      *
      * @param Currency $cost cost
      */
-    public function setCost(Currency $cost) : self
+    public function setCost(Currency $cost): self
     {
         $this->container['cost'] = $cost;
 
@@ -224,7 +224,7 @@ class Quote implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInterf
     /**
      * Gets expiration.
      */
-    public function getExpiration() : ?\DateTimeInterface
+    public function getExpiration(): ?\DateTimeInterface
     {
         return $this->container['expiration'];
     }
@@ -234,7 +234,7 @@ class Quote implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInterf
      *
      * @param null|\DateTimeInterface $expiration The timestamp at which this transportation option quote becomes no longer valid. This is based in ISO 8601 datetime with pattern `yyyy-MM-ddTHH:mm:ss.sssZ`.
      */
-    public function setExpiration(?\DateTimeInterface $expiration) : self
+    public function setExpiration(?\DateTimeInterface $expiration): self
     {
         $this->container['expiration'] = $expiration;
 
@@ -244,7 +244,7 @@ class Quote implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInterf
     /**
      * Gets voidable_until.
      */
-    public function getVoidableUntil() : ?\DateTimeInterface
+    public function getVoidableUntil(): ?\DateTimeInterface
     {
         return $this->container['voidable_until'];
     }
@@ -254,7 +254,7 @@ class Quote implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInterf
      *
      * @param null|\DateTimeInterface $voidable_until voidable until timestamp
      */
-    public function setVoidableUntil(?\DateTimeInterface $voidable_until) : self
+    public function setVoidableUntil(?\DateTimeInterface $voidable_until): self
     {
         $this->container['voidable_until'] = $voidable_until;
 
@@ -264,7 +264,7 @@ class Quote implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInterf
     /**
      * Returns true if offset exists. False otherwise.
      */
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -275,7 +275,7 @@ class Quote implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInterf
      * @return null|mixed
      */
     #[\ReturnTypeWillChange]
-    public function offsetGet($offset) : mixed
+    public function offsetGet($offset): mixed
     {
         return $this->container[$offset] ?? null;
     }
@@ -283,7 +283,7 @@ class Quote implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInterf
     /**
      * Sets value based on offset.
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         if (null === $offset) {
             $this->container[] = $value;
@@ -295,7 +295,7 @@ class Quote implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInterf
     /**
      * Unsets offset.
      */
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -309,7 +309,7 @@ class Quote implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInterf
      *               of any type other than a resource
      */
     #[\ReturnTypeWillChange]
-    public function jsonSerialize() : string
+    public function jsonSerialize(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }
@@ -317,7 +317,7 @@ class Quote implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInterf
     /**
      * Gets a header-safe presentation of the object.
      */
-    public function toHeaderValue() : string
+    public function toHeaderValue(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }

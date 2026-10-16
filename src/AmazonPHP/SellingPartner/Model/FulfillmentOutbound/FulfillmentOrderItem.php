@@ -1,4 +1,7 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
+
 /**
  * FulfillmentOrderItem.
  *
@@ -40,7 +43,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class FulfillmentOrderItem implements \ArrayAccess, \JsonSerializable, ModelInterface
+class FulfillmentOrderItem implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -68,9 +71,9 @@ class FulfillmentOrderItem implements \ArrayAccess, \JsonSerializable, ModelInte
         'unfulfillable_quantity' => 'int',
         'estimated_ship_date' => '\DateTime',
         'estimated_arrival_date' => '\DateTime',
-        'per_unit_price' => '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentOutbound\Money',
-        'per_unit_tax' => '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentOutbound\Money',
-        'per_unit_declared_value' => '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentOutbound\Money',
+        'per_unit_price' => \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentOutbound\Money::class,
+        'per_unit_tax' => \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentOutbound\Money::class,
+        'per_unit_declared_value' => \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentOutbound\Money::class,
     ];
 
     /**
@@ -177,7 +180,7 @@ class FulfillmentOrderItem implements \ArrayAccess, \JsonSerializable, ModelInte
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['seller_sku'] = $data['seller_sku'] ?? null;
         $this->container['seller_fulfillment_order_item_id'] = $data['seller_fulfillment_order_item_id'] ?? null;
@@ -200,7 +203,7 @@ class FulfillmentOrderItem implements \ArrayAccess, \JsonSerializable, ModelInte
      *
      * @return string[]
      */
-    public static function openAPITypes() : array
+    public static function openAPITypes(): array
     {
         return self::$openAPITypes;
     }
@@ -210,7 +213,7 @@ class FulfillmentOrderItem implements \ArrayAccess, \JsonSerializable, ModelInte
      *
      * @return null[]|string[]
      */
-    public static function openAPIFormats() : array
+    public static function openAPIFormats(): array
     {
         return self::$openAPIFormats;
     }
@@ -221,7 +224,7 @@ class FulfillmentOrderItem implements \ArrayAccess, \JsonSerializable, ModelInte
      *
      * @return string[]
      */
-    public static function attributeMap() : array
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -231,7 +234,7 @@ class FulfillmentOrderItem implements \ArrayAccess, \JsonSerializable, ModelInte
      *
      * @return string[]
      */
-    public static function setters() : array
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -241,7 +244,7 @@ class FulfillmentOrderItem implements \ArrayAccess, \JsonSerializable, ModelInte
      *
      * @return string[]
      */
-    public static function getters() : array
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -249,9 +252,9 @@ class FulfillmentOrderItem implements \ArrayAccess, \JsonSerializable, ModelInte
     /**
      * Gets the string presentation of the object.
      */
-    public function __toString() : string
+    public function __toString(): string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );
@@ -260,7 +263,7 @@ class FulfillmentOrderItem implements \ArrayAccess, \JsonSerializable, ModelInte
     /**
      * The original name of the model.
      */
-    public function getModelName() : string
+    public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
@@ -270,7 +273,7 @@ class FulfillmentOrderItem implements \ArrayAccess, \JsonSerializable, ModelInte
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties() : array
+    public function listInvalidProperties(): array
     {
         $invalidProperties = [];
 
@@ -303,7 +306,7 @@ class FulfillmentOrderItem implements \ArrayAccess, \JsonSerializable, ModelInte
      *
      * @return bool True if all properties are valid
      */
-    public function valid() : bool
+    public function valid(): bool
     {
         return \count($this->listInvalidProperties()) === 0;
     }
@@ -311,7 +314,7 @@ class FulfillmentOrderItem implements \ArrayAccess, \JsonSerializable, ModelInte
     /**
      * Gets seller_sku.
      */
-    public function getSellerSku() : string
+    public function getSellerSku(): string
     {
         return $this->container['seller_sku'];
     }
@@ -321,7 +324,7 @@ class FulfillmentOrderItem implements \ArrayAccess, \JsonSerializable, ModelInte
      *
      * @param string $seller_sku the seller SKU of the item
      */
-    public function setSellerSku(string $seller_sku) : self
+    public function setSellerSku(string $seller_sku): self
     {
         $this->container['seller_sku'] = $seller_sku;
 
@@ -331,7 +334,7 @@ class FulfillmentOrderItem implements \ArrayAccess, \JsonSerializable, ModelInte
     /**
      * Gets seller_fulfillment_order_item_id.
      */
-    public function getSellerFulfillmentOrderItemId() : string
+    public function getSellerFulfillmentOrderItemId(): string
     {
         return $this->container['seller_fulfillment_order_item_id'];
     }
@@ -341,7 +344,7 @@ class FulfillmentOrderItem implements \ArrayAccess, \JsonSerializable, ModelInte
      *
      * @param string $seller_fulfillment_order_item_id a fulfillment order item identifier submitted with a call to the createFulfillmentOrder operation
      */
-    public function setSellerFulfillmentOrderItemId(string $seller_fulfillment_order_item_id) : self
+    public function setSellerFulfillmentOrderItemId(string $seller_fulfillment_order_item_id): self
     {
         $this->container['seller_fulfillment_order_item_id'] = $seller_fulfillment_order_item_id;
 
@@ -351,7 +354,7 @@ class FulfillmentOrderItem implements \ArrayAccess, \JsonSerializable, ModelInte
     /**
      * Gets quantity.
      */
-    public function getQuantity() : int
+    public function getQuantity(): int
     {
         return $this->container['quantity'];
     }
@@ -361,7 +364,7 @@ class FulfillmentOrderItem implements \ArrayAccess, \JsonSerializable, ModelInte
      *
      * @param int $quantity the item quantity
      */
-    public function setQuantity(int $quantity) : self
+    public function setQuantity(int $quantity): self
     {
         $this->container['quantity'] = $quantity;
 
@@ -371,7 +374,7 @@ class FulfillmentOrderItem implements \ArrayAccess, \JsonSerializable, ModelInte
     /**
      * Gets gift_message.
      */
-    public function getGiftMessage() : ?string
+    public function getGiftMessage(): ?string
     {
         return $this->container['gift_message'];
     }
@@ -381,7 +384,7 @@ class FulfillmentOrderItem implements \ArrayAccess, \JsonSerializable, ModelInte
      *
      * @param null|string $gift_message a message to the gift recipient, if applicable
      */
-    public function setGiftMessage(?string $gift_message) : self
+    public function setGiftMessage(?string $gift_message): self
     {
         $this->container['gift_message'] = $gift_message;
 
@@ -391,7 +394,7 @@ class FulfillmentOrderItem implements \ArrayAccess, \JsonSerializable, ModelInte
     /**
      * Gets displayable_comment.
      */
-    public function getDisplayableComment() : ?string
+    public function getDisplayableComment(): ?string
     {
         return $this->container['displayable_comment'];
     }
@@ -401,7 +404,7 @@ class FulfillmentOrderItem implements \ArrayAccess, \JsonSerializable, ModelInte
      *
      * @param null|string $displayable_comment item-specific text that displays in recipient-facing materials such as the outbound shipment packing slip
      */
-    public function setDisplayableComment(?string $displayable_comment) : self
+    public function setDisplayableComment(?string $displayable_comment): self
     {
         $this->container['displayable_comment'] = $displayable_comment;
 
@@ -411,7 +414,7 @@ class FulfillmentOrderItem implements \ArrayAccess, \JsonSerializable, ModelInte
     /**
      * Gets fulfillment_network_sku.
      */
-    public function getFulfillmentNetworkSku() : ?string
+    public function getFulfillmentNetworkSku(): ?string
     {
         return $this->container['fulfillment_network_sku'];
     }
@@ -421,7 +424,7 @@ class FulfillmentOrderItem implements \ArrayAccess, \JsonSerializable, ModelInte
      *
      * @param null|string $fulfillment_network_sku amazon's fulfillment network SKU of the item
      */
-    public function setFulfillmentNetworkSku(?string $fulfillment_network_sku) : self
+    public function setFulfillmentNetworkSku(?string $fulfillment_network_sku): self
     {
         $this->container['fulfillment_network_sku'] = $fulfillment_network_sku;
 
@@ -431,7 +434,7 @@ class FulfillmentOrderItem implements \ArrayAccess, \JsonSerializable, ModelInte
     /**
      * Gets order_item_disposition.
      */
-    public function getOrderItemDisposition() : ?string
+    public function getOrderItemDisposition(): ?string
     {
         return $this->container['order_item_disposition'];
     }
@@ -441,7 +444,7 @@ class FulfillmentOrderItem implements \ArrayAccess, \JsonSerializable, ModelInte
      *
      * @param null|string $order_item_disposition indicates whether the item is sellable or unsellable
      */
-    public function setOrderItemDisposition(?string $order_item_disposition) : self
+    public function setOrderItemDisposition(?string $order_item_disposition): self
     {
         $this->container['order_item_disposition'] = $order_item_disposition;
 
@@ -451,7 +454,7 @@ class FulfillmentOrderItem implements \ArrayAccess, \JsonSerializable, ModelInte
     /**
      * Gets cancelled_quantity.
      */
-    public function getCancelledQuantity() : int
+    public function getCancelledQuantity(): int
     {
         return $this->container['cancelled_quantity'];
     }
@@ -461,7 +464,7 @@ class FulfillmentOrderItem implements \ArrayAccess, \JsonSerializable, ModelInte
      *
      * @param int $cancelled_quantity the item quantity
      */
-    public function setCancelledQuantity(int $cancelled_quantity) : self
+    public function setCancelledQuantity(int $cancelled_quantity): self
     {
         $this->container['cancelled_quantity'] = $cancelled_quantity;
 
@@ -471,7 +474,7 @@ class FulfillmentOrderItem implements \ArrayAccess, \JsonSerializable, ModelInte
     /**
      * Gets unfulfillable_quantity.
      */
-    public function getUnfulfillableQuantity() : int
+    public function getUnfulfillableQuantity(): int
     {
         return $this->container['unfulfillable_quantity'];
     }
@@ -481,7 +484,7 @@ class FulfillmentOrderItem implements \ArrayAccess, \JsonSerializable, ModelInte
      *
      * @param int $unfulfillable_quantity the item quantity
      */
-    public function setUnfulfillableQuantity(int $unfulfillable_quantity) : self
+    public function setUnfulfillableQuantity(int $unfulfillable_quantity): self
     {
         $this->container['unfulfillable_quantity'] = $unfulfillable_quantity;
 
@@ -493,7 +496,7 @@ class FulfillmentOrderItem implements \ArrayAccess, \JsonSerializable, ModelInte
      *
      * @return null|\DateTime|\DateTimeImmutable
      */
-    public function getEstimatedShipDate() : ?\DateTimeInterface
+    public function getEstimatedShipDate(): ?\DateTimeInterface
     {
         return $this->container['estimated_ship_date'];
     }
@@ -503,7 +506,7 @@ class FulfillmentOrderItem implements \ArrayAccess, \JsonSerializable, ModelInte
      *
      * @param \DateTime|\DateTimeImmutable $estimated_ship_date estimated_ship_date
      */
-    public function setEstimatedShipDate(\DateTimeInterface $estimated_ship_date) : self
+    public function setEstimatedShipDate(\DateTimeInterface $estimated_ship_date): self
     {
         $this->container['estimated_ship_date'] = $estimated_ship_date;
 
@@ -515,7 +518,7 @@ class FulfillmentOrderItem implements \ArrayAccess, \JsonSerializable, ModelInte
      *
      * @return null|\DateTime|\DateTimeImmutable
      */
-    public function getEstimatedArrivalDate() : ?\DateTimeInterface
+    public function getEstimatedArrivalDate(): ?\DateTimeInterface
     {
         return $this->container['estimated_arrival_date'];
     }
@@ -525,7 +528,7 @@ class FulfillmentOrderItem implements \ArrayAccess, \JsonSerializable, ModelInte
      *
      * @param \DateTime|\DateTimeImmutable $estimated_arrival_date estimated_arrival_date
      */
-    public function setEstimatedArrivalDate(\DateTimeInterface $estimated_arrival_date) : self
+    public function setEstimatedArrivalDate(\DateTimeInterface $estimated_arrival_date): self
     {
         $this->container['estimated_arrival_date'] = $estimated_arrival_date;
 
@@ -535,7 +538,7 @@ class FulfillmentOrderItem implements \ArrayAccess, \JsonSerializable, ModelInte
     /**
      * Gets per_unit_price.
      */
-    public function getPerUnitPrice() : ?Money
+    public function getPerUnitPrice(): ?Money
     {
         return $this->container['per_unit_price'];
     }
@@ -545,7 +548,7 @@ class FulfillmentOrderItem implements \ArrayAccess, \JsonSerializable, ModelInte
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentOutbound\Money $per_unit_price per_unit_price
      */
-    public function setPerUnitPrice(?Money $per_unit_price) : self
+    public function setPerUnitPrice(?Money $per_unit_price): self
     {
         $this->container['per_unit_price'] = $per_unit_price;
 
@@ -555,7 +558,7 @@ class FulfillmentOrderItem implements \ArrayAccess, \JsonSerializable, ModelInte
     /**
      * Gets per_unit_tax.
      */
-    public function getPerUnitTax() : ?Money
+    public function getPerUnitTax(): ?Money
     {
         return $this->container['per_unit_tax'];
     }
@@ -565,7 +568,7 @@ class FulfillmentOrderItem implements \ArrayAccess, \JsonSerializable, ModelInte
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentOutbound\Money $per_unit_tax per_unit_tax
      */
-    public function setPerUnitTax(?Money $per_unit_tax) : self
+    public function setPerUnitTax(?Money $per_unit_tax): self
     {
         $this->container['per_unit_tax'] = $per_unit_tax;
 
@@ -575,7 +578,7 @@ class FulfillmentOrderItem implements \ArrayAccess, \JsonSerializable, ModelInte
     /**
      * Gets per_unit_declared_value.
      */
-    public function getPerUnitDeclaredValue() : ?Money
+    public function getPerUnitDeclaredValue(): ?Money
     {
         return $this->container['per_unit_declared_value'];
     }
@@ -585,7 +588,7 @@ class FulfillmentOrderItem implements \ArrayAccess, \JsonSerializable, ModelInte
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentOutbound\Money $per_unit_declared_value per_unit_declared_value
      */
-    public function setPerUnitDeclaredValue(?Money $per_unit_declared_value) : self
+    public function setPerUnitDeclaredValue(?Money $per_unit_declared_value): self
     {
         $this->container['per_unit_declared_value'] = $per_unit_declared_value;
 
@@ -597,7 +600,7 @@ class FulfillmentOrderItem implements \ArrayAccess, \JsonSerializable, ModelInte
      *
      * @param int $offset Offset
      */
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -620,7 +623,7 @@ class FulfillmentOrderItem implements \ArrayAccess, \JsonSerializable, ModelInte
      * @param null|int $offset Offset
      * @param mixed $value Value to be set
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         if (null === $offset) {
             $this->container[] = $value;
@@ -634,7 +637,7 @@ class FulfillmentOrderItem implements \ArrayAccess, \JsonSerializable, ModelInte
      *
      * @param int $offset Offset
      */
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -647,7 +650,7 @@ class FulfillmentOrderItem implements \ArrayAccess, \JsonSerializable, ModelInte
      * @return mixed returns data which can be serialized by json_encode(), which is a value
      *               of any type other than a resource
      */
-    public function jsonSerialize() : string
+    public function jsonSerialize(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }
@@ -655,7 +658,7 @@ class FulfillmentOrderItem implements \ArrayAccess, \JsonSerializable, ModelInte
     /**
      * Gets a header-safe presentation of the object.
      */
-    public function toHeaderValue() : string
+    public function toHeaderValue(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }

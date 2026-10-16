@@ -1,4 +1,7 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
+
 /**
  * ReturnItem.
  *
@@ -40,7 +43,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class ReturnItem implements \ArrayAccess, \JsonSerializable, ModelInterface
+class ReturnItem implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -63,10 +66,10 @@ class ReturnItem implements \ArrayAccess, \JsonSerializable, ModelInterface
         'seller_return_reason_code' => 'string',
         'return_comment' => 'string',
         'amazon_return_reason_code' => 'string',
-        'status' => '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentOutbound\FulfillmentReturnItemStatus',
+        'status' => \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentOutbound\FulfillmentReturnItemStatus::class,
         'status_changed_date' => '\DateTime',
         'return_authorization_id' => 'string',
-        'return_received_condition' => '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentOutbound\ReturnItemDisposition',
+        'return_received_condition' => \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentOutbound\ReturnItemDisposition::class,
         'fulfillment_center_id' => 'string',
     ];
 
@@ -162,7 +165,7 @@ class ReturnItem implements \ArrayAccess, \JsonSerializable, ModelInterface
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['seller_return_item_id'] = $data['seller_return_item_id'] ?? null;
         $this->container['seller_fulfillment_order_item_id'] = $data['seller_fulfillment_order_item_id'] ?? null;
@@ -182,7 +185,7 @@ class ReturnItem implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return string[]
      */
-    public static function openAPITypes() : array
+    public static function openAPITypes(): array
     {
         return self::$openAPITypes;
     }
@@ -192,7 +195,7 @@ class ReturnItem implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return null[]|string[]
      */
-    public static function openAPIFormats() : array
+    public static function openAPIFormats(): array
     {
         return self::$openAPIFormats;
     }
@@ -203,7 +206,7 @@ class ReturnItem implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return string[]
      */
-    public static function attributeMap() : array
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -213,7 +216,7 @@ class ReturnItem implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return string[]
      */
-    public static function setters() : array
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -223,7 +226,7 @@ class ReturnItem implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return string[]
      */
-    public static function getters() : array
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -231,9 +234,9 @@ class ReturnItem implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets the string presentation of the object.
      */
-    public function __toString() : string
+    public function __toString(): string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );
@@ -242,7 +245,7 @@ class ReturnItem implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * The original name of the model.
      */
-    public function getModelName() : string
+    public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
@@ -252,7 +255,7 @@ class ReturnItem implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties() : array
+    public function listInvalidProperties(): array
     {
         $invalidProperties = [];
 
@@ -289,7 +292,7 @@ class ReturnItem implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return bool True if all properties are valid
      */
-    public function valid() : bool
+    public function valid(): bool
     {
         return \count($this->listInvalidProperties()) === 0;
     }
@@ -297,7 +300,7 @@ class ReturnItem implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets seller_return_item_id.
      */
-    public function getSellerReturnItemId() : string
+    public function getSellerReturnItemId(): string
     {
         return $this->container['seller_return_item_id'];
     }
@@ -307,7 +310,7 @@ class ReturnItem implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param string $seller_return_item_id an identifier assigned by the seller to the return item
      */
-    public function setSellerReturnItemId(string $seller_return_item_id) : self
+    public function setSellerReturnItemId(string $seller_return_item_id): self
     {
         $this->container['seller_return_item_id'] = $seller_return_item_id;
 
@@ -317,7 +320,7 @@ class ReturnItem implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets seller_fulfillment_order_item_id.
      */
-    public function getSellerFulfillmentOrderItemId() : string
+    public function getSellerFulfillmentOrderItemId(): string
     {
         return $this->container['seller_fulfillment_order_item_id'];
     }
@@ -327,7 +330,7 @@ class ReturnItem implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param string $seller_fulfillment_order_item_id the identifier assigned to the item by the seller when the fulfillment order was created
      */
-    public function setSellerFulfillmentOrderItemId(string $seller_fulfillment_order_item_id) : self
+    public function setSellerFulfillmentOrderItemId(string $seller_fulfillment_order_item_id): self
     {
         $this->container['seller_fulfillment_order_item_id'] = $seller_fulfillment_order_item_id;
 
@@ -337,7 +340,7 @@ class ReturnItem implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets amazon_shipment_id.
      */
-    public function getAmazonShipmentId() : string
+    public function getAmazonShipmentId(): string
     {
         return $this->container['amazon_shipment_id'];
     }
@@ -347,7 +350,7 @@ class ReturnItem implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param string $amazon_shipment_id the identifier for the shipment that is associated with the return item
      */
-    public function setAmazonShipmentId(string $amazon_shipment_id) : self
+    public function setAmazonShipmentId(string $amazon_shipment_id): self
     {
         $this->container['amazon_shipment_id'] = $amazon_shipment_id;
 
@@ -357,7 +360,7 @@ class ReturnItem implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets seller_return_reason_code.
      */
-    public function getSellerReturnReasonCode() : string
+    public function getSellerReturnReasonCode(): string
     {
         return $this->container['seller_return_reason_code'];
     }
@@ -367,7 +370,7 @@ class ReturnItem implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param string $seller_return_reason_code the return reason code assigned to the return item by the seller
      */
-    public function setSellerReturnReasonCode(string $seller_return_reason_code) : self
+    public function setSellerReturnReasonCode(string $seller_return_reason_code): self
     {
         $this->container['seller_return_reason_code'] = $seller_return_reason_code;
 
@@ -377,7 +380,7 @@ class ReturnItem implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets return_comment.
      */
-    public function getReturnComment() : ?string
+    public function getReturnComment(): ?string
     {
         return $this->container['return_comment'];
     }
@@ -387,7 +390,7 @@ class ReturnItem implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param null|string $return_comment an optional comment about the return item
      */
-    public function setReturnComment(?string $return_comment) : self
+    public function setReturnComment(?string $return_comment): self
     {
         $this->container['return_comment'] = $return_comment;
 
@@ -397,7 +400,7 @@ class ReturnItem implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets amazon_return_reason_code.
      */
-    public function getAmazonReturnReasonCode() : ?string
+    public function getAmazonReturnReasonCode(): ?string
     {
         return $this->container['amazon_return_reason_code'];
     }
@@ -407,7 +410,7 @@ class ReturnItem implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param null|string $amazon_return_reason_code the return reason code that the Amazon fulfillment center assigned to the return item
      */
-    public function setAmazonReturnReasonCode(?string $amazon_return_reason_code) : self
+    public function setAmazonReturnReasonCode(?string $amazon_return_reason_code): self
     {
         $this->container['amazon_return_reason_code'] = $amazon_return_reason_code;
 
@@ -417,7 +420,7 @@ class ReturnItem implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets status.
      */
-    public function getStatus() : FulfillmentReturnItemStatus
+    public function getStatus(): FulfillmentReturnItemStatus
     {
         return $this->container['status'];
     }
@@ -427,7 +430,7 @@ class ReturnItem implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentOutbound\FulfillmentReturnItemStatus $status status
      */
-    public function setStatus(FulfillmentReturnItemStatus $status) : self
+    public function setStatus(FulfillmentReturnItemStatus $status): self
     {
         $this->container['status'] = $status;
 
@@ -439,7 +442,7 @@ class ReturnItem implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return \DateTime|\DateTimeImmutable
      */
-    public function getStatusChangedDate() : \DateTimeInterface
+    public function getStatusChangedDate(): \DateTimeInterface
     {
         return $this->container['status_changed_date'];
     }
@@ -449,7 +452,7 @@ class ReturnItem implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param \DateTime $status_changed_date status_changed_date
      */
-    public function setStatusChangedDate(\DateTimeInterface $status_changed_date) : self
+    public function setStatusChangedDate(\DateTimeInterface $status_changed_date): self
     {
         $this->container['status_changed_date'] = $status_changed_date;
 
@@ -459,7 +462,7 @@ class ReturnItem implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets return_authorization_id.
      */
-    public function getReturnAuthorizationId() : ?string
+    public function getReturnAuthorizationId(): ?string
     {
         return $this->container['return_authorization_id'];
     }
@@ -469,7 +472,7 @@ class ReturnItem implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param null|string $return_authorization_id Identifies the return authorization used to return this item. See ReturnAuthorization.
      */
-    public function setReturnAuthorizationId(?string $return_authorization_id) : self
+    public function setReturnAuthorizationId(?string $return_authorization_id): self
     {
         $this->container['return_authorization_id'] = $return_authorization_id;
 
@@ -479,7 +482,7 @@ class ReturnItem implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets return_received_condition.
      */
-    public function getReturnReceivedCondition() : ?ReturnItemDisposition
+    public function getReturnReceivedCondition(): ?ReturnItemDisposition
     {
         return $this->container['return_received_condition'];
     }
@@ -489,7 +492,7 @@ class ReturnItem implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentOutbound\ReturnItemDisposition $return_received_condition return_received_condition
      */
-    public function setReturnReceivedCondition(?ReturnItemDisposition $return_received_condition) : self
+    public function setReturnReceivedCondition(?ReturnItemDisposition $return_received_condition): self
     {
         $this->container['return_received_condition'] = $return_received_condition;
 
@@ -499,7 +502,7 @@ class ReturnItem implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets fulfillment_center_id.
      */
-    public function getFulfillmentCenterId() : ?string
+    public function getFulfillmentCenterId(): ?string
     {
         return $this->container['fulfillment_center_id'];
     }
@@ -509,7 +512,7 @@ class ReturnItem implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param null|string $fulfillment_center_id the identifier for the Amazon fulfillment center that processed the return item
      */
-    public function setFulfillmentCenterId(?string $fulfillment_center_id) : self
+    public function setFulfillmentCenterId(?string $fulfillment_center_id): self
     {
         $this->container['fulfillment_center_id'] = $fulfillment_center_id;
 
@@ -521,7 +524,7 @@ class ReturnItem implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param int $offset Offset
      */
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -544,7 +547,7 @@ class ReturnItem implements \ArrayAccess, \JsonSerializable, ModelInterface
      * @param null|int $offset Offset
      * @param mixed $value Value to be set
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         if (null === $offset) {
             $this->container[] = $value;
@@ -558,7 +561,7 @@ class ReturnItem implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param int $offset Offset
      */
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -571,7 +574,7 @@ class ReturnItem implements \ArrayAccess, \JsonSerializable, ModelInterface
      * @return mixed returns data which can be serialized by json_encode(), which is a value
      *               of any type other than a resource
      */
-    public function jsonSerialize() : string
+    public function jsonSerialize(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }
@@ -579,7 +582,7 @@ class ReturnItem implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets a header-safe presentation of the object.
      */
-    public function toHeaderValue() : string
+    public function toHeaderValue(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }

@@ -1,4 +1,7 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
+
 /**
  * Carton.
  *
@@ -40,7 +43,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class Carton implements \ArrayAccess, \JsonSerializable, ModelInterface
+class Carton implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -59,8 +62,8 @@ class Carton implements \ArrayAccess, \JsonSerializable, ModelInterface
     protected static /** [COMPAT] array */ $openAPITypes = [
         'carton_identifiers' => '\Plenty\AmazonPHP\SellingPartner\Model\VendorShipments\ContainerIdentification[]',
         'carton_sequence_number' => 'string',
-        'dimensions' => '\Plenty\AmazonPHP\SellingPartner\Model\VendorShipments\Dimensions',
-        'weight' => '\Plenty\AmazonPHP\SellingPartner\Model\VendorShipments\Weight',
+        'dimensions' => \Plenty\AmazonPHP\SellingPartner\Model\VendorShipments\Dimensions::class,
+        'weight' => \Plenty\AmazonPHP\SellingPartner\Model\VendorShipments\Weight::class,
         'tracking_number' => 'string',
         'items' => '\Plenty\AmazonPHP\SellingPartner\Model\VendorShipments\ContainerItem[]',
     ];
@@ -137,7 +140,7 @@ class Carton implements \ArrayAccess, \JsonSerializable, ModelInterface
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['carton_identifiers'] = $data['carton_identifiers'] ?? null;
         $this->container['carton_sequence_number'] = $data['carton_sequence_number'] ?? null;
@@ -152,7 +155,7 @@ class Carton implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return string[]
      */
-    public static function openAPITypes() : array
+    public static function openAPITypes(): array
     {
         return self::$openAPITypes;
     }
@@ -162,7 +165,7 @@ class Carton implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return null[]|string[]
      */
-    public static function openAPIFormats() : array
+    public static function openAPIFormats(): array
     {
         return self::$openAPIFormats;
     }
@@ -173,7 +176,7 @@ class Carton implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return string[]
      */
-    public static function attributeMap() : array
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -183,7 +186,7 @@ class Carton implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return string[]
      */
-    public static function setters() : array
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -193,7 +196,7 @@ class Carton implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return string[]
      */
-    public static function getters() : array
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -201,9 +204,9 @@ class Carton implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets the string presentation of the object.
      */
-    public function __toString() : string
+    public function __toString(): string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );
@@ -212,7 +215,7 @@ class Carton implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * The original name of the model.
      */
-    public function getModelName() : string
+    public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
@@ -222,7 +225,7 @@ class Carton implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties() : array
+    public function listInvalidProperties(): array
     {
         $invalidProperties = [];
 
@@ -243,7 +246,7 @@ class Carton implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return bool True if all properties are valid
      */
-    public function valid() : bool
+    public function valid(): bool
     {
         return \count($this->listInvalidProperties()) === 0;
     }
@@ -253,7 +256,7 @@ class Carton implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return null|\Plenty\AmazonPHP\SellingPartner\Model\VendorShipments\ContainerIdentification[]
      */
-    public function getCartonIdentifiers() : ?array
+    public function getCartonIdentifiers(): ?array
     {
         return $this->container['carton_identifiers'];
     }
@@ -263,7 +266,7 @@ class Carton implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\VendorShipments\ContainerIdentification[] $carton_identifiers a list of carton identifiers
      */
-    public function setCartonIdentifiers(?array $carton_identifiers) : self
+    public function setCartonIdentifiers(?array $carton_identifiers): self
     {
         $this->container['carton_identifiers'] = $carton_identifiers;
 
@@ -273,7 +276,7 @@ class Carton implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets carton_sequence_number.
      */
-    public function getCartonSequenceNumber() : string
+    public function getCartonSequenceNumber(): string
     {
         return $this->container['carton_sequence_number'];
     }
@@ -283,7 +286,7 @@ class Carton implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param string $carton_sequence_number Carton sequence number for the carton. The first carton will be 001, the second 002, and so on. This number is used as a reference to refer to this carton from the pallet level.
      */
-    public function setCartonSequenceNumber(string $carton_sequence_number) : self
+    public function setCartonSequenceNumber(string $carton_sequence_number): self
     {
         $this->container['carton_sequence_number'] = $carton_sequence_number;
 
@@ -293,7 +296,7 @@ class Carton implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets dimensions.
      */
-    public function getDimensions() : ?Dimensions
+    public function getDimensions(): ?Dimensions
     {
         return $this->container['dimensions'];
     }
@@ -303,7 +306,7 @@ class Carton implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\VendorShipments\Dimensions $dimensions dimensions
      */
-    public function setDimensions(?Dimensions $dimensions) : self
+    public function setDimensions(?Dimensions $dimensions): self
     {
         $this->container['dimensions'] = $dimensions;
 
@@ -313,7 +316,7 @@ class Carton implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets weight.
      */
-    public function getWeight() : ?Weight
+    public function getWeight(): ?Weight
     {
         return $this->container['weight'];
     }
@@ -323,7 +326,7 @@ class Carton implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\VendorShipments\Weight $weight weight
      */
-    public function setWeight(?Weight $weight) : self
+    public function setWeight(?Weight $weight): self
     {
         $this->container['weight'] = $weight;
 
@@ -333,7 +336,7 @@ class Carton implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets tracking_number.
      */
-    public function getTrackingNumber() : ?string
+    public function getTrackingNumber(): ?string
     {
         return $this->container['tracking_number'];
     }
@@ -343,7 +346,7 @@ class Carton implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param null|string $tracking_number this is required to be provided for every carton in the small parcel shipments
      */
-    public function setTrackingNumber(?string $tracking_number) : self
+    public function setTrackingNumber(?string $tracking_number): self
     {
         $this->container['tracking_number'] = $tracking_number;
 
@@ -355,7 +358,7 @@ class Carton implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return \Plenty\AmazonPHP\SellingPartner\Model\VendorShipments\ContainerItem[]
      */
-    public function getItems() : array
+    public function getItems(): array
     {
         return $this->container['items'];
     }
@@ -365,7 +368,7 @@ class Carton implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param \Plenty\AmazonPHP\SellingPartner\Model\VendorShipments\ContainerItem[] $items a list of container item details
      */
-    public function setItems(array $items) : self
+    public function setItems(array $items): self
     {
         $this->container['items'] = $items;
 
@@ -377,7 +380,7 @@ class Carton implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param int $offset Offset
      */
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -400,7 +403,7 @@ class Carton implements \ArrayAccess, \JsonSerializable, ModelInterface
      * @param null|int $offset Offset
      * @param mixed $value Value to be set
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         if (null === $offset) {
             $this->container[] = $value;
@@ -414,7 +417,7 @@ class Carton implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param int $offset Offset
      */
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -427,7 +430,7 @@ class Carton implements \ArrayAccess, \JsonSerializable, ModelInterface
      * @return mixed returns data which can be serialized by json_encode(), which is a value
      *               of any type other than a resource
      */
-    public function jsonSerialize() : string
+    public function jsonSerialize(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }
@@ -435,7 +438,7 @@ class Carton implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets a header-safe presentation of the object.
      */
-    public function toHeaderValue() : string
+    public function toHeaderValue(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }

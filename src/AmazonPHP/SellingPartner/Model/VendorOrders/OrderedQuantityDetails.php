@@ -1,4 +1,7 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
+
 /**
  * OrderedQuantityDetails.
  *
@@ -40,7 +43,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class OrderedQuantityDetails implements \ArrayAccess, \JsonSerializable, ModelInterface
+class OrderedQuantityDetails implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -58,8 +61,8 @@ class OrderedQuantityDetails implements \ArrayAccess, \JsonSerializable, ModelIn
      */
     protected static /** [COMPAT] array */ $openAPITypes = [
         'updated_date' => '\DateTime',
-        'ordered_quantity' => '\Plenty\AmazonPHP\SellingPartner\Model\VendorOrders\ItemQuantity',
-        'cancelled_quantity' => '\Plenty\AmazonPHP\SellingPartner\Model\VendorOrders\ItemQuantity',
+        'ordered_quantity' => \Plenty\AmazonPHP\SellingPartner\Model\VendorOrders\ItemQuantity::class,
+        'cancelled_quantity' => \Plenty\AmazonPHP\SellingPartner\Model\VendorOrders\ItemQuantity::class,
     ];
 
     /**
@@ -122,7 +125,7 @@ class OrderedQuantityDetails implements \ArrayAccess, \JsonSerializable, ModelIn
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['updated_date'] = $data['updated_date'] ?? null;
         $this->container['ordered_quantity'] = $data['ordered_quantity'] ?? null;
@@ -134,7 +137,7 @@ class OrderedQuantityDetails implements \ArrayAccess, \JsonSerializable, ModelIn
      *
      * @return string[]
      */
-    public static function openAPITypes() : array
+    public static function openAPITypes(): array
     {
         return self::$openAPITypes;
     }
@@ -144,7 +147,7 @@ class OrderedQuantityDetails implements \ArrayAccess, \JsonSerializable, ModelIn
      *
      * @return null[]|string[]
      */
-    public static function openAPIFormats() : array
+    public static function openAPIFormats(): array
     {
         return self::$openAPIFormats;
     }
@@ -155,7 +158,7 @@ class OrderedQuantityDetails implements \ArrayAccess, \JsonSerializable, ModelIn
      *
      * @return string[]
      */
-    public static function attributeMap() : array
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -165,7 +168,7 @@ class OrderedQuantityDetails implements \ArrayAccess, \JsonSerializable, ModelIn
      *
      * @return string[]
      */
-    public static function setters() : array
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -175,7 +178,7 @@ class OrderedQuantityDetails implements \ArrayAccess, \JsonSerializable, ModelIn
      *
      * @return string[]
      */
-    public static function getters() : array
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -183,9 +186,9 @@ class OrderedQuantityDetails implements \ArrayAccess, \JsonSerializable, ModelIn
     /**
      * Gets the string presentation of the object.
      */
-    public function __toString() : string
+    public function __toString(): string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );
@@ -194,7 +197,7 @@ class OrderedQuantityDetails implements \ArrayAccess, \JsonSerializable, ModelIn
     /**
      * The original name of the model.
      */
-    public function getModelName() : string
+    public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
@@ -204,7 +207,7 @@ class OrderedQuantityDetails implements \ArrayAccess, \JsonSerializable, ModelIn
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties() : array
+    public function listInvalidProperties(): array
     {
         return [];
     }
@@ -215,7 +218,7 @@ class OrderedQuantityDetails implements \ArrayAccess, \JsonSerializable, ModelIn
      *
      * @return bool True if all properties are valid
      */
-    public function valid() : bool
+    public function valid(): bool
     {
         return \count($this->listInvalidProperties()) === 0;
     }
@@ -225,7 +228,7 @@ class OrderedQuantityDetails implements \ArrayAccess, \JsonSerializable, ModelIn
      *
      * @return null|\DateTime|\DateTimeImmutable
      */
-    public function getUpdatedDate() : ?\DateTimeInterface
+    public function getUpdatedDate(): ?\DateTimeInterface
     {
         return $this->container['updated_date'];
     }
@@ -235,7 +238,7 @@ class OrderedQuantityDetails implements \ArrayAccess, \JsonSerializable, ModelIn
      *
      * @param \DateTime|\DateTimeImmutable $updated_date The date when the line item quantity was updated by buyer. Must be in ISO-8601 date/time format.
      */
-    public function setUpdatedDate(\DateTimeInterface $updated_date) : self
+    public function setUpdatedDate(\DateTimeInterface $updated_date): self
     {
         $this->container['updated_date'] = $updated_date;
 
@@ -245,7 +248,7 @@ class OrderedQuantityDetails implements \ArrayAccess, \JsonSerializable, ModelIn
     /**
      * Gets ordered_quantity.
      */
-    public function getOrderedQuantity() : ?ItemQuantity
+    public function getOrderedQuantity(): ?ItemQuantity
     {
         return $this->container['ordered_quantity'];
     }
@@ -255,7 +258,7 @@ class OrderedQuantityDetails implements \ArrayAccess, \JsonSerializable, ModelIn
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\VendorOrders\ItemQuantity $ordered_quantity ordered_quantity
      */
-    public function setOrderedQuantity(?ItemQuantity $ordered_quantity) : self
+    public function setOrderedQuantity(?ItemQuantity $ordered_quantity): self
     {
         $this->container['ordered_quantity'] = $ordered_quantity;
 
@@ -265,7 +268,7 @@ class OrderedQuantityDetails implements \ArrayAccess, \JsonSerializable, ModelIn
     /**
      * Gets cancelled_quantity.
      */
-    public function getCancelledQuantity() : ?ItemQuantity
+    public function getCancelledQuantity(): ?ItemQuantity
     {
         return $this->container['cancelled_quantity'];
     }
@@ -275,7 +278,7 @@ class OrderedQuantityDetails implements \ArrayAccess, \JsonSerializable, ModelIn
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\VendorOrders\ItemQuantity $cancelled_quantity cancelled_quantity
      */
-    public function setCancelledQuantity(?ItemQuantity $cancelled_quantity) : self
+    public function setCancelledQuantity(?ItemQuantity $cancelled_quantity): self
     {
         $this->container['cancelled_quantity'] = $cancelled_quantity;
 
@@ -287,7 +290,7 @@ class OrderedQuantityDetails implements \ArrayAccess, \JsonSerializable, ModelIn
      *
      * @param int $offset Offset
      */
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -310,7 +313,7 @@ class OrderedQuantityDetails implements \ArrayAccess, \JsonSerializable, ModelIn
      * @param null|int $offset Offset
      * @param mixed $value Value to be set
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         if (null === $offset) {
             $this->container[] = $value;
@@ -324,7 +327,7 @@ class OrderedQuantityDetails implements \ArrayAccess, \JsonSerializable, ModelIn
      *
      * @param int $offset Offset
      */
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -337,7 +340,7 @@ class OrderedQuantityDetails implements \ArrayAccess, \JsonSerializable, ModelIn
      * @return mixed returns data which can be serialized by json_encode(), which is a value
      *               of any type other than a resource
      */
-    public function jsonSerialize() : string
+    public function jsonSerialize(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }
@@ -345,7 +348,7 @@ class OrderedQuantityDetails implements \ArrayAccess, \JsonSerializable, ModelIn
     /**
      * Gets a header-safe presentation of the object.
      */
-    public function toHeaderValue() : string
+    public function toHeaderValue(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }

@@ -1,4 +1,7 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
+
 /**
  * ContainerItem.
  *
@@ -40,7 +43,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class ContainerItem implements \ArrayAccess, \JsonSerializable, ModelInterface
+class ContainerItem implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -58,8 +61,8 @@ class ContainerItem implements \ArrayAccess, \JsonSerializable, ModelInterface
      */
     protected static /** [COMPAT] array */ $openAPITypes = [
         'quantity' => 'float',
-        'unit_price' => '\Plenty\AmazonPHP\SellingPartner\Model\Shipping\Currency',
-        'unit_weight' => '\Plenty\AmazonPHP\SellingPartner\Model\Shipping\Weight',
+        'unit_price' => \Plenty\AmazonPHP\SellingPartner\Model\Shipping\Currency::class,
+        'unit_weight' => \Plenty\AmazonPHP\SellingPartner\Model\Shipping\Weight::class,
         'title' => 'string',
     ];
 
@@ -127,7 +130,7 @@ class ContainerItem implements \ArrayAccess, \JsonSerializable, ModelInterface
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['quantity'] = $data['quantity'] ?? null;
         $this->container['unit_price'] = $data['unit_price'] ?? null;
@@ -140,7 +143,7 @@ class ContainerItem implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return string[]
      */
-    public static function openAPITypes() : array
+    public static function openAPITypes(): array
     {
         return self::$openAPITypes;
     }
@@ -150,7 +153,7 @@ class ContainerItem implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return null[]|string[]
      */
-    public static function openAPIFormats() : array
+    public static function openAPIFormats(): array
     {
         return self::$openAPIFormats;
     }
@@ -161,7 +164,7 @@ class ContainerItem implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return string[]
      */
-    public static function attributeMap() : array
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -171,7 +174,7 @@ class ContainerItem implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return string[]
      */
-    public static function setters() : array
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -181,7 +184,7 @@ class ContainerItem implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return string[]
      */
-    public static function getters() : array
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -189,9 +192,9 @@ class ContainerItem implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets the string presentation of the object.
      */
-    public function __toString() : string
+    public function __toString(): string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );
@@ -200,7 +203,7 @@ class ContainerItem implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * The original name of the model.
      */
-    public function getModelName() : string
+    public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
@@ -210,7 +213,7 @@ class ContainerItem implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties() : array
+    public function listInvalidProperties(): array
     {
         $invalidProperties = [];
 
@@ -243,7 +246,7 @@ class ContainerItem implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return bool True if all properties are valid
      */
-    public function valid() : bool
+    public function valid(): bool
     {
         return \count($this->listInvalidProperties()) === 0;
     }
@@ -251,7 +254,7 @@ class ContainerItem implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets quantity.
      */
-    public function getQuantity() : float
+    public function getQuantity(): float
     {
         return $this->container['quantity'];
     }
@@ -261,7 +264,7 @@ class ContainerItem implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param float $quantity the quantity of the items of this type in the container
      */
-    public function setQuantity(float $quantity) : self
+    public function setQuantity(float $quantity): self
     {
         $this->container['quantity'] = $quantity;
 
@@ -271,7 +274,7 @@ class ContainerItem implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets unit_price.
      */
-    public function getUnitPrice() : Currency
+    public function getUnitPrice(): Currency
     {
         return $this->container['unit_price'];
     }
@@ -281,7 +284,7 @@ class ContainerItem implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param \Plenty\AmazonPHP\SellingPartner\Model\Shipping\Currency $unit_price unit_price
      */
-    public function setUnitPrice(Currency $unit_price) : self
+    public function setUnitPrice(Currency $unit_price): self
     {
         $this->container['unit_price'] = $unit_price;
 
@@ -291,7 +294,7 @@ class ContainerItem implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets unit_weight.
      */
-    public function getUnitWeight() : Weight
+    public function getUnitWeight(): Weight
     {
         return $this->container['unit_weight'];
     }
@@ -301,7 +304,7 @@ class ContainerItem implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param \Plenty\AmazonPHP\SellingPartner\Model\Shipping\Weight $unit_weight unit_weight
      */
-    public function setUnitWeight(Weight $unit_weight) : self
+    public function setUnitWeight(Weight $unit_weight): self
     {
         $this->container['unit_weight'] = $unit_weight;
 
@@ -311,7 +314,7 @@ class ContainerItem implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets title.
      */
-    public function getTitle() : string
+    public function getTitle(): string
     {
         return $this->container['title'];
     }
@@ -321,7 +324,7 @@ class ContainerItem implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param string $title a descriptive title of the item
      */
-    public function setTitle(string $title) : self
+    public function setTitle(string $title): self
     {
         if ((\mb_strlen($title) > 30)) {
             throw new \InvalidArgumentException('invalid length for $title when calling ContainerItem., must be smaller than or equal to 30.');
@@ -337,7 +340,7 @@ class ContainerItem implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param int $offset Offset
      */
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -360,7 +363,7 @@ class ContainerItem implements \ArrayAccess, \JsonSerializable, ModelInterface
      * @param null|int $offset Offset
      * @param mixed $value Value to be set
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         if (null === $offset) {
             $this->container[] = $value;
@@ -374,7 +377,7 @@ class ContainerItem implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param int $offset Offset
      */
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -387,7 +390,7 @@ class ContainerItem implements \ArrayAccess, \JsonSerializable, ModelInterface
      * @return mixed returns data which can be serialized by json_encode(), which is a value
      *               of any type other than a resource
      */
-    public function jsonSerialize() : string
+    public function jsonSerialize(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }
@@ -395,7 +398,7 @@ class ContainerItem implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets a header-safe presentation of the object.
      */
-    public function toHeaderValue() : string
+    public function toHeaderValue(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }

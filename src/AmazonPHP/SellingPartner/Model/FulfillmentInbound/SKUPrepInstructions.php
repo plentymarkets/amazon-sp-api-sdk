@@ -1,4 +1,7 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
+
 /**
  * SKUPrepInstructions.
  *
@@ -40,7 +43,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class SKUPrepInstructions implements \ArrayAccess, \JsonSerializable, ModelInterface
+class SKUPrepInstructions implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -59,8 +62,8 @@ class SKUPrepInstructions implements \ArrayAccess, \JsonSerializable, ModelInter
     protected static /** [COMPAT] array */ $openAPITypes = [
         'seller_sku' => 'string',
         'asin' => 'string',
-        'barcode_instruction' => '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound\BarcodeInstruction',
-        'prep_guidance' => '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound\PrepGuidance',
+        'barcode_instruction' => \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound\BarcodeInstruction::class,
+        'prep_guidance' => \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound\PrepGuidance::class,
         'prep_instruction_list' => '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound\PrepInstruction[]',
         'amazon_prep_fees_details_list' => '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound\AmazonPrepFeesDetails[]',
     ];
@@ -137,7 +140,7 @@ class SKUPrepInstructions implements \ArrayAccess, \JsonSerializable, ModelInter
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['seller_sku'] = $data['seller_sku'] ?? null;
         $this->container['asin'] = $data['asin'] ?? null;
@@ -152,7 +155,7 @@ class SKUPrepInstructions implements \ArrayAccess, \JsonSerializable, ModelInter
      *
      * @return string[]
      */
-    public static function openAPITypes() : array
+    public static function openAPITypes(): array
     {
         return self::$openAPITypes;
     }
@@ -162,7 +165,7 @@ class SKUPrepInstructions implements \ArrayAccess, \JsonSerializable, ModelInter
      *
      * @return null[]|string[]
      */
-    public static function openAPIFormats() : array
+    public static function openAPIFormats(): array
     {
         return self::$openAPIFormats;
     }
@@ -173,7 +176,7 @@ class SKUPrepInstructions implements \ArrayAccess, \JsonSerializable, ModelInter
      *
      * @return string[]
      */
-    public static function attributeMap() : array
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -183,7 +186,7 @@ class SKUPrepInstructions implements \ArrayAccess, \JsonSerializable, ModelInter
      *
      * @return string[]
      */
-    public static function setters() : array
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -193,7 +196,7 @@ class SKUPrepInstructions implements \ArrayAccess, \JsonSerializable, ModelInter
      *
      * @return string[]
      */
-    public static function getters() : array
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -201,9 +204,9 @@ class SKUPrepInstructions implements \ArrayAccess, \JsonSerializable, ModelInter
     /**
      * Gets the string presentation of the object.
      */
-    public function __toString() : string
+    public function __toString(): string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );
@@ -212,7 +215,7 @@ class SKUPrepInstructions implements \ArrayAccess, \JsonSerializable, ModelInter
     /**
      * The original name of the model.
      */
-    public function getModelName() : string
+    public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
@@ -222,7 +225,7 @@ class SKUPrepInstructions implements \ArrayAccess, \JsonSerializable, ModelInter
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties() : array
+    public function listInvalidProperties(): array
     {
         return [];
     }
@@ -233,7 +236,7 @@ class SKUPrepInstructions implements \ArrayAccess, \JsonSerializable, ModelInter
      *
      * @return bool True if all properties are valid
      */
-    public function valid() : bool
+    public function valid(): bool
     {
         return \count($this->listInvalidProperties()) === 0;
     }
@@ -241,7 +244,7 @@ class SKUPrepInstructions implements \ArrayAccess, \JsonSerializable, ModelInter
     /**
      * Gets seller_sku.
      */
-    public function getSellerSku() : ?string
+    public function getSellerSku(): ?string
     {
         return $this->container['seller_sku'];
     }
@@ -251,7 +254,7 @@ class SKUPrepInstructions implements \ArrayAccess, \JsonSerializable, ModelInter
      *
      * @param null|string $seller_sku the seller SKU of the item
      */
-    public function setSellerSku(?string $seller_sku) : self
+    public function setSellerSku(?string $seller_sku): self
     {
         $this->container['seller_sku'] = $seller_sku;
 
@@ -261,7 +264,7 @@ class SKUPrepInstructions implements \ArrayAccess, \JsonSerializable, ModelInter
     /**
      * Gets asin.
      */
-    public function getAsin() : ?string
+    public function getAsin(): ?string
     {
         return $this->container['asin'];
     }
@@ -271,7 +274,7 @@ class SKUPrepInstructions implements \ArrayAccess, \JsonSerializable, ModelInter
      *
      * @param null|string $asin the Amazon Standard Identification Number (ASIN) of the item
      */
-    public function setAsin(?string $asin) : self
+    public function setAsin(?string $asin): self
     {
         $this->container['asin'] = $asin;
 
@@ -281,7 +284,7 @@ class SKUPrepInstructions implements \ArrayAccess, \JsonSerializable, ModelInter
     /**
      * Gets barcode_instruction.
      */
-    public function getBarcodeInstruction() : ?BarcodeInstruction
+    public function getBarcodeInstruction(): ?BarcodeInstruction
     {
         return $this->container['barcode_instruction'];
     }
@@ -291,7 +294,7 @@ class SKUPrepInstructions implements \ArrayAccess, \JsonSerializable, ModelInter
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound\BarcodeInstruction $barcode_instruction barcode_instruction
      */
-    public function setBarcodeInstruction(?BarcodeInstruction $barcode_instruction) : self
+    public function setBarcodeInstruction(?BarcodeInstruction $barcode_instruction): self
     {
         $this->container['barcode_instruction'] = $barcode_instruction;
 
@@ -301,7 +304,7 @@ class SKUPrepInstructions implements \ArrayAccess, \JsonSerializable, ModelInter
     /**
      * Gets prep_guidance.
      */
-    public function getPrepGuidance() : ?PrepGuidance
+    public function getPrepGuidance(): ?PrepGuidance
     {
         return $this->container['prep_guidance'];
     }
@@ -311,7 +314,7 @@ class SKUPrepInstructions implements \ArrayAccess, \JsonSerializable, ModelInter
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound\PrepGuidance $prep_guidance prep_guidance
      */
-    public function setPrepGuidance(?PrepGuidance $prep_guidance) : self
+    public function setPrepGuidance(?PrepGuidance $prep_guidance): self
     {
         $this->container['prep_guidance'] = $prep_guidance;
 
@@ -323,7 +326,7 @@ class SKUPrepInstructions implements \ArrayAccess, \JsonSerializable, ModelInter
      *
      * @return null|\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound\PrepInstruction[]
      */
-    public function getPrepInstructionList() : ?array
+    public function getPrepInstructionList(): ?array
     {
         return $this->container['prep_instruction_list'];
     }
@@ -333,7 +336,7 @@ class SKUPrepInstructions implements \ArrayAccess, \JsonSerializable, ModelInter
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound\PrepInstruction[] $prep_instruction_list a list of preparation instructions to help with item sourcing decisions
      */
-    public function setPrepInstructionList(?array $prep_instruction_list) : self
+    public function setPrepInstructionList(?array $prep_instruction_list): self
     {
         $this->container['prep_instruction_list'] = $prep_instruction_list;
 
@@ -345,7 +348,7 @@ class SKUPrepInstructions implements \ArrayAccess, \JsonSerializable, ModelInter
      *
      * @return null|\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound\AmazonPrepFeesDetails[]
      */
-    public function getAmazonPrepFeesDetailsList() : ?array
+    public function getAmazonPrepFeesDetailsList(): ?array
     {
         return $this->container['amazon_prep_fees_details_list'];
     }
@@ -355,7 +358,7 @@ class SKUPrepInstructions implements \ArrayAccess, \JsonSerializable, ModelInter
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound\AmazonPrepFeesDetails[] $amazon_prep_fees_details_list a list of preparation instructions and fees for Amazon to prep goods for shipment
      */
-    public function setAmazonPrepFeesDetailsList(?array $amazon_prep_fees_details_list) : self
+    public function setAmazonPrepFeesDetailsList(?array $amazon_prep_fees_details_list): self
     {
         $this->container['amazon_prep_fees_details_list'] = $amazon_prep_fees_details_list;
 
@@ -367,7 +370,7 @@ class SKUPrepInstructions implements \ArrayAccess, \JsonSerializable, ModelInter
      *
      * @param int $offset Offset
      */
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -390,7 +393,7 @@ class SKUPrepInstructions implements \ArrayAccess, \JsonSerializable, ModelInter
      * @param null|int $offset Offset
      * @param mixed $value Value to be set
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         if (null === $offset) {
             $this->container[] = $value;
@@ -404,7 +407,7 @@ class SKUPrepInstructions implements \ArrayAccess, \JsonSerializable, ModelInter
      *
      * @param int $offset Offset
      */
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -417,7 +420,7 @@ class SKUPrepInstructions implements \ArrayAccess, \JsonSerializable, ModelInter
      * @return mixed returns data which can be serialized by json_encode(), which is a value
      *               of any type other than a resource
      */
-    public function jsonSerialize() : string
+    public function jsonSerialize(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }
@@ -425,7 +428,7 @@ class SKUPrepInstructions implements \ArrayAccess, \JsonSerializable, ModelInter
     /**
      * Gets a header-safe presentation of the object.
      */
-    public function toHeaderValue() : string
+    public function toHeaderValue(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }

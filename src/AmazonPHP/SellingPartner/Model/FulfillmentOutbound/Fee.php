@@ -1,4 +1,7 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
+
 /**
  * Fee.
  *
@@ -40,7 +43,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class Fee implements \ArrayAccess, \JsonSerializable, ModelInterface
+class Fee implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -66,7 +69,7 @@ class Fee implements \ArrayAccess, \JsonSerializable, ModelInterface
      */
     protected static /** [COMPAT] array */ $openAPITypes = [
         'name' => 'string',
-        'amount' => '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentOutbound\Money',
+        'amount' => \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentOutbound\Money::class,
     ];
 
     /**
@@ -125,7 +128,7 @@ class Fee implements \ArrayAccess, \JsonSerializable, ModelInterface
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['name'] = $data['name'] ?? null;
         $this->container['amount'] = $data['amount'] ?? null;
@@ -136,7 +139,7 @@ class Fee implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return string[]
      */
-    public static function openAPITypes() : array
+    public static function openAPITypes(): array
     {
         return self::$openAPITypes;
     }
@@ -146,7 +149,7 @@ class Fee implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return null[]|string[]
      */
-    public static function openAPIFormats() : array
+    public static function openAPIFormats(): array
     {
         return self::$openAPIFormats;
     }
@@ -157,7 +160,7 @@ class Fee implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return string[]
      */
-    public static function attributeMap() : array
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -167,7 +170,7 @@ class Fee implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return string[]
      */
-    public static function setters() : array
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -177,7 +180,7 @@ class Fee implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return string[]
      */
-    public static function getters() : array
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -185,9 +188,9 @@ class Fee implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets the string presentation of the object.
      */
-    public function __toString() : string
+    public function __toString(): string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );
@@ -196,7 +199,7 @@ class Fee implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * The original name of the model.
      */
-    public function getModelName() : string
+    public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
@@ -206,7 +209,7 @@ class Fee implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return string[]
      */
-    public function getNameAllowableValues() : array
+    public function getNameAllowableValues(): array
     {
         return [
             self::NAME_FBA_PER_UNIT_FULFILLMENT_FEE,
@@ -221,7 +224,7 @@ class Fee implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties() : array
+    public function listInvalidProperties(): array
     {
         $invalidProperties = [];
 
@@ -251,7 +254,7 @@ class Fee implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return bool True if all properties are valid
      */
-    public function valid() : bool
+    public function valid(): bool
     {
         return \count($this->listInvalidProperties()) === 0;
     }
@@ -259,7 +262,7 @@ class Fee implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets name.
      */
-    public function getName() : string
+    public function getName(): string
     {
         return $this->container['name'];
     }
@@ -269,7 +272,7 @@ class Fee implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param string $name the type of fee
      */
-    public function setName(string $name) : self
+    public function setName(string $name): self
     {
         $allowedValues = $this->getNameAllowableValues();
 
@@ -290,7 +293,7 @@ class Fee implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets amount.
      */
-    public function getAmount() : Money
+    public function getAmount(): Money
     {
         return $this->container['amount'];
     }
@@ -300,7 +303,7 @@ class Fee implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentOutbound\Money $amount amount
      */
-    public function setAmount(Money $amount) : self
+    public function setAmount(Money $amount): self
     {
         $this->container['amount'] = $amount;
 
@@ -312,7 +315,7 @@ class Fee implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param int $offset Offset
      */
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -335,7 +338,7 @@ class Fee implements \ArrayAccess, \JsonSerializable, ModelInterface
      * @param null|int $offset Offset
      * @param mixed $value Value to be set
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         if (null === $offset) {
             $this->container[] = $value;
@@ -349,7 +352,7 @@ class Fee implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param int $offset Offset
      */
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -362,7 +365,7 @@ class Fee implements \ArrayAccess, \JsonSerializable, ModelInterface
      * @return mixed returns data which can be serialized by json_encode(), which is a value
      *               of any type other than a resource
      */
-    public function jsonSerialize() : string
+    public function jsonSerialize(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }
@@ -370,7 +373,7 @@ class Fee implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets a header-safe presentation of the object.
      */
-    public function toHeaderValue() : string
+    public function toHeaderValue(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }

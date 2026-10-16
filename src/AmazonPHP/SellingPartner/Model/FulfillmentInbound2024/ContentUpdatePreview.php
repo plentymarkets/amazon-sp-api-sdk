@@ -40,8 +40,8 @@ class ContentUpdatePreview implements \ArrayAccess, \JsonSerializable, \Stringab
     protected static array $openAPITypes = [
         'content_update_preview_id' => 'string',
         'expiration' => 'string',
-        'requested_updates' => '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound2024\RequestedUpdates',
-        'transportation_option' => '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound2024\TransportationOption',
+        'requested_updates' => \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound2024\RequestedUpdates::class,
+        'transportation_option' => \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound2024\TransportationOption::class,
     ];
 
     /**
@@ -110,7 +110,7 @@ class ContentUpdatePreview implements \ArrayAccess, \JsonSerializable, \Stringab
      * @param null|mixed[] $data Associated array of property values
      *                           initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['content_update_preview_id'] = $data['content_update_preview_id'] ?? null;
         $this->container['expiration'] = $data['expiration'] ?? null;
@@ -121,7 +121,7 @@ class ContentUpdatePreview implements \ArrayAccess, \JsonSerializable, \Stringab
     /**
      * Array of property to type mappings. Used for (de)serialization.
      */
-    public static function openAPITypes() : array
+    public static function openAPITypes(): array
     {
         return self::$openAPITypes;
     }
@@ -129,7 +129,7 @@ class ContentUpdatePreview implements \ArrayAccess, \JsonSerializable, \Stringab
     /**
      * Array of property to format mappings. Used for (de)serialization.
      */
-    public static function openAPIFormats() : array
+    public static function openAPIFormats(): array
     {
         return self::$openAPIFormats;
     }
@@ -138,7 +138,7 @@ class ContentUpdatePreview implements \ArrayAccess, \JsonSerializable, \Stringab
      * Array of attributes where the key is the local name,
      * and the value is the original name.
      */
-    public static function attributeMap() : array
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -146,7 +146,7 @@ class ContentUpdatePreview implements \ArrayAccess, \JsonSerializable, \Stringab
     /**
      * Array of attributes to setter functions (for deserialization of responses).
      */
-    public static function setters() : array
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -154,7 +154,7 @@ class ContentUpdatePreview implements \ArrayAccess, \JsonSerializable, \Stringab
     /**
      * Array of attributes to getter functions (for serialization of requests).
      */
-    public static function getters() : array
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -162,7 +162,7 @@ class ContentUpdatePreview implements \ArrayAccess, \JsonSerializable, \Stringab
     /**
      * Gets the string presentation of the object.
      */
-    public function __toString() : string
+    public function __toString(): string
     {
         return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
@@ -173,7 +173,7 @@ class ContentUpdatePreview implements \ArrayAccess, \JsonSerializable, \Stringab
     /**
      * The original name of the model.
      */
-    public function getModelName() : string
+    public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
@@ -183,10 +183,10 @@ class ContentUpdatePreview implements \ArrayAccess, \JsonSerializable, \Stringab
      *
      * @throws AssertionException
      */
-    public function listInvalidProperties() : array
+    public function listInvalidProperties(): array
     {
         $invalidProperties = [];
-         
+
         if ($this->container['content_update_preview_id'] === null) {
             $invalidProperties[] = "'content_update_preview_id' can't be null";
         }
@@ -232,7 +232,7 @@ class ContentUpdatePreview implements \ArrayAccess, \JsonSerializable, \Stringab
      *
      * @return bool True if all properties are valid
      */
-    public function valid() : bool
+    public function valid(): bool
     {
         return \count($this->listInvalidProperties()) === 0;
     }
@@ -240,7 +240,7 @@ class ContentUpdatePreview implements \ArrayAccess, \JsonSerializable, \Stringab
     /**
      * Gets content_update_preview_id.
      */
-    public function getContentUpdatePreviewId() : string
+    public function getContentUpdatePreviewId(): string
     {
         return $this->container['content_update_preview_id'];
     }
@@ -250,7 +250,7 @@ class ContentUpdatePreview implements \ArrayAccess, \JsonSerializable, \Stringab
      *
      * @param string $content_update_preview_id identifier of a content update preview
      */
-    public function setContentUpdatePreviewId(string $content_update_preview_id) : self
+    public function setContentUpdatePreviewId(string $content_update_preview_id): self
     {
         $this->container['content_update_preview_id'] = $content_update_preview_id;
 
@@ -260,7 +260,7 @@ class ContentUpdatePreview implements \ArrayAccess, \JsonSerializable, \Stringab
     /**
      * Gets expiration.
      */
-    public function getExpiration() : string
+    public function getExpiration(): string
     {
         return $this->container['expiration'];
     }
@@ -270,7 +270,7 @@ class ContentUpdatePreview implements \ArrayAccess, \JsonSerializable, \Stringab
      *
      * @param string $expiration the date in ISO 8601 format for when the content update expires
      */
-    public function setExpiration(string $expiration) : self
+    public function setExpiration(string $expiration): self
     {
         $this->container['expiration'] = $expiration;
 
@@ -280,7 +280,7 @@ class ContentUpdatePreview implements \ArrayAccess, \JsonSerializable, \Stringab
     /**
      * Gets requested_updates.
      */
-    public function getRequestedUpdates() : RequestedUpdates
+    public function getRequestedUpdates(): RequestedUpdates
     {
         return $this->container['requested_updates'];
     }
@@ -290,7 +290,7 @@ class ContentUpdatePreview implements \ArrayAccess, \JsonSerializable, \Stringab
      *
      * @param RequestedUpdates $requested_updates requested_updates
      */
-    public function setRequestedUpdates(RequestedUpdates $requested_updates) : self
+    public function setRequestedUpdates(RequestedUpdates $requested_updates): self
     {
         $this->container['requested_updates'] = $requested_updates;
 
@@ -300,7 +300,7 @@ class ContentUpdatePreview implements \ArrayAccess, \JsonSerializable, \Stringab
     /**
      * Gets transportation_option.
      */
-    public function getTransportationOption() : TransportationOption
+    public function getTransportationOption(): TransportationOption
     {
         return $this->container['transportation_option'];
     }
@@ -310,7 +310,7 @@ class ContentUpdatePreview implements \ArrayAccess, \JsonSerializable, \Stringab
      *
      * @param TransportationOption $transportation_option transportation_option
      */
-    public function setTransportationOption(TransportationOption $transportation_option) : self
+    public function setTransportationOption(TransportationOption $transportation_option): self
     {
         $this->container['transportation_option'] = $transportation_option;
 
@@ -320,7 +320,7 @@ class ContentUpdatePreview implements \ArrayAccess, \JsonSerializable, \Stringab
     /**
      * Returns true if offset exists. False otherwise.
      */
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -331,7 +331,7 @@ class ContentUpdatePreview implements \ArrayAccess, \JsonSerializable, \Stringab
      * @return null|mixed
      */
     #[\ReturnTypeWillChange]
-    public function offsetGet($offset) : mixed
+    public function offsetGet($offset): mixed
     {
         return $this->container[$offset] ?? null;
     }
@@ -339,7 +339,7 @@ class ContentUpdatePreview implements \ArrayAccess, \JsonSerializable, \Stringab
     /**
      * Sets value based on offset.
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         if (null === $offset) {
             $this->container[] = $value;
@@ -351,7 +351,7 @@ class ContentUpdatePreview implements \ArrayAccess, \JsonSerializable, \Stringab
     /**
      * Unsets offset.
      */
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -365,7 +365,7 @@ class ContentUpdatePreview implements \ArrayAccess, \JsonSerializable, \Stringab
      *               of any type other than a resource
      */
     #[\ReturnTypeWillChange]
-    public function jsonSerialize() : string
+    public function jsonSerialize(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }
@@ -373,7 +373,7 @@ class ContentUpdatePreview implements \ArrayAccess, \JsonSerializable, \Stringab
     /**
      * Gets a header-safe presentation of the object.
      */
-    public function toHeaderValue() : string
+    public function toHeaderValue(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }

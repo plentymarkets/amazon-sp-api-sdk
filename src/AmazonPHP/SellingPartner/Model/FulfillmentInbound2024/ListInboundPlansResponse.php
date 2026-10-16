@@ -39,7 +39,7 @@ class ListInboundPlansResponse implements \ArrayAccess, \JsonSerializable, \Stri
      */
     protected static array $openAPITypes = [
         'inbound_plans' => '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound2024\InboundPlanSummary[]',
-        'pagination' => '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound2024\Pagination',
+        'pagination' => \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound2024\Pagination::class,
     ];
 
     /**
@@ -100,7 +100,7 @@ class ListInboundPlansResponse implements \ArrayAccess, \JsonSerializable, \Stri
      * @param null|mixed[] $data Associated array of property values
      *                           initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['inbound_plans'] = $data['inbound_plans'] ?? null;
         $this->container['pagination'] = $data['pagination'] ?? null;
@@ -109,7 +109,7 @@ class ListInboundPlansResponse implements \ArrayAccess, \JsonSerializable, \Stri
     /**
      * Array of property to type mappings. Used for (de)serialization.
      */
-    public static function openAPITypes() : array
+    public static function openAPITypes(): array
     {
         return self::$openAPITypes;
     }
@@ -117,7 +117,7 @@ class ListInboundPlansResponse implements \ArrayAccess, \JsonSerializable, \Stri
     /**
      * Array of property to format mappings. Used for (de)serialization.
      */
-    public static function openAPIFormats() : array
+    public static function openAPIFormats(): array
     {
         return self::$openAPIFormats;
     }
@@ -126,7 +126,7 @@ class ListInboundPlansResponse implements \ArrayAccess, \JsonSerializable, \Stri
      * Array of attributes where the key is the local name,
      * and the value is the original name.
      */
-    public static function attributeMap() : array
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -134,7 +134,7 @@ class ListInboundPlansResponse implements \ArrayAccess, \JsonSerializable, \Stri
     /**
      * Array of attributes to setter functions (for deserialization of responses).
      */
-    public static function setters() : array
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -142,7 +142,7 @@ class ListInboundPlansResponse implements \ArrayAccess, \JsonSerializable, \Stri
     /**
      * Array of attributes to getter functions (for serialization of requests).
      */
-    public static function getters() : array
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -150,7 +150,7 @@ class ListInboundPlansResponse implements \ArrayAccess, \JsonSerializable, \Stri
     /**
      * Gets the string presentation of the object.
      */
-    public function __toString() : string
+    public function __toString(): string
     {
         return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
@@ -161,7 +161,7 @@ class ListInboundPlansResponse implements \ArrayAccess, \JsonSerializable, \Stri
     /**
      * The original name of the model.
      */
-    public function getModelName() : string
+    public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
@@ -171,10 +171,10 @@ class ListInboundPlansResponse implements \ArrayAccess, \JsonSerializable, \Stri
      *
      * @throws AssertionException
      */
-    public function listInvalidProperties() : array
+    public function listInvalidProperties(): array
     {
         $invalidProperties = [];
-         
+
         if ($this->container['pagination'] !== null) {
             $this->container['pagination']->listInvalidProperties();
         }
@@ -188,7 +188,7 @@ class ListInboundPlansResponse implements \ArrayAccess, \JsonSerializable, \Stri
      *
      * @return bool True if all properties are valid
      */
-    public function valid() : bool
+    public function valid(): bool
     {
         return \count($this->listInvalidProperties()) === 0;
     }
@@ -198,7 +198,7 @@ class ListInboundPlansResponse implements \ArrayAccess, \JsonSerializable, \Stri
      *
      * @return null|InboundPlanSummary[]
      */
-    public function getInboundPlans() : ?array
+    public function getInboundPlans(): ?array
     {
         return $this->container['inbound_plans'];
     }
@@ -208,7 +208,7 @@ class ListInboundPlansResponse implements \ArrayAccess, \JsonSerializable, \Stri
      *
      * @param null|InboundPlanSummary[] $inbound_plans a list of inbound plans with minimal information
      */
-    public function setInboundPlans(?array $inbound_plans) : self
+    public function setInboundPlans(?array $inbound_plans): self
     {
         $this->container['inbound_plans'] = $inbound_plans;
 
@@ -218,7 +218,7 @@ class ListInboundPlansResponse implements \ArrayAccess, \JsonSerializable, \Stri
     /**
      * Gets pagination.
      */
-    public function getPagination() : ?Pagination
+    public function getPagination(): ?Pagination
     {
         return $this->container['pagination'];
     }
@@ -228,7 +228,7 @@ class ListInboundPlansResponse implements \ArrayAccess, \JsonSerializable, \Stri
      *
      * @param null|Pagination $pagination pagination
      */
-    public function setPagination(?Pagination $pagination) : self
+    public function setPagination(?Pagination $pagination): self
     {
         $this->container['pagination'] = $pagination;
 
@@ -238,7 +238,7 @@ class ListInboundPlansResponse implements \ArrayAccess, \JsonSerializable, \Stri
     /**
      * Returns true if offset exists. False otherwise.
      */
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -249,7 +249,7 @@ class ListInboundPlansResponse implements \ArrayAccess, \JsonSerializable, \Stri
      * @return null|mixed
      */
     #[\ReturnTypeWillChange]
-    public function offsetGet($offset) : mixed
+    public function offsetGet($offset): mixed
     {
         return $this->container[$offset] ?? null;
     }
@@ -257,7 +257,7 @@ class ListInboundPlansResponse implements \ArrayAccess, \JsonSerializable, \Stri
     /**
      * Sets value based on offset.
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         if (null === $offset) {
             $this->container[] = $value;
@@ -269,7 +269,7 @@ class ListInboundPlansResponse implements \ArrayAccess, \JsonSerializable, \Stri
     /**
      * Unsets offset.
      */
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -283,7 +283,7 @@ class ListInboundPlansResponse implements \ArrayAccess, \JsonSerializable, \Stri
      *               of any type other than a resource
      */
     #[\ReturnTypeWillChange]
-    public function jsonSerialize() : string
+    public function jsonSerialize(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }
@@ -291,7 +291,7 @@ class ListInboundPlansResponse implements \ArrayAccess, \JsonSerializable, \Stri
     /**
      * Gets a header-safe presentation of the object.
      */
-    public function toHeaderValue() : string
+    public function toHeaderValue(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }

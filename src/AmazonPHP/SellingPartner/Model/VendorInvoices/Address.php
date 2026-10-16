@@ -1,4 +1,7 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
+
 /**
  * Address.
  *
@@ -40,7 +43,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class Address implements \ArrayAccess, \JsonSerializable, ModelInterface
+class Address implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -162,7 +165,7 @@ class Address implements \ArrayAccess, \JsonSerializable, ModelInterface
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['name'] = $data['name'] ?? null;
         $this->container['address_line1'] = $data['address_line1'] ?? null;
@@ -182,7 +185,7 @@ class Address implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return string[]
      */
-    public static function openAPITypes() : array
+    public static function openAPITypes(): array
     {
         return self::$openAPITypes;
     }
@@ -192,7 +195,7 @@ class Address implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return null[]|string[]
      */
-    public static function openAPIFormats() : array
+    public static function openAPIFormats(): array
     {
         return self::$openAPIFormats;
     }
@@ -203,7 +206,7 @@ class Address implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return string[]
      */
-    public static function attributeMap() : array
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -213,7 +216,7 @@ class Address implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return string[]
      */
-    public static function setters() : array
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -223,7 +226,7 @@ class Address implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return string[]
      */
-    public static function getters() : array
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -231,9 +234,9 @@ class Address implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets the string presentation of the object.
      */
-    public function __toString() : string
+    public function __toString(): string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );
@@ -242,7 +245,7 @@ class Address implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * The original name of the model.
      */
-    public function getModelName() : string
+    public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
@@ -252,7 +255,7 @@ class Address implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties() : array
+    public function listInvalidProperties(): array
     {
         $invalidProperties = [];
 
@@ -281,7 +284,7 @@ class Address implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return bool True if all properties are valid
      */
-    public function valid() : bool
+    public function valid(): bool
     {
         return \count($this->listInvalidProperties()) === 0;
     }
@@ -289,7 +292,7 @@ class Address implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets name.
      */
-    public function getName() : string
+    public function getName(): string
     {
         return $this->container['name'];
     }
@@ -299,7 +302,7 @@ class Address implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param string $name the name of the person, business or institution at that address
      */
-    public function setName(string $name) : self
+    public function setName(string $name): self
     {
         $this->container['name'] = $name;
 
@@ -309,7 +312,7 @@ class Address implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets address_line1.
      */
-    public function getAddressLine1() : string
+    public function getAddressLine1(): string
     {
         return $this->container['address_line1'];
     }
@@ -319,7 +322,7 @@ class Address implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param string $address_line1 first line of street address
      */
-    public function setAddressLine1(string $address_line1) : self
+    public function setAddressLine1(string $address_line1): self
     {
         $this->container['address_line1'] = $address_line1;
 
@@ -329,7 +332,7 @@ class Address implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets address_line2.
      */
-    public function getAddressLine2() : ?string
+    public function getAddressLine2(): ?string
     {
         return $this->container['address_line2'];
     }
@@ -339,7 +342,7 @@ class Address implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param null|string $address_line2 additional address information, if required
      */
-    public function setAddressLine2(?string $address_line2) : self
+    public function setAddressLine2(?string $address_line2): self
     {
         $this->container['address_line2'] = $address_line2;
 
@@ -349,7 +352,7 @@ class Address implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets address_line3.
      */
-    public function getAddressLine3() : ?string
+    public function getAddressLine3(): ?string
     {
         return $this->container['address_line3'];
     }
@@ -359,7 +362,7 @@ class Address implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param null|string $address_line3 additional address information, if required
      */
-    public function setAddressLine3(?string $address_line3) : self
+    public function setAddressLine3(?string $address_line3): self
     {
         $this->container['address_line3'] = $address_line3;
 
@@ -369,7 +372,7 @@ class Address implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets city.
      */
-    public function getCity() : ?string
+    public function getCity(): ?string
     {
         return $this->container['city'];
     }
@@ -379,7 +382,7 @@ class Address implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param null|string $city the city where the person, business or institution is located
      */
-    public function setCity(?string $city) : self
+    public function setCity(?string $city): self
     {
         $this->container['city'] = $city;
 
@@ -389,7 +392,7 @@ class Address implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets county.
      */
-    public function getCounty() : ?string
+    public function getCounty(): ?string
     {
         return $this->container['county'];
     }
@@ -399,7 +402,7 @@ class Address implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param null|string $county the county where person, business or institution is located
      */
-    public function setCounty(?string $county) : self
+    public function setCounty(?string $county): self
     {
         $this->container['county'] = $county;
 
@@ -409,7 +412,7 @@ class Address implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets district.
      */
-    public function getDistrict() : ?string
+    public function getDistrict(): ?string
     {
         return $this->container['district'];
     }
@@ -419,7 +422,7 @@ class Address implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param null|string $district the district where person, business or institution is located
      */
-    public function setDistrict(?string $district) : self
+    public function setDistrict(?string $district): self
     {
         $this->container['district'] = $district;
 
@@ -429,7 +432,7 @@ class Address implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets state_or_region.
      */
-    public function getStateOrRegion() : ?string
+    public function getStateOrRegion(): ?string
     {
         return $this->container['state_or_region'];
     }
@@ -439,7 +442,7 @@ class Address implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param null|string $state_or_region the state or region where person, business or institution is located
      */
-    public function setStateOrRegion(?string $state_or_region) : self
+    public function setStateOrRegion(?string $state_or_region): self
     {
         $this->container['state_or_region'] = $state_or_region;
 
@@ -449,7 +452,7 @@ class Address implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets postal_or_zip_code.
      */
-    public function getPostalOrZipCode() : ?string
+    public function getPostalOrZipCode(): ?string
     {
         return $this->container['postal_or_zip_code'];
     }
@@ -459,7 +462,7 @@ class Address implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param null|string $postal_or_zip_code The postal or zip code of that address. It contains a series of letters or digits or both, sometimes including spaces or punctuation.
      */
-    public function setPostalOrZipCode(?string $postal_or_zip_code) : self
+    public function setPostalOrZipCode(?string $postal_or_zip_code): self
     {
         $this->container['postal_or_zip_code'] = $postal_or_zip_code;
 
@@ -469,7 +472,7 @@ class Address implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets country_code.
      */
-    public function getCountryCode() : string
+    public function getCountryCode(): string
     {
         return $this->container['country_code'];
     }
@@ -479,7 +482,7 @@ class Address implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param string $country_code The two digit country code. In ISO 3166-1 alpha-2 format.
      */
-    public function setCountryCode(string $country_code) : self
+    public function setCountryCode(string $country_code): self
     {
         if ((\mb_strlen($country_code) > 2)) {
             throw new \InvalidArgumentException('invalid length for $country_code when calling Address., must be smaller than or equal to 2.');
@@ -493,7 +496,7 @@ class Address implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets phone.
      */
-    public function getPhone() : ?string
+    public function getPhone(): ?string
     {
         return $this->container['phone'];
     }
@@ -503,7 +506,7 @@ class Address implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param null|string $phone the phone number of the person, business or institution located at that address
      */
-    public function setPhone(?string $phone) : self
+    public function setPhone(?string $phone): self
     {
         $this->container['phone'] = $phone;
 
@@ -515,7 +518,7 @@ class Address implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param int $offset Offset
      */
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -538,7 +541,7 @@ class Address implements \ArrayAccess, \JsonSerializable, ModelInterface
      * @param null|int $offset Offset
      * @param mixed $value Value to be set
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         if (null === $offset) {
             $this->container[] = $value;
@@ -552,7 +555,7 @@ class Address implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param int $offset Offset
      */
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -565,7 +568,7 @@ class Address implements \ArrayAccess, \JsonSerializable, ModelInterface
      * @return mixed returns data which can be serialized by json_encode(), which is a value
      *               of any type other than a resource
      */
-    public function jsonSerialize() : string
+    public function jsonSerialize(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }
@@ -573,7 +576,7 @@ class Address implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets a header-safe presentation of the object.
      */
-    public function toHeaderValue() : string
+    public function toHeaderValue(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }

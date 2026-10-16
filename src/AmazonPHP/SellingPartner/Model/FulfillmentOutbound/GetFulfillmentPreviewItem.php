@@ -1,4 +1,7 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
+
 /**
  * GetFulfillmentPreviewItem.
  *
@@ -40,7 +43,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class GetFulfillmentPreviewItem implements \ArrayAccess, \JsonSerializable, ModelInterface
+class GetFulfillmentPreviewItem implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -59,7 +62,7 @@ class GetFulfillmentPreviewItem implements \ArrayAccess, \JsonSerializable, Mode
     protected static /** [COMPAT] array */ $openAPITypes = [
         'seller_sku' => 'string',
         'quantity' => 'int',
-        'per_unit_declared_value' => '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentOutbound\Money',
+        'per_unit_declared_value' => \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentOutbound\Money::class,
         'seller_fulfillment_order_item_id' => 'string',
     ];
 
@@ -127,7 +130,7 @@ class GetFulfillmentPreviewItem implements \ArrayAccess, \JsonSerializable, Mode
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['seller_sku'] = $data['seller_sku'] ?? null;
         $this->container['quantity'] = $data['quantity'] ?? null;
@@ -140,7 +143,7 @@ class GetFulfillmentPreviewItem implements \ArrayAccess, \JsonSerializable, Mode
      *
      * @return string[]
      */
-    public static function openAPITypes() : array
+    public static function openAPITypes(): array
     {
         return self::$openAPITypes;
     }
@@ -150,7 +153,7 @@ class GetFulfillmentPreviewItem implements \ArrayAccess, \JsonSerializable, Mode
      *
      * @return null[]|string[]
      */
-    public static function openAPIFormats() : array
+    public static function openAPIFormats(): array
     {
         return self::$openAPIFormats;
     }
@@ -161,7 +164,7 @@ class GetFulfillmentPreviewItem implements \ArrayAccess, \JsonSerializable, Mode
      *
      * @return string[]
      */
-    public static function attributeMap() : array
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -171,7 +174,7 @@ class GetFulfillmentPreviewItem implements \ArrayAccess, \JsonSerializable, Mode
      *
      * @return string[]
      */
-    public static function setters() : array
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -181,7 +184,7 @@ class GetFulfillmentPreviewItem implements \ArrayAccess, \JsonSerializable, Mode
      *
      * @return string[]
      */
-    public static function getters() : array
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -189,9 +192,9 @@ class GetFulfillmentPreviewItem implements \ArrayAccess, \JsonSerializable, Mode
     /**
      * Gets the string presentation of the object.
      */
-    public function __toString() : string
+    public function __toString(): string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );
@@ -200,7 +203,7 @@ class GetFulfillmentPreviewItem implements \ArrayAccess, \JsonSerializable, Mode
     /**
      * The original name of the model.
      */
-    public function getModelName() : string
+    public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
@@ -210,7 +213,7 @@ class GetFulfillmentPreviewItem implements \ArrayAccess, \JsonSerializable, Mode
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties() : array
+    public function listInvalidProperties(): array
     {
         $invalidProperties = [];
 
@@ -243,7 +246,7 @@ class GetFulfillmentPreviewItem implements \ArrayAccess, \JsonSerializable, Mode
      *
      * @return bool True if all properties are valid
      */
-    public function valid() : bool
+    public function valid(): bool
     {
         return \count($this->listInvalidProperties()) === 0;
     }
@@ -251,7 +254,7 @@ class GetFulfillmentPreviewItem implements \ArrayAccess, \JsonSerializable, Mode
     /**
      * Gets seller_sku.
      */
-    public function getSellerSku() : string
+    public function getSellerSku(): string
     {
         return $this->container['seller_sku'];
     }
@@ -261,7 +264,7 @@ class GetFulfillmentPreviewItem implements \ArrayAccess, \JsonSerializable, Mode
      *
      * @param string $seller_sku the seller SKU of the item
      */
-    public function setSellerSku(string $seller_sku) : self
+    public function setSellerSku(string $seller_sku): self
     {
         if ((\mb_strlen($seller_sku) > 50)) {
             throw new \InvalidArgumentException('invalid length for $seller_sku when calling GetFulfillmentPreviewItem., must be smaller than or equal to 50.');
@@ -275,7 +278,7 @@ class GetFulfillmentPreviewItem implements \ArrayAccess, \JsonSerializable, Mode
     /**
      * Gets quantity.
      */
-    public function getQuantity() : int
+    public function getQuantity(): int
     {
         return $this->container['quantity'];
     }
@@ -285,7 +288,7 @@ class GetFulfillmentPreviewItem implements \ArrayAccess, \JsonSerializable, Mode
      *
      * @param int $quantity the item quantity
      */
-    public function setQuantity(int $quantity) : self
+    public function setQuantity(int $quantity): self
     {
         $this->container['quantity'] = $quantity;
 
@@ -295,7 +298,7 @@ class GetFulfillmentPreviewItem implements \ArrayAccess, \JsonSerializable, Mode
     /**
      * Gets per_unit_declared_value.
      */
-    public function getPerUnitDeclaredValue() : ?Money
+    public function getPerUnitDeclaredValue(): ?Money
     {
         return $this->container['per_unit_declared_value'];
     }
@@ -305,7 +308,7 @@ class GetFulfillmentPreviewItem implements \ArrayAccess, \JsonSerializable, Mode
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentOutbound\Money $per_unit_declared_value per_unit_declared_value
      */
-    public function setPerUnitDeclaredValue(?Money $per_unit_declared_value) : self
+    public function setPerUnitDeclaredValue(?Money $per_unit_declared_value): self
     {
         $this->container['per_unit_declared_value'] = $per_unit_declared_value;
 
@@ -315,7 +318,7 @@ class GetFulfillmentPreviewItem implements \ArrayAccess, \JsonSerializable, Mode
     /**
      * Gets seller_fulfillment_order_item_id.
      */
-    public function getSellerFulfillmentOrderItemId() : string
+    public function getSellerFulfillmentOrderItemId(): string
     {
         return $this->container['seller_fulfillment_order_item_id'];
     }
@@ -325,7 +328,7 @@ class GetFulfillmentPreviewItem implements \ArrayAccess, \JsonSerializable, Mode
      *
      * @param string $seller_fulfillment_order_item_id a fulfillment order item identifier that the seller creates to track items in the fulfillment preview
      */
-    public function setSellerFulfillmentOrderItemId(string $seller_fulfillment_order_item_id) : self
+    public function setSellerFulfillmentOrderItemId(string $seller_fulfillment_order_item_id): self
     {
         if ((\mb_strlen($seller_fulfillment_order_item_id) > 50)) {
             throw new \InvalidArgumentException('invalid length for $seller_fulfillment_order_item_id when calling GetFulfillmentPreviewItem., must be smaller than or equal to 50.');
@@ -341,7 +344,7 @@ class GetFulfillmentPreviewItem implements \ArrayAccess, \JsonSerializable, Mode
      *
      * @param int $offset Offset
      */
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -364,7 +367,7 @@ class GetFulfillmentPreviewItem implements \ArrayAccess, \JsonSerializable, Mode
      * @param null|int $offset Offset
      * @param mixed $value Value to be set
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         if (null === $offset) {
             $this->container[] = $value;
@@ -378,7 +381,7 @@ class GetFulfillmentPreviewItem implements \ArrayAccess, \JsonSerializable, Mode
      *
      * @param int $offset Offset
      */
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -391,7 +394,7 @@ class GetFulfillmentPreviewItem implements \ArrayAccess, \JsonSerializable, Mode
      * @return mixed returns data which can be serialized by json_encode(), which is a value
      *               of any type other than a resource
      */
-    public function jsonSerialize() : string
+    public function jsonSerialize(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }
@@ -399,7 +402,7 @@ class GetFulfillmentPreviewItem implements \ArrayAccess, \JsonSerializable, Mode
     /**
      * Gets a header-safe presentation of the object.
      */
-    public function toHeaderValue() : string
+    public function toHeaderValue(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }

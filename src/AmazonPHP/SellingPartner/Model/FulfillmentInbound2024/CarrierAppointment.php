@@ -100,7 +100,7 @@ class CarrierAppointment implements \ArrayAccess, \JsonSerializable, \Stringable
      * @param null|mixed[] $data Associated array of property values
      *                           initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['end_time'] = $data['end_time'] ?? null;
         $this->container['start_time'] = $data['start_time'] ?? null;
@@ -109,7 +109,7 @@ class CarrierAppointment implements \ArrayAccess, \JsonSerializable, \Stringable
     /**
      * Array of property to type mappings. Used for (de)serialization.
      */
-    public static function openAPITypes() : array
+    public static function openAPITypes(): array
     {
         return self::$openAPITypes;
     }
@@ -117,7 +117,7 @@ class CarrierAppointment implements \ArrayAccess, \JsonSerializable, \Stringable
     /**
      * Array of property to format mappings. Used for (de)serialization.
      */
-    public static function openAPIFormats() : array
+    public static function openAPIFormats(): array
     {
         return self::$openAPIFormats;
     }
@@ -126,7 +126,7 @@ class CarrierAppointment implements \ArrayAccess, \JsonSerializable, \Stringable
      * Array of attributes where the key is the local name,
      * and the value is the original name.
      */
-    public static function attributeMap() : array
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -134,7 +134,7 @@ class CarrierAppointment implements \ArrayAccess, \JsonSerializable, \Stringable
     /**
      * Array of attributes to setter functions (for deserialization of responses).
      */
-    public static function setters() : array
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -142,7 +142,7 @@ class CarrierAppointment implements \ArrayAccess, \JsonSerializable, \Stringable
     /**
      * Array of attributes to getter functions (for serialization of requests).
      */
-    public static function getters() : array
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -150,7 +150,7 @@ class CarrierAppointment implements \ArrayAccess, \JsonSerializable, \Stringable
     /**
      * Gets the string presentation of the object.
      */
-    public function __toString() : string
+    public function __toString(): string
     {
         return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
@@ -161,7 +161,7 @@ class CarrierAppointment implements \ArrayAccess, \JsonSerializable, \Stringable
     /**
      * The original name of the model.
      */
-    public function getModelName() : string
+    public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
@@ -171,10 +171,10 @@ class CarrierAppointment implements \ArrayAccess, \JsonSerializable, \Stringable
      *
      * @throws AssertionException
      */
-    public function listInvalidProperties() : array
+    public function listInvalidProperties(): array
     {
         $invalidProperties = [];
-         
+
         if ($this->container['end_time'] === null) {
             $invalidProperties[] = "'end_time' can't be null";
         }
@@ -192,7 +192,7 @@ class CarrierAppointment implements \ArrayAccess, \JsonSerializable, \Stringable
      *
      * @return bool True if all properties are valid
      */
-    public function valid() : bool
+    public function valid(): bool
     {
         return \count($this->listInvalidProperties()) === 0;
     }
@@ -200,7 +200,7 @@ class CarrierAppointment implements \ArrayAccess, \JsonSerializable, \Stringable
     /**
      * Gets end_time.
      */
-    public function getEndTime() : \DateTimeInterface
+    public function getEndTime(): \DateTimeInterface
     {
         return $this->container['end_time'];
     }
@@ -210,7 +210,7 @@ class CarrierAppointment implements \ArrayAccess, \JsonSerializable, \Stringable
      *
      * @param \DateTimeInterface $end_time the end timestamp of the appointment in UTC
      */
-    public function setEndTime(\DateTimeInterface $end_time) : self
+    public function setEndTime(\DateTimeInterface $end_time): self
     {
         $this->container['end_time'] = $end_time;
 
@@ -220,7 +220,7 @@ class CarrierAppointment implements \ArrayAccess, \JsonSerializable, \Stringable
     /**
      * Gets start_time.
      */
-    public function getStartTime() : \DateTimeInterface
+    public function getStartTime(): \DateTimeInterface
     {
         return $this->container['start_time'];
     }
@@ -230,7 +230,7 @@ class CarrierAppointment implements \ArrayAccess, \JsonSerializable, \Stringable
      *
      * @param \DateTimeInterface $start_time the start timestamp of the appointment in UTC
      */
-    public function setStartTime(\DateTimeInterface $start_time) : self
+    public function setStartTime(\DateTimeInterface $start_time): self
     {
         $this->container['start_time'] = $start_time;
 
@@ -240,7 +240,7 @@ class CarrierAppointment implements \ArrayAccess, \JsonSerializable, \Stringable
     /**
      * Returns true if offset exists. False otherwise.
      */
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -251,7 +251,7 @@ class CarrierAppointment implements \ArrayAccess, \JsonSerializable, \Stringable
      * @return null|mixed
      */
     #[\ReturnTypeWillChange]
-    public function offsetGet($offset) : mixed
+    public function offsetGet($offset): mixed
     {
         return $this->container[$offset] ?? null;
     }
@@ -259,7 +259,7 @@ class CarrierAppointment implements \ArrayAccess, \JsonSerializable, \Stringable
     /**
      * Sets value based on offset.
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         if (null === $offset) {
             $this->container[] = $value;
@@ -271,7 +271,7 @@ class CarrierAppointment implements \ArrayAccess, \JsonSerializable, \Stringable
     /**
      * Unsets offset.
      */
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -285,7 +285,7 @@ class CarrierAppointment implements \ArrayAccess, \JsonSerializable, \Stringable
      *               of any type other than a resource
      */
     #[\ReturnTypeWillChange]
-    public function jsonSerialize() : string
+    public function jsonSerialize(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }
@@ -293,7 +293,7 @@ class CarrierAppointment implements \ArrayAccess, \JsonSerializable, \Stringable
     /**
      * Gets a header-safe presentation of the object.
      */
-    public function toHeaderValue() : string
+    public function toHeaderValue(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }

@@ -1,4 +1,7 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
+
 /**
  * QuantityDiscountPriceType.
  *
@@ -40,7 +43,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class QuantityDiscountPriceType implements \ArrayAccess, \JsonSerializable, ModelInterface
+class QuantityDiscountPriceType implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -58,8 +61,8 @@ class QuantityDiscountPriceType implements \ArrayAccess, \JsonSerializable, Mode
      */
     protected static /** [COMPAT] array */ $openAPITypes = [
         'quantity_tier' => 'int',
-        'quantity_discount_type' => '\Plenty\AmazonPHP\SellingPartner\Model\ProductPricing\QuantityDiscountType',
-        'listing_price' => '\Plenty\AmazonPHP\SellingPartner\Model\ProductPricing\MoneyType',
+        'quantity_discount_type' => \Plenty\AmazonPHP\SellingPartner\Model\ProductPricing\QuantityDiscountType::class,
+        'listing_price' => \Plenty\AmazonPHP\SellingPartner\Model\ProductPricing\MoneyType::class,
     ];
 
     /**
@@ -122,7 +125,7 @@ class QuantityDiscountPriceType implements \ArrayAccess, \JsonSerializable, Mode
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['quantity_tier'] = $data['quantity_tier'] ?? null;
         $this->container['quantity_discount_type'] = $data['quantity_discount_type'] ?? null;
@@ -134,7 +137,7 @@ class QuantityDiscountPriceType implements \ArrayAccess, \JsonSerializable, Mode
      *
      * @return string[]
      */
-    public static function openAPITypes() : array
+    public static function openAPITypes(): array
     {
         return self::$openAPITypes;
     }
@@ -144,7 +147,7 @@ class QuantityDiscountPriceType implements \ArrayAccess, \JsonSerializable, Mode
      *
      * @return null[]|string[]
      */
-    public static function openAPIFormats() : array
+    public static function openAPIFormats(): array
     {
         return self::$openAPIFormats;
     }
@@ -155,7 +158,7 @@ class QuantityDiscountPriceType implements \ArrayAccess, \JsonSerializable, Mode
      *
      * @return string[]
      */
-    public static function attributeMap() : array
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -165,7 +168,7 @@ class QuantityDiscountPriceType implements \ArrayAccess, \JsonSerializable, Mode
      *
      * @return string[]
      */
-    public static function setters() : array
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -175,7 +178,7 @@ class QuantityDiscountPriceType implements \ArrayAccess, \JsonSerializable, Mode
      *
      * @return string[]
      */
-    public static function getters() : array
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -183,9 +186,9 @@ class QuantityDiscountPriceType implements \ArrayAccess, \JsonSerializable, Mode
     /**
      * Gets the string presentation of the object.
      */
-    public function __toString() : string
+    public function __toString(): string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );
@@ -194,7 +197,7 @@ class QuantityDiscountPriceType implements \ArrayAccess, \JsonSerializable, Mode
     /**
      * The original name of the model.
      */
-    public function getModelName() : string
+    public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
@@ -204,7 +207,7 @@ class QuantityDiscountPriceType implements \ArrayAccess, \JsonSerializable, Mode
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties() : array
+    public function listInvalidProperties(): array
     {
         $invalidProperties = [];
 
@@ -229,7 +232,7 @@ class QuantityDiscountPriceType implements \ArrayAccess, \JsonSerializable, Mode
      *
      * @return bool True if all properties are valid
      */
-    public function valid() : bool
+    public function valid(): bool
     {
         return \count($this->listInvalidProperties()) === 0;
     }
@@ -237,7 +240,7 @@ class QuantityDiscountPriceType implements \ArrayAccess, \JsonSerializable, Mode
     /**
      * Gets quantity_tier.
      */
-    public function getQuantityTier() : int
+    public function getQuantityTier(): int
     {
         return $this->container['quantity_tier'];
     }
@@ -247,7 +250,7 @@ class QuantityDiscountPriceType implements \ArrayAccess, \JsonSerializable, Mode
      *
      * @param int $quantity_tier indicates at what quantity this price becomes active
      */
-    public function setQuantityTier(int $quantity_tier) : self
+    public function setQuantityTier(int $quantity_tier): self
     {
         $this->container['quantity_tier'] = $quantity_tier;
 
@@ -257,7 +260,7 @@ class QuantityDiscountPriceType implements \ArrayAccess, \JsonSerializable, Mode
     /**
      * Gets quantity_discount_type.
      */
-    public function getQuantityDiscountType() : QuantityDiscountType
+    public function getQuantityDiscountType(): QuantityDiscountType
     {
         return $this->container['quantity_discount_type'];
     }
@@ -267,7 +270,7 @@ class QuantityDiscountPriceType implements \ArrayAccess, \JsonSerializable, Mode
      *
      * @param \Plenty\AmazonPHP\SellingPartner\Model\ProductPricing\QuantityDiscountType $quantity_discount_type quantity_discount_type
      */
-    public function setQuantityDiscountType(QuantityDiscountType $quantity_discount_type) : self
+    public function setQuantityDiscountType(QuantityDiscountType $quantity_discount_type): self
     {
         $this->container['quantity_discount_type'] = $quantity_discount_type;
 
@@ -277,7 +280,7 @@ class QuantityDiscountPriceType implements \ArrayAccess, \JsonSerializable, Mode
     /**
      * Gets listing_price.
      */
-    public function getListingPrice() : MoneyType
+    public function getListingPrice(): MoneyType
     {
         return $this->container['listing_price'];
     }
@@ -287,7 +290,7 @@ class QuantityDiscountPriceType implements \ArrayAccess, \JsonSerializable, Mode
      *
      * @param \Plenty\AmazonPHP\SellingPartner\Model\ProductPricing\MoneyType $listing_price listing_price
      */
-    public function setListingPrice(MoneyType $listing_price) : self
+    public function setListingPrice(MoneyType $listing_price): self
     {
         $this->container['listing_price'] = $listing_price;
 
@@ -299,7 +302,7 @@ class QuantityDiscountPriceType implements \ArrayAccess, \JsonSerializable, Mode
      *
      * @param int $offset Offset
      */
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -322,7 +325,7 @@ class QuantityDiscountPriceType implements \ArrayAccess, \JsonSerializable, Mode
      * @param null|int $offset Offset
      * @param mixed $value Value to be set
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         if (null === $offset) {
             $this->container[] = $value;
@@ -336,7 +339,7 @@ class QuantityDiscountPriceType implements \ArrayAccess, \JsonSerializable, Mode
      *
      * @param int $offset Offset
      */
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -349,7 +352,7 @@ class QuantityDiscountPriceType implements \ArrayAccess, \JsonSerializable, Mode
      * @return mixed returns data which can be serialized by json_encode(), which is a value
      *               of any type other than a resource
      */
-    public function jsonSerialize() : string
+    public function jsonSerialize(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }
@@ -357,7 +360,7 @@ class QuantityDiscountPriceType implements \ArrayAccess, \JsonSerializable, Mode
     /**
      * Gets a header-safe presentation of the object.
      */
-    public function toHeaderValue() : string
+    public function toHeaderValue(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }

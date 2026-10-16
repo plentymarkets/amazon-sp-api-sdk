@@ -1,4 +1,7 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
+
 /**
  * DebtRecoveryItem.
  *
@@ -40,7 +43,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class DebtRecoveryItem implements \ArrayAccess, \JsonSerializable, ModelInterface
+class DebtRecoveryItem implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -57,8 +60,8 @@ class DebtRecoveryItem implements \ArrayAccess, \JsonSerializable, ModelInterfac
      * @var string[]
      */
     protected static /** [COMPAT] array */ $openAPITypes = [
-        'recovery_amount' => '\Plenty\AmazonPHP\SellingPartner\Model\Finances\Currency',
-        'original_amount' => '\Plenty\AmazonPHP\SellingPartner\Model\Finances\Currency',
+        'recovery_amount' => \Plenty\AmazonPHP\SellingPartner\Model\Finances\Currency::class,
+        'original_amount' => \Plenty\AmazonPHP\SellingPartner\Model\Finances\Currency::class,
         'group_begin_date' => '\DateTime',
         'group_end_date' => '\DateTime',
     ];
@@ -127,7 +130,7 @@ class DebtRecoveryItem implements \ArrayAccess, \JsonSerializable, ModelInterfac
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['recovery_amount'] = $data['recovery_amount'] ?? null;
         $this->container['original_amount'] = $data['original_amount'] ?? null;
@@ -140,7 +143,7 @@ class DebtRecoveryItem implements \ArrayAccess, \JsonSerializable, ModelInterfac
      *
      * @return string[]
      */
-    public static function openAPITypes() : array
+    public static function openAPITypes(): array
     {
         return self::$openAPITypes;
     }
@@ -150,7 +153,7 @@ class DebtRecoveryItem implements \ArrayAccess, \JsonSerializable, ModelInterfac
      *
      * @return null[]|string[]
      */
-    public static function openAPIFormats() : array
+    public static function openAPIFormats(): array
     {
         return self::$openAPIFormats;
     }
@@ -161,7 +164,7 @@ class DebtRecoveryItem implements \ArrayAccess, \JsonSerializable, ModelInterfac
      *
      * @return string[]
      */
-    public static function attributeMap() : array
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -171,7 +174,7 @@ class DebtRecoveryItem implements \ArrayAccess, \JsonSerializable, ModelInterfac
      *
      * @return string[]
      */
-    public static function setters() : array
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -181,7 +184,7 @@ class DebtRecoveryItem implements \ArrayAccess, \JsonSerializable, ModelInterfac
      *
      * @return string[]
      */
-    public static function getters() : array
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -189,9 +192,9 @@ class DebtRecoveryItem implements \ArrayAccess, \JsonSerializable, ModelInterfac
     /**
      * Gets the string presentation of the object.
      */
-    public function __toString() : string
+    public function __toString(): string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );
@@ -200,7 +203,7 @@ class DebtRecoveryItem implements \ArrayAccess, \JsonSerializable, ModelInterfac
     /**
      * The original name of the model.
      */
-    public function getModelName() : string
+    public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
@@ -210,7 +213,7 @@ class DebtRecoveryItem implements \ArrayAccess, \JsonSerializable, ModelInterfac
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties() : array
+    public function listInvalidProperties(): array
     {
         return [];
     }
@@ -221,7 +224,7 @@ class DebtRecoveryItem implements \ArrayAccess, \JsonSerializable, ModelInterfac
      *
      * @return bool True if all properties are valid
      */
-    public function valid() : bool
+    public function valid(): bool
     {
         return \count($this->listInvalidProperties()) === 0;
     }
@@ -229,7 +232,7 @@ class DebtRecoveryItem implements \ArrayAccess, \JsonSerializable, ModelInterfac
     /**
      * Gets recovery_amount.
      */
-    public function getRecoveryAmount() : ?Currency
+    public function getRecoveryAmount(): ?Currency
     {
         return $this->container['recovery_amount'];
     }
@@ -239,7 +242,7 @@ class DebtRecoveryItem implements \ArrayAccess, \JsonSerializable, ModelInterfac
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\Finances\Currency $recovery_amount recovery_amount
      */
-    public function setRecoveryAmount(?Currency $recovery_amount) : self
+    public function setRecoveryAmount(?Currency $recovery_amount): self
     {
         $this->container['recovery_amount'] = $recovery_amount;
 
@@ -249,7 +252,7 @@ class DebtRecoveryItem implements \ArrayAccess, \JsonSerializable, ModelInterfac
     /**
      * Gets original_amount.
      */
-    public function getOriginalAmount() : ?Currency
+    public function getOriginalAmount(): ?Currency
     {
         return $this->container['original_amount'];
     }
@@ -259,7 +262,7 @@ class DebtRecoveryItem implements \ArrayAccess, \JsonSerializable, ModelInterfac
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\Finances\Currency $original_amount original_amount
      */
-    public function setOriginalAmount(?Currency $original_amount) : self
+    public function setOriginalAmount(?Currency $original_amount): self
     {
         $this->container['original_amount'] = $original_amount;
 
@@ -271,7 +274,7 @@ class DebtRecoveryItem implements \ArrayAccess, \JsonSerializable, ModelInterfac
      *
      * @return null|\DateTime|\DateTimeImmutable
      */
-    public function getGroupBeginDate() : ?\DateTimeInterface
+    public function getGroupBeginDate(): ?\DateTimeInterface
     {
         return $this->container['group_begin_date'];
     }
@@ -281,7 +284,7 @@ class DebtRecoveryItem implements \ArrayAccess, \JsonSerializable, ModelInterfac
      *
      * @param \DateTime|\DateTimeImmutable $group_begin_date group_begin_date
      */
-    public function setGroupBeginDate(\DateTimeInterface $group_begin_date) : self
+    public function setGroupBeginDate(\DateTimeInterface $group_begin_date): self
     {
         $this->container['group_begin_date'] = $group_begin_date;
 
@@ -293,7 +296,7 @@ class DebtRecoveryItem implements \ArrayAccess, \JsonSerializable, ModelInterfac
      *
      * @return null|\DateTime|\DateTimeImmutable
      */
-    public function getGroupEndDate() : ?\DateTimeInterface
+    public function getGroupEndDate(): ?\DateTimeInterface
     {
         return $this->container['group_end_date'];
     }
@@ -303,7 +306,7 @@ class DebtRecoveryItem implements \ArrayAccess, \JsonSerializable, ModelInterfac
      *
      * @param \DateTime|\DateTimeImmutable $group_end_date group_end_date
      */
-    public function setGroupEndDate(\DateTimeInterface $group_end_date) : self
+    public function setGroupEndDate(\DateTimeInterface $group_end_date): self
     {
         $this->container['group_end_date'] = $group_end_date;
 
@@ -315,7 +318,7 @@ class DebtRecoveryItem implements \ArrayAccess, \JsonSerializable, ModelInterfac
      *
      * @param int $offset Offset
      */
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -338,7 +341,7 @@ class DebtRecoveryItem implements \ArrayAccess, \JsonSerializable, ModelInterfac
      * @param null|int $offset Offset
      * @param mixed $value Value to be set
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         if (null === $offset) {
             $this->container[] = $value;
@@ -352,7 +355,7 @@ class DebtRecoveryItem implements \ArrayAccess, \JsonSerializable, ModelInterfac
      *
      * @param int $offset Offset
      */
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -365,7 +368,7 @@ class DebtRecoveryItem implements \ArrayAccess, \JsonSerializable, ModelInterfac
      * @return mixed returns data which can be serialized by json_encode(), which is a value
      *               of any type other than a resource
      */
-    public function jsonSerialize() : string
+    public function jsonSerialize(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }
@@ -373,7 +376,7 @@ class DebtRecoveryItem implements \ArrayAccess, \JsonSerializable, ModelInterfac
     /**
      * Gets a header-safe presentation of the object.
      */
-    public function toHeaderValue() : string
+    public function toHeaderValue(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }

@@ -1,4 +1,7 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
+
 /**
  * FulfillmentShipmentPackage.
  *
@@ -40,7 +43,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class FulfillmentShipmentPackage implements \ArrayAccess, \JsonSerializable, ModelInterface
+class FulfillmentShipmentPackage implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -127,7 +130,7 @@ class FulfillmentShipmentPackage implements \ArrayAccess, \JsonSerializable, Mod
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['package_number'] = $data['package_number'] ?? null;
         $this->container['carrier_code'] = $data['carrier_code'] ?? null;
@@ -140,7 +143,7 @@ class FulfillmentShipmentPackage implements \ArrayAccess, \JsonSerializable, Mod
      *
      * @return string[]
      */
-    public static function openAPITypes() : array
+    public static function openAPITypes(): array
     {
         return self::$openAPITypes;
     }
@@ -150,7 +153,7 @@ class FulfillmentShipmentPackage implements \ArrayAccess, \JsonSerializable, Mod
      *
      * @return null[]|string[]
      */
-    public static function openAPIFormats() : array
+    public static function openAPIFormats(): array
     {
         return self::$openAPIFormats;
     }
@@ -161,7 +164,7 @@ class FulfillmentShipmentPackage implements \ArrayAccess, \JsonSerializable, Mod
      *
      * @return string[]
      */
-    public static function attributeMap() : array
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -171,7 +174,7 @@ class FulfillmentShipmentPackage implements \ArrayAccess, \JsonSerializable, Mod
      *
      * @return string[]
      */
-    public static function setters() : array
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -181,7 +184,7 @@ class FulfillmentShipmentPackage implements \ArrayAccess, \JsonSerializable, Mod
      *
      * @return string[]
      */
-    public static function getters() : array
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -189,9 +192,9 @@ class FulfillmentShipmentPackage implements \ArrayAccess, \JsonSerializable, Mod
     /**
      * Gets the string presentation of the object.
      */
-    public function __toString() : string
+    public function __toString(): string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );
@@ -200,7 +203,7 @@ class FulfillmentShipmentPackage implements \ArrayAccess, \JsonSerializable, Mod
     /**
      * The original name of the model.
      */
-    public function getModelName() : string
+    public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
@@ -210,7 +213,7 @@ class FulfillmentShipmentPackage implements \ArrayAccess, \JsonSerializable, Mod
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties() : array
+    public function listInvalidProperties(): array
     {
         $invalidProperties = [];
 
@@ -231,7 +234,7 @@ class FulfillmentShipmentPackage implements \ArrayAccess, \JsonSerializable, Mod
      *
      * @return bool True if all properties are valid
      */
-    public function valid() : bool
+    public function valid(): bool
     {
         return \count($this->listInvalidProperties()) === 0;
     }
@@ -239,7 +242,7 @@ class FulfillmentShipmentPackage implements \ArrayAccess, \JsonSerializable, Mod
     /**
      * Gets package_number.
      */
-    public function getPackageNumber() : int
+    public function getPackageNumber(): int
     {
         return $this->container['package_number'];
     }
@@ -249,7 +252,7 @@ class FulfillmentShipmentPackage implements \ArrayAccess, \JsonSerializable, Mod
      *
      * @param int $package_number identifies a package in a shipment
      */
-    public function setPackageNumber(int $package_number) : self
+    public function setPackageNumber(int $package_number): self
     {
         $this->container['package_number'] = $package_number;
 
@@ -259,7 +262,7 @@ class FulfillmentShipmentPackage implements \ArrayAccess, \JsonSerializable, Mod
     /**
      * Gets carrier_code.
      */
-    public function getCarrierCode() : string
+    public function getCarrierCode(): string
     {
         return $this->container['carrier_code'];
     }
@@ -269,7 +272,7 @@ class FulfillmentShipmentPackage implements \ArrayAccess, \JsonSerializable, Mod
      *
      * @param string $carrier_code identifies the carrier who will deliver the shipment to the recipient
      */
-    public function setCarrierCode(string $carrier_code) : self
+    public function setCarrierCode(string $carrier_code): self
     {
         $this->container['carrier_code'] = $carrier_code;
 
@@ -279,7 +282,7 @@ class FulfillmentShipmentPackage implements \ArrayAccess, \JsonSerializable, Mod
     /**
      * Gets tracking_number.
      */
-    public function getTrackingNumber() : ?string
+    public function getTrackingNumber(): ?string
     {
         return $this->container['tracking_number'];
     }
@@ -289,7 +292,7 @@ class FulfillmentShipmentPackage implements \ArrayAccess, \JsonSerializable, Mod
      *
      * @param null|string $tracking_number the tracking number, if provided, can be used to obtain tracking and delivery information
      */
-    public function setTrackingNumber(?string $tracking_number) : self
+    public function setTrackingNumber(?string $tracking_number): self
     {
         $this->container['tracking_number'] = $tracking_number;
 
@@ -301,7 +304,7 @@ class FulfillmentShipmentPackage implements \ArrayAccess, \JsonSerializable, Mod
      *
      * @return null|\DateTime|\DateTimeImmutable
      */
-    public function getEstimatedArrivalDate() : ?\DateTimeInterface
+    public function getEstimatedArrivalDate(): ?\DateTimeInterface
     {
         return $this->container['estimated_arrival_date'];
     }
@@ -311,7 +314,7 @@ class FulfillmentShipmentPackage implements \ArrayAccess, \JsonSerializable, Mod
      *
      * @param \DateTime|\DateTimeImmutable $estimated_arrival_date estimated_arrival_date
      */
-    public function setEstimatedArrivalDate(\DateTimeInterface $estimated_arrival_date) : self
+    public function setEstimatedArrivalDate(\DateTimeInterface $estimated_arrival_date): self
     {
         $this->container['estimated_arrival_date'] = $estimated_arrival_date;
 
@@ -323,7 +326,7 @@ class FulfillmentShipmentPackage implements \ArrayAccess, \JsonSerializable, Mod
      *
      * @param int $offset Offset
      */
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -346,7 +349,7 @@ class FulfillmentShipmentPackage implements \ArrayAccess, \JsonSerializable, Mod
      * @param null|int $offset Offset
      * @param mixed $value Value to be set
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         if (null === $offset) {
             $this->container[] = $value;
@@ -360,7 +363,7 @@ class FulfillmentShipmentPackage implements \ArrayAccess, \JsonSerializable, Mod
      *
      * @param int $offset Offset
      */
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -373,7 +376,7 @@ class FulfillmentShipmentPackage implements \ArrayAccess, \JsonSerializable, Mod
      * @return mixed returns data which can be serialized by json_encode(), which is a value
      *               of any type other than a resource
      */
-    public function jsonSerialize() : string
+    public function jsonSerialize(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }
@@ -381,7 +384,7 @@ class FulfillmentShipmentPackage implements \ArrayAccess, \JsonSerializable, Mod
     /**
      * Gets a header-safe presentation of the object.
      */
-    public function toHeaderValue() : string
+    public function toHeaderValue(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }

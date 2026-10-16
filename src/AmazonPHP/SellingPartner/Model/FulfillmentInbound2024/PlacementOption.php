@@ -120,7 +120,7 @@ class PlacementOption implements \ArrayAccess, \JsonSerializable, \Stringable, M
      * @param null|mixed[] $data Associated array of property values
      *                           initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['discounts'] = $data['discounts'] ?? null;
         $this->container['expiration'] = $data['expiration'] ?? null;
@@ -133,7 +133,7 @@ class PlacementOption implements \ArrayAccess, \JsonSerializable, \Stringable, M
     /**
      * Array of property to type mappings. Used for (de)serialization.
      */
-    public static function openAPITypes() : array
+    public static function openAPITypes(): array
     {
         return self::$openAPITypes;
     }
@@ -141,7 +141,7 @@ class PlacementOption implements \ArrayAccess, \JsonSerializable, \Stringable, M
     /**
      * Array of property to format mappings. Used for (de)serialization.
      */
-    public static function openAPIFormats() : array
+    public static function openAPIFormats(): array
     {
         return self::$openAPIFormats;
     }
@@ -150,7 +150,7 @@ class PlacementOption implements \ArrayAccess, \JsonSerializable, \Stringable, M
      * Array of attributes where the key is the local name,
      * and the value is the original name.
      */
-    public static function attributeMap() : array
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -158,7 +158,7 @@ class PlacementOption implements \ArrayAccess, \JsonSerializable, \Stringable, M
     /**
      * Array of attributes to setter functions (for deserialization of responses).
      */
-    public static function setters() : array
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -166,7 +166,7 @@ class PlacementOption implements \ArrayAccess, \JsonSerializable, \Stringable, M
     /**
      * Array of attributes to getter functions (for serialization of requests).
      */
-    public static function getters() : array
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -174,7 +174,7 @@ class PlacementOption implements \ArrayAccess, \JsonSerializable, \Stringable, M
     /**
      * Gets the string presentation of the object.
      */
-    public function __toString() : string
+    public function __toString(): string
     {
         return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
@@ -185,7 +185,7 @@ class PlacementOption implements \ArrayAccess, \JsonSerializable, \Stringable, M
     /**
      * The original name of the model.
      */
-    public function getModelName() : string
+    public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
@@ -195,10 +195,10 @@ class PlacementOption implements \ArrayAccess, \JsonSerializable, \Stringable, M
      *
      * @throws AssertionException
      */
-    public function listInvalidProperties() : array
+    public function listInvalidProperties(): array
     {
         $invalidProperties = [];
-         
+
         if ($this->container['discounts'] === null) {
             $invalidProperties[] = "'discounts' can't be null";
         }
@@ -248,7 +248,7 @@ class PlacementOption implements \ArrayAccess, \JsonSerializable, \Stringable, M
      *
      * @return bool True if all properties are valid
      */
-    public function valid() : bool
+    public function valid(): bool
     {
         return \count($this->listInvalidProperties()) === 0;
     }
@@ -258,7 +258,7 @@ class PlacementOption implements \ArrayAccess, \JsonSerializable, \Stringable, M
      *
      * @return Incentive[]
      */
-    public function getDiscounts() : array
+    public function getDiscounts(): array
     {
         return $this->container['discounts'];
     }
@@ -268,7 +268,7 @@ class PlacementOption implements \ArrayAccess, \JsonSerializable, \Stringable, M
      *
      * @param Incentive[] $discounts discount for the offered option
      */
-    public function setDiscounts(array $discounts) : self
+    public function setDiscounts(array $discounts): self
     {
         $this->container['discounts'] = $discounts;
 
@@ -278,7 +278,7 @@ class PlacementOption implements \ArrayAccess, \JsonSerializable, \Stringable, M
     /**
      * Gets expiration.
      */
-    public function getExpiration() : ?\DateTimeInterface
+    public function getExpiration(): ?\DateTimeInterface
     {
         return $this->container['expiration'];
     }
@@ -288,7 +288,7 @@ class PlacementOption implements \ArrayAccess, \JsonSerializable, \Stringable, M
      *
      * @param null|\DateTimeInterface $expiration The expiration date of the placement option. This is based in ISO 8601 datetime with pattern `yyyy-MM-ddTHH:mm:ss.sssZ`.
      */
-    public function setExpiration(?\DateTimeInterface $expiration) : self
+    public function setExpiration(?\DateTimeInterface $expiration): self
     {
         $this->container['expiration'] = $expiration;
 
@@ -300,7 +300,7 @@ class PlacementOption implements \ArrayAccess, \JsonSerializable, \Stringable, M
      *
      * @return Incentive[]
      */
-    public function getFees() : array
+    public function getFees(): array
     {
         return $this->container['fees'];
     }
@@ -310,7 +310,7 @@ class PlacementOption implements \ArrayAccess, \JsonSerializable, \Stringable, M
      *
      * @param Incentive[] $fees fee for the offered option
      */
-    public function setFees(array $fees) : self
+    public function setFees(array $fees): self
     {
         $this->container['fees'] = $fees;
 
@@ -320,7 +320,7 @@ class PlacementOption implements \ArrayAccess, \JsonSerializable, \Stringable, M
     /**
      * Gets placement_option_id.
      */
-    public function getPlacementOptionId() : string
+    public function getPlacementOptionId(): string
     {
         return $this->container['placement_option_id'];
     }
@@ -330,7 +330,7 @@ class PlacementOption implements \ArrayAccess, \JsonSerializable, \Stringable, M
      *
      * @param string $placement_option_id The identifier of a placement option. A placement option represents the shipment splits and destinations of SKUs.
      */
-    public function setPlacementOptionId(string $placement_option_id) : self
+    public function setPlacementOptionId(string $placement_option_id): self
     {
         $this->container['placement_option_id'] = $placement_option_id;
 
@@ -342,7 +342,7 @@ class PlacementOption implements \ArrayAccess, \JsonSerializable, \Stringable, M
      *
      * @return string[]
      */
-    public function getShipmentIds() : array
+    public function getShipmentIds(): array
     {
         return $this->container['shipment_ids'];
     }
@@ -352,7 +352,7 @@ class PlacementOption implements \ArrayAccess, \JsonSerializable, \Stringable, M
      *
      * @param string[] $shipment_ids shipment ids
      */
-    public function setShipmentIds(array $shipment_ids) : self
+    public function setShipmentIds(array $shipment_ids): self
     {
         $this->container['shipment_ids'] = $shipment_ids;
 
@@ -362,7 +362,7 @@ class PlacementOption implements \ArrayAccess, \JsonSerializable, \Stringable, M
     /**
      * Gets status.
      */
-    public function getStatus() : string
+    public function getStatus(): string
     {
         return $this->container['status'];
     }
@@ -372,7 +372,7 @@ class PlacementOption implements \ArrayAccess, \JsonSerializable, \Stringable, M
      *
      * @param string $status The status of a placement option. Can be: `OFFERED`, `ACCEPTED`, or `EXPIRED`.
      */
-    public function setStatus(string $status) : self
+    public function setStatus(string $status): self
     {
         $this->container['status'] = $status;
 
@@ -382,7 +382,7 @@ class PlacementOption implements \ArrayAccess, \JsonSerializable, \Stringable, M
     /**
      * Returns true if offset exists. False otherwise.
      */
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -393,7 +393,7 @@ class PlacementOption implements \ArrayAccess, \JsonSerializable, \Stringable, M
      * @return null|mixed
      */
     #[\ReturnTypeWillChange]
-    public function offsetGet($offset) : mixed
+    public function offsetGet($offset): mixed
     {
         return $this->container[$offset] ?? null;
     }
@@ -401,7 +401,7 @@ class PlacementOption implements \ArrayAccess, \JsonSerializable, \Stringable, M
     /**
      * Sets value based on offset.
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         if (null === $offset) {
             $this->container[] = $value;
@@ -413,7 +413,7 @@ class PlacementOption implements \ArrayAccess, \JsonSerializable, \Stringable, M
     /**
      * Unsets offset.
      */
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -427,7 +427,7 @@ class PlacementOption implements \ArrayAccess, \JsonSerializable, \Stringable, M
      *               of any type other than a resource
      */
     #[\ReturnTypeWillChange]
-    public function jsonSerialize() : string
+    public function jsonSerialize(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }
@@ -435,7 +435,7 @@ class PlacementOption implements \ArrayAccess, \JsonSerializable, \Stringable, M
     /**
      * Gets a header-safe presentation of the object.
      */
-    public function toHeaderValue() : string
+    public function toHeaderValue(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }

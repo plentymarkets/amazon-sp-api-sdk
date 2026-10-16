@@ -1,4 +1,7 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
+
 /**
  * LabelFormatOption.
  *
@@ -40,7 +43,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class LabelFormatOption implements \ArrayAccess, \JsonSerializable, ModelInterface
+class LabelFormatOption implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -58,7 +61,7 @@ class LabelFormatOption implements \ArrayAccess, \JsonSerializable, ModelInterfa
      */
     protected static /** [COMPAT] array */ $openAPITypes = [
         'include_packing_slip_with_label' => 'bool',
-        'label_format' => '\Plenty\AmazonPHP\SellingPartner\Model\MerchantFulfillment\LabelFormat',
+        'label_format' => \Plenty\AmazonPHP\SellingPartner\Model\MerchantFulfillment\LabelFormat::class,
     ];
 
     /**
@@ -117,7 +120,7 @@ class LabelFormatOption implements \ArrayAccess, \JsonSerializable, ModelInterfa
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['include_packing_slip_with_label'] = $data['include_packing_slip_with_label'] ?? null;
         $this->container['label_format'] = $data['label_format'] ?? null;
@@ -128,7 +131,7 @@ class LabelFormatOption implements \ArrayAccess, \JsonSerializable, ModelInterfa
      *
      * @return string[]
      */
-    public static function openAPITypes() : array
+    public static function openAPITypes(): array
     {
         return self::$openAPITypes;
     }
@@ -138,7 +141,7 @@ class LabelFormatOption implements \ArrayAccess, \JsonSerializable, ModelInterfa
      *
      * @return null[]|string[]
      */
-    public static function openAPIFormats() : array
+    public static function openAPIFormats(): array
     {
         return self::$openAPIFormats;
     }
@@ -149,7 +152,7 @@ class LabelFormatOption implements \ArrayAccess, \JsonSerializable, ModelInterfa
      *
      * @return string[]
      */
-    public static function attributeMap() : array
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -159,7 +162,7 @@ class LabelFormatOption implements \ArrayAccess, \JsonSerializable, ModelInterfa
      *
      * @return string[]
      */
-    public static function setters() : array
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -169,7 +172,7 @@ class LabelFormatOption implements \ArrayAccess, \JsonSerializable, ModelInterfa
      *
      * @return string[]
      */
-    public static function getters() : array
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -177,9 +180,9 @@ class LabelFormatOption implements \ArrayAccess, \JsonSerializable, ModelInterfa
     /**
      * Gets the string presentation of the object.
      */
-    public function __toString() : string
+    public function __toString(): string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );
@@ -188,7 +191,7 @@ class LabelFormatOption implements \ArrayAccess, \JsonSerializable, ModelInterfa
     /**
      * The original name of the model.
      */
-    public function getModelName() : string
+    public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
@@ -198,7 +201,7 @@ class LabelFormatOption implements \ArrayAccess, \JsonSerializable, ModelInterfa
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties() : array
+    public function listInvalidProperties(): array
     {
         return [];
     }
@@ -209,7 +212,7 @@ class LabelFormatOption implements \ArrayAccess, \JsonSerializable, ModelInterfa
      *
      * @return bool True if all properties are valid
      */
-    public function valid() : bool
+    public function valid(): bool
     {
         return \count($this->listInvalidProperties()) === 0;
     }
@@ -217,7 +220,7 @@ class LabelFormatOption implements \ArrayAccess, \JsonSerializable, ModelInterfa
     /**
      * Gets include_packing_slip_with_label.
      */
-    public function getIncludePackingSlipWithLabel() : ?bool
+    public function getIncludePackingSlipWithLabel(): ?bool
     {
         return $this->container['include_packing_slip_with_label'];
     }
@@ -227,7 +230,7 @@ class LabelFormatOption implements \ArrayAccess, \JsonSerializable, ModelInterfa
      *
      * @param null|bool $include_packing_slip_with_label when true, include a packing slip with the label
      */
-    public function setIncludePackingSlipWithLabel(?bool $include_packing_slip_with_label) : self
+    public function setIncludePackingSlipWithLabel(?bool $include_packing_slip_with_label): self
     {
         $this->container['include_packing_slip_with_label'] = $include_packing_slip_with_label;
 
@@ -237,7 +240,7 @@ class LabelFormatOption implements \ArrayAccess, \JsonSerializable, ModelInterfa
     /**
      * Gets label_format.
      */
-    public function getLabelFormat() : ?LabelFormat
+    public function getLabelFormat(): ?LabelFormat
     {
         return $this->container['label_format'];
     }
@@ -247,7 +250,7 @@ class LabelFormatOption implements \ArrayAccess, \JsonSerializable, ModelInterfa
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\MerchantFulfillment\LabelFormat $label_format label_format
      */
-    public function setLabelFormat(?LabelFormat $label_format) : self
+    public function setLabelFormat(?LabelFormat $label_format): self
     {
         $this->container['label_format'] = $label_format;
 
@@ -259,7 +262,7 @@ class LabelFormatOption implements \ArrayAccess, \JsonSerializable, ModelInterfa
      *
      * @param int $offset Offset
      */
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -282,7 +285,7 @@ class LabelFormatOption implements \ArrayAccess, \JsonSerializable, ModelInterfa
      * @param null|int $offset Offset
      * @param mixed $value Value to be set
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         if (null === $offset) {
             $this->container[] = $value;
@@ -296,7 +299,7 @@ class LabelFormatOption implements \ArrayAccess, \JsonSerializable, ModelInterfa
      *
      * @param int $offset Offset
      */
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -309,7 +312,7 @@ class LabelFormatOption implements \ArrayAccess, \JsonSerializable, ModelInterfa
      * @return mixed returns data which can be serialized by json_encode(), which is a value
      *               of any type other than a resource
      */
-    public function jsonSerialize() : string
+    public function jsonSerialize(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }
@@ -317,7 +320,7 @@ class LabelFormatOption implements \ArrayAccess, \JsonSerializable, ModelInterfa
     /**
      * Gets a header-safe presentation of the object.
      */
-    public function toHeaderValue() : string
+    public function toHeaderValue(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }

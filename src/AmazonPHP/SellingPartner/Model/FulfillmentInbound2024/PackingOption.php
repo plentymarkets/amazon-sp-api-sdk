@@ -125,7 +125,7 @@ class PackingOption implements \ArrayAccess, \JsonSerializable, \Stringable, Mod
      * @param null|mixed[] $data Associated array of property values
      *                           initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['discounts'] = $data['discounts'] ?? null;
         $this->container['expiration'] = $data['expiration'] ?? null;
@@ -139,7 +139,7 @@ class PackingOption implements \ArrayAccess, \JsonSerializable, \Stringable, Mod
     /**
      * Array of property to type mappings. Used for (de)serialization.
      */
-    public static function openAPITypes() : array
+    public static function openAPITypes(): array
     {
         return self::$openAPITypes;
     }
@@ -147,7 +147,7 @@ class PackingOption implements \ArrayAccess, \JsonSerializable, \Stringable, Mod
     /**
      * Array of property to format mappings. Used for (de)serialization.
      */
-    public static function openAPIFormats() : array
+    public static function openAPIFormats(): array
     {
         return self::$openAPIFormats;
     }
@@ -156,7 +156,7 @@ class PackingOption implements \ArrayAccess, \JsonSerializable, \Stringable, Mod
      * Array of attributes where the key is the local name,
      * and the value is the original name.
      */
-    public static function attributeMap() : array
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -164,7 +164,7 @@ class PackingOption implements \ArrayAccess, \JsonSerializable, \Stringable, Mod
     /**
      * Array of attributes to setter functions (for deserialization of responses).
      */
-    public static function setters() : array
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -172,7 +172,7 @@ class PackingOption implements \ArrayAccess, \JsonSerializable, \Stringable, Mod
     /**
      * Array of attributes to getter functions (for serialization of requests).
      */
-    public static function getters() : array
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -180,7 +180,7 @@ class PackingOption implements \ArrayAccess, \JsonSerializable, \Stringable, Mod
     /**
      * Gets the string presentation of the object.
      */
-    public function __toString() : string
+    public function __toString(): string
     {
         return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
@@ -191,7 +191,7 @@ class PackingOption implements \ArrayAccess, \JsonSerializable, \Stringable, Mod
     /**
      * The original name of the model.
      */
-    public function getModelName() : string
+    public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
@@ -201,10 +201,10 @@ class PackingOption implements \ArrayAccess, \JsonSerializable, \Stringable, Mod
      *
      * @throws AssertionException
      */
-    public function listInvalidProperties() : array
+    public function listInvalidProperties(): array
     {
         $invalidProperties = [];
-         
+
         if ($this->container['discounts'] === null) {
             $invalidProperties[] = "'discounts' can't be null";
         }
@@ -258,7 +258,7 @@ class PackingOption implements \ArrayAccess, \JsonSerializable, \Stringable, Mod
      *
      * @return bool True if all properties are valid
      */
-    public function valid() : bool
+    public function valid(): bool
     {
         return \count($this->listInvalidProperties()) === 0;
     }
@@ -268,7 +268,7 @@ class PackingOption implements \ArrayAccess, \JsonSerializable, \Stringable, Mod
      *
      * @return Incentive[]
      */
-    public function getDiscounts() : array
+    public function getDiscounts(): array
     {
         return $this->container['discounts'];
     }
@@ -278,7 +278,7 @@ class PackingOption implements \ArrayAccess, \JsonSerializable, \Stringable, Mod
      *
      * @param Incentive[] $discounts discount for the offered option
      */
-    public function setDiscounts(array $discounts) : self
+    public function setDiscounts(array $discounts): self
     {
         $this->container['discounts'] = $discounts;
 
@@ -288,7 +288,7 @@ class PackingOption implements \ArrayAccess, \JsonSerializable, \Stringable, Mod
     /**
      * Gets expiration.
      */
-    public function getExpiration() : ?\DateTimeInterface
+    public function getExpiration(): ?\DateTimeInterface
     {
         return $this->container['expiration'];
     }
@@ -298,7 +298,7 @@ class PackingOption implements \ArrayAccess, \JsonSerializable, \Stringable, Mod
      *
      * @param null|\DateTimeInterface $expiration The timestamp at which this packing option becomes no longer valid. This is based in ISO 8601 datetime with pattern `yyyy-MM-ddTHH:mm:ss.sssZ`.
      */
-    public function setExpiration(?\DateTimeInterface $expiration) : self
+    public function setExpiration(?\DateTimeInterface $expiration): self
     {
         $this->container['expiration'] = $expiration;
 
@@ -310,7 +310,7 @@ class PackingOption implements \ArrayAccess, \JsonSerializable, \Stringable, Mod
      *
      * @return Incentive[]
      */
-    public function getFees() : array
+    public function getFees(): array
     {
         return $this->container['fees'];
     }
@@ -320,7 +320,7 @@ class PackingOption implements \ArrayAccess, \JsonSerializable, \Stringable, Mod
      *
      * @param Incentive[] $fees fee for the offered option
      */
-    public function setFees(array $fees) : self
+    public function setFees(array $fees): self
     {
         $this->container['fees'] = $fees;
 
@@ -332,7 +332,7 @@ class PackingOption implements \ArrayAccess, \JsonSerializable, \Stringable, Mod
      *
      * @return string[]
      */
-    public function getPackingGroups() : array
+    public function getPackingGroups(): array
     {
         return $this->container['packing_groups'];
     }
@@ -342,7 +342,7 @@ class PackingOption implements \ArrayAccess, \JsonSerializable, \Stringable, Mod
      *
      * @param string[] $packing_groups packing group IDs
      */
-    public function setPackingGroups(array $packing_groups) : self
+    public function setPackingGroups(array $packing_groups): self
     {
         $this->container['packing_groups'] = $packing_groups;
 
@@ -352,7 +352,7 @@ class PackingOption implements \ArrayAccess, \JsonSerializable, \Stringable, Mod
     /**
      * Gets packing_option_id.
      */
-    public function getPackingOptionId() : string
+    public function getPackingOptionId(): string
     {
         return $this->container['packing_option_id'];
     }
@@ -362,7 +362,7 @@ class PackingOption implements \ArrayAccess, \JsonSerializable, \Stringable, Mod
      *
      * @param string $packing_option_id identifier of a packing option
      */
-    public function setPackingOptionId(string $packing_option_id) : self
+    public function setPackingOptionId(string $packing_option_id): self
     {
         $this->container['packing_option_id'] = $packing_option_id;
 
@@ -372,7 +372,7 @@ class PackingOption implements \ArrayAccess, \JsonSerializable, \Stringable, Mod
     /**
      * Gets status.
      */
-    public function getStatus() : string
+    public function getStatus(): string
     {
         return $this->container['status'];
     }
@@ -382,7 +382,7 @@ class PackingOption implements \ArrayAccess, \JsonSerializable, \Stringable, Mod
      *
      * @param string $status The status of the packing option. Can be: `OFFERED`, `ACCEPTED`, or `EXPIRED`.
      */
-    public function setStatus(string $status) : self
+    public function setStatus(string $status): self
     {
         $this->container['status'] = $status;
 
@@ -394,7 +394,7 @@ class PackingOption implements \ArrayAccess, \JsonSerializable, \Stringable, Mod
      *
      * @return ShippingConfiguration[]
      */
-    public function getSupportedShippingConfigurations() : array
+    public function getSupportedShippingConfigurations(): array
     {
         return $this->container['supported_shipping_configurations'];
     }
@@ -404,7 +404,7 @@ class PackingOption implements \ArrayAccess, \JsonSerializable, \Stringable, Mod
      *
      * @param ShippingConfiguration[] $supported_shipping_configurations list of supported shipping modes
      */
-    public function setSupportedShippingConfigurations(array $supported_shipping_configurations) : self
+    public function setSupportedShippingConfigurations(array $supported_shipping_configurations): self
     {
         $this->container['supported_shipping_configurations'] = $supported_shipping_configurations;
 
@@ -414,7 +414,7 @@ class PackingOption implements \ArrayAccess, \JsonSerializable, \Stringable, Mod
     /**
      * Returns true if offset exists. False otherwise.
      */
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -425,7 +425,7 @@ class PackingOption implements \ArrayAccess, \JsonSerializable, \Stringable, Mod
      * @return null|mixed
      */
     #[\ReturnTypeWillChange]
-    public function offsetGet($offset) : mixed
+    public function offsetGet($offset): mixed
     {
         return $this->container[$offset] ?? null;
     }
@@ -433,7 +433,7 @@ class PackingOption implements \ArrayAccess, \JsonSerializable, \Stringable, Mod
     /**
      * Sets value based on offset.
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         if (null === $offset) {
             $this->container[] = $value;
@@ -445,7 +445,7 @@ class PackingOption implements \ArrayAccess, \JsonSerializable, \Stringable, Mod
     /**
      * Unsets offset.
      */
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -459,7 +459,7 @@ class PackingOption implements \ArrayAccess, \JsonSerializable, \Stringable, Mod
      *               of any type other than a resource
      */
     #[\ReturnTypeWillChange]
-    public function jsonSerialize() : string
+    public function jsonSerialize(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }
@@ -467,7 +467,7 @@ class PackingOption implements \ArrayAccess, \JsonSerializable, \Stringable, Mod
     /**
      * Gets a header-safe presentation of the object.
      */
-    public function toHeaderValue() : string
+    public function toHeaderValue(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }

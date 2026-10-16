@@ -1,4 +1,7 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
+
 /**
  * AcceptedRate.
  *
@@ -40,7 +43,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class AcceptedRate implements \ArrayAccess, \JsonSerializable, ModelInterface
+class AcceptedRate implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -57,10 +60,10 @@ class AcceptedRate implements \ArrayAccess, \JsonSerializable, ModelInterface
      * @var string[]
      */
     protected static /** [COMPAT] array */ $openAPITypes = [
-        'total_charge' => '\Plenty\AmazonPHP\SellingPartner\Model\Shipping\Currency',
-        'billed_weight' => '\Plenty\AmazonPHP\SellingPartner\Model\Shipping\Weight',
-        'service_type' => '\Plenty\AmazonPHP\SellingPartner\Model\Shipping\ServiceType',
-        'promise' => '\Plenty\AmazonPHP\SellingPartner\Model\Shipping\ShippingPromiseSet',
+        'total_charge' => \Plenty\AmazonPHP\SellingPartner\Model\Shipping\Currency::class,
+        'billed_weight' => \Plenty\AmazonPHP\SellingPartner\Model\Shipping\Weight::class,
+        'service_type' => \Plenty\AmazonPHP\SellingPartner\Model\Shipping\ServiceType::class,
+        'promise' => \Plenty\AmazonPHP\SellingPartner\Model\Shipping\ShippingPromiseSet::class,
     ];
 
     /**
@@ -127,7 +130,7 @@ class AcceptedRate implements \ArrayAccess, \JsonSerializable, ModelInterface
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['total_charge'] = $data['total_charge'] ?? null;
         $this->container['billed_weight'] = $data['billed_weight'] ?? null;
@@ -140,7 +143,7 @@ class AcceptedRate implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return string[]
      */
-    public static function openAPITypes() : array
+    public static function openAPITypes(): array
     {
         return self::$openAPITypes;
     }
@@ -150,7 +153,7 @@ class AcceptedRate implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return null[]|string[]
      */
-    public static function openAPIFormats() : array
+    public static function openAPIFormats(): array
     {
         return self::$openAPIFormats;
     }
@@ -161,7 +164,7 @@ class AcceptedRate implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return string[]
      */
-    public static function attributeMap() : array
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -171,7 +174,7 @@ class AcceptedRate implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return string[]
      */
-    public static function setters() : array
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -181,7 +184,7 @@ class AcceptedRate implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return string[]
      */
-    public static function getters() : array
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -189,9 +192,9 @@ class AcceptedRate implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets the string presentation of the object.
      */
-    public function __toString() : string
+    public function __toString(): string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );
@@ -200,7 +203,7 @@ class AcceptedRate implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * The original name of the model.
      */
-    public function getModelName() : string
+    public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
@@ -210,7 +213,7 @@ class AcceptedRate implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties() : array
+    public function listInvalidProperties(): array
     {
         return [];
     }
@@ -221,7 +224,7 @@ class AcceptedRate implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return bool True if all properties are valid
      */
-    public function valid() : bool
+    public function valid(): bool
     {
         return \count($this->listInvalidProperties()) === 0;
     }
@@ -229,7 +232,7 @@ class AcceptedRate implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets total_charge.
      */
-    public function getTotalCharge() : ?Currency
+    public function getTotalCharge(): ?Currency
     {
         return $this->container['total_charge'];
     }
@@ -239,7 +242,7 @@ class AcceptedRate implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\Shipping\Currency $total_charge total_charge
      */
-    public function setTotalCharge(?Currency $total_charge) : self
+    public function setTotalCharge(?Currency $total_charge): self
     {
         $this->container['total_charge'] = $total_charge;
 
@@ -249,7 +252,7 @@ class AcceptedRate implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets billed_weight.
      */
-    public function getBilledWeight() : ?Weight
+    public function getBilledWeight(): ?Weight
     {
         return $this->container['billed_weight'];
     }
@@ -259,7 +262,7 @@ class AcceptedRate implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\Shipping\Weight $billed_weight billed_weight
      */
-    public function setBilledWeight(?Weight $billed_weight) : self
+    public function setBilledWeight(?Weight $billed_weight): self
     {
         $this->container['billed_weight'] = $billed_weight;
 
@@ -269,7 +272,7 @@ class AcceptedRate implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets service_type.
      */
-    public function getServiceType() : ?ServiceType
+    public function getServiceType(): ?ServiceType
     {
         return $this->container['service_type'];
     }
@@ -279,7 +282,7 @@ class AcceptedRate implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\Shipping\ServiceType $service_type service_type
      */
-    public function setServiceType(?ServiceType $service_type) : self
+    public function setServiceType(?ServiceType $service_type): self
     {
         $this->container['service_type'] = $service_type;
 
@@ -289,7 +292,7 @@ class AcceptedRate implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets promise.
      */
-    public function getPromise() : ?ShippingPromiseSet
+    public function getPromise(): ?ShippingPromiseSet
     {
         return $this->container['promise'];
     }
@@ -299,7 +302,7 @@ class AcceptedRate implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\Shipping\ShippingPromiseSet $promise promise
      */
-    public function setPromise(?ShippingPromiseSet $promise) : self
+    public function setPromise(?ShippingPromiseSet $promise): self
     {
         $this->container['promise'] = $promise;
 
@@ -311,7 +314,7 @@ class AcceptedRate implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param int $offset Offset
      */
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -334,7 +337,7 @@ class AcceptedRate implements \ArrayAccess, \JsonSerializable, ModelInterface
      * @param null|int $offset Offset
      * @param mixed $value Value to be set
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         if (null === $offset) {
             $this->container[] = $value;
@@ -348,7 +351,7 @@ class AcceptedRate implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param int $offset Offset
      */
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -361,7 +364,7 @@ class AcceptedRate implements \ArrayAccess, \JsonSerializable, ModelInterface
      * @return mixed returns data which can be serialized by json_encode(), which is a value
      *               of any type other than a resource
      */
-    public function jsonSerialize() : string
+    public function jsonSerialize(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }
@@ -369,7 +372,7 @@ class AcceptedRate implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets a header-safe presentation of the object.
      */
-    public function toHeaderValue() : string
+    public function toHeaderValue(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }

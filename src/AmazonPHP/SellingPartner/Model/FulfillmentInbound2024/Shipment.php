@@ -39,20 +39,20 @@ class Shipment implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInt
      */
     protected static array $openAPITypes = [
         'amazon_reference_id' => 'string',
-        'contact_information' => '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound2024\ContactInformation',
-        'dates' => '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound2024\Dates',
-        'destination' => '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound2024\ShipmentDestination',
-        'freight_information' => '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound2024\FreightInformation',
+        'contact_information' => \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound2024\ContactInformation::class,
+        'dates' => \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound2024\Dates::class,
+        'destination' => \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound2024\ShipmentDestination::class,
+        'freight_information' => \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound2024\FreightInformation::class,
         'name' => 'string',
         'placement_option_id' => 'string',
-        'selected_delivery_window' => '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound2024\SelectedDeliveryWindow',
+        'selected_delivery_window' => \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound2024\SelectedDeliveryWindow::class,
         'selected_transportation_option_id' => 'string',
         'self_ship_appointment_details' => '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound2024\SelfShipAppointmentDetails[]',
         'shipment_confirmation_id' => 'string',
         'shipment_id' => 'string',
-        'source' => '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound2024\ShipmentSource',
+        'source' => \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound2024\ShipmentSource::class,
         'status' => 'string',
-        'tracking_details' => '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound2024\TrackingDetails',
+        'tracking_details' => \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound2024\TrackingDetails::class,
     ];
 
     /**
@@ -165,7 +165,7 @@ class Shipment implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInt
      * @param null|mixed[] $data Associated array of property values
      *                           initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['amazon_reference_id'] = $data['amazon_reference_id'] ?? null;
         $this->container['contact_information'] = $data['contact_information'] ?? null;
@@ -187,7 +187,7 @@ class Shipment implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInt
     /**
      * Array of property to type mappings. Used for (de)serialization.
      */
-    public static function openAPITypes() : array
+    public static function openAPITypes(): array
     {
         return self::$openAPITypes;
     }
@@ -195,7 +195,7 @@ class Shipment implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInt
     /**
      * Array of property to format mappings. Used for (de)serialization.
      */
-    public static function openAPIFormats() : array
+    public static function openAPIFormats(): array
     {
         return self::$openAPIFormats;
     }
@@ -204,7 +204,7 @@ class Shipment implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInt
      * Array of attributes where the key is the local name,
      * and the value is the original name.
      */
-    public static function attributeMap() : array
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -212,7 +212,7 @@ class Shipment implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInt
     /**
      * Array of attributes to setter functions (for deserialization of responses).
      */
-    public static function setters() : array
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -220,7 +220,7 @@ class Shipment implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInt
     /**
      * Array of attributes to getter functions (for serialization of requests).
      */
-    public static function getters() : array
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -228,7 +228,7 @@ class Shipment implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInt
     /**
      * Gets the string presentation of the object.
      */
-    public function __toString() : string
+    public function __toString(): string
     {
         return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
@@ -239,7 +239,7 @@ class Shipment implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInt
     /**
      * The original name of the model.
      */
-    public function getModelName() : string
+    public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
@@ -249,7 +249,7 @@ class Shipment implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInt
      *
      * @throws AssertionException
      */
-    public function listInvalidProperties() : array
+    public function listInvalidProperties(): array
     {
         $invalidProperties = [];
 
@@ -362,7 +362,7 @@ class Shipment implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInt
      *
      * @return bool True if all properties are valid
      */
-    public function valid() : bool
+    public function valid(): bool
     {
         return \count($this->listInvalidProperties()) === 0;
     }
@@ -370,7 +370,7 @@ class Shipment implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInt
     /**
      * Gets amazon_reference_id.
      */
-    public function getAmazonReferenceId() : ?string
+    public function getAmazonReferenceId(): ?string
     {
         return $this->container['amazon_reference_id'];
     }
@@ -380,7 +380,7 @@ class Shipment implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInt
      *
      * @param null|string $amazon_reference_id a unique identifier created by Amazon that identifies this Amazon-partnered, Less Than Truckload/Full Truckload (LTL/FTL) shipment
      */
-    public function setAmazonReferenceId(?string $amazon_reference_id) : self
+    public function setAmazonReferenceId(?string $amazon_reference_id): self
     {
         $this->container['amazon_reference_id'] = $amazon_reference_id;
 
@@ -390,7 +390,7 @@ class Shipment implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInt
     /**
      * Gets contact_information.
      */
-    public function getContactInformation() : ?ContactInformation
+    public function getContactInformation(): ?ContactInformation
     {
         return $this->container['contact_information'];
     }
@@ -400,7 +400,7 @@ class Shipment implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInt
      *
      * @param null|ContactInformation $contact_information contact_information
      */
-    public function setContactInformation(?ContactInformation $contact_information) : self
+    public function setContactInformation(?ContactInformation $contact_information): self
     {
         $this->container['contact_information'] = $contact_information;
 
@@ -410,7 +410,7 @@ class Shipment implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInt
     /**
      * Gets dates.
      */
-    public function getDates() : ?Dates
+    public function getDates(): ?Dates
     {
         return $this->container['dates'];
     }
@@ -420,7 +420,7 @@ class Shipment implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInt
      *
      * @param null|Dates $dates dates
      */
-    public function setDates(?Dates $dates) : self
+    public function setDates(?Dates $dates): self
     {
         $this->container['dates'] = $dates;
 
@@ -430,7 +430,7 @@ class Shipment implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInt
     /**
      * Gets destination.
      */
-    public function getDestination() : ShipmentDestination
+    public function getDestination(): ShipmentDestination
     {
         return $this->container['destination'];
     }
@@ -440,7 +440,7 @@ class Shipment implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInt
      *
      * @param ShipmentDestination $destination destination
      */
-    public function setDestination(ShipmentDestination $destination) : self
+    public function setDestination(ShipmentDestination $destination): self
     {
         $this->container['destination'] = $destination;
 
@@ -450,7 +450,7 @@ class Shipment implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInt
     /**
      * Gets freight_information.
      */
-    public function getFreightInformation() : ?FreightInformation
+    public function getFreightInformation(): ?FreightInformation
     {
         return $this->container['freight_information'];
     }
@@ -460,7 +460,7 @@ class Shipment implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInt
      *
      * @param null|FreightInformation $freight_information freight_information
      */
-    public function setFreightInformation(?FreightInformation $freight_information) : self
+    public function setFreightInformation(?FreightInformation $freight_information): self
     {
         $this->container['freight_information'] = $freight_information;
 
@@ -470,7 +470,7 @@ class Shipment implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInt
     /**
      * Gets name.
      */
-    public function getName() : ?string
+    public function getName(): ?string
     {
         return $this->container['name'];
     }
@@ -480,7 +480,7 @@ class Shipment implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInt
      *
      * @param null|string $name the name of the shipment
      */
-    public function setName(?string $name) : self
+    public function setName(?string $name): self
     {
         $this->container['name'] = $name;
 
@@ -490,7 +490,7 @@ class Shipment implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInt
     /**
      * Gets placement_option_id.
      */
-    public function getPlacementOptionId() : string
+    public function getPlacementOptionId(): string
     {
         return $this->container['placement_option_id'];
     }
@@ -500,7 +500,7 @@ class Shipment implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInt
      *
      * @param string $placement_option_id The identifier of a placement option. A placement option represents the shipment splits and destinations of SKUs.
      */
-    public function setPlacementOptionId(string $placement_option_id) : self
+    public function setPlacementOptionId(string $placement_option_id): self
     {
         $this->container['placement_option_id'] = $placement_option_id;
 
@@ -510,7 +510,7 @@ class Shipment implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInt
     /**
      * Gets selected_delivery_window.
      */
-    public function getSelectedDeliveryWindow() : ?SelectedDeliveryWindow
+    public function getSelectedDeliveryWindow(): ?SelectedDeliveryWindow
     {
         return $this->container['selected_delivery_window'];
     }
@@ -520,7 +520,7 @@ class Shipment implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInt
      *
      * @param null|SelectedDeliveryWindow $selected_delivery_window selected_delivery_window
      */
-    public function setSelectedDeliveryWindow(?SelectedDeliveryWindow $selected_delivery_window) : self
+    public function setSelectedDeliveryWindow(?SelectedDeliveryWindow $selected_delivery_window): self
     {
         $this->container['selected_delivery_window'] = $selected_delivery_window;
 
@@ -530,7 +530,7 @@ class Shipment implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInt
     /**
      * Gets selected_transportation_option_id.
      */
-    public function getSelectedTransportationOptionId() : ?string
+    public function getSelectedTransportationOptionId(): ?string
     {
         return $this->container['selected_transportation_option_id'];
     }
@@ -540,7 +540,7 @@ class Shipment implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInt
      *
      * @param null|string $selected_transportation_option_id Identifier of a transportation option. A transportation option represent one option for how to send a shipment.
      */
-    public function setSelectedTransportationOptionId(?string $selected_transportation_option_id) : self
+    public function setSelectedTransportationOptionId(?string $selected_transportation_option_id): self
     {
         $this->container['selected_transportation_option_id'] = $selected_transportation_option_id;
 
@@ -552,7 +552,7 @@ class Shipment implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInt
      *
      * @return null|SelfShipAppointmentDetails[]
      */
-    public function getSelfShipAppointmentDetails() : ?array
+    public function getSelfShipAppointmentDetails(): ?array
     {
         return $this->container['self_ship_appointment_details'];
     }
@@ -562,7 +562,7 @@ class Shipment implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInt
      *
      * @param null|SelfShipAppointmentDetails[] $self_ship_appointment_details list of self ship appointment details
      */
-    public function setSelfShipAppointmentDetails(?array $self_ship_appointment_details) : self
+    public function setSelfShipAppointmentDetails(?array $self_ship_appointment_details): self
     {
         $this->container['self_ship_appointment_details'] = $self_ship_appointment_details;
 
@@ -572,7 +572,7 @@ class Shipment implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInt
     /**
      * Gets shipment_confirmation_id.
      */
-    public function getShipmentConfirmationId() : ?string
+    public function getShipmentConfirmationId(): ?string
     {
         return $this->container['shipment_confirmation_id'];
     }
@@ -582,7 +582,7 @@ class Shipment implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInt
      *
      * @param null|string $shipment_confirmation_id the confirmed shipment ID which shows up on labels (for example, `FBA1234ABCD`)
      */
-    public function setShipmentConfirmationId(?string $shipment_confirmation_id) : self
+    public function setShipmentConfirmationId(?string $shipment_confirmation_id): self
     {
         $this->container['shipment_confirmation_id'] = $shipment_confirmation_id;
 
@@ -592,7 +592,7 @@ class Shipment implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInt
     /**
      * Gets shipment_id.
      */
-    public function getShipmentId() : string
+    public function getShipmentId(): string
     {
         return $this->container['shipment_id'];
     }
@@ -602,7 +602,7 @@ class Shipment implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInt
      *
      * @param string $shipment_id Identifier of a shipment. A shipment contains the boxes and units being inbounded.
      */
-    public function setShipmentId(string $shipment_id) : self
+    public function setShipmentId(string $shipment_id): self
     {
         $this->container['shipment_id'] = $shipment_id;
 
@@ -612,7 +612,7 @@ class Shipment implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInt
     /**
      * Gets source.
      */
-    public function getSource() : ShipmentSource
+    public function getSource(): ShipmentSource
     {
         return $this->container['source'];
     }
@@ -622,7 +622,7 @@ class Shipment implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInt
      *
      * @param ShipmentSource $source source
      */
-    public function setSource(ShipmentSource $source) : self
+    public function setSource(ShipmentSource $source): self
     {
         $this->container['source'] = $source;
 
@@ -632,7 +632,7 @@ class Shipment implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInt
     /**
      * Gets status.
      */
-    public function getStatus() : ?string
+    public function getStatus(): ?string
     {
         return $this->container['status'];
     }
@@ -642,7 +642,7 @@ class Shipment implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInt
      *
      * @param null|string $status The status of a shipment. The state of the shipment will typically start in `WORKING` and transition to `READY_TO_SHIP` once required actions are complete prior to being picked up or shipped out. Can be `ABANDONED`, `CANCELLED`, `CHECKED_IN`, `CLOSED`, `DELETED`, `DELIVERED`, `IN_TRANSIT`, `MIXED`, `READY_TO_SHIP`, `RECEIVING`, `SHIPPED`, or `WORKING`.
      */
-    public function setStatus(?string $status) : self
+    public function setStatus(?string $status): self
     {
         $this->container['status'] = $status;
 
@@ -652,7 +652,7 @@ class Shipment implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInt
     /**
      * Gets tracking_details.
      */
-    public function getTrackingDetails() : ?TrackingDetails
+    public function getTrackingDetails(): ?TrackingDetails
     {
         return $this->container['tracking_details'];
     }
@@ -662,7 +662,7 @@ class Shipment implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInt
      *
      * @param null|TrackingDetails $tracking_details tracking_details
      */
-    public function setTrackingDetails(?TrackingDetails $tracking_details) : self
+    public function setTrackingDetails(?TrackingDetails $tracking_details): self
     {
         $this->container['tracking_details'] = $tracking_details;
 
@@ -672,7 +672,7 @@ class Shipment implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInt
     /**
      * Returns true if offset exists. False otherwise.
      */
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -683,7 +683,7 @@ class Shipment implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInt
      * @return null|mixed
      */
     #[\ReturnTypeWillChange]
-    public function offsetGet($offset) : mixed
+    public function offsetGet($offset): mixed
     {
         return $this->container[$offset] ?? null;
     }
@@ -691,7 +691,7 @@ class Shipment implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInt
     /**
      * Sets value based on offset.
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         if (null === $offset) {
             $this->container[] = $value;
@@ -703,7 +703,7 @@ class Shipment implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInt
     /**
      * Unsets offset.
      */
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -717,7 +717,7 @@ class Shipment implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInt
      *               of any type other than a resource
      */
     #[\ReturnTypeWillChange]
-    public function jsonSerialize() : string
+    public function jsonSerialize(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }
@@ -725,7 +725,7 @@ class Shipment implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInt
     /**
      * Gets a header-safe presentation of the object.
      */
-    public function toHeaderValue() : string
+    public function toHeaderValue(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }

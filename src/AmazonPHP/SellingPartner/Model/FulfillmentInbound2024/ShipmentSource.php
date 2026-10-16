@@ -38,7 +38,7 @@ class ShipmentSource implements \ArrayAccess, \JsonSerializable, \Stringable, Mo
      * @var string[]
      */
     protected static array $openAPITypes = [
-        'address' => '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound2024\Address',
+        'address' => \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound2024\Address::class,
         'source_type' => 'string',
     ];
 
@@ -100,7 +100,7 @@ class ShipmentSource implements \ArrayAccess, \JsonSerializable, \Stringable, Mo
      * @param null|mixed[] $data Associated array of property values
      *                           initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['address'] = $data['address'] ?? null;
         $this->container['source_type'] = $data['source_type'] ?? null;
@@ -109,7 +109,7 @@ class ShipmentSource implements \ArrayAccess, \JsonSerializable, \Stringable, Mo
     /**
      * Array of property to type mappings. Used for (de)serialization.
      */
-    public static function openAPITypes() : array
+    public static function openAPITypes(): array
     {
         return self::$openAPITypes;
     }
@@ -117,7 +117,7 @@ class ShipmentSource implements \ArrayAccess, \JsonSerializable, \Stringable, Mo
     /**
      * Array of property to format mappings. Used for (de)serialization.
      */
-    public static function openAPIFormats() : array
+    public static function openAPIFormats(): array
     {
         return self::$openAPIFormats;
     }
@@ -126,7 +126,7 @@ class ShipmentSource implements \ArrayAccess, \JsonSerializable, \Stringable, Mo
      * Array of attributes where the key is the local name,
      * and the value is the original name.
      */
-    public static function attributeMap() : array
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -134,7 +134,7 @@ class ShipmentSource implements \ArrayAccess, \JsonSerializable, \Stringable, Mo
     /**
      * Array of attributes to setter functions (for deserialization of responses).
      */
-    public static function setters() : array
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -142,7 +142,7 @@ class ShipmentSource implements \ArrayAccess, \JsonSerializable, \Stringable, Mo
     /**
      * Array of attributes to getter functions (for serialization of requests).
      */
-    public static function getters() : array
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -150,7 +150,7 @@ class ShipmentSource implements \ArrayAccess, \JsonSerializable, \Stringable, Mo
     /**
      * Gets the string presentation of the object.
      */
-    public function __toString() : string
+    public function __toString(): string
     {
         return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
@@ -161,7 +161,7 @@ class ShipmentSource implements \ArrayAccess, \JsonSerializable, \Stringable, Mo
     /**
      * The original name of the model.
      */
-    public function getModelName() : string
+    public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
@@ -171,10 +171,10 @@ class ShipmentSource implements \ArrayAccess, \JsonSerializable, \Stringable, Mo
      *
      * @throws AssertionException
      */
-    public function listInvalidProperties() : array
+    public function listInvalidProperties(): array
     {
         $invalidProperties = [];
-         
+
         if ($this->container['address'] !== null) {
             $this->container['address']->listInvalidProperties();
         }
@@ -200,7 +200,7 @@ class ShipmentSource implements \ArrayAccess, \JsonSerializable, \Stringable, Mo
      *
      * @return bool True if all properties are valid
      */
-    public function valid() : bool
+    public function valid(): bool
     {
         return \count($this->listInvalidProperties()) === 0;
     }
@@ -208,7 +208,7 @@ class ShipmentSource implements \ArrayAccess, \JsonSerializable, \Stringable, Mo
     /**
      * Gets address.
      */
-    public function getAddress() : ?Address
+    public function getAddress(): ?Address
     {
         return $this->container['address'];
     }
@@ -218,7 +218,7 @@ class ShipmentSource implements \ArrayAccess, \JsonSerializable, \Stringable, Mo
      *
      * @param null|Address $address address
      */
-    public function setAddress(?Address $address) : self
+    public function setAddress(?Address $address): self
     {
         $this->container['address'] = $address;
 
@@ -228,7 +228,7 @@ class ShipmentSource implements \ArrayAccess, \JsonSerializable, \Stringable, Mo
     /**
      * Gets source_type.
      */
-    public function getSourceType() : string
+    public function getSourceType(): string
     {
         return $this->container['source_type'];
     }
@@ -238,7 +238,7 @@ class ShipmentSource implements \ArrayAccess, \JsonSerializable, \Stringable, Mo
      *
      * @param string $source_type The type of source for this shipment. Can be: `SELLER_FACILITY`.
      */
-    public function setSourceType(string $source_type) : self
+    public function setSourceType(string $source_type): self
     {
         $this->container['source_type'] = $source_type;
 
@@ -248,7 +248,7 @@ class ShipmentSource implements \ArrayAccess, \JsonSerializable, \Stringable, Mo
     /**
      * Returns true if offset exists. False otherwise.
      */
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -259,7 +259,7 @@ class ShipmentSource implements \ArrayAccess, \JsonSerializable, \Stringable, Mo
      * @return null|mixed
      */
     #[\ReturnTypeWillChange]
-    public function offsetGet($offset) : mixed
+    public function offsetGet($offset): mixed
     {
         return $this->container[$offset] ?? null;
     }
@@ -267,7 +267,7 @@ class ShipmentSource implements \ArrayAccess, \JsonSerializable, \Stringable, Mo
     /**
      * Sets value based on offset.
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         if (null === $offset) {
             $this->container[] = $value;
@@ -279,7 +279,7 @@ class ShipmentSource implements \ArrayAccess, \JsonSerializable, \Stringable, Mo
     /**
      * Unsets offset.
      */
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -293,7 +293,7 @@ class ShipmentSource implements \ArrayAccess, \JsonSerializable, \Stringable, Mo
      *               of any type other than a resource
      */
     #[\ReturnTypeWillChange]
-    public function jsonSerialize() : string
+    public function jsonSerialize(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }
@@ -301,7 +301,7 @@ class ShipmentSource implements \ArrayAccess, \JsonSerializable, \Stringable, Mo
     /**
      * Gets a header-safe presentation of the object.
      */
-    public function toHeaderValue() : string
+    public function toHeaderValue(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }

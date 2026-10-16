@@ -1,4 +1,5 @@
 <?php
+
 /**
  * ItemRelatedIdentifier
  *
@@ -27,7 +28,7 @@
 
 namespace Plenty\AmazonPHP\SellingPartner\Model\Finances2024;
 
-use \ArrayAccess;
+use ArrayAccess;
 use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
 use Plenty\AmazonPHP\SellingPartner\ModelInterface;
 
@@ -39,7 +40,7 @@ use Plenty\AmazonPHP\SellingPartner\ModelInterface;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class ItemRelatedIdentifier implements ModelInterface, ArrayAccess, \JsonSerializable
+class ItemRelatedIdentifier implements ModelInterface, ArrayAccess, \JsonSerializable, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -77,7 +78,7 @@ class ItemRelatedIdentifier implements ModelInterface, ArrayAccess, \JsonSeriali
      *
      * @return array
      */
-    public static function openAPITypes() : array
+    public static function openAPITypes(): array
     {
         return self::$openAPITypes;
     }
@@ -87,7 +88,7 @@ class ItemRelatedIdentifier implements ModelInterface, ArrayAccess, \JsonSeriali
      *
      * @return array
      */
-    public static function openAPIFormats() : array
+    public static function openAPIFormats(): array
     {
         return self::$openAPIFormats;
     }
@@ -129,7 +130,7 @@ class ItemRelatedIdentifier implements ModelInterface, ArrayAccess, \JsonSeriali
      *
      * @return array
      */
-    public static function attributeMap() : array
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -139,7 +140,7 @@ class ItemRelatedIdentifier implements ModelInterface, ArrayAccess, \JsonSeriali
      *
      * @return array
      */
-    public static function setters() : array
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -149,7 +150,7 @@ class ItemRelatedIdentifier implements ModelInterface, ArrayAccess, \JsonSeriali
      *
      * @return array
      */
-    public static function getters() : array
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -159,7 +160,7 @@ class ItemRelatedIdentifier implements ModelInterface, ArrayAccess, \JsonSeriali
      *
      * @return string
      */
-    public function getModelName() : string
+    public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
@@ -168,19 +169,21 @@ class ItemRelatedIdentifier implements ModelInterface, ArrayAccess, \JsonSeriali
     const ITEM_RELATED_IDENTIFIER_NAME_COUPON_ID = 'COUPON_ID';
     const ITEM_RELATED_IDENTIFIER_NAME_REMOVAL_SHIPMENT_ITEM_ID = 'REMOVAL_SHIPMENT_ITEM_ID';
     const ITEM_RELATED_IDENTIFIER_NAME_TRANSACTION_ID = 'TRANSACTION_ID';
+    const ITEM_RELATED_IDENTIFIER_NAME_INVOICE_ID = 'INVOICE_ID';
 
     /**
      * Gets allowable values of the enum
      *
      * @return string[]
      */
-    public function getItemRelatedIdentifierNameAllowableValues() : array
+    public function getItemRelatedIdentifierNameAllowableValues(): array
     {
         return [
             self::ITEM_RELATED_IDENTIFIER_NAME_ORDER_ADJUSTMENT_ITEM_ID,
             self::ITEM_RELATED_IDENTIFIER_NAME_COUPON_ID,
             self::ITEM_RELATED_IDENTIFIER_NAME_REMOVAL_SHIPMENT_ITEM_ID,
             self::ITEM_RELATED_IDENTIFIER_NAME_TRANSACTION_ID,
+            self::ITEM_RELATED_IDENTIFIER_NAME_INVOICE_ID,
         ];
     }
 
@@ -197,7 +200,7 @@ class ItemRelatedIdentifier implements ModelInterface, ArrayAccess, \JsonSeriali
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['item_related_identifier_name'] = $data['item_related_identifier_name'] ?? null;
         $this->container['item_related_identifier_value'] = $data['item_related_identifier_value'] ?? null;
@@ -208,7 +211,7 @@ class ItemRelatedIdentifier implements ModelInterface, ArrayAccess, \JsonSeriali
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties() : array
+    public function listInvalidProperties(): array
     {
         $invalidProperties = [];
 
@@ -230,7 +233,7 @@ class ItemRelatedIdentifier implements ModelInterface, ArrayAccess, \JsonSeriali
      *
      * @return bool True if all properties are valid
      */
-    public function valid() : bool
+    public function valid(): bool
     {
         return count($this->listInvalidProperties()) === 0;
     }
@@ -253,18 +256,15 @@ class ItemRelatedIdentifier implements ModelInterface, ArrayAccess, \JsonSeriali
      *
      * @return self
      */
-    public function setItemRelatedIdentifierName($item_related_identifier_name) : self
+    public function setItemRelatedIdentifierName($item_related_identifier_name): self
     {
-        $allowedValues = $this->getItemRelatedIdentifierNameAllowableValues();
-        if (!is_null($item_related_identifier_name) && !in_array($item_related_identifier_name, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'item_related_identifier_name', must be one of '%s'",
-                    $item_related_identifier_name,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
+        // Deliberately not validated against getItemRelatedIdentifierNameAllowableValues(): this
+        // setter runs during response deserialization (ObjectSerializer::deserialize()), not
+        // request-building, so Amazon adding a new identifier name we don't know about yet is
+        // expected forward-compatible behaviour, not a client bug. Throwing here aborted
+        // deserialization of the entire response for one unrecognized value (see INVOICE_ID/
+        // OBFUSCATED_SHIPMENT_ID incidents). listInvalidProperties()/valid() still flag unknown
+        // values for callers who want to check.
         $this->container['item_related_identifier_name'] = $item_related_identifier_name;
 
         return $this;
@@ -287,7 +287,7 @@ class ItemRelatedIdentifier implements ModelInterface, ArrayAccess, \JsonSeriali
      *
      * @return self
      */
-    public function setItemRelatedIdentifierValue($item_related_identifier_value) : self
+    public function setItemRelatedIdentifierValue($item_related_identifier_value): self
     {
         $this->container['item_related_identifier_value'] = $item_related_identifier_value;
 
@@ -300,7 +300,7 @@ class ItemRelatedIdentifier implements ModelInterface, ArrayAccess, \JsonSeriali
      *
      * @return boolean
      */
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -312,7 +312,7 @@ class ItemRelatedIdentifier implements ModelInterface, ArrayAccess, \JsonSeriali
      *
      * @return mixed|null
      */
-    public function offsetGet($offset)
+    public function offsetGet($offset): mixed
     {
         return $this->container[$offset] ?? null;
     }
@@ -325,7 +325,7 @@ class ItemRelatedIdentifier implements ModelInterface, ArrayAccess, \JsonSeriali
      *
      * @return void
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         if (is_null($offset)) {
             $this->container[] = $value;
@@ -341,7 +341,7 @@ class ItemRelatedIdentifier implements ModelInterface, ArrayAccess, \JsonSeriali
      *
      * @return void
      */
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -353,9 +353,9 @@ class ItemRelatedIdentifier implements ModelInterface, ArrayAccess, \JsonSeriali
      * @return mixed Returns data which can be serialized by json_encode(), which is a value
      * of any type other than a resource.
      */
-    public function jsonSerialize() : string
+    public function jsonSerialize(): string
     {
-       return \json_encode(ObjectSerializer::sanitizeForSerialization($this));
+        return \json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }
 
     /**
@@ -363,9 +363,9 @@ class ItemRelatedIdentifier implements ModelInterface, ArrayAccess, \JsonSeriali
      *
      * @return string
      */
-    public function __toString() : string
+    public function __toString(): string
     {
-        return json_encode(
+        return (string) json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );
@@ -376,7 +376,7 @@ class ItemRelatedIdentifier implements ModelInterface, ArrayAccess, \JsonSeriali
      *
      * @return string
      */
-    public function toHeaderValue() : string
+    public function toHeaderValue(): string
     {
         return json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }

@@ -78,6 +78,8 @@ Until old model won't go away, branches 2.x and 3.x should be maintained in para
 * [NotificationsSDK](/src/AmazonPHP/SellingPartner/Api/NotificationsApi/NotificationsSDK.php)
 * [OrdersSDK](/src/AmazonPHP/SellingPartner/Api/OrdersV0Api/OrdersSDK.php)
 * [Shipment/OrdersSDK](/src/AmazonPHP/SellingPartner/Api/ShipmentApi/OrdersSDK.php)
+* [OrdersSDK2026 (getOrder)](/src/AmazonPHP/SellingPartner/Api/GetOrderApi/OrdersSDK2026.php)
+* [OrdersSDK2026 (searchOrders)](/src/AmazonPHP/SellingPartner/Api/SearchOrdersApi/OrdersSDK2026.php)
 * [ProductFeesSDK](/src/AmazonPHP/SellingPartner/Api/FeesApi/ProductFeesSDK.php)
 * [ProductPricingSDK](/src/AmazonPHP/SellingPartner/Api/ProductPricingApi/ProductPricingSDK.php)
 * [ProductTypesDefinitionsSDK](/src/AmazonPHP/SellingPartner/Api/DefinitionsApi/ProductTypesDefinitionsSDK.php)

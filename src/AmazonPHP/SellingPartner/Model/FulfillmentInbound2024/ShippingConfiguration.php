@@ -100,7 +100,7 @@ class ShippingConfiguration implements \ArrayAccess, \JsonSerializable, \Stringa
      * @param null|mixed[] $data Associated array of property values
      *                           initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['shipping_mode'] = $data['shipping_mode'] ?? null;
         $this->container['shipping_solution'] = $data['shipping_solution'] ?? null;
@@ -109,7 +109,7 @@ class ShippingConfiguration implements \ArrayAccess, \JsonSerializable, \Stringa
     /**
      * Array of property to type mappings. Used for (de)serialization.
      */
-    public static function openAPITypes() : array
+    public static function openAPITypes(): array
     {
         return self::$openAPITypes;
     }
@@ -117,7 +117,7 @@ class ShippingConfiguration implements \ArrayAccess, \JsonSerializable, \Stringa
     /**
      * Array of property to format mappings. Used for (de)serialization.
      */
-    public static function openAPIFormats() : array
+    public static function openAPIFormats(): array
     {
         return self::$openAPIFormats;
     }
@@ -126,7 +126,7 @@ class ShippingConfiguration implements \ArrayAccess, \JsonSerializable, \Stringa
      * Array of attributes where the key is the local name,
      * and the value is the original name.
      */
-    public static function attributeMap() : array
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -134,7 +134,7 @@ class ShippingConfiguration implements \ArrayAccess, \JsonSerializable, \Stringa
     /**
      * Array of attributes to setter functions (for deserialization of responses).
      */
-    public static function setters() : array
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -142,7 +142,7 @@ class ShippingConfiguration implements \ArrayAccess, \JsonSerializable, \Stringa
     /**
      * Array of attributes to getter functions (for serialization of requests).
      */
-    public static function getters() : array
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -150,7 +150,7 @@ class ShippingConfiguration implements \ArrayAccess, \JsonSerializable, \Stringa
     /**
      * Gets the string presentation of the object.
      */
-    public function __toString() : string
+    public function __toString(): string
     {
         return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
@@ -161,7 +161,7 @@ class ShippingConfiguration implements \ArrayAccess, \JsonSerializable, \Stringa
     /**
      * The original name of the model.
      */
-    public function getModelName() : string
+    public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
@@ -171,10 +171,10 @@ class ShippingConfiguration implements \ArrayAccess, \JsonSerializable, \Stringa
      *
      * @throws AssertionException
      */
-    public function listInvalidProperties() : array
+    public function listInvalidProperties(): array
     {
         $invalidProperties = [];
-         
+
         if (null !== $this->container['shipping_mode'] && (\mb_strlen((string) $this->container['shipping_mode']) > 1024)) {
             $invalidProperties[] = "invalid value for 'shipping_mode', the character length must be smaller than or equal to 1024.";
         }
@@ -200,7 +200,7 @@ class ShippingConfiguration implements \ArrayAccess, \JsonSerializable, \Stringa
      *
      * @return bool True if all properties are valid
      */
-    public function valid() : bool
+    public function valid(): bool
     {
         return \count($this->listInvalidProperties()) === 0;
     }
@@ -208,7 +208,7 @@ class ShippingConfiguration implements \ArrayAccess, \JsonSerializable, \Stringa
     /**
      * Gets shipping_mode.
      */
-    public function getShippingMode() : ?string
+    public function getShippingMode(): ?string
     {
         return $this->container['shipping_mode'];
     }
@@ -218,7 +218,7 @@ class ShippingConfiguration implements \ArrayAccess, \JsonSerializable, \Stringa
      *
      * @param null|string $shipping_mode Mode of shipment transportation that this option will provide. Can be: `GROUND_SMALL_PARCEL`, `FREIGHT_LTL`, `FREIGHT_FTL_PALLET`, `FREIGHT_FTL_NONPALLET`, `OCEAN_LCL`, `OCEAN_FCL`, `AIR_SMALL_PARCEL`, `AIR_SMALL_PARCEL_EXPRESS`.
      */
-    public function setShippingMode(?string $shipping_mode) : self
+    public function setShippingMode(?string $shipping_mode): self
     {
         $this->container['shipping_mode'] = $shipping_mode;
 
@@ -228,7 +228,7 @@ class ShippingConfiguration implements \ArrayAccess, \JsonSerializable, \Stringa
     /**
      * Gets shipping_solution.
      */
-    public function getShippingSolution() : ?string
+    public function getShippingSolution(): ?string
     {
         return $this->container['shipping_solution'];
     }
@@ -238,7 +238,7 @@ class ShippingConfiguration implements \ArrayAccess, \JsonSerializable, \Stringa
      *
      * @param null|string $shipping_solution Shipping program for the option. Can be: `AMAZON_PARTNERED_CARRIER`, `USE_YOUR_OWN_CARRIER`.
      */
-    public function setShippingSolution(?string $shipping_solution) : self
+    public function setShippingSolution(?string $shipping_solution): self
     {
         $this->container['shipping_solution'] = $shipping_solution;
 
@@ -248,7 +248,7 @@ class ShippingConfiguration implements \ArrayAccess, \JsonSerializable, \Stringa
     /**
      * Returns true if offset exists. False otherwise.
      */
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -259,7 +259,7 @@ class ShippingConfiguration implements \ArrayAccess, \JsonSerializable, \Stringa
      * @return null|mixed
      */
     #[\ReturnTypeWillChange]
-    public function offsetGet($offset) : mixed
+    public function offsetGet($offset): mixed
     {
         return $this->container[$offset] ?? null;
     }
@@ -267,7 +267,7 @@ class ShippingConfiguration implements \ArrayAccess, \JsonSerializable, \Stringa
     /**
      * Sets value based on offset.
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         if (null === $offset) {
             $this->container[] = $value;
@@ -279,7 +279,7 @@ class ShippingConfiguration implements \ArrayAccess, \JsonSerializable, \Stringa
     /**
      * Unsets offset.
      */
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -293,7 +293,7 @@ class ShippingConfiguration implements \ArrayAccess, \JsonSerializable, \Stringa
      *               of any type other than a resource
      */
     #[\ReturnTypeWillChange]
-    public function jsonSerialize() : string
+    public function jsonSerialize(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }
@@ -301,7 +301,7 @@ class ShippingConfiguration implements \ArrayAccess, \JsonSerializable, \Stringa
     /**
      * Gets a header-safe presentation of the object.
      */
-    public function toHeaderValue() : string
+    public function toHeaderValue(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }

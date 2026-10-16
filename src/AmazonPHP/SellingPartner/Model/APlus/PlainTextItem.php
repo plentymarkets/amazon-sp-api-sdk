@@ -1,4 +1,7 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
+
 /**
  * PlainTextItem.
  *
@@ -40,7 +43,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class PlainTextItem implements \ArrayAccess, \JsonSerializable, ModelInterface
+class PlainTextItem implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -117,7 +120,7 @@ class PlainTextItem implements \ArrayAccess, \JsonSerializable, ModelInterface
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['position'] = $data['position'] ?? null;
         $this->container['value'] = $data['value'] ?? null;
@@ -128,7 +131,7 @@ class PlainTextItem implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return string[]
      */
-    public static function openAPITypes() : array
+    public static function openAPITypes(): array
     {
         return self::$openAPITypes;
     }
@@ -138,7 +141,7 @@ class PlainTextItem implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return null[]|string[]
      */
-    public static function openAPIFormats() : array
+    public static function openAPIFormats(): array
     {
         return self::$openAPIFormats;
     }
@@ -149,7 +152,7 @@ class PlainTextItem implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return string[]
      */
-    public static function attributeMap() : array
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -159,7 +162,7 @@ class PlainTextItem implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return string[]
      */
-    public static function setters() : array
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -169,7 +172,7 @@ class PlainTextItem implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return string[]
      */
-    public static function getters() : array
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -177,9 +180,9 @@ class PlainTextItem implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets the string presentation of the object.
      */
-    public function __toString() : string
+    public function __toString(): string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );
@@ -188,7 +191,7 @@ class PlainTextItem implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * The original name of the model.
      */
-    public function getModelName() : string
+    public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
@@ -198,7 +201,7 @@ class PlainTextItem implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties() : array
+    public function listInvalidProperties(): array
     {
         $invalidProperties = [];
 
@@ -235,7 +238,7 @@ class PlainTextItem implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return bool True if all properties are valid
      */
-    public function valid() : bool
+    public function valid(): bool
     {
         return \count($this->listInvalidProperties()) === 0;
     }
@@ -243,7 +246,7 @@ class PlainTextItem implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets position.
      */
-    public function getPosition() : int
+    public function getPosition(): int
     {
         return $this->container['position'];
     }
@@ -253,7 +256,7 @@ class PlainTextItem implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param int $position The rank or index of this text item within the collection. Different items cannot occupy the same position within a single collection.
      */
-    public function setPosition(int $position) : self
+    public function setPosition(int $position): self
     {
         if (($position > 100)) {
             throw new \InvalidArgumentException('invalid value for $position when calling PlainTextItem., must be smaller than or equal to 100.');
@@ -271,7 +274,7 @@ class PlainTextItem implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets value.
      */
-    public function getValue() : string
+    public function getValue(): string
     {
         return $this->container['value'];
     }
@@ -281,7 +284,7 @@ class PlainTextItem implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param string $value the actual plain text
      */
-    public function setValue(string $value) : self
+    public function setValue(string $value): self
     {
         if ((\mb_strlen($value) > 250)) {
             throw new \InvalidArgumentException('invalid length for $value when calling PlainTextItem., must be smaller than or equal to 250.');
@@ -301,7 +304,7 @@ class PlainTextItem implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param int $offset Offset
      */
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -324,7 +327,7 @@ class PlainTextItem implements \ArrayAccess, \JsonSerializable, ModelInterface
      * @param null|int $offset Offset
      * @param mixed $value Value to be set
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         if (null === $offset) {
             $this->container[] = $value;
@@ -338,7 +341,7 @@ class PlainTextItem implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param int $offset Offset
      */
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -351,7 +354,7 @@ class PlainTextItem implements \ArrayAccess, \JsonSerializable, ModelInterface
      * @return mixed returns data which can be serialized by json_encode(), which is a value
      *               of any type other than a resource
      */
-    public function jsonSerialize() : string
+    public function jsonSerialize(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }
@@ -359,7 +362,7 @@ class PlainTextItem implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets a header-safe presentation of the object.
      */
-    public function toHeaderValue() : string
+    public function toHeaderValue(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }

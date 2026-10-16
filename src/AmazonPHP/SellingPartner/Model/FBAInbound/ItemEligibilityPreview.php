@@ -1,4 +1,7 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
+
 /**
  * ItemEligibilityPreview.
  *
@@ -40,7 +43,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class ItemEligibilityPreview implements \ArrayAccess, \JsonSerializable, ModelInterface
+class ItemEligibilityPreview implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -214,7 +217,7 @@ class ItemEligibilityPreview implements \ArrayAccess, \JsonSerializable, ModelIn
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['asin'] = $data['asin'] ?? null;
         $this->container['marketplace_id'] = $data['marketplace_id'] ?? null;
@@ -228,7 +231,7 @@ class ItemEligibilityPreview implements \ArrayAccess, \JsonSerializable, ModelIn
      *
      * @return string[]
      */
-    public static function openAPITypes() : array
+    public static function openAPITypes(): array
     {
         return self::$openAPITypes;
     }
@@ -238,7 +241,7 @@ class ItemEligibilityPreview implements \ArrayAccess, \JsonSerializable, ModelIn
      *
      * @return null[]|string[]
      */
-    public static function openAPIFormats() : array
+    public static function openAPIFormats(): array
     {
         return self::$openAPIFormats;
     }
@@ -249,7 +252,7 @@ class ItemEligibilityPreview implements \ArrayAccess, \JsonSerializable, ModelIn
      *
      * @return string[]
      */
-    public static function attributeMap() : array
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -259,7 +262,7 @@ class ItemEligibilityPreview implements \ArrayAccess, \JsonSerializable, ModelIn
      *
      * @return string[]
      */
-    public static function setters() : array
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -269,7 +272,7 @@ class ItemEligibilityPreview implements \ArrayAccess, \JsonSerializable, ModelIn
      *
      * @return string[]
      */
-    public static function getters() : array
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -277,9 +280,9 @@ class ItemEligibilityPreview implements \ArrayAccess, \JsonSerializable, ModelIn
     /**
      * Gets the string presentation of the object.
      */
-    public function __toString() : string
+    public function __toString(): string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );
@@ -288,7 +291,7 @@ class ItemEligibilityPreview implements \ArrayAccess, \JsonSerializable, ModelIn
     /**
      * The original name of the model.
      */
-    public function getModelName() : string
+    public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
@@ -298,7 +301,7 @@ class ItemEligibilityPreview implements \ArrayAccess, \JsonSerializable, ModelIn
      *
      * @return string[]
      */
-    public function getProgramAllowableValues() : array
+    public function getProgramAllowableValues(): array
     {
         return [
             self::PROGRAM_INBOUND,
@@ -311,7 +314,7 @@ class ItemEligibilityPreview implements \ArrayAccess, \JsonSerializable, ModelIn
      *
      * @return string[]
      */
-    public function getIneligibilityReasonListAllowableValues() : array
+    public function getIneligibilityReasonListAllowableValues(): array
     {
         return [
             self::INELIGIBILITY_REASON_LIST_FBA_INB_0004,
@@ -361,7 +364,7 @@ class ItemEligibilityPreview implements \ArrayAccess, \JsonSerializable, ModelIn
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties() : array
+    public function listInvalidProperties(): array
     {
         $invalidProperties = [];
 
@@ -395,7 +398,7 @@ class ItemEligibilityPreview implements \ArrayAccess, \JsonSerializable, ModelIn
      *
      * @return bool True if all properties are valid
      */
-    public function valid() : bool
+    public function valid(): bool
     {
         return \count($this->listInvalidProperties()) === 0;
     }
@@ -403,7 +406,7 @@ class ItemEligibilityPreview implements \ArrayAccess, \JsonSerializable, ModelIn
     /**
      * Gets asin.
      */
-    public function getAsin() : string
+    public function getAsin(): string
     {
         return $this->container['asin'];
     }
@@ -413,7 +416,7 @@ class ItemEligibilityPreview implements \ArrayAccess, \JsonSerializable, ModelIn
      *
      * @param string $asin the ASIN for which eligibility was determined
      */
-    public function setAsin(string $asin) : self
+    public function setAsin(string $asin): self
     {
         $this->container['asin'] = $asin;
 
@@ -423,7 +426,7 @@ class ItemEligibilityPreview implements \ArrayAccess, \JsonSerializable, ModelIn
     /**
      * Gets marketplace_id.
      */
-    public function getMarketplaceId() : ?string
+    public function getMarketplaceId(): ?string
     {
         return $this->container['marketplace_id'];
     }
@@ -433,7 +436,7 @@ class ItemEligibilityPreview implements \ArrayAccess, \JsonSerializable, ModelIn
      *
      * @param null|string $marketplace_id the marketplace for which eligibility was determined
      */
-    public function setMarketplaceId(?string $marketplace_id) : self
+    public function setMarketplaceId(?string $marketplace_id): self
     {
         $this->container['marketplace_id'] = $marketplace_id;
 
@@ -443,7 +446,7 @@ class ItemEligibilityPreview implements \ArrayAccess, \JsonSerializable, ModelIn
     /**
      * Gets program.
      */
-    public function getProgram() : string
+    public function getProgram(): string
     {
         return $this->container['program'];
     }
@@ -453,7 +456,7 @@ class ItemEligibilityPreview implements \ArrayAccess, \JsonSerializable, ModelIn
      *
      * @param string $program the program for which eligibility was determined
      */
-    public function setProgram(string $program) : self
+    public function setProgram(string $program): self
     {
         $allowedValues = $this->getProgramAllowableValues();
 
@@ -474,7 +477,7 @@ class ItemEligibilityPreview implements \ArrayAccess, \JsonSerializable, ModelIn
     /**
      * Gets is_eligible_for_program.
      */
-    public function getIsEligibleForProgram() : bool
+    public function getIsEligibleForProgram(): bool
     {
         return $this->container['is_eligible_for_program'];
     }
@@ -484,7 +487,7 @@ class ItemEligibilityPreview implements \ArrayAccess, \JsonSerializable, ModelIn
      *
      * @param bool $is_eligible_for_program indicates if the item is eligible for the program
      */
-    public function setIsEligibleForProgram(bool $is_eligible_for_program) : self
+    public function setIsEligibleForProgram(bool $is_eligible_for_program): self
     {
         $this->container['is_eligible_for_program'] = $is_eligible_for_program;
 
@@ -496,7 +499,7 @@ class ItemEligibilityPreview implements \ArrayAccess, \JsonSerializable, ModelIn
      *
      * @return null|string[]
      */
-    public function getIneligibilityReasonList() : ?array
+    public function getIneligibilityReasonList(): ?array
     {
         return $this->container['ineligibility_reason_list'];
     }
@@ -506,7 +509,7 @@ class ItemEligibilityPreview implements \ArrayAccess, \JsonSerializable, ModelIn
      *
      * @param null|string[] $ineligibility_reason_list potential Ineligibility Reason Codes
      */
-    public function setIneligibilityReasonList(?array $ineligibility_reason_list) : self
+    public function setIneligibilityReasonList(?array $ineligibility_reason_list): self
     {
         $allowedValues = $this->getIneligibilityReasonListAllowableValues();
 
@@ -528,7 +531,7 @@ class ItemEligibilityPreview implements \ArrayAccess, \JsonSerializable, ModelIn
      *
      * @param int $offset Offset
      */
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -551,7 +554,7 @@ class ItemEligibilityPreview implements \ArrayAccess, \JsonSerializable, ModelIn
      * @param null|int $offset Offset
      * @param mixed $value Value to be set
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         if (null === $offset) {
             $this->container[] = $value;
@@ -565,7 +568,7 @@ class ItemEligibilityPreview implements \ArrayAccess, \JsonSerializable, ModelIn
      *
      * @param int $offset Offset
      */
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -578,7 +581,7 @@ class ItemEligibilityPreview implements \ArrayAccess, \JsonSerializable, ModelIn
      * @return mixed returns data which can be serialized by json_encode(), which is a value
      *               of any type other than a resource
      */
-    public function jsonSerialize() : string
+    public function jsonSerialize(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }
@@ -586,7 +589,7 @@ class ItemEligibilityPreview implements \ArrayAccess, \JsonSerializable, ModelIn
     /**
      * Gets a header-safe presentation of the object.
      */
-    public function toHeaderValue() : string
+    public function toHeaderValue(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }

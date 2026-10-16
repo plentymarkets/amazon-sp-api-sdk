@@ -1,4 +1,7 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
+
 /**
  * Promotion.
  *
@@ -40,7 +43,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class Promotion implements \ArrayAccess, \JsonSerializable, ModelInterface
+class Promotion implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -59,7 +62,7 @@ class Promotion implements \ArrayAccess, \JsonSerializable, ModelInterface
     protected static /** [COMPAT] array */ $openAPITypes = [
         'promotion_type' => 'string',
         'promotion_id' => 'string',
-        'promotion_amount' => '\Plenty\AmazonPHP\SellingPartner\Model\Finances\Currency',
+        'promotion_amount' => \Plenty\AmazonPHP\SellingPartner\Model\Finances\Currency::class,
     ];
 
     /**
@@ -122,7 +125,7 @@ class Promotion implements \ArrayAccess, \JsonSerializable, ModelInterface
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['promotion_type'] = $data['promotion_type'] ?? null;
         $this->container['promotion_id'] = $data['promotion_id'] ?? null;
@@ -134,7 +137,7 @@ class Promotion implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return string[]
      */
-    public static function openAPITypes() : array
+    public static function openAPITypes(): array
     {
         return self::$openAPITypes;
     }
@@ -144,7 +147,7 @@ class Promotion implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return null[]|string[]
      */
-    public static function openAPIFormats() : array
+    public static function openAPIFormats(): array
     {
         return self::$openAPIFormats;
     }
@@ -155,7 +158,7 @@ class Promotion implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return string[]
      */
-    public static function attributeMap() : array
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -165,7 +168,7 @@ class Promotion implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return string[]
      */
-    public static function setters() : array
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -175,7 +178,7 @@ class Promotion implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return string[]
      */
-    public static function getters() : array
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -183,9 +186,9 @@ class Promotion implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets the string presentation of the object.
      */
-    public function __toString() : string
+    public function __toString(): string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );
@@ -194,7 +197,7 @@ class Promotion implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * The original name of the model.
      */
-    public function getModelName() : string
+    public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
@@ -204,7 +207,7 @@ class Promotion implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties() : array
+    public function listInvalidProperties(): array
     {
         return [];
     }
@@ -215,7 +218,7 @@ class Promotion implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return bool True if all properties are valid
      */
-    public function valid() : bool
+    public function valid(): bool
     {
         return \count($this->listInvalidProperties()) === 0;
     }
@@ -223,7 +226,7 @@ class Promotion implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets promotion_type.
      */
-    public function getPromotionType() : ?string
+    public function getPromotionType(): ?string
     {
         return $this->container['promotion_type'];
     }
@@ -233,7 +236,7 @@ class Promotion implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param null|string $promotion_type the type of promotion
      */
-    public function setPromotionType(?string $promotion_type) : self
+    public function setPromotionType(?string $promotion_type): self
     {
         $this->container['promotion_type'] = $promotion_type;
 
@@ -243,7 +246,7 @@ class Promotion implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets promotion_id.
      */
-    public function getPromotionId() : ?string
+    public function getPromotionId(): ?string
     {
         return $this->container['promotion_id'];
     }
@@ -253,7 +256,7 @@ class Promotion implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param null|string $promotion_id the seller-specified identifier for the promotion
      */
-    public function setPromotionId(?string $promotion_id) : self
+    public function setPromotionId(?string $promotion_id): self
     {
         $this->container['promotion_id'] = $promotion_id;
 
@@ -263,7 +266,7 @@ class Promotion implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets promotion_amount.
      */
-    public function getPromotionAmount() : ?Currency
+    public function getPromotionAmount(): ?Currency
     {
         return $this->container['promotion_amount'];
     }
@@ -273,7 +276,7 @@ class Promotion implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\Finances\Currency $promotion_amount promotion_amount
      */
-    public function setPromotionAmount(?Currency $promotion_amount) : self
+    public function setPromotionAmount(?Currency $promotion_amount): self
     {
         $this->container['promotion_amount'] = $promotion_amount;
 
@@ -285,7 +288,7 @@ class Promotion implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param int $offset Offset
      */
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -308,7 +311,7 @@ class Promotion implements \ArrayAccess, \JsonSerializable, ModelInterface
      * @param null|int $offset Offset
      * @param mixed $value Value to be set
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         if (null === $offset) {
             $this->container[] = $value;
@@ -322,7 +325,7 @@ class Promotion implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param int $offset Offset
      */
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -335,7 +338,7 @@ class Promotion implements \ArrayAccess, \JsonSerializable, ModelInterface
      * @return mixed returns data which can be serialized by json_encode(), which is a value
      *               of any type other than a resource
      */
-    public function jsonSerialize() : string
+    public function jsonSerialize(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }
@@ -343,7 +346,7 @@ class Promotion implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets a header-safe presentation of the object.
      */
-    public function toHeaderValue() : string
+    public function toHeaderValue(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }

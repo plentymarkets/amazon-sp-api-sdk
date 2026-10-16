@@ -1,4 +1,7 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
+
 /**
  * FulfillmentPreview.
  *
@@ -40,7 +43,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class FulfillmentPreview implements \ArrayAccess, \JsonSerializable, ModelInterface
+class FulfillmentPreview implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -57,11 +60,11 @@ class FulfillmentPreview implements \ArrayAccess, \JsonSerializable, ModelInterf
      * @var string[]
      */
     protected static /** [COMPAT] array */ $openAPITypes = [
-        'shipping_speed_category' => '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentOutbound\ShippingSpeedCategory',
-        'scheduled_delivery_info' => '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentOutbound\ScheduledDeliveryInfo',
+        'shipping_speed_category' => \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentOutbound\ShippingSpeedCategory::class,
+        'scheduled_delivery_info' => \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentOutbound\ScheduledDeliveryInfo::class,
         'is_fulfillable' => 'bool',
         'is_cod_capable' => 'bool',
-        'estimated_shipping_weight' => '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentOutbound\Weight',
+        'estimated_shipping_weight' => \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentOutbound\Weight::class,
         'estimated_fees' => '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentOutbound\Fee[]',
         'fulfillment_preview_shipments' => '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentOutbound\FulfillmentPreviewShipment[]',
         'unfulfillable_preview_items' => '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentOutbound\UnfulfillablePreviewItem[]',
@@ -162,7 +165,7 @@ class FulfillmentPreview implements \ArrayAccess, \JsonSerializable, ModelInterf
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['shipping_speed_category'] = $data['shipping_speed_category'] ?? null;
         $this->container['scheduled_delivery_info'] = $data['scheduled_delivery_info'] ?? null;
@@ -182,7 +185,7 @@ class FulfillmentPreview implements \ArrayAccess, \JsonSerializable, ModelInterf
      *
      * @return string[]
      */
-    public static function openAPITypes() : array
+    public static function openAPITypes(): array
     {
         return self::$openAPITypes;
     }
@@ -192,7 +195,7 @@ class FulfillmentPreview implements \ArrayAccess, \JsonSerializable, ModelInterf
      *
      * @return null[]|string[]
      */
-    public static function openAPIFormats() : array
+    public static function openAPIFormats(): array
     {
         return self::$openAPIFormats;
     }
@@ -203,7 +206,7 @@ class FulfillmentPreview implements \ArrayAccess, \JsonSerializable, ModelInterf
      *
      * @return string[]
      */
-    public static function attributeMap() : array
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -213,7 +216,7 @@ class FulfillmentPreview implements \ArrayAccess, \JsonSerializable, ModelInterf
      *
      * @return string[]
      */
-    public static function setters() : array
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -223,7 +226,7 @@ class FulfillmentPreview implements \ArrayAccess, \JsonSerializable, ModelInterf
      *
      * @return string[]
      */
-    public static function getters() : array
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -231,9 +234,9 @@ class FulfillmentPreview implements \ArrayAccess, \JsonSerializable, ModelInterf
     /**
      * Gets the string presentation of the object.
      */
-    public function __toString() : string
+    public function __toString(): string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );
@@ -242,7 +245,7 @@ class FulfillmentPreview implements \ArrayAccess, \JsonSerializable, ModelInterf
     /**
      * The original name of the model.
      */
-    public function getModelName() : string
+    public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
@@ -252,7 +255,7 @@ class FulfillmentPreview implements \ArrayAccess, \JsonSerializable, ModelInterf
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties() : array
+    public function listInvalidProperties(): array
     {
         $invalidProperties = [];
 
@@ -281,7 +284,7 @@ class FulfillmentPreview implements \ArrayAccess, \JsonSerializable, ModelInterf
      *
      * @return bool True if all properties are valid
      */
-    public function valid() : bool
+    public function valid(): bool
     {
         return \count($this->listInvalidProperties()) === 0;
     }
@@ -289,7 +292,7 @@ class FulfillmentPreview implements \ArrayAccess, \JsonSerializable, ModelInterf
     /**
      * Gets shipping_speed_category.
      */
-    public function getShippingSpeedCategory() : ShippingSpeedCategory
+    public function getShippingSpeedCategory(): ShippingSpeedCategory
     {
         return $this->container['shipping_speed_category'];
     }
@@ -299,7 +302,7 @@ class FulfillmentPreview implements \ArrayAccess, \JsonSerializable, ModelInterf
      *
      * @param \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentOutbound\ShippingSpeedCategory $shipping_speed_category shipping_speed_category
      */
-    public function setShippingSpeedCategory(ShippingSpeedCategory $shipping_speed_category) : self
+    public function setShippingSpeedCategory(ShippingSpeedCategory $shipping_speed_category): self
     {
         $this->container['shipping_speed_category'] = $shipping_speed_category;
 
@@ -309,7 +312,7 @@ class FulfillmentPreview implements \ArrayAccess, \JsonSerializable, ModelInterf
     /**
      * Gets scheduled_delivery_info.
      */
-    public function getScheduledDeliveryInfo() : ?ScheduledDeliveryInfo
+    public function getScheduledDeliveryInfo(): ?ScheduledDeliveryInfo
     {
         return $this->container['scheduled_delivery_info'];
     }
@@ -319,7 +322,7 @@ class FulfillmentPreview implements \ArrayAccess, \JsonSerializable, ModelInterf
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentOutbound\ScheduledDeliveryInfo $scheduled_delivery_info scheduled_delivery_info
      */
-    public function setScheduledDeliveryInfo(?ScheduledDeliveryInfo $scheduled_delivery_info) : self
+    public function setScheduledDeliveryInfo(?ScheduledDeliveryInfo $scheduled_delivery_info): self
     {
         $this->container['scheduled_delivery_info'] = $scheduled_delivery_info;
 
@@ -329,7 +332,7 @@ class FulfillmentPreview implements \ArrayAccess, \JsonSerializable, ModelInterf
     /**
      * Gets is_fulfillable.
      */
-    public function getIsFulfillable() : bool
+    public function getIsFulfillable(): bool
     {
         return $this->container['is_fulfillable'];
     }
@@ -339,7 +342,7 @@ class FulfillmentPreview implements \ArrayAccess, \JsonSerializable, ModelInterf
      *
      * @param bool $is_fulfillable when true, this fulfillment order preview is fulfillable
      */
-    public function setIsFulfillable(bool $is_fulfillable) : self
+    public function setIsFulfillable(bool $is_fulfillable): self
     {
         $this->container['is_fulfillable'] = $is_fulfillable;
 
@@ -349,7 +352,7 @@ class FulfillmentPreview implements \ArrayAccess, \JsonSerializable, ModelInterf
     /**
      * Gets is_cod_capable.
      */
-    public function getIsCodCapable() : bool
+    public function getIsCodCapable(): bool
     {
         return $this->container['is_cod_capable'];
     }
@@ -359,7 +362,7 @@ class FulfillmentPreview implements \ArrayAccess, \JsonSerializable, ModelInterf
      *
      * @param bool $is_cod_capable when true, this fulfillment order preview is for COD (Cash On Delivery)
      */
-    public function setIsCodCapable(bool $is_cod_capable) : self
+    public function setIsCodCapable(bool $is_cod_capable): self
     {
         $this->container['is_cod_capable'] = $is_cod_capable;
 
@@ -369,7 +372,7 @@ class FulfillmentPreview implements \ArrayAccess, \JsonSerializable, ModelInterf
     /**
      * Gets estimated_shipping_weight.
      */
-    public function getEstimatedShippingWeight() : ?Weight
+    public function getEstimatedShippingWeight(): ?Weight
     {
         return $this->container['estimated_shipping_weight'];
     }
@@ -379,7 +382,7 @@ class FulfillmentPreview implements \ArrayAccess, \JsonSerializable, ModelInterf
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentOutbound\Weight $estimated_shipping_weight estimated_shipping_weight
      */
-    public function setEstimatedShippingWeight(?Weight $estimated_shipping_weight) : self
+    public function setEstimatedShippingWeight(?Weight $estimated_shipping_weight): self
     {
         $this->container['estimated_shipping_weight'] = $estimated_shipping_weight;
 
@@ -391,7 +394,7 @@ class FulfillmentPreview implements \ArrayAccess, \JsonSerializable, ModelInterf
      *
      * @return null|\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentOutbound\Fee[]
      */
-    public function getEstimatedFees() : ?array
+    public function getEstimatedFees(): ?array
     {
         return $this->container['estimated_fees'];
     }
@@ -401,7 +404,7 @@ class FulfillmentPreview implements \ArrayAccess, \JsonSerializable, ModelInterf
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentOutbound\Fee[] $estimated_fees an array of fee type and cost pairs
      */
-    public function setEstimatedFees(?array $estimated_fees) : self
+    public function setEstimatedFees(?array $estimated_fees): self
     {
         $this->container['estimated_fees'] = $estimated_fees;
 
@@ -413,7 +416,7 @@ class FulfillmentPreview implements \ArrayAccess, \JsonSerializable, ModelInterf
      *
      * @return null|\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentOutbound\FulfillmentPreviewShipment[]
      */
-    public function getFulfillmentPreviewShipments() : ?array
+    public function getFulfillmentPreviewShipments(): ?array
     {
         return $this->container['fulfillment_preview_shipments'];
     }
@@ -423,7 +426,7 @@ class FulfillmentPreview implements \ArrayAccess, \JsonSerializable, ModelInterf
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentOutbound\FulfillmentPreviewShipment[] $fulfillment_preview_shipments an array of fulfillment preview shipment information
      */
-    public function setFulfillmentPreviewShipments(?array $fulfillment_preview_shipments) : self
+    public function setFulfillmentPreviewShipments(?array $fulfillment_preview_shipments): self
     {
         $this->container['fulfillment_preview_shipments'] = $fulfillment_preview_shipments;
 
@@ -435,7 +438,7 @@ class FulfillmentPreview implements \ArrayAccess, \JsonSerializable, ModelInterf
      *
      * @return null|\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentOutbound\UnfulfillablePreviewItem[]
      */
-    public function getUnfulfillablePreviewItems() : ?array
+    public function getUnfulfillablePreviewItems(): ?array
     {
         return $this->container['unfulfillable_preview_items'];
     }
@@ -445,7 +448,7 @@ class FulfillmentPreview implements \ArrayAccess, \JsonSerializable, ModelInterf
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentOutbound\UnfulfillablePreviewItem[] $unfulfillable_preview_items an array of unfulfillable preview item information
      */
-    public function setUnfulfillablePreviewItems(?array $unfulfillable_preview_items) : self
+    public function setUnfulfillablePreviewItems(?array $unfulfillable_preview_items): self
     {
         $this->container['unfulfillable_preview_items'] = $unfulfillable_preview_items;
 
@@ -457,7 +460,7 @@ class FulfillmentPreview implements \ArrayAccess, \JsonSerializable, ModelInterf
      *
      * @return null|string[]
      */
-    public function getOrderUnfulfillableReasons() : ?array
+    public function getOrderUnfulfillableReasons(): ?array
     {
         return $this->container['order_unfulfillable_reasons'];
     }
@@ -467,7 +470,7 @@ class FulfillmentPreview implements \ArrayAccess, \JsonSerializable, ModelInterf
      *
      * @param null|string[] $order_unfulfillable_reasons order_unfulfillable_reasons
      */
-    public function setOrderUnfulfillableReasons(?array $order_unfulfillable_reasons) : self
+    public function setOrderUnfulfillableReasons(?array $order_unfulfillable_reasons): self
     {
         $this->container['order_unfulfillable_reasons'] = $order_unfulfillable_reasons;
 
@@ -477,7 +480,7 @@ class FulfillmentPreview implements \ArrayAccess, \JsonSerializable, ModelInterf
     /**
      * Gets marketplace_id.
      */
-    public function getMarketplaceId() : string
+    public function getMarketplaceId(): string
     {
         return $this->container['marketplace_id'];
     }
@@ -487,7 +490,7 @@ class FulfillmentPreview implements \ArrayAccess, \JsonSerializable, ModelInterf
      *
      * @param string $marketplace_id the marketplace the fulfillment order is placed against
      */
-    public function setMarketplaceId(string $marketplace_id) : self
+    public function setMarketplaceId(string $marketplace_id): self
     {
         $this->container['marketplace_id'] = $marketplace_id;
 
@@ -499,7 +502,7 @@ class FulfillmentPreview implements \ArrayAccess, \JsonSerializable, ModelInterf
      *
      * @return null|\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentOutbound\FeatureSettings[]
      */
-    public function getFeatureConstraints() : ?array
+    public function getFeatureConstraints(): ?array
     {
         return $this->container['feature_constraints'];
     }
@@ -509,7 +512,7 @@ class FulfillmentPreview implements \ArrayAccess, \JsonSerializable, ModelInterf
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentOutbound\FeatureSettings[] $feature_constraints a list of features and their fulfillment policies to apply to the order
      */
-    public function setFeatureConstraints(?array $feature_constraints) : self
+    public function setFeatureConstraints(?array $feature_constraints): self
     {
         $this->container['feature_constraints'] = $feature_constraints;
 
@@ -521,7 +524,7 @@ class FulfillmentPreview implements \ArrayAccess, \JsonSerializable, ModelInterf
      *
      * @param int $offset Offset
      */
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -544,7 +547,7 @@ class FulfillmentPreview implements \ArrayAccess, \JsonSerializable, ModelInterf
      * @param null|int $offset Offset
      * @param mixed $value Value to be set
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         if (null === $offset) {
             $this->container[] = $value;
@@ -558,7 +561,7 @@ class FulfillmentPreview implements \ArrayAccess, \JsonSerializable, ModelInterf
      *
      * @param int $offset Offset
      */
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -571,7 +574,7 @@ class FulfillmentPreview implements \ArrayAccess, \JsonSerializable, ModelInterf
      * @return mixed returns data which can be serialized by json_encode(), which is a value
      *               of any type other than a resource
      */
-    public function jsonSerialize() : string
+    public function jsonSerialize(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }
@@ -579,7 +582,7 @@ class FulfillmentPreview implements \ArrayAccess, \JsonSerializable, ModelInterf
     /**
      * Gets a header-safe presentation of the object.
      */
-    public function toHeaderValue() : string
+    public function toHeaderValue(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }

@@ -1,4 +1,7 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
+
 /**
  * StandardFourImageTextModule.
  *
@@ -40,7 +43,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class StandardFourImageTextModule implements \ArrayAccess, \JsonSerializable, ModelInterface
+class StandardFourImageTextModule implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -57,11 +60,11 @@ class StandardFourImageTextModule implements \ArrayAccess, \JsonSerializable, Mo
      * @var string[]
      */
     protected static /** [COMPAT] array */ $openAPITypes = [
-        'headline' => '\Plenty\AmazonPHP\SellingPartner\Model\APlus\TextComponent',
-        'block1' => '\Plenty\AmazonPHP\SellingPartner\Model\APlus\StandardImageTextBlock',
-        'block2' => '\Plenty\AmazonPHP\SellingPartner\Model\APlus\StandardImageTextBlock',
-        'block3' => '\Plenty\AmazonPHP\SellingPartner\Model\APlus\StandardImageTextBlock',
-        'block4' => '\Plenty\AmazonPHP\SellingPartner\Model\APlus\StandardImageTextBlock',
+        'headline' => \Plenty\AmazonPHP\SellingPartner\Model\APlus\TextComponent::class,
+        'block1' => \Plenty\AmazonPHP\SellingPartner\Model\APlus\StandardImageTextBlock::class,
+        'block2' => \Plenty\AmazonPHP\SellingPartner\Model\APlus\StandardImageTextBlock::class,
+        'block3' => \Plenty\AmazonPHP\SellingPartner\Model\APlus\StandardImageTextBlock::class,
+        'block4' => \Plenty\AmazonPHP\SellingPartner\Model\APlus\StandardImageTextBlock::class,
     ];
 
     /**
@@ -132,7 +135,7 @@ class StandardFourImageTextModule implements \ArrayAccess, \JsonSerializable, Mo
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['headline'] = $data['headline'] ?? null;
         $this->container['block1'] = $data['block1'] ?? null;
@@ -146,7 +149,7 @@ class StandardFourImageTextModule implements \ArrayAccess, \JsonSerializable, Mo
      *
      * @return string[]
      */
-    public static function openAPITypes() : array
+    public static function openAPITypes(): array
     {
         return self::$openAPITypes;
     }
@@ -156,7 +159,7 @@ class StandardFourImageTextModule implements \ArrayAccess, \JsonSerializable, Mo
      *
      * @return null[]|string[]
      */
-    public static function openAPIFormats() : array
+    public static function openAPIFormats(): array
     {
         return self::$openAPIFormats;
     }
@@ -167,7 +170,7 @@ class StandardFourImageTextModule implements \ArrayAccess, \JsonSerializable, Mo
      *
      * @return string[]
      */
-    public static function attributeMap() : array
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -177,7 +180,7 @@ class StandardFourImageTextModule implements \ArrayAccess, \JsonSerializable, Mo
      *
      * @return string[]
      */
-    public static function setters() : array
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -187,7 +190,7 @@ class StandardFourImageTextModule implements \ArrayAccess, \JsonSerializable, Mo
      *
      * @return string[]
      */
-    public static function getters() : array
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -195,9 +198,9 @@ class StandardFourImageTextModule implements \ArrayAccess, \JsonSerializable, Mo
     /**
      * Gets the string presentation of the object.
      */
-    public function __toString() : string
+    public function __toString(): string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );
@@ -206,7 +209,7 @@ class StandardFourImageTextModule implements \ArrayAccess, \JsonSerializable, Mo
     /**
      * The original name of the model.
      */
-    public function getModelName() : string
+    public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
@@ -216,7 +219,7 @@ class StandardFourImageTextModule implements \ArrayAccess, \JsonSerializable, Mo
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties() : array
+    public function listInvalidProperties(): array
     {
         return [];
     }
@@ -227,7 +230,7 @@ class StandardFourImageTextModule implements \ArrayAccess, \JsonSerializable, Mo
      *
      * @return bool True if all properties are valid
      */
-    public function valid() : bool
+    public function valid(): bool
     {
         return \count($this->listInvalidProperties()) === 0;
     }
@@ -235,7 +238,7 @@ class StandardFourImageTextModule implements \ArrayAccess, \JsonSerializable, Mo
     /**
      * Gets headline.
      */
-    public function getHeadline() : ?TextComponent
+    public function getHeadline(): ?TextComponent
     {
         return $this->container['headline'];
     }
@@ -245,7 +248,7 @@ class StandardFourImageTextModule implements \ArrayAccess, \JsonSerializable, Mo
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\APlus\TextComponent $headline headline
      */
-    public function setHeadline(?TextComponent $headline) : self
+    public function setHeadline(?TextComponent $headline): self
     {
         $this->container['headline'] = $headline;
 
@@ -255,7 +258,7 @@ class StandardFourImageTextModule implements \ArrayAccess, \JsonSerializable, Mo
     /**
      * Gets block1.
      */
-    public function getBlock1() : ?StandardImageTextBlock
+    public function getBlock1(): ?StandardImageTextBlock
     {
         return $this->container['block1'];
     }
@@ -265,7 +268,7 @@ class StandardFourImageTextModule implements \ArrayAccess, \JsonSerializable, Mo
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\APlus\StandardImageTextBlock $block1 block1
      */
-    public function setBlock1(?StandardImageTextBlock $block1) : self
+    public function setBlock1(?StandardImageTextBlock $block1): self
     {
         $this->container['block1'] = $block1;
 
@@ -275,7 +278,7 @@ class StandardFourImageTextModule implements \ArrayAccess, \JsonSerializable, Mo
     /**
      * Gets block2.
      */
-    public function getBlock2() : ?StandardImageTextBlock
+    public function getBlock2(): ?StandardImageTextBlock
     {
         return $this->container['block2'];
     }
@@ -285,7 +288,7 @@ class StandardFourImageTextModule implements \ArrayAccess, \JsonSerializable, Mo
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\APlus\StandardImageTextBlock $block2 block2
      */
-    public function setBlock2(?StandardImageTextBlock $block2) : self
+    public function setBlock2(?StandardImageTextBlock $block2): self
     {
         $this->container['block2'] = $block2;
 
@@ -295,7 +298,7 @@ class StandardFourImageTextModule implements \ArrayAccess, \JsonSerializable, Mo
     /**
      * Gets block3.
      */
-    public function getBlock3() : ?StandardImageTextBlock
+    public function getBlock3(): ?StandardImageTextBlock
     {
         return $this->container['block3'];
     }
@@ -305,7 +308,7 @@ class StandardFourImageTextModule implements \ArrayAccess, \JsonSerializable, Mo
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\APlus\StandardImageTextBlock $block3 block3
      */
-    public function setBlock3(?StandardImageTextBlock $block3) : self
+    public function setBlock3(?StandardImageTextBlock $block3): self
     {
         $this->container['block3'] = $block3;
 
@@ -315,7 +318,7 @@ class StandardFourImageTextModule implements \ArrayAccess, \JsonSerializable, Mo
     /**
      * Gets block4.
      */
-    public function getBlock4() : ?StandardImageTextBlock
+    public function getBlock4(): ?StandardImageTextBlock
     {
         return $this->container['block4'];
     }
@@ -325,7 +328,7 @@ class StandardFourImageTextModule implements \ArrayAccess, \JsonSerializable, Mo
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\APlus\StandardImageTextBlock $block4 block4
      */
-    public function setBlock4(?StandardImageTextBlock $block4) : self
+    public function setBlock4(?StandardImageTextBlock $block4): self
     {
         $this->container['block4'] = $block4;
 
@@ -337,7 +340,7 @@ class StandardFourImageTextModule implements \ArrayAccess, \JsonSerializable, Mo
      *
      * @param int $offset Offset
      */
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -360,7 +363,7 @@ class StandardFourImageTextModule implements \ArrayAccess, \JsonSerializable, Mo
      * @param null|int $offset Offset
      * @param mixed $value Value to be set
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         if (null === $offset) {
             $this->container[] = $value;
@@ -374,7 +377,7 @@ class StandardFourImageTextModule implements \ArrayAccess, \JsonSerializable, Mo
      *
      * @param int $offset Offset
      */
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -387,7 +390,7 @@ class StandardFourImageTextModule implements \ArrayAccess, \JsonSerializable, Mo
      * @return mixed returns data which can be serialized by json_encode(), which is a value
      *               of any type other than a resource
      */
-    public function jsonSerialize() : string
+    public function jsonSerialize(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }
@@ -395,7 +398,7 @@ class StandardFourImageTextModule implements \ArrayAccess, \JsonSerializable, Mo
     /**
      * Gets a header-safe presentation of the object.
      */
-    public function toHeaderValue() : string
+    public function toHeaderValue(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }

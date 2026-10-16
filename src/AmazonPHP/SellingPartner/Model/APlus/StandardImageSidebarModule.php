@@ -1,4 +1,7 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
+
 /**
  * StandardImageSidebarModule.
  *
@@ -40,7 +43,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class StandardImageSidebarModule implements \ArrayAccess, \JsonSerializable, ModelInterface
+class StandardImageSidebarModule implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -57,12 +60,12 @@ class StandardImageSidebarModule implements \ArrayAccess, \JsonSerializable, Mod
      * @var string[]
      */
     protected static /** [COMPAT] array */ $openAPITypes = [
-        'headline' => '\Plenty\AmazonPHP\SellingPartner\Model\APlus\TextComponent',
-        'image_caption_block' => '\Plenty\AmazonPHP\SellingPartner\Model\APlus\StandardImageCaptionBlock',
-        'description_text_block' => '\Plenty\AmazonPHP\SellingPartner\Model\APlus\StandardTextBlock',
-        'description_list_block' => '\Plenty\AmazonPHP\SellingPartner\Model\APlus\StandardTextListBlock',
-        'sidebar_image_text_block' => '\Plenty\AmazonPHP\SellingPartner\Model\APlus\StandardImageTextBlock',
-        'sidebar_list_block' => '\Plenty\AmazonPHP\SellingPartner\Model\APlus\StandardTextListBlock',
+        'headline' => \Plenty\AmazonPHP\SellingPartner\Model\APlus\TextComponent::class,
+        'image_caption_block' => \Plenty\AmazonPHP\SellingPartner\Model\APlus\StandardImageCaptionBlock::class,
+        'description_text_block' => \Plenty\AmazonPHP\SellingPartner\Model\APlus\StandardTextBlock::class,
+        'description_list_block' => \Plenty\AmazonPHP\SellingPartner\Model\APlus\StandardTextListBlock::class,
+        'sidebar_image_text_block' => \Plenty\AmazonPHP\SellingPartner\Model\APlus\StandardImageTextBlock::class,
+        'sidebar_list_block' => \Plenty\AmazonPHP\SellingPartner\Model\APlus\StandardTextListBlock::class,
     ];
 
     /**
@@ -137,7 +140,7 @@ class StandardImageSidebarModule implements \ArrayAccess, \JsonSerializable, Mod
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['headline'] = $data['headline'] ?? null;
         $this->container['image_caption_block'] = $data['image_caption_block'] ?? null;
@@ -152,7 +155,7 @@ class StandardImageSidebarModule implements \ArrayAccess, \JsonSerializable, Mod
      *
      * @return string[]
      */
-    public static function openAPITypes() : array
+    public static function openAPITypes(): array
     {
         return self::$openAPITypes;
     }
@@ -162,7 +165,7 @@ class StandardImageSidebarModule implements \ArrayAccess, \JsonSerializable, Mod
      *
      * @return null[]|string[]
      */
-    public static function openAPIFormats() : array
+    public static function openAPIFormats(): array
     {
         return self::$openAPIFormats;
     }
@@ -173,7 +176,7 @@ class StandardImageSidebarModule implements \ArrayAccess, \JsonSerializable, Mod
      *
      * @return string[]
      */
-    public static function attributeMap() : array
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -183,7 +186,7 @@ class StandardImageSidebarModule implements \ArrayAccess, \JsonSerializable, Mod
      *
      * @return string[]
      */
-    public static function setters() : array
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -193,7 +196,7 @@ class StandardImageSidebarModule implements \ArrayAccess, \JsonSerializable, Mod
      *
      * @return string[]
      */
-    public static function getters() : array
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -201,9 +204,9 @@ class StandardImageSidebarModule implements \ArrayAccess, \JsonSerializable, Mod
     /**
      * Gets the string presentation of the object.
      */
-    public function __toString() : string
+    public function __toString(): string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );
@@ -212,7 +215,7 @@ class StandardImageSidebarModule implements \ArrayAccess, \JsonSerializable, Mod
     /**
      * The original name of the model.
      */
-    public function getModelName() : string
+    public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
@@ -222,7 +225,7 @@ class StandardImageSidebarModule implements \ArrayAccess, \JsonSerializable, Mod
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties() : array
+    public function listInvalidProperties(): array
     {
         return [];
     }
@@ -233,7 +236,7 @@ class StandardImageSidebarModule implements \ArrayAccess, \JsonSerializable, Mod
      *
      * @return bool True if all properties are valid
      */
-    public function valid() : bool
+    public function valid(): bool
     {
         return \count($this->listInvalidProperties()) === 0;
     }
@@ -241,7 +244,7 @@ class StandardImageSidebarModule implements \ArrayAccess, \JsonSerializable, Mod
     /**
      * Gets headline.
      */
-    public function getHeadline() : ?TextComponent
+    public function getHeadline(): ?TextComponent
     {
         return $this->container['headline'];
     }
@@ -251,7 +254,7 @@ class StandardImageSidebarModule implements \ArrayAccess, \JsonSerializable, Mod
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\APlus\TextComponent $headline headline
      */
-    public function setHeadline(?TextComponent $headline) : self
+    public function setHeadline(?TextComponent $headline): self
     {
         $this->container['headline'] = $headline;
 
@@ -261,7 +264,7 @@ class StandardImageSidebarModule implements \ArrayAccess, \JsonSerializable, Mod
     /**
      * Gets image_caption_block.
      */
-    public function getImageCaptionBlock() : ?StandardImageCaptionBlock
+    public function getImageCaptionBlock(): ?StandardImageCaptionBlock
     {
         return $this->container['image_caption_block'];
     }
@@ -271,7 +274,7 @@ class StandardImageSidebarModule implements \ArrayAccess, \JsonSerializable, Mod
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\APlus\StandardImageCaptionBlock $image_caption_block image_caption_block
      */
-    public function setImageCaptionBlock(?StandardImageCaptionBlock $image_caption_block) : self
+    public function setImageCaptionBlock(?StandardImageCaptionBlock $image_caption_block): self
     {
         $this->container['image_caption_block'] = $image_caption_block;
 
@@ -281,7 +284,7 @@ class StandardImageSidebarModule implements \ArrayAccess, \JsonSerializable, Mod
     /**
      * Gets description_text_block.
      */
-    public function getDescriptionTextBlock() : ?StandardTextBlock
+    public function getDescriptionTextBlock(): ?StandardTextBlock
     {
         return $this->container['description_text_block'];
     }
@@ -291,7 +294,7 @@ class StandardImageSidebarModule implements \ArrayAccess, \JsonSerializable, Mod
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\APlus\StandardTextBlock $description_text_block description_text_block
      */
-    public function setDescriptionTextBlock(?StandardTextBlock $description_text_block) : self
+    public function setDescriptionTextBlock(?StandardTextBlock $description_text_block): self
     {
         $this->container['description_text_block'] = $description_text_block;
 
@@ -301,7 +304,7 @@ class StandardImageSidebarModule implements \ArrayAccess, \JsonSerializable, Mod
     /**
      * Gets description_list_block.
      */
-    public function getDescriptionListBlock() : ?StandardTextListBlock
+    public function getDescriptionListBlock(): ?StandardTextListBlock
     {
         return $this->container['description_list_block'];
     }
@@ -311,7 +314,7 @@ class StandardImageSidebarModule implements \ArrayAccess, \JsonSerializable, Mod
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\APlus\StandardTextListBlock $description_list_block description_list_block
      */
-    public function setDescriptionListBlock(?StandardTextListBlock $description_list_block) : self
+    public function setDescriptionListBlock(?StandardTextListBlock $description_list_block): self
     {
         $this->container['description_list_block'] = $description_list_block;
 
@@ -321,7 +324,7 @@ class StandardImageSidebarModule implements \ArrayAccess, \JsonSerializable, Mod
     /**
      * Gets sidebar_image_text_block.
      */
-    public function getSidebarImageTextBlock() : ?StandardImageTextBlock
+    public function getSidebarImageTextBlock(): ?StandardImageTextBlock
     {
         return $this->container['sidebar_image_text_block'];
     }
@@ -331,7 +334,7 @@ class StandardImageSidebarModule implements \ArrayAccess, \JsonSerializable, Mod
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\APlus\StandardImageTextBlock $sidebar_image_text_block sidebar_image_text_block
      */
-    public function setSidebarImageTextBlock(?StandardImageTextBlock $sidebar_image_text_block) : self
+    public function setSidebarImageTextBlock(?StandardImageTextBlock $sidebar_image_text_block): self
     {
         $this->container['sidebar_image_text_block'] = $sidebar_image_text_block;
 
@@ -341,7 +344,7 @@ class StandardImageSidebarModule implements \ArrayAccess, \JsonSerializable, Mod
     /**
      * Gets sidebar_list_block.
      */
-    public function getSidebarListBlock() : ?StandardTextListBlock
+    public function getSidebarListBlock(): ?StandardTextListBlock
     {
         return $this->container['sidebar_list_block'];
     }
@@ -351,7 +354,7 @@ class StandardImageSidebarModule implements \ArrayAccess, \JsonSerializable, Mod
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\APlus\StandardTextListBlock $sidebar_list_block sidebar_list_block
      */
-    public function setSidebarListBlock(?StandardTextListBlock $sidebar_list_block) : self
+    public function setSidebarListBlock(?StandardTextListBlock $sidebar_list_block): self
     {
         $this->container['sidebar_list_block'] = $sidebar_list_block;
 
@@ -363,7 +366,7 @@ class StandardImageSidebarModule implements \ArrayAccess, \JsonSerializable, Mod
      *
      * @param int $offset Offset
      */
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -386,7 +389,7 @@ class StandardImageSidebarModule implements \ArrayAccess, \JsonSerializable, Mod
      * @param null|int $offset Offset
      * @param mixed $value Value to be set
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         if (null === $offset) {
             $this->container[] = $value;
@@ -400,7 +403,7 @@ class StandardImageSidebarModule implements \ArrayAccess, \JsonSerializable, Mod
      *
      * @param int $offset Offset
      */
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -413,7 +416,7 @@ class StandardImageSidebarModule implements \ArrayAccess, \JsonSerializable, Mod
      * @return mixed returns data which can be serialized by json_encode(), which is a value
      *               of any type other than a resource
      */
-    public function jsonSerialize() : string
+    public function jsonSerialize(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }
@@ -421,7 +424,7 @@ class StandardImageSidebarModule implements \ArrayAccess, \JsonSerializable, Mod
     /**
      * Gets a header-safe presentation of the object.
      */
-    public function toHeaderValue() : string
+    public function toHeaderValue(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }

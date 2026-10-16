@@ -1,4 +1,7 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
+
 /**
  * FulfillmentPreviewItem.
  *
@@ -40,7 +43,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class FulfillmentPreviewItem implements \ArrayAccess, \JsonSerializable, ModelInterface
+class FulfillmentPreviewItem implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -64,7 +67,7 @@ class FulfillmentPreviewItem implements \ArrayAccess, \JsonSerializable, ModelIn
         'seller_sku' => 'string',
         'quantity' => 'int',
         'seller_fulfillment_order_item_id' => 'string',
-        'estimated_shipping_weight' => '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentOutbound\Weight',
+        'estimated_shipping_weight' => \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentOutbound\Weight::class,
         'shipping_weight_calculation_method' => 'string',
     ];
 
@@ -136,7 +139,7 @@ class FulfillmentPreviewItem implements \ArrayAccess, \JsonSerializable, ModelIn
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['seller_sku'] = $data['seller_sku'] ?? null;
         $this->container['quantity'] = $data['quantity'] ?? null;
@@ -150,7 +153,7 @@ class FulfillmentPreviewItem implements \ArrayAccess, \JsonSerializable, ModelIn
      *
      * @return string[]
      */
-    public static function openAPITypes() : array
+    public static function openAPITypes(): array
     {
         return self::$openAPITypes;
     }
@@ -160,7 +163,7 @@ class FulfillmentPreviewItem implements \ArrayAccess, \JsonSerializable, ModelIn
      *
      * @return null[]|string[]
      */
-    public static function openAPIFormats() : array
+    public static function openAPIFormats(): array
     {
         return self::$openAPIFormats;
     }
@@ -171,7 +174,7 @@ class FulfillmentPreviewItem implements \ArrayAccess, \JsonSerializable, ModelIn
      *
      * @return string[]
      */
-    public static function attributeMap() : array
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -181,7 +184,7 @@ class FulfillmentPreviewItem implements \ArrayAccess, \JsonSerializable, ModelIn
      *
      * @return string[]
      */
-    public static function setters() : array
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -191,7 +194,7 @@ class FulfillmentPreviewItem implements \ArrayAccess, \JsonSerializable, ModelIn
      *
      * @return string[]
      */
-    public static function getters() : array
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -199,9 +202,9 @@ class FulfillmentPreviewItem implements \ArrayAccess, \JsonSerializable, ModelIn
     /**
      * Gets the string presentation of the object.
      */
-    public function __toString() : string
+    public function __toString(): string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );
@@ -210,7 +213,7 @@ class FulfillmentPreviewItem implements \ArrayAccess, \JsonSerializable, ModelIn
     /**
      * The original name of the model.
      */
-    public function getModelName() : string
+    public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
@@ -220,7 +223,7 @@ class FulfillmentPreviewItem implements \ArrayAccess, \JsonSerializable, ModelIn
      *
      * @return string[]
      */
-    public function getShippingWeightCalculationMethodAllowableValues() : array
+    public function getShippingWeightCalculationMethodAllowableValues(): array
     {
         return [
             self::SHIPPING_WEIGHT_CALCULATION_METHOD_PACKAGE,
@@ -233,7 +236,7 @@ class FulfillmentPreviewItem implements \ArrayAccess, \JsonSerializable, ModelIn
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties() : array
+    public function listInvalidProperties(): array
     {
         $invalidProperties = [];
 
@@ -267,7 +270,7 @@ class FulfillmentPreviewItem implements \ArrayAccess, \JsonSerializable, ModelIn
      *
      * @return bool True if all properties are valid
      */
-    public function valid() : bool
+    public function valid(): bool
     {
         return \count($this->listInvalidProperties()) === 0;
     }
@@ -275,7 +278,7 @@ class FulfillmentPreviewItem implements \ArrayAccess, \JsonSerializable, ModelIn
     /**
      * Gets seller_sku.
      */
-    public function getSellerSku() : string
+    public function getSellerSku(): string
     {
         return $this->container['seller_sku'];
     }
@@ -285,7 +288,7 @@ class FulfillmentPreviewItem implements \ArrayAccess, \JsonSerializable, ModelIn
      *
      * @param string $seller_sku the seller SKU of the item
      */
-    public function setSellerSku(string $seller_sku) : self
+    public function setSellerSku(string $seller_sku): self
     {
         $this->container['seller_sku'] = $seller_sku;
 
@@ -295,7 +298,7 @@ class FulfillmentPreviewItem implements \ArrayAccess, \JsonSerializable, ModelIn
     /**
      * Gets quantity.
      */
-    public function getQuantity() : int
+    public function getQuantity(): int
     {
         return $this->container['quantity'];
     }
@@ -305,7 +308,7 @@ class FulfillmentPreviewItem implements \ArrayAccess, \JsonSerializable, ModelIn
      *
      * @param int $quantity the item quantity
      */
-    public function setQuantity(int $quantity) : self
+    public function setQuantity(int $quantity): self
     {
         $this->container['quantity'] = $quantity;
 
@@ -315,7 +318,7 @@ class FulfillmentPreviewItem implements \ArrayAccess, \JsonSerializable, ModelIn
     /**
      * Gets seller_fulfillment_order_item_id.
      */
-    public function getSellerFulfillmentOrderItemId() : string
+    public function getSellerFulfillmentOrderItemId(): string
     {
         return $this->container['seller_fulfillment_order_item_id'];
     }
@@ -325,7 +328,7 @@ class FulfillmentPreviewItem implements \ArrayAccess, \JsonSerializable, ModelIn
      *
      * @param string $seller_fulfillment_order_item_id a fulfillment order item identifier that the seller created with a call to the createFulfillmentOrder operation
      */
-    public function setSellerFulfillmentOrderItemId(string $seller_fulfillment_order_item_id) : self
+    public function setSellerFulfillmentOrderItemId(string $seller_fulfillment_order_item_id): self
     {
         $this->container['seller_fulfillment_order_item_id'] = $seller_fulfillment_order_item_id;
 
@@ -335,7 +338,7 @@ class FulfillmentPreviewItem implements \ArrayAccess, \JsonSerializable, ModelIn
     /**
      * Gets estimated_shipping_weight.
      */
-    public function getEstimatedShippingWeight() : ?Weight
+    public function getEstimatedShippingWeight(): ?Weight
     {
         return $this->container['estimated_shipping_weight'];
     }
@@ -345,7 +348,7 @@ class FulfillmentPreviewItem implements \ArrayAccess, \JsonSerializable, ModelIn
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentOutbound\Weight $estimated_shipping_weight estimated_shipping_weight
      */
-    public function setEstimatedShippingWeight(?Weight $estimated_shipping_weight) : self
+    public function setEstimatedShippingWeight(?Weight $estimated_shipping_weight): self
     {
         $this->container['estimated_shipping_weight'] = $estimated_shipping_weight;
 
@@ -355,7 +358,7 @@ class FulfillmentPreviewItem implements \ArrayAccess, \JsonSerializable, ModelIn
     /**
      * Gets shipping_weight_calculation_method.
      */
-    public function getShippingWeightCalculationMethod() : ?string
+    public function getShippingWeightCalculationMethod(): ?string
     {
         return $this->container['shipping_weight_calculation_method'];
     }
@@ -365,7 +368,7 @@ class FulfillmentPreviewItem implements \ArrayAccess, \JsonSerializable, ModelIn
      *
      * @param null|string $shipping_weight_calculation_method the method used to calculate the estimated shipping weight
      */
-    public function setShippingWeightCalculationMethod(?string $shipping_weight_calculation_method) : self
+    public function setShippingWeightCalculationMethod(?string $shipping_weight_calculation_method): self
     {
         $allowedValues = $this->getShippingWeightCalculationMethodAllowableValues();
 
@@ -388,7 +391,7 @@ class FulfillmentPreviewItem implements \ArrayAccess, \JsonSerializable, ModelIn
      *
      * @param int $offset Offset
      */
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -411,7 +414,7 @@ class FulfillmentPreviewItem implements \ArrayAccess, \JsonSerializable, ModelIn
      * @param null|int $offset Offset
      * @param mixed $value Value to be set
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         if (null === $offset) {
             $this->container[] = $value;
@@ -425,7 +428,7 @@ class FulfillmentPreviewItem implements \ArrayAccess, \JsonSerializable, ModelIn
      *
      * @param int $offset Offset
      */
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -438,7 +441,7 @@ class FulfillmentPreviewItem implements \ArrayAccess, \JsonSerializable, ModelIn
      * @return mixed returns data which can be serialized by json_encode(), which is a value
      *               of any type other than a resource
      */
-    public function jsonSerialize() : string
+    public function jsonSerialize(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }
@@ -446,7 +449,7 @@ class FulfillmentPreviewItem implements \ArrayAccess, \JsonSerializable, ModelIn
     /**
      * Gets a header-safe presentation of the object.
      */
-    public function toHeaderValue() : string
+    public function toHeaderValue(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }

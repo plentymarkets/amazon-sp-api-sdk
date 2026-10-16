@@ -1,4 +1,7 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
+
 /**
  * CreateShipmentRequest.
  *
@@ -40,7 +43,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class CreateShipmentRequest implements \ArrayAccess, \JsonSerializable, ModelInterface
+class CreateShipmentRequest implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -57,11 +60,11 @@ class CreateShipmentRequest implements \ArrayAccess, \JsonSerializable, ModelInt
      * @var string[]
      */
     protected static /** [COMPAT] array */ $openAPITypes = [
-        'shipment_request_details' => '\Plenty\AmazonPHP\SellingPartner\Model\MerchantFulfillment\ShipmentRequestDetails',
+        'shipment_request_details' => \Plenty\AmazonPHP\SellingPartner\Model\MerchantFulfillment\ShipmentRequestDetails::class,
         'shipping_service_id' => 'string',
         'shipping_service_offer_id' => 'string',
-        'hazmat_type' => '\Plenty\AmazonPHP\SellingPartner\Model\MerchantFulfillment\HazmatType',
-        'label_format_option' => '\Plenty\AmazonPHP\SellingPartner\Model\MerchantFulfillment\LabelFormatOptionRequest',
+        'hazmat_type' => \Plenty\AmazonPHP\SellingPartner\Model\MerchantFulfillment\HazmatType::class,
+        'label_format_option' => \Plenty\AmazonPHP\SellingPartner\Model\MerchantFulfillment\LabelFormatOptionRequest::class,
         'shipment_level_seller_inputs_list' => '\Plenty\AmazonPHP\SellingPartner\Model\MerchantFulfillment\AdditionalSellerInputs[]',
     ];
 
@@ -137,7 +140,7 @@ class CreateShipmentRequest implements \ArrayAccess, \JsonSerializable, ModelInt
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['shipment_request_details'] = $data['shipment_request_details'] ?? null;
         $this->container['shipping_service_id'] = $data['shipping_service_id'] ?? null;
@@ -152,7 +155,7 @@ class CreateShipmentRequest implements \ArrayAccess, \JsonSerializable, ModelInt
      *
      * @return string[]
      */
-    public static function openAPITypes() : array
+    public static function openAPITypes(): array
     {
         return self::$openAPITypes;
     }
@@ -162,7 +165,7 @@ class CreateShipmentRequest implements \ArrayAccess, \JsonSerializable, ModelInt
      *
      * @return null[]|string[]
      */
-    public static function openAPIFormats() : array
+    public static function openAPIFormats(): array
     {
         return self::$openAPIFormats;
     }
@@ -173,7 +176,7 @@ class CreateShipmentRequest implements \ArrayAccess, \JsonSerializable, ModelInt
      *
      * @return string[]
      */
-    public static function attributeMap() : array
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -183,7 +186,7 @@ class CreateShipmentRequest implements \ArrayAccess, \JsonSerializable, ModelInt
      *
      * @return string[]
      */
-    public static function setters() : array
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -193,7 +196,7 @@ class CreateShipmentRequest implements \ArrayAccess, \JsonSerializable, ModelInt
      *
      * @return string[]
      */
-    public static function getters() : array
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -201,9 +204,9 @@ class CreateShipmentRequest implements \ArrayAccess, \JsonSerializable, ModelInt
     /**
      * Gets the string presentation of the object.
      */
-    public function __toString() : string
+    public function __toString(): string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );
@@ -212,7 +215,7 @@ class CreateShipmentRequest implements \ArrayAccess, \JsonSerializable, ModelInt
     /**
      * The original name of the model.
      */
-    public function getModelName() : string
+    public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
@@ -222,7 +225,7 @@ class CreateShipmentRequest implements \ArrayAccess, \JsonSerializable, ModelInt
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties() : array
+    public function listInvalidProperties(): array
     {
         $invalidProperties = [];
 
@@ -243,7 +246,7 @@ class CreateShipmentRequest implements \ArrayAccess, \JsonSerializable, ModelInt
      *
      * @return bool True if all properties are valid
      */
-    public function valid() : bool
+    public function valid(): bool
     {
         return \count($this->listInvalidProperties()) === 0;
     }
@@ -251,7 +254,7 @@ class CreateShipmentRequest implements \ArrayAccess, \JsonSerializable, ModelInt
     /**
      * Gets shipment_request_details.
      */
-    public function getShipmentRequestDetails() : ShipmentRequestDetails
+    public function getShipmentRequestDetails(): ShipmentRequestDetails
     {
         return $this->container['shipment_request_details'];
     }
@@ -261,7 +264,7 @@ class CreateShipmentRequest implements \ArrayAccess, \JsonSerializable, ModelInt
      *
      * @param \Plenty\AmazonPHP\SellingPartner\Model\MerchantFulfillment\ShipmentRequestDetails $shipment_request_details shipment_request_details
      */
-    public function setShipmentRequestDetails(ShipmentRequestDetails $shipment_request_details) : self
+    public function setShipmentRequestDetails(ShipmentRequestDetails $shipment_request_details): self
     {
         $this->container['shipment_request_details'] = $shipment_request_details;
 
@@ -271,7 +274,7 @@ class CreateShipmentRequest implements \ArrayAccess, \JsonSerializable, ModelInt
     /**
      * Gets shipping_service_id.
      */
-    public function getShippingServiceId() : string
+    public function getShippingServiceId(): string
     {
         return $this->container['shipping_service_id'];
     }
@@ -281,7 +284,7 @@ class CreateShipmentRequest implements \ArrayAccess, \JsonSerializable, ModelInt
      *
      * @param string $shipping_service_id an Amazon-defined shipping service identifier
      */
-    public function setShippingServiceId(string $shipping_service_id) : self
+    public function setShippingServiceId(string $shipping_service_id): self
     {
         $this->container['shipping_service_id'] = $shipping_service_id;
 
@@ -291,7 +294,7 @@ class CreateShipmentRequest implements \ArrayAccess, \JsonSerializable, ModelInt
     /**
      * Gets shipping_service_offer_id.
      */
-    public function getShippingServiceOfferId() : ?string
+    public function getShippingServiceOfferId(): ?string
     {
         return $this->container['shipping_service_offer_id'];
     }
@@ -301,7 +304,7 @@ class CreateShipmentRequest implements \ArrayAccess, \JsonSerializable, ModelInt
      *
      * @param null|string $shipping_service_offer_id identifies a shipping service order made by a carrier
      */
-    public function setShippingServiceOfferId(?string $shipping_service_offer_id) : self
+    public function setShippingServiceOfferId(?string $shipping_service_offer_id): self
     {
         $this->container['shipping_service_offer_id'] = $shipping_service_offer_id;
 
@@ -311,7 +314,7 @@ class CreateShipmentRequest implements \ArrayAccess, \JsonSerializable, ModelInt
     /**
      * Gets hazmat_type.
      */
-    public function getHazmatType() : ?HazmatType
+    public function getHazmatType(): ?HazmatType
     {
         return $this->container['hazmat_type'];
     }
@@ -321,7 +324,7 @@ class CreateShipmentRequest implements \ArrayAccess, \JsonSerializable, ModelInt
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\MerchantFulfillment\HazmatType $hazmat_type hazmat_type
      */
-    public function setHazmatType(?HazmatType $hazmat_type) : self
+    public function setHazmatType(?HazmatType $hazmat_type): self
     {
         $this->container['hazmat_type'] = $hazmat_type;
 
@@ -331,7 +334,7 @@ class CreateShipmentRequest implements \ArrayAccess, \JsonSerializable, ModelInt
     /**
      * Gets label_format_option.
      */
-    public function getLabelFormatOption() : ?LabelFormatOptionRequest
+    public function getLabelFormatOption(): ?LabelFormatOptionRequest
     {
         return $this->container['label_format_option'];
     }
@@ -341,7 +344,7 @@ class CreateShipmentRequest implements \ArrayAccess, \JsonSerializable, ModelInt
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\MerchantFulfillment\LabelFormatOptionRequest $label_format_option label_format_option
      */
-    public function setLabelFormatOption(?LabelFormatOptionRequest $label_format_option) : self
+    public function setLabelFormatOption(?LabelFormatOptionRequest $label_format_option): self
     {
         $this->container['label_format_option'] = $label_format_option;
 
@@ -353,7 +356,7 @@ class CreateShipmentRequest implements \ArrayAccess, \JsonSerializable, ModelInt
      *
      * @return null|\Plenty\AmazonPHP\SellingPartner\Model\MerchantFulfillment\AdditionalSellerInputs[]
      */
-    public function getShipmentLevelSellerInputsList() : ?array
+    public function getShipmentLevelSellerInputsList(): ?array
     {
         return $this->container['shipment_level_seller_inputs_list'];
     }
@@ -363,7 +366,7 @@ class CreateShipmentRequest implements \ArrayAccess, \JsonSerializable, ModelInt
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\MerchantFulfillment\AdditionalSellerInputs[] $shipment_level_seller_inputs_list a list of additional seller input pairs required to purchase shipping
      */
-    public function setShipmentLevelSellerInputsList(?array $shipment_level_seller_inputs_list) : self
+    public function setShipmentLevelSellerInputsList(?array $shipment_level_seller_inputs_list): self
     {
         $this->container['shipment_level_seller_inputs_list'] = $shipment_level_seller_inputs_list;
 
@@ -375,7 +378,7 @@ class CreateShipmentRequest implements \ArrayAccess, \JsonSerializable, ModelInt
      *
      * @param int $offset Offset
      */
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -398,7 +401,7 @@ class CreateShipmentRequest implements \ArrayAccess, \JsonSerializable, ModelInt
      * @param null|int $offset Offset
      * @param mixed $value Value to be set
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         if (null === $offset) {
             $this->container[] = $value;
@@ -412,7 +415,7 @@ class CreateShipmentRequest implements \ArrayAccess, \JsonSerializable, ModelInt
      *
      * @param int $offset Offset
      */
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -425,7 +428,7 @@ class CreateShipmentRequest implements \ArrayAccess, \JsonSerializable, ModelInt
      * @return mixed returns data which can be serialized by json_encode(), which is a value
      *               of any type other than a resource
      */
-    public function jsonSerialize() : string
+    public function jsonSerialize(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }
@@ -433,7 +436,7 @@ class CreateShipmentRequest implements \ArrayAccess, \JsonSerializable, ModelInt
     /**
      * Gets a header-safe presentation of the object.
      */
-    public function toHeaderValue() : string
+    public function toHeaderValue(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }

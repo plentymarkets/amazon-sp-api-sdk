@@ -1,4 +1,7 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
+
 /**
  * OrderItem.
  *
@@ -40,7 +43,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class OrderItem implements \ArrayAccess, \JsonSerializable, ModelInterface
+class OrderItem implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -71,19 +74,19 @@ class OrderItem implements \ArrayAccess, \JsonSerializable, ModelInterface
         'title' => 'string',
         'quantity_ordered' => 'int',
         'quantity_shipped' => 'int',
-        'product_info' => '\Plenty\AmazonPHP\SellingPartner\Model\Orders\ProductInfoDetail',
-        'points_granted' => '\Plenty\AmazonPHP\SellingPartner\Model\Orders\PointsGrantedDetail',
-        'item_price' => '\Plenty\AmazonPHP\SellingPartner\Model\Orders\Money',
-        'shipping_price' => '\Plenty\AmazonPHP\SellingPartner\Model\Orders\Money',
-        'item_tax' => '\Plenty\AmazonPHP\SellingPartner\Model\Orders\Money',
-        'shipping_tax' => '\Plenty\AmazonPHP\SellingPartner\Model\Orders\Money',
-        'shipping_discount' => '\Plenty\AmazonPHP\SellingPartner\Model\Orders\Money',
-        'shipping_discount_tax' => '\Plenty\AmazonPHP\SellingPartner\Model\Orders\Money',
-        'promotion_discount' => '\Plenty\AmazonPHP\SellingPartner\Model\Orders\Money',
-        'promotion_discount_tax' => '\Plenty\AmazonPHP\SellingPartner\Model\Orders\Money',
+        'product_info' => \Plenty\AmazonPHP\SellingPartner\Model\Orders\ProductInfoDetail::class,
+        'points_granted' => \Plenty\AmazonPHP\SellingPartner\Model\Orders\PointsGrantedDetail::class,
+        'item_price' => \Plenty\AmazonPHP\SellingPartner\Model\Orders\Money::class,
+        'shipping_price' => \Plenty\AmazonPHP\SellingPartner\Model\Orders\Money::class,
+        'item_tax' => \Plenty\AmazonPHP\SellingPartner\Model\Orders\Money::class,
+        'shipping_tax' => \Plenty\AmazonPHP\SellingPartner\Model\Orders\Money::class,
+        'shipping_discount' => \Plenty\AmazonPHP\SellingPartner\Model\Orders\Money::class,
+        'shipping_discount_tax' => \Plenty\AmazonPHP\SellingPartner\Model\Orders\Money::class,
+        'promotion_discount' => \Plenty\AmazonPHP\SellingPartner\Model\Orders\Money::class,
+        'promotion_discount_tax' => \Plenty\AmazonPHP\SellingPartner\Model\Orders\Money::class,
         'promotion_ids' => 'string[]',
-        'cod_fee' => '\Plenty\AmazonPHP\SellingPartner\Model\Orders\Money',
-        'cod_fee_discount' => '\Plenty\AmazonPHP\SellingPartner\Model\Orders\Money',
+        'cod_fee' => \Plenty\AmazonPHP\SellingPartner\Model\Orders\Money::class,
+        'cod_fee_discount' => \Plenty\AmazonPHP\SellingPartner\Model\Orders\Money::class,
         'is_gift' => 'bool',
         'condition_note' => 'string',
         'condition_id' => 'string',
@@ -91,14 +94,14 @@ class OrderItem implements \ArrayAccess, \JsonSerializable, ModelInterface
         'scheduled_delivery_start_date' => 'string',
         'scheduled_delivery_end_date' => 'string',
         'price_designation' => 'string',
-        'tax_collection' => '\Plenty\AmazonPHP\SellingPartner\Model\Orders\TaxCollection',
+        'tax_collection' => \Plenty\AmazonPHP\SellingPartner\Model\Orders\TaxCollection::class,
         'serial_number_required' => 'bool',
         'is_transparency' => 'bool',
         'ioss_number' => 'string',
         'store_chain_store_id' => 'string',
         'deemed_reseller_category' => 'string',
-        'buyer_info' => '\Plenty\AmazonPHP\SellingPartner\Model\Orders\ItemBuyerInfo',
-        'buyer_requested_cancel' => '\Plenty\AmazonPHP\SellingPartner\Model\Orders\BuyerRequestedCancel',
+        'buyer_info' => \Plenty\AmazonPHP\SellingPartner\Model\Orders\ItemBuyerInfo::class,
+        'buyer_requested_cancel' => \Plenty\AmazonPHP\SellingPartner\Model\Orders\BuyerRequestedCancel::class,
     ];
 
     /**
@@ -285,7 +288,7 @@ class OrderItem implements \ArrayAccess, \JsonSerializable, ModelInterface
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['asin'] = $data['asin'] ?? null;
         $this->container['seller_sku'] = $data['seller_sku'] ?? null;
@@ -328,7 +331,7 @@ class OrderItem implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return string[]
      */
-    public static function openAPITypes() : array
+    public static function openAPITypes(): array
     {
         return self::$openAPITypes;
     }
@@ -338,7 +341,7 @@ class OrderItem implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return null[]|string[]
      */
-    public static function openAPIFormats() : array
+    public static function openAPIFormats(): array
     {
         return self::$openAPIFormats;
     }
@@ -349,7 +352,7 @@ class OrderItem implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return string[]
      */
-    public static function attributeMap() : array
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -359,7 +362,7 @@ class OrderItem implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return string[]
      */
-    public static function setters() : array
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -369,7 +372,7 @@ class OrderItem implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return string[]
      */
-    public static function getters() : array
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -377,9 +380,9 @@ class OrderItem implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets the string presentation of the object.
      */
-    public function __toString() : string
+    public function __toString(): string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );
@@ -388,7 +391,7 @@ class OrderItem implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * The original name of the model.
      */
-    public function getModelName() : string
+    public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
@@ -398,7 +401,7 @@ class OrderItem implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return string[]
      */
-    public function getDeemedResellerCategoryAllowableValues() : array
+    public function getDeemedResellerCategoryAllowableValues(): array
     {
         return [
             self::DEEMED_RESELLER_CATEGORY_IOSS,
@@ -413,7 +416,7 @@ class OrderItem implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties() : array
+    public function listInvalidProperties(): array
     {
         $invalidProperties = [];
 
@@ -447,7 +450,7 @@ class OrderItem implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return bool True if all properties are valid
      */
-    public function valid() : bool
+    public function valid(): bool
     {
         return \count($this->listInvalidProperties()) === 0;
     }
@@ -455,7 +458,7 @@ class OrderItem implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets asin.
      */
-    public function getAsin() : string
+    public function getAsin(): string
     {
         return $this->container['asin'];
     }
@@ -465,7 +468,7 @@ class OrderItem implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param string $asin the Amazon Standard Identification Number (ASIN) of the item
      */
-    public function setAsin(string $asin) : self
+    public function setAsin(string $asin): self
     {
         $this->container['asin'] = $asin;
 
@@ -475,7 +478,7 @@ class OrderItem implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets seller_sku.
      */
-    public function getSellerSku() : ?string
+    public function getSellerSku(): ?string
     {
         return $this->container['seller_sku'];
     }
@@ -485,7 +488,7 @@ class OrderItem implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param null|string $seller_sku the seller stock keeping unit (SKU) of the item
      */
-    public function setSellerSku(?string $seller_sku) : self
+    public function setSellerSku(?string $seller_sku): self
     {
         $this->container['seller_sku'] = $seller_sku;
 
@@ -495,7 +498,7 @@ class OrderItem implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets order_item_id.
      */
-    public function getOrderItemId() : string
+    public function getOrderItemId(): string
     {
         return $this->container['order_item_id'];
     }
@@ -505,7 +508,7 @@ class OrderItem implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param string $order_item_id an Amazon-defined order item identifier
      */
-    public function setOrderItemId(string $order_item_id) : self
+    public function setOrderItemId(string $order_item_id): self
     {
         $this->container['order_item_id'] = $order_item_id;
 
@@ -515,7 +518,7 @@ class OrderItem implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets title.
      */
-    public function getTitle() : ?string
+    public function getTitle(): ?string
     {
         return $this->container['title'];
     }
@@ -525,7 +528,7 @@ class OrderItem implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param null|string $title the name of the item
      */
-    public function setTitle(?string $title) : self
+    public function setTitle(?string $title): self
     {
         $this->container['title'] = $title;
 
@@ -535,7 +538,7 @@ class OrderItem implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets quantity_ordered.
      */
-    public function getQuantityOrdered() : int
+    public function getQuantityOrdered(): int
     {
         return $this->container['quantity_ordered'];
     }
@@ -545,7 +548,7 @@ class OrderItem implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param int $quantity_ordered the number of items in the order
      */
-    public function setQuantityOrdered(int $quantity_ordered) : self
+    public function setQuantityOrdered(int $quantity_ordered): self
     {
         $this->container['quantity_ordered'] = $quantity_ordered;
 
@@ -555,7 +558,7 @@ class OrderItem implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets quantity_shipped.
      */
-    public function getQuantityShipped() : ?int
+    public function getQuantityShipped(): ?int
     {
         return $this->container['quantity_shipped'];
     }
@@ -565,7 +568,7 @@ class OrderItem implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param null|int $quantity_shipped the number of items shipped
      */
-    public function setQuantityShipped(?int $quantity_shipped) : self
+    public function setQuantityShipped(?int $quantity_shipped): self
     {
         $this->container['quantity_shipped'] = $quantity_shipped;
 
@@ -575,7 +578,7 @@ class OrderItem implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets product_info.
      */
-    public function getProductInfo() : ?ProductInfoDetail
+    public function getProductInfo(): ?ProductInfoDetail
     {
         return $this->container['product_info'];
     }
@@ -585,7 +588,7 @@ class OrderItem implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\Orders\ProductInfoDetail $product_info product_info
      */
-    public function setProductInfo(?ProductInfoDetail $product_info) : self
+    public function setProductInfo(?ProductInfoDetail $product_info): self
     {
         $this->container['product_info'] = $product_info;
 
@@ -595,7 +598,7 @@ class OrderItem implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets points_granted.
      */
-    public function getPointsGranted() : ?PointsGrantedDetail
+    public function getPointsGranted(): ?PointsGrantedDetail
     {
         return $this->container['points_granted'];
     }
@@ -605,7 +608,7 @@ class OrderItem implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\Orders\PointsGrantedDetail $points_granted points_granted
      */
-    public function setPointsGranted(?PointsGrantedDetail $points_granted) : self
+    public function setPointsGranted(?PointsGrantedDetail $points_granted): self
     {
         $this->container['points_granted'] = $points_granted;
 
@@ -615,7 +618,7 @@ class OrderItem implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets item_price.
      */
-    public function getItemPrice() : ?Money
+    public function getItemPrice(): ?Money
     {
         return $this->container['item_price'];
     }
@@ -625,7 +628,7 @@ class OrderItem implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\Orders\Money $item_price item_price
      */
-    public function setItemPrice(?Money $item_price) : self
+    public function setItemPrice(?Money $item_price): self
     {
         $this->container['item_price'] = $item_price;
 
@@ -635,7 +638,7 @@ class OrderItem implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets shipping_price.
      */
-    public function getShippingPrice() : ?Money
+    public function getShippingPrice(): ?Money
     {
         return $this->container['shipping_price'];
     }
@@ -645,7 +648,7 @@ class OrderItem implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\Orders\Money $shipping_price shipping_price
      */
-    public function setShippingPrice(?Money $shipping_price) : self
+    public function setShippingPrice(?Money $shipping_price): self
     {
         $this->container['shipping_price'] = $shipping_price;
 
@@ -655,7 +658,7 @@ class OrderItem implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets item_tax.
      */
-    public function getItemTax() : ?Money
+    public function getItemTax(): ?Money
     {
         return $this->container['item_tax'];
     }
@@ -665,7 +668,7 @@ class OrderItem implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\Orders\Money $item_tax item_tax
      */
-    public function setItemTax(?Money $item_tax) : self
+    public function setItemTax(?Money $item_tax): self
     {
         $this->container['item_tax'] = $item_tax;
 
@@ -675,7 +678,7 @@ class OrderItem implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets shipping_tax.
      */
-    public function getShippingTax() : ?Money
+    public function getShippingTax(): ?Money
     {
         return $this->container['shipping_tax'];
     }
@@ -685,7 +688,7 @@ class OrderItem implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\Orders\Money $shipping_tax shipping_tax
      */
-    public function setShippingTax(?Money $shipping_tax) : self
+    public function setShippingTax(?Money $shipping_tax): self
     {
         $this->container['shipping_tax'] = $shipping_tax;
 
@@ -695,7 +698,7 @@ class OrderItem implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets shipping_discount.
      */
-    public function getShippingDiscount() : ?Money
+    public function getShippingDiscount(): ?Money
     {
         return $this->container['shipping_discount'];
     }
@@ -705,7 +708,7 @@ class OrderItem implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\Orders\Money $shipping_discount shipping_discount
      */
-    public function setShippingDiscount(?Money $shipping_discount) : self
+    public function setShippingDiscount(?Money $shipping_discount): self
     {
         $this->container['shipping_discount'] = $shipping_discount;
 
@@ -715,7 +718,7 @@ class OrderItem implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets shipping_discount_tax.
      */
-    public function getShippingDiscountTax() : ?Money
+    public function getShippingDiscountTax(): ?Money
     {
         return $this->container['shipping_discount_tax'];
     }
@@ -725,7 +728,7 @@ class OrderItem implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\Orders\Money $shipping_discount_tax shipping_discount_tax
      */
-    public function setShippingDiscountTax(?Money $shipping_discount_tax) : self
+    public function setShippingDiscountTax(?Money $shipping_discount_tax): self
     {
         $this->container['shipping_discount_tax'] = $shipping_discount_tax;
 
@@ -735,7 +738,7 @@ class OrderItem implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets promotion_discount.
      */
-    public function getPromotionDiscount() : ?Money
+    public function getPromotionDiscount(): ?Money
     {
         return $this->container['promotion_discount'];
     }
@@ -745,7 +748,7 @@ class OrderItem implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\Orders\Money $promotion_discount promotion_discount
      */
-    public function setPromotionDiscount(?Money $promotion_discount) : self
+    public function setPromotionDiscount(?Money $promotion_discount): self
     {
         $this->container['promotion_discount'] = $promotion_discount;
 
@@ -755,7 +758,7 @@ class OrderItem implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets promotion_discount_tax.
      */
-    public function getPromotionDiscountTax() : ?Money
+    public function getPromotionDiscountTax(): ?Money
     {
         return $this->container['promotion_discount_tax'];
     }
@@ -765,7 +768,7 @@ class OrderItem implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\Orders\Money $promotion_discount_tax promotion_discount_tax
      */
-    public function setPromotionDiscountTax(?Money $promotion_discount_tax) : self
+    public function setPromotionDiscountTax(?Money $promotion_discount_tax): self
     {
         $this->container['promotion_discount_tax'] = $promotion_discount_tax;
 
@@ -777,7 +780,7 @@ class OrderItem implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return null|string[]
      */
-    public function getPromotionIds() : ?array
+    public function getPromotionIds(): ?array
     {
         return $this->container['promotion_ids'];
     }
@@ -787,7 +790,7 @@ class OrderItem implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param null|string[] $promotion_ids a list of promotion identifiers provided by the seller when the promotions were created
      */
-    public function setPromotionIds(?array $promotion_ids) : self
+    public function setPromotionIds(?array $promotion_ids): self
     {
         $this->container['promotion_ids'] = $promotion_ids;
 
@@ -797,7 +800,7 @@ class OrderItem implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets cod_fee.
      */
-    public function getCodFee() : ?Money
+    public function getCodFee(): ?Money
     {
         return $this->container['cod_fee'];
     }
@@ -807,7 +810,7 @@ class OrderItem implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\Orders\Money $cod_fee cod_fee
      */
-    public function setCodFee(?Money $cod_fee) : self
+    public function setCodFee(?Money $cod_fee): self
     {
         $this->container['cod_fee'] = $cod_fee;
 
@@ -817,7 +820,7 @@ class OrderItem implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets cod_fee_discount.
      */
-    public function getCodFeeDiscount() : ?Money
+    public function getCodFeeDiscount(): ?Money
     {
         return $this->container['cod_fee_discount'];
     }
@@ -827,7 +830,7 @@ class OrderItem implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\Orders\Money $cod_fee_discount cod_fee_discount
      */
-    public function setCodFeeDiscount(?Money $cod_fee_discount) : self
+    public function setCodFeeDiscount(?Money $cod_fee_discount): self
     {
         $this->container['cod_fee_discount'] = $cod_fee_discount;
 
@@ -837,7 +840,7 @@ class OrderItem implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets is_gift.
      */
-    public function getIsGift() : ?bool
+    public function getIsGift(): ?bool
     {
         return $this->container['is_gift'];
     }
@@ -847,7 +850,7 @@ class OrderItem implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param null|bool $is_gift when true, the item is a gift
      */
-    public function setIsGift(?bool $is_gift) : self
+    public function setIsGift(?bool $is_gift): self
     {
         $this->container['is_gift'] = $is_gift;
 
@@ -857,7 +860,7 @@ class OrderItem implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets condition_note.
      */
-    public function getConditionNote() : ?string
+    public function getConditionNote(): ?string
     {
         return $this->container['condition_note'];
     }
@@ -867,7 +870,7 @@ class OrderItem implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param null|string $condition_note the condition of the item as described by the seller
      */
-    public function setConditionNote(?string $condition_note) : self
+    public function setConditionNote(?string $condition_note): self
     {
         $this->container['condition_note'] = $condition_note;
 
@@ -877,7 +880,7 @@ class OrderItem implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets condition_id.
      */
-    public function getConditionId() : ?string
+    public function getConditionId(): ?string
     {
         return $this->container['condition_id'];
     }
@@ -887,7 +890,7 @@ class OrderItem implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param null|string $condition_id The condition of the item.  Possible values: New, Used, Collectible, Refurbished, Preorder, Club.
      */
-    public function setConditionId(?string $condition_id) : self
+    public function setConditionId(?string $condition_id): self
     {
         $this->container['condition_id'] = $condition_id;
 
@@ -897,7 +900,7 @@ class OrderItem implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets condition_subtype_id.
      */
-    public function getConditionSubtypeId() : ?string
+    public function getConditionSubtypeId(): ?string
     {
         return $this->container['condition_subtype_id'];
     }
@@ -907,7 +910,7 @@ class OrderItem implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param null|string $condition_subtype_id The subcondition of the item.  Possible values: New, Mint, Very Good, Good, Acceptable, Poor, Club, OEM, Warranty, Refurbished Warranty, Refurbished, Open Box, Any, Other.
      */
-    public function setConditionSubtypeId(?string $condition_subtype_id) : self
+    public function setConditionSubtypeId(?string $condition_subtype_id): self
     {
         $this->container['condition_subtype_id'] = $condition_subtype_id;
 
@@ -917,7 +920,7 @@ class OrderItem implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets scheduled_delivery_start_date.
      */
-    public function getScheduledDeliveryStartDate() : ?string
+    public function getScheduledDeliveryStartDate(): ?string
     {
         return $this->container['scheduled_delivery_start_date'];
     }
@@ -927,7 +930,7 @@ class OrderItem implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param null|string $scheduled_delivery_start_date The start date of the scheduled delivery window in the time zone of the order destination. In ISO 8601 date time format.
      */
-    public function setScheduledDeliveryStartDate(?string $scheduled_delivery_start_date) : self
+    public function setScheduledDeliveryStartDate(?string $scheduled_delivery_start_date): self
     {
         $this->container['scheduled_delivery_start_date'] = $scheduled_delivery_start_date;
 
@@ -937,7 +940,7 @@ class OrderItem implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets scheduled_delivery_end_date.
      */
-    public function getScheduledDeliveryEndDate() : ?string
+    public function getScheduledDeliveryEndDate(): ?string
     {
         return $this->container['scheduled_delivery_end_date'];
     }
@@ -947,7 +950,7 @@ class OrderItem implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param null|string $scheduled_delivery_end_date The end date of the scheduled delivery window in the time zone of the order destination. In ISO 8601 date time format.
      */
-    public function setScheduledDeliveryEndDate(?string $scheduled_delivery_end_date) : self
+    public function setScheduledDeliveryEndDate(?string $scheduled_delivery_end_date): self
     {
         $this->container['scheduled_delivery_end_date'] = $scheduled_delivery_end_date;
 
@@ -957,7 +960,7 @@ class OrderItem implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets price_designation.
      */
-    public function getPriceDesignation() : ?string
+    public function getPriceDesignation(): ?string
     {
         return $this->container['price_designation'];
     }
@@ -967,7 +970,7 @@ class OrderItem implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param null|string $price_designation Indicates that the selling price is a special price that is available only for Amazon Business orders. For more information about the Amazon Business Seller Program, see the [Amazon Business website](https://www.amazon.com/b2b/info/amazon-business).   Possible values: BusinessPrice - A special price that is available only for Amazon Business orders.
      */
-    public function setPriceDesignation(?string $price_designation) : self
+    public function setPriceDesignation(?string $price_designation): self
     {
         $this->container['price_designation'] = $price_designation;
 
@@ -977,7 +980,7 @@ class OrderItem implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets tax_collection.
      */
-    public function getTaxCollection() : ?TaxCollection
+    public function getTaxCollection(): ?TaxCollection
     {
         return $this->container['tax_collection'];
     }
@@ -987,7 +990,7 @@ class OrderItem implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\Orders\TaxCollection $tax_collection tax_collection
      */
-    public function setTaxCollection(?TaxCollection $tax_collection) : self
+    public function setTaxCollection(?TaxCollection $tax_collection): self
     {
         $this->container['tax_collection'] = $tax_collection;
 
@@ -997,7 +1000,7 @@ class OrderItem implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets serial_number_required.
      */
-    public function getSerialNumberRequired() : ?bool
+    public function getSerialNumberRequired(): ?bool
     {
         return $this->container['serial_number_required'];
     }
@@ -1007,7 +1010,7 @@ class OrderItem implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param null|bool $serial_number_required When true, the product type for this item has a serial number.  Returned only for Amazon Easy Ship orders.
      */
-    public function setSerialNumberRequired(?bool $serial_number_required) : self
+    public function setSerialNumberRequired(?bool $serial_number_required): self
     {
         $this->container['serial_number_required'] = $serial_number_required;
 
@@ -1017,7 +1020,7 @@ class OrderItem implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets is_transparency.
      */
-    public function getIsTransparency() : ?bool
+    public function getIsTransparency(): ?bool
     {
         return $this->container['is_transparency'];
     }
@@ -1027,7 +1030,7 @@ class OrderItem implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param null|bool $is_transparency when true, transparency codes are required
      */
-    public function setIsTransparency(?bool $is_transparency) : self
+    public function setIsTransparency(?bool $is_transparency): self
     {
         $this->container['is_transparency'] = $is_transparency;
 
@@ -1037,7 +1040,7 @@ class OrderItem implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets ioss_number.
      */
-    public function getIossNumber() : ?string
+    public function getIossNumber(): ?string
     {
         return $this->container['ioss_number'];
     }
@@ -1047,7 +1050,7 @@ class OrderItem implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param null|string $ioss_number The IOSS number for the marketplace. Sellers shipping to the European Union (EU) from outside of the EU must provide this IOSS number to their carrier when Amazon has collected the VAT on the sale.
      */
-    public function setIossNumber(?string $ioss_number) : self
+    public function setIossNumber(?string $ioss_number): self
     {
         $this->container['ioss_number'] = $ioss_number;
 
@@ -1057,7 +1060,7 @@ class OrderItem implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets store_chain_store_id.
      */
-    public function getStoreChainStoreId() : ?string
+    public function getStoreChainStoreId(): ?string
     {
         return $this->container['store_chain_store_id'];
     }
@@ -1067,7 +1070,7 @@ class OrderItem implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param null|string $store_chain_store_id The store chain store identifier. Linked to a specific store in a store chain.
      */
-    public function setStoreChainStoreId(?string $store_chain_store_id) : self
+    public function setStoreChainStoreId(?string $store_chain_store_id): self
     {
         $this->container['store_chain_store_id'] = $store_chain_store_id;
 
@@ -1077,7 +1080,7 @@ class OrderItem implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets deemed_reseller_category.
      */
-    public function getDeemedResellerCategory() : ?string
+    public function getDeemedResellerCategory(): ?string
     {
         return $this->container['deemed_reseller_category'];
     }
@@ -1087,7 +1090,7 @@ class OrderItem implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param null|string $deemed_reseller_category The category of deemed reseller. This applies to selling partners that are not based in the EU and is used to help them meet the VAT Deemed Reseller tax laws in the EU and UK.
      */
-    public function setDeemedResellerCategory(?string $deemed_reseller_category) : self
+    public function setDeemedResellerCategory(?string $deemed_reseller_category): self
     {
         $allowedValues = $this->getDeemedResellerCategoryAllowableValues();
 
@@ -1108,7 +1111,7 @@ class OrderItem implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets buyer_info.
      */
-    public function getBuyerInfo() : ?ItemBuyerInfo
+    public function getBuyerInfo(): ?ItemBuyerInfo
     {
         return $this->container['buyer_info'];
     }
@@ -1118,7 +1121,7 @@ class OrderItem implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\Orders\ItemBuyerInfo $buyer_info buyer_info
      */
-    public function setBuyerInfo(?ItemBuyerInfo $buyer_info) : self
+    public function setBuyerInfo(?ItemBuyerInfo $buyer_info): self
     {
         $this->container['buyer_info'] = $buyer_info;
 
@@ -1128,7 +1131,7 @@ class OrderItem implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets buyer_requested_cancel.
      */
-    public function getBuyerRequestedCancel() : ?BuyerRequestedCancel
+    public function getBuyerRequestedCancel(): ?BuyerRequestedCancel
     {
         return $this->container['buyer_requested_cancel'];
     }
@@ -1138,7 +1141,7 @@ class OrderItem implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\Orders\BuyerRequestedCancel $buyer_requested_cancel buyer_requested_cancel
      */
-    public function setBuyerRequestedCancel(?BuyerRequestedCancel $buyer_requested_cancel) : self
+    public function setBuyerRequestedCancel(?BuyerRequestedCancel $buyer_requested_cancel): self
     {
         $this->container['buyer_requested_cancel'] = $buyer_requested_cancel;
 
@@ -1150,7 +1153,7 @@ class OrderItem implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param int $offset Offset
      */
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -1173,7 +1176,7 @@ class OrderItem implements \ArrayAccess, \JsonSerializable, ModelInterface
      * @param null|int $offset Offset
      * @param mixed $value Value to be set
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         if (null === $offset) {
             $this->container[] = $value;
@@ -1187,7 +1190,7 @@ class OrderItem implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param int $offset Offset
      */
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -1200,7 +1203,7 @@ class OrderItem implements \ArrayAccess, \JsonSerializable, ModelInterface
      * @return mixed returns data which can be serialized by json_encode(), which is a value
      *               of any type other than a resource
      */
-    public function jsonSerialize() : string
+    public function jsonSerialize(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }
@@ -1208,7 +1211,7 @@ class OrderItem implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets a header-safe presentation of the object.
      */
-    public function toHeaderValue() : string
+    public function toHeaderValue(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }

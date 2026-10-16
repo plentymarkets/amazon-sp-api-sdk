@@ -142,7 +142,7 @@ final class ProductFeesSDK
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            '\Plenty\AmazonPHP\SellingPartner\Model\ProductFees\GetMyFeesEstimateResponse',
+            \Plenty\AmazonPHP\SellingPartner\Model\ProductFees\GetMyFeesEstimateResponse::class,
             []
         );
     }
@@ -346,7 +346,7 @@ final class ProductFeesSDK
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            '\Plenty\AmazonPHP\SellingPartner\Model\ProductFees\GetMyFeesEstimateResponse',
+            \Plenty\AmazonPHP\SellingPartner\Model\ProductFees\GetMyFeesEstimateResponse::class,
             []
         );
     }

@@ -1,4 +1,7 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
+
 /**
  * TaxRegistrationDetails.
  *
@@ -40,7 +43,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class TaxRegistrationDetails implements \ArrayAccess, \JsonSerializable, ModelInterface
+class TaxRegistrationDetails implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -63,7 +66,7 @@ class TaxRegistrationDetails implements \ArrayAccess, \JsonSerializable, ModelIn
     protected static /** [COMPAT] array */ $openAPITypes = [
         'tax_registration_type' => 'string',
         'tax_registration_number' => 'string',
-        'tax_registration_address' => '\Plenty\AmazonPHP\SellingPartner\Model\VendorDirectFulfillmentShipping\Address',
+        'tax_registration_address' => \Plenty\AmazonPHP\SellingPartner\Model\VendorDirectFulfillmentShipping\Address::class,
         'tax_registration_messages' => 'string',
     ];
 
@@ -131,7 +134,7 @@ class TaxRegistrationDetails implements \ArrayAccess, \JsonSerializable, ModelIn
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['tax_registration_type'] = $data['tax_registration_type'] ?? null;
         $this->container['tax_registration_number'] = $data['tax_registration_number'] ?? null;
@@ -144,7 +147,7 @@ class TaxRegistrationDetails implements \ArrayAccess, \JsonSerializable, ModelIn
      *
      * @return string[]
      */
-    public static function openAPITypes() : array
+    public static function openAPITypes(): array
     {
         return self::$openAPITypes;
     }
@@ -154,7 +157,7 @@ class TaxRegistrationDetails implements \ArrayAccess, \JsonSerializable, ModelIn
      *
      * @return null[]|string[]
      */
-    public static function openAPIFormats() : array
+    public static function openAPIFormats(): array
     {
         return self::$openAPIFormats;
     }
@@ -165,7 +168,7 @@ class TaxRegistrationDetails implements \ArrayAccess, \JsonSerializable, ModelIn
      *
      * @return string[]
      */
-    public static function attributeMap() : array
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -175,7 +178,7 @@ class TaxRegistrationDetails implements \ArrayAccess, \JsonSerializable, ModelIn
      *
      * @return string[]
      */
-    public static function setters() : array
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -185,7 +188,7 @@ class TaxRegistrationDetails implements \ArrayAccess, \JsonSerializable, ModelIn
      *
      * @return string[]
      */
-    public static function getters() : array
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -193,9 +196,9 @@ class TaxRegistrationDetails implements \ArrayAccess, \JsonSerializable, ModelIn
     /**
      * Gets the string presentation of the object.
      */
-    public function __toString() : string
+    public function __toString(): string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );
@@ -204,7 +207,7 @@ class TaxRegistrationDetails implements \ArrayAccess, \JsonSerializable, ModelIn
     /**
      * The original name of the model.
      */
-    public function getModelName() : string
+    public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
@@ -214,7 +217,7 @@ class TaxRegistrationDetails implements \ArrayAccess, \JsonSerializable, ModelIn
      *
      * @return string[]
      */
-    public function getTaxRegistrationTypeAllowableValues() : array
+    public function getTaxRegistrationTypeAllowableValues(): array
     {
         return [
             self::TAX_REGISTRATION_TYPE_VAT,
@@ -227,7 +230,7 @@ class TaxRegistrationDetails implements \ArrayAccess, \JsonSerializable, ModelIn
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties() : array
+    public function listInvalidProperties(): array
     {
         $invalidProperties = [];
 
@@ -254,7 +257,7 @@ class TaxRegistrationDetails implements \ArrayAccess, \JsonSerializable, ModelIn
      *
      * @return bool True if all properties are valid
      */
-    public function valid() : bool
+    public function valid(): bool
     {
         return \count($this->listInvalidProperties()) === 0;
     }
@@ -262,7 +265,7 @@ class TaxRegistrationDetails implements \ArrayAccess, \JsonSerializable, ModelIn
     /**
      * Gets tax_registration_type.
      */
-    public function getTaxRegistrationType() : ?string
+    public function getTaxRegistrationType(): ?string
     {
         return $this->container['tax_registration_type'];
     }
@@ -272,7 +275,7 @@ class TaxRegistrationDetails implements \ArrayAccess, \JsonSerializable, ModelIn
      *
      * @param null|string $tax_registration_type tax registration type for the entity
      */
-    public function setTaxRegistrationType(?string $tax_registration_type) : self
+    public function setTaxRegistrationType(?string $tax_registration_type): self
     {
         $allowedValues = $this->getTaxRegistrationTypeAllowableValues();
 
@@ -293,7 +296,7 @@ class TaxRegistrationDetails implements \ArrayAccess, \JsonSerializable, ModelIn
     /**
      * Gets tax_registration_number.
      */
-    public function getTaxRegistrationNumber() : string
+    public function getTaxRegistrationNumber(): string
     {
         return $this->container['tax_registration_number'];
     }
@@ -303,7 +306,7 @@ class TaxRegistrationDetails implements \ArrayAccess, \JsonSerializable, ModelIn
      *
      * @param string $tax_registration_number Tax registration number for the party. For example, VAT ID.
      */
-    public function setTaxRegistrationNumber(string $tax_registration_number) : self
+    public function setTaxRegistrationNumber(string $tax_registration_number): self
     {
         $this->container['tax_registration_number'] = $tax_registration_number;
 
@@ -313,7 +316,7 @@ class TaxRegistrationDetails implements \ArrayAccess, \JsonSerializable, ModelIn
     /**
      * Gets tax_registration_address.
      */
-    public function getTaxRegistrationAddress() : ?Address
+    public function getTaxRegistrationAddress(): ?Address
     {
         return $this->container['tax_registration_address'];
     }
@@ -323,7 +326,7 @@ class TaxRegistrationDetails implements \ArrayAccess, \JsonSerializable, ModelIn
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\VendorDirectFulfillmentShipping\Address $tax_registration_address tax_registration_address
      */
-    public function setTaxRegistrationAddress(?Address $tax_registration_address) : self
+    public function setTaxRegistrationAddress(?Address $tax_registration_address): self
     {
         $this->container['tax_registration_address'] = $tax_registration_address;
 
@@ -333,7 +336,7 @@ class TaxRegistrationDetails implements \ArrayAccess, \JsonSerializable, ModelIn
     /**
      * Gets tax_registration_messages.
      */
-    public function getTaxRegistrationMessages() : ?string
+    public function getTaxRegistrationMessages(): ?string
     {
         return $this->container['tax_registration_messages'];
     }
@@ -343,7 +346,7 @@ class TaxRegistrationDetails implements \ArrayAccess, \JsonSerializable, ModelIn
      *
      * @param null|string $tax_registration_messages tax registration message that can be used for additional tax related details
      */
-    public function setTaxRegistrationMessages(?string $tax_registration_messages) : self
+    public function setTaxRegistrationMessages(?string $tax_registration_messages): self
     {
         $this->container['tax_registration_messages'] = $tax_registration_messages;
 
@@ -355,7 +358,7 @@ class TaxRegistrationDetails implements \ArrayAccess, \JsonSerializable, ModelIn
      *
      * @param int $offset Offset
      */
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -378,7 +381,7 @@ class TaxRegistrationDetails implements \ArrayAccess, \JsonSerializable, ModelIn
      * @param null|int $offset Offset
      * @param mixed $value Value to be set
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         if (null === $offset) {
             $this->container[] = $value;
@@ -392,7 +395,7 @@ class TaxRegistrationDetails implements \ArrayAccess, \JsonSerializable, ModelIn
      *
      * @param int $offset Offset
      */
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -405,7 +408,7 @@ class TaxRegistrationDetails implements \ArrayAccess, \JsonSerializable, ModelIn
      * @return mixed returns data which can be serialized by json_encode(), which is a value
      *               of any type other than a resource
      */
-    public function jsonSerialize() : string
+    public function jsonSerialize(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }
@@ -413,7 +416,7 @@ class TaxRegistrationDetails implements \ArrayAccess, \JsonSerializable, ModelIn
     /**
      * Gets a header-safe presentation of the object.
      */
-    public function toHeaderValue() : string
+    public function toHeaderValue(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }

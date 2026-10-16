@@ -1,4 +1,7 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
+
 /**
  * UpdateShipmentStatusRequest.
  *
@@ -40,7 +43,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class UpdateShipmentStatusRequest implements \ArrayAccess, \JsonSerializable, ModelInterface
+class UpdateShipmentStatusRequest implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -58,7 +61,7 @@ class UpdateShipmentStatusRequest implements \ArrayAccess, \JsonSerializable, Mo
      */
     protected static /** [COMPAT] array */ $openAPITypes = [
         'marketplace_id' => 'string',
-        'shipment_status' => '\Plenty\AmazonPHP\SellingPartner\Model\Orders\ShipmentStatus',
+        'shipment_status' => \Plenty\AmazonPHP\SellingPartner\Model\Orders\ShipmentStatus::class,
         'order_items' => 'object[]',
     ];
 
@@ -122,7 +125,7 @@ class UpdateShipmentStatusRequest implements \ArrayAccess, \JsonSerializable, Mo
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['marketplace_id'] = $data['marketplace_id'] ?? null;
         $this->container['shipment_status'] = $data['shipment_status'] ?? null;
@@ -134,7 +137,7 @@ class UpdateShipmentStatusRequest implements \ArrayAccess, \JsonSerializable, Mo
      *
      * @return string[]
      */
-    public static function openAPITypes() : array
+    public static function openAPITypes(): array
     {
         return self::$openAPITypes;
     }
@@ -144,7 +147,7 @@ class UpdateShipmentStatusRequest implements \ArrayAccess, \JsonSerializable, Mo
      *
      * @return null[]|string[]
      */
-    public static function openAPIFormats() : array
+    public static function openAPIFormats(): array
     {
         return self::$openAPIFormats;
     }
@@ -155,7 +158,7 @@ class UpdateShipmentStatusRequest implements \ArrayAccess, \JsonSerializable, Mo
      *
      * @return string[]
      */
-    public static function attributeMap() : array
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -165,7 +168,7 @@ class UpdateShipmentStatusRequest implements \ArrayAccess, \JsonSerializable, Mo
      *
      * @return string[]
      */
-    public static function setters() : array
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -175,7 +178,7 @@ class UpdateShipmentStatusRequest implements \ArrayAccess, \JsonSerializable, Mo
      *
      * @return string[]
      */
-    public static function getters() : array
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -183,9 +186,9 @@ class UpdateShipmentStatusRequest implements \ArrayAccess, \JsonSerializable, Mo
     /**
      * Gets the string presentation of the object.
      */
-    public function __toString() : string
+    public function __toString(): string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );
@@ -194,7 +197,7 @@ class UpdateShipmentStatusRequest implements \ArrayAccess, \JsonSerializable, Mo
     /**
      * The original name of the model.
      */
-    public function getModelName() : string
+    public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
@@ -204,7 +207,7 @@ class UpdateShipmentStatusRequest implements \ArrayAccess, \JsonSerializable, Mo
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties() : array
+    public function listInvalidProperties(): array
     {
         $invalidProperties = [];
 
@@ -225,7 +228,7 @@ class UpdateShipmentStatusRequest implements \ArrayAccess, \JsonSerializable, Mo
      *
      * @return bool True if all properties are valid
      */
-    public function valid() : bool
+    public function valid(): bool
     {
         return \count($this->listInvalidProperties()) === 0;
     }
@@ -233,7 +236,7 @@ class UpdateShipmentStatusRequest implements \ArrayAccess, \JsonSerializable, Mo
     /**
      * Gets marketplace_id.
      */
-    public function getMarketplaceId() : string
+    public function getMarketplaceId(): string
     {
         return $this->container['marketplace_id'];
     }
@@ -243,7 +246,7 @@ class UpdateShipmentStatusRequest implements \ArrayAccess, \JsonSerializable, Mo
      *
      * @param string $marketplace_id the unobfuscated marketplace ID
      */
-    public function setMarketplaceId(string $marketplace_id) : self
+    public function setMarketplaceId(string $marketplace_id): self
     {
         $this->container['marketplace_id'] = $marketplace_id;
 
@@ -253,7 +256,7 @@ class UpdateShipmentStatusRequest implements \ArrayAccess, \JsonSerializable, Mo
     /**
      * Gets shipment_status.
      */
-    public function getShipmentStatus() : ShipmentStatus
+    public function getShipmentStatus(): ShipmentStatus
     {
         return $this->container['shipment_status'];
     }
@@ -263,7 +266,7 @@ class UpdateShipmentStatusRequest implements \ArrayAccess, \JsonSerializable, Mo
      *
      * @param \Plenty\AmazonPHP\SellingPartner\Model\Orders\ShipmentStatus $shipment_status shipment_status
      */
-    public function setShipmentStatus(ShipmentStatus $shipment_status) : self
+    public function setShipmentStatus(ShipmentStatus $shipment_status): self
     {
         $this->container['shipment_status'] = $shipment_status;
 
@@ -275,7 +278,7 @@ class UpdateShipmentStatusRequest implements \ArrayAccess, \JsonSerializable, Mo
      *
      * @return null|object[]
      */
-    public function getOrderItems() : ?array
+    public function getOrderItems(): ?array
     {
         return $this->container['order_items'];
     }
@@ -285,7 +288,7 @@ class UpdateShipmentStatusRequest implements \ArrayAccess, \JsonSerializable, Mo
      *
      * @param null|object[] $order_items the list of order items and quantities when the seller wants to partially update the shipment status of the order
      */
-    public function setOrderItems(?array $order_items) : self
+    public function setOrderItems(?array $order_items): self
     {
         $this->container['order_items'] = $order_items;
 
@@ -297,7 +300,7 @@ class UpdateShipmentStatusRequest implements \ArrayAccess, \JsonSerializable, Mo
      *
      * @param int $offset Offset
      */
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -320,7 +323,7 @@ class UpdateShipmentStatusRequest implements \ArrayAccess, \JsonSerializable, Mo
      * @param null|int $offset Offset
      * @param mixed $value Value to be set
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         if (null === $offset) {
             $this->container[] = $value;
@@ -334,7 +337,7 @@ class UpdateShipmentStatusRequest implements \ArrayAccess, \JsonSerializable, Mo
      *
      * @param int $offset Offset
      */
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -347,7 +350,7 @@ class UpdateShipmentStatusRequest implements \ArrayAccess, \JsonSerializable, Mo
      * @return mixed returns data which can be serialized by json_encode(), which is a value
      *               of any type other than a resource
      */
-    public function jsonSerialize() : string
+    public function jsonSerialize(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }
@@ -355,7 +358,7 @@ class UpdateShipmentStatusRequest implements \ArrayAccess, \JsonSerializable, Mo
     /**
      * Gets a header-safe presentation of the object.
      */
-    public function toHeaderValue() : string
+    public function toHeaderValue(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }

@@ -1,4 +1,7 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
+
 /**
  * LabelCustomization.
  *
@@ -40,7 +43,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class LabelCustomization implements \ArrayAccess, \JsonSerializable, ModelInterface
+class LabelCustomization implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -58,7 +61,7 @@ class LabelCustomization implements \ArrayAccess, \JsonSerializable, ModelInterf
      */
     protected static /** [COMPAT] array */ $openAPITypes = [
         'custom_text_for_label' => 'string',
-        'standard_id_for_label' => '\Plenty\AmazonPHP\SellingPartner\Model\MerchantFulfillment\StandardIdForLabel',
+        'standard_id_for_label' => \Plenty\AmazonPHP\SellingPartner\Model\MerchantFulfillment\StandardIdForLabel::class,
     ];
 
     /**
@@ -117,7 +120,7 @@ class LabelCustomization implements \ArrayAccess, \JsonSerializable, ModelInterf
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['custom_text_for_label'] = $data['custom_text_for_label'] ?? null;
         $this->container['standard_id_for_label'] = $data['standard_id_for_label'] ?? null;
@@ -128,7 +131,7 @@ class LabelCustomization implements \ArrayAccess, \JsonSerializable, ModelInterf
      *
      * @return string[]
      */
-    public static function openAPITypes() : array
+    public static function openAPITypes(): array
     {
         return self::$openAPITypes;
     }
@@ -138,7 +141,7 @@ class LabelCustomization implements \ArrayAccess, \JsonSerializable, ModelInterf
      *
      * @return null[]|string[]
      */
-    public static function openAPIFormats() : array
+    public static function openAPIFormats(): array
     {
         return self::$openAPIFormats;
     }
@@ -149,7 +152,7 @@ class LabelCustomization implements \ArrayAccess, \JsonSerializable, ModelInterf
      *
      * @return string[]
      */
-    public static function attributeMap() : array
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -159,7 +162,7 @@ class LabelCustomization implements \ArrayAccess, \JsonSerializable, ModelInterf
      *
      * @return string[]
      */
-    public static function setters() : array
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -169,7 +172,7 @@ class LabelCustomization implements \ArrayAccess, \JsonSerializable, ModelInterf
      *
      * @return string[]
      */
-    public static function getters() : array
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -177,9 +180,9 @@ class LabelCustomization implements \ArrayAccess, \JsonSerializable, ModelInterf
     /**
      * Gets the string presentation of the object.
      */
-    public function __toString() : string
+    public function __toString(): string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );
@@ -188,7 +191,7 @@ class LabelCustomization implements \ArrayAccess, \JsonSerializable, ModelInterf
     /**
      * The original name of the model.
      */
-    public function getModelName() : string
+    public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
@@ -198,7 +201,7 @@ class LabelCustomization implements \ArrayAccess, \JsonSerializable, ModelInterf
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties() : array
+    public function listInvalidProperties(): array
     {
         $invalidProperties = [];
 
@@ -215,7 +218,7 @@ class LabelCustomization implements \ArrayAccess, \JsonSerializable, ModelInterf
      *
      * @return bool True if all properties are valid
      */
-    public function valid() : bool
+    public function valid(): bool
     {
         return \count($this->listInvalidProperties()) === 0;
     }
@@ -223,7 +226,7 @@ class LabelCustomization implements \ArrayAccess, \JsonSerializable, ModelInterf
     /**
      * Gets custom_text_for_label.
      */
-    public function getCustomTextForLabel() : ?string
+    public function getCustomTextForLabel(): ?string
     {
         return $this->container['custom_text_for_label'];
     }
@@ -233,7 +236,7 @@ class LabelCustomization implements \ArrayAccess, \JsonSerializable, ModelInterf
      *
      * @param null|string $custom_text_for_label Custom text to print on the label.  Note: Custom text is only included on labels that are in ZPL format (ZPL203). FedEx does not support CustomTextForLabel.
      */
-    public function setCustomTextForLabel(?string $custom_text_for_label) : self
+    public function setCustomTextForLabel(?string $custom_text_for_label): self
     {
         if (null !== $custom_text_for_label && (\mb_strlen($custom_text_for_label) > 14)) {
             throw new \InvalidArgumentException('invalid length for $custom_text_for_label when calling LabelCustomization., must be smaller than or equal to 14.');
@@ -247,7 +250,7 @@ class LabelCustomization implements \ArrayAccess, \JsonSerializable, ModelInterf
     /**
      * Gets standard_id_for_label.
      */
-    public function getStandardIdForLabel() : ?StandardIdForLabel
+    public function getStandardIdForLabel(): ?StandardIdForLabel
     {
         return $this->container['standard_id_for_label'];
     }
@@ -257,7 +260,7 @@ class LabelCustomization implements \ArrayAccess, \JsonSerializable, ModelInterf
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\MerchantFulfillment\StandardIdForLabel $standard_id_for_label standard_id_for_label
      */
-    public function setStandardIdForLabel(?StandardIdForLabel $standard_id_for_label) : self
+    public function setStandardIdForLabel(?StandardIdForLabel $standard_id_for_label): self
     {
         $this->container['standard_id_for_label'] = $standard_id_for_label;
 
@@ -269,7 +272,7 @@ class LabelCustomization implements \ArrayAccess, \JsonSerializable, ModelInterf
      *
      * @param int $offset Offset
      */
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -292,7 +295,7 @@ class LabelCustomization implements \ArrayAccess, \JsonSerializable, ModelInterf
      * @param null|int $offset Offset
      * @param mixed $value Value to be set
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         if (null === $offset) {
             $this->container[] = $value;
@@ -306,7 +309,7 @@ class LabelCustomization implements \ArrayAccess, \JsonSerializable, ModelInterf
      *
      * @param int $offset Offset
      */
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -319,7 +322,7 @@ class LabelCustomization implements \ArrayAccess, \JsonSerializable, ModelInterf
      * @return mixed returns data which can be serialized by json_encode(), which is a value
      *               of any type other than a resource
      */
-    public function jsonSerialize() : string
+    public function jsonSerialize(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }
@@ -327,7 +330,7 @@ class LabelCustomization implements \ArrayAccess, \JsonSerializable, ModelInterf
     /**
      * Gets a header-safe presentation of the object.
      */
-    public function toHeaderValue() : string
+    public function toHeaderValue(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }

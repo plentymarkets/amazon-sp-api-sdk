@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Plenty\AmazonPHP\SellingPartner\Api\FeedsApi;
 
@@ -161,7 +163,7 @@ final class FeedsSDK
      *
      * @throws \Plenty\AmazonPHP\SellingPartner\Exception\InvalidArgumentException
      */
-    public function cancelFeedRequest(AccessToken $accessToken, string $region, string $feed_id) : RequestInterface
+    public function cancelFeedRequest(AccessToken $accessToken, string $region, string $feed_id): RequestInterface
     {
         // verify the required parameter 'feed_id' is set
         if ($feed_id === null || (\is_array($feed_id) && \count($feed_id) === 0)) {
@@ -254,7 +256,7 @@ final class FeedsSDK
      * @throws \Plenty\AmazonPHP\SellingPartner\Exception\ApiException on non-2xx response
      * @throws \Plenty\AmazonPHP\SellingPartner\Exception\InvalidArgumentException
      */
-    public function createFeed(AccessToken $accessToken, string $region, \Plenty\AmazonPHP\SellingPartner\Model\Feeds\CreateFeedSpecification $body) : \Plenty\AmazonPHP\SellingPartner\Model\Feeds\CreateFeedResponse
+    public function createFeed(AccessToken $accessToken, string $region, \Plenty\AmazonPHP\SellingPartner\Model\Feeds\CreateFeedSpecification $body): \Plenty\AmazonPHP\SellingPartner\Model\Feeds\CreateFeedResponse
     {
         $request = $this->createFeedRequest($accessToken, $region, $body);
 
@@ -336,7 +338,7 @@ final class FeedsSDK
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            '\Plenty\AmazonPHP\SellingPartner\Model\Feeds\CreateFeedResponse',
+            \Plenty\AmazonPHP\SellingPartner\Model\Feeds\CreateFeedResponse::class,
             []
         );
     }
@@ -349,7 +351,7 @@ final class FeedsSDK
      *
      * @throws \Plenty\AmazonPHP\SellingPartner\Exception\InvalidArgumentException
      */
-    public function createFeedRequest(AccessToken $accessToken, string $region, \Plenty\AmazonPHP\SellingPartner\Model\Feeds\CreateFeedSpecification $body) : RequestInterface
+    public function createFeedRequest(AccessToken $accessToken, string $region, \Plenty\AmazonPHP\SellingPartner\Model\Feeds\CreateFeedSpecification $body): RequestInterface
     {
         // verify the required parameter 'body' is set
         if ($body === null || (\is_array($body) && \count($body) === 0)) {
@@ -441,7 +443,7 @@ final class FeedsSDK
      * @throws \Plenty\AmazonPHP\SellingPartner\Exception\ApiException on non-2xx response
      * @throws \Plenty\AmazonPHP\SellingPartner\Exception\InvalidArgumentException
      */
-    public function createFeedDocument(AccessToken $accessToken, string $region, \Plenty\AmazonPHP\SellingPartner\Model\Feeds\CreateFeedDocumentSpecification $body) : \Plenty\AmazonPHP\SellingPartner\Model\Feeds\CreateFeedDocumentResponse
+    public function createFeedDocument(AccessToken $accessToken, string $region, \Plenty\AmazonPHP\SellingPartner\Model\Feeds\CreateFeedDocumentSpecification $body): \Plenty\AmazonPHP\SellingPartner\Model\Feeds\CreateFeedDocumentResponse
     {
         $request = $this->createFeedDocumentRequest($accessToken, $region, $body);
 
@@ -523,7 +525,7 @@ final class FeedsSDK
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            '\Plenty\AmazonPHP\SellingPartner\Model\Feeds\CreateFeedDocumentResponse',
+            \Plenty\AmazonPHP\SellingPartner\Model\Feeds\CreateFeedDocumentResponse::class,
             []
         );
     }
@@ -536,7 +538,7 @@ final class FeedsSDK
      *
      * @throws \Plenty\AmazonPHP\SellingPartner\Exception\InvalidArgumentException
      */
-    public function createFeedDocumentRequest(AccessToken $accessToken, string $region, \Plenty\AmazonPHP\SellingPartner\Model\Feeds\CreateFeedDocumentSpecification $body) : RequestInterface
+    public function createFeedDocumentRequest(AccessToken $accessToken, string $region, \Plenty\AmazonPHP\SellingPartner\Model\Feeds\CreateFeedDocumentSpecification $body): RequestInterface
     {
         // verify the required parameter 'body' is set
         if ($body === null || (\is_array($body) && \count($body) === 0)) {
@@ -628,7 +630,7 @@ final class FeedsSDK
      * @throws \Plenty\AmazonPHP\SellingPartner\Exception\ApiException on non-2xx response
      * @throws \Plenty\AmazonPHP\SellingPartner\Exception\InvalidArgumentException
      */
-    public function getFeed(AccessToken $accessToken, string $region, string $feed_id) : \Plenty\AmazonPHP\SellingPartner\Model\Feeds\Feed
+    public function getFeed(AccessToken $accessToken, string $region, string $feed_id): \Plenty\AmazonPHP\SellingPartner\Model\Feeds\Feed
     {
         $request = $this->getFeedRequest($accessToken, $region, $feed_id);
 
@@ -710,7 +712,7 @@ final class FeedsSDK
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            '\Plenty\AmazonPHP\SellingPartner\Model\Feeds\Feed',
+            \Plenty\AmazonPHP\SellingPartner\Model\Feeds\Feed::class,
             []
         );
     }
@@ -723,7 +725,7 @@ final class FeedsSDK
      *
      * @throws \Plenty\AmazonPHP\SellingPartner\Exception\InvalidArgumentException
      */
-    public function getFeedRequest(AccessToken $accessToken, string $region, string $feed_id) : RequestInterface
+    public function getFeedRequest(AccessToken $accessToken, string $region, string $feed_id): RequestInterface
     {
         // verify the required parameter 'feed_id' is set
         if ($feed_id === null || (\is_array($feed_id) && \count($feed_id) === 0)) {
@@ -816,7 +818,7 @@ final class FeedsSDK
      * @throws \Plenty\AmazonPHP\SellingPartner\Exception\ApiException on non-2xx response
      * @throws \Plenty\AmazonPHP\SellingPartner\Exception\InvalidArgumentException
      */
-    public function getFeedDocument(AccessToken $accessToken, string $region, string $feed_document_id) : \Plenty\AmazonPHP\SellingPartner\Model\Feeds\FeedDocument
+    public function getFeedDocument(AccessToken $accessToken, string $region, string $feed_document_id): \Plenty\AmazonPHP\SellingPartner\Model\Feeds\FeedDocument
     {
         $request = $this->getFeedDocumentRequest($accessToken, $region, $feed_document_id);
 
@@ -898,7 +900,7 @@ final class FeedsSDK
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            '\Plenty\AmazonPHP\SellingPartner\Model\Feeds\FeedDocument',
+            \Plenty\AmazonPHP\SellingPartner\Model\Feeds\FeedDocument::class,
             []
         );
     }
@@ -911,7 +913,7 @@ final class FeedsSDK
      *
      * @throws \Plenty\AmazonPHP\SellingPartner\Exception\InvalidArgumentException
      */
-    public function getFeedDocumentRequest(AccessToken $accessToken, string $region, string $feed_document_id) : RequestInterface
+    public function getFeedDocumentRequest(AccessToken $accessToken, string $region, string $feed_document_id): RequestInterface
     {
         // verify the required parameter 'feed_document_id' is set
         if ($feed_document_id === null || (\is_array($feed_document_id) && \count($feed_document_id) === 0)) {
@@ -1010,7 +1012,7 @@ final class FeedsSDK
      * @throws \Plenty\AmazonPHP\SellingPartner\Exception\ApiException on non-2xx response
      * @throws \Plenty\AmazonPHP\SellingPartner\Exception\InvalidArgumentException
      */
-    public function getFeeds(AccessToken $accessToken, string $region, array $feed_types = null, array $marketplace_ids = null, int $page_size = 10, array $processing_statuses = null, \DateTimeInterface $created_since = null, \DateTimeInterface $created_until = null, string $next_token = null) : \Plenty\AmazonPHP\SellingPartner\Model\Feeds\GetFeedsResponse
+    public function getFeeds(AccessToken $accessToken, string $region, ?array $feed_types = null, ?array $marketplace_ids = null, int $page_size = 10, ?array $processing_statuses = null, ?\DateTimeInterface $created_since = null, ?\DateTimeInterface $created_until = null, ?string $next_token = null): \Plenty\AmazonPHP\SellingPartner\Model\Feeds\GetFeedsResponse
     {
         $request = $this->getFeedsRequest($accessToken, $region, $feed_types, $marketplace_ids, $page_size, $processing_statuses, $created_since, $created_until, $next_token);
 
@@ -1092,7 +1094,7 @@ final class FeedsSDK
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            '\Plenty\AmazonPHP\SellingPartner\Model\Feeds\GetFeedsResponse',
+            \Plenty\AmazonPHP\SellingPartner\Model\Feeds\GetFeedsResponse::class,
             []
         );
     }
@@ -1111,7 +1113,7 @@ final class FeedsSDK
      *
      * @throws \Plenty\AmazonPHP\SellingPartner\Exception\InvalidArgumentException
      */
-    public function getFeedsRequest(AccessToken $accessToken, string $region, array $feed_types = null, array $marketplace_ids = null, int $page_size = 10, array $processing_statuses = null, \DateTimeInterface $created_since = null, \DateTimeInterface $created_until = null, string $next_token = null) : RequestInterface
+    public function getFeedsRequest(AccessToken $accessToken, string $region, ?array $feed_types = null, ?array $marketplace_ids = null, int $page_size = 10, ?array $processing_statuses = null, ?\DateTimeInterface $created_since = null, ?\DateTimeInterface $created_until = null, ?string $next_token = null): RequestInterface
     {
         if ($feed_types !== null && \count($feed_types) > 10) {
             throw new InvalidArgumentException('invalid value for "$feed_types" when calling FeedsApi.getFeeds, number of items must be less than or equal to 10.');

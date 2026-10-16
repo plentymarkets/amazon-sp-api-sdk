@@ -1,4 +1,7 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
+
 /**
  * Stop.
  *
@@ -40,7 +43,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class Stop implements \ArrayAccess, \JsonSerializable, ModelInterface
+class Stop implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -64,7 +67,7 @@ class Stop implements \ArrayAccess, \JsonSerializable, ModelInterface
      */
     protected static /** [COMPAT] array */ $openAPITypes = [
         'function_code' => 'string',
-        'location_identification' => '\Plenty\AmazonPHP\SellingPartner\Model\VendorShipments\Location',
+        'location_identification' => \Plenty\AmazonPHP\SellingPartner\Model\VendorShipments\Location::class,
         'arrival_time' => '\DateTime',
         'departure_time' => '\DateTime',
     ];
@@ -133,7 +136,7 @@ class Stop implements \ArrayAccess, \JsonSerializable, ModelInterface
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['function_code'] = $data['function_code'] ?? null;
         $this->container['location_identification'] = $data['location_identification'] ?? null;
@@ -146,7 +149,7 @@ class Stop implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return string[]
      */
-    public static function openAPITypes() : array
+    public static function openAPITypes(): array
     {
         return self::$openAPITypes;
     }
@@ -156,7 +159,7 @@ class Stop implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return null[]|string[]
      */
-    public static function openAPIFormats() : array
+    public static function openAPIFormats(): array
     {
         return self::$openAPIFormats;
     }
@@ -167,7 +170,7 @@ class Stop implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return string[]
      */
-    public static function attributeMap() : array
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -177,7 +180,7 @@ class Stop implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return string[]
      */
-    public static function setters() : array
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -187,7 +190,7 @@ class Stop implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return string[]
      */
-    public static function getters() : array
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -195,9 +198,9 @@ class Stop implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets the string presentation of the object.
      */
-    public function __toString() : string
+    public function __toString(): string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );
@@ -206,7 +209,7 @@ class Stop implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * The original name of the model.
      */
-    public function getModelName() : string
+    public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
@@ -216,7 +219,7 @@ class Stop implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return string[]
      */
-    public function getFunctionCodeAllowableValues() : array
+    public function getFunctionCodeAllowableValues(): array
     {
         return [
             self::FUNCTION_CODE_PORT_OF_DISCHARGE,
@@ -230,7 +233,7 @@ class Stop implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties() : array
+    public function listInvalidProperties(): array
     {
         $invalidProperties = [];
 
@@ -256,7 +259,7 @@ class Stop implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return bool True if all properties are valid
      */
-    public function valid() : bool
+    public function valid(): bool
     {
         return \count($this->listInvalidProperties()) === 0;
     }
@@ -264,7 +267,7 @@ class Stop implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets function_code.
      */
-    public function getFunctionCode() : string
+    public function getFunctionCode(): string
     {
         return $this->container['function_code'];
     }
@@ -274,7 +277,7 @@ class Stop implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param string $function_code provide the function code
      */
-    public function setFunctionCode(string $function_code) : self
+    public function setFunctionCode(string $function_code): self
     {
         $allowedValues = $this->getFunctionCodeAllowableValues();
 
@@ -295,7 +298,7 @@ class Stop implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets location_identification.
      */
-    public function getLocationIdentification() : ?Location
+    public function getLocationIdentification(): ?Location
     {
         return $this->container['location_identification'];
     }
@@ -305,7 +308,7 @@ class Stop implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\VendorShipments\Location $location_identification location_identification
      */
-    public function setLocationIdentification(?Location $location_identification) : self
+    public function setLocationIdentification(?Location $location_identification): self
     {
         $this->container['location_identification'] = $location_identification;
 
@@ -317,7 +320,7 @@ class Stop implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return null|\DateTime|\DateTimeImmutable
      */
-    public function getArrivalTime() : ?\DateTimeInterface
+    public function getArrivalTime(): ?\DateTimeInterface
     {
         return $this->container['arrival_time'];
     }
@@ -327,7 +330,7 @@ class Stop implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param \DateTime|\DateTimeImmutable $arrival_time date and time of the arrival of the cargo
      */
-    public function setArrivalTime(\DateTimeInterface $arrival_time) : self
+    public function setArrivalTime(\DateTimeInterface $arrival_time): self
     {
         $this->container['arrival_time'] = $arrival_time;
 
@@ -339,7 +342,7 @@ class Stop implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return null|\DateTime|\DateTimeImmutable
      */
-    public function getDepartureTime() : ?\DateTimeInterface
+    public function getDepartureTime(): ?\DateTimeInterface
     {
         return $this->container['departure_time'];
     }
@@ -349,7 +352,7 @@ class Stop implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param \DateTime|\DateTimeImmutable $departure_time date and time of the departure of the cargo
      */
-    public function setDepartureTime(\DateTimeInterface $departure_time) : self
+    public function setDepartureTime(\DateTimeInterface $departure_time): self
     {
         $this->container['departure_time'] = $departure_time;
 
@@ -361,7 +364,7 @@ class Stop implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param int $offset Offset
      */
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -384,7 +387,7 @@ class Stop implements \ArrayAccess, \JsonSerializable, ModelInterface
      * @param null|int $offset Offset
      * @param mixed $value Value to be set
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         if (null === $offset) {
             $this->container[] = $value;
@@ -398,7 +401,7 @@ class Stop implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param int $offset Offset
      */
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -411,7 +414,7 @@ class Stop implements \ArrayAccess, \JsonSerializable, ModelInterface
      * @return mixed returns data which can be serialized by json_encode(), which is a value
      *               of any type other than a resource
      */
-    public function jsonSerialize() : string
+    public function jsonSerialize(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }
@@ -419,7 +422,7 @@ class Stop implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets a header-safe presentation of the object.
      */
-    public function toHeaderValue() : string
+    public function toHeaderValue(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }

@@ -161,7 +161,7 @@ final class NotificationsSDK
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            '\Plenty\AmazonPHP\SellingPartner\Model\Notifications\CreateDestinationResponse',
+            \Plenty\AmazonPHP\SellingPartner\Model\Notifications\CreateDestinationResponse::class,
             []
         );
     }
@@ -349,7 +349,7 @@ final class NotificationsSDK
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            '\Plenty\AmazonPHP\SellingPartner\Model\Notifications\CreateSubscriptionResponse',
+            \Plenty\AmazonPHP\SellingPartner\Model\Notifications\CreateSubscriptionResponse::class,
             []
         );
     }
@@ -552,7 +552,7 @@ final class NotificationsSDK
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            '\Plenty\AmazonPHP\SellingPartner\Model\Notifications\DeleteDestinationResponse',
+            \Plenty\AmazonPHP\SellingPartner\Model\Notifications\DeleteDestinationResponse::class,
             []
         );
     }
@@ -741,7 +741,7 @@ final class NotificationsSDK
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            '\Plenty\AmazonPHP\SellingPartner\Model\Notifications\DeleteSubscriptionByIdResponse',
+            \Plenty\AmazonPHP\SellingPartner\Model\Notifications\DeleteSubscriptionByIdResponse::class,
             []
         );
     }
@@ -944,7 +944,7 @@ final class NotificationsSDK
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            '\Plenty\AmazonPHP\SellingPartner\Model\Notifications\GetDestinationResponse',
+            \Plenty\AmazonPHP\SellingPartner\Model\Notifications\GetDestinationResponse::class,
             []
         );
     }
@@ -1131,7 +1131,7 @@ final class NotificationsSDK
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            '\Plenty\AmazonPHP\SellingPartner\Model\Notifications\GetDestinationsResponse',
+            \Plenty\AmazonPHP\SellingPartner\Model\Notifications\GetDestinationsResponse::class,
             []
         );
     }
@@ -1302,7 +1302,7 @@ final class NotificationsSDK
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            '\Plenty\AmazonPHP\SellingPartner\Model\Notifications\GetSubscriptionResponse',
+            \Plenty\AmazonPHP\SellingPartner\Model\Notifications\GetSubscriptionResponse::class,
             []
         );
     }
@@ -1491,7 +1491,7 @@ final class NotificationsSDK
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            '\Plenty\AmazonPHP\SellingPartner\Model\Notifications\GetSubscriptionByIdResponse',
+            \Plenty\AmazonPHP\SellingPartner\Model\Notifications\GetSubscriptionByIdResponse::class,
             []
         );
     }

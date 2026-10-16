@@ -1,4 +1,7 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
+
 /**
  * CODSettings.
  *
@@ -40,7 +43,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class CODSettings implements \ArrayAccess, \JsonSerializable, ModelInterface
+class CODSettings implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -58,10 +61,10 @@ class CODSettings implements \ArrayAccess, \JsonSerializable, ModelInterface
      */
     protected static /** [COMPAT] array */ $openAPITypes = [
         'is_cod_required' => 'bool',
-        'cod_charge' => '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentOutbound\Money',
-        'cod_charge_tax' => '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentOutbound\Money',
-        'shipping_charge' => '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentOutbound\Money',
-        'shipping_charge_tax' => '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentOutbound\Money',
+        'cod_charge' => \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentOutbound\Money::class,
+        'cod_charge_tax' => \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentOutbound\Money::class,
+        'shipping_charge' => \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentOutbound\Money::class,
+        'shipping_charge_tax' => \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentOutbound\Money::class,
     ];
 
     /**
@@ -132,7 +135,7 @@ class CODSettings implements \ArrayAccess, \JsonSerializable, ModelInterface
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['is_cod_required'] = $data['is_cod_required'] ?? null;
         $this->container['cod_charge'] = $data['cod_charge'] ?? null;
@@ -146,7 +149,7 @@ class CODSettings implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return string[]
      */
-    public static function openAPITypes() : array
+    public static function openAPITypes(): array
     {
         return self::$openAPITypes;
     }
@@ -156,7 +159,7 @@ class CODSettings implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return null[]|string[]
      */
-    public static function openAPIFormats() : array
+    public static function openAPIFormats(): array
     {
         return self::$openAPIFormats;
     }
@@ -167,7 +170,7 @@ class CODSettings implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return string[]
      */
-    public static function attributeMap() : array
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -177,7 +180,7 @@ class CODSettings implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return string[]
      */
-    public static function setters() : array
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -187,7 +190,7 @@ class CODSettings implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return string[]
      */
-    public static function getters() : array
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -195,9 +198,9 @@ class CODSettings implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets the string presentation of the object.
      */
-    public function __toString() : string
+    public function __toString(): string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );
@@ -206,7 +209,7 @@ class CODSettings implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * The original name of the model.
      */
-    public function getModelName() : string
+    public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
@@ -216,7 +219,7 @@ class CODSettings implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties() : array
+    public function listInvalidProperties(): array
     {
         $invalidProperties = [];
 
@@ -233,7 +236,7 @@ class CODSettings implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return bool True if all properties are valid
      */
-    public function valid() : bool
+    public function valid(): bool
     {
         return \count($this->listInvalidProperties()) === 0;
     }
@@ -241,7 +244,7 @@ class CODSettings implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets is_cod_required.
      */
-    public function getIsCodRequired() : bool
+    public function getIsCodRequired(): bool
     {
         return $this->container['is_cod_required'];
     }
@@ -251,7 +254,7 @@ class CODSettings implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param bool $is_cod_required when true, this fulfillment order requires a COD (Cash On Delivery) payment
      */
-    public function setIsCodRequired(bool $is_cod_required) : self
+    public function setIsCodRequired(bool $is_cod_required): self
     {
         $this->container['is_cod_required'] = $is_cod_required;
 
@@ -261,7 +264,7 @@ class CODSettings implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets cod_charge.
      */
-    public function getCodCharge() : ?Money
+    public function getCodCharge(): ?Money
     {
         return $this->container['cod_charge'];
     }
@@ -271,7 +274,7 @@ class CODSettings implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentOutbound\Money $cod_charge cod_charge
      */
-    public function setCodCharge(?Money $cod_charge) : self
+    public function setCodCharge(?Money $cod_charge): self
     {
         $this->container['cod_charge'] = $cod_charge;
 
@@ -281,7 +284,7 @@ class CODSettings implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets cod_charge_tax.
      */
-    public function getCodChargeTax() : ?Money
+    public function getCodChargeTax(): ?Money
     {
         return $this->container['cod_charge_tax'];
     }
@@ -291,7 +294,7 @@ class CODSettings implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentOutbound\Money $cod_charge_tax cod_charge_tax
      */
-    public function setCodChargeTax(?Money $cod_charge_tax) : self
+    public function setCodChargeTax(?Money $cod_charge_tax): self
     {
         $this->container['cod_charge_tax'] = $cod_charge_tax;
 
@@ -301,7 +304,7 @@ class CODSettings implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets shipping_charge.
      */
-    public function getShippingCharge() : ?Money
+    public function getShippingCharge(): ?Money
     {
         return $this->container['shipping_charge'];
     }
@@ -311,7 +314,7 @@ class CODSettings implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentOutbound\Money $shipping_charge shipping_charge
      */
-    public function setShippingCharge(?Money $shipping_charge) : self
+    public function setShippingCharge(?Money $shipping_charge): self
     {
         $this->container['shipping_charge'] = $shipping_charge;
 
@@ -321,7 +324,7 @@ class CODSettings implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets shipping_charge_tax.
      */
-    public function getShippingChargeTax() : ?Money
+    public function getShippingChargeTax(): ?Money
     {
         return $this->container['shipping_charge_tax'];
     }
@@ -331,7 +334,7 @@ class CODSettings implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentOutbound\Money $shipping_charge_tax shipping_charge_tax
      */
-    public function setShippingChargeTax(?Money $shipping_charge_tax) : self
+    public function setShippingChargeTax(?Money $shipping_charge_tax): self
     {
         $this->container['shipping_charge_tax'] = $shipping_charge_tax;
 
@@ -343,7 +346,7 @@ class CODSettings implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param int $offset Offset
      */
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -366,7 +369,7 @@ class CODSettings implements \ArrayAccess, \JsonSerializable, ModelInterface
      * @param null|int $offset Offset
      * @param mixed $value Value to be set
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         if (null === $offset) {
             $this->container[] = $value;
@@ -380,7 +383,7 @@ class CODSettings implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param int $offset Offset
      */
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -393,7 +396,7 @@ class CODSettings implements \ArrayAccess, \JsonSerializable, ModelInterface
      * @return mixed returns data which can be serialized by json_encode(), which is a value
      *               of any type other than a resource
      */
-    public function jsonSerialize() : string
+    public function jsonSerialize(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }
@@ -401,7 +404,7 @@ class CODSettings implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets a header-safe presentation of the object.
      */
-    public function toHeaderValue() : string
+    public function toHeaderValue(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }

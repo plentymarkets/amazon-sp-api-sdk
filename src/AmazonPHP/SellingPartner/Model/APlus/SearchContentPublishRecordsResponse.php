@@ -1,4 +1,7 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
+
 /**
  * SearchContentPublishRecordsResponse.
  *
@@ -40,7 +43,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class SearchContentPublishRecordsResponse implements \ArrayAccess, \JsonSerializable, ModelInterface
+class SearchContentPublishRecordsResponse implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -122,7 +125,7 @@ class SearchContentPublishRecordsResponse implements \ArrayAccess, \JsonSerializ
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['warnings'] = $data['warnings'] ?? null;
         $this->container['next_page_token'] = $data['next_page_token'] ?? null;
@@ -134,7 +137,7 @@ class SearchContentPublishRecordsResponse implements \ArrayAccess, \JsonSerializ
      *
      * @return string[]
      */
-    public static function openAPITypes() : array
+    public static function openAPITypes(): array
     {
         return self::$openAPITypes;
     }
@@ -144,7 +147,7 @@ class SearchContentPublishRecordsResponse implements \ArrayAccess, \JsonSerializ
      *
      * @return null[]|string[]
      */
-    public static function openAPIFormats() : array
+    public static function openAPIFormats(): array
     {
         return self::$openAPIFormats;
     }
@@ -155,7 +158,7 @@ class SearchContentPublishRecordsResponse implements \ArrayAccess, \JsonSerializ
      *
      * @return string[]
      */
-    public static function attributeMap() : array
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -165,7 +168,7 @@ class SearchContentPublishRecordsResponse implements \ArrayAccess, \JsonSerializ
      *
      * @return string[]
      */
-    public static function setters() : array
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -175,7 +178,7 @@ class SearchContentPublishRecordsResponse implements \ArrayAccess, \JsonSerializ
      *
      * @return string[]
      */
-    public static function getters() : array
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -183,9 +186,9 @@ class SearchContentPublishRecordsResponse implements \ArrayAccess, \JsonSerializ
     /**
      * Gets the string presentation of the object.
      */
-    public function __toString() : string
+    public function __toString(): string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );
@@ -194,7 +197,7 @@ class SearchContentPublishRecordsResponse implements \ArrayAccess, \JsonSerializ
     /**
      * The original name of the model.
      */
-    public function getModelName() : string
+    public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
@@ -204,7 +207,7 @@ class SearchContentPublishRecordsResponse implements \ArrayAccess, \JsonSerializ
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties() : array
+    public function listInvalidProperties(): array
     {
         $invalidProperties = [];
 
@@ -225,7 +228,7 @@ class SearchContentPublishRecordsResponse implements \ArrayAccess, \JsonSerializ
      *
      * @return bool True if all properties are valid
      */
-    public function valid() : bool
+    public function valid(): bool
     {
         return \count($this->listInvalidProperties()) === 0;
     }
@@ -235,7 +238,7 @@ class SearchContentPublishRecordsResponse implements \ArrayAccess, \JsonSerializ
      *
      * @return null|\Plenty\AmazonPHP\SellingPartner\Model\APlus\Error[]
      */
-    public function getWarnings() : ?array
+    public function getWarnings(): ?array
     {
         return $this->container['warnings'];
     }
@@ -245,7 +248,7 @@ class SearchContentPublishRecordsResponse implements \ArrayAccess, \JsonSerializ
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\APlus\Error[] $warnings a set of messages to the user, such as warnings or comments
      */
-    public function setWarnings(?array $warnings) : self
+    public function setWarnings(?array $warnings): self
     {
         $this->container['warnings'] = $warnings;
 
@@ -255,7 +258,7 @@ class SearchContentPublishRecordsResponse implements \ArrayAccess, \JsonSerializ
     /**
      * Gets next_page_token.
      */
-    public function getNextPageToken() : ?string
+    public function getNextPageToken(): ?string
     {
         return $this->container['next_page_token'];
     }
@@ -265,7 +268,7 @@ class SearchContentPublishRecordsResponse implements \ArrayAccess, \JsonSerializ
      *
      * @param null|string $next_page_token A page token that is returned when the results of the call exceed the page size. To get another page of results, call the operation again, passing in this value with the pageToken parameter.
      */
-    public function setNextPageToken(?string $next_page_token) : self
+    public function setNextPageToken(?string $next_page_token): self
     {
         if (null !== $next_page_token && (\mb_strlen($next_page_token) < 1)) {
             throw new \InvalidArgumentException('invalid length for $next_page_token when calling SearchContentPublishRecordsResponse., must be bigger than or equal to 1.');
@@ -281,7 +284,7 @@ class SearchContentPublishRecordsResponse implements \ArrayAccess, \JsonSerializ
      *
      * @return \Plenty\AmazonPHP\SellingPartner\Model\APlus\PublishRecord[]
      */
-    public function getPublishRecordList() : array
+    public function getPublishRecordList(): array
     {
         return $this->container['publish_record_list'];
     }
@@ -291,7 +294,7 @@ class SearchContentPublishRecordsResponse implements \ArrayAccess, \JsonSerializ
      *
      * @param \Plenty\AmazonPHP\SellingPartner\Model\APlus\PublishRecord[] $publish_record_list a list of A+ Content publishing records
      */
-    public function setPublishRecordList(array $publish_record_list) : self
+    public function setPublishRecordList(array $publish_record_list): self
     {
         $this->container['publish_record_list'] = $publish_record_list;
 
@@ -303,7 +306,7 @@ class SearchContentPublishRecordsResponse implements \ArrayAccess, \JsonSerializ
      *
      * @param int $offset Offset
      */
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -326,7 +329,7 @@ class SearchContentPublishRecordsResponse implements \ArrayAccess, \JsonSerializ
      * @param null|int $offset Offset
      * @param mixed $value Value to be set
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         if (null === $offset) {
             $this->container[] = $value;
@@ -340,7 +343,7 @@ class SearchContentPublishRecordsResponse implements \ArrayAccess, \JsonSerializ
      *
      * @param int $offset Offset
      */
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -353,7 +356,7 @@ class SearchContentPublishRecordsResponse implements \ArrayAccess, \JsonSerializ
      * @return mixed returns data which can be serialized by json_encode(), which is a value
      *               of any type other than a resource
      */
-    public function jsonSerialize() : string
+    public function jsonSerialize(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }
@@ -361,7 +364,7 @@ class SearchContentPublishRecordsResponse implements \ArrayAccess, \JsonSerializ
     /**
      * Gets a header-safe presentation of the object.
      */
-    public function toHeaderValue() : string
+    public function toHeaderValue(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }

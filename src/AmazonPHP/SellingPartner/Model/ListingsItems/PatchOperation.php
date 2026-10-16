@@ -1,4 +1,7 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
+
 /**
  * PatchOperation.
  *
@@ -40,7 +43,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class PatchOperation implements \ArrayAccess, \JsonSerializable, ModelInterface
+class PatchOperation implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -128,7 +131,7 @@ class PatchOperation implements \ArrayAccess, \JsonSerializable, ModelInterface
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['op'] = $data['op'] ?? null;
         $this->container['path'] = $data['path'] ?? null;
@@ -140,7 +143,7 @@ class PatchOperation implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return string[]
      */
-    public static function openAPITypes() : array
+    public static function openAPITypes(): array
     {
         return self::$openAPITypes;
     }
@@ -150,7 +153,7 @@ class PatchOperation implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return null[]|string[]
      */
-    public static function openAPIFormats() : array
+    public static function openAPIFormats(): array
     {
         return self::$openAPIFormats;
     }
@@ -161,7 +164,7 @@ class PatchOperation implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return string[]
      */
-    public static function attributeMap() : array
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -171,7 +174,7 @@ class PatchOperation implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return string[]
      */
-    public static function setters() : array
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -181,7 +184,7 @@ class PatchOperation implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return string[]
      */
-    public static function getters() : array
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -189,9 +192,9 @@ class PatchOperation implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets the string presentation of the object.
      */
-    public function __toString() : string
+    public function __toString(): string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );
@@ -200,7 +203,7 @@ class PatchOperation implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * The original name of the model.
      */
-    public function getModelName() : string
+    public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
@@ -210,7 +213,7 @@ class PatchOperation implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return string[]
      */
-    public function getOpAllowableValues() : array
+    public function getOpAllowableValues(): array
     {
         return [
             self::OP_ADD,
@@ -224,7 +227,7 @@ class PatchOperation implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties() : array
+    public function listInvalidProperties(): array
     {
         $invalidProperties = [];
 
@@ -254,7 +257,7 @@ class PatchOperation implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return bool True if all properties are valid
      */
-    public function valid() : bool
+    public function valid(): bool
     {
         return \count($this->listInvalidProperties()) === 0;
     }
@@ -262,7 +265,7 @@ class PatchOperation implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets op.
      */
-    public function getOp() : string
+    public function getOp(): string
     {
         return $this->container['op'];
     }
@@ -272,7 +275,7 @@ class PatchOperation implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param string $op Type of JSON Patch operation. Supported JSON Patch operations include add, replace, and delete. See <https://tools.ietf.org/html/rfc6902>.
      */
-    public function setOp(string $op) : self
+    public function setOp(string $op): self
     {
         $allowedValues = $this->getOpAllowableValues();
 
@@ -293,7 +296,7 @@ class PatchOperation implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets path.
      */
-    public function getPath() : string
+    public function getPath(): string
     {
         return $this->container['path'];
     }
@@ -303,7 +306,7 @@ class PatchOperation implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param string $path JSON Pointer path of the element to patch. See <https://tools.ietf.org/html/rfc6902>.
      */
-    public function setPath(string $path) : self
+    public function setPath(string $path): self
     {
         $this->container['path'] = $path;
 
@@ -315,7 +318,7 @@ class PatchOperation implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return null|object[]
      */
-    public function getValue() : ?array
+    public function getValue(): ?array
     {
         return $this->container['value'];
     }
@@ -325,7 +328,7 @@ class PatchOperation implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param null|object[] $value JSON value to add, replace, or delete
      */
-    public function setValue(?array $value) : self
+    public function setValue(?array $value): self
     {
         $this->container['value'] = $value;
 
@@ -337,7 +340,7 @@ class PatchOperation implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param int $offset Offset
      */
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -360,7 +363,7 @@ class PatchOperation implements \ArrayAccess, \JsonSerializable, ModelInterface
      * @param null|int $offset Offset
      * @param mixed $value Value to be set
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         if (null === $offset) {
             $this->container[] = $value;
@@ -374,7 +377,7 @@ class PatchOperation implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param int $offset Offset
      */
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -387,7 +390,7 @@ class PatchOperation implements \ArrayAccess, \JsonSerializable, ModelInterface
      * @return mixed returns data which can be serialized by json_encode(), which is a value
      *               of any type other than a resource
      */
-    public function jsonSerialize() : string
+    public function jsonSerialize(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }
@@ -395,7 +398,7 @@ class PatchOperation implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets a header-safe presentation of the object.
      */
-    public function toHeaderValue() : string
+    public function toHeaderValue(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }

@@ -176,7 +176,7 @@ final class MerchantFulfillmentSDK
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            '\Plenty\AmazonPHP\SellingPartner\Model\MerchantFulfillment\CancelShipmentResponse',
+            \Plenty\AmazonPHP\SellingPartner\Model\MerchantFulfillment\CancelShipmentResponse::class,
             []
         );
     }
@@ -368,7 +368,7 @@ final class MerchantFulfillmentSDK
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            '\Plenty\AmazonPHP\SellingPartner\Model\MerchantFulfillment\CancelShipmentResponse',
+            \Plenty\AmazonPHP\SellingPartner\Model\MerchantFulfillment\CancelShipmentResponse::class,
             []
         );
     }
@@ -574,7 +574,7 @@ final class MerchantFulfillmentSDK
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            '\Plenty\AmazonPHP\SellingPartner\Model\MerchantFulfillment\CreateShipmentResponse',
+            \Plenty\AmazonPHP\SellingPartner\Model\MerchantFulfillment\CreateShipmentResponse::class,
             []
         );
     }
@@ -775,7 +775,7 @@ final class MerchantFulfillmentSDK
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            '\Plenty\AmazonPHP\SellingPartner\Model\MerchantFulfillment\GetAdditionalSellerInputsResponse',
+            \Plenty\AmazonPHP\SellingPartner\Model\MerchantFulfillment\GetAdditionalSellerInputsResponse::class,
             []
         );
     }
@@ -962,7 +962,7 @@ final class MerchantFulfillmentSDK
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            '\Plenty\AmazonPHP\SellingPartner\Model\MerchantFulfillment\GetAdditionalSellerInputsResponse',
+            \Plenty\AmazonPHP\SellingPartner\Model\MerchantFulfillment\GetAdditionalSellerInputsResponse::class,
             []
         );
     }
@@ -1163,7 +1163,7 @@ final class MerchantFulfillmentSDK
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            '\Plenty\AmazonPHP\SellingPartner\Model\MerchantFulfillment\GetEligibleShipmentServicesResponse',
+            \Plenty\AmazonPHP\SellingPartner\Model\MerchantFulfillment\GetEligibleShipmentServicesResponse::class,
             []
         );
     }
@@ -1350,7 +1350,7 @@ final class MerchantFulfillmentSDK
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            '\Plenty\AmazonPHP\SellingPartner\Model\MerchantFulfillment\GetEligibleShipmentServicesResponse',
+            \Plenty\AmazonPHP\SellingPartner\Model\MerchantFulfillment\GetEligibleShipmentServicesResponse::class,
             []
         );
     }
@@ -1551,7 +1551,7 @@ final class MerchantFulfillmentSDK
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            '\Plenty\AmazonPHP\SellingPartner\Model\MerchantFulfillment\GetShipmentResponse',
+            \Plenty\AmazonPHP\SellingPartner\Model\MerchantFulfillment\GetShipmentResponse::class,
             []
         );
     }

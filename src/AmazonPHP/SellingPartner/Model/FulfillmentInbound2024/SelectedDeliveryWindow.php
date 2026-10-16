@@ -115,7 +115,7 @@ class SelectedDeliveryWindow implements \ArrayAccess, \JsonSerializable, \String
      * @param null|mixed[] $data Associated array of property values
      *                           initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['availability_type'] = $data['availability_type'] ?? null;
         $this->container['delivery_window_option_id'] = $data['delivery_window_option_id'] ?? null;
@@ -127,7 +127,7 @@ class SelectedDeliveryWindow implements \ArrayAccess, \JsonSerializable, \String
     /**
      * Array of property to type mappings. Used for (de)serialization.
      */
-    public static function openAPITypes() : array
+    public static function openAPITypes(): array
     {
         return self::$openAPITypes;
     }
@@ -135,7 +135,7 @@ class SelectedDeliveryWindow implements \ArrayAccess, \JsonSerializable, \String
     /**
      * Array of property to format mappings. Used for (de)serialization.
      */
-    public static function openAPIFormats() : array
+    public static function openAPIFormats(): array
     {
         return self::$openAPIFormats;
     }
@@ -144,7 +144,7 @@ class SelectedDeliveryWindow implements \ArrayAccess, \JsonSerializable, \String
      * Array of attributes where the key is the local name,
      * and the value is the original name.
      */
-    public static function attributeMap() : array
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -152,7 +152,7 @@ class SelectedDeliveryWindow implements \ArrayAccess, \JsonSerializable, \String
     /**
      * Array of attributes to setter functions (for deserialization of responses).
      */
-    public static function setters() : array
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -160,7 +160,7 @@ class SelectedDeliveryWindow implements \ArrayAccess, \JsonSerializable, \String
     /**
      * Array of attributes to getter functions (for serialization of requests).
      */
-    public static function getters() : array
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -168,7 +168,7 @@ class SelectedDeliveryWindow implements \ArrayAccess, \JsonSerializable, \String
     /**
      * Gets the string presentation of the object.
      */
-    public function __toString() : string
+    public function __toString(): string
     {
         return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
@@ -179,7 +179,7 @@ class SelectedDeliveryWindow implements \ArrayAccess, \JsonSerializable, \String
     /**
      * The original name of the model.
      */
-    public function getModelName() : string
+    public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
@@ -189,10 +189,10 @@ class SelectedDeliveryWindow implements \ArrayAccess, \JsonSerializable, \String
      *
      * @throws AssertionException
      */
-    public function listInvalidProperties() : array
+    public function listInvalidProperties(): array
     {
         $invalidProperties = [];
-         
+
         if ($this->container['availability_type'] === null) {
             $invalidProperties[] = "'availability_type' can't be null";
         }
@@ -230,7 +230,7 @@ class SelectedDeliveryWindow implements \ArrayAccess, \JsonSerializable, \String
      *
      * @return bool True if all properties are valid
      */
-    public function valid() : bool
+    public function valid(): bool
     {
         return \count($this->listInvalidProperties()) === 0;
     }
@@ -238,7 +238,7 @@ class SelectedDeliveryWindow implements \ArrayAccess, \JsonSerializable, \String
     /**
      * Gets availability_type.
      */
-    public function getAvailabilityType() : string
+    public function getAvailabilityType(): string
     {
         return $this->container['availability_type'];
     }
@@ -248,7 +248,7 @@ class SelectedDeliveryWindow implements \ArrayAccess, \JsonSerializable, \String
      *
      * @param string $availability_type Identifies type of Delivery Window Availability. Values: `AVAILABLE`, `CONGESTED`
      */
-    public function setAvailabilityType(string $availability_type) : self
+    public function setAvailabilityType(string $availability_type): self
     {
         $this->container['availability_type'] = $availability_type;
 
@@ -258,7 +258,7 @@ class SelectedDeliveryWindow implements \ArrayAccess, \JsonSerializable, \String
     /**
      * Gets delivery_window_option_id.
      */
-    public function getDeliveryWindowOptionId() : string
+    public function getDeliveryWindowOptionId(): string
     {
         return $this->container['delivery_window_option_id'];
     }
@@ -268,7 +268,7 @@ class SelectedDeliveryWindow implements \ArrayAccess, \JsonSerializable, \String
      *
      * @param string $delivery_window_option_id Identifier of a delivery window option. A delivery window option represent one option for when a shipment is expected to be delivered.
      */
-    public function setDeliveryWindowOptionId(string $delivery_window_option_id) : self
+    public function setDeliveryWindowOptionId(string $delivery_window_option_id): self
     {
         $this->container['delivery_window_option_id'] = $delivery_window_option_id;
 
@@ -278,7 +278,7 @@ class SelectedDeliveryWindow implements \ArrayAccess, \JsonSerializable, \String
     /**
      * Gets editable_until.
      */
-    public function getEditableUntil() : ?\DateTimeInterface
+    public function getEditableUntil(): ?\DateTimeInterface
     {
         return $this->container['editable_until'];
     }
@@ -288,7 +288,7 @@ class SelectedDeliveryWindow implements \ArrayAccess, \JsonSerializable, \String
      *
      * @param null|\DateTimeInterface $editable_until the timestamp at which this Window can no longer be edited
      */
-    public function setEditableUntil(?\DateTimeInterface $editable_until) : self
+    public function setEditableUntil(?\DateTimeInterface $editable_until): self
     {
         $this->container['editable_until'] = $editable_until;
 
@@ -298,7 +298,7 @@ class SelectedDeliveryWindow implements \ArrayAccess, \JsonSerializable, \String
     /**
      * Gets end_date.
      */
-    public function getEndDate() : \DateTimeInterface
+    public function getEndDate(): \DateTimeInterface
     {
         return $this->container['end_date'];
     }
@@ -308,7 +308,7 @@ class SelectedDeliveryWindow implements \ArrayAccess, \JsonSerializable, \String
      *
      * @param \DateTimeInterface $end_date the end timestamp of the window
      */
-    public function setEndDate(\DateTimeInterface $end_date) : self
+    public function setEndDate(\DateTimeInterface $end_date): self
     {
         $this->container['end_date'] = $end_date;
 
@@ -318,7 +318,7 @@ class SelectedDeliveryWindow implements \ArrayAccess, \JsonSerializable, \String
     /**
      * Gets start_date.
      */
-    public function getStartDate() : \DateTimeInterface
+    public function getStartDate(): \DateTimeInterface
     {
         return $this->container['start_date'];
     }
@@ -328,7 +328,7 @@ class SelectedDeliveryWindow implements \ArrayAccess, \JsonSerializable, \String
      *
      * @param \DateTimeInterface $start_date the start timestamp of the window
      */
-    public function setStartDate(\DateTimeInterface $start_date) : self
+    public function setStartDate(\DateTimeInterface $start_date): self
     {
         $this->container['start_date'] = $start_date;
 
@@ -338,7 +338,7 @@ class SelectedDeliveryWindow implements \ArrayAccess, \JsonSerializable, \String
     /**
      * Returns true if offset exists. False otherwise.
      */
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -349,7 +349,7 @@ class SelectedDeliveryWindow implements \ArrayAccess, \JsonSerializable, \String
      * @return null|mixed
      */
     #[\ReturnTypeWillChange]
-    public function offsetGet($offset) : mixed
+    public function offsetGet($offset): mixed
     {
         return $this->container[$offset] ?? null;
     }
@@ -357,7 +357,7 @@ class SelectedDeliveryWindow implements \ArrayAccess, \JsonSerializable, \String
     /**
      * Sets value based on offset.
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         if (null === $offset) {
             $this->container[] = $value;
@@ -369,7 +369,7 @@ class SelectedDeliveryWindow implements \ArrayAccess, \JsonSerializable, \String
     /**
      * Unsets offset.
      */
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -383,7 +383,7 @@ class SelectedDeliveryWindow implements \ArrayAccess, \JsonSerializable, \String
      *               of any type other than a resource
      */
     #[\ReturnTypeWillChange]
-    public function jsonSerialize() : string
+    public function jsonSerialize(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }
@@ -391,7 +391,7 @@ class SelectedDeliveryWindow implements \ArrayAccess, \JsonSerializable, \String
     /**
      * Gets a header-safe presentation of the object.
      */
-    public function toHeaderValue() : string
+    public function toHeaderValue(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }

@@ -39,10 +39,10 @@ class ItemInput implements \ArrayAccess, \JsonSerializable, \Stringable, ModelIn
      */
     protected static array $openAPITypes = [
         'expiration' => 'string',
-        'label_owner' => '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound2024\LabelOwner',
+        'label_owner' => \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound2024\LabelOwner::class,
         'manufacturing_lot_code' => 'string',
         'msku' => 'string',
-        'prep_owner' => '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound2024\PrepOwner',
+        'prep_owner' => \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound2024\PrepOwner::class,
         'quantity' => 'int',
     ];
 
@@ -120,7 +120,7 @@ class ItemInput implements \ArrayAccess, \JsonSerializable, \Stringable, ModelIn
      * @param null|mixed[] $data Associated array of property values
      *                           initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['expiration'] = $data['expiration'] ?? null;
         $this->container['label_owner'] = $data['label_owner'] ?? null;
@@ -133,7 +133,7 @@ class ItemInput implements \ArrayAccess, \JsonSerializable, \Stringable, ModelIn
     /**
      * Array of property to type mappings. Used for (de)serialization.
      */
-    public static function openAPITypes() : array
+    public static function openAPITypes(): array
     {
         return self::$openAPITypes;
     }
@@ -141,7 +141,7 @@ class ItemInput implements \ArrayAccess, \JsonSerializable, \Stringable, ModelIn
     /**
      * Array of property to format mappings. Used for (de)serialization.
      */
-    public static function openAPIFormats() : array
+    public static function openAPIFormats(): array
     {
         return self::$openAPIFormats;
     }
@@ -150,7 +150,7 @@ class ItemInput implements \ArrayAccess, \JsonSerializable, \Stringable, ModelIn
      * Array of attributes where the key is the local name,
      * and the value is the original name.
      */
-    public static function attributeMap() : array
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -158,7 +158,7 @@ class ItemInput implements \ArrayAccess, \JsonSerializable, \Stringable, ModelIn
     /**
      * Array of attributes to setter functions (for deserialization of responses).
      */
-    public static function setters() : array
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -166,7 +166,7 @@ class ItemInput implements \ArrayAccess, \JsonSerializable, \Stringable, ModelIn
     /**
      * Array of attributes to getter functions (for serialization of requests).
      */
-    public static function getters() : array
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -174,7 +174,7 @@ class ItemInput implements \ArrayAccess, \JsonSerializable, \Stringable, ModelIn
     /**
      * Gets the string presentation of the object.
      */
-    public function __toString() : string
+    public function __toString(): string
     {
         return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
@@ -185,7 +185,7 @@ class ItemInput implements \ArrayAccess, \JsonSerializable, \Stringable, ModelIn
     /**
      * The original name of the model.
      */
-    public function getModelName() : string
+    public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
@@ -195,7 +195,7 @@ class ItemInput implements \ArrayAccess, \JsonSerializable, \Stringable, ModelIn
      *
      * @throws AssertionException
      */
-    public function listInvalidProperties() : array
+    public function listInvalidProperties(): array
     {
         $invalidProperties = [];
 
@@ -252,7 +252,7 @@ class ItemInput implements \ArrayAccess, \JsonSerializable, \Stringable, ModelIn
      *
      * @return bool True if all properties are valid
      */
-    public function valid() : bool
+    public function valid(): bool
     {
         return \count($this->listInvalidProperties()) === 0;
     }
@@ -260,7 +260,7 @@ class ItemInput implements \ArrayAccess, \JsonSerializable, \Stringable, ModelIn
     /**
      * Gets expiration.
      */
-    public function getExpiration() : ?string
+    public function getExpiration(): ?string
     {
         return $this->container['expiration'];
     }
@@ -270,7 +270,7 @@ class ItemInput implements \ArrayAccess, \JsonSerializable, \Stringable, ModelIn
      *
      * @param null|string $expiration The expiration date of the MSKU in ISO 8601 format. The same MSKU with different expiration dates cannot go into the same box.
      */
-    public function setExpiration(?string $expiration) : self
+    public function setExpiration(?string $expiration): self
     {
         $this->container['expiration'] = $expiration;
 
@@ -280,7 +280,7 @@ class ItemInput implements \ArrayAccess, \JsonSerializable, \Stringable, ModelIn
     /**
      * Gets label_owner.
      */
-    public function getLabelOwner() : LabelOwner
+    public function getLabelOwner(): LabelOwner
     {
         return $this->container['label_owner'];
     }
@@ -290,7 +290,7 @@ class ItemInput implements \ArrayAccess, \JsonSerializable, \Stringable, ModelIn
      *
      * @param LabelOwner $label_owner label_owner
      */
-    public function setLabelOwner(LabelOwner $label_owner) : self
+    public function setLabelOwner(LabelOwner $label_owner): self
     {
         $this->container['label_owner'] = $label_owner;
 
@@ -300,7 +300,7 @@ class ItemInput implements \ArrayAccess, \JsonSerializable, \Stringable, ModelIn
     /**
      * Gets manufacturing_lot_code.
      */
-    public function getManufacturingLotCode() : ?string
+    public function getManufacturingLotCode(): ?string
     {
         return $this->container['manufacturing_lot_code'];
     }
@@ -310,7 +310,7 @@ class ItemInput implements \ArrayAccess, \JsonSerializable, \Stringable, ModelIn
      *
      * @param null|string $manufacturing_lot_code the manufacturing lot code
      */
-    public function setManufacturingLotCode(?string $manufacturing_lot_code) : self
+    public function setManufacturingLotCode(?string $manufacturing_lot_code): self
     {
         $this->container['manufacturing_lot_code'] = $manufacturing_lot_code;
 
@@ -320,7 +320,7 @@ class ItemInput implements \ArrayAccess, \JsonSerializable, \Stringable, ModelIn
     /**
      * Gets msku.
      */
-    public function getMsku() : string
+    public function getMsku(): string
     {
         return $this->container['msku'];
     }
@@ -330,7 +330,7 @@ class ItemInput implements \ArrayAccess, \JsonSerializable, \Stringable, ModelIn
      *
      * @param string $msku merchant SKU
      */
-    public function setMsku(string $msku) : self
+    public function setMsku(string $msku): self
     {
         $this->container['msku'] = $msku;
 
@@ -340,7 +340,7 @@ class ItemInput implements \ArrayAccess, \JsonSerializable, \Stringable, ModelIn
     /**
      * Gets prep_owner.
      */
-    public function getPrepOwner() : PrepOwner
+    public function getPrepOwner(): PrepOwner
     {
         return $this->container['prep_owner'];
     }
@@ -350,7 +350,7 @@ class ItemInput implements \ArrayAccess, \JsonSerializable, \Stringable, ModelIn
      *
      * @param PrepOwner $prep_owner prep_owner
      */
-    public function setPrepOwner(PrepOwner $prep_owner) : self
+    public function setPrepOwner(PrepOwner $prep_owner): self
     {
         $this->container['prep_owner'] = $prep_owner;
 
@@ -360,7 +360,7 @@ class ItemInput implements \ArrayAccess, \JsonSerializable, \Stringable, ModelIn
     /**
      * Gets quantity.
      */
-    public function getQuantity() : int
+    public function getQuantity(): int
     {
         return $this->container['quantity'];
     }
@@ -370,7 +370,7 @@ class ItemInput implements \ArrayAccess, \JsonSerializable, \Stringable, ModelIn
      *
      * @param int $quantity the number of units of the specified msku that will be shipped
      */
-    public function setQuantity(int $quantity) : self
+    public function setQuantity(int $quantity): self
     {
         $this->container['quantity'] = $quantity;
 
@@ -380,7 +380,7 @@ class ItemInput implements \ArrayAccess, \JsonSerializable, \Stringable, ModelIn
     /**
      * Returns true if offset exists. False otherwise.
      */
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -391,7 +391,7 @@ class ItemInput implements \ArrayAccess, \JsonSerializable, \Stringable, ModelIn
      * @return null|mixed
      */
     #[\ReturnTypeWillChange]
-    public function offsetGet($offset) : mixed
+    public function offsetGet($offset): mixed
     {
         return $this->container[$offset] ?? null;
     }
@@ -399,7 +399,7 @@ class ItemInput implements \ArrayAccess, \JsonSerializable, \Stringable, ModelIn
     /**
      * Sets value based on offset.
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         if (null === $offset) {
             $this->container[] = $value;
@@ -411,7 +411,7 @@ class ItemInput implements \ArrayAccess, \JsonSerializable, \Stringable, ModelIn
     /**
      * Unsets offset.
      */
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -425,7 +425,7 @@ class ItemInput implements \ArrayAccess, \JsonSerializable, \Stringable, ModelIn
      *               of any type other than a resource
      */
     #[\ReturnTypeWillChange]
-    public function jsonSerialize() : string
+    public function jsonSerialize(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }
@@ -433,7 +433,7 @@ class ItemInput implements \ArrayAccess, \JsonSerializable, \Stringable, ModelIn
     /**
      * Gets a header-safe presentation of the object.
      */
-    public function toHeaderValue() : string
+    public function toHeaderValue(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }

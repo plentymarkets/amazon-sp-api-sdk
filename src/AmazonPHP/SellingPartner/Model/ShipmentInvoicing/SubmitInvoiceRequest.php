@@ -1,4 +1,7 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
+
 /**
  * SubmitInvoiceRequest.
  *
@@ -40,7 +43,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class SubmitInvoiceRequest implements \ArrayAccess, \JsonSerializable, ModelInterface
+class SubmitInvoiceRequest implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -122,7 +125,7 @@ class SubmitInvoiceRequest implements \ArrayAccess, \JsonSerializable, ModelInte
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['invoice_content'] = $data['invoice_content'] ?? null;
         $this->container['marketplace_id'] = $data['marketplace_id'] ?? null;
@@ -134,7 +137,7 @@ class SubmitInvoiceRequest implements \ArrayAccess, \JsonSerializable, ModelInte
      *
      * @return string[]
      */
-    public static function openAPITypes() : array
+    public static function openAPITypes(): array
     {
         return self::$openAPITypes;
     }
@@ -144,7 +147,7 @@ class SubmitInvoiceRequest implements \ArrayAccess, \JsonSerializable, ModelInte
      *
      * @return null[]|string[]
      */
-    public static function openAPIFormats() : array
+    public static function openAPIFormats(): array
     {
         return self::$openAPIFormats;
     }
@@ -155,7 +158,7 @@ class SubmitInvoiceRequest implements \ArrayAccess, \JsonSerializable, ModelInte
      *
      * @return string[]
      */
-    public static function attributeMap() : array
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -165,7 +168,7 @@ class SubmitInvoiceRequest implements \ArrayAccess, \JsonSerializable, ModelInte
      *
      * @return string[]
      */
-    public static function setters() : array
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -175,7 +178,7 @@ class SubmitInvoiceRequest implements \ArrayAccess, \JsonSerializable, ModelInte
      *
      * @return string[]
      */
-    public static function getters() : array
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -183,9 +186,9 @@ class SubmitInvoiceRequest implements \ArrayAccess, \JsonSerializable, ModelInte
     /**
      * Gets the string presentation of the object.
      */
-    public function __toString() : string
+    public function __toString(): string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );
@@ -194,7 +197,7 @@ class SubmitInvoiceRequest implements \ArrayAccess, \JsonSerializable, ModelInte
     /**
      * The original name of the model.
      */
-    public function getModelName() : string
+    public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
@@ -204,7 +207,7 @@ class SubmitInvoiceRequest implements \ArrayAccess, \JsonSerializable, ModelInte
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties() : array
+    public function listInvalidProperties(): array
     {
         $invalidProperties = [];
 
@@ -225,7 +228,7 @@ class SubmitInvoiceRequest implements \ArrayAccess, \JsonSerializable, ModelInte
      *
      * @return bool True if all properties are valid
      */
-    public function valid() : bool
+    public function valid(): bool
     {
         return \count($this->listInvalidProperties()) === 0;
     }
@@ -233,7 +236,7 @@ class SubmitInvoiceRequest implements \ArrayAccess, \JsonSerializable, ModelInte
     /**
      * Gets invoice_content.
      */
-    public function getInvoiceContent() : string
+    public function getInvoiceContent(): string
     {
         return $this->container['invoice_content'];
     }
@@ -243,7 +246,7 @@ class SubmitInvoiceRequest implements \ArrayAccess, \JsonSerializable, ModelInte
      *
      * @param string $invoice_content shipment invoice document content
      */
-    public function setInvoiceContent(string $invoice_content) : self
+    public function setInvoiceContent(string $invoice_content): self
     {
         $this->container['invoice_content'] = $invoice_content;
 
@@ -253,7 +256,7 @@ class SubmitInvoiceRequest implements \ArrayAccess, \JsonSerializable, ModelInte
     /**
      * Gets marketplace_id.
      */
-    public function getMarketplaceId() : ?string
+    public function getMarketplaceId(): ?string
     {
         return $this->container['marketplace_id'];
     }
@@ -263,7 +266,7 @@ class SubmitInvoiceRequest implements \ArrayAccess, \JsonSerializable, ModelInte
      *
      * @param null|string $marketplace_id an Amazon marketplace identifier
      */
-    public function setMarketplaceId(?string $marketplace_id) : self
+    public function setMarketplaceId(?string $marketplace_id): self
     {
         $this->container['marketplace_id'] = $marketplace_id;
 
@@ -273,7 +276,7 @@ class SubmitInvoiceRequest implements \ArrayAccess, \JsonSerializable, ModelInte
     /**
      * Gets content_md5_value.
      */
-    public function getContentMd5Value() : string
+    public function getContentMd5Value(): string
     {
         return $this->container['content_md5_value'];
     }
@@ -283,7 +286,7 @@ class SubmitInvoiceRequest implements \ArrayAccess, \JsonSerializable, ModelInte
      *
      * @param string $content_md5_value MD5 sum for validating the invoice data. For more information about calculating this value, see [Working with Content-MD5 Checksums](https://docs.developer.amazonservices.com/en_US/dev_guide/DG_MD5.html).
      */
-    public function setContentMd5Value(string $content_md5_value) : self
+    public function setContentMd5Value(string $content_md5_value): self
     {
         $this->container['content_md5_value'] = $content_md5_value;
 
@@ -295,7 +298,7 @@ class SubmitInvoiceRequest implements \ArrayAccess, \JsonSerializable, ModelInte
      *
      * @param int $offset Offset
      */
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -318,7 +321,7 @@ class SubmitInvoiceRequest implements \ArrayAccess, \JsonSerializable, ModelInte
      * @param null|int $offset Offset
      * @param mixed $value Value to be set
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         if (null === $offset) {
             $this->container[] = $value;
@@ -332,7 +335,7 @@ class SubmitInvoiceRequest implements \ArrayAccess, \JsonSerializable, ModelInte
      *
      * @param int $offset Offset
      */
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -345,7 +348,7 @@ class SubmitInvoiceRequest implements \ArrayAccess, \JsonSerializable, ModelInte
      * @return mixed returns data which can be serialized by json_encode(), which is a value
      *               of any type other than a resource
      */
-    public function jsonSerialize() : string
+    public function jsonSerialize(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }
@@ -353,7 +356,7 @@ class SubmitInvoiceRequest implements \ArrayAccess, \JsonSerializable, ModelInte
     /**
      * Gets a header-safe presentation of the object.
      */
-    public function toHeaderValue() : string
+    public function toHeaderValue(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }

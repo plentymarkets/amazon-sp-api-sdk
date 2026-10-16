@@ -1,4 +1,7 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
+
 /**
  * ServiceJob.
  *
@@ -40,7 +43,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class ServiceJob implements \ArrayAccess, \JsonSerializable, ModelInterface
+class ServiceJob implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -74,16 +77,16 @@ class ServiceJob implements \ArrayAccess, \JsonSerializable, ModelInterface
         'create_time' => '\DateTime',
         'service_job_id' => 'string',
         'service_job_status' => 'string',
-        'scope_of_work' => '\Plenty\AmazonPHP\SellingPartner\Model\Services\ScopeOfWork',
-        'seller' => '\Plenty\AmazonPHP\SellingPartner\Model\Services\Seller',
-        'service_job_provider' => '\Plenty\AmazonPHP\SellingPartner\Model\Services\ServiceJobProvider',
+        'scope_of_work' => \Plenty\AmazonPHP\SellingPartner\Model\Services\ScopeOfWork::class,
+        'seller' => \Plenty\AmazonPHP\SellingPartner\Model\Services\Seller::class,
+        'service_job_provider' => \Plenty\AmazonPHP\SellingPartner\Model\Services\ServiceJobProvider::class,
         'preferred_appointment_times' => '\Plenty\AmazonPHP\SellingPartner\Model\Services\AppointmentTime[]',
         'appointments' => '\Plenty\AmazonPHP\SellingPartner\Model\Services\Appointment[]',
         'service_order_id' => 'string',
         'marketplace_id' => 'string',
-        'buyer' => '\Plenty\AmazonPHP\SellingPartner\Model\Services\Buyer',
+        'buyer' => \Plenty\AmazonPHP\SellingPartner\Model\Services\Buyer::class,
         'associated_items' => '\Plenty\AmazonPHP\SellingPartner\Model\Services\AssociatedItem[]',
-        'service_location' => '\Plenty\AmazonPHP\SellingPartner\Model\Services\ServiceLocation',
+        'service_location' => \Plenty\AmazonPHP\SellingPartner\Model\Services\ServiceLocation::class,
     ];
 
     /**
@@ -186,7 +189,7 @@ class ServiceJob implements \ArrayAccess, \JsonSerializable, ModelInterface
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['create_time'] = $data['create_time'] ?? null;
         $this->container['service_job_id'] = $data['service_job_id'] ?? null;
@@ -208,7 +211,7 @@ class ServiceJob implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return string[]
      */
-    public static function openAPITypes() : array
+    public static function openAPITypes(): array
     {
         return self::$openAPITypes;
     }
@@ -218,7 +221,7 @@ class ServiceJob implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return null[]|string[]
      */
-    public static function openAPIFormats() : array
+    public static function openAPIFormats(): array
     {
         return self::$openAPIFormats;
     }
@@ -229,7 +232,7 @@ class ServiceJob implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return string[]
      */
-    public static function attributeMap() : array
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -239,7 +242,7 @@ class ServiceJob implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return string[]
      */
-    public static function setters() : array
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -249,7 +252,7 @@ class ServiceJob implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return string[]
      */
-    public static function getters() : array
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -257,9 +260,9 @@ class ServiceJob implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets the string presentation of the object.
      */
-    public function __toString() : string
+    public function __toString(): string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );
@@ -268,7 +271,7 @@ class ServiceJob implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * The original name of the model.
      */
-    public function getModelName() : string
+    public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
@@ -278,7 +281,7 @@ class ServiceJob implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return string[]
      */
-    public function getServiceJobStatusAllowableValues() : array
+    public function getServiceJobStatusAllowableValues(): array
     {
         return [
             self::SERVICE_JOB_STATUS_NOT_SERVICED,
@@ -296,7 +299,7 @@ class ServiceJob implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties() : array
+    public function listInvalidProperties(): array
     {
         $invalidProperties = [];
 
@@ -339,7 +342,7 @@ class ServiceJob implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return bool True if all properties are valid
      */
-    public function valid() : bool
+    public function valid(): bool
     {
         return \count($this->listInvalidProperties()) === 0;
     }
@@ -349,7 +352,7 @@ class ServiceJob implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return null|\DateTime|\DateTimeImmutable
      */
-    public function getCreateTime() : ?\DateTimeInterface
+    public function getCreateTime(): ?\DateTimeInterface
     {
         return $this->container['create_time'];
     }
@@ -359,7 +362,7 @@ class ServiceJob implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param \DateTime|\DateTimeImmutable $create_time the date and time of the creation of the job, in ISO 8601 format
      */
-    public function setCreateTime(\DateTimeInterface $create_time) : self
+    public function setCreateTime(\DateTimeInterface $create_time): self
     {
         $this->container['create_time'] = $create_time;
 
@@ -369,7 +372,7 @@ class ServiceJob implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets service_job_id.
      */
-    public function getServiceJobId() : ?string
+    public function getServiceJobId(): ?string
     {
         return $this->container['service_job_id'];
     }
@@ -379,7 +382,7 @@ class ServiceJob implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param null|string $service_job_id amazon identifier for the service job
      */
-    public function setServiceJobId(?string $service_job_id) : self
+    public function setServiceJobId(?string $service_job_id): self
     {
         if (null !== $service_job_id && (\mb_strlen($service_job_id) > 100)) {
             throw new \InvalidArgumentException('invalid length for $service_job_id when calling ServiceJob., must be smaller than or equal to 100.');
@@ -397,7 +400,7 @@ class ServiceJob implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets service_job_status.
      */
-    public function getServiceJobStatus() : ?string
+    public function getServiceJobStatus(): ?string
     {
         return $this->container['service_job_status'];
     }
@@ -407,7 +410,7 @@ class ServiceJob implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param null|string $service_job_status the status of the service job
      */
-    public function setServiceJobStatus(?string $service_job_status) : self
+    public function setServiceJobStatus(?string $service_job_status): self
     {
         $allowedValues = $this->getServiceJobStatusAllowableValues();
 
@@ -428,7 +431,7 @@ class ServiceJob implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets scope_of_work.
      */
-    public function getScopeOfWork() : ?ScopeOfWork
+    public function getScopeOfWork(): ?ScopeOfWork
     {
         return $this->container['scope_of_work'];
     }
@@ -438,7 +441,7 @@ class ServiceJob implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\Services\ScopeOfWork $scope_of_work scope_of_work
      */
-    public function setScopeOfWork(?ScopeOfWork $scope_of_work) : self
+    public function setScopeOfWork(?ScopeOfWork $scope_of_work): self
     {
         $this->container['scope_of_work'] = $scope_of_work;
 
@@ -448,7 +451,7 @@ class ServiceJob implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets seller.
      */
-    public function getSeller() : ?Seller
+    public function getSeller(): ?Seller
     {
         return $this->container['seller'];
     }
@@ -458,7 +461,7 @@ class ServiceJob implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\Services\Seller $seller seller
      */
-    public function setSeller(?Seller $seller) : self
+    public function setSeller(?Seller $seller): self
     {
         $this->container['seller'] = $seller;
 
@@ -468,7 +471,7 @@ class ServiceJob implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets service_job_provider.
      */
-    public function getServiceJobProvider() : ?ServiceJobProvider
+    public function getServiceJobProvider(): ?ServiceJobProvider
     {
         return $this->container['service_job_provider'];
     }
@@ -478,7 +481,7 @@ class ServiceJob implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\Services\ServiceJobProvider $service_job_provider service_job_provider
      */
-    public function setServiceJobProvider(?ServiceJobProvider $service_job_provider) : self
+    public function setServiceJobProvider(?ServiceJobProvider $service_job_provider): self
     {
         $this->container['service_job_provider'] = $service_job_provider;
 
@@ -490,7 +493,7 @@ class ServiceJob implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return null|\Plenty\AmazonPHP\SellingPartner\Model\Services\AppointmentTime[]
      */
-    public function getPreferredAppointmentTimes() : ?array
+    public function getPreferredAppointmentTimes(): ?array
     {
         return $this->container['preferred_appointment_times'];
     }
@@ -500,7 +503,7 @@ class ServiceJob implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\Services\AppointmentTime[] $preferred_appointment_times A list of appointment windows preferred by the buyer. Included only if the buyer selected appointment windows when creating the order.
      */
-    public function setPreferredAppointmentTimes(?array $preferred_appointment_times) : self
+    public function setPreferredAppointmentTimes(?array $preferred_appointment_times): self
     {
         $this->container['preferred_appointment_times'] = $preferred_appointment_times;
 
@@ -512,7 +515,7 @@ class ServiceJob implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return null|\Plenty\AmazonPHP\SellingPartner\Model\Services\Appointment[]
      */
-    public function getAppointments() : ?array
+    public function getAppointments(): ?array
     {
         return $this->container['appointments'];
     }
@@ -522,7 +525,7 @@ class ServiceJob implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\Services\Appointment[] $appointments a list of appointments
      */
-    public function setAppointments(?array $appointments) : self
+    public function setAppointments(?array $appointments): self
     {
         $this->container['appointments'] = $appointments;
 
@@ -532,7 +535,7 @@ class ServiceJob implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets service_order_id.
      */
-    public function getServiceOrderId() : ?string
+    public function getServiceOrderId(): ?string
     {
         return $this->container['service_order_id'];
     }
@@ -542,7 +545,7 @@ class ServiceJob implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param null|string $service_order_id the Amazon-defined identifier for an order placed by the buyer, in 3-7-7 format
      */
-    public function setServiceOrderId(?string $service_order_id) : self
+    public function setServiceOrderId(?string $service_order_id): self
     {
         if (null !== $service_order_id && (\mb_strlen($service_order_id) > 20)) {
             throw new \InvalidArgumentException('invalid length for $service_order_id when calling ServiceJob., must be smaller than or equal to 20.');
@@ -560,7 +563,7 @@ class ServiceJob implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets marketplace_id.
      */
-    public function getMarketplaceId() : ?string
+    public function getMarketplaceId(): ?string
     {
         return $this->container['marketplace_id'];
     }
@@ -570,7 +573,7 @@ class ServiceJob implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param null|string $marketplace_id the marketplace identifier
      */
-    public function setMarketplaceId(?string $marketplace_id) : self
+    public function setMarketplaceId(?string $marketplace_id): self
     {
         if (null !== $marketplace_id && (!\preg_match('/^[A-Z0-9]*$/', $marketplace_id))) {
             throw new \InvalidArgumentException("invalid value for {$marketplace_id} when calling ServiceJob., must conform to the pattern /^[A-Z0-9]*$/.");
@@ -584,7 +587,7 @@ class ServiceJob implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets buyer.
      */
-    public function getBuyer() : ?Buyer
+    public function getBuyer(): ?Buyer
     {
         return $this->container['buyer'];
     }
@@ -594,7 +597,7 @@ class ServiceJob implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\Services\Buyer $buyer buyer
      */
-    public function setBuyer(?Buyer $buyer) : self
+    public function setBuyer(?Buyer $buyer): self
     {
         $this->container['buyer'] = $buyer;
 
@@ -606,7 +609,7 @@ class ServiceJob implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return null|\Plenty\AmazonPHP\SellingPartner\Model\Services\AssociatedItem[]
      */
-    public function getAssociatedItems() : ?array
+    public function getAssociatedItems(): ?array
     {
         return $this->container['associated_items'];
     }
@@ -616,7 +619,7 @@ class ServiceJob implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\Services\AssociatedItem[] $associated_items a list of items associated with the service job
      */
-    public function setAssociatedItems(?array $associated_items) : self
+    public function setAssociatedItems(?array $associated_items): self
     {
         $this->container['associated_items'] = $associated_items;
 
@@ -626,7 +629,7 @@ class ServiceJob implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets service_location.
      */
-    public function getServiceLocation() : ?ServiceLocation
+    public function getServiceLocation(): ?ServiceLocation
     {
         return $this->container['service_location'];
     }
@@ -636,7 +639,7 @@ class ServiceJob implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\Services\ServiceLocation $service_location service_location
      */
-    public function setServiceLocation(?ServiceLocation $service_location) : self
+    public function setServiceLocation(?ServiceLocation $service_location): self
     {
         $this->container['service_location'] = $service_location;
 
@@ -648,7 +651,7 @@ class ServiceJob implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param int $offset Offset
      */
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -671,7 +674,7 @@ class ServiceJob implements \ArrayAccess, \JsonSerializable, ModelInterface
      * @param null|int $offset Offset
      * @param mixed $value Value to be set
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         if (null === $offset) {
             $this->container[] = $value;
@@ -685,7 +688,7 @@ class ServiceJob implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param int $offset Offset
      */
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -698,7 +701,7 @@ class ServiceJob implements \ArrayAccess, \JsonSerializable, ModelInterface
      * @return mixed returns data which can be serialized by json_encode(), which is a value
      *               of any type other than a resource
      */
-    public function jsonSerialize() : string
+    public function jsonSerialize(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }
@@ -706,7 +709,7 @@ class ServiceJob implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets a header-safe presentation of the object.
      */
-    public function toHeaderValue() : string
+    public function toHeaderValue(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }

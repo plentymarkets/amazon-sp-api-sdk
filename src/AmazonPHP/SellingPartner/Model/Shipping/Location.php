@@ -1,4 +1,7 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
+
 /**
  * Location.
  *
@@ -40,7 +43,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class Location implements \ArrayAccess, \JsonSerializable, ModelInterface
+class Location implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -127,7 +130,7 @@ class Location implements \ArrayAccess, \JsonSerializable, ModelInterface
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['state_or_region'] = $data['state_or_region'] ?? null;
         $this->container['city'] = $data['city'] ?? null;
@@ -140,7 +143,7 @@ class Location implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return string[]
      */
-    public static function openAPITypes() : array
+    public static function openAPITypes(): array
     {
         return self::$openAPITypes;
     }
@@ -150,7 +153,7 @@ class Location implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return null[]|string[]
      */
-    public static function openAPIFormats() : array
+    public static function openAPIFormats(): array
     {
         return self::$openAPIFormats;
     }
@@ -161,7 +164,7 @@ class Location implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return string[]
      */
-    public static function attributeMap() : array
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -171,7 +174,7 @@ class Location implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return string[]
      */
-    public static function setters() : array
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -181,7 +184,7 @@ class Location implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return string[]
      */
-    public static function getters() : array
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -189,9 +192,9 @@ class Location implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets the string presentation of the object.
      */
-    public function __toString() : string
+    public function __toString(): string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );
@@ -200,7 +203,7 @@ class Location implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * The original name of the model.
      */
-    public function getModelName() : string
+    public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
@@ -210,7 +213,7 @@ class Location implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties() : array
+    public function listInvalidProperties(): array
     {
         $invalidProperties = [];
 
@@ -247,7 +250,7 @@ class Location implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return bool True if all properties are valid
      */
-    public function valid() : bool
+    public function valid(): bool
     {
         return \count($this->listInvalidProperties()) === 0;
     }
@@ -255,7 +258,7 @@ class Location implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets state_or_region.
      */
-    public function getStateOrRegion() : ?string
+    public function getStateOrRegion(): ?string
     {
         return $this->container['state_or_region'];
     }
@@ -265,7 +268,7 @@ class Location implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param null|string $state_or_region the state or region where the person, business or institution is located
      */
-    public function setStateOrRegion(?string $state_or_region) : self
+    public function setStateOrRegion(?string $state_or_region): self
     {
         $this->container['state_or_region'] = $state_or_region;
 
@@ -275,7 +278,7 @@ class Location implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets city.
      */
-    public function getCity() : ?string
+    public function getCity(): ?string
     {
         return $this->container['city'];
     }
@@ -285,7 +288,7 @@ class Location implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param null|string $city the city where the person, business or institution is located
      */
-    public function setCity(?string $city) : self
+    public function setCity(?string $city): self
     {
         if (null !== $city && (\mb_strlen($city) > 50)) {
             throw new \InvalidArgumentException('invalid length for $city when calling Location., must be smaller than or equal to 50.');
@@ -303,7 +306,7 @@ class Location implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets country_code.
      */
-    public function getCountryCode() : ?string
+    public function getCountryCode(): ?string
     {
         return $this->container['country_code'];
     }
@@ -313,7 +316,7 @@ class Location implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param null|string $country_code The two digit country code. In ISO 3166-1 alpha-2 format.
      */
-    public function setCountryCode(?string $country_code) : self
+    public function setCountryCode(?string $country_code): self
     {
         if (null !== $country_code && (\mb_strlen($country_code) > 2)) {
             throw new \InvalidArgumentException('invalid length for $country_code when calling Location., must be smaller than or equal to 2.');
@@ -331,7 +334,7 @@ class Location implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets postal_code.
      */
-    public function getPostalCode() : ?string
+    public function getPostalCode(): ?string
     {
         return $this->container['postal_code'];
     }
@@ -341,7 +344,7 @@ class Location implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param null|string $postal_code The postal code of that address. It contains a series of letters or digits or both, sometimes including spaces or punctuation.
      */
-    public function setPostalCode(?string $postal_code) : self
+    public function setPostalCode(?string $postal_code): self
     {
         if (null !== $postal_code && (\mb_strlen($postal_code) > 20)) {
             throw new \InvalidArgumentException('invalid length for $postal_code when calling Location., must be smaller than or equal to 20.');
@@ -361,7 +364,7 @@ class Location implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param int $offset Offset
      */
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -384,7 +387,7 @@ class Location implements \ArrayAccess, \JsonSerializable, ModelInterface
      * @param null|int $offset Offset
      * @param mixed $value Value to be set
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         if (null === $offset) {
             $this->container[] = $value;
@@ -398,7 +401,7 @@ class Location implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param int $offset Offset
      */
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -411,7 +414,7 @@ class Location implements \ArrayAccess, \JsonSerializable, ModelInterface
      * @return mixed returns data which can be serialized by json_encode(), which is a value
      *               of any type other than a resource
      */
-    public function jsonSerialize() : string
+    public function jsonSerialize(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }
@@ -419,7 +422,7 @@ class Location implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets a header-safe presentation of the object.
      */
-    public function toHeaderValue() : string
+    public function toHeaderValue(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }

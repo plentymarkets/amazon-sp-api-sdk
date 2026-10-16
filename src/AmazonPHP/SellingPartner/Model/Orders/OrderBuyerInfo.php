@@ -1,4 +1,7 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
+
 /**
  * OrderBuyerInfo.
  *
@@ -40,7 +43,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class OrderBuyerInfo implements \ArrayAccess, \JsonSerializable, ModelInterface
+class OrderBuyerInfo implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -61,7 +64,7 @@ class OrderBuyerInfo implements \ArrayAccess, \JsonSerializable, ModelInterface
         'buyer_email' => 'string',
         'buyer_name' => 'string',
         'buyer_county' => 'string',
-        'buyer_tax_info' => '\Plenty\AmazonPHP\SellingPartner\Model\Orders\BuyerTaxInfo',
+        'buyer_tax_info' => \Plenty\AmazonPHP\SellingPartner\Model\Orders\BuyerTaxInfo::class,
         'purchase_order_number' => 'string',
     ];
 
@@ -137,7 +140,7 @@ class OrderBuyerInfo implements \ArrayAccess, \JsonSerializable, ModelInterface
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['amazon_order_id'] = $data['amazon_order_id'] ?? null;
         $this->container['buyer_email'] = $data['buyer_email'] ?? null;
@@ -152,7 +155,7 @@ class OrderBuyerInfo implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return string[]
      */
-    public static function openAPITypes() : array
+    public static function openAPITypes(): array
     {
         return self::$openAPITypes;
     }
@@ -162,7 +165,7 @@ class OrderBuyerInfo implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return null[]|string[]
      */
-    public static function openAPIFormats() : array
+    public static function openAPIFormats(): array
     {
         return self::$openAPIFormats;
     }
@@ -173,7 +176,7 @@ class OrderBuyerInfo implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return string[]
      */
-    public static function attributeMap() : array
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -183,7 +186,7 @@ class OrderBuyerInfo implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return string[]
      */
-    public static function setters() : array
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -193,7 +196,7 @@ class OrderBuyerInfo implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return string[]
      */
-    public static function getters() : array
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -201,9 +204,9 @@ class OrderBuyerInfo implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets the string presentation of the object.
      */
-    public function __toString() : string
+    public function __toString(): string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );
@@ -212,7 +215,7 @@ class OrderBuyerInfo implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * The original name of the model.
      */
-    public function getModelName() : string
+    public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
@@ -222,7 +225,7 @@ class OrderBuyerInfo implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties() : array
+    public function listInvalidProperties(): array
     {
         $invalidProperties = [];
 
@@ -239,7 +242,7 @@ class OrderBuyerInfo implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return bool True if all properties are valid
      */
-    public function valid() : bool
+    public function valid(): bool
     {
         return \count($this->listInvalidProperties()) === 0;
     }
@@ -247,7 +250,7 @@ class OrderBuyerInfo implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets amazon_order_id.
      */
-    public function getAmazonOrderId() : string
+    public function getAmazonOrderId(): string
     {
         return $this->container['amazon_order_id'];
     }
@@ -257,7 +260,7 @@ class OrderBuyerInfo implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param string $amazon_order_id an Amazon-defined order identifier, in 3-7-7 format
      */
-    public function setAmazonOrderId(string $amazon_order_id) : self
+    public function setAmazonOrderId(string $amazon_order_id): self
     {
         $this->container['amazon_order_id'] = $amazon_order_id;
 
@@ -267,7 +270,7 @@ class OrderBuyerInfo implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets buyer_email.
      */
-    public function getBuyerEmail() : ?string
+    public function getBuyerEmail(): ?string
     {
         return $this->container['buyer_email'];
     }
@@ -277,7 +280,7 @@ class OrderBuyerInfo implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param null|string $buyer_email the anonymized email address of the buyer
      */
-    public function setBuyerEmail(?string $buyer_email) : self
+    public function setBuyerEmail(?string $buyer_email): self
     {
         $this->container['buyer_email'] = $buyer_email;
 
@@ -287,7 +290,7 @@ class OrderBuyerInfo implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets buyer_name.
      */
-    public function getBuyerName() : ?string
+    public function getBuyerName(): ?string
     {
         return $this->container['buyer_name'];
     }
@@ -297,7 +300,7 @@ class OrderBuyerInfo implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param null|string $buyer_name the name of the buyer
      */
-    public function setBuyerName(?string $buyer_name) : self
+    public function setBuyerName(?string $buyer_name): self
     {
         $this->container['buyer_name'] = $buyer_name;
 
@@ -307,7 +310,7 @@ class OrderBuyerInfo implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets buyer_county.
      */
-    public function getBuyerCounty() : ?string
+    public function getBuyerCounty(): ?string
     {
         return $this->container['buyer_county'];
     }
@@ -317,7 +320,7 @@ class OrderBuyerInfo implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param null|string $buyer_county the county of the buyer
      */
-    public function setBuyerCounty(?string $buyer_county) : self
+    public function setBuyerCounty(?string $buyer_county): self
     {
         $this->container['buyer_county'] = $buyer_county;
 
@@ -327,7 +330,7 @@ class OrderBuyerInfo implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets buyer_tax_info.
      */
-    public function getBuyerTaxInfo() : ?BuyerTaxInfo
+    public function getBuyerTaxInfo(): ?BuyerTaxInfo
     {
         return $this->container['buyer_tax_info'];
     }
@@ -337,7 +340,7 @@ class OrderBuyerInfo implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\Orders\BuyerTaxInfo $buyer_tax_info buyer_tax_info
      */
-    public function setBuyerTaxInfo(?BuyerTaxInfo $buyer_tax_info) : self
+    public function setBuyerTaxInfo(?BuyerTaxInfo $buyer_tax_info): self
     {
         $this->container['buyer_tax_info'] = $buyer_tax_info;
 
@@ -347,7 +350,7 @@ class OrderBuyerInfo implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets purchase_order_number.
      */
-    public function getPurchaseOrderNumber() : ?string
+    public function getPurchaseOrderNumber(): ?string
     {
         return $this->container['purchase_order_number'];
     }
@@ -357,7 +360,7 @@ class OrderBuyerInfo implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param null|string $purchase_order_number The purchase order (PO) number entered by the buyer at checkout. Returned only for orders where the buyer entered a PO number at checkout.
      */
-    public function setPurchaseOrderNumber(?string $purchase_order_number) : self
+    public function setPurchaseOrderNumber(?string $purchase_order_number): self
     {
         $this->container['purchase_order_number'] = $purchase_order_number;
 
@@ -369,7 +372,7 @@ class OrderBuyerInfo implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param int $offset Offset
      */
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -392,7 +395,7 @@ class OrderBuyerInfo implements \ArrayAccess, \JsonSerializable, ModelInterface
      * @param null|int $offset Offset
      * @param mixed $value Value to be set
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         if (null === $offset) {
             $this->container[] = $value;
@@ -406,7 +409,7 @@ class OrderBuyerInfo implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param int $offset Offset
      */
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -419,7 +422,7 @@ class OrderBuyerInfo implements \ArrayAccess, \JsonSerializable, ModelInterface
      * @return mixed returns data which can be serialized by json_encode(), which is a value
      *               of any type other than a resource
      */
-    public function jsonSerialize() : string
+    public function jsonSerialize(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }
@@ -427,7 +430,7 @@ class OrderBuyerInfo implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets a header-safe presentation of the object.
      */
-    public function toHeaderValue() : string
+    public function toHeaderValue(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }

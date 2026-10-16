@@ -41,7 +41,7 @@ class CreateInboundPlanRequest implements \ArrayAccess, \JsonSerializable, \Stri
         'destination_marketplaces' => 'string[]',
         'items' => '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound2024\ItemInput[]',
         'name' => 'string',
-        'source_address' => '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound2024\AddressInput',
+        'source_address' => \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound2024\AddressInput::class,
     ];
 
     /**
@@ -110,7 +110,7 @@ class CreateInboundPlanRequest implements \ArrayAccess, \JsonSerializable, \Stri
      * @param null|mixed[] $data Associated array of property values
      *                           initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['destination_marketplaces'] = $data['destination_marketplaces'] ?? null;
         $this->container['items'] = $data['items'] ?? null;
@@ -121,7 +121,7 @@ class CreateInboundPlanRequest implements \ArrayAccess, \JsonSerializable, \Stri
     /**
      * Array of property to type mappings. Used for (de)serialization.
      */
-    public static function openAPITypes() : array
+    public static function openAPITypes(): array
     {
         return self::$openAPITypes;
     }
@@ -129,7 +129,7 @@ class CreateInboundPlanRequest implements \ArrayAccess, \JsonSerializable, \Stri
     /**
      * Array of property to format mappings. Used for (de)serialization.
      */
-    public static function openAPIFormats() : array
+    public static function openAPIFormats(): array
     {
         return self::$openAPIFormats;
     }
@@ -138,7 +138,7 @@ class CreateInboundPlanRequest implements \ArrayAccess, \JsonSerializable, \Stri
      * Array of attributes where the key is the local name,
      * and the value is the original name.
      */
-    public static function attributeMap() : array
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -146,7 +146,7 @@ class CreateInboundPlanRequest implements \ArrayAccess, \JsonSerializable, \Stri
     /**
      * Array of attributes to setter functions (for deserialization of responses).
      */
-    public static function setters() : array
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -154,7 +154,7 @@ class CreateInboundPlanRequest implements \ArrayAccess, \JsonSerializable, \Stri
     /**
      * Array of attributes to getter functions (for serialization of requests).
      */
-    public static function getters() : array
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -162,7 +162,7 @@ class CreateInboundPlanRequest implements \ArrayAccess, \JsonSerializable, \Stri
     /**
      * Gets the string presentation of the object.
      */
-    public function __toString() : string
+    public function __toString(): string
     {
         return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
@@ -173,7 +173,7 @@ class CreateInboundPlanRequest implements \ArrayAccess, \JsonSerializable, \Stri
     /**
      * The original name of the model.
      */
-    public function getModelName() : string
+    public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
@@ -183,10 +183,10 @@ class CreateInboundPlanRequest implements \ArrayAccess, \JsonSerializable, \Stri
      *
      * @throws AssertionException
      */
-    public function listInvalidProperties() : array
+    public function listInvalidProperties(): array
     {
         $invalidProperties = [];
-         
+
         if ($this->container['destination_marketplaces'] === null) {
             $invalidProperties[] = "'destination_marketplaces' can't be null";
         }
@@ -234,7 +234,7 @@ class CreateInboundPlanRequest implements \ArrayAccess, \JsonSerializable, \Stri
      *
      * @return bool True if all properties are valid
      */
-    public function valid() : bool
+    public function valid(): bool
     {
         return \count($this->listInvalidProperties()) === 0;
     }
@@ -244,7 +244,7 @@ class CreateInboundPlanRequest implements \ArrayAccess, \JsonSerializable, \Stri
      *
      * @return string[]
      */
-    public function getDestinationMarketplaces() : array
+    public function getDestinationMarketplaces(): array
     {
         return $this->container['destination_marketplaces'];
     }
@@ -254,7 +254,7 @@ class CreateInboundPlanRequest implements \ArrayAccess, \JsonSerializable, \Stri
      *
      * @param string[] $destination_marketplaces Marketplaces where the items need to be shipped to. Currently only one marketplace can be selected in this request.
      */
-    public function setDestinationMarketplaces(array $destination_marketplaces) : self
+    public function setDestinationMarketplaces(array $destination_marketplaces): self
     {
         $this->container['destination_marketplaces'] = $destination_marketplaces;
 
@@ -266,7 +266,7 @@ class CreateInboundPlanRequest implements \ArrayAccess, \JsonSerializable, \Stri
      *
      * @return ItemInput[]
      */
-    public function getItems() : array
+    public function getItems(): array
     {
         return $this->container['items'];
     }
@@ -276,7 +276,7 @@ class CreateInboundPlanRequest implements \ArrayAccess, \JsonSerializable, \Stri
      *
      * @param ItemInput[] $items items included in this plan
      */
-    public function setItems(array $items) : self
+    public function setItems(array $items): self
     {
         $this->container['items'] = $items;
 
@@ -286,7 +286,7 @@ class CreateInboundPlanRequest implements \ArrayAccess, \JsonSerializable, \Stri
     /**
      * Gets name.
      */
-    public function getName() : ?string
+    public function getName(): ?string
     {
         return $this->container['name'];
     }
@@ -296,7 +296,7 @@ class CreateInboundPlanRequest implements \ArrayAccess, \JsonSerializable, \Stri
      *
      * @param null|string $name Name for the Inbound Plan. If one isn't provided, a default name will be provided.
      */
-    public function setName(?string $name) : self
+    public function setName(?string $name): self
     {
         $this->container['name'] = $name;
 
@@ -306,7 +306,7 @@ class CreateInboundPlanRequest implements \ArrayAccess, \JsonSerializable, \Stri
     /**
      * Gets source_address.
      */
-    public function getSourceAddress() : AddressInput
+    public function getSourceAddress(): AddressInput
     {
         return $this->container['source_address'];
     }
@@ -316,7 +316,7 @@ class CreateInboundPlanRequest implements \ArrayAccess, \JsonSerializable, \Stri
      *
      * @param AddressInput $source_address source_address
      */
-    public function setSourceAddress(AddressInput $source_address) : self
+    public function setSourceAddress(AddressInput $source_address): self
     {
         $this->container['source_address'] = $source_address;
 
@@ -326,7 +326,7 @@ class CreateInboundPlanRequest implements \ArrayAccess, \JsonSerializable, \Stri
     /**
      * Returns true if offset exists. False otherwise.
      */
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -337,7 +337,7 @@ class CreateInboundPlanRequest implements \ArrayAccess, \JsonSerializable, \Stri
      * @return null|mixed
      */
     #[\ReturnTypeWillChange]
-    public function offsetGet($offset) : mixed
+    public function offsetGet($offset): mixed
     {
         return $this->container[$offset] ?? null;
     }
@@ -345,7 +345,7 @@ class CreateInboundPlanRequest implements \ArrayAccess, \JsonSerializable, \Stri
     /**
      * Sets value based on offset.
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         if (null === $offset) {
             $this->container[] = $value;
@@ -357,7 +357,7 @@ class CreateInboundPlanRequest implements \ArrayAccess, \JsonSerializable, \Stri
     /**
      * Unsets offset.
      */
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -371,7 +371,7 @@ class CreateInboundPlanRequest implements \ArrayAccess, \JsonSerializable, \Stri
      *               of any type other than a resource
      */
     #[\ReturnTypeWillChange]
-    public function jsonSerialize() : string
+    public function jsonSerialize(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }
@@ -379,7 +379,7 @@ class CreateInboundPlanRequest implements \ArrayAccess, \JsonSerializable, \Stri
     /**
      * Gets a header-safe presentation of the object.
      */
-    public function toHeaderValue() : string
+    public function toHeaderValue(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }

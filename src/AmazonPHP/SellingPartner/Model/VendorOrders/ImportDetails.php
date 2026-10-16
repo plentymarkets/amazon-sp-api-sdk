@@ -1,4 +1,7 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
+
 /**
  * ImportDetails.
  *
@@ -40,7 +43,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class ImportDetails implements \ArrayAccess, \JsonSerializable, ModelInterface
+class ImportDetails implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -166,7 +169,7 @@ class ImportDetails implements \ArrayAccess, \JsonSerializable, ModelInterface
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['method_of_payment'] = $data['method_of_payment'] ?? null;
         $this->container['international_commercial_terms'] = $data['international_commercial_terms'] ?? null;
@@ -180,7 +183,7 @@ class ImportDetails implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return string[]
      */
-    public static function openAPITypes() : array
+    public static function openAPITypes(): array
     {
         return self::$openAPITypes;
     }
@@ -190,7 +193,7 @@ class ImportDetails implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return null[]|string[]
      */
-    public static function openAPIFormats() : array
+    public static function openAPIFormats(): array
     {
         return self::$openAPIFormats;
     }
@@ -201,7 +204,7 @@ class ImportDetails implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return string[]
      */
-    public static function attributeMap() : array
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -211,7 +214,7 @@ class ImportDetails implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return string[]
      */
-    public static function setters() : array
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -221,7 +224,7 @@ class ImportDetails implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return string[]
      */
-    public static function getters() : array
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -229,9 +232,9 @@ class ImportDetails implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets the string presentation of the object.
      */
-    public function __toString() : string
+    public function __toString(): string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );
@@ -240,7 +243,7 @@ class ImportDetails implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * The original name of the model.
      */
-    public function getModelName() : string
+    public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
@@ -250,7 +253,7 @@ class ImportDetails implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return string[]
      */
-    public function getMethodOfPaymentAllowableValues() : array
+    public function getMethodOfPaymentAllowableValues(): array
     {
         return [
             self::METHOD_OF_PAYMENT_PAID_BY_BUYER,
@@ -267,7 +270,7 @@ class ImportDetails implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return string[]
      */
-    public function getInternationalCommercialTermsAllowableValues() : array
+    public function getInternationalCommercialTermsAllowableValues(): array
     {
         return [
             self::INTERNATIONAL_COMMERCIAL_TERMS_EX_WORKS,
@@ -289,7 +292,7 @@ class ImportDetails implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties() : array
+    public function listInvalidProperties(): array
     {
         $invalidProperties = [];
 
@@ -330,7 +333,7 @@ class ImportDetails implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return bool True if all properties are valid
      */
-    public function valid() : bool
+    public function valid(): bool
     {
         return \count($this->listInvalidProperties()) === 0;
     }
@@ -338,7 +341,7 @@ class ImportDetails implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets method_of_payment.
      */
-    public function getMethodOfPayment() : ?string
+    public function getMethodOfPayment(): ?string
     {
         return $this->container['method_of_payment'];
     }
@@ -348,7 +351,7 @@ class ImportDetails implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param null|string $method_of_payment If the recipient requests, contains the shipment method of payment. This is for import PO's only.
      */
-    public function setMethodOfPayment(?string $method_of_payment) : self
+    public function setMethodOfPayment(?string $method_of_payment): self
     {
         $allowedValues = $this->getMethodOfPaymentAllowableValues();
 
@@ -369,7 +372,7 @@ class ImportDetails implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets international_commercial_terms.
      */
-    public function getInternationalCommercialTerms() : ?string
+    public function getInternationalCommercialTerms(): ?string
     {
         return $this->container['international_commercial_terms'];
     }
@@ -379,7 +382,7 @@ class ImportDetails implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param null|string $international_commercial_terms Incoterms (International Commercial Terms) are used to divide transaction costs and responsibilities between buyer and seller and reflect state-of-the-art transportation practices. This is for import purchase orders only.
      */
-    public function setInternationalCommercialTerms(?string $international_commercial_terms) : self
+    public function setInternationalCommercialTerms(?string $international_commercial_terms): self
     {
         $allowedValues = $this->getInternationalCommercialTermsAllowableValues();
 
@@ -400,7 +403,7 @@ class ImportDetails implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets port_of_delivery.
      */
-    public function getPortOfDelivery() : ?string
+    public function getPortOfDelivery(): ?string
     {
         return $this->container['port_of_delivery'];
     }
@@ -410,7 +413,7 @@ class ImportDetails implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param null|string $port_of_delivery The port where goods on an import purchase order must be delivered by the vendor. This should only be specified when the internationalCommercialTerms is FOB.
      */
-    public function setPortOfDelivery(?string $port_of_delivery) : self
+    public function setPortOfDelivery(?string $port_of_delivery): self
     {
         if (null !== $port_of_delivery && (\mb_strlen($port_of_delivery) > 64)) {
             throw new \InvalidArgumentException('invalid length for $port_of_delivery when calling ImportDetails., must be smaller than or equal to 64.');
@@ -424,7 +427,7 @@ class ImportDetails implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets import_containers.
      */
-    public function getImportContainers() : ?string
+    public function getImportContainers(): ?string
     {
         return $this->container['import_containers'];
     }
@@ -434,7 +437,7 @@ class ImportDetails implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param null|string $import_containers Types and numbers of container(s) for import purchase orders. Can be a comma-separated list if the shipment has multiple containers. HC signifies a high-capacity container. Free-text field, limited to 64 characters. The format will be a comma-delimited list containing values of the type: $NUMBER_OF_CONTAINERS_OF_THIS_TYPE-$CONTAINER_TYPE. The list of values for the container type is: 40'(40-foot container), 40'HC (40-foot high-capacity container), 45', 45'HC, 30', 30'HC, 20', 20'HC.
      */
-    public function setImportContainers(?string $import_containers) : self
+    public function setImportContainers(?string $import_containers): self
     {
         if (null !== $import_containers && (\mb_strlen($import_containers) > 64)) {
             throw new \InvalidArgumentException('invalid length for $import_containers when calling ImportDetails., must be smaller than or equal to 64.');
@@ -448,7 +451,7 @@ class ImportDetails implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets shipping_instructions.
      */
-    public function getShippingInstructions() : ?string
+    public function getShippingInstructions(): ?string
     {
         return $this->container['shipping_instructions'];
     }
@@ -458,7 +461,7 @@ class ImportDetails implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param null|string $shipping_instructions Special instructions regarding the shipment. This field is for import purchase orders.
      */
-    public function setShippingInstructions(?string $shipping_instructions) : self
+    public function setShippingInstructions(?string $shipping_instructions): self
     {
         $this->container['shipping_instructions'] = $shipping_instructions;
 
@@ -470,7 +473,7 @@ class ImportDetails implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param int $offset Offset
      */
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -493,7 +496,7 @@ class ImportDetails implements \ArrayAccess, \JsonSerializable, ModelInterface
      * @param null|int $offset Offset
      * @param mixed $value Value to be set
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         if (null === $offset) {
             $this->container[] = $value;
@@ -507,7 +510,7 @@ class ImportDetails implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param int $offset Offset
      */
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -520,7 +523,7 @@ class ImportDetails implements \ArrayAccess, \JsonSerializable, ModelInterface
      * @return mixed returns data which can be serialized by json_encode(), which is a value
      *               of any type other than a resource
      */
-    public function jsonSerialize() : string
+    public function jsonSerialize(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }
@@ -528,7 +531,7 @@ class ImportDetails implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets a header-safe presentation of the object.
      */
-    public function toHeaderValue() : string
+    public function toHeaderValue(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }

@@ -1,4 +1,7 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
+
 /**
  * SmallAndLightEnrollment.
  *
@@ -40,7 +43,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class SmallAndLightEnrollment implements \ArrayAccess, \JsonSerializable, ModelInterface
+class SmallAndLightEnrollment implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -59,7 +62,7 @@ class SmallAndLightEnrollment implements \ArrayAccess, \JsonSerializable, ModelI
     protected static /** [COMPAT] array */ $openAPITypes = [
         'marketplace_id' => 'string',
         'seller_sku' => 'string',
-        'status' => '\Plenty\AmazonPHP\SellingPartner\Model\FBASmallAndLight\SmallAndLightEnrollmentStatus',
+        'status' => \Plenty\AmazonPHP\SellingPartner\Model\FBASmallAndLight\SmallAndLightEnrollmentStatus::class,
     ];
 
     /**
@@ -122,7 +125,7 @@ class SmallAndLightEnrollment implements \ArrayAccess, \JsonSerializable, ModelI
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['marketplace_id'] = $data['marketplace_id'] ?? null;
         $this->container['seller_sku'] = $data['seller_sku'] ?? null;
@@ -134,7 +137,7 @@ class SmallAndLightEnrollment implements \ArrayAccess, \JsonSerializable, ModelI
      *
      * @return string[]
      */
-    public static function openAPITypes() : array
+    public static function openAPITypes(): array
     {
         return self::$openAPITypes;
     }
@@ -144,7 +147,7 @@ class SmallAndLightEnrollment implements \ArrayAccess, \JsonSerializable, ModelI
      *
      * @return null[]|string[]
      */
-    public static function openAPIFormats() : array
+    public static function openAPIFormats(): array
     {
         return self::$openAPIFormats;
     }
@@ -155,7 +158,7 @@ class SmallAndLightEnrollment implements \ArrayAccess, \JsonSerializable, ModelI
      *
      * @return string[]
      */
-    public static function attributeMap() : array
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -165,7 +168,7 @@ class SmallAndLightEnrollment implements \ArrayAccess, \JsonSerializable, ModelI
      *
      * @return string[]
      */
-    public static function setters() : array
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -175,7 +178,7 @@ class SmallAndLightEnrollment implements \ArrayAccess, \JsonSerializable, ModelI
      *
      * @return string[]
      */
-    public static function getters() : array
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -183,9 +186,9 @@ class SmallAndLightEnrollment implements \ArrayAccess, \JsonSerializable, ModelI
     /**
      * Gets the string presentation of the object.
      */
-    public function __toString() : string
+    public function __toString(): string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );
@@ -194,7 +197,7 @@ class SmallAndLightEnrollment implements \ArrayAccess, \JsonSerializable, ModelI
     /**
      * The original name of the model.
      */
-    public function getModelName() : string
+    public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
@@ -204,7 +207,7 @@ class SmallAndLightEnrollment implements \ArrayAccess, \JsonSerializable, ModelI
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties() : array
+    public function listInvalidProperties(): array
     {
         $invalidProperties = [];
 
@@ -229,7 +232,7 @@ class SmallAndLightEnrollment implements \ArrayAccess, \JsonSerializable, ModelI
      *
      * @return bool True if all properties are valid
      */
-    public function valid() : bool
+    public function valid(): bool
     {
         return \count($this->listInvalidProperties()) === 0;
     }
@@ -237,7 +240,7 @@ class SmallAndLightEnrollment implements \ArrayAccess, \JsonSerializable, ModelI
     /**
      * Gets marketplace_id.
      */
-    public function getMarketplaceId() : string
+    public function getMarketplaceId(): string
     {
         return $this->container['marketplace_id'];
     }
@@ -247,7 +250,7 @@ class SmallAndLightEnrollment implements \ArrayAccess, \JsonSerializable, ModelI
      *
      * @param string $marketplace_id a marketplace identifier
      */
-    public function setMarketplaceId(string $marketplace_id) : self
+    public function setMarketplaceId(string $marketplace_id): self
     {
         $this->container['marketplace_id'] = $marketplace_id;
 
@@ -257,7 +260,7 @@ class SmallAndLightEnrollment implements \ArrayAccess, \JsonSerializable, ModelI
     /**
      * Gets seller_sku.
      */
-    public function getSellerSku() : string
+    public function getSellerSku(): string
     {
         return $this->container['seller_sku'];
     }
@@ -267,7 +270,7 @@ class SmallAndLightEnrollment implements \ArrayAccess, \JsonSerializable, ModelI
      *
      * @param string $seller_sku Identifies an item in the given marketplace. SellerSKU is qualified by the seller's SellerId, which is included with every operation that you submit.
      */
-    public function setSellerSku(string $seller_sku) : self
+    public function setSellerSku(string $seller_sku): self
     {
         $this->container['seller_sku'] = $seller_sku;
 
@@ -277,7 +280,7 @@ class SmallAndLightEnrollment implements \ArrayAccess, \JsonSerializable, ModelI
     /**
      * Gets status.
      */
-    public function getStatus() : SmallAndLightEnrollmentStatus
+    public function getStatus(): SmallAndLightEnrollmentStatus
     {
         return $this->container['status'];
     }
@@ -287,7 +290,7 @@ class SmallAndLightEnrollment implements \ArrayAccess, \JsonSerializable, ModelI
      *
      * @param \Plenty\AmazonPHP\SellingPartner\Model\FBASmallAndLight\SmallAndLightEnrollmentStatus $status status
      */
-    public function setStatus(SmallAndLightEnrollmentStatus $status) : self
+    public function setStatus(SmallAndLightEnrollmentStatus $status): self
     {
         $this->container['status'] = $status;
 
@@ -299,7 +302,7 @@ class SmallAndLightEnrollment implements \ArrayAccess, \JsonSerializable, ModelI
      *
      * @param int $offset Offset
      */
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -322,7 +325,7 @@ class SmallAndLightEnrollment implements \ArrayAccess, \JsonSerializable, ModelI
      * @param null|int $offset Offset
      * @param mixed $value Value to be set
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         if (null === $offset) {
             $this->container[] = $value;
@@ -336,7 +339,7 @@ class SmallAndLightEnrollment implements \ArrayAccess, \JsonSerializable, ModelI
      *
      * @param int $offset Offset
      */
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -349,7 +352,7 @@ class SmallAndLightEnrollment implements \ArrayAccess, \JsonSerializable, ModelI
      * @return mixed returns data which can be serialized by json_encode(), which is a value
      *               of any type other than a resource
      */
-    public function jsonSerialize() : string
+    public function jsonSerialize(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }
@@ -357,7 +360,7 @@ class SmallAndLightEnrollment implements \ArrayAccess, \JsonSerializable, ModelI
     /**
      * Gets a header-safe presentation of the object.
      */
-    public function toHeaderValue() : string
+    public function toHeaderValue(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }

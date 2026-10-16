@@ -1,4 +1,7 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
+
 /**
  * LabelSpecification.
  *
@@ -40,7 +43,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class LabelSpecification implements \ArrayAccess, \JsonSerializable, ModelInterface
+class LabelSpecification implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -121,7 +124,7 @@ class LabelSpecification implements \ArrayAccess, \JsonSerializable, ModelInterf
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['label_format'] = $data['label_format'] ?? null;
         $this->container['label_stock_size'] = $data['label_stock_size'] ?? null;
@@ -132,7 +135,7 @@ class LabelSpecification implements \ArrayAccess, \JsonSerializable, ModelInterf
      *
      * @return string[]
      */
-    public static function openAPITypes() : array
+    public static function openAPITypes(): array
     {
         return self::$openAPITypes;
     }
@@ -142,7 +145,7 @@ class LabelSpecification implements \ArrayAccess, \JsonSerializable, ModelInterf
      *
      * @return null[]|string[]
      */
-    public static function openAPIFormats() : array
+    public static function openAPIFormats(): array
     {
         return self::$openAPIFormats;
     }
@@ -153,7 +156,7 @@ class LabelSpecification implements \ArrayAccess, \JsonSerializable, ModelInterf
      *
      * @return string[]
      */
-    public static function attributeMap() : array
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -163,7 +166,7 @@ class LabelSpecification implements \ArrayAccess, \JsonSerializable, ModelInterf
      *
      * @return string[]
      */
-    public static function setters() : array
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -173,7 +176,7 @@ class LabelSpecification implements \ArrayAccess, \JsonSerializable, ModelInterf
      *
      * @return string[]
      */
-    public static function getters() : array
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -181,9 +184,9 @@ class LabelSpecification implements \ArrayAccess, \JsonSerializable, ModelInterf
     /**
      * Gets the string presentation of the object.
      */
-    public function __toString() : string
+    public function __toString(): string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );
@@ -192,7 +195,7 @@ class LabelSpecification implements \ArrayAccess, \JsonSerializable, ModelInterf
     /**
      * The original name of the model.
      */
-    public function getModelName() : string
+    public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
@@ -202,7 +205,7 @@ class LabelSpecification implements \ArrayAccess, \JsonSerializable, ModelInterf
      *
      * @return string[]
      */
-    public function getLabelFormatAllowableValues() : array
+    public function getLabelFormatAllowableValues(): array
     {
         return [
             self::LABEL_FORMAT_PNG,
@@ -214,7 +217,7 @@ class LabelSpecification implements \ArrayAccess, \JsonSerializable, ModelInterf
      *
      * @return string[]
      */
-    public function getLabelStockSizeAllowableValues() : array
+    public function getLabelStockSizeAllowableValues(): array
     {
         return [
             self::LABEL_STOCK_SIZE__4X6,
@@ -226,7 +229,7 @@ class LabelSpecification implements \ArrayAccess, \JsonSerializable, ModelInterf
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties() : array
+    public function listInvalidProperties(): array
     {
         $invalidProperties = [];
 
@@ -265,7 +268,7 @@ class LabelSpecification implements \ArrayAccess, \JsonSerializable, ModelInterf
      *
      * @return bool True if all properties are valid
      */
-    public function valid() : bool
+    public function valid(): bool
     {
         return \count($this->listInvalidProperties()) === 0;
     }
@@ -273,7 +276,7 @@ class LabelSpecification implements \ArrayAccess, \JsonSerializable, ModelInterf
     /**
      * Gets label_format.
      */
-    public function getLabelFormat() : string
+    public function getLabelFormat(): string
     {
         return $this->container['label_format'];
     }
@@ -283,7 +286,7 @@ class LabelSpecification implements \ArrayAccess, \JsonSerializable, ModelInterf
      *
      * @param string $label_format The format of the label. Enum of PNG only for now.
      */
-    public function setLabelFormat(string $label_format) : self
+    public function setLabelFormat(string $label_format): self
     {
         $allowedValues = $this->getLabelFormatAllowableValues();
 
@@ -304,7 +307,7 @@ class LabelSpecification implements \ArrayAccess, \JsonSerializable, ModelInterf
     /**
      * Gets label_stock_size.
      */
-    public function getLabelStockSize() : string
+    public function getLabelStockSize(): string
     {
         return $this->container['label_stock_size'];
     }
@@ -314,7 +317,7 @@ class LabelSpecification implements \ArrayAccess, \JsonSerializable, ModelInterf
      *
      * @param string $label_stock_size The label stock size specification in length and height. Enum of 4x6 only for now.
      */
-    public function setLabelStockSize(string $label_stock_size) : self
+    public function setLabelStockSize(string $label_stock_size): self
     {
         $allowedValues = $this->getLabelStockSizeAllowableValues();
 
@@ -337,7 +340,7 @@ class LabelSpecification implements \ArrayAccess, \JsonSerializable, ModelInterf
      *
      * @param int $offset Offset
      */
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -360,7 +363,7 @@ class LabelSpecification implements \ArrayAccess, \JsonSerializable, ModelInterf
      * @param null|int $offset Offset
      * @param mixed $value Value to be set
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         if (null === $offset) {
             $this->container[] = $value;
@@ -374,7 +377,7 @@ class LabelSpecification implements \ArrayAccess, \JsonSerializable, ModelInterf
      *
      * @param int $offset Offset
      */
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -387,7 +390,7 @@ class LabelSpecification implements \ArrayAccess, \JsonSerializable, ModelInterf
      * @return mixed returns data which can be serialized by json_encode(), which is a value
      *               of any type other than a resource
      */
-    public function jsonSerialize() : string
+    public function jsonSerialize(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }
@@ -395,7 +398,7 @@ class LabelSpecification implements \ArrayAccess, \JsonSerializable, ModelInterf
     /**
      * Gets a header-safe presentation of the object.
      */
-    public function toHeaderValue() : string
+    public function toHeaderValue(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }

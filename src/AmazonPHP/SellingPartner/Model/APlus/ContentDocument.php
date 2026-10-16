@@ -1,4 +1,7 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
+
 /**
  * ContentDocument.
  *
@@ -40,7 +43,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class ContentDocument implements \ArrayAccess, \JsonSerializable, ModelInterface
+class ContentDocument implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -58,7 +61,7 @@ class ContentDocument implements \ArrayAccess, \JsonSerializable, ModelInterface
      */
     protected static /** [COMPAT] array */ $openAPITypes = [
         'name' => 'string',
-        'content_type' => '\Plenty\AmazonPHP\SellingPartner\Model\APlus\ContentType',
+        'content_type' => \Plenty\AmazonPHP\SellingPartner\Model\APlus\ContentType::class,
         'content_sub_type' => 'string',
         'locale' => 'string',
         'content_module_list' => '\Plenty\AmazonPHP\SellingPartner\Model\APlus\ContentModule[]',
@@ -132,7 +135,7 @@ class ContentDocument implements \ArrayAccess, \JsonSerializable, ModelInterface
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['name'] = $data['name'] ?? null;
         $this->container['content_type'] = $data['content_type'] ?? null;
@@ -146,7 +149,7 @@ class ContentDocument implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return string[]
      */
-    public static function openAPITypes() : array
+    public static function openAPITypes(): array
     {
         return self::$openAPITypes;
     }
@@ -156,7 +159,7 @@ class ContentDocument implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return null[]|string[]
      */
-    public static function openAPIFormats() : array
+    public static function openAPIFormats(): array
     {
         return self::$openAPIFormats;
     }
@@ -167,7 +170,7 @@ class ContentDocument implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return string[]
      */
-    public static function attributeMap() : array
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -177,7 +180,7 @@ class ContentDocument implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return string[]
      */
-    public static function setters() : array
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -187,7 +190,7 @@ class ContentDocument implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return string[]
      */
-    public static function getters() : array
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -195,9 +198,9 @@ class ContentDocument implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets the string presentation of the object.
      */
-    public function __toString() : string
+    public function __toString(): string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );
@@ -206,7 +209,7 @@ class ContentDocument implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * The original name of the model.
      */
-    public function getModelName() : string
+    public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
@@ -216,7 +219,7 @@ class ContentDocument implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties() : array
+    public function listInvalidProperties(): array
     {
         $invalidProperties = [];
 
@@ -269,7 +272,7 @@ class ContentDocument implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return bool True if all properties are valid
      */
-    public function valid() : bool
+    public function valid(): bool
     {
         return \count($this->listInvalidProperties()) === 0;
     }
@@ -277,7 +280,7 @@ class ContentDocument implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets name.
      */
-    public function getName() : string
+    public function getName(): string
     {
         return $this->container['name'];
     }
@@ -287,7 +290,7 @@ class ContentDocument implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param string $name the A+ Content document name
      */
-    public function setName(string $name) : self
+    public function setName(string $name): self
     {
         if ((\mb_strlen($name) > 100)) {
             throw new \InvalidArgumentException('invalid length for $name when calling ContentDocument., must be smaller than or equal to 100.');
@@ -305,7 +308,7 @@ class ContentDocument implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets content_type.
      */
-    public function getContentType() : ContentType
+    public function getContentType(): ContentType
     {
         return $this->container['content_type'];
     }
@@ -315,7 +318,7 @@ class ContentDocument implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param \Plenty\AmazonPHP\SellingPartner\Model\APlus\ContentType $content_type content_type
      */
-    public function setContentType(ContentType $content_type) : self
+    public function setContentType(ContentType $content_type): self
     {
         $this->container['content_type'] = $content_type;
 
@@ -325,7 +328,7 @@ class ContentDocument implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets content_sub_type.
      */
-    public function getContentSubType() : ?string
+    public function getContentSubType(): ?string
     {
         return $this->container['content_sub_type'];
     }
@@ -335,7 +338,7 @@ class ContentDocument implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param null|string $content_sub_type The A+ Content document subtype. This represents a special-purpose type of an A+ Content document. Not every A+ Content document type will have a subtype, and subtypes may change at any time.
      */
-    public function setContentSubType(?string $content_sub_type) : self
+    public function setContentSubType(?string $content_sub_type): self
     {
         if (null !== $content_sub_type && (\mb_strlen($content_sub_type) < 1)) {
             throw new \InvalidArgumentException('invalid length for $content_sub_type when calling ContentDocument., must be bigger than or equal to 1.');
@@ -349,7 +352,7 @@ class ContentDocument implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets locale.
      */
-    public function getLocale() : string
+    public function getLocale(): string
     {
         return $this->container['locale'];
     }
@@ -359,7 +362,7 @@ class ContentDocument implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param string $locale The IETF language tag. This only supports the primary language subtag with one secondary language subtag. The secondary language subtag is almost always a regional designation. This does not support additional subtags beyond the primary and secondary subtags. **Pattern:** ^[a-z]{2,}-[A-Z0-9]{2,}$
      */
-    public function setLocale(string $locale) : self
+    public function setLocale(string $locale): self
     {
         if ((\mb_strlen($locale) < 5)) {
             throw new \InvalidArgumentException('invalid length for $locale when calling ContentDocument., must be bigger than or equal to 5.');
@@ -375,7 +378,7 @@ class ContentDocument implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return \Plenty\AmazonPHP\SellingPartner\Model\APlus\ContentModule[]
      */
-    public function getContentModuleList() : array
+    public function getContentModuleList(): array
     {
         return $this->container['content_module_list'];
     }
@@ -385,7 +388,7 @@ class ContentDocument implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param \Plenty\AmazonPHP\SellingPartner\Model\APlus\ContentModule[] $content_module_list a list of A+ Content modules
      */
-    public function setContentModuleList(array $content_module_list) : self
+    public function setContentModuleList(array $content_module_list): self
     {
         if ((\count($content_module_list) > 100)) {
             throw new \InvalidArgumentException('invalid value for $content_module_list when calling ContentDocument., number of items must be less than or equal to 100.');
@@ -404,7 +407,7 @@ class ContentDocument implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param int $offset Offset
      */
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -427,7 +430,7 @@ class ContentDocument implements \ArrayAccess, \JsonSerializable, ModelInterface
      * @param null|int $offset Offset
      * @param mixed $value Value to be set
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         if (null === $offset) {
             $this->container[] = $value;
@@ -441,7 +444,7 @@ class ContentDocument implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param int $offset Offset
      */
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -454,7 +457,7 @@ class ContentDocument implements \ArrayAccess, \JsonSerializable, ModelInterface
      * @return mixed returns data which can be serialized by json_encode(), which is a value
      *               of any type other than a resource
      */
-    public function jsonSerialize() : string
+    public function jsonSerialize(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }
@@ -462,7 +465,7 @@ class ContentDocument implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets a header-safe presentation of the object.
      */
-    public function toHeaderValue() : string
+    public function toHeaderValue(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }

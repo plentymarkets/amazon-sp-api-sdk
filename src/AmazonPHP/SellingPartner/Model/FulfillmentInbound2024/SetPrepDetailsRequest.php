@@ -2,10 +2,9 @@
 
 declare(strict_types=1);
 
-
 namespace Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound2024;
 
-use \ArrayAccess;
+use ArrayAccess;
 use Plenty\AmazonPHP\SellingPartner\Exception\AssertionException;
 use Plenty\AmazonPHP\SellingPartner\ModelInterface;
 use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
@@ -24,7 +23,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class SetPrepDetailsRequest implements ModelInterface, ArrayAccess, \JsonSerializable
+class SetPrepDetailsRequest implements ModelInterface, ArrayAccess, \JsonSerializable, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -62,7 +61,7 @@ class SetPrepDetailsRequest implements ModelInterface, ArrayAccess, \JsonSeriali
      *
      * @return array
      */
-    public static function openAPITypes() : array
+    public static function openAPITypes(): array
     {
         return self::$openAPITypes;
     }
@@ -72,7 +71,7 @@ class SetPrepDetailsRequest implements ModelInterface, ArrayAccess, \JsonSeriali
      *
      * @return array
      */
-    public static function openAPIFormats() : array
+    public static function openAPIFormats(): array
     {
         return self::$openAPIFormats;
     }
@@ -114,7 +113,7 @@ class SetPrepDetailsRequest implements ModelInterface, ArrayAccess, \JsonSeriali
      *
      * @return array
      */
-    public static function attributeMap() : array
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -124,7 +123,7 @@ class SetPrepDetailsRequest implements ModelInterface, ArrayAccess, \JsonSeriali
      *
      * @return array
      */
-    public static function setters() : array
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -134,7 +133,7 @@ class SetPrepDetailsRequest implements ModelInterface, ArrayAccess, \JsonSeriali
      *
      * @return array
      */
-    public static function getters() : array
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -144,7 +143,7 @@ class SetPrepDetailsRequest implements ModelInterface, ArrayAccess, \JsonSeriali
      *
      * @return string
      */
-    public function getModelName() : string
+    public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
@@ -163,7 +162,7 @@ class SetPrepDetailsRequest implements ModelInterface, ArrayAccess, \JsonSeriali
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['marketplace_id'] = $data['marketplace_id'] ?? null;
         $this->container['msku_prep_details'] = $data['msku_prep_details'] ?? null;
@@ -174,7 +173,7 @@ class SetPrepDetailsRequest implements ModelInterface, ArrayAccess, \JsonSeriali
      *
      * @throws AssertionException
      */
-    public function validate() : void
+    public function validate(): void
     {
         if ($this->container['marketplace_id'] === null) {
             throw new AssertionException("'marketplace_id' can't be null");
@@ -199,7 +198,6 @@ class SetPrepDetailsRequest implements ModelInterface, ArrayAccess, \JsonSeriali
         if ((count($this->container['msku_prep_details']) < 1)) {
             throw new AssertionException("invalid value for 'msku_prep_details', number of items must be greater than or equal to 1.");
         }
-
     }
 
 
@@ -220,7 +218,7 @@ class SetPrepDetailsRequest implements ModelInterface, ArrayAccess, \JsonSeriali
      *
      * @return self
      */
-    public function setMarketplaceId($marketplace_id) : self
+    public function setMarketplaceId($marketplace_id): self
     {
         $this->container['marketplace_id'] = $marketplace_id;
 
@@ -244,7 +242,7 @@ class SetPrepDetailsRequest implements ModelInterface, ArrayAccess, \JsonSeriali
      *
      * @return self
      */
-    public function setMskuPrepDetails($msku_prep_details) : self
+    public function setMskuPrepDetails($msku_prep_details): self
     {
         $this->container['msku_prep_details'] = $msku_prep_details;
 
@@ -255,7 +253,7 @@ class SetPrepDetailsRequest implements ModelInterface, ArrayAccess, \JsonSeriali
      *
      * @throws AssertionException
      */
-    public function listInvalidProperties() : array
+    public function listInvalidProperties(): array
     {
         return [];
     }
@@ -266,7 +264,7 @@ class SetPrepDetailsRequest implements ModelInterface, ArrayAccess, \JsonSeriali
      *
      * @return bool True if all properties are valid
      */
-    public function valid() : bool
+    public function valid(): bool
     {
         return \count($this->listInvalidProperties()) === 0;
     }
@@ -275,7 +273,7 @@ class SetPrepDetailsRequest implements ModelInterface, ArrayAccess, \JsonSeriali
      *
      * @return boolean
      */
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -286,7 +284,7 @@ class SetPrepDetailsRequest implements ModelInterface, ArrayAccess, \JsonSeriali
      * @return mixed|null
      */
     #[\ReturnTypeWillChange]
-    public function offsetGet($offset)
+    public function offsetGet($offset): mixed
     {
         return $this->container[$offset] ?? null;
     }
@@ -296,7 +294,7 @@ class SetPrepDetailsRequest implements ModelInterface, ArrayAccess, \JsonSeriali
      *
      * @return void
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         if (is_null($offset)) {
             $this->container[] = $value;
@@ -310,7 +308,7 @@ class SetPrepDetailsRequest implements ModelInterface, ArrayAccess, \JsonSeriali
      *
      * @return void
      */
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -323,9 +321,9 @@ class SetPrepDetailsRequest implements ModelInterface, ArrayAccess, \JsonSeriali
      * of any type other than a resource.
      */
     #[\ReturnTypeWillChange]
-    public function jsonSerialize() : string
+    public function jsonSerialize(): string
     {
-       return \json_encode(ObjectSerializer::sanitizeForSerialization($this));
+        return \json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }
 
     /**
@@ -333,9 +331,9 @@ class SetPrepDetailsRequest implements ModelInterface, ArrayAccess, \JsonSeriali
      *
      * @return string
      */
-    public function __toString() : string
+    public function __toString(): string
     {
-        return json_encode(
+        return (string) json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );
@@ -346,9 +344,8 @@ class SetPrepDetailsRequest implements ModelInterface, ArrayAccess, \JsonSeriali
      *
      * @return string
      */
-    public function toHeaderValue() : string
+    public function toHeaderValue(): string
     {
         return json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }
 }
-

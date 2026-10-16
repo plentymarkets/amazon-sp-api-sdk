@@ -1,4 +1,7 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
+
 /**
  * SellerReviewEnrollmentPaymentEvent.
  *
@@ -40,7 +43,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class SellerReviewEnrollmentPaymentEvent implements \ArrayAccess, \JsonSerializable, ModelInterface
+class SellerReviewEnrollmentPaymentEvent implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -60,9 +63,9 @@ class SellerReviewEnrollmentPaymentEvent implements \ArrayAccess, \JsonSerializa
         'posted_date' => '\DateTime',
         'enrollment_id' => 'string',
         'parent_asin' => 'string',
-        'fee_component' => '\Plenty\AmazonPHP\SellingPartner\Model\Finances\FeeComponent',
-        'charge_component' => '\Plenty\AmazonPHP\SellingPartner\Model\Finances\ChargeComponent',
-        'total_amount' => '\Plenty\AmazonPHP\SellingPartner\Model\Finances\Currency',
+        'fee_component' => \Plenty\AmazonPHP\SellingPartner\Model\Finances\FeeComponent::class,
+        'charge_component' => \Plenty\AmazonPHP\SellingPartner\Model\Finances\ChargeComponent::class,
+        'total_amount' => \Plenty\AmazonPHP\SellingPartner\Model\Finances\Currency::class,
     ];
 
     /**
@@ -137,7 +140,7 @@ class SellerReviewEnrollmentPaymentEvent implements \ArrayAccess, \JsonSerializa
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['posted_date'] = $data['posted_date'] ?? null;
         $this->container['enrollment_id'] = $data['enrollment_id'] ?? null;
@@ -152,7 +155,7 @@ class SellerReviewEnrollmentPaymentEvent implements \ArrayAccess, \JsonSerializa
      *
      * @return string[]
      */
-    public static function openAPITypes() : array
+    public static function openAPITypes(): array
     {
         return self::$openAPITypes;
     }
@@ -162,7 +165,7 @@ class SellerReviewEnrollmentPaymentEvent implements \ArrayAccess, \JsonSerializa
      *
      * @return null[]|string[]
      */
-    public static function openAPIFormats() : array
+    public static function openAPIFormats(): array
     {
         return self::$openAPIFormats;
     }
@@ -173,7 +176,7 @@ class SellerReviewEnrollmentPaymentEvent implements \ArrayAccess, \JsonSerializa
      *
      * @return string[]
      */
-    public static function attributeMap() : array
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -183,7 +186,7 @@ class SellerReviewEnrollmentPaymentEvent implements \ArrayAccess, \JsonSerializa
      *
      * @return string[]
      */
-    public static function setters() : array
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -193,7 +196,7 @@ class SellerReviewEnrollmentPaymentEvent implements \ArrayAccess, \JsonSerializa
      *
      * @return string[]
      */
-    public static function getters() : array
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -201,9 +204,9 @@ class SellerReviewEnrollmentPaymentEvent implements \ArrayAccess, \JsonSerializa
     /**
      * Gets the string presentation of the object.
      */
-    public function __toString() : string
+    public function __toString(): string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );
@@ -212,7 +215,7 @@ class SellerReviewEnrollmentPaymentEvent implements \ArrayAccess, \JsonSerializa
     /**
      * The original name of the model.
      */
-    public function getModelName() : string
+    public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
@@ -222,7 +225,7 @@ class SellerReviewEnrollmentPaymentEvent implements \ArrayAccess, \JsonSerializa
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties() : array
+    public function listInvalidProperties(): array
     {
         return [];
     }
@@ -233,7 +236,7 @@ class SellerReviewEnrollmentPaymentEvent implements \ArrayAccess, \JsonSerializa
      *
      * @return bool True if all properties are valid
      */
-    public function valid() : bool
+    public function valid(): bool
     {
         return \count($this->listInvalidProperties()) === 0;
     }
@@ -243,7 +246,7 @@ class SellerReviewEnrollmentPaymentEvent implements \ArrayAccess, \JsonSerializa
      *
      * @return null|\DateTime|\DateTimeImmutable
      */
-    public function getPostedDate() : ?\DateTimeInterface
+    public function getPostedDate(): ?\DateTimeInterface
     {
         return $this->container['posted_date'];
     }
@@ -253,7 +256,7 @@ class SellerReviewEnrollmentPaymentEvent implements \ArrayAccess, \JsonSerializa
      *
      * @param \DateTime|\DateTimeImmutable $posted_date posted_date
      */
-    public function setPostedDate(\DateTimeInterface $posted_date) : self
+    public function setPostedDate(\DateTimeInterface $posted_date): self
     {
         $this->container['posted_date'] = $posted_date;
 
@@ -263,7 +266,7 @@ class SellerReviewEnrollmentPaymentEvent implements \ArrayAccess, \JsonSerializa
     /**
      * Gets enrollment_id.
      */
-    public function getEnrollmentId() : ?string
+    public function getEnrollmentId(): ?string
     {
         return $this->container['enrollment_id'];
     }
@@ -273,7 +276,7 @@ class SellerReviewEnrollmentPaymentEvent implements \ArrayAccess, \JsonSerializa
      *
      * @param null|string $enrollment_id an enrollment identifier
      */
-    public function setEnrollmentId(?string $enrollment_id) : self
+    public function setEnrollmentId(?string $enrollment_id): self
     {
         $this->container['enrollment_id'] = $enrollment_id;
 
@@ -283,7 +286,7 @@ class SellerReviewEnrollmentPaymentEvent implements \ArrayAccess, \JsonSerializa
     /**
      * Gets parent_asin.
      */
-    public function getParentAsin() : ?string
+    public function getParentAsin(): ?string
     {
         return $this->container['parent_asin'];
     }
@@ -293,7 +296,7 @@ class SellerReviewEnrollmentPaymentEvent implements \ArrayAccess, \JsonSerializa
      *
      * @param null|string $parent_asin the Amazon Standard Identification Number (ASIN) of the item that was enrolled in the Early Reviewer Program
      */
-    public function setParentAsin(?string $parent_asin) : self
+    public function setParentAsin(?string $parent_asin): self
     {
         $this->container['parent_asin'] = $parent_asin;
 
@@ -303,7 +306,7 @@ class SellerReviewEnrollmentPaymentEvent implements \ArrayAccess, \JsonSerializa
     /**
      * Gets fee_component.
      */
-    public function getFeeComponent() : ?FeeComponent
+    public function getFeeComponent(): ?FeeComponent
     {
         return $this->container['fee_component'];
     }
@@ -313,7 +316,7 @@ class SellerReviewEnrollmentPaymentEvent implements \ArrayAccess, \JsonSerializa
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\Finances\FeeComponent $fee_component fee_component
      */
-    public function setFeeComponent(?FeeComponent $fee_component) : self
+    public function setFeeComponent(?FeeComponent $fee_component): self
     {
         $this->container['fee_component'] = $fee_component;
 
@@ -323,7 +326,7 @@ class SellerReviewEnrollmentPaymentEvent implements \ArrayAccess, \JsonSerializa
     /**
      * Gets charge_component.
      */
-    public function getChargeComponent() : ?ChargeComponent
+    public function getChargeComponent(): ?ChargeComponent
     {
         return $this->container['charge_component'];
     }
@@ -333,7 +336,7 @@ class SellerReviewEnrollmentPaymentEvent implements \ArrayAccess, \JsonSerializa
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\Finances\ChargeComponent $charge_component charge_component
      */
-    public function setChargeComponent(?ChargeComponent $charge_component) : self
+    public function setChargeComponent(?ChargeComponent $charge_component): self
     {
         $this->container['charge_component'] = $charge_component;
 
@@ -343,7 +346,7 @@ class SellerReviewEnrollmentPaymentEvent implements \ArrayAccess, \JsonSerializa
     /**
      * Gets total_amount.
      */
-    public function getTotalAmount() : ?Currency
+    public function getTotalAmount(): ?Currency
     {
         return $this->container['total_amount'];
     }
@@ -353,7 +356,7 @@ class SellerReviewEnrollmentPaymentEvent implements \ArrayAccess, \JsonSerializa
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\Finances\Currency $total_amount total_amount
      */
-    public function setTotalAmount(?Currency $total_amount) : self
+    public function setTotalAmount(?Currency $total_amount): self
     {
         $this->container['total_amount'] = $total_amount;
 
@@ -365,7 +368,7 @@ class SellerReviewEnrollmentPaymentEvent implements \ArrayAccess, \JsonSerializa
      *
      * @param int $offset Offset
      */
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -388,7 +391,7 @@ class SellerReviewEnrollmentPaymentEvent implements \ArrayAccess, \JsonSerializa
      * @param null|int $offset Offset
      * @param mixed $value Value to be set
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         if (null === $offset) {
             $this->container[] = $value;
@@ -402,7 +405,7 @@ class SellerReviewEnrollmentPaymentEvent implements \ArrayAccess, \JsonSerializa
      *
      * @param int $offset Offset
      */
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -415,7 +418,7 @@ class SellerReviewEnrollmentPaymentEvent implements \ArrayAccess, \JsonSerializa
      * @return mixed returns data which can be serialized by json_encode(), which is a value
      *               of any type other than a resource
      */
-    public function jsonSerialize() : string
+    public function jsonSerialize(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }
@@ -423,7 +426,7 @@ class SellerReviewEnrollmentPaymentEvent implements \ArrayAccess, \JsonSerializa
     /**
      * Gets a header-safe presentation of the object.
      */
-    public function toHeaderValue() : string
+    public function toHeaderValue(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }

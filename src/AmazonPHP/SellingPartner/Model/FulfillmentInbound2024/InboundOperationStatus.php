@@ -110,7 +110,7 @@ class InboundOperationStatus implements \ArrayAccess, \JsonSerializable, \String
      * @param null|mixed[] $data Associated array of property values
      *                           initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['operation'] = $data['operation'] ?? null;
         $this->container['operation_id'] = $data['operation_id'] ?? null;
@@ -121,7 +121,7 @@ class InboundOperationStatus implements \ArrayAccess, \JsonSerializable, \String
     /**
      * Array of property to type mappings. Used for (de)serialization.
      */
-    public static function openAPITypes() : array
+    public static function openAPITypes(): array
     {
         return self::$openAPITypes;
     }
@@ -129,7 +129,7 @@ class InboundOperationStatus implements \ArrayAccess, \JsonSerializable, \String
     /**
      * Array of property to format mappings. Used for (de)serialization.
      */
-    public static function openAPIFormats() : array
+    public static function openAPIFormats(): array
     {
         return self::$openAPIFormats;
     }
@@ -138,7 +138,7 @@ class InboundOperationStatus implements \ArrayAccess, \JsonSerializable, \String
      * Array of attributes where the key is the local name,
      * and the value is the original name.
      */
-    public static function attributeMap() : array
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -146,7 +146,7 @@ class InboundOperationStatus implements \ArrayAccess, \JsonSerializable, \String
     /**
      * Array of attributes to setter functions (for deserialization of responses).
      */
-    public static function setters() : array
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -154,7 +154,7 @@ class InboundOperationStatus implements \ArrayAccess, \JsonSerializable, \String
     /**
      * Array of attributes to getter functions (for serialization of requests).
      */
-    public static function getters() : array
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -162,7 +162,7 @@ class InboundOperationStatus implements \ArrayAccess, \JsonSerializable, \String
     /**
      * Gets the string presentation of the object.
      */
-    public function __toString() : string
+    public function __toString(): string
     {
         return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
@@ -173,7 +173,7 @@ class InboundOperationStatus implements \ArrayAccess, \JsonSerializable, \String
     /**
      * The original name of the model.
      */
-    public function getModelName() : string
+    public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
@@ -183,7 +183,7 @@ class InboundOperationStatus implements \ArrayAccess, \JsonSerializable, \String
      *
      * @throws AssertionException
      */
-    public function listInvalidProperties() : array
+    public function listInvalidProperties(): array
     {
         $invalidProperties = [];
 
@@ -232,7 +232,7 @@ class InboundOperationStatus implements \ArrayAccess, \JsonSerializable, \String
      *
      * @return bool True if all properties are valid
      */
-    public function valid() : bool
+    public function valid(): bool
     {
         return \count($this->listInvalidProperties()) === 0;
     }
@@ -240,7 +240,7 @@ class InboundOperationStatus implements \ArrayAccess, \JsonSerializable, \String
     /**
      * Gets operation.
      */
-    public function getOperation() : string
+    public function getOperation(): string
     {
         return $this->container['operation'];
     }
@@ -250,7 +250,7 @@ class InboundOperationStatus implements \ArrayAccess, \JsonSerializable, \String
      *
      * @param string $operation the name of the operation in the asynchronous API call
      */
-    public function setOperation(string $operation) : self
+    public function setOperation(string $operation): self
     {
         $this->container['operation'] = $operation;
 
@@ -260,7 +260,7 @@ class InboundOperationStatus implements \ArrayAccess, \JsonSerializable, \String
     /**
      * Gets operation_id.
      */
-    public function getOperationId() : string
+    public function getOperationId(): string
     {
         return $this->container['operation_id'];
     }
@@ -270,7 +270,7 @@ class InboundOperationStatus implements \ArrayAccess, \JsonSerializable, \String
      *
      * @param string $operation_id the operation ID returned by the asynchronous API call
      */
-    public function setOperationId(string $operation_id) : self
+    public function setOperationId(string $operation_id): self
     {
         $this->container['operation_id'] = $operation_id;
 
@@ -282,7 +282,7 @@ class InboundOperationStatus implements \ArrayAccess, \JsonSerializable, \String
      *
      * @return OperationProblem[]
      */
-    public function getOperationProblems() : array
+    public function getOperationProblems(): array
     {
         return $this->container['operation_problems'];
     }
@@ -292,7 +292,7 @@ class InboundOperationStatus implements \ArrayAccess, \JsonSerializable, \String
      *
      * @param OperationProblem[] $operation_problems the problems in the processing of the asynchronous operation
      */
-    public function setOperationProblems(array $operation_problems) : self
+    public function setOperationProblems(array $operation_problems): self
     {
         $this->container['operation_problems'] = $operation_problems;
 
@@ -302,7 +302,7 @@ class InboundOperationStatus implements \ArrayAccess, \JsonSerializable, \String
     /**
      * Gets operation_status.
      */
-    public function getOperationStatus() : string
+    public function getOperationStatus(): string
     {
         return $this->container['operation_status'];
     }
@@ -313,7 +313,7 @@ class InboundOperationStatus implements \ArrayAccess, \JsonSerializable, \String
      * @param string $operation_status
      * @return InboundOperationStatus
      */
-    public function setOperationStatus(string $operation_status) : self
+    public function setOperationStatus(string $operation_status): self
     {
         $this->container['operation_status'] = $operation_status;
 
@@ -323,7 +323,7 @@ class InboundOperationStatus implements \ArrayAccess, \JsonSerializable, \String
     /**
      * Returns true if offset exists. False otherwise.
      */
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -334,7 +334,7 @@ class InboundOperationStatus implements \ArrayAccess, \JsonSerializable, \String
      * @return null|mixed
      */
     #[\ReturnTypeWillChange]
-    public function offsetGet($offset) : mixed
+    public function offsetGet($offset): mixed
     {
         return $this->container[$offset] ?? null;
     }
@@ -342,7 +342,7 @@ class InboundOperationStatus implements \ArrayAccess, \JsonSerializable, \String
     /**
      * Sets value based on offset.
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         if (null === $offset) {
             $this->container[] = $value;
@@ -354,7 +354,7 @@ class InboundOperationStatus implements \ArrayAccess, \JsonSerializable, \String
     /**
      * Unsets offset.
      */
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -368,7 +368,7 @@ class InboundOperationStatus implements \ArrayAccess, \JsonSerializable, \String
      *               of any type other than a resource
      */
     #[\ReturnTypeWillChange]
-    public function jsonSerialize() : string
+    public function jsonSerialize(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }
@@ -376,7 +376,7 @@ class InboundOperationStatus implements \ArrayAccess, \JsonSerializable, \String
     /**
      * Gets a header-safe presentation of the object.
      */
-    public function toHeaderValue() : string
+    public function toHeaderValue(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }

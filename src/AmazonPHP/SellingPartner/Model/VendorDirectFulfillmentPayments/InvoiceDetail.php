@@ -1,4 +1,7 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
+
 /**
  * InvoiceDetail.
  *
@@ -40,7 +43,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class InvoiceDetail implements \ArrayAccess, \JsonSerializable, ModelInterface
+class InvoiceDetail implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -60,12 +63,12 @@ class InvoiceDetail implements \ArrayAccess, \JsonSerializable, ModelInterface
         'invoice_number' => 'string',
         'invoice_date' => '\DateTime',
         'reference_number' => 'string',
-        'remit_to_party' => '\Plenty\AmazonPHP\SellingPartner\Model\VendorDirectFulfillmentPayments\PartyIdentification',
-        'ship_from_party' => '\Plenty\AmazonPHP\SellingPartner\Model\VendorDirectFulfillmentPayments\PartyIdentification',
-        'bill_to_party' => '\Plenty\AmazonPHP\SellingPartner\Model\VendorDirectFulfillmentPayments\PartyIdentification',
+        'remit_to_party' => \Plenty\AmazonPHP\SellingPartner\Model\VendorDirectFulfillmentPayments\PartyIdentification::class,
+        'ship_from_party' => \Plenty\AmazonPHP\SellingPartner\Model\VendorDirectFulfillmentPayments\PartyIdentification::class,
+        'bill_to_party' => \Plenty\AmazonPHP\SellingPartner\Model\VendorDirectFulfillmentPayments\PartyIdentification::class,
         'ship_to_country_code' => 'string',
         'payment_terms_code' => 'string',
-        'invoice_total' => '\Plenty\AmazonPHP\SellingPartner\Model\VendorDirectFulfillmentPayments\Money',
+        'invoice_total' => \Plenty\AmazonPHP\SellingPartner\Model\VendorDirectFulfillmentPayments\Money::class,
         'tax_totals' => '\Plenty\AmazonPHP\SellingPartner\Model\VendorDirectFulfillmentPayments\TaxDetail[]',
         'additional_details' => '\Plenty\AmazonPHP\SellingPartner\Model\VendorDirectFulfillmentPayments\AdditionalDetails[]',
         'charge_details' => '\Plenty\AmazonPHP\SellingPartner\Model\VendorDirectFulfillmentPayments\ChargeDetails[]',
@@ -172,7 +175,7 @@ class InvoiceDetail implements \ArrayAccess, \JsonSerializable, ModelInterface
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['invoice_number'] = $data['invoice_number'] ?? null;
         $this->container['invoice_date'] = $data['invoice_date'] ?? null;
@@ -194,7 +197,7 @@ class InvoiceDetail implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return string[]
      */
-    public static function openAPITypes() : array
+    public static function openAPITypes(): array
     {
         return self::$openAPITypes;
     }
@@ -204,7 +207,7 @@ class InvoiceDetail implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return null[]|string[]
      */
-    public static function openAPIFormats() : array
+    public static function openAPIFormats(): array
     {
         return self::$openAPIFormats;
     }
@@ -215,7 +218,7 @@ class InvoiceDetail implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return string[]
      */
-    public static function attributeMap() : array
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -225,7 +228,7 @@ class InvoiceDetail implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return string[]
      */
-    public static function setters() : array
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -235,7 +238,7 @@ class InvoiceDetail implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return string[]
      */
-    public static function getters() : array
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -243,9 +246,9 @@ class InvoiceDetail implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets the string presentation of the object.
      */
-    public function __toString() : string
+    public function __toString(): string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );
@@ -254,7 +257,7 @@ class InvoiceDetail implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * The original name of the model.
      */
-    public function getModelName() : string
+    public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
@@ -264,7 +267,7 @@ class InvoiceDetail implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties() : array
+    public function listInvalidProperties(): array
     {
         $invalidProperties = [];
 
@@ -301,7 +304,7 @@ class InvoiceDetail implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return bool True if all properties are valid
      */
-    public function valid() : bool
+    public function valid(): bool
     {
         return \count($this->listInvalidProperties()) === 0;
     }
@@ -309,7 +312,7 @@ class InvoiceDetail implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets invoice_number.
      */
-    public function getInvoiceNumber() : string
+    public function getInvoiceNumber(): string
     {
         return $this->container['invoice_number'];
     }
@@ -319,7 +322,7 @@ class InvoiceDetail implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param string $invoice_number the unique invoice number
      */
-    public function setInvoiceNumber(string $invoice_number) : self
+    public function setInvoiceNumber(string $invoice_number): self
     {
         $this->container['invoice_number'] = $invoice_number;
 
@@ -331,7 +334,7 @@ class InvoiceDetail implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return \DateTime|\DateTimeImmutable
      */
-    public function getInvoiceDate() : \DateTimeInterface
+    public function getInvoiceDate(): \DateTimeInterface
     {
         return $this->container['invoice_date'];
     }
@@ -341,7 +344,7 @@ class InvoiceDetail implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param \DateTime $invoice_date invoice date
      */
-    public function setInvoiceDate(\DateTimeInterface $invoice_date) : self
+    public function setInvoiceDate(\DateTimeInterface $invoice_date): self
     {
         $this->container['invoice_date'] = $invoice_date;
 
@@ -351,7 +354,7 @@ class InvoiceDetail implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets reference_number.
      */
-    public function getReferenceNumber() : ?string
+    public function getReferenceNumber(): ?string
     {
         return $this->container['reference_number'];
     }
@@ -361,7 +364,7 @@ class InvoiceDetail implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param null|string $reference_number an additional unique reference number used for regulatory or other purposes
      */
-    public function setReferenceNumber(?string $reference_number) : self
+    public function setReferenceNumber(?string $reference_number): self
     {
         $this->container['reference_number'] = $reference_number;
 
@@ -371,7 +374,7 @@ class InvoiceDetail implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets remit_to_party.
      */
-    public function getRemitToParty() : PartyIdentification
+    public function getRemitToParty(): PartyIdentification
     {
         return $this->container['remit_to_party'];
     }
@@ -381,7 +384,7 @@ class InvoiceDetail implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param \Plenty\AmazonPHP\SellingPartner\Model\VendorDirectFulfillmentPayments\PartyIdentification $remit_to_party remit_to_party
      */
-    public function setRemitToParty(PartyIdentification $remit_to_party) : self
+    public function setRemitToParty(PartyIdentification $remit_to_party): self
     {
         $this->container['remit_to_party'] = $remit_to_party;
 
@@ -391,7 +394,7 @@ class InvoiceDetail implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets ship_from_party.
      */
-    public function getShipFromParty() : PartyIdentification
+    public function getShipFromParty(): PartyIdentification
     {
         return $this->container['ship_from_party'];
     }
@@ -401,7 +404,7 @@ class InvoiceDetail implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param \Plenty\AmazonPHP\SellingPartner\Model\VendorDirectFulfillmentPayments\PartyIdentification $ship_from_party ship_from_party
      */
-    public function setShipFromParty(PartyIdentification $ship_from_party) : self
+    public function setShipFromParty(PartyIdentification $ship_from_party): self
     {
         $this->container['ship_from_party'] = $ship_from_party;
 
@@ -411,7 +414,7 @@ class InvoiceDetail implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets bill_to_party.
      */
-    public function getBillToParty() : ?PartyIdentification
+    public function getBillToParty(): ?PartyIdentification
     {
         return $this->container['bill_to_party'];
     }
@@ -421,7 +424,7 @@ class InvoiceDetail implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\VendorDirectFulfillmentPayments\PartyIdentification $bill_to_party bill_to_party
      */
-    public function setBillToParty(?PartyIdentification $bill_to_party) : self
+    public function setBillToParty(?PartyIdentification $bill_to_party): self
     {
         $this->container['bill_to_party'] = $bill_to_party;
 
@@ -431,7 +434,7 @@ class InvoiceDetail implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets ship_to_country_code.
      */
-    public function getShipToCountryCode() : ?string
+    public function getShipToCountryCode(): ?string
     {
         return $this->container['ship_to_country_code'];
     }
@@ -441,7 +444,7 @@ class InvoiceDetail implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param null|string $ship_to_country_code ship-to country code
      */
-    public function setShipToCountryCode(?string $ship_to_country_code) : self
+    public function setShipToCountryCode(?string $ship_to_country_code): self
     {
         $this->container['ship_to_country_code'] = $ship_to_country_code;
 
@@ -451,7 +454,7 @@ class InvoiceDetail implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets payment_terms_code.
      */
-    public function getPaymentTermsCode() : ?string
+    public function getPaymentTermsCode(): ?string
     {
         return $this->container['payment_terms_code'];
     }
@@ -461,7 +464,7 @@ class InvoiceDetail implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param null|string $payment_terms_code the payment terms for the invoice
      */
-    public function setPaymentTermsCode(?string $payment_terms_code) : self
+    public function setPaymentTermsCode(?string $payment_terms_code): self
     {
         $this->container['payment_terms_code'] = $payment_terms_code;
 
@@ -471,7 +474,7 @@ class InvoiceDetail implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets invoice_total.
      */
-    public function getInvoiceTotal() : Money
+    public function getInvoiceTotal(): Money
     {
         return $this->container['invoice_total'];
     }
@@ -481,7 +484,7 @@ class InvoiceDetail implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param \Plenty\AmazonPHP\SellingPartner\Model\VendorDirectFulfillmentPayments\Money $invoice_total invoice_total
      */
-    public function setInvoiceTotal(Money $invoice_total) : self
+    public function setInvoiceTotal(Money $invoice_total): self
     {
         $this->container['invoice_total'] = $invoice_total;
 
@@ -493,7 +496,7 @@ class InvoiceDetail implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return null|\Plenty\AmazonPHP\SellingPartner\Model\VendorDirectFulfillmentPayments\TaxDetail[]
      */
-    public function getTaxTotals() : ?array
+    public function getTaxTotals(): ?array
     {
         return $this->container['tax_totals'];
     }
@@ -503,7 +506,7 @@ class InvoiceDetail implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\VendorDirectFulfillmentPayments\TaxDetail[] $tax_totals individual tax details per line item
      */
-    public function setTaxTotals(?array $tax_totals) : self
+    public function setTaxTotals(?array $tax_totals): self
     {
         $this->container['tax_totals'] = $tax_totals;
 
@@ -515,7 +518,7 @@ class InvoiceDetail implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return null|\Plenty\AmazonPHP\SellingPartner\Model\VendorDirectFulfillmentPayments\AdditionalDetails[]
      */
-    public function getAdditionalDetails() : ?array
+    public function getAdditionalDetails(): ?array
     {
         return $this->container['additional_details'];
     }
@@ -525,7 +528,7 @@ class InvoiceDetail implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\VendorDirectFulfillmentPayments\AdditionalDetails[] $additional_details additional details provided by the selling party, for tax related or other purposes
      */
-    public function setAdditionalDetails(?array $additional_details) : self
+    public function setAdditionalDetails(?array $additional_details): self
     {
         $this->container['additional_details'] = $additional_details;
 
@@ -537,7 +540,7 @@ class InvoiceDetail implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return null|\Plenty\AmazonPHP\SellingPartner\Model\VendorDirectFulfillmentPayments\ChargeDetails[]
      */
-    public function getChargeDetails() : ?array
+    public function getChargeDetails(): ?array
     {
         return $this->container['charge_details'];
     }
@@ -547,7 +550,7 @@ class InvoiceDetail implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\VendorDirectFulfillmentPayments\ChargeDetails[] $charge_details total charge amount details for all line items
      */
-    public function setChargeDetails(?array $charge_details) : self
+    public function setChargeDetails(?array $charge_details): self
     {
         $this->container['charge_details'] = $charge_details;
 
@@ -559,7 +562,7 @@ class InvoiceDetail implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return \Plenty\AmazonPHP\SellingPartner\Model\VendorDirectFulfillmentPayments\InvoiceItem[]
      */
-    public function getItems() : array
+    public function getItems(): array
     {
         return $this->container['items'];
     }
@@ -569,7 +572,7 @@ class InvoiceDetail implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param \Plenty\AmazonPHP\SellingPartner\Model\VendorDirectFulfillmentPayments\InvoiceItem[] $items provides the details of the items in this invoice
      */
-    public function setItems(array $items) : self
+    public function setItems(array $items): self
     {
         $this->container['items'] = $items;
 
@@ -581,7 +584,7 @@ class InvoiceDetail implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param int $offset Offset
      */
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -604,7 +607,7 @@ class InvoiceDetail implements \ArrayAccess, \JsonSerializable, ModelInterface
      * @param null|int $offset Offset
      * @param mixed $value Value to be set
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         if (null === $offset) {
             $this->container[] = $value;
@@ -618,7 +621,7 @@ class InvoiceDetail implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param int $offset Offset
      */
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -631,7 +634,7 @@ class InvoiceDetail implements \ArrayAccess, \JsonSerializable, ModelInterface
      * @return mixed returns data which can be serialized by json_encode(), which is a value
      *               of any type other than a resource
      */
-    public function jsonSerialize() : string
+    public function jsonSerialize(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }
@@ -639,7 +642,7 @@ class InvoiceDetail implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets a header-safe presentation of the object.
      */
-    public function toHeaderValue() : string
+    public function toHeaderValue(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }

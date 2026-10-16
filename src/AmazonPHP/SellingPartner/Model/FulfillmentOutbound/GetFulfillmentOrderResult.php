@@ -1,4 +1,7 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
+
 /**
  * GetFulfillmentOrderResult.
  *
@@ -40,7 +43,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class GetFulfillmentOrderResult implements \ArrayAccess, \JsonSerializable, ModelInterface
+class GetFulfillmentOrderResult implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -57,7 +60,7 @@ class GetFulfillmentOrderResult implements \ArrayAccess, \JsonSerializable, Mode
      * @var string[]
      */
     protected static /** [COMPAT] array */ $openAPITypes = [
-        'fulfillment_order' => '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentOutbound\FulfillmentOrder',
+        'fulfillment_order' => \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentOutbound\FulfillmentOrder::class,
         'fulfillment_order_items' => '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentOutbound\FulfillmentOrderItem[]',
         'fulfillment_shipments' => '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentOutbound\FulfillmentShipment[]',
         'return_items' => '\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentOutbound\ReturnItem[]',
@@ -132,7 +135,7 @@ class GetFulfillmentOrderResult implements \ArrayAccess, \JsonSerializable, Mode
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['fulfillment_order'] = $data['fulfillment_order'] ?? null;
         $this->container['fulfillment_order_items'] = $data['fulfillment_order_items'] ?? null;
@@ -146,7 +149,7 @@ class GetFulfillmentOrderResult implements \ArrayAccess, \JsonSerializable, Mode
      *
      * @return string[]
      */
-    public static function openAPITypes() : array
+    public static function openAPITypes(): array
     {
         return self::$openAPITypes;
     }
@@ -156,7 +159,7 @@ class GetFulfillmentOrderResult implements \ArrayAccess, \JsonSerializable, Mode
      *
      * @return null[]|string[]
      */
-    public static function openAPIFormats() : array
+    public static function openAPIFormats(): array
     {
         return self::$openAPIFormats;
     }
@@ -167,7 +170,7 @@ class GetFulfillmentOrderResult implements \ArrayAccess, \JsonSerializable, Mode
      *
      * @return string[]
      */
-    public static function attributeMap() : array
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -177,7 +180,7 @@ class GetFulfillmentOrderResult implements \ArrayAccess, \JsonSerializable, Mode
      *
      * @return string[]
      */
-    public static function setters() : array
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -187,7 +190,7 @@ class GetFulfillmentOrderResult implements \ArrayAccess, \JsonSerializable, Mode
      *
      * @return string[]
      */
-    public static function getters() : array
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -195,9 +198,9 @@ class GetFulfillmentOrderResult implements \ArrayAccess, \JsonSerializable, Mode
     /**
      * Gets the string presentation of the object.
      */
-    public function __toString() : string
+    public function __toString(): string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );
@@ -206,7 +209,7 @@ class GetFulfillmentOrderResult implements \ArrayAccess, \JsonSerializable, Mode
     /**
      * The original name of the model.
      */
-    public function getModelName() : string
+    public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
@@ -216,7 +219,7 @@ class GetFulfillmentOrderResult implements \ArrayAccess, \JsonSerializable, Mode
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties() : array
+    public function listInvalidProperties(): array
     {
         $invalidProperties = [];
 
@@ -245,7 +248,7 @@ class GetFulfillmentOrderResult implements \ArrayAccess, \JsonSerializable, Mode
      *
      * @return bool True if all properties are valid
      */
-    public function valid() : bool
+    public function valid(): bool
     {
         return \count($this->listInvalidProperties()) === 0;
     }
@@ -253,7 +256,7 @@ class GetFulfillmentOrderResult implements \ArrayAccess, \JsonSerializable, Mode
     /**
      * Gets fulfillment_order.
      */
-    public function getFulfillmentOrder() : FulfillmentOrder
+    public function getFulfillmentOrder(): FulfillmentOrder
     {
         return $this->container['fulfillment_order'];
     }
@@ -263,7 +266,7 @@ class GetFulfillmentOrderResult implements \ArrayAccess, \JsonSerializable, Mode
      *
      * @param \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentOutbound\FulfillmentOrder $fulfillment_order fulfillment_order
      */
-    public function setFulfillmentOrder(FulfillmentOrder $fulfillment_order) : self
+    public function setFulfillmentOrder(FulfillmentOrder $fulfillment_order): self
     {
         $this->container['fulfillment_order'] = $fulfillment_order;
 
@@ -275,7 +278,7 @@ class GetFulfillmentOrderResult implements \ArrayAccess, \JsonSerializable, Mode
      *
      * @return \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentOutbound\FulfillmentOrderItem[]
      */
-    public function getFulfillmentOrderItems() : array
+    public function getFulfillmentOrderItems(): array
     {
         return $this->container['fulfillment_order_items'];
     }
@@ -285,7 +288,7 @@ class GetFulfillmentOrderResult implements \ArrayAccess, \JsonSerializable, Mode
      *
      * @param \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentOutbound\FulfillmentOrderItem[] $fulfillment_order_items an array of fulfillment order item information
      */
-    public function setFulfillmentOrderItems(array $fulfillment_order_items) : self
+    public function setFulfillmentOrderItems(array $fulfillment_order_items): self
     {
         $this->container['fulfillment_order_items'] = $fulfillment_order_items;
 
@@ -297,7 +300,7 @@ class GetFulfillmentOrderResult implements \ArrayAccess, \JsonSerializable, Mode
      *
      * @return null|\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentOutbound\FulfillmentShipment[]
      */
-    public function getFulfillmentShipments() : ?array
+    public function getFulfillmentShipments(): ?array
     {
         return $this->container['fulfillment_shipments'];
     }
@@ -307,7 +310,7 @@ class GetFulfillmentOrderResult implements \ArrayAccess, \JsonSerializable, Mode
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentOutbound\FulfillmentShipment[] $fulfillment_shipments an array of fulfillment shipment information
      */
-    public function setFulfillmentShipments(?array $fulfillment_shipments) : self
+    public function setFulfillmentShipments(?array $fulfillment_shipments): self
     {
         $this->container['fulfillment_shipments'] = $fulfillment_shipments;
 
@@ -319,7 +322,7 @@ class GetFulfillmentOrderResult implements \ArrayAccess, \JsonSerializable, Mode
      *
      * @return \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentOutbound\ReturnItem[]
      */
-    public function getReturnItems() : array
+    public function getReturnItems(): array
     {
         return $this->container['return_items'];
     }
@@ -329,7 +332,7 @@ class GetFulfillmentOrderResult implements \ArrayAccess, \JsonSerializable, Mode
      *
      * @param \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentOutbound\ReturnItem[] $return_items An array of items that Amazon accepted for return. Returns empty if no items were accepted for return.
      */
-    public function setReturnItems(array $return_items) : self
+    public function setReturnItems(array $return_items): self
     {
         $this->container['return_items'] = $return_items;
 
@@ -341,7 +344,7 @@ class GetFulfillmentOrderResult implements \ArrayAccess, \JsonSerializable, Mode
      *
      * @return \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentOutbound\ReturnAuthorization[]
      */
-    public function getReturnAuthorizations() : array
+    public function getReturnAuthorizations(): array
     {
         return $this->container['return_authorizations'];
     }
@@ -351,7 +354,7 @@ class GetFulfillmentOrderResult implements \ArrayAccess, \JsonSerializable, Mode
      *
      * @param \Plenty\AmazonPHP\SellingPartner\Model\FulfillmentOutbound\ReturnAuthorization[] $return_authorizations an array of return authorization information
      */
-    public function setReturnAuthorizations(array $return_authorizations) : self
+    public function setReturnAuthorizations(array $return_authorizations): self
     {
         $this->container['return_authorizations'] = $return_authorizations;
 
@@ -363,7 +366,7 @@ class GetFulfillmentOrderResult implements \ArrayAccess, \JsonSerializable, Mode
      *
      * @param int $offset Offset
      */
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -386,7 +389,7 @@ class GetFulfillmentOrderResult implements \ArrayAccess, \JsonSerializable, Mode
      * @param null|int $offset Offset
      * @param mixed $value Value to be set
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         if (null === $offset) {
             $this->container[] = $value;
@@ -400,7 +403,7 @@ class GetFulfillmentOrderResult implements \ArrayAccess, \JsonSerializable, Mode
      *
      * @param int $offset Offset
      */
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -413,7 +416,7 @@ class GetFulfillmentOrderResult implements \ArrayAccess, \JsonSerializable, Mode
      * @return mixed returns data which can be serialized by json_encode(), which is a value
      *               of any type other than a resource
      */
-    public function jsonSerialize() : string
+    public function jsonSerialize(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }
@@ -421,7 +424,7 @@ class GetFulfillmentOrderResult implements \ArrayAccess, \JsonSerializable, Mode
     /**
      * Gets a header-safe presentation of the object.
      */
-    public function toHeaderValue() : string
+    public function toHeaderValue(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }

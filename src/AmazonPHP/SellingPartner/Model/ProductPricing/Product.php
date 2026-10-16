@@ -1,4 +1,7 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
+
 /**
  * Product.
  *
@@ -40,7 +43,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class Product implements \ArrayAccess, \JsonSerializable, ModelInterface
+class Product implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -57,10 +60,10 @@ class Product implements \ArrayAccess, \JsonSerializable, ModelInterface
      * @var string[]
      */
     protected static /** [COMPAT] array */ $openAPITypes = [
-        'identifiers' => '\Plenty\AmazonPHP\SellingPartner\Model\ProductPricing\IdentifierType',
+        'identifiers' => \Plenty\AmazonPHP\SellingPartner\Model\ProductPricing\IdentifierType::class,
         'attribute_sets' => 'object[]',
         'relationships' => 'object[]',
-        'competitive_pricing' => '\Plenty\AmazonPHP\SellingPartner\Model\ProductPricing\CompetitivePricingType',
+        'competitive_pricing' => \Plenty\AmazonPHP\SellingPartner\Model\ProductPricing\CompetitivePricingType::class,
         'sales_rankings' => '\Plenty\AmazonPHP\SellingPartner\Model\ProductPricing\SalesRankType[]',
         'offers' => '\Plenty\AmazonPHP\SellingPartner\Model\ProductPricing\OfferType[]',
     ];
@@ -137,7 +140,7 @@ class Product implements \ArrayAccess, \JsonSerializable, ModelInterface
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['identifiers'] = $data['identifiers'] ?? null;
         $this->container['attribute_sets'] = $data['attribute_sets'] ?? null;
@@ -152,7 +155,7 @@ class Product implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return string[]
      */
-    public static function openAPITypes() : array
+    public static function openAPITypes(): array
     {
         return self::$openAPITypes;
     }
@@ -162,7 +165,7 @@ class Product implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return null[]|string[]
      */
-    public static function openAPIFormats() : array
+    public static function openAPIFormats(): array
     {
         return self::$openAPIFormats;
     }
@@ -173,7 +176,7 @@ class Product implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return string[]
      */
-    public static function attributeMap() : array
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -183,7 +186,7 @@ class Product implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return string[]
      */
-    public static function setters() : array
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -193,7 +196,7 @@ class Product implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return string[]
      */
-    public static function getters() : array
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -201,9 +204,9 @@ class Product implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets the string presentation of the object.
      */
-    public function __toString() : string
+    public function __toString(): string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );
@@ -212,7 +215,7 @@ class Product implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * The original name of the model.
      */
-    public function getModelName() : string
+    public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
@@ -222,7 +225,7 @@ class Product implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties() : array
+    public function listInvalidProperties(): array
     {
         $invalidProperties = [];
 
@@ -239,7 +242,7 @@ class Product implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return bool True if all properties are valid
      */
-    public function valid() : bool
+    public function valid(): bool
     {
         return \count($this->listInvalidProperties()) === 0;
     }
@@ -247,7 +250,7 @@ class Product implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets identifiers.
      */
-    public function getIdentifiers() : IdentifierType
+    public function getIdentifiers(): IdentifierType
     {
         return $this->container['identifiers'];
     }
@@ -257,7 +260,7 @@ class Product implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param \Plenty\AmazonPHP\SellingPartner\Model\ProductPricing\IdentifierType $identifiers identifiers
      */
-    public function setIdentifiers(IdentifierType $identifiers) : self
+    public function setIdentifiers(IdentifierType $identifiers): self
     {
         $this->container['identifiers'] = $identifiers;
 
@@ -269,7 +272,7 @@ class Product implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return null|object[]
      */
-    public function getAttributeSets() : ?array
+    public function getAttributeSets(): ?array
     {
         return $this->container['attribute_sets'];
     }
@@ -279,7 +282,7 @@ class Product implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param null|object[] $attribute_sets a list of product attributes if they are applicable to the product that is returned
      */
-    public function setAttributeSets(?array $attribute_sets) : self
+    public function setAttributeSets(?array $attribute_sets): self
     {
         $this->container['attribute_sets'] = $attribute_sets;
 
@@ -291,7 +294,7 @@ class Product implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return null|object[]
      */
-    public function getRelationships() : ?array
+    public function getRelationships(): ?array
     {
         return $this->container['relationships'];
     }
@@ -301,7 +304,7 @@ class Product implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param null|object[] $relationships a list that contains product variation information, if applicable
      */
-    public function setRelationships(?array $relationships) : self
+    public function setRelationships(?array $relationships): self
     {
         $this->container['relationships'] = $relationships;
 
@@ -311,7 +314,7 @@ class Product implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets competitive_pricing.
      */
-    public function getCompetitivePricing() : ?CompetitivePricingType
+    public function getCompetitivePricing(): ?CompetitivePricingType
     {
         return $this->container['competitive_pricing'];
     }
@@ -321,7 +324,7 @@ class Product implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\ProductPricing\CompetitivePricingType $competitive_pricing competitive_pricing
      */
-    public function setCompetitivePricing(?CompetitivePricingType $competitive_pricing) : self
+    public function setCompetitivePricing(?CompetitivePricingType $competitive_pricing): self
     {
         $this->container['competitive_pricing'] = $competitive_pricing;
 
@@ -333,7 +336,7 @@ class Product implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return null|\Plenty\AmazonPHP\SellingPartner\Model\ProductPricing\SalesRankType[]
      */
-    public function getSalesRankings() : ?array
+    public function getSalesRankings(): ?array
     {
         return $this->container['sales_rankings'];
     }
@@ -343,7 +346,7 @@ class Product implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\ProductPricing\SalesRankType[] $sales_rankings a list of sales rank information for the item, by category
      */
-    public function setSalesRankings(?array $sales_rankings) : self
+    public function setSalesRankings(?array $sales_rankings): self
     {
         $this->container['sales_rankings'] = $sales_rankings;
 
@@ -355,7 +358,7 @@ class Product implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return null|\Plenty\AmazonPHP\SellingPartner\Model\ProductPricing\OfferType[]
      */
-    public function getOffers() : ?array
+    public function getOffers(): ?array
     {
         return $this->container['offers'];
     }
@@ -365,7 +368,7 @@ class Product implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\ProductPricing\OfferType[] $offers a list of offers
      */
-    public function setOffers(?array $offers) : self
+    public function setOffers(?array $offers): self
     {
         $this->container['offers'] = $offers;
 
@@ -377,7 +380,7 @@ class Product implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param int $offset Offset
      */
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -400,7 +403,7 @@ class Product implements \ArrayAccess, \JsonSerializable, ModelInterface
      * @param null|int $offset Offset
      * @param mixed $value Value to be set
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         if (null === $offset) {
             $this->container[] = $value;
@@ -414,7 +417,7 @@ class Product implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param int $offset Offset
      */
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -427,7 +430,7 @@ class Product implements \ArrayAccess, \JsonSerializable, ModelInterface
      * @return mixed returns data which can be serialized by json_encode(), which is a value
      *               of any type other than a resource
      */
-    public function jsonSerialize() : string
+    public function jsonSerialize(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }
@@ -435,7 +438,7 @@ class Product implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets a header-safe presentation of the object.
      */
-    public function toHeaderValue() : string
+    public function toHeaderValue(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }

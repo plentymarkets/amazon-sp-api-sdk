@@ -1,4 +1,7 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
+
 /**
  * ValidateContentDocumentAsinRelationsResponse.
  *
@@ -40,7 +43,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class ValidateContentDocumentAsinRelationsResponse implements \ArrayAccess, \JsonSerializable, ModelInterface
+class ValidateContentDocumentAsinRelationsResponse implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -117,7 +120,7 @@ class ValidateContentDocumentAsinRelationsResponse implements \ArrayAccess, \Jso
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['warnings'] = $data['warnings'] ?? null;
         $this->container['errors'] = $data['errors'] ?? null;
@@ -128,7 +131,7 @@ class ValidateContentDocumentAsinRelationsResponse implements \ArrayAccess, \Jso
      *
      * @return string[]
      */
-    public static function openAPITypes() : array
+    public static function openAPITypes(): array
     {
         return self::$openAPITypes;
     }
@@ -138,7 +141,7 @@ class ValidateContentDocumentAsinRelationsResponse implements \ArrayAccess, \Jso
      *
      * @return null[]|string[]
      */
-    public static function openAPIFormats() : array
+    public static function openAPIFormats(): array
     {
         return self::$openAPIFormats;
     }
@@ -149,7 +152,7 @@ class ValidateContentDocumentAsinRelationsResponse implements \ArrayAccess, \Jso
      *
      * @return string[]
      */
-    public static function attributeMap() : array
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -159,7 +162,7 @@ class ValidateContentDocumentAsinRelationsResponse implements \ArrayAccess, \Jso
      *
      * @return string[]
      */
-    public static function setters() : array
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -169,7 +172,7 @@ class ValidateContentDocumentAsinRelationsResponse implements \ArrayAccess, \Jso
      *
      * @return string[]
      */
-    public static function getters() : array
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -177,9 +180,9 @@ class ValidateContentDocumentAsinRelationsResponse implements \ArrayAccess, \Jso
     /**
      * Gets the string presentation of the object.
      */
-    public function __toString() : string
+    public function __toString(): string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );
@@ -188,7 +191,7 @@ class ValidateContentDocumentAsinRelationsResponse implements \ArrayAccess, \Jso
     /**
      * The original name of the model.
      */
-    public function getModelName() : string
+    public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
@@ -198,7 +201,7 @@ class ValidateContentDocumentAsinRelationsResponse implements \ArrayAccess, \Jso
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties() : array
+    public function listInvalidProperties(): array
     {
         $invalidProperties = [];
 
@@ -215,7 +218,7 @@ class ValidateContentDocumentAsinRelationsResponse implements \ArrayAccess, \Jso
      *
      * @return bool True if all properties are valid
      */
-    public function valid() : bool
+    public function valid(): bool
     {
         return \count($this->listInvalidProperties()) === 0;
     }
@@ -225,7 +228,7 @@ class ValidateContentDocumentAsinRelationsResponse implements \ArrayAccess, \Jso
      *
      * @return null|\Plenty\AmazonPHP\SellingPartner\Model\APlus\Error[]
      */
-    public function getWarnings() : ?array
+    public function getWarnings(): ?array
     {
         return $this->container['warnings'];
     }
@@ -235,7 +238,7 @@ class ValidateContentDocumentAsinRelationsResponse implements \ArrayAccess, \Jso
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\APlus\Error[] $warnings a set of messages to the user, such as warnings or comments
      */
-    public function setWarnings(?array $warnings) : self
+    public function setWarnings(?array $warnings): self
     {
         $this->container['warnings'] = $warnings;
 
@@ -247,7 +250,7 @@ class ValidateContentDocumentAsinRelationsResponse implements \ArrayAccess, \Jso
      *
      * @return \Plenty\AmazonPHP\SellingPartner\Model\APlus\Error[]
      */
-    public function getErrors() : array
+    public function getErrors(): array
     {
         return $this->container['errors'];
     }
@@ -257,7 +260,7 @@ class ValidateContentDocumentAsinRelationsResponse implements \ArrayAccess, \Jso
      *
      * @param \Plenty\AmazonPHP\SellingPartner\Model\APlus\Error[] $errors a list of error responses returned when a request is unsuccessful
      */
-    public function setErrors(array $errors) : self
+    public function setErrors(array $errors): self
     {
         $this->container['errors'] = $errors;
 
@@ -269,7 +272,7 @@ class ValidateContentDocumentAsinRelationsResponse implements \ArrayAccess, \Jso
      *
      * @param int $offset Offset
      */
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -292,7 +295,7 @@ class ValidateContentDocumentAsinRelationsResponse implements \ArrayAccess, \Jso
      * @param null|int $offset Offset
      * @param mixed $value Value to be set
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         if (null === $offset) {
             $this->container[] = $value;
@@ -306,7 +309,7 @@ class ValidateContentDocumentAsinRelationsResponse implements \ArrayAccess, \Jso
      *
      * @param int $offset Offset
      */
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -319,7 +322,7 @@ class ValidateContentDocumentAsinRelationsResponse implements \ArrayAccess, \Jso
      * @return mixed returns data which can be serialized by json_encode(), which is a value
      *               of any type other than a resource
      */
-    public function jsonSerialize() : string
+    public function jsonSerialize(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }
@@ -327,7 +330,7 @@ class ValidateContentDocumentAsinRelationsResponse implements \ArrayAccess, \Jso
     /**
      * Gets a header-safe presentation of the object.
      */
-    public function toHeaderValue() : string
+    public function toHeaderValue(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }

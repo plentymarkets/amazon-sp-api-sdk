@@ -1,4 +1,7 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
+
 /**
  * Container.
  *
@@ -40,7 +43,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class Container implements \ArrayAccess, \JsonSerializable, ModelInterface
+class Container implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -70,8 +73,8 @@ class Container implements \ArrayAccess, \JsonSerializable, ModelInterface
         'scac_code' => 'string',
         'carrier' => 'string',
         'container_sequence_number' => 'int',
-        'dimensions' => '\Plenty\AmazonPHP\SellingPartner\Model\VendorDirectFulfillmentShipping\Dimensions',
-        'weight' => '\Plenty\AmazonPHP\SellingPartner\Model\VendorDirectFulfillmentShipping\Weight',
+        'dimensions' => \Plenty\AmazonPHP\SellingPartner\Model\VendorDirectFulfillmentShipping\Dimensions::class,
+        'weight' => \Plenty\AmazonPHP\SellingPartner\Model\VendorDirectFulfillmentShipping\Weight::class,
         'packed_items' => '\Plenty\AmazonPHP\SellingPartner\Model\VendorDirectFulfillmentShipping\PackedItem[]',
     ];
 
@@ -171,7 +174,7 @@ class Container implements \ArrayAccess, \JsonSerializable, ModelInterface
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['container_type'] = $data['container_type'] ?? null;
         $this->container['container_identifier'] = $data['container_identifier'] ?? null;
@@ -192,7 +195,7 @@ class Container implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return string[]
      */
-    public static function openAPITypes() : array
+    public static function openAPITypes(): array
     {
         return self::$openAPITypes;
     }
@@ -202,7 +205,7 @@ class Container implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return null[]|string[]
      */
-    public static function openAPIFormats() : array
+    public static function openAPIFormats(): array
     {
         return self::$openAPIFormats;
     }
@@ -213,7 +216,7 @@ class Container implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return string[]
      */
-    public static function attributeMap() : array
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -223,7 +226,7 @@ class Container implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return string[]
      */
-    public static function setters() : array
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -233,7 +236,7 @@ class Container implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return string[]
      */
-    public static function getters() : array
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -241,9 +244,9 @@ class Container implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets the string presentation of the object.
      */
-    public function __toString() : string
+    public function __toString(): string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );
@@ -252,7 +255,7 @@ class Container implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * The original name of the model.
      */
-    public function getModelName() : string
+    public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
@@ -262,7 +265,7 @@ class Container implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return string[]
      */
-    public function getContainerTypeAllowableValues() : array
+    public function getContainerTypeAllowableValues(): array
     {
         return [
             self::CONTAINER_TYPE_CARTON,
@@ -275,7 +278,7 @@ class Container implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties() : array
+    public function listInvalidProperties(): array
     {
         $invalidProperties = [];
 
@@ -309,7 +312,7 @@ class Container implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return bool True if all properties are valid
      */
-    public function valid() : bool
+    public function valid(): bool
     {
         return \count($this->listInvalidProperties()) === 0;
     }
@@ -317,7 +320,7 @@ class Container implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets container_type.
      */
-    public function getContainerType() : string
+    public function getContainerType(): string
     {
         return $this->container['container_type'];
     }
@@ -327,7 +330,7 @@ class Container implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param string $container_type the type of container
      */
-    public function setContainerType(string $container_type) : self
+    public function setContainerType(string $container_type): self
     {
         $allowedValues = $this->getContainerTypeAllowableValues();
 
@@ -348,7 +351,7 @@ class Container implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets container_identifier.
      */
-    public function getContainerIdentifier() : string
+    public function getContainerIdentifier(): string
     {
         return $this->container['container_identifier'];
     }
@@ -358,7 +361,7 @@ class Container implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param string $container_identifier the container identifier
      */
-    public function setContainerIdentifier(string $container_identifier) : self
+    public function setContainerIdentifier(string $container_identifier): self
     {
         $this->container['container_identifier'] = $container_identifier;
 
@@ -368,7 +371,7 @@ class Container implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets tracking_number.
      */
-    public function getTrackingNumber() : ?string
+    public function getTrackingNumber(): ?string
     {
         return $this->container['tracking_number'];
     }
@@ -378,7 +381,7 @@ class Container implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param null|string $tracking_number the tracking number
      */
-    public function setTrackingNumber(?string $tracking_number) : self
+    public function setTrackingNumber(?string $tracking_number): self
     {
         $this->container['tracking_number'] = $tracking_number;
 
@@ -388,7 +391,7 @@ class Container implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets manifest_id.
      */
-    public function getManifestId() : ?string
+    public function getManifestId(): ?string
     {
         return $this->container['manifest_id'];
     }
@@ -398,7 +401,7 @@ class Container implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param null|string $manifest_id the manifest identifier
      */
-    public function setManifestId(?string $manifest_id) : self
+    public function setManifestId(?string $manifest_id): self
     {
         $this->container['manifest_id'] = $manifest_id;
 
@@ -408,7 +411,7 @@ class Container implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets manifest_date.
      */
-    public function getManifestDate() : ?string
+    public function getManifestDate(): ?string
     {
         return $this->container['manifest_date'];
     }
@@ -418,7 +421,7 @@ class Container implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param null|string $manifest_date the date of the manifest
      */
-    public function setManifestDate(?string $manifest_date) : self
+    public function setManifestDate(?string $manifest_date): self
     {
         $this->container['manifest_date'] = $manifest_date;
 
@@ -428,7 +431,7 @@ class Container implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets ship_method.
      */
-    public function getShipMethod() : ?string
+    public function getShipMethod(): ?string
     {
         return $this->container['ship_method'];
     }
@@ -438,7 +441,7 @@ class Container implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param null|string $ship_method the shipment method
      */
-    public function setShipMethod(?string $ship_method) : self
+    public function setShipMethod(?string $ship_method): self
     {
         $this->container['ship_method'] = $ship_method;
 
@@ -448,7 +451,7 @@ class Container implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets scac_code.
      */
-    public function getScacCode() : ?string
+    public function getScacCode(): ?string
     {
         return $this->container['scac_code'];
     }
@@ -458,7 +461,7 @@ class Container implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param null|string $scac_code SCAC code required for NA VOC vendors only
      */
-    public function setScacCode(?string $scac_code) : self
+    public function setScacCode(?string $scac_code): self
     {
         $this->container['scac_code'] = $scac_code;
 
@@ -468,7 +471,7 @@ class Container implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets carrier.
      */
-    public function getCarrier() : ?string
+    public function getCarrier(): ?string
     {
         return $this->container['carrier'];
     }
@@ -478,7 +481,7 @@ class Container implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param null|string $carrier carrier required for EU VOC vendors only
      */
-    public function setCarrier(?string $carrier) : self
+    public function setCarrier(?string $carrier): self
     {
         $this->container['carrier'] = $carrier;
 
@@ -488,7 +491,7 @@ class Container implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets container_sequence_number.
      */
-    public function getContainerSequenceNumber() : ?int
+    public function getContainerSequenceNumber(): ?int
     {
         return $this->container['container_sequence_number'];
     }
@@ -498,7 +501,7 @@ class Container implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param null|int $container_sequence_number an integer that must be submitted for multi-box shipments only, where one item may come in separate packages
      */
-    public function setContainerSequenceNumber(?int $container_sequence_number) : self
+    public function setContainerSequenceNumber(?int $container_sequence_number): self
     {
         $this->container['container_sequence_number'] = $container_sequence_number;
 
@@ -508,7 +511,7 @@ class Container implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets dimensions.
      */
-    public function getDimensions() : ?Dimensions
+    public function getDimensions(): ?Dimensions
     {
         return $this->container['dimensions'];
     }
@@ -518,7 +521,7 @@ class Container implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\VendorDirectFulfillmentShipping\Dimensions $dimensions dimensions
      */
-    public function setDimensions(?Dimensions $dimensions) : self
+    public function setDimensions(?Dimensions $dimensions): self
     {
         $this->container['dimensions'] = $dimensions;
 
@@ -528,7 +531,7 @@ class Container implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets weight.
      */
-    public function getWeight() : ?Weight
+    public function getWeight(): ?Weight
     {
         return $this->container['weight'];
     }
@@ -538,7 +541,7 @@ class Container implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\VendorDirectFulfillmentShipping\Weight $weight weight
      */
-    public function setWeight(?Weight $weight) : self
+    public function setWeight(?Weight $weight): self
     {
         $this->container['weight'] = $weight;
 
@@ -550,7 +553,7 @@ class Container implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return \Plenty\AmazonPHP\SellingPartner\Model\VendorDirectFulfillmentShipping\PackedItem[]
      */
-    public function getPackedItems() : array
+    public function getPackedItems(): array
     {
         return $this->container['packed_items'];
     }
@@ -560,7 +563,7 @@ class Container implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param \Plenty\AmazonPHP\SellingPartner\Model\VendorDirectFulfillmentShipping\PackedItem[] $packed_items a list of packed items
      */
-    public function setPackedItems(array $packed_items) : self
+    public function setPackedItems(array $packed_items): self
     {
         $this->container['packed_items'] = $packed_items;
 
@@ -572,7 +575,7 @@ class Container implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param int $offset Offset
      */
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -595,7 +598,7 @@ class Container implements \ArrayAccess, \JsonSerializable, ModelInterface
      * @param null|int $offset Offset
      * @param mixed $value Value to be set
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         if (null === $offset) {
             $this->container[] = $value;
@@ -609,7 +612,7 @@ class Container implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param int $offset Offset
      */
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -622,7 +625,7 @@ class Container implements \ArrayAccess, \JsonSerializable, ModelInterface
      * @return mixed returns data which can be serialized by json_encode(), which is a value
      *               of any type other than a resource
      */
-    public function jsonSerialize() : string
+    public function jsonSerialize(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }
@@ -630,7 +633,7 @@ class Container implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets a header-safe presentation of the object.
      */
-    public function toHeaderValue() : string
+    public function toHeaderValue(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }

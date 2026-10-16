@@ -1,4 +1,7 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
+
 /**
  * GetFeatureInventoryResult.
  *
@@ -40,7 +43,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class GetFeatureInventoryResult implements \ArrayAccess, \JsonSerializable, ModelInterface
+class GetFeatureInventoryResult implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -127,7 +130,7 @@ class GetFeatureInventoryResult implements \ArrayAccess, \JsonSerializable, Mode
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['marketplace_id'] = $data['marketplace_id'] ?? null;
         $this->container['feature_name'] = $data['feature_name'] ?? null;
@@ -140,7 +143,7 @@ class GetFeatureInventoryResult implements \ArrayAccess, \JsonSerializable, Mode
      *
      * @return string[]
      */
-    public static function openAPITypes() : array
+    public static function openAPITypes(): array
     {
         return self::$openAPITypes;
     }
@@ -150,7 +153,7 @@ class GetFeatureInventoryResult implements \ArrayAccess, \JsonSerializable, Mode
      *
      * @return null[]|string[]
      */
-    public static function openAPIFormats() : array
+    public static function openAPIFormats(): array
     {
         return self::$openAPIFormats;
     }
@@ -161,7 +164,7 @@ class GetFeatureInventoryResult implements \ArrayAccess, \JsonSerializable, Mode
      *
      * @return string[]
      */
-    public static function attributeMap() : array
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -171,7 +174,7 @@ class GetFeatureInventoryResult implements \ArrayAccess, \JsonSerializable, Mode
      *
      * @return string[]
      */
-    public static function setters() : array
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -181,7 +184,7 @@ class GetFeatureInventoryResult implements \ArrayAccess, \JsonSerializable, Mode
      *
      * @return string[]
      */
-    public static function getters() : array
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -189,9 +192,9 @@ class GetFeatureInventoryResult implements \ArrayAccess, \JsonSerializable, Mode
     /**
      * Gets the string presentation of the object.
      */
-    public function __toString() : string
+    public function __toString(): string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );
@@ -200,7 +203,7 @@ class GetFeatureInventoryResult implements \ArrayAccess, \JsonSerializable, Mode
     /**
      * The original name of the model.
      */
-    public function getModelName() : string
+    public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
@@ -210,7 +213,7 @@ class GetFeatureInventoryResult implements \ArrayAccess, \JsonSerializable, Mode
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties() : array
+    public function listInvalidProperties(): array
     {
         $invalidProperties = [];
 
@@ -231,7 +234,7 @@ class GetFeatureInventoryResult implements \ArrayAccess, \JsonSerializable, Mode
      *
      * @return bool True if all properties are valid
      */
-    public function valid() : bool
+    public function valid(): bool
     {
         return \count($this->listInvalidProperties()) === 0;
     }
@@ -239,7 +242,7 @@ class GetFeatureInventoryResult implements \ArrayAccess, \JsonSerializable, Mode
     /**
      * Gets marketplace_id.
      */
-    public function getMarketplaceId() : string
+    public function getMarketplaceId(): string
     {
         return $this->container['marketplace_id'];
     }
@@ -249,7 +252,7 @@ class GetFeatureInventoryResult implements \ArrayAccess, \JsonSerializable, Mode
      *
      * @param string $marketplace_id the requested marketplace
      */
-    public function setMarketplaceId(string $marketplace_id) : self
+    public function setMarketplaceId(string $marketplace_id): self
     {
         $this->container['marketplace_id'] = $marketplace_id;
 
@@ -259,7 +262,7 @@ class GetFeatureInventoryResult implements \ArrayAccess, \JsonSerializable, Mode
     /**
      * Gets feature_name.
      */
-    public function getFeatureName() : string
+    public function getFeatureName(): string
     {
         return $this->container['feature_name'];
     }
@@ -269,7 +272,7 @@ class GetFeatureInventoryResult implements \ArrayAccess, \JsonSerializable, Mode
      *
      * @param string $feature_name the name of the feature
      */
-    public function setFeatureName(string $feature_name) : self
+    public function setFeatureName(string $feature_name): self
     {
         $this->container['feature_name'] = $feature_name;
 
@@ -279,7 +282,7 @@ class GetFeatureInventoryResult implements \ArrayAccess, \JsonSerializable, Mode
     /**
      * Gets next_token.
      */
-    public function getNextToken() : ?string
+    public function getNextToken(): ?string
     {
         return $this->container['next_token'];
     }
@@ -289,7 +292,7 @@ class GetFeatureInventoryResult implements \ArrayAccess, \JsonSerializable, Mode
      *
      * @param null|string $next_token when present and not empty, pass this string token in the next request to return the next response page
      */
-    public function setNextToken(?string $next_token) : self
+    public function setNextToken(?string $next_token): self
     {
         $this->container['next_token'] = $next_token;
 
@@ -301,7 +304,7 @@ class GetFeatureInventoryResult implements \ArrayAccess, \JsonSerializable, Mode
      *
      * @return null|\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentOutbound\FeatureSku[]
      */
-    public function getFeatureSkus() : ?array
+    public function getFeatureSkus(): ?array
     {
         return $this->container['feature_skus'];
     }
@@ -311,7 +314,7 @@ class GetFeatureInventoryResult implements \ArrayAccess, \JsonSerializable, Mode
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\FulfillmentOutbound\FeatureSku[] $feature_skus an array of SKUs eligible for this feature and the quantity available
      */
-    public function setFeatureSkus(?array $feature_skus) : self
+    public function setFeatureSkus(?array $feature_skus): self
     {
         $this->container['feature_skus'] = $feature_skus;
 
@@ -323,7 +326,7 @@ class GetFeatureInventoryResult implements \ArrayAccess, \JsonSerializable, Mode
      *
      * @param int $offset Offset
      */
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -346,7 +349,7 @@ class GetFeatureInventoryResult implements \ArrayAccess, \JsonSerializable, Mode
      * @param null|int $offset Offset
      * @param mixed $value Value to be set
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         if (null === $offset) {
             $this->container[] = $value;
@@ -360,7 +363,7 @@ class GetFeatureInventoryResult implements \ArrayAccess, \JsonSerializable, Mode
      *
      * @param int $offset Offset
      */
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -373,7 +376,7 @@ class GetFeatureInventoryResult implements \ArrayAccess, \JsonSerializable, Mode
      * @return mixed returns data which can be serialized by json_encode(), which is a value
      *               of any type other than a resource
      */
-    public function jsonSerialize() : string
+    public function jsonSerialize(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }
@@ -381,7 +384,7 @@ class GetFeatureInventoryResult implements \ArrayAccess, \JsonSerializable, Mode
     /**
      * Gets a header-safe presentation of the object.
      */
-    public function toHeaderValue() : string
+    public function toHeaderValue(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }

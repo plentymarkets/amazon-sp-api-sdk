@@ -140,7 +140,7 @@ class Address implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInte
      * @param null|mixed[] $data Associated array of property values
      *                           initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['address_line1'] = $data['address_line1'] ?? null;
         $this->container['address_line2'] = $data['address_line2'] ?? null;
@@ -157,7 +157,7 @@ class Address implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInte
     /**
      * Array of property to type mappings. Used for (de)serialization.
      */
-    public static function openAPITypes() : array
+    public static function openAPITypes(): array
     {
         return self::$openAPITypes;
     }
@@ -165,7 +165,7 @@ class Address implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInte
     /**
      * Array of property to format mappings. Used for (de)serialization.
      */
-    public static function openAPIFormats() : array
+    public static function openAPIFormats(): array
     {
         return self::$openAPIFormats;
     }
@@ -174,7 +174,7 @@ class Address implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInte
      * Array of attributes where the key is the local name,
      * and the value is the original name.
      */
-    public static function attributeMap() : array
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -182,7 +182,7 @@ class Address implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInte
     /**
      * Array of attributes to setter functions (for deserialization of responses).
      */
-    public static function setters() : array
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -190,7 +190,7 @@ class Address implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInte
     /**
      * Array of attributes to getter functions (for serialization of requests).
      */
-    public static function getters() : array
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -198,7 +198,7 @@ class Address implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInte
     /**
      * Gets the string presentation of the object.
      */
-    public function __toString() : string
+    public function __toString(): string
     {
         return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
@@ -209,7 +209,7 @@ class Address implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInte
     /**
      * The original name of the model.
      */
-    public function getModelName() : string
+    public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
@@ -219,10 +219,10 @@ class Address implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInte
      *
      * @throws AssertionException
      */
-    public function listInvalidProperties() : array
+    public function listInvalidProperties(): array
     {
         $invalidProperties = [];
-         
+
         if ($this->container['address_line1'] === null) {
             $invalidProperties[] = "'address_line1' can't be null";
         }
@@ -326,7 +326,7 @@ class Address implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInte
         if (null !== $this->container['state_or_province_code'] && (\mb_strlen((string) $this->container['state_or_province_code']) < 1)) {
             $invalidProperties[] = "invalid value for 'state_or_province_code', the character length must be bigger than or equal to 1.";
         }
-        
+
         return $invalidProperties;
     }
 
@@ -336,7 +336,7 @@ class Address implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInte
      *
      * @return bool True if all properties are valid
      */
-    public function valid() : bool
+    public function valid(): bool
     {
         return \count($this->listInvalidProperties()) === 0;
     }
@@ -344,7 +344,7 @@ class Address implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInte
     /**
      * Gets address_line1.
      */
-    public function getAddressLine1() : string
+    public function getAddressLine1(): string
     {
         return $this->container['address_line1'];
     }
@@ -354,7 +354,7 @@ class Address implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInte
      *
      * @param string $address_line1 street address information
      */
-    public function setAddressLine1(string $address_line1) : self
+    public function setAddressLine1(string $address_line1): self
     {
         $this->container['address_line1'] = $address_line1;
 
@@ -364,7 +364,7 @@ class Address implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInte
     /**
      * Gets address_line2.
      */
-    public function getAddressLine2() : ?string
+    public function getAddressLine2(): ?string
     {
         return $this->container['address_line2'];
     }
@@ -374,7 +374,7 @@ class Address implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInte
      *
      * @param null|string $address_line2 additional street address information
      */
-    public function setAddressLine2(?string $address_line2) : self
+    public function setAddressLine2(?string $address_line2): self
     {
         $this->container['address_line2'] = $address_line2;
 
@@ -384,7 +384,7 @@ class Address implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInte
     /**
      * Gets city.
      */
-    public function getCity() : string
+    public function getCity(): string
     {
         return $this->container['city'];
     }
@@ -394,7 +394,7 @@ class Address implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInte
      *
      * @param string $city the city
      */
-    public function setCity(string $city) : self
+    public function setCity(string $city): self
     {
         $this->container['city'] = $city;
 
@@ -404,7 +404,7 @@ class Address implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInte
     /**
      * Gets company_name.
      */
-    public function getCompanyName() : ?string
+    public function getCompanyName(): ?string
     {
         return $this->container['company_name'];
     }
@@ -414,7 +414,7 @@ class Address implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInte
      *
      * @param null|string $company_name the name of the business
      */
-    public function setCompanyName(?string $company_name) : self
+    public function setCompanyName(?string $company_name): self
     {
         $this->container['company_name'] = $company_name;
 
@@ -424,7 +424,7 @@ class Address implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInte
     /**
      * Gets country_code.
      */
-    public function getCountryCode() : string
+    public function getCountryCode(): string
     {
         return $this->container['country_code'];
     }
@@ -434,7 +434,7 @@ class Address implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInte
      *
      * @param string $country_code the country code in two-character ISO 3166-1 alpha-2 format
      */
-    public function setCountryCode(string $country_code) : self
+    public function setCountryCode(string $country_code): self
     {
         $this->container['country_code'] = $country_code;
 
@@ -444,7 +444,7 @@ class Address implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInte
     /**
      * Gets email.
      */
-    public function getEmail() : ?string
+    public function getEmail(): ?string
     {
         return $this->container['email'];
     }
@@ -454,7 +454,7 @@ class Address implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInte
      *
      * @param null|string $email the email address
      */
-    public function setEmail(?string $email) : self
+    public function setEmail(?string $email): self
     {
         $this->container['email'] = $email;
 
@@ -464,7 +464,7 @@ class Address implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInte
     /**
      * Gets name.
      */
-    public function getName() : string
+    public function getName(): string
     {
         return $this->container['name'];
     }
@@ -474,7 +474,7 @@ class Address implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInte
      *
      * @param string $name the name of the individual who is the primary contact
      */
-    public function setName(string $name) : self
+    public function setName(string $name): self
     {
         $this->container['name'] = $name;
 
@@ -484,7 +484,7 @@ class Address implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInte
     /**
      * Gets phone_number.
      */
-    public function getPhoneNumber() : ?string
+    public function getPhoneNumber(): ?string
     {
         return $this->container['phone_number'];
     }
@@ -494,7 +494,7 @@ class Address implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInte
      *
      * @param null|string $phone_number the phone number
      */
-    public function setPhoneNumber(?string $phone_number) : self
+    public function setPhoneNumber(?string $phone_number): self
     {
         $this->container['phone_number'] = $phone_number;
 
@@ -504,7 +504,7 @@ class Address implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInte
     /**
      * Gets postal_code.
      */
-    public function getPostalCode() : string
+    public function getPostalCode(): string
     {
         return $this->container['postal_code'];
     }
@@ -514,7 +514,7 @@ class Address implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInte
      *
      * @param string $postal_code the postal code
      */
-    public function setPostalCode(string $postal_code) : self
+    public function setPostalCode(string $postal_code): self
     {
         $this->container['postal_code'] = $postal_code;
 
@@ -524,7 +524,7 @@ class Address implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInte
     /**
      * Gets state_or_province_code.
      */
-    public function getStateOrProvinceCode() : ?string
+    public function getStateOrProvinceCode(): ?string
     {
         return $this->container['state_or_province_code'];
     }
@@ -534,7 +534,7 @@ class Address implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInte
      *
      * @param null|string $state_or_province_code the state or province code
      */
-    public function setStateOrProvinceCode(?string $state_or_province_code) : self
+    public function setStateOrProvinceCode(?string $state_or_province_code): self
     {
         $this->container['state_or_province_code'] = $state_or_province_code;
 
@@ -544,7 +544,7 @@ class Address implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInte
     /**
      * Returns true if offset exists. False otherwise.
      */
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -555,7 +555,7 @@ class Address implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInte
      * @return null|mixed
      */
     #[\ReturnTypeWillChange]
-    public function offsetGet($offset) : mixed
+    public function offsetGet($offset): mixed
     {
         return $this->container[$offset] ?? null;
     }
@@ -563,7 +563,7 @@ class Address implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInte
     /**
      * Sets value based on offset.
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         if (null === $offset) {
             $this->container[] = $value;
@@ -575,7 +575,7 @@ class Address implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInte
     /**
      * Unsets offset.
      */
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -589,7 +589,7 @@ class Address implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInte
      *               of any type other than a resource
      */
     #[\ReturnTypeWillChange]
-    public function jsonSerialize() : string
+    public function jsonSerialize(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }
@@ -597,7 +597,7 @@ class Address implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInte
     /**
      * Gets a header-safe presentation of the object.
      */
-    public function toHeaderValue() : string
+    public function toHeaderValue(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }

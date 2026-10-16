@@ -1,4 +1,7 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
+
 /**
  * SellerDealPaymentEvent.
  *
@@ -40,7 +43,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class SellerDealPaymentEvent implements \ArrayAccess, \JsonSerializable, ModelInterface
+class SellerDealPaymentEvent implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -62,9 +65,9 @@ class SellerDealPaymentEvent implements \ArrayAccess, \JsonSerializable, ModelIn
         'deal_description' => 'string',
         'event_type' => 'string',
         'fee_type' => 'string',
-        'fee_amount' => '\Plenty\AmazonPHP\SellingPartner\Model\Finances\Currency',
-        'tax_amount' => '\Plenty\AmazonPHP\SellingPartner\Model\Finances\Currency',
-        'total_amount' => '\Plenty\AmazonPHP\SellingPartner\Model\Finances\Currency',
+        'fee_amount' => \Plenty\AmazonPHP\SellingPartner\Model\Finances\Currency::class,
+        'tax_amount' => \Plenty\AmazonPHP\SellingPartner\Model\Finances\Currency::class,
+        'total_amount' => \Plenty\AmazonPHP\SellingPartner\Model\Finances\Currency::class,
     ];
 
     /**
@@ -147,7 +150,7 @@ class SellerDealPaymentEvent implements \ArrayAccess, \JsonSerializable, ModelIn
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['posted_date'] = $data['posted_date'] ?? null;
         $this->container['deal_id'] = $data['deal_id'] ?? null;
@@ -164,7 +167,7 @@ class SellerDealPaymentEvent implements \ArrayAccess, \JsonSerializable, ModelIn
      *
      * @return string[]
      */
-    public static function openAPITypes() : array
+    public static function openAPITypes(): array
     {
         return self::$openAPITypes;
     }
@@ -174,7 +177,7 @@ class SellerDealPaymentEvent implements \ArrayAccess, \JsonSerializable, ModelIn
      *
      * @return null[]|string[]
      */
-    public static function openAPIFormats() : array
+    public static function openAPIFormats(): array
     {
         return self::$openAPIFormats;
     }
@@ -185,7 +188,7 @@ class SellerDealPaymentEvent implements \ArrayAccess, \JsonSerializable, ModelIn
      *
      * @return string[]
      */
-    public static function attributeMap() : array
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -195,7 +198,7 @@ class SellerDealPaymentEvent implements \ArrayAccess, \JsonSerializable, ModelIn
      *
      * @return string[]
      */
-    public static function setters() : array
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -205,7 +208,7 @@ class SellerDealPaymentEvent implements \ArrayAccess, \JsonSerializable, ModelIn
      *
      * @return string[]
      */
-    public static function getters() : array
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -213,9 +216,9 @@ class SellerDealPaymentEvent implements \ArrayAccess, \JsonSerializable, ModelIn
     /**
      * Gets the string presentation of the object.
      */
-    public function __toString() : string
+    public function __toString(): string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );
@@ -224,7 +227,7 @@ class SellerDealPaymentEvent implements \ArrayAccess, \JsonSerializable, ModelIn
     /**
      * The original name of the model.
      */
-    public function getModelName() : string
+    public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
@@ -234,7 +237,7 @@ class SellerDealPaymentEvent implements \ArrayAccess, \JsonSerializable, ModelIn
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties() : array
+    public function listInvalidProperties(): array
     {
         return [];
     }
@@ -245,7 +248,7 @@ class SellerDealPaymentEvent implements \ArrayAccess, \JsonSerializable, ModelIn
      *
      * @return bool True if all properties are valid
      */
-    public function valid() : bool
+    public function valid(): bool
     {
         return \count($this->listInvalidProperties()) === 0;
     }
@@ -255,7 +258,7 @@ class SellerDealPaymentEvent implements \ArrayAccess, \JsonSerializable, ModelIn
      *
      * @return null|\DateTime|\DateTimeImmutable
      */
-    public function getPostedDate() : ?\DateTimeInterface
+    public function getPostedDate(): ?\DateTimeInterface
     {
         return $this->container['posted_date'];
     }
@@ -265,7 +268,7 @@ class SellerDealPaymentEvent implements \ArrayAccess, \JsonSerializable, ModelIn
      *
      * @param \DateTime|\DateTimeImmutable $posted_date posted_date
      */
-    public function setPostedDate(\DateTimeInterface $posted_date) : self
+    public function setPostedDate(\DateTimeInterface $posted_date): self
     {
         $this->container['posted_date'] = $posted_date;
 
@@ -275,7 +278,7 @@ class SellerDealPaymentEvent implements \ArrayAccess, \JsonSerializable, ModelIn
     /**
      * Gets deal_id.
      */
-    public function getDealId() : ?string
+    public function getDealId(): ?string
     {
         return $this->container['deal_id'];
     }
@@ -285,7 +288,7 @@ class SellerDealPaymentEvent implements \ArrayAccess, \JsonSerializable, ModelIn
      *
      * @param null|string $deal_id the unique identifier of the deal
      */
-    public function setDealId(?string $deal_id) : self
+    public function setDealId(?string $deal_id): self
     {
         $this->container['deal_id'] = $deal_id;
 
@@ -295,7 +298,7 @@ class SellerDealPaymentEvent implements \ArrayAccess, \JsonSerializable, ModelIn
     /**
      * Gets deal_description.
      */
-    public function getDealDescription() : ?string
+    public function getDealDescription(): ?string
     {
         return $this->container['deal_description'];
     }
@@ -305,7 +308,7 @@ class SellerDealPaymentEvent implements \ArrayAccess, \JsonSerializable, ModelIn
      *
      * @param null|string $deal_description the internal description of the deal
      */
-    public function setDealDescription(?string $deal_description) : self
+    public function setDealDescription(?string $deal_description): self
     {
         $this->container['deal_description'] = $deal_description;
 
@@ -315,7 +318,7 @@ class SellerDealPaymentEvent implements \ArrayAccess, \JsonSerializable, ModelIn
     /**
      * Gets event_type.
      */
-    public function getEventType() : ?string
+    public function getEventType(): ?string
     {
         return $this->container['event_type'];
     }
@@ -325,7 +328,7 @@ class SellerDealPaymentEvent implements \ArrayAccess, \JsonSerializable, ModelIn
      *
      * @param null|string $event_type the type of event: SellerDealComplete
      */
-    public function setEventType(?string $event_type) : self
+    public function setEventType(?string $event_type): self
     {
         $this->container['event_type'] = $event_type;
 
@@ -335,7 +338,7 @@ class SellerDealPaymentEvent implements \ArrayAccess, \JsonSerializable, ModelIn
     /**
      * Gets fee_type.
      */
-    public function getFeeType() : ?string
+    public function getFeeType(): ?string
     {
         return $this->container['fee_type'];
     }
@@ -345,7 +348,7 @@ class SellerDealPaymentEvent implements \ArrayAccess, \JsonSerializable, ModelIn
      *
      * @param null|string $fee_type the type of fee: RunLightningDealFee
      */
-    public function setFeeType(?string $fee_type) : self
+    public function setFeeType(?string $fee_type): self
     {
         $this->container['fee_type'] = $fee_type;
 
@@ -355,7 +358,7 @@ class SellerDealPaymentEvent implements \ArrayAccess, \JsonSerializable, ModelIn
     /**
      * Gets fee_amount.
      */
-    public function getFeeAmount() : ?Currency
+    public function getFeeAmount(): ?Currency
     {
         return $this->container['fee_amount'];
     }
@@ -365,7 +368,7 @@ class SellerDealPaymentEvent implements \ArrayAccess, \JsonSerializable, ModelIn
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\Finances\Currency $fee_amount fee_amount
      */
-    public function setFeeAmount(?Currency $fee_amount) : self
+    public function setFeeAmount(?Currency $fee_amount): self
     {
         $this->container['fee_amount'] = $fee_amount;
 
@@ -375,7 +378,7 @@ class SellerDealPaymentEvent implements \ArrayAccess, \JsonSerializable, ModelIn
     /**
      * Gets tax_amount.
      */
-    public function getTaxAmount() : ?Currency
+    public function getTaxAmount(): ?Currency
     {
         return $this->container['tax_amount'];
     }
@@ -385,7 +388,7 @@ class SellerDealPaymentEvent implements \ArrayAccess, \JsonSerializable, ModelIn
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\Finances\Currency $tax_amount tax_amount
      */
-    public function setTaxAmount(?Currency $tax_amount) : self
+    public function setTaxAmount(?Currency $tax_amount): self
     {
         $this->container['tax_amount'] = $tax_amount;
 
@@ -395,7 +398,7 @@ class SellerDealPaymentEvent implements \ArrayAccess, \JsonSerializable, ModelIn
     /**
      * Gets total_amount.
      */
-    public function getTotalAmount() : ?Currency
+    public function getTotalAmount(): ?Currency
     {
         return $this->container['total_amount'];
     }
@@ -405,7 +408,7 @@ class SellerDealPaymentEvent implements \ArrayAccess, \JsonSerializable, ModelIn
      *
      * @param null|\Plenty\AmazonPHP\SellingPartner\Model\Finances\Currency $total_amount total_amount
      */
-    public function setTotalAmount(?Currency $total_amount) : self
+    public function setTotalAmount(?Currency $total_amount): self
     {
         $this->container['total_amount'] = $total_amount;
 
@@ -417,7 +420,7 @@ class SellerDealPaymentEvent implements \ArrayAccess, \JsonSerializable, ModelIn
      *
      * @param int $offset Offset
      */
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -440,7 +443,7 @@ class SellerDealPaymentEvent implements \ArrayAccess, \JsonSerializable, ModelIn
      * @param null|int $offset Offset
      * @param mixed $value Value to be set
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         if (null === $offset) {
             $this->container[] = $value;
@@ -454,7 +457,7 @@ class SellerDealPaymentEvent implements \ArrayAccess, \JsonSerializable, ModelIn
      *
      * @param int $offset Offset
      */
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -467,7 +470,7 @@ class SellerDealPaymentEvent implements \ArrayAccess, \JsonSerializable, ModelIn
      * @return mixed returns data which can be serialized by json_encode(), which is a value
      *               of any type other than a resource
      */
-    public function jsonSerialize() : string
+    public function jsonSerialize(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }
@@ -475,7 +478,7 @@ class SellerDealPaymentEvent implements \ArrayAccess, \JsonSerializable, ModelIn
     /**
      * Gets a header-safe presentation of the object.
      */
-    public function toHeaderValue() : string
+    public function toHeaderValue(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }

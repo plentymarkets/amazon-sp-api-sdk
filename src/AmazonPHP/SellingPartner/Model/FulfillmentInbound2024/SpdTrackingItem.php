@@ -105,7 +105,7 @@ class SpdTrackingItem implements \ArrayAccess, \JsonSerializable, \Stringable, M
      * @param null|mixed[] $data Associated array of property values
      *                           initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['box_id'] = $data['box_id'] ?? null;
         $this->container['tracking_id'] = $data['tracking_id'] ?? null;
@@ -115,7 +115,7 @@ class SpdTrackingItem implements \ArrayAccess, \JsonSerializable, \Stringable, M
     /**
      * Array of property to type mappings. Used for (de)serialization.
      */
-    public static function openAPITypes() : array
+    public static function openAPITypes(): array
     {
         return self::$openAPITypes;
     }
@@ -123,7 +123,7 @@ class SpdTrackingItem implements \ArrayAccess, \JsonSerializable, \Stringable, M
     /**
      * Array of property to format mappings. Used for (de)serialization.
      */
-    public static function openAPIFormats() : array
+    public static function openAPIFormats(): array
     {
         return self::$openAPIFormats;
     }
@@ -132,7 +132,7 @@ class SpdTrackingItem implements \ArrayAccess, \JsonSerializable, \Stringable, M
      * Array of attributes where the key is the local name,
      * and the value is the original name.
      */
-    public static function attributeMap() : array
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -140,7 +140,7 @@ class SpdTrackingItem implements \ArrayAccess, \JsonSerializable, \Stringable, M
     /**
      * Array of attributes to setter functions (for deserialization of responses).
      */
-    public static function setters() : array
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -148,7 +148,7 @@ class SpdTrackingItem implements \ArrayAccess, \JsonSerializable, \Stringable, M
     /**
      * Array of attributes to getter functions (for serialization of requests).
      */
-    public static function getters() : array
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -156,7 +156,7 @@ class SpdTrackingItem implements \ArrayAccess, \JsonSerializable, \Stringable, M
     /**
      * Gets the string presentation of the object.
      */
-    public function __toString() : string
+    public function __toString(): string
     {
         return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
@@ -167,7 +167,7 @@ class SpdTrackingItem implements \ArrayAccess, \JsonSerializable, \Stringable, M
     /**
      * The original name of the model.
      */
-    public function getModelName() : string
+    public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
@@ -177,10 +177,10 @@ class SpdTrackingItem implements \ArrayAccess, \JsonSerializable, \Stringable, M
      *
      * @throws AssertionException
      */
-    public function listInvalidProperties() : array
+    public function listInvalidProperties(): array
     {
         $invalidProperties = [];
-         
+
         if (null !== $this->container['box_id'] && (\mb_strlen((string) $this->container['box_id']) > 1024)) {
             $invalidProperties[] = "invalid value for 'box_id', the character length must be smaller than or equal to 1024.";
         }
@@ -214,7 +214,7 @@ class SpdTrackingItem implements \ArrayAccess, \JsonSerializable, \Stringable, M
      *
      * @return bool True if all properties are valid
      */
-    public function valid() : bool
+    public function valid(): bool
     {
         return \count($this->listInvalidProperties()) === 0;
     }
@@ -222,7 +222,7 @@ class SpdTrackingItem implements \ArrayAccess, \JsonSerializable, \Stringable, M
     /**
      * Gets box_id.
      */
-    public function getBoxId() : ?string
+    public function getBoxId(): ?string
     {
         return $this->container['box_id'];
     }
@@ -232,7 +232,7 @@ class SpdTrackingItem implements \ArrayAccess, \JsonSerializable, \Stringable, M
      *
      * @param null|string $box_id The ID provided by Amazon that identifies a given box. This ID is comprised of the external shipment ID (which is generated after transportation has been confirmed) and the index of the box.
      */
-    public function setBoxId(?string $box_id) : self
+    public function setBoxId(?string $box_id): self
     {
         $this->container['box_id'] = $box_id;
 
@@ -242,7 +242,7 @@ class SpdTrackingItem implements \ArrayAccess, \JsonSerializable, \Stringable, M
     /**
      * Gets tracking_id.
      */
-    public function getTrackingId() : ?string
+    public function getTrackingId(): ?string
     {
         return $this->container['tracking_id'];
     }
@@ -252,7 +252,7 @@ class SpdTrackingItem implements \ArrayAccess, \JsonSerializable, \Stringable, M
      *
      * @param null|string $tracking_id the tracking ID associated with each box in a non-Amazon partnered Small Parcel Delivery (SPD) shipment
      */
-    public function setTrackingId(?string $tracking_id) : self
+    public function setTrackingId(?string $tracking_id): self
     {
         $this->container['tracking_id'] = $tracking_id;
 
@@ -262,7 +262,7 @@ class SpdTrackingItem implements \ArrayAccess, \JsonSerializable, \Stringable, M
     /**
      * Gets tracking_number_validation_status.
      */
-    public function getTrackingNumberValidationStatus() : ?string
+    public function getTrackingNumberValidationStatus(): ?string
     {
         return $this->container['tracking_number_validation_status'];
     }
@@ -272,7 +272,7 @@ class SpdTrackingItem implements \ArrayAccess, \JsonSerializable, \Stringable, M
      *
      * @param null|string $tracking_number_validation_status Whether or not Amazon has validated the tracking number. If more than 24 hours have passed and the status is not yet 'VALIDATED', please verify the number and update if necessary. Can be: `VALIDATED`, `NOT_VALIDATED`.
      */
-    public function setTrackingNumberValidationStatus(?string $tracking_number_validation_status) : self
+    public function setTrackingNumberValidationStatus(?string $tracking_number_validation_status): self
     {
         $this->container['tracking_number_validation_status'] = $tracking_number_validation_status;
 
@@ -282,7 +282,7 @@ class SpdTrackingItem implements \ArrayAccess, \JsonSerializable, \Stringable, M
     /**
      * Returns true if offset exists. False otherwise.
      */
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -293,7 +293,7 @@ class SpdTrackingItem implements \ArrayAccess, \JsonSerializable, \Stringable, M
      * @return null|mixed
      */
     #[\ReturnTypeWillChange]
-    public function offsetGet($offset) : mixed
+    public function offsetGet($offset): mixed
     {
         return $this->container[$offset] ?? null;
     }
@@ -301,7 +301,7 @@ class SpdTrackingItem implements \ArrayAccess, \JsonSerializable, \Stringable, M
     /**
      * Sets value based on offset.
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         if (null === $offset) {
             $this->container[] = $value;
@@ -313,7 +313,7 @@ class SpdTrackingItem implements \ArrayAccess, \JsonSerializable, \Stringable, M
     /**
      * Unsets offset.
      */
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -327,7 +327,7 @@ class SpdTrackingItem implements \ArrayAccess, \JsonSerializable, \Stringable, M
      *               of any type other than a resource
      */
     #[\ReturnTypeWillChange]
-    public function jsonSerialize() : string
+    public function jsonSerialize(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }
@@ -335,7 +335,7 @@ class SpdTrackingItem implements \ArrayAccess, \JsonSerializable, \Stringable, M
     /**
      * Gets a header-safe presentation of the object.
      */
-    public function toHeaderValue() : string
+    public function toHeaderValue(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }

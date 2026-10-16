@@ -105,7 +105,7 @@ class TaxRate implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInte
      * @param null|mixed[] $data Associated array of property values
      *                           initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['cess_rate'] = $data['cess_rate'] ?? null;
         $this->container['gst_rate'] = $data['gst_rate'] ?? null;
@@ -115,7 +115,7 @@ class TaxRate implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInte
     /**
      * Array of property to type mappings. Used for (de)serialization.
      */
-    public static function openAPITypes() : array
+    public static function openAPITypes(): array
     {
         return self::$openAPITypes;
     }
@@ -123,7 +123,7 @@ class TaxRate implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInte
     /**
      * Array of property to format mappings. Used for (de)serialization.
      */
-    public static function openAPIFormats() : array
+    public static function openAPIFormats(): array
     {
         return self::$openAPIFormats;
     }
@@ -132,7 +132,7 @@ class TaxRate implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInte
      * Array of attributes where the key is the local name,
      * and the value is the original name.
      */
-    public static function attributeMap() : array
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -140,7 +140,7 @@ class TaxRate implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInte
     /**
      * Array of attributes to setter functions (for deserialization of responses).
      */
-    public static function setters() : array
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -148,7 +148,7 @@ class TaxRate implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInte
     /**
      * Array of attributes to getter functions (for serialization of requests).
      */
-    public static function getters() : array
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -156,7 +156,7 @@ class TaxRate implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInte
     /**
      * Gets the string presentation of the object.
      */
-    public function __toString() : string
+    public function __toString(): string
     {
         return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
@@ -167,7 +167,7 @@ class TaxRate implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInte
     /**
      * The original name of the model.
      */
-    public function getModelName() : string
+    public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
@@ -177,10 +177,10 @@ class TaxRate implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInte
      *
      * @throws AssertionException
      */
-    public function listInvalidProperties() : array
+    public function listInvalidProperties(): array
     {
         $invalidProperties = [];
-         
+
         if (null !== $this->container['tax_type'] && (\mb_strlen((string) $this->container['tax_type']) > 1024)) {
             $invalidProperties[] = "invalid value for 'tax_type', the character length must be smaller than or equal to 1024.";
         }
@@ -198,7 +198,7 @@ class TaxRate implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInte
      *
      * @return bool True if all properties are valid
      */
-    public function valid() : bool
+    public function valid(): bool
     {
         return \count($this->listInvalidProperties()) === 0;
     }
@@ -206,7 +206,7 @@ class TaxRate implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInte
     /**
      * Gets cess_rate.
      */
-    public function getCessRate() : ?float
+    public function getCessRate(): ?float
     {
         return $this->container['cess_rate'];
     }
@@ -216,7 +216,7 @@ class TaxRate implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInte
      *
      * @param null|float $cess_rate rate of cess tax
      */
-    public function setCessRate(?float $cess_rate) : self
+    public function setCessRate(?float $cess_rate): self
     {
         $this->container['cess_rate'] = $cess_rate;
 
@@ -226,7 +226,7 @@ class TaxRate implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInte
     /**
      * Gets gst_rate.
      */
-    public function getGstRate() : ?float
+    public function getGstRate(): ?float
     {
         return $this->container['gst_rate'];
     }
@@ -236,7 +236,7 @@ class TaxRate implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInte
      *
      * @param null|float $gst_rate rate of gst tax
      */
-    public function setGstRate(?float $gst_rate) : self
+    public function setGstRate(?float $gst_rate): self
     {
         $this->container['gst_rate'] = $gst_rate;
 
@@ -246,7 +246,7 @@ class TaxRate implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInte
     /**
      * Gets tax_type.
      */
-    public function getTaxType() : ?string
+    public function getTaxType(): ?string
     {
         return $this->container['tax_type'];
     }
@@ -256,7 +256,7 @@ class TaxRate implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInte
      *
      * @param null|string $tax_type Type of tax. Can be: `CGST`, `SGST`, `IGST`, `TOTAL_TAX`.
      */
-    public function setTaxType(?string $tax_type) : self
+    public function setTaxType(?string $tax_type): self
     {
         $this->container['tax_type'] = $tax_type;
 
@@ -266,7 +266,7 @@ class TaxRate implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInte
     /**
      * Returns true if offset exists. False otherwise.
      */
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -277,7 +277,7 @@ class TaxRate implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInte
      * @return null|mixed
      */
     #[\ReturnTypeWillChange]
-    public function offsetGet($offset) : mixed
+    public function offsetGet($offset): mixed
     {
         return $this->container[$offset] ?? null;
     }
@@ -285,7 +285,7 @@ class TaxRate implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInte
     /**
      * Sets value based on offset.
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         if (null === $offset) {
             $this->container[] = $value;
@@ -297,7 +297,7 @@ class TaxRate implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInte
     /**
      * Unsets offset.
      */
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -311,7 +311,7 @@ class TaxRate implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInte
      *               of any type other than a resource
      */
     #[\ReturnTypeWillChange]
-    public function jsonSerialize() : string
+    public function jsonSerialize(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }
@@ -319,7 +319,7 @@ class TaxRate implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInte
     /**
      * Gets a header-safe presentation of the object.
      */
-    public function toHeaderValue() : string
+    public function toHeaderValue(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }

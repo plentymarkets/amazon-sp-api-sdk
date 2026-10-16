@@ -1,4 +1,7 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
+
 /**
  * OrderItemsBuyerInfoList.
  *
@@ -40,7 +43,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class OrderItemsBuyerInfoList implements \ArrayAccess, \JsonSerializable, ModelInterface
+class OrderItemsBuyerInfoList implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -122,7 +125,7 @@ class OrderItemsBuyerInfoList implements \ArrayAccess, \JsonSerializable, ModelI
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['order_items'] = $data['order_items'] ?? null;
         $this->container['next_token'] = $data['next_token'] ?? null;
@@ -134,7 +137,7 @@ class OrderItemsBuyerInfoList implements \ArrayAccess, \JsonSerializable, ModelI
      *
      * @return string[]
      */
-    public static function openAPITypes() : array
+    public static function openAPITypes(): array
     {
         return self::$openAPITypes;
     }
@@ -144,7 +147,7 @@ class OrderItemsBuyerInfoList implements \ArrayAccess, \JsonSerializable, ModelI
      *
      * @return null[]|string[]
      */
-    public static function openAPIFormats() : array
+    public static function openAPIFormats(): array
     {
         return self::$openAPIFormats;
     }
@@ -155,7 +158,7 @@ class OrderItemsBuyerInfoList implements \ArrayAccess, \JsonSerializable, ModelI
      *
      * @return string[]
      */
-    public static function attributeMap() : array
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -165,7 +168,7 @@ class OrderItemsBuyerInfoList implements \ArrayAccess, \JsonSerializable, ModelI
      *
      * @return string[]
      */
-    public static function setters() : array
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -175,7 +178,7 @@ class OrderItemsBuyerInfoList implements \ArrayAccess, \JsonSerializable, ModelI
      *
      * @return string[]
      */
-    public static function getters() : array
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -183,9 +186,9 @@ class OrderItemsBuyerInfoList implements \ArrayAccess, \JsonSerializable, ModelI
     /**
      * Gets the string presentation of the object.
      */
-    public function __toString() : string
+    public function __toString(): string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );
@@ -194,7 +197,7 @@ class OrderItemsBuyerInfoList implements \ArrayAccess, \JsonSerializable, ModelI
     /**
      * The original name of the model.
      */
-    public function getModelName() : string
+    public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
@@ -204,7 +207,7 @@ class OrderItemsBuyerInfoList implements \ArrayAccess, \JsonSerializable, ModelI
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties() : array
+    public function listInvalidProperties(): array
     {
         $invalidProperties = [];
 
@@ -225,7 +228,7 @@ class OrderItemsBuyerInfoList implements \ArrayAccess, \JsonSerializable, ModelI
      *
      * @return bool True if all properties are valid
      */
-    public function valid() : bool
+    public function valid(): bool
     {
         return \count($this->listInvalidProperties()) === 0;
     }
@@ -235,7 +238,7 @@ class OrderItemsBuyerInfoList implements \ArrayAccess, \JsonSerializable, ModelI
      *
      * @return \Plenty\AmazonPHP\SellingPartner\Model\Orders\OrderItemBuyerInfo[]
      */
-    public function getOrderItems() : array
+    public function getOrderItems(): array
     {
         return $this->container['order_items'];
     }
@@ -245,7 +248,7 @@ class OrderItemsBuyerInfoList implements \ArrayAccess, \JsonSerializable, ModelI
      *
      * @param \Plenty\AmazonPHP\SellingPartner\Model\Orders\OrderItemBuyerInfo[] $order_items a single order item's buyer information list
      */
-    public function setOrderItems(array $order_items) : self
+    public function setOrderItems(array $order_items): self
     {
         $this->container['order_items'] = $order_items;
 
@@ -255,7 +258,7 @@ class OrderItemsBuyerInfoList implements \ArrayAccess, \JsonSerializable, ModelI
     /**
      * Gets next_token.
      */
-    public function getNextToken() : ?string
+    public function getNextToken(): ?string
     {
         return $this->container['next_token'];
     }
@@ -265,7 +268,7 @@ class OrderItemsBuyerInfoList implements \ArrayAccess, \JsonSerializable, ModelI
      *
      * @param null|string $next_token when present and not empty, pass this string token in the next request to return the next response page
      */
-    public function setNextToken(?string $next_token) : self
+    public function setNextToken(?string $next_token): self
     {
         $this->container['next_token'] = $next_token;
 
@@ -275,7 +278,7 @@ class OrderItemsBuyerInfoList implements \ArrayAccess, \JsonSerializable, ModelI
     /**
      * Gets amazon_order_id.
      */
-    public function getAmazonOrderId() : string
+    public function getAmazonOrderId(): string
     {
         return $this->container['amazon_order_id'];
     }
@@ -285,7 +288,7 @@ class OrderItemsBuyerInfoList implements \ArrayAccess, \JsonSerializable, ModelI
      *
      * @param string $amazon_order_id an Amazon-defined order identifier, in 3-7-7 format
      */
-    public function setAmazonOrderId(string $amazon_order_id) : self
+    public function setAmazonOrderId(string $amazon_order_id): self
     {
         $this->container['amazon_order_id'] = $amazon_order_id;
 
@@ -297,7 +300,7 @@ class OrderItemsBuyerInfoList implements \ArrayAccess, \JsonSerializable, ModelI
      *
      * @param int $offset Offset
      */
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -320,7 +323,7 @@ class OrderItemsBuyerInfoList implements \ArrayAccess, \JsonSerializable, ModelI
      * @param null|int $offset Offset
      * @param mixed $value Value to be set
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         if (null === $offset) {
             $this->container[] = $value;
@@ -334,7 +337,7 @@ class OrderItemsBuyerInfoList implements \ArrayAccess, \JsonSerializable, ModelI
      *
      * @param int $offset Offset
      */
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -347,7 +350,7 @@ class OrderItemsBuyerInfoList implements \ArrayAccess, \JsonSerializable, ModelI
      * @return mixed returns data which can be serialized by json_encode(), which is a value
      *               of any type other than a resource
      */
-    public function jsonSerialize() : string
+    public function jsonSerialize(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }
@@ -355,7 +358,7 @@ class OrderItemsBuyerInfoList implements \ArrayAccess, \JsonSerializable, ModelI
     /**
      * Gets a header-safe presentation of the object.
      */
-    public function toHeaderValue() : string
+    public function toHeaderValue(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }

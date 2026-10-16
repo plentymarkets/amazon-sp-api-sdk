@@ -1,4 +1,7 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
+
 /**
  * ShipmentDetails.
  *
@@ -40,7 +43,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class ShipmentDetails implements \ArrayAccess, \JsonSerializable, ModelInterface
+class ShipmentDetails implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -62,7 +65,7 @@ class ShipmentDetails implements \ArrayAccess, \JsonSerializable, ModelInterface
         'is_pslip_required' => 'bool',
         'is_gift' => 'bool',
         'ship_method' => 'string',
-        'shipment_dates' => '\Plenty\AmazonPHP\SellingPartner\Model\VendorDirectFulfillmentOrders\ShipmentDates',
+        'shipment_dates' => \Plenty\AmazonPHP\SellingPartner\Model\VendorDirectFulfillmentOrders\ShipmentDates::class,
         'message_to_customer' => 'string',
     ];
 
@@ -142,7 +145,7 @@ class ShipmentDetails implements \ArrayAccess, \JsonSerializable, ModelInterface
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['is_priority_shipment'] = $data['is_priority_shipment'] ?? null;
         $this->container['is_scheduled_delivery_shipment'] = $data['is_scheduled_delivery_shipment'] ?? null;
@@ -158,7 +161,7 @@ class ShipmentDetails implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return string[]
      */
-    public static function openAPITypes() : array
+    public static function openAPITypes(): array
     {
         return self::$openAPITypes;
     }
@@ -168,7 +171,7 @@ class ShipmentDetails implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return null[]|string[]
      */
-    public static function openAPIFormats() : array
+    public static function openAPIFormats(): array
     {
         return self::$openAPIFormats;
     }
@@ -179,7 +182,7 @@ class ShipmentDetails implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return string[]
      */
-    public static function attributeMap() : array
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -189,7 +192,7 @@ class ShipmentDetails implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return string[]
      */
-    public static function setters() : array
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -199,7 +202,7 @@ class ShipmentDetails implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return string[]
      */
-    public static function getters() : array
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -207,9 +210,9 @@ class ShipmentDetails implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets the string presentation of the object.
      */
-    public function __toString() : string
+    public function __toString(): string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );
@@ -218,7 +221,7 @@ class ShipmentDetails implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * The original name of the model.
      */
-    public function getModelName() : string
+    public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
@@ -228,7 +231,7 @@ class ShipmentDetails implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties() : array
+    public function listInvalidProperties(): array
     {
         $invalidProperties = [];
 
@@ -261,7 +264,7 @@ class ShipmentDetails implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return bool True if all properties are valid
      */
-    public function valid() : bool
+    public function valid(): bool
     {
         return \count($this->listInvalidProperties()) === 0;
     }
@@ -269,7 +272,7 @@ class ShipmentDetails implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets is_priority_shipment.
      */
-    public function getIsPriorityShipment() : bool
+    public function getIsPriorityShipment(): bool
     {
         return $this->container['is_priority_shipment'];
     }
@@ -279,7 +282,7 @@ class ShipmentDetails implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param bool $is_priority_shipment when true, this is a priority shipment
      */
-    public function setIsPriorityShipment(bool $is_priority_shipment) : self
+    public function setIsPriorityShipment(bool $is_priority_shipment): self
     {
         $this->container['is_priority_shipment'] = $is_priority_shipment;
 
@@ -289,7 +292,7 @@ class ShipmentDetails implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets is_scheduled_delivery_shipment.
      */
-    public function getIsScheduledDeliveryShipment() : ?bool
+    public function getIsScheduledDeliveryShipment(): ?bool
     {
         return $this->container['is_scheduled_delivery_shipment'];
     }
@@ -299,7 +302,7 @@ class ShipmentDetails implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param null|bool $is_scheduled_delivery_shipment when true, this order is part of a scheduled delivery program
      */
-    public function setIsScheduledDeliveryShipment(?bool $is_scheduled_delivery_shipment) : self
+    public function setIsScheduledDeliveryShipment(?bool $is_scheduled_delivery_shipment): self
     {
         $this->container['is_scheduled_delivery_shipment'] = $is_scheduled_delivery_shipment;
 
@@ -309,7 +312,7 @@ class ShipmentDetails implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets is_pslip_required.
      */
-    public function getIsPslipRequired() : bool
+    public function getIsPslipRequired(): bool
     {
         return $this->container['is_pslip_required'];
     }
@@ -319,7 +322,7 @@ class ShipmentDetails implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param bool $is_pslip_required when true, a packing slip is required to be sent to the customer
      */
-    public function setIsPslipRequired(bool $is_pslip_required) : self
+    public function setIsPslipRequired(bool $is_pslip_required): self
     {
         $this->container['is_pslip_required'] = $is_pslip_required;
 
@@ -329,7 +332,7 @@ class ShipmentDetails implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets is_gift.
      */
-    public function getIsGift() : ?bool
+    public function getIsGift(): ?bool
     {
         return $this->container['is_gift'];
     }
@@ -339,7 +342,7 @@ class ShipmentDetails implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param null|bool $is_gift When true, the order contain a gift. Include the gift message and gift wrap information.
      */
-    public function setIsGift(?bool $is_gift) : self
+    public function setIsGift(?bool $is_gift): self
     {
         $this->container['is_gift'] = $is_gift;
 
@@ -349,7 +352,7 @@ class ShipmentDetails implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets ship_method.
      */
-    public function getShipMethod() : string
+    public function getShipMethod(): string
     {
         return $this->container['ship_method'];
     }
@@ -359,7 +362,7 @@ class ShipmentDetails implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param string $ship_method Ship method to be used for shipping the order. Amazon defines ship method codes indicating the shipping carrier and shipment service level. To see the full list of ship methods in use, including both the code and the friendly name, search the 'Help' section on Vendor Central for 'ship methods'.
      */
-    public function setShipMethod(string $ship_method) : self
+    public function setShipMethod(string $ship_method): self
     {
         $this->container['ship_method'] = $ship_method;
 
@@ -369,7 +372,7 @@ class ShipmentDetails implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets shipment_dates.
      */
-    public function getShipmentDates() : ShipmentDates
+    public function getShipmentDates(): ShipmentDates
     {
         return $this->container['shipment_dates'];
     }
@@ -379,7 +382,7 @@ class ShipmentDetails implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param \Plenty\AmazonPHP\SellingPartner\Model\VendorDirectFulfillmentOrders\ShipmentDates $shipment_dates shipment_dates
      */
-    public function setShipmentDates(ShipmentDates $shipment_dates) : self
+    public function setShipmentDates(ShipmentDates $shipment_dates): self
     {
         $this->container['shipment_dates'] = $shipment_dates;
 
@@ -389,7 +392,7 @@ class ShipmentDetails implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets message_to_customer.
      */
-    public function getMessageToCustomer() : string
+    public function getMessageToCustomer(): string
     {
         return $this->container['message_to_customer'];
     }
@@ -399,7 +402,7 @@ class ShipmentDetails implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param string $message_to_customer message to customer for order status
      */
-    public function setMessageToCustomer(string $message_to_customer) : self
+    public function setMessageToCustomer(string $message_to_customer): self
     {
         $this->container['message_to_customer'] = $message_to_customer;
 
@@ -411,7 +414,7 @@ class ShipmentDetails implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param int $offset Offset
      */
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -434,7 +437,7 @@ class ShipmentDetails implements \ArrayAccess, \JsonSerializable, ModelInterface
      * @param null|int $offset Offset
      * @param mixed $value Value to be set
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         if (null === $offset) {
             $this->container[] = $value;
@@ -448,7 +451,7 @@ class ShipmentDetails implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param int $offset Offset
      */
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -461,7 +464,7 @@ class ShipmentDetails implements \ArrayAccess, \JsonSerializable, ModelInterface
      * @return mixed returns data which can be serialized by json_encode(), which is a value
      *               of any type other than a resource
      */
-    public function jsonSerialize() : string
+    public function jsonSerialize(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }
@@ -469,7 +472,7 @@ class ShipmentDetails implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets a header-safe presentation of the object.
      */
-    public function toHeaderValue() : string
+    public function toHeaderValue(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }

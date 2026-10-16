@@ -1,4 +1,7 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
+
 /**
  * OrderStatus.
  *
@@ -40,7 +43,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class OrderStatus implements \ArrayAccess, \JsonSerializable, ModelInterface
+class OrderStatus implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -65,8 +68,8 @@ class OrderStatus implements \ArrayAccess, \JsonSerializable, ModelInterface
         'purchase_order_status' => 'string',
         'purchase_order_date' => '\DateTime',
         'last_updated_date' => '\DateTime',
-        'selling_party' => '\Plenty\AmazonPHP\SellingPartner\Model\VendorOrders\PartyIdentification',
-        'ship_to_party' => '\Plenty\AmazonPHP\SellingPartner\Model\VendorOrders\PartyIdentification',
+        'selling_party' => \Plenty\AmazonPHP\SellingPartner\Model\VendorOrders\PartyIdentification::class,
+        'ship_to_party' => \Plenty\AmazonPHP\SellingPartner\Model\VendorOrders\PartyIdentification::class,
         'item_status' => '\Plenty\AmazonPHP\SellingPartner\Model\VendorOrders\OrderItemStatus[]',
     ];
 
@@ -146,7 +149,7 @@ class OrderStatus implements \ArrayAccess, \JsonSerializable, ModelInterface
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['purchase_order_number'] = $data['purchase_order_number'] ?? null;
         $this->container['purchase_order_status'] = $data['purchase_order_status'] ?? null;
@@ -162,7 +165,7 @@ class OrderStatus implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return string[]
      */
-    public static function openAPITypes() : array
+    public static function openAPITypes(): array
     {
         return self::$openAPITypes;
     }
@@ -172,7 +175,7 @@ class OrderStatus implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return null[]|string[]
      */
-    public static function openAPIFormats() : array
+    public static function openAPIFormats(): array
     {
         return self::$openAPIFormats;
     }
@@ -183,7 +186,7 @@ class OrderStatus implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return string[]
      */
-    public static function attributeMap() : array
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -193,7 +196,7 @@ class OrderStatus implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return string[]
      */
-    public static function setters() : array
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -203,7 +206,7 @@ class OrderStatus implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return string[]
      */
-    public static function getters() : array
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -211,9 +214,9 @@ class OrderStatus implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets the string presentation of the object.
      */
-    public function __toString() : string
+    public function __toString(): string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );
@@ -222,7 +225,7 @@ class OrderStatus implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * The original name of the model.
      */
-    public function getModelName() : string
+    public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
@@ -232,7 +235,7 @@ class OrderStatus implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return string[]
      */
-    public function getPurchaseOrderStatusAllowableValues() : array
+    public function getPurchaseOrderStatusAllowableValues(): array
     {
         return [
             self::PURCHASE_ORDER_STATUS_OPEN,
@@ -245,7 +248,7 @@ class OrderStatus implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties() : array
+    public function listInvalidProperties(): array
     {
         $invalidProperties = [];
 
@@ -291,7 +294,7 @@ class OrderStatus implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return bool True if all properties are valid
      */
-    public function valid() : bool
+    public function valid(): bool
     {
         return \count($this->listInvalidProperties()) === 0;
     }
@@ -299,7 +302,7 @@ class OrderStatus implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets purchase_order_number.
      */
-    public function getPurchaseOrderNumber() : string
+    public function getPurchaseOrderNumber(): string
     {
         return $this->container['purchase_order_number'];
     }
@@ -309,7 +312,7 @@ class OrderStatus implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param string $purchase_order_number The buyer's purchase order number for this order. Formatting Notes: 8-character alpha-numeric code.
      */
-    public function setPurchaseOrderNumber(string $purchase_order_number) : self
+    public function setPurchaseOrderNumber(string $purchase_order_number): self
     {
         $this->container['purchase_order_number'] = $purchase_order_number;
 
@@ -319,7 +322,7 @@ class OrderStatus implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets purchase_order_status.
      */
-    public function getPurchaseOrderStatus() : string
+    public function getPurchaseOrderStatus(): string
     {
         return $this->container['purchase_order_status'];
     }
@@ -329,7 +332,7 @@ class OrderStatus implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param string $purchase_order_status the status of the buyer's purchase order for this order
      */
-    public function setPurchaseOrderStatus(string $purchase_order_status) : self
+    public function setPurchaseOrderStatus(string $purchase_order_status): self
     {
         $allowedValues = $this->getPurchaseOrderStatusAllowableValues();
 
@@ -352,7 +355,7 @@ class OrderStatus implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return \DateTime|\DateTimeImmutable
      */
-    public function getPurchaseOrderDate() : \DateTimeInterface
+    public function getPurchaseOrderDate(): \DateTimeInterface
     {
         return $this->container['purchase_order_date'];
     }
@@ -362,7 +365,7 @@ class OrderStatus implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param \DateTime $purchase_order_date The date the purchase order was placed. Must be in ISO-8601 date/time format.
      */
-    public function setPurchaseOrderDate(\DateTimeInterface $purchase_order_date) : self
+    public function setPurchaseOrderDate(\DateTimeInterface $purchase_order_date): self
     {
         $this->container['purchase_order_date'] = $purchase_order_date;
 
@@ -374,7 +377,7 @@ class OrderStatus implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return null|\DateTime|\DateTimeImmutable
      */
-    public function getLastUpdatedDate() : ?\DateTimeInterface
+    public function getLastUpdatedDate(): ?\DateTimeInterface
     {
         return $this->container['last_updated_date'];
     }
@@ -384,7 +387,7 @@ class OrderStatus implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param \DateTime|\DateTimeImmutable $last_updated_date The date when the purchase order was last updated. Must be in ISO-8601 date/time format.
      */
-    public function setLastUpdatedDate(\DateTimeInterface $last_updated_date) : self
+    public function setLastUpdatedDate(\DateTimeInterface $last_updated_date): self
     {
         $this->container['last_updated_date'] = $last_updated_date;
 
@@ -394,7 +397,7 @@ class OrderStatus implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets selling_party.
      */
-    public function getSellingParty() : PartyIdentification
+    public function getSellingParty(): PartyIdentification
     {
         return $this->container['selling_party'];
     }
@@ -404,7 +407,7 @@ class OrderStatus implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param \Plenty\AmazonPHP\SellingPartner\Model\VendorOrders\PartyIdentification $selling_party selling_party
      */
-    public function setSellingParty(PartyIdentification $selling_party) : self
+    public function setSellingParty(PartyIdentification $selling_party): self
     {
         $this->container['selling_party'] = $selling_party;
 
@@ -414,7 +417,7 @@ class OrderStatus implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets ship_to_party.
      */
-    public function getShipToParty() : PartyIdentification
+    public function getShipToParty(): PartyIdentification
     {
         return $this->container['ship_to_party'];
     }
@@ -424,7 +427,7 @@ class OrderStatus implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param \Plenty\AmazonPHP\SellingPartner\Model\VendorOrders\PartyIdentification $ship_to_party ship_to_party
      */
-    public function setShipToParty(PartyIdentification $ship_to_party) : self
+    public function setShipToParty(PartyIdentification $ship_to_party): self
     {
         $this->container['ship_to_party'] = $ship_to_party;
 
@@ -436,7 +439,7 @@ class OrderStatus implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @return \Plenty\AmazonPHP\SellingPartner\Model\VendorOrders\OrderItemStatus[]
      */
-    public function getItemStatus() : array
+    public function getItemStatus(): array
     {
         return $this->container['item_status'];
     }
@@ -446,7 +449,7 @@ class OrderStatus implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param \Plenty\AmazonPHP\SellingPartner\Model\VendorOrders\OrderItemStatus[] $item_status detailed description of items order status
      */
-    public function setItemStatus(array $item_status) : self
+    public function setItemStatus(array $item_status): self
     {
         $this->container['item_status'] = $item_status;
 
@@ -458,7 +461,7 @@ class OrderStatus implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param int $offset Offset
      */
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -481,7 +484,7 @@ class OrderStatus implements \ArrayAccess, \JsonSerializable, ModelInterface
      * @param null|int $offset Offset
      * @param mixed $value Value to be set
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         if (null === $offset) {
             $this->container[] = $value;
@@ -495,7 +498,7 @@ class OrderStatus implements \ArrayAccess, \JsonSerializable, ModelInterface
      *
      * @param int $offset Offset
      */
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -508,7 +511,7 @@ class OrderStatus implements \ArrayAccess, \JsonSerializable, ModelInterface
      * @return mixed returns data which can be serialized by json_encode(), which is a value
      *               of any type other than a resource
      */
-    public function jsonSerialize() : string
+    public function jsonSerialize(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }
@@ -516,7 +519,7 @@ class OrderStatus implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets a header-safe presentation of the object.
      */
-    public function toHeaderValue() : string
+    public function toHeaderValue(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }

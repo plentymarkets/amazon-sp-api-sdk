@@ -143,7 +143,7 @@ final class CatalogItemSDK
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            '\Plenty\AmazonPHP\SellingPartner\Model\CatalogItem\Item',
+            \Plenty\AmazonPHP\SellingPartner\Model\CatalogItem\Item::class,
             []
         );
     }
@@ -379,7 +379,7 @@ final class CatalogItemSDK
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            '\Plenty\AmazonPHP\SellingPartner\Model\CatalogItem\ItemSearchResults',
+            \Plenty\AmazonPHP\SellingPartner\Model\CatalogItem\ItemSearchResults::class,
             []
         );
     }

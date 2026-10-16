@@ -1,4 +1,7 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
+
 /**
  * GetInventorySummariesResult.
  *
@@ -40,7 +43,7 @@ use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class GetInventorySummariesResult implements \ArrayAccess, \JsonSerializable, ModelInterface
+class GetInventorySummariesResult implements \ArrayAccess, \JsonSerializable, ModelInterface, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -57,7 +60,7 @@ class GetInventorySummariesResult implements \ArrayAccess, \JsonSerializable, Mo
      * @var string[]
      */
     protected static /** [COMPAT] array */ $openAPITypes = [
-        'granularity' => '\Plenty\AmazonPHP\SellingPartner\Model\FBAInventory\Granularity',
+        'granularity' => \Plenty\AmazonPHP\SellingPartner\Model\FBAInventory\Granularity::class,
         'inventory_summaries' => '\Plenty\AmazonPHP\SellingPartner\Model\FBAInventory\InventorySummary[]',
     ];
 
@@ -117,7 +120,7 @@ class GetInventorySummariesResult implements \ArrayAccess, \JsonSerializable, Mo
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['granularity'] = $data['granularity'] ?? null;
         $this->container['inventory_summaries'] = $data['inventory_summaries'] ?? null;
@@ -128,7 +131,7 @@ class GetInventorySummariesResult implements \ArrayAccess, \JsonSerializable, Mo
      *
      * @return string[]
      */
-    public static function openAPITypes() : array
+    public static function openAPITypes(): array
     {
         return self::$openAPITypes;
     }
@@ -138,7 +141,7 @@ class GetInventorySummariesResult implements \ArrayAccess, \JsonSerializable, Mo
      *
      * @return null[]|string[]
      */
-    public static function openAPIFormats() : array
+    public static function openAPIFormats(): array
     {
         return self::$openAPIFormats;
     }
@@ -149,7 +152,7 @@ class GetInventorySummariesResult implements \ArrayAccess, \JsonSerializable, Mo
      *
      * @return string[]
      */
-    public static function attributeMap() : array
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -159,7 +162,7 @@ class GetInventorySummariesResult implements \ArrayAccess, \JsonSerializable, Mo
      *
      * @return string[]
      */
-    public static function setters() : array
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -169,7 +172,7 @@ class GetInventorySummariesResult implements \ArrayAccess, \JsonSerializable, Mo
      *
      * @return string[]
      */
-    public static function getters() : array
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -177,9 +180,9 @@ class GetInventorySummariesResult implements \ArrayAccess, \JsonSerializable, Mo
     /**
      * Gets the string presentation of the object.
      */
-    public function __toString() : string
+    public function __toString(): string
     {
-        return \json_encode(
+        return (string) \json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );
@@ -188,7 +191,7 @@ class GetInventorySummariesResult implements \ArrayAccess, \JsonSerializable, Mo
     /**
      * The original name of the model.
      */
-    public function getModelName() : string
+    public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
@@ -198,7 +201,7 @@ class GetInventorySummariesResult implements \ArrayAccess, \JsonSerializable, Mo
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties() : array
+    public function listInvalidProperties(): array
     {
         $invalidProperties = [];
 
@@ -219,7 +222,7 @@ class GetInventorySummariesResult implements \ArrayAccess, \JsonSerializable, Mo
      *
      * @return bool True if all properties are valid
      */
-    public function valid() : bool
+    public function valid(): bool
     {
         return \count($this->listInvalidProperties()) === 0;
     }
@@ -227,7 +230,7 @@ class GetInventorySummariesResult implements \ArrayAccess, \JsonSerializable, Mo
     /**
      * Gets granularity.
      */
-    public function getGranularity() : Granularity
+    public function getGranularity(): Granularity
     {
         return $this->container['granularity'];
     }
@@ -237,7 +240,7 @@ class GetInventorySummariesResult implements \ArrayAccess, \JsonSerializable, Mo
      *
      * @param \Plenty\AmazonPHP\SellingPartner\Model\FBAInventory\Granularity $granularity granularity
      */
-    public function setGranularity(Granularity $granularity) : self
+    public function setGranularity(Granularity $granularity): self
     {
         $this->container['granularity'] = $granularity;
 
@@ -249,7 +252,7 @@ class GetInventorySummariesResult implements \ArrayAccess, \JsonSerializable, Mo
      *
      * @return \Plenty\AmazonPHP\SellingPartner\Model\FBAInventory\InventorySummary[]
      */
-    public function getInventorySummaries() : array
+    public function getInventorySummaries(): array
     {
         return $this->container['inventory_summaries'];
     }
@@ -259,7 +262,7 @@ class GetInventorySummariesResult implements \ArrayAccess, \JsonSerializable, Mo
      *
      * @param \Plenty\AmazonPHP\SellingPartner\Model\FBAInventory\InventorySummary[] $inventory_summaries a list of inventory summaries
      */
-    public function setInventorySummaries(array $inventory_summaries) : self
+    public function setInventorySummaries(array $inventory_summaries): self
     {
         $this->container['inventory_summaries'] = $inventory_summaries;
 
@@ -271,7 +274,7 @@ class GetInventorySummariesResult implements \ArrayAccess, \JsonSerializable, Mo
      *
      * @param int $offset Offset
      */
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -294,7 +297,7 @@ class GetInventorySummariesResult implements \ArrayAccess, \JsonSerializable, Mo
      * @param null|int $offset Offset
      * @param mixed $value Value to be set
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         if (null === $offset) {
             $this->container[] = $value;
@@ -308,7 +311,7 @@ class GetInventorySummariesResult implements \ArrayAccess, \JsonSerializable, Mo
      *
      * @param int $offset Offset
      */
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -321,7 +324,7 @@ class GetInventorySummariesResult implements \ArrayAccess, \JsonSerializable, Mo
      * @return mixed returns data which can be serialized by json_encode(), which is a value
      *               of any type other than a resource
      */
-    public function jsonSerialize() : string
+    public function jsonSerialize(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }
@@ -329,7 +332,7 @@ class GetInventorySummariesResult implements \ArrayAccess, \JsonSerializable, Mo
     /**
      * Gets a header-safe presentation of the object.
      */
-    public function toHeaderValue() : string
+    public function toHeaderValue(): string
     {
         return \json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_THROW_ON_ERROR);
     }
