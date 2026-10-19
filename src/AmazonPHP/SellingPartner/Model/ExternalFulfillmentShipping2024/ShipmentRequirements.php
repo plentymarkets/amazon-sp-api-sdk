@@ -179,7 +179,7 @@ class ShipmentRequirements implements ModelInterface, ArrayAccess, \JsonSerializ
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['p_slip'] = $data['p_slip'] ?? null;
         $this->container['invoice'] = $data['invoice'] ?? null;
@@ -281,7 +281,7 @@ class ShipmentRequirements implements ModelInterface, ArrayAccess, \JsonSerializ
      *
      * @return mixed|null
      */
-    public function offsetGet($offset)
+    public function offsetGet($offset): mixed
     {
         return $this->container[$offset] ?? null;
     }

@@ -211,7 +211,7 @@ class InvoiceRequirement implements ModelInterface, ArrayAccess, \JsonSerializab
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['requirement'] = $data['requirement'] ?? null;
         $this->container['status'] = $data['status'] ?? null;
@@ -345,7 +345,7 @@ class InvoiceRequirement implements ModelInterface, ArrayAccess, \JsonSerializab
      *
      * @return mixed|null
      */
-    public function offsetGet($offset)
+    public function offsetGet($offset): mixed
     {
         return $this->container[$offset] ?? null;
     }

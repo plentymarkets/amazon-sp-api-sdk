@@ -189,7 +189,7 @@ class ComplianceAttributes implements ModelInterface, ArrayAccess, \JsonSerializ
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['hazmat_labels_requirement'] = $data['hazmat_labels_requirement'] ?? null;
         $this->container['serial_number_requirement'] = $data['serial_number_requirement'] ?? null;
@@ -347,7 +347,7 @@ class ComplianceAttributes implements ModelInterface, ArrayAccess, \JsonSerializ
      *
      * @return mixed|null
      */
-    public function offsetGet($offset)
+    public function offsetGet($offset): mixed
     {
         return $this->container[$offset] ?? null;
     }

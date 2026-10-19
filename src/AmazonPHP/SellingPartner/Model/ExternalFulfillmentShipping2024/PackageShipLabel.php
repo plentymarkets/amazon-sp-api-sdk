@@ -194,7 +194,7 @@ class PackageShipLabel implements ModelInterface, ArrayAccess, \JsonSerializable
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['package_id'] = $data['package_id'] ?? null;
         $this->container['ship_label_metadata'] = $data['ship_label_metadata'] ?? null;
@@ -365,7 +365,7 @@ class PackageShipLabel implements ModelInterface, ArrayAccess, \JsonSerializable
      *
      * @return mixed|null
      */
-    public function offsetGet($offset)
+    public function offsetGet($offset): mixed
     {
         return $this->container[$offset] ?? null;
     }

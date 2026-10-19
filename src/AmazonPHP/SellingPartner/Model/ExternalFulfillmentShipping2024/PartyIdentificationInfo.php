@@ -208,7 +208,7 @@ class PartyIdentificationInfo implements ModelInterface, ArrayAccess, \JsonSeria
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['party_id'] = $data['party_id'] ?? null;
         $this->container['party_type'] = $data['party_type'] ?? null;
@@ -379,7 +379,7 @@ class PartyIdentificationInfo implements ModelInterface, ArrayAccess, \JsonSeria
      *
      * @return mixed|null
      */
-    public function offsetGet($offset)
+    public function offsetGet($offset): mixed
     {
         return $this->container[$offset] ?? null;
     }

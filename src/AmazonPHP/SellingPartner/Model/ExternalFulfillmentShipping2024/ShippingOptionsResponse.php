@@ -179,7 +179,7 @@ class ShippingOptionsResponse implements ModelInterface, ArrayAccess, \JsonSeria
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['shipping_options'] = $data['shipping_options'] ?? null;
         $this->container['recommended_shipping_option'] = $data['recommended_shipping_option'] ?? null;
@@ -284,7 +284,7 @@ class ShippingOptionsResponse implements ModelInterface, ArrayAccess, \JsonSeria
      *
      * @return mixed|null
      */
-    public function offsetGet($offset)
+    public function offsetGet($offset): mixed
     {
         return $this->container[$offset] ?? null;
     }

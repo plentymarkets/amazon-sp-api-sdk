@@ -179,7 +179,7 @@ class ShipLabelsInput implements ModelInterface, ArrayAccess, \JsonSerializable
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['package_ids'] = $data['package_ids'] ?? null;
         $this->container['courier_supported_attributes'] = $data['courier_supported_attributes'] ?? null;
@@ -286,7 +286,7 @@ class ShipLabelsInput implements ModelInterface, ArrayAccess, \JsonSerializable
      *
      * @return mixed|null
      */
-    public function offsetGet($offset)
+    public function offsetGet($offset): mixed
     {
         return $this->container[$offset] ?? null;
     }

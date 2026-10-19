@@ -209,7 +209,7 @@ class ShippingInfo implements ModelInterface, ArrayAccess, \JsonSerializable
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['recommended_ship_method'] = $data['recommended_ship_method'] ?? null;
         $this->container['expected_shipping_date_time_in_utc'] = $data['expected_shipping_date_time_in_utc'] ?? null;
@@ -411,7 +411,7 @@ class ShippingInfo implements ModelInterface, ArrayAccess, \JsonSerializable
      *
      * @return mixed|null
      */
-    public function offsetGet($offset)
+    public function offsetGet($offset): mixed
     {
         return $this->container[$offset] ?? null;
     }

@@ -218,7 +218,7 @@ class ShippingOptions implements ModelInterface, ArrayAccess, \JsonSerializable
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['shipping_option_id'] = $data['shipping_option_id'] ?? null;
         $this->container['ship_by'] = $data['ship_by'] ?? null;
@@ -439,7 +439,7 @@ class ShippingOptions implements ModelInterface, ArrayAccess, \JsonSerializable
      *
      * @return mixed|null
      */
-    public function offsetGet($offset)
+    public function offsetGet($offset): mixed
     {
         return $this->container[$offset] ?? null;
     }

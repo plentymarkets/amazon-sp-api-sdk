@@ -179,7 +179,7 @@ class InvoiceInfo implements ModelInterface, ArrayAccess, \JsonSerializable
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['invoice_id'] = $data['invoice_id'] ?? null;
         $this->container['creation_date_time'] = $data['creation_date_time'] ?? null;
@@ -281,7 +281,7 @@ class InvoiceInfo implements ModelInterface, ArrayAccess, \JsonSerializable
      *
      * @return mixed|null
      */
-    public function offsetGet($offset)
+    public function offsetGet($offset): mixed
     {
         return $this->container[$offset] ?? null;
     }

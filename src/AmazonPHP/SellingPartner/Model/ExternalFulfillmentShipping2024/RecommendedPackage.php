@@ -184,7 +184,7 @@ class RecommendedPackage implements ModelInterface, ArrayAccess, \JsonSerializab
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['dimensions'] = $data['dimensions'] ?? null;
         $this->container['weight'] = $data['weight'] ?? null;
@@ -322,7 +322,7 @@ class RecommendedPackage implements ModelInterface, ArrayAccess, \JsonSerializab
      *
      * @return mixed|null
      */
-    public function offsetGet($offset)
+    public function offsetGet($offset): mixed
     {
         return $this->container[$offset] ?? null;
     }
