@@ -1,4 +1,7 @@
 <?php
+
+declare(strict_types=1);
+
 /**
  * TimeWindow
  *
@@ -80,7 +83,7 @@ class TimeWindow implements ModelInterface, ArrayAccess, \JsonSerializable, \Str
      *
      * @return array
      */
-    public static function openAPITypes() : array
+    public static function openAPITypes(): array
     {
         return self::$openAPITypes;
     }
@@ -90,7 +93,7 @@ class TimeWindow implements ModelInterface, ArrayAccess, \JsonSerializable, \Str
      *
      * @return array
      */
-    public static function openAPIFormats() : array
+    public static function openAPIFormats(): array
     {
         return self::$openAPIFormats;
     }
@@ -135,7 +138,7 @@ class TimeWindow implements ModelInterface, ArrayAccess, \JsonSerializable, \Str
      *
      * @return array
      */
-    public static function attributeMap() : array
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -145,7 +148,7 @@ class TimeWindow implements ModelInterface, ArrayAccess, \JsonSerializable, \Str
      *
      * @return array
      */
-    public static function setters() : array
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -155,7 +158,7 @@ class TimeWindow implements ModelInterface, ArrayAccess, \JsonSerializable, \Str
      *
      * @return array
      */
-    public static function getters() : array
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -165,7 +168,7 @@ class TimeWindow implements ModelInterface, ArrayAccess, \JsonSerializable, \Str
      *
      * @return string
      */
-    public function getModelName() : string
+    public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
@@ -178,7 +181,7 @@ class TimeWindow implements ModelInterface, ArrayAccess, \JsonSerializable, \Str
      *
      * @return string[]
      */
-    public function getHandoverMethodAllowableValues() : array
+    public function getHandoverMethodAllowableValues(): array
     {
         return [
             self::HANDOVER_METHOD_PICKUP,
@@ -211,7 +214,7 @@ class TimeWindow implements ModelInterface, ArrayAccess, \JsonSerializable, \Str
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties() : array
+    public function listInvalidProperties(): array
     {
         $invalidProperties = [];
 
@@ -239,7 +242,7 @@ class TimeWindow implements ModelInterface, ArrayAccess, \JsonSerializable, \Str
      *
      * @return bool True if all properties are valid
      */
-    public function valid() : bool
+    public function valid(): bool
     {
         return count($this->listInvalidProperties()) === 0;
     }
@@ -262,7 +265,7 @@ class TimeWindow implements ModelInterface, ArrayAccess, \JsonSerializable, \Str
      *
      * @return self
      */
-    public function setStartTime($start_time) : self
+    public function setStartTime($start_time): self
     {
         $this->container['start_time'] = $start_time;
 
@@ -286,7 +289,7 @@ class TimeWindow implements ModelInterface, ArrayAccess, \JsonSerializable, \Str
      *
      * @return self
      */
-    public function setEndTime($end_time) : self
+    public function setEndTime($end_time): self
     {
         $this->container['end_time'] = $end_time;
 
@@ -310,7 +313,7 @@ class TimeWindow implements ModelInterface, ArrayAccess, \JsonSerializable, \Str
      *
      * @return self
      */
-    public function setHandoverMethod($handover_method) : self
+    public function setHandoverMethod($handover_method): self
     {
         $allowedValues = $this->getHandoverMethodAllowableValues();
         if (!is_null($handover_method) && !in_array($handover_method, $allowedValues, true)) {
@@ -333,7 +336,7 @@ class TimeWindow implements ModelInterface, ArrayAccess, \JsonSerializable, \Str
      *
      * @return boolean
      */
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -358,7 +361,7 @@ class TimeWindow implements ModelInterface, ArrayAccess, \JsonSerializable, \Str
      *
      * @return void
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         if (is_null($offset)) {
             $this->container[] = $value;
@@ -374,7 +377,7 @@ class TimeWindow implements ModelInterface, ArrayAccess, \JsonSerializable, \Str
      *
      * @return void
      */
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -386,7 +389,7 @@ class TimeWindow implements ModelInterface, ArrayAccess, \JsonSerializable, \Str
      * @return mixed Returns data which can be serialized by json_encode(), which is a value
      * of any type other than a resource.
      */
-    public function jsonSerialize() : string
+    public function jsonSerialize(): string
     {
        return \json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }
@@ -396,7 +399,7 @@ class TimeWindow implements ModelInterface, ArrayAccess, \JsonSerializable, \Str
      *
      * @return string
      */
-    public function __toString() : string
+    public function __toString(): string
     {
         return (string) json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
@@ -409,7 +412,7 @@ class TimeWindow implements ModelInterface, ArrayAccess, \JsonSerializable, \Str
      *
      * @return string
      */
-    public function toHeaderValue() : string
+    public function toHeaderValue(): string
     {
         return json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }

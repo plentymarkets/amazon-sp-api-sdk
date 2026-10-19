@@ -155,7 +155,7 @@ final class ExternalFulfillmentShippingSDK2024
      * @throws \Plenty\AmazonPHP\SellingPartner\Exception\InvalidArgumentException
      * @return RequestInterface
      */
-    public function getShipmentRequest(AccessToken $accessToken, string $region, $shipment_id) : RequestInterface
+    public function getShipmentRequest(AccessToken $accessToken, string $region, $shipment_id): RequestInterface
     {
         // verify the required parameter 'shipment_id' is set
         if ($shipment_id === null || (is_array($shipment_id) && count($shipment_id) === 0)) {
@@ -364,7 +364,7 @@ final class ExternalFulfillmentShippingSDK2024
      * @throws \Plenty\AmazonPHP\SellingPartner\Exception\InvalidArgumentException
      * @return RequestInterface
      */
-    public function getShipmentsRequest(AccessToken $accessToken, string $region, $status, $location_id = null, $marketplace_id = null, $channel_name = null, $last_updated_after = null, $last_updated_before = null, $max_results = null, $pagination_token = null) : RequestInterface
+    public function getShipmentsRequest(AccessToken $accessToken, string $region, $status, $location_id = null, $marketplace_id = null, $channel_name = null, $last_updated_after = null, $last_updated_before = null, $max_results = null, $pagination_token = null): RequestInterface
     {
         // verify the required parameter 'status' is set
         if ($status === null || (is_array($status) && count($status) === 0)) {

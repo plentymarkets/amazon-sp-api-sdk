@@ -1,4 +1,7 @@
 <?php
+
+declare(strict_types=1);
+
 /**
  * Tax
  *
@@ -80,7 +83,7 @@ class Tax implements ModelInterface, ArrayAccess, \JsonSerializable, \Stringable
      *
      * @return array
      */
-    public static function openAPITypes() : array
+    public static function openAPITypes(): array
     {
         return self::$openAPITypes;
     }
@@ -90,7 +93,7 @@ class Tax implements ModelInterface, ArrayAccess, \JsonSerializable, \Stringable
      *
      * @return array
      */
-    public static function openAPIFormats() : array
+    public static function openAPIFormats(): array
     {
         return self::$openAPIFormats;
     }
@@ -135,7 +138,7 @@ class Tax implements ModelInterface, ArrayAccess, \JsonSerializable, \Stringable
      *
      * @return array
      */
-    public static function attributeMap() : array
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -145,7 +148,7 @@ class Tax implements ModelInterface, ArrayAccess, \JsonSerializable, \Stringable
      *
      * @return array
      */
-    public static function setters() : array
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -155,7 +158,7 @@ class Tax implements ModelInterface, ArrayAccess, \JsonSerializable, \Stringable
      *
      * @return array
      */
-    public static function getters() : array
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -165,7 +168,7 @@ class Tax implements ModelInterface, ArrayAccess, \JsonSerializable, \Stringable
      *
      * @return string
      */
-    public function getModelName() : string
+    public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
@@ -185,7 +188,7 @@ class Tax implements ModelInterface, ArrayAccess, \JsonSerializable, \Stringable
      *
      * @return string[]
      */
-    public function getTypeAllowableValues() : array
+    public function getTypeAllowableValues(): array
     {
         return [
             self::TYPE_VAT,
@@ -225,7 +228,7 @@ class Tax implements ModelInterface, ArrayAccess, \JsonSerializable, \Stringable
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties() : array
+    public function listInvalidProperties(): array
     {
         $invalidProperties = [];
 
@@ -250,7 +253,7 @@ class Tax implements ModelInterface, ArrayAccess, \JsonSerializable, \Stringable
      *
      * @return bool True if all properties are valid
      */
-    public function valid() : bool
+    public function valid(): bool
     {
         return count($this->listInvalidProperties()) === 0;
     }
@@ -273,7 +276,7 @@ class Tax implements ModelInterface, ArrayAccess, \JsonSerializable, \Stringable
      *
      * @return self
      */
-    public function setType($type) : self
+    public function setType($type): self
     {
         $allowedValues = $this->getTypeAllowableValues();
         if (!is_null($type) && !in_array($type, $allowedValues, true)) {
@@ -307,7 +310,7 @@ class Tax implements ModelInterface, ArrayAccess, \JsonSerializable, \Stringable
      *
      * @return self
      */
-    public function setRate($rate) : self
+    public function setRate($rate): self
     {
         $this->container['rate'] = $rate;
 
@@ -331,7 +334,7 @@ class Tax implements ModelInterface, ArrayAccess, \JsonSerializable, \Stringable
      *
      * @return self
      */
-    public function setCharge($charge) : self
+    public function setCharge($charge): self
     {
         $this->container['charge'] = $charge;
 
@@ -344,7 +347,7 @@ class Tax implements ModelInterface, ArrayAccess, \JsonSerializable, \Stringable
      *
      * @return boolean
      */
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -369,7 +372,7 @@ class Tax implements ModelInterface, ArrayAccess, \JsonSerializable, \Stringable
      *
      * @return void
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         if (is_null($offset)) {
             $this->container[] = $value;
@@ -385,7 +388,7 @@ class Tax implements ModelInterface, ArrayAccess, \JsonSerializable, \Stringable
      *
      * @return void
      */
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -397,7 +400,7 @@ class Tax implements ModelInterface, ArrayAccess, \JsonSerializable, \Stringable
      * @return mixed Returns data which can be serialized by json_encode(), which is a value
      * of any type other than a resource.
      */
-    public function jsonSerialize() : string
+    public function jsonSerialize(): string
     {
        return \json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }
@@ -407,7 +410,7 @@ class Tax implements ModelInterface, ArrayAccess, \JsonSerializable, \Stringable
      *
      * @return string
      */
-    public function __toString() : string
+    public function __toString(): string
     {
         return (string) json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
@@ -420,7 +423,7 @@ class Tax implements ModelInterface, ArrayAccess, \JsonSerializable, \Stringable
      *
      * @return string
      */
-    public function toHeaderValue() : string
+    public function toHeaderValue(): string
     {
         return json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }

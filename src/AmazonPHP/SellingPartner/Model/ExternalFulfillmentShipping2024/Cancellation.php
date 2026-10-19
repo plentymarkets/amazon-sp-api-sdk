@@ -1,4 +1,7 @@
 <?php
+
+declare(strict_types=1);
+
 /**
  * Cancellation
  *
@@ -82,7 +85,7 @@ class Cancellation implements ModelInterface, ArrayAccess, \JsonSerializable, \S
      *
      * @return array
      */
-    public static function openAPITypes() : array
+    public static function openAPITypes(): array
     {
         return self::$openAPITypes;
     }
@@ -92,7 +95,7 @@ class Cancellation implements ModelInterface, ArrayAccess, \JsonSerializable, \S
      *
      * @return array
      */
-    public static function openAPIFormats() : array
+    public static function openAPIFormats(): array
     {
         return self::$openAPIFormats;
     }
@@ -140,7 +143,7 @@ class Cancellation implements ModelInterface, ArrayAccess, \JsonSerializable, \S
      *
      * @return array
      */
-    public static function attributeMap() : array
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -150,7 +153,7 @@ class Cancellation implements ModelInterface, ArrayAccess, \JsonSerializable, \S
      *
      * @return array
      */
-    public static function setters() : array
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -160,7 +163,7 @@ class Cancellation implements ModelInterface, ArrayAccess, \JsonSerializable, \S
      *
      * @return array
      */
-    public static function getters() : array
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -170,7 +173,7 @@ class Cancellation implements ModelInterface, ArrayAccess, \JsonSerializable, \S
      *
      * @return string
      */
-    public function getModelName() : string
+    public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
@@ -184,7 +187,7 @@ class Cancellation implements ModelInterface, ArrayAccess, \JsonSerializable, \S
      *
      * @return string[]
      */
-    public function getCancellationTypeAllowableValues() : array
+    public function getCancellationTypeAllowableValues(): array
     {
         return [
             self::CANCELLATION_TYPE_SELLER_REJECTED,
@@ -219,7 +222,7 @@ class Cancellation implements ModelInterface, ArrayAccess, \JsonSerializable, \S
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties() : array
+    public function listInvalidProperties(): array
     {
         $invalidProperties = [];
 
@@ -254,7 +257,7 @@ class Cancellation implements ModelInterface, ArrayAccess, \JsonSerializable, \S
      *
      * @return bool True if all properties are valid
      */
-    public function valid() : bool
+    public function valid(): bool
     {
         return count($this->listInvalidProperties()) === 0;
     }
@@ -277,7 +280,7 @@ class Cancellation implements ModelInterface, ArrayAccess, \JsonSerializable, \S
      *
      * @return self
      */
-    public function setCancelledQuantity($cancelled_quantity) : self
+    public function setCancelledQuantity($cancelled_quantity): self
     {
 
         if (($cancelled_quantity < 1)) {
@@ -306,7 +309,7 @@ class Cancellation implements ModelInterface, ArrayAccess, \JsonSerializable, \S
      *
      * @return self
      */
-    public function setCancelledTimestamp($cancelled_timestamp) : self
+    public function setCancelledTimestamp($cancelled_timestamp): self
     {
         $this->container['cancelled_timestamp'] = $cancelled_timestamp;
 
@@ -330,7 +333,7 @@ class Cancellation implements ModelInterface, ArrayAccess, \JsonSerializable, \S
      *
      * @return self
      */
-    public function setCancellationType($cancellation_type) : self
+    public function setCancellationType($cancellation_type): self
     {
         $allowedValues = $this->getCancellationTypeAllowableValues();
         if (!in_array($cancellation_type, $allowedValues, true)) {
@@ -364,7 +367,7 @@ class Cancellation implements ModelInterface, ArrayAccess, \JsonSerializable, \S
      *
      * @return self
      */
-    public function setCancellationReason($cancellation_reason) : self
+    public function setCancellationReason($cancellation_reason): self
     {
         $this->container['cancellation_reason'] = $cancellation_reason;
 
@@ -377,7 +380,7 @@ class Cancellation implements ModelInterface, ArrayAccess, \JsonSerializable, \S
      *
      * @return boolean
      */
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -402,7 +405,7 @@ class Cancellation implements ModelInterface, ArrayAccess, \JsonSerializable, \S
      *
      * @return void
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         if (is_null($offset)) {
             $this->container[] = $value;
@@ -418,7 +421,7 @@ class Cancellation implements ModelInterface, ArrayAccess, \JsonSerializable, \S
      *
      * @return void
      */
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -430,7 +433,7 @@ class Cancellation implements ModelInterface, ArrayAccess, \JsonSerializable, \S
      * @return mixed Returns data which can be serialized by json_encode(), which is a value
      * of any type other than a resource.
      */
-    public function jsonSerialize() : string
+    public function jsonSerialize(): string
     {
        return \json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }
@@ -440,7 +443,7 @@ class Cancellation implements ModelInterface, ArrayAccess, \JsonSerializable, \S
      *
      * @return string
      */
-    public function __toString() : string
+    public function __toString(): string
     {
         return (string) json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
@@ -453,7 +456,7 @@ class Cancellation implements ModelInterface, ArrayAccess, \JsonSerializable, \S
      *
      * @return string
      */
-    public function toHeaderValue() : string
+    public function toHeaderValue(): string
     {
         return json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }

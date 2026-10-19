@@ -1,4 +1,7 @@
 <?php
+
+declare(strict_types=1);
+
 /**
  * ComplianceAttributes
  *
@@ -82,7 +85,7 @@ class ComplianceAttributes implements ModelInterface, ArrayAccess, \JsonSerializ
      *
      * @return array
      */
-    public static function openAPITypes() : array
+    public static function openAPITypes(): array
     {
         return self::$openAPITypes;
     }
@@ -92,7 +95,7 @@ class ComplianceAttributes implements ModelInterface, ArrayAccess, \JsonSerializ
      *
      * @return array
      */
-    public static function openAPIFormats() : array
+    public static function openAPIFormats(): array
     {
         return self::$openAPIFormats;
     }
@@ -140,7 +143,7 @@ class ComplianceAttributes implements ModelInterface, ArrayAccess, \JsonSerializ
      *
      * @return array
      */
-    public static function attributeMap() : array
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -150,7 +153,7 @@ class ComplianceAttributes implements ModelInterface, ArrayAccess, \JsonSerializ
      *
      * @return array
      */
-    public static function setters() : array
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -160,7 +163,7 @@ class ComplianceAttributes implements ModelInterface, ArrayAccess, \JsonSerializ
      *
      * @return array
      */
-    public static function getters() : array
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -170,7 +173,7 @@ class ComplianceAttributes implements ModelInterface, ArrayAccess, \JsonSerializ
      *
      * @return string
      */
-    public function getModelName() : string
+    public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
@@ -202,7 +205,7 @@ class ComplianceAttributes implements ModelInterface, ArrayAccess, \JsonSerializ
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties() : array
+    public function listInvalidProperties(): array
     {
         $invalidProperties = [];
 
@@ -227,7 +230,7 @@ class ComplianceAttributes implements ModelInterface, ArrayAccess, \JsonSerializ
      *
      * @return bool True if all properties are valid
      */
-    public function valid() : bool
+    public function valid(): bool
     {
         return count($this->listInvalidProperties()) === 0;
     }
@@ -250,7 +253,7 @@ class ComplianceAttributes implements ModelInterface, ArrayAccess, \JsonSerializ
      *
      * @return self
      */
-    public function setHazmatLabelsRequirement($hazmat_labels_requirement) : self
+    public function setHazmatLabelsRequirement($hazmat_labels_requirement): self
     {
         $this->container['hazmat_labels_requirement'] = $hazmat_labels_requirement;
 
@@ -274,7 +277,7 @@ class ComplianceAttributes implements ModelInterface, ArrayAccess, \JsonSerializ
      *
      * @return self
      */
-    public function setSerialNumberRequirement($serial_number_requirement) : self
+    public function setSerialNumberRequirement($serial_number_requirement): self
     {
         $this->container['serial_number_requirement'] = $serial_number_requirement;
 
@@ -298,7 +301,7 @@ class ComplianceAttributes implements ModelInterface, ArrayAccess, \JsonSerializ
      *
      * @return self
      */
-    public function setCountryOfOriginRequirement($country_of_origin_requirement) : self
+    public function setCountryOfOriginRequirement($country_of_origin_requirement): self
     {
         $this->container['country_of_origin_requirement'] = $country_of_origin_requirement;
 
@@ -322,7 +325,7 @@ class ComplianceAttributes implements ModelInterface, ArrayAccess, \JsonSerializ
      *
      * @return self
      */
-    public function setItemValueRequirement($item_value_requirement) : self
+    public function setItemValueRequirement($item_value_requirement): self
     {
         $this->container['item_value_requirement'] = $item_value_requirement;
 
@@ -335,7 +338,7 @@ class ComplianceAttributes implements ModelInterface, ArrayAccess, \JsonSerializ
      *
      * @return boolean
      */
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -360,7 +363,7 @@ class ComplianceAttributes implements ModelInterface, ArrayAccess, \JsonSerializ
      *
      * @return void
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         if (is_null($offset)) {
             $this->container[] = $value;
@@ -376,7 +379,7 @@ class ComplianceAttributes implements ModelInterface, ArrayAccess, \JsonSerializ
      *
      * @return void
      */
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -388,7 +391,7 @@ class ComplianceAttributes implements ModelInterface, ArrayAccess, \JsonSerializ
      * @return mixed Returns data which can be serialized by json_encode(), which is a value
      * of any type other than a resource.
      */
-    public function jsonSerialize() : string
+    public function jsonSerialize(): string
     {
        return \json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }
@@ -398,7 +401,7 @@ class ComplianceAttributes implements ModelInterface, ArrayAccess, \JsonSerializ
      *
      * @return string
      */
-    public function __toString() : string
+    public function __toString(): string
     {
         return (string) json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
@@ -411,7 +414,7 @@ class ComplianceAttributes implements ModelInterface, ArrayAccess, \JsonSerializ
      *
      * @return string
      */
-    public function toHeaderValue() : string
+    public function toHeaderValue(): string
     {
         return json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }

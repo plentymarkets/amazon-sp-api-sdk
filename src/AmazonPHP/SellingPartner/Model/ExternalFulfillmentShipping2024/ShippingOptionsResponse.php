@@ -1,4 +1,7 @@
 <?php
+
+declare(strict_types=1);
+
 /**
  * ShippingOptionsResponse
  *
@@ -78,7 +81,7 @@ class ShippingOptionsResponse implements ModelInterface, ArrayAccess, \JsonSeria
      *
      * @return array
      */
-    public static function openAPITypes() : array
+    public static function openAPITypes(): array
     {
         return self::$openAPITypes;
     }
@@ -88,7 +91,7 @@ class ShippingOptionsResponse implements ModelInterface, ArrayAccess, \JsonSeria
      *
      * @return array
      */
-    public static function openAPIFormats() : array
+    public static function openAPIFormats(): array
     {
         return self::$openAPIFormats;
     }
@@ -130,7 +133,7 @@ class ShippingOptionsResponse implements ModelInterface, ArrayAccess, \JsonSeria
      *
      * @return array
      */
-    public static function attributeMap() : array
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -140,7 +143,7 @@ class ShippingOptionsResponse implements ModelInterface, ArrayAccess, \JsonSeria
      *
      * @return array
      */
-    public static function setters() : array
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -150,7 +153,7 @@ class ShippingOptionsResponse implements ModelInterface, ArrayAccess, \JsonSeria
      *
      * @return array
      */
-    public static function getters() : array
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -160,7 +163,7 @@ class ShippingOptionsResponse implements ModelInterface, ArrayAccess, \JsonSeria
      *
      * @return string
      */
-    public function getModelName() : string
+    public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
@@ -190,7 +193,7 @@ class ShippingOptionsResponse implements ModelInterface, ArrayAccess, \JsonSeria
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties() : array
+    public function listInvalidProperties(): array
     {
         $invalidProperties = [];
 
@@ -207,7 +210,7 @@ class ShippingOptionsResponse implements ModelInterface, ArrayAccess, \JsonSeria
      *
      * @return bool True if all properties are valid
      */
-    public function valid() : bool
+    public function valid(): bool
     {
         return count($this->listInvalidProperties()) === 0;
     }
@@ -230,7 +233,7 @@ class ShippingOptionsResponse implements ModelInterface, ArrayAccess, \JsonSeria
      *
      * @return self
      */
-    public function setShippingOptions($shipping_options) : self
+    public function setShippingOptions($shipping_options): self
     {
 
 
@@ -259,7 +262,7 @@ class ShippingOptionsResponse implements ModelInterface, ArrayAccess, \JsonSeria
      *
      * @return self
      */
-    public function setRecommendedShippingOption($recommended_shipping_option) : self
+    public function setRecommendedShippingOption($recommended_shipping_option): self
     {
         $this->container['recommended_shipping_option'] = $recommended_shipping_option;
 
@@ -272,7 +275,7 @@ class ShippingOptionsResponse implements ModelInterface, ArrayAccess, \JsonSeria
      *
      * @return boolean
      */
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -297,7 +300,7 @@ class ShippingOptionsResponse implements ModelInterface, ArrayAccess, \JsonSeria
      *
      * @return void
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         if (is_null($offset)) {
             $this->container[] = $value;
@@ -313,7 +316,7 @@ class ShippingOptionsResponse implements ModelInterface, ArrayAccess, \JsonSeria
      *
      * @return void
      */
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -325,7 +328,7 @@ class ShippingOptionsResponse implements ModelInterface, ArrayAccess, \JsonSeria
      * @return mixed Returns data which can be serialized by json_encode(), which is a value
      * of any type other than a resource.
      */
-    public function jsonSerialize() : string
+    public function jsonSerialize(): string
     {
        return \json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }
@@ -335,7 +338,7 @@ class ShippingOptionsResponse implements ModelInterface, ArrayAccess, \JsonSeria
      *
      * @return string
      */
-    public function __toString() : string
+    public function __toString(): string
     {
         return (string) json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
@@ -348,7 +351,7 @@ class ShippingOptionsResponse implements ModelInterface, ArrayAccess, \JsonSeria
      *
      * @return string
      */
-    public function toHeaderValue() : string
+    public function toHeaderValue(): string
     {
         return json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }

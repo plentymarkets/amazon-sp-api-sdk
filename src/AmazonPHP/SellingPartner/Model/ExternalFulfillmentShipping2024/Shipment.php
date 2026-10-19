@@ -1,4 +1,7 @@
 <?php
+
+declare(strict_types=1);
+
 /**
  * Shipment
  *
@@ -108,7 +111,7 @@ class Shipment implements ModelInterface, ArrayAccess, \JsonSerializable, \Strin
      *
      * @return array
      */
-    public static function openAPITypes() : array
+    public static function openAPITypes(): array
     {
         return self::$openAPITypes;
     }
@@ -118,7 +121,7 @@ class Shipment implements ModelInterface, ArrayAccess, \JsonSerializable, \Strin
      *
      * @return array
      */
-    public static function openAPIFormats() : array
+    public static function openAPIFormats(): array
     {
         return self::$openAPIFormats;
     }
@@ -205,7 +208,7 @@ class Shipment implements ModelInterface, ArrayAccess, \JsonSerializable, \Strin
      *
      * @return array
      */
-    public static function attributeMap() : array
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -215,7 +218,7 @@ class Shipment implements ModelInterface, ArrayAccess, \JsonSerializable, \Strin
      *
      * @return array
      */
-    public static function setters() : array
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -225,7 +228,7 @@ class Shipment implements ModelInterface, ArrayAccess, \JsonSerializable, \Strin
      *
      * @return array
      */
-    public static function getters() : array
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -235,7 +238,7 @@ class Shipment implements ModelInterface, ArrayAccess, \JsonSerializable, \Strin
      *
      * @return string
      */
-    public function getModelName() : string
+    public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
@@ -270,7 +273,7 @@ class Shipment implements ModelInterface, ArrayAccess, \JsonSerializable, \Strin
      *
      * @return string[]
      */
-    public function getStatusAllowableValues() : array
+    public function getStatusAllowableValues(): array
     {
         return [
             self::STATUS_CREATED,
@@ -291,7 +294,7 @@ class Shipment implements ModelInterface, ArrayAccess, \JsonSerializable, \Strin
      *
      * @return string[]
      */
-    public function getSubStatusAllowableValues() : array
+    public function getSubStatusAllowableValues(): array
     {
         return [
             self::SUB_STATUS_PENDING_SCHEDULE,
@@ -350,7 +353,7 @@ class Shipment implements ModelInterface, ArrayAccess, \JsonSerializable, \Strin
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties() : array
+    public function listInvalidProperties(): array
     {
         $invalidProperties = [];
 
@@ -426,7 +429,7 @@ class Shipment implements ModelInterface, ArrayAccess, \JsonSerializable, \Strin
      *
      * @return bool True if all properties are valid
      */
-    public function valid() : bool
+    public function valid(): bool
     {
         return count($this->listInvalidProperties()) === 0;
     }
@@ -449,7 +452,7 @@ class Shipment implements ModelInterface, ArrayAccess, \JsonSerializable, \Strin
      *
      * @return self
      */
-    public function setId($id) : self
+    public function setId($id): self
     {
         $this->container['id'] = $id;
 
@@ -473,7 +476,7 @@ class Shipment implements ModelInterface, ArrayAccess, \JsonSerializable, \Strin
      *
      * @return self
      */
-    public function setLocationId($location_id) : self
+    public function setLocationId($location_id): self
     {
         $this->container['location_id'] = $location_id;
 
@@ -497,7 +500,7 @@ class Shipment implements ModelInterface, ArrayAccess, \JsonSerializable, \Strin
      *
      * @return self
      */
-    public function setMarketplaceAttributes($marketplace_attributes) : self
+    public function setMarketplaceAttributes($marketplace_attributes): self
     {
         $this->container['marketplace_attributes'] = $marketplace_attributes;
 
@@ -521,7 +524,7 @@ class Shipment implements ModelInterface, ArrayAccess, \JsonSerializable, \Strin
      *
      * @return self
      */
-    public function setShipmentInfo($shipment_info) : self
+    public function setShipmentInfo($shipment_info): self
     {
         $this->container['shipment_info'] = $shipment_info;
 
@@ -545,7 +548,7 @@ class Shipment implements ModelInterface, ArrayAccess, \JsonSerializable, \Strin
      *
      * @return self
      */
-    public function setInvoiceInfo($invoice_info) : self
+    public function setInvoiceInfo($invoice_info): self
     {
         $this->container['invoice_info'] = $invoice_info;
 
@@ -569,7 +572,7 @@ class Shipment implements ModelInterface, ArrayAccess, \JsonSerializable, \Strin
      *
      * @return self
      */
-    public function setPartyInfoList($party_info_list) : self
+    public function setPartyInfoList($party_info_list): self
     {
         $this->container['party_info_list'] = $party_info_list;
 
@@ -593,7 +596,7 @@ class Shipment implements ModelInterface, ArrayAccess, \JsonSerializable, \Strin
      *
      * @return self
      */
-    public function setShipmentRequirements($shipment_requirements) : self
+    public function setShipmentRequirements($shipment_requirements): self
     {
         $this->container['shipment_requirements'] = $shipment_requirements;
 
@@ -617,7 +620,7 @@ class Shipment implements ModelInterface, ArrayAccess, \JsonSerializable, \Strin
      *
      * @return self
      */
-    public function setCharges($charges) : self
+    public function setCharges($charges): self
     {
 
 
@@ -646,7 +649,7 @@ class Shipment implements ModelInterface, ArrayAccess, \JsonSerializable, \Strin
      *
      * @return self
      */
-    public function setStatus($status) : self
+    public function setStatus($status): self
     {
         $allowedValues = $this->getStatusAllowableValues();
         if (!in_array($status, $allowedValues, true)) {
@@ -680,7 +683,7 @@ class Shipment implements ModelInterface, ArrayAccess, \JsonSerializable, \Strin
      *
      * @return self
      */
-    public function setSubStatus($sub_status) : self
+    public function setSubStatus($sub_status): self
     {
         $allowedValues = $this->getSubStatusAllowableValues();
         if (!is_null($sub_status) && !in_array($sub_status, $allowedValues, true)) {
@@ -714,7 +717,7 @@ class Shipment implements ModelInterface, ArrayAccess, \JsonSerializable, \Strin
      *
      * @return self
      */
-    public function setReason($reason) : self
+    public function setReason($reason): self
     {
         $this->container['reason'] = $reason;
 
@@ -738,7 +741,7 @@ class Shipment implements ModelInterface, ArrayAccess, \JsonSerializable, \Strin
      *
      * @return self
      */
-    public function setLineItems($line_items) : self
+    public function setLineItems($line_items): self
     {
 
 
@@ -767,7 +770,7 @@ class Shipment implements ModelInterface, ArrayAccess, \JsonSerializable, \Strin
      *
      * @return self
      */
-    public function setShippingInfo($shipping_info) : self
+    public function setShippingInfo($shipping_info): self
     {
         $this->container['shipping_info'] = $shipping_info;
 
@@ -791,7 +794,7 @@ class Shipment implements ModelInterface, ArrayAccess, \JsonSerializable, \Strin
      *
      * @return self
      */
-    public function setPackages($packages) : self
+    public function setPackages($packages): self
     {
 
 
@@ -820,7 +823,7 @@ class Shipment implements ModelInterface, ArrayAccess, \JsonSerializable, \Strin
      *
      * @return self
      */
-    public function setCreationDateTime($creation_date_time) : self
+    public function setCreationDateTime($creation_date_time): self
     {
         $this->container['creation_date_time'] = $creation_date_time;
 
@@ -844,7 +847,7 @@ class Shipment implements ModelInterface, ArrayAccess, \JsonSerializable, \Strin
      *
      * @return self
      */
-    public function setLastUpdatedDateTime($last_updated_date_time) : self
+    public function setLastUpdatedDateTime($last_updated_date_time): self
     {
         $this->container['last_updated_date_time'] = $last_updated_date_time;
 
@@ -868,7 +871,7 @@ class Shipment implements ModelInterface, ArrayAccess, \JsonSerializable, \Strin
      *
      * @return self
      */
-    public function setEarliestPackDateTime($earliest_pack_date_time) : self
+    public function setEarliestPackDateTime($earliest_pack_date_time): self
     {
         $this->container['earliest_pack_date_time'] = $earliest_pack_date_time;
 
@@ -881,7 +884,7 @@ class Shipment implements ModelInterface, ArrayAccess, \JsonSerializable, \Strin
      *
      * @return boolean
      */
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -906,7 +909,7 @@ class Shipment implements ModelInterface, ArrayAccess, \JsonSerializable, \Strin
      *
      * @return void
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         if (is_null($offset)) {
             $this->container[] = $value;
@@ -922,7 +925,7 @@ class Shipment implements ModelInterface, ArrayAccess, \JsonSerializable, \Strin
      *
      * @return void
      */
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -934,7 +937,7 @@ class Shipment implements ModelInterface, ArrayAccess, \JsonSerializable, \Strin
      * @return mixed Returns data which can be serialized by json_encode(), which is a value
      * of any type other than a resource.
      */
-    public function jsonSerialize() : string
+    public function jsonSerialize(): string
     {
        return \json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }
@@ -944,7 +947,7 @@ class Shipment implements ModelInterface, ArrayAccess, \JsonSerializable, \Strin
      *
      * @return string
      */
-    public function __toString() : string
+    public function __toString(): string
     {
         return (string) json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
@@ -957,7 +960,7 @@ class Shipment implements ModelInterface, ArrayAccess, \JsonSerializable, \Strin
      *
      * @return string
      */
-    public function toHeaderValue() : string
+    public function toHeaderValue(): string
     {
         return json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }

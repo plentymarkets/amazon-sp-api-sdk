@@ -1,4 +1,7 @@
 <?php
+
+declare(strict_types=1);
+
 /**
  * Weight
  *
@@ -78,7 +81,7 @@ class Weight implements ModelInterface, ArrayAccess, \JsonSerializable, \Stringa
      *
      * @return array
      */
-    public static function openAPITypes() : array
+    public static function openAPITypes(): array
     {
         return self::$openAPITypes;
     }
@@ -88,7 +91,7 @@ class Weight implements ModelInterface, ArrayAccess, \JsonSerializable, \Stringa
      *
      * @return array
      */
-    public static function openAPIFormats() : array
+    public static function openAPIFormats(): array
     {
         return self::$openAPIFormats;
     }
@@ -130,7 +133,7 @@ class Weight implements ModelInterface, ArrayAccess, \JsonSerializable, \Stringa
      *
      * @return array
      */
-    public static function attributeMap() : array
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -140,7 +143,7 @@ class Weight implements ModelInterface, ArrayAccess, \JsonSerializable, \Stringa
      *
      * @return array
      */
-    public static function setters() : array
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -150,7 +153,7 @@ class Weight implements ModelInterface, ArrayAccess, \JsonSerializable, \Stringa
      *
      * @return array
      */
-    public static function getters() : array
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -160,7 +163,7 @@ class Weight implements ModelInterface, ArrayAccess, \JsonSerializable, \Stringa
      *
      * @return string
      */
-    public function getModelName() : string
+    public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
@@ -175,7 +178,7 @@ class Weight implements ModelInterface, ArrayAccess, \JsonSerializable, \Stringa
      *
      * @return string[]
      */
-    public function getWeightUnitAllowableValues() : array
+    public function getWeightUnitAllowableValues(): array
     {
         return [
             self::WEIGHT_UNIT_G,
@@ -209,7 +212,7 @@ class Weight implements ModelInterface, ArrayAccess, \JsonSerializable, \Stringa
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties() : array
+    public function listInvalidProperties(): array
     {
         $invalidProperties = [];
 
@@ -237,7 +240,7 @@ class Weight implements ModelInterface, ArrayAccess, \JsonSerializable, \Stringa
      *
      * @return bool True if all properties are valid
      */
-    public function valid() : bool
+    public function valid(): bool
     {
         return count($this->listInvalidProperties()) === 0;
     }
@@ -260,7 +263,7 @@ class Weight implements ModelInterface, ArrayAccess, \JsonSerializable, \Stringa
      *
      * @return self
      */
-    public function setValue($value) : self
+    public function setValue($value): self
     {
         $this->container['value'] = $value;
 
@@ -284,7 +287,7 @@ class Weight implements ModelInterface, ArrayAccess, \JsonSerializable, \Stringa
      *
      * @return self
      */
-    public function setWeightUnit($weight_unit) : self
+    public function setWeightUnit($weight_unit): self
     {
         $allowedValues = $this->getWeightUnitAllowableValues();
         if (!in_array($weight_unit, $allowedValues, true)) {
@@ -307,7 +310,7 @@ class Weight implements ModelInterface, ArrayAccess, \JsonSerializable, \Stringa
      *
      * @return boolean
      */
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -332,7 +335,7 @@ class Weight implements ModelInterface, ArrayAccess, \JsonSerializable, \Stringa
      *
      * @return void
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         if (is_null($offset)) {
             $this->container[] = $value;
@@ -348,7 +351,7 @@ class Weight implements ModelInterface, ArrayAccess, \JsonSerializable, \Stringa
      *
      * @return void
      */
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -360,7 +363,7 @@ class Weight implements ModelInterface, ArrayAccess, \JsonSerializable, \Stringa
      * @return mixed Returns data which can be serialized by json_encode(), which is a value
      * of any type other than a resource.
      */
-    public function jsonSerialize() : string
+    public function jsonSerialize(): string
     {
        return \json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }
@@ -370,7 +373,7 @@ class Weight implements ModelInterface, ArrayAccess, \JsonSerializable, \Stringa
      *
      * @return string
      */
-    public function __toString() : string
+    public function __toString(): string
     {
         return (string) json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
@@ -383,7 +386,7 @@ class Weight implements ModelInterface, ArrayAccess, \JsonSerializable, \Stringa
      *
      * @return string
      */
-    public function toHeaderValue() : string
+    public function toHeaderValue(): string
     {
         return json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }

@@ -1,4 +1,7 @@
 <?php
+
+declare(strict_types=1);
+
 /**
  * Amount
  *
@@ -78,7 +81,7 @@ class Amount implements ModelInterface, ArrayAccess, \JsonSerializable, \Stringa
      *
      * @return array
      */
-    public static function openAPITypes() : array
+    public static function openAPITypes(): array
     {
         return self::$openAPITypes;
     }
@@ -88,7 +91,7 @@ class Amount implements ModelInterface, ArrayAccess, \JsonSerializable, \Stringa
      *
      * @return array
      */
-    public static function openAPIFormats() : array
+    public static function openAPIFormats(): array
     {
         return self::$openAPIFormats;
     }
@@ -130,7 +133,7 @@ class Amount implements ModelInterface, ArrayAccess, \JsonSerializable, \Stringa
      *
      * @return array
      */
-    public static function attributeMap() : array
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -140,7 +143,7 @@ class Amount implements ModelInterface, ArrayAccess, \JsonSerializable, \Stringa
      *
      * @return array
      */
-    public static function setters() : array
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -150,7 +153,7 @@ class Amount implements ModelInterface, ArrayAccess, \JsonSerializable, \Stringa
      *
      * @return array
      */
-    public static function getters() : array
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -160,7 +163,7 @@ class Amount implements ModelInterface, ArrayAccess, \JsonSerializable, \Stringa
      *
      * @return string
      */
-    public function getModelName() : string
+    public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
@@ -190,7 +193,7 @@ class Amount implements ModelInterface, ArrayAccess, \JsonSerializable, \Stringa
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties() : array
+    public function listInvalidProperties(): array
     {
         $invalidProperties = [];
 
@@ -209,7 +212,7 @@ class Amount implements ModelInterface, ArrayAccess, \JsonSerializable, \Stringa
      *
      * @return bool True if all properties are valid
      */
-    public function valid() : bool
+    public function valid(): bool
     {
         return count($this->listInvalidProperties()) === 0;
     }
@@ -232,7 +235,7 @@ class Amount implements ModelInterface, ArrayAccess, \JsonSerializable, \Stringa
      *
      * @return self
      */
-    public function setValue($value) : self
+    public function setValue($value): self
     {
         $this->container['value'] = $value;
 
@@ -256,7 +259,7 @@ class Amount implements ModelInterface, ArrayAccess, \JsonSerializable, \Stringa
      *
      * @return self
      */
-    public function setCurrencyCode($currency_code) : self
+    public function setCurrencyCode($currency_code): self
     {
         $this->container['currency_code'] = $currency_code;
 
@@ -269,7 +272,7 @@ class Amount implements ModelInterface, ArrayAccess, \JsonSerializable, \Stringa
      *
      * @return boolean
      */
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -294,7 +297,7 @@ class Amount implements ModelInterface, ArrayAccess, \JsonSerializable, \Stringa
      *
      * @return void
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         if (is_null($offset)) {
             $this->container[] = $value;
@@ -310,7 +313,7 @@ class Amount implements ModelInterface, ArrayAccess, \JsonSerializable, \Stringa
      *
      * @return void
      */
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -322,7 +325,7 @@ class Amount implements ModelInterface, ArrayAccess, \JsonSerializable, \Stringa
      * @return mixed Returns data which can be serialized by json_encode(), which is a value
      * of any type other than a resource.
      */
-    public function jsonSerialize() : string
+    public function jsonSerialize(): string
     {
        return \json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }
@@ -332,7 +335,7 @@ class Amount implements ModelInterface, ArrayAccess, \JsonSerializable, \Stringa
      *
      * @return string
      */
-    public function __toString() : string
+    public function __toString(): string
     {
         return (string) json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
@@ -345,7 +348,7 @@ class Amount implements ModelInterface, ArrayAccess, \JsonSerializable, \Stringa
      *
      * @return string
      */
-    public function toHeaderValue() : string
+    public function toHeaderValue(): string
     {
         return json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }

@@ -1,4 +1,7 @@
 <?php
+
+declare(strict_types=1);
+
 /**
  * Address
  *
@@ -104,7 +107,7 @@ class Address implements ModelInterface, ArrayAccess, \JsonSerializable, \String
      *
      * @return array
      */
-    public static function openAPITypes() : array
+    public static function openAPITypes(): array
     {
         return self::$openAPITypes;
     }
@@ -114,7 +117,7 @@ class Address implements ModelInterface, ArrayAccess, \JsonSerializable, \String
      *
      * @return array
      */
-    public static function openAPIFormats() : array
+    public static function openAPIFormats(): array
     {
         return self::$openAPIFormats;
     }
@@ -195,7 +198,7 @@ class Address implements ModelInterface, ArrayAccess, \JsonSerializable, \String
      *
      * @return array
      */
-    public static function attributeMap() : array
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -205,7 +208,7 @@ class Address implements ModelInterface, ArrayAccess, \JsonSerializable, \String
      *
      * @return array
      */
-    public static function setters() : array
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -215,7 +218,7 @@ class Address implements ModelInterface, ArrayAccess, \JsonSerializable, \String
      *
      * @return array
      */
-    public static function getters() : array
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -225,7 +228,7 @@ class Address implements ModelInterface, ArrayAccess, \JsonSerializable, \String
      *
      * @return string
      */
-    public function getModelName() : string
+    public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
@@ -268,7 +271,7 @@ class Address implements ModelInterface, ArrayAccess, \JsonSerializable, \String
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties() : array
+    public function listInvalidProperties(): array
     {
         $invalidProperties = [];
 
@@ -364,7 +367,7 @@ class Address implements ModelInterface, ArrayAccess, \JsonSerializable, \String
      *
      * @return bool True if all properties are valid
      */
-    public function valid() : bool
+    public function valid(): bool
     {
         return count($this->listInvalidProperties()) === 0;
     }
@@ -387,7 +390,7 @@ class Address implements ModelInterface, ArrayAccess, \JsonSerializable, \String
      *
      * @return self
      */
-    public function setName($name) : self
+    public function setName($name): self
     {
         if (!is_null($name) && (mb_strlen($name) > 50)) {
             throw new \InvalidArgumentException('invalid length for $name when calling Address., must be smaller than or equal to 50.');
@@ -418,7 +421,7 @@ class Address implements ModelInterface, ArrayAccess, \JsonSerializable, \String
      *
      * @return self
      */
-    public function setAddressLine1($address_line1) : self
+    public function setAddressLine1($address_line1): self
     {
         if (!is_null($address_line1) && (mb_strlen($address_line1) > 60)) {
             throw new \InvalidArgumentException('invalid length for $address_line1 when calling Address., must be smaller than or equal to 60.');
@@ -449,7 +452,7 @@ class Address implements ModelInterface, ArrayAccess, \JsonSerializable, \String
      *
      * @return self
      */
-    public function setAddressLine2($address_line2) : self
+    public function setAddressLine2($address_line2): self
     {
         if (!is_null($address_line2) && (mb_strlen($address_line2) > 60)) {
             throw new \InvalidArgumentException('invalid length for $address_line2 when calling Address., must be smaller than or equal to 60.');
@@ -480,7 +483,7 @@ class Address implements ModelInterface, ArrayAccess, \JsonSerializable, \String
      *
      * @return self
      */
-    public function setAddressLine3($address_line3) : self
+    public function setAddressLine3($address_line3): self
     {
         if (!is_null($address_line3) && (mb_strlen($address_line3) > 60)) {
             throw new \InvalidArgumentException('invalid length for $address_line3 when calling Address., must be smaller than or equal to 60.');
@@ -511,7 +514,7 @@ class Address implements ModelInterface, ArrayAccess, \JsonSerializable, \String
      *
      * @return self
      */
-    public function setDistrict($district) : self
+    public function setDistrict($district): self
     {
         $this->container['district'] = $district;
 
@@ -535,7 +538,7 @@ class Address implements ModelInterface, ArrayAccess, \JsonSerializable, \String
      *
      * @return self
      */
-    public function setMunicipality($municipality) : self
+    public function setMunicipality($municipality): self
     {
         $this->container['municipality'] = $municipality;
 
@@ -559,7 +562,7 @@ class Address implements ModelInterface, ArrayAccess, \JsonSerializable, \String
      *
      * @return self
      */
-    public function setState($state) : self
+    public function setState($state): self
     {
         $this->container['state'] = $state;
 
@@ -583,7 +586,7 @@ class Address implements ModelInterface, ArrayAccess, \JsonSerializable, \String
      *
      * @return self
      */
-    public function setCity($city) : self
+    public function setCity($city): self
     {
         if (!is_null($city) && (mb_strlen($city) > 50)) {
             throw new \InvalidArgumentException('invalid length for $city when calling Address., must be smaller than or equal to 50.');
@@ -614,7 +617,7 @@ class Address implements ModelInterface, ArrayAccess, \JsonSerializable, \String
      *
      * @return self
      */
-    public function setCountryCode($country_code) : self
+    public function setCountryCode($country_code): self
     {
         if (!is_null($country_code) && (mb_strlen($country_code) > 2)) {
             throw new \InvalidArgumentException('invalid length for $country_code when calling Address., must be smaller than or equal to 2.');
@@ -645,7 +648,7 @@ class Address implements ModelInterface, ArrayAccess, \JsonSerializable, \String
      *
      * @return self
      */
-    public function setPostalCode($postal_code) : self
+    public function setPostalCode($postal_code): self
     {
         if ((mb_strlen($postal_code) > 20)) {
             throw new \InvalidArgumentException('invalid length for $postal_code when calling Address., must be smaller than or equal to 20.');
@@ -676,7 +679,7 @@ class Address implements ModelInterface, ArrayAccess, \JsonSerializable, \String
      *
      * @return self
      */
-    public function setEmail($email) : self
+    public function setEmail($email): self
     {
         if (!is_null($email) && (mb_strlen($email) > 64)) {
             throw new \InvalidArgumentException('invalid length for $email when calling Address., must be smaller than or equal to 64.');
@@ -704,7 +707,7 @@ class Address implements ModelInterface, ArrayAccess, \JsonSerializable, \String
      *
      * @return self
      */
-    public function setCopyEmails($copy_emails) : self
+    public function setCopyEmails($copy_emails): self
     {
 
         if (!is_null($copy_emails) && (count($copy_emails) > 2)) {
@@ -732,7 +735,7 @@ class Address implements ModelInterface, ArrayAccess, \JsonSerializable, \String
      *
      * @return self
      */
-    public function setPhoneNumber($phone_number) : self
+    public function setPhoneNumber($phone_number): self
     {
         if (!is_null($phone_number) && (mb_strlen($phone_number) > 20)) {
             throw new \InvalidArgumentException('invalid length for $phone_number when calling Address., must be smaller than or equal to 20.');
@@ -763,7 +766,7 @@ class Address implements ModelInterface, ArrayAccess, \JsonSerializable, \String
      *
      * @return self
      */
-    public function setAddressType($address_type) : self
+    public function setAddressType($address_type): self
     {
         if (!is_null($address_type) && (mb_strlen($address_type) > 20)) {
             throw new \InvalidArgumentException('invalid length for $address_type when calling Address., must be smaller than or equal to 20.');
@@ -794,7 +797,7 @@ class Address implements ModelInterface, ArrayAccess, \JsonSerializable, \String
      *
      * @return self
      */
-    public function setGeocodes($geocodes) : self
+    public function setGeocodes($geocodes): self
     {
         $this->container['geocodes'] = $geocodes;
 
@@ -807,7 +810,7 @@ class Address implements ModelInterface, ArrayAccess, \JsonSerializable, \String
      *
      * @return boolean
      */
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -832,7 +835,7 @@ class Address implements ModelInterface, ArrayAccess, \JsonSerializable, \String
      *
      * @return void
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         if (is_null($offset)) {
             $this->container[] = $value;
@@ -848,7 +851,7 @@ class Address implements ModelInterface, ArrayAccess, \JsonSerializable, \String
      *
      * @return void
      */
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -860,7 +863,7 @@ class Address implements ModelInterface, ArrayAccess, \JsonSerializable, \String
      * @return mixed Returns data which can be serialized by json_encode(), which is a value
      * of any type other than a resource.
      */
-    public function jsonSerialize() : string
+    public function jsonSerialize(): string
     {
        return \json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }
@@ -870,7 +873,7 @@ class Address implements ModelInterface, ArrayAccess, \JsonSerializable, \String
      *
      * @return string
      */
-    public function __toString() : string
+    public function __toString(): string
     {
         return (string) json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
@@ -883,7 +886,7 @@ class Address implements ModelInterface, ArrayAccess, \JsonSerializable, \String
      *
      * @return string
      */
-    public function toHeaderValue() : string
+    public function toHeaderValue(): string
     {
         return json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }

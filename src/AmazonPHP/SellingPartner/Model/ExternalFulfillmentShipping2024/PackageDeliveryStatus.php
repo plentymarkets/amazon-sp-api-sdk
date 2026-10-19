@@ -1,4 +1,7 @@
 <?php
+
+declare(strict_types=1);
+
 /**
  * PackageDeliveryStatus
  *
@@ -80,7 +83,7 @@ class PackageDeliveryStatus implements ModelInterface, ArrayAccess, \JsonSeriali
      *
      * @return array
      */
-    public static function openAPITypes() : array
+    public static function openAPITypes(): array
     {
         return self::$openAPITypes;
     }
@@ -90,7 +93,7 @@ class PackageDeliveryStatus implements ModelInterface, ArrayAccess, \JsonSeriali
      *
      * @return array
      */
-    public static function openAPIFormats() : array
+    public static function openAPIFormats(): array
     {
         return self::$openAPIFormats;
     }
@@ -135,7 +138,7 @@ class PackageDeliveryStatus implements ModelInterface, ArrayAccess, \JsonSeriali
      *
      * @return array
      */
-    public static function attributeMap() : array
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -145,7 +148,7 @@ class PackageDeliveryStatus implements ModelInterface, ArrayAccess, \JsonSeriali
      *
      * @return array
      */
-    public static function setters() : array
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -155,7 +158,7 @@ class PackageDeliveryStatus implements ModelInterface, ArrayAccess, \JsonSeriali
      *
      * @return array
      */
-    public static function getters() : array
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -165,7 +168,7 @@ class PackageDeliveryStatus implements ModelInterface, ArrayAccess, \JsonSeriali
      *
      * @return string
      */
-    public function getModelName() : string
+    public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
@@ -196,7 +199,7 @@ class PackageDeliveryStatus implements ModelInterface, ArrayAccess, \JsonSeriali
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties() : array
+    public function listInvalidProperties(): array
     {
         $invalidProperties = [];
 
@@ -213,7 +216,7 @@ class PackageDeliveryStatus implements ModelInterface, ArrayAccess, \JsonSeriali
      *
      * @return bool True if all properties are valid
      */
-    public function valid() : bool
+    public function valid(): bool
     {
         return count($this->listInvalidProperties()) === 0;
     }
@@ -236,7 +239,7 @@ class PackageDeliveryStatus implements ModelInterface, ArrayAccess, \JsonSeriali
      *
      * @return self
      */
-    public function setStatus($status) : self
+    public function setStatus($status): self
     {
         $this->container['status'] = $status;
 
@@ -260,7 +263,7 @@ class PackageDeliveryStatus implements ModelInterface, ArrayAccess, \JsonSeriali
      *
      * @return self
      */
-    public function setSubStatus($sub_status) : self
+    public function setSubStatus($sub_status): self
     {
         $this->container['sub_status'] = $sub_status;
 
@@ -284,7 +287,7 @@ class PackageDeliveryStatus implements ModelInterface, ArrayAccess, \JsonSeriali
      *
      * @return self
      */
-    public function setReason($reason) : self
+    public function setReason($reason): self
     {
         if (!is_null($reason) && (mb_strlen($reason) > 128)) {
             throw new \InvalidArgumentException('invalid length for $reason when calling PackageDeliveryStatus., must be smaller than or equal to 128.');
@@ -301,7 +304,7 @@ class PackageDeliveryStatus implements ModelInterface, ArrayAccess, \JsonSeriali
      *
      * @return boolean
      */
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -326,7 +329,7 @@ class PackageDeliveryStatus implements ModelInterface, ArrayAccess, \JsonSeriali
      *
      * @return void
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         if (is_null($offset)) {
             $this->container[] = $value;
@@ -342,7 +345,7 @@ class PackageDeliveryStatus implements ModelInterface, ArrayAccess, \JsonSeriali
      *
      * @return void
      */
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -354,7 +357,7 @@ class PackageDeliveryStatus implements ModelInterface, ArrayAccess, \JsonSeriali
      * @return mixed Returns data which can be serialized by json_encode(), which is a value
      * of any type other than a resource.
      */
-    public function jsonSerialize() : string
+    public function jsonSerialize(): string
     {
        return \json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }
@@ -364,7 +367,7 @@ class PackageDeliveryStatus implements ModelInterface, ArrayAccess, \JsonSeriali
      *
      * @return string
      */
-    public function __toString() : string
+    public function __toString(): string
     {
         return (string) json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
@@ -377,7 +380,7 @@ class PackageDeliveryStatus implements ModelInterface, ArrayAccess, \JsonSeriali
      *
      * @return string
      */
-    public function toHeaderValue() : string
+    public function toHeaderValue(): string
     {
         return json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }

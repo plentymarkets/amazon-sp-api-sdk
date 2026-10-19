@@ -1,4 +1,7 @@
 <?php
+
+declare(strict_types=1);
+
 /**
  * RecommendedPackageLineItem
  *
@@ -76,7 +79,7 @@ class RecommendedPackageLineItem implements ModelInterface, ArrayAccess, \JsonSe
      *
      * @return array
      */
-    public static function openAPITypes() : array
+    public static function openAPITypes(): array
     {
         return self::$openAPITypes;
     }
@@ -86,7 +89,7 @@ class RecommendedPackageLineItem implements ModelInterface, ArrayAccess, \JsonSe
      *
      * @return array
      */
-    public static function openAPIFormats() : array
+    public static function openAPIFormats(): array
     {
         return self::$openAPIFormats;
     }
@@ -125,7 +128,7 @@ class RecommendedPackageLineItem implements ModelInterface, ArrayAccess, \JsonSe
      *
      * @return array
      */
-    public static function attributeMap() : array
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -135,7 +138,7 @@ class RecommendedPackageLineItem implements ModelInterface, ArrayAccess, \JsonSe
      *
      * @return array
      */
-    public static function setters() : array
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -145,7 +148,7 @@ class RecommendedPackageLineItem implements ModelInterface, ArrayAccess, \JsonSe
      *
      * @return array
      */
-    public static function getters() : array
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -155,7 +158,7 @@ class RecommendedPackageLineItem implements ModelInterface, ArrayAccess, \JsonSe
      *
      * @return string
      */
-    public function getModelName() : string
+    public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
@@ -184,7 +187,7 @@ class RecommendedPackageLineItem implements ModelInterface, ArrayAccess, \JsonSe
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties() : array
+    public function listInvalidProperties(): array
     {
         $invalidProperties = [];
 
@@ -204,7 +207,7 @@ class RecommendedPackageLineItem implements ModelInterface, ArrayAccess, \JsonSe
      *
      * @return bool True if all properties are valid
      */
-    public function valid() : bool
+    public function valid(): bool
     {
         return count($this->listInvalidProperties()) === 0;
     }
@@ -227,7 +230,7 @@ class RecommendedPackageLineItem implements ModelInterface, ArrayAccess, \JsonSe
      *
      * @return self
      */
-    public function setLineItemId($line_item_id) : self
+    public function setLineItemId($line_item_id): self
     {
 
         if ((mb_strlen($line_item_id) < 1)) {
@@ -245,7 +248,7 @@ class RecommendedPackageLineItem implements ModelInterface, ArrayAccess, \JsonSe
      *
      * @return boolean
      */
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -270,7 +273,7 @@ class RecommendedPackageLineItem implements ModelInterface, ArrayAccess, \JsonSe
      *
      * @return void
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         if (is_null($offset)) {
             $this->container[] = $value;
@@ -286,7 +289,7 @@ class RecommendedPackageLineItem implements ModelInterface, ArrayAccess, \JsonSe
      *
      * @return void
      */
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -298,7 +301,7 @@ class RecommendedPackageLineItem implements ModelInterface, ArrayAccess, \JsonSe
      * @return mixed Returns data which can be serialized by json_encode(), which is a value
      * of any type other than a resource.
      */
-    public function jsonSerialize() : string
+    public function jsonSerialize(): string
     {
        return \json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }
@@ -308,7 +311,7 @@ class RecommendedPackageLineItem implements ModelInterface, ArrayAccess, \JsonSe
      *
      * @return string
      */
-    public function __toString() : string
+    public function __toString(): string
     {
         return (string) json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
@@ -321,7 +324,7 @@ class RecommendedPackageLineItem implements ModelInterface, ArrayAccess, \JsonSe
      *
      * @return string
      */
-    public function toHeaderValue() : string
+    public function toHeaderValue(): string
     {
         return json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }

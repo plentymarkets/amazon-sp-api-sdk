@@ -1,4 +1,7 @@
 <?php
+
+declare(strict_types=1);
+
 /**
  * ShipmentInfo
  *
@@ -92,7 +95,7 @@ class ShipmentInfo implements ModelInterface, ArrayAccess, \JsonSerializable, \S
      *
      * @return array
      */
-    public static function openAPITypes() : array
+    public static function openAPITypes(): array
     {
         return self::$openAPITypes;
     }
@@ -102,7 +105,7 @@ class ShipmentInfo implements ModelInterface, ArrayAccess, \JsonSerializable, \S
      *
      * @return array
      */
-    public static function openAPIFormats() : array
+    public static function openAPIFormats(): array
     {
         return self::$openAPIFormats;
     }
@@ -165,7 +168,7 @@ class ShipmentInfo implements ModelInterface, ArrayAccess, \JsonSerializable, \S
      *
      * @return array
      */
-    public static function attributeMap() : array
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -175,7 +178,7 @@ class ShipmentInfo implements ModelInterface, ArrayAccess, \JsonSerializable, \S
      *
      * @return array
      */
-    public static function setters() : array
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -185,7 +188,7 @@ class ShipmentInfo implements ModelInterface, ArrayAccess, \JsonSerializable, \S
      *
      * @return array
      */
-    public static function getters() : array
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -195,7 +198,7 @@ class ShipmentInfo implements ModelInterface, ArrayAccess, \JsonSerializable, \S
      *
      * @return string
      */
-    public function getModelName() : string
+    public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
@@ -213,7 +216,7 @@ class ShipmentInfo implements ModelInterface, ArrayAccess, \JsonSerializable, \S
      *
      * @return string[]
      */
-    public function getShipmentTypeAllowableValues() : array
+    public function getShipmentTypeAllowableValues(): array
     {
         return [
             self::SHIPMENT_TYPE__NEW,
@@ -227,7 +230,7 @@ class ShipmentInfo implements ModelInterface, ArrayAccess, \JsonSerializable, \S
      *
      * @return string[]
      */
-    public function getProcessingSourceAllowableValues() : array
+    public function getProcessingSourceAllowableValues(): array
     {
         return [
             self::PROCESSING_SOURCE_EXTERNAL_PLATFORM,
@@ -240,7 +243,7 @@ class ShipmentInfo implements ModelInterface, ArrayAccess, \JsonSerializable, \S
      *
      * @return string[]
      */
-    public function getPaymentMethodAllowableValues() : array
+    public function getPaymentMethodAllowableValues(): array
     {
         return [
             self::PAYMENT_METHOD_CASH_ON_DELIVERY,
@@ -279,7 +282,7 @@ class ShipmentInfo implements ModelInterface, ArrayAccess, \JsonSerializable, \S
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties() : array
+    public function listInvalidProperties(): array
     {
         $invalidProperties = [];
 
@@ -339,7 +342,7 @@ class ShipmentInfo implements ModelInterface, ArrayAccess, \JsonSerializable, \S
      *
      * @return bool True if all properties are valid
      */
-    public function valid() : bool
+    public function valid(): bool
     {
         return count($this->listInvalidProperties()) === 0;
     }
@@ -362,7 +365,7 @@ class ShipmentInfo implements ModelInterface, ArrayAccess, \JsonSerializable, \S
      *
      * @return self
      */
-    public function setShipmentType($shipment_type) : self
+    public function setShipmentType($shipment_type): self
     {
         $allowedValues = $this->getShipmentTypeAllowableValues();
         if (!in_array($shipment_type, $allowedValues, true)) {
@@ -396,7 +399,7 @@ class ShipmentInfo implements ModelInterface, ArrayAccess, \JsonSerializable, \S
      *
      * @return self
      */
-    public function setOriginalShipmentInfo($original_shipment_info) : self
+    public function setOriginalShipmentInfo($original_shipment_info): self
     {
         $this->container['original_shipment_info'] = $original_shipment_info;
 
@@ -420,7 +423,7 @@ class ShipmentInfo implements ModelInterface, ArrayAccess, \JsonSerializable, \S
      *
      * @return self
      */
-    public function setNumberOfUnits($number_of_units) : self
+    public function setNumberOfUnits($number_of_units): self
     {
 
         if (($number_of_units < 1)) {
@@ -449,7 +452,7 @@ class ShipmentInfo implements ModelInterface, ArrayAccess, \JsonSerializable, \S
      *
      * @return self
      */
-    public function setPriority($priority) : self
+    public function setPriority($priority): self
     {
         $this->container['priority'] = $priority;
 
@@ -473,7 +476,7 @@ class ShipmentInfo implements ModelInterface, ArrayAccess, \JsonSerializable, \S
      *
      * @return self
      */
-    public function setBuyerOrderId($buyer_order_id) : self
+    public function setBuyerOrderId($buyer_order_id): self
     {
         $this->container['buyer_order_id'] = $buyer_order_id;
 
@@ -497,7 +500,7 @@ class ShipmentInfo implements ModelInterface, ArrayAccess, \JsonSerializable, \S
      *
      * @return self
      */
-    public function setOrderStatesEligibleForRejection($order_states_eligible_for_rejection) : self
+    public function setOrderStatesEligibleForRejection($order_states_eligible_for_rejection): self
     {
 
 
@@ -526,7 +529,7 @@ class ShipmentInfo implements ModelInterface, ArrayAccess, \JsonSerializable, \S
      *
      * @return self
      */
-    public function setOrderPlacedTimestamp($order_placed_timestamp) : self
+    public function setOrderPlacedTimestamp($order_placed_timestamp): self
     {
         $this->container['order_placed_timestamp'] = $order_placed_timestamp;
 
@@ -550,7 +553,7 @@ class ShipmentInfo implements ModelInterface, ArrayAccess, \JsonSerializable, \S
      *
      * @return self
      */
-    public function setProcessingSource($processing_source) : self
+    public function setProcessingSource($processing_source): self
     {
         $allowedValues = $this->getProcessingSourceAllowableValues();
         if (!is_null($processing_source) && !in_array($processing_source, $allowedValues, true)) {
@@ -584,7 +587,7 @@ class ShipmentInfo implements ModelInterface, ArrayAccess, \JsonSerializable, \S
      *
      * @return self
      */
-    public function setPaymentMethod($payment_method) : self
+    public function setPaymentMethod($payment_method): self
     {
         $allowedValues = $this->getPaymentMethodAllowableValues();
         if (!is_null($payment_method) && !in_array($payment_method, $allowedValues, true)) {
@@ -607,7 +610,7 @@ class ShipmentInfo implements ModelInterface, ArrayAccess, \JsonSerializable, \S
      *
      * @return boolean
      */
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -632,7 +635,7 @@ class ShipmentInfo implements ModelInterface, ArrayAccess, \JsonSerializable, \S
      *
      * @return void
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         if (is_null($offset)) {
             $this->container[] = $value;
@@ -648,7 +651,7 @@ class ShipmentInfo implements ModelInterface, ArrayAccess, \JsonSerializable, \S
      *
      * @return void
      */
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -660,7 +663,7 @@ class ShipmentInfo implements ModelInterface, ArrayAccess, \JsonSerializable, \S
      * @return mixed Returns data which can be serialized by json_encode(), which is a value
      * of any type other than a resource.
      */
-    public function jsonSerialize() : string
+    public function jsonSerialize(): string
     {
        return \json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }
@@ -670,7 +673,7 @@ class ShipmentInfo implements ModelInterface, ArrayAccess, \JsonSerializable, \S
      *
      * @return string
      */
-    public function __toString() : string
+    public function __toString(): string
     {
         return (string) json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
@@ -683,7 +686,7 @@ class ShipmentInfo implements ModelInterface, ArrayAccess, \JsonSerializable, \S
      *
      * @return string
      */
-    public function toHeaderValue() : string
+    public function toHeaderValue(): string
     {
         return json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }

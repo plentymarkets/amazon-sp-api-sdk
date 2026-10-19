@@ -1,4 +1,7 @@
 <?php
+
+declare(strict_types=1);
+
 /**
  * PackingSlipRequirement
  *
@@ -78,7 +81,7 @@ class PackingSlipRequirement implements ModelInterface, ArrayAccess, \JsonSerial
      *
      * @return array
      */
-    public static function openAPITypes() : array
+    public static function openAPITypes(): array
     {
         return self::$openAPITypes;
     }
@@ -88,7 +91,7 @@ class PackingSlipRequirement implements ModelInterface, ArrayAccess, \JsonSerial
      *
      * @return array
      */
-    public static function openAPIFormats() : array
+    public static function openAPIFormats(): array
     {
         return self::$openAPIFormats;
     }
@@ -130,7 +133,7 @@ class PackingSlipRequirement implements ModelInterface, ArrayAccess, \JsonSerial
      *
      * @return array
      */
-    public static function attributeMap() : array
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -140,7 +143,7 @@ class PackingSlipRequirement implements ModelInterface, ArrayAccess, \JsonSerial
      *
      * @return array
      */
-    public static function setters() : array
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -150,7 +153,7 @@ class PackingSlipRequirement implements ModelInterface, ArrayAccess, \JsonSerial
      *
      * @return array
      */
-    public static function getters() : array
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -160,7 +163,7 @@ class PackingSlipRequirement implements ModelInterface, ArrayAccess, \JsonSerial
      *
      * @return string
      */
-    public function getModelName() : string
+    public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
@@ -175,7 +178,7 @@ class PackingSlipRequirement implements ModelInterface, ArrayAccess, \JsonSerial
      *
      * @return string[]
      */
-    public function getRequirementAllowableValues() : array
+    public function getRequirementAllowableValues(): array
     {
         return [
             self::REQUIREMENT_REQUIRED,
@@ -188,7 +191,7 @@ class PackingSlipRequirement implements ModelInterface, ArrayAccess, \JsonSerial
      *
      * @return string[]
      */
-    public function getStatusAllowableValues() : array
+    public function getStatusAllowableValues(): array
     {
         return [
             self::STATUS_GENERATED,
@@ -220,7 +223,7 @@ class PackingSlipRequirement implements ModelInterface, ArrayAccess, \JsonSerial
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties() : array
+    public function listInvalidProperties(): array
     {
         $invalidProperties = [];
 
@@ -251,7 +254,7 @@ class PackingSlipRequirement implements ModelInterface, ArrayAccess, \JsonSerial
      *
      * @return bool True if all properties are valid
      */
-    public function valid() : bool
+    public function valid(): bool
     {
         return count($this->listInvalidProperties()) === 0;
     }
@@ -274,7 +277,7 @@ class PackingSlipRequirement implements ModelInterface, ArrayAccess, \JsonSerial
      *
      * @return self
      */
-    public function setRequirement($requirement) : self
+    public function setRequirement($requirement): self
     {
         $allowedValues = $this->getRequirementAllowableValues();
         if (!is_null($requirement) && !in_array($requirement, $allowedValues, true)) {
@@ -308,7 +311,7 @@ class PackingSlipRequirement implements ModelInterface, ArrayAccess, \JsonSerial
      *
      * @return self
      */
-    public function setStatus($status) : self
+    public function setStatus($status): self
     {
         $allowedValues = $this->getStatusAllowableValues();
         if (!is_null($status) && !in_array($status, $allowedValues, true)) {
@@ -331,7 +334,7 @@ class PackingSlipRequirement implements ModelInterface, ArrayAccess, \JsonSerial
      *
      * @return boolean
      */
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -356,7 +359,7 @@ class PackingSlipRequirement implements ModelInterface, ArrayAccess, \JsonSerial
      *
      * @return void
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         if (is_null($offset)) {
             $this->container[] = $value;
@@ -372,7 +375,7 @@ class PackingSlipRequirement implements ModelInterface, ArrayAccess, \JsonSerial
      *
      * @return void
      */
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -384,7 +387,7 @@ class PackingSlipRequirement implements ModelInterface, ArrayAccess, \JsonSerial
      * @return mixed Returns data which can be serialized by json_encode(), which is a value
      * of any type other than a resource.
      */
-    public function jsonSerialize() : string
+    public function jsonSerialize(): string
     {
        return \json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }
@@ -394,7 +397,7 @@ class PackingSlipRequirement implements ModelInterface, ArrayAccess, \JsonSerial
      *
      * @return string
      */
-    public function __toString() : string
+    public function __toString(): string
     {
         return (string) json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
@@ -407,7 +410,7 @@ class PackingSlipRequirement implements ModelInterface, ArrayAccess, \JsonSerial
      *
      * @return string
      */
-    public function toHeaderValue() : string
+    public function toHeaderValue(): string
     {
         return json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }

@@ -1,4 +1,7 @@
 <?php
+
+declare(strict_types=1);
+
 /**
  * PackageDimensions
  *
@@ -80,7 +83,7 @@ class PackageDimensions implements ModelInterface, ArrayAccess, \JsonSerializabl
      *
      * @return array
      */
-    public static function openAPITypes() : array
+    public static function openAPITypes(): array
     {
         return self::$openAPITypes;
     }
@@ -90,7 +93,7 @@ class PackageDimensions implements ModelInterface, ArrayAccess, \JsonSerializabl
      *
      * @return array
      */
-    public static function openAPIFormats() : array
+    public static function openAPIFormats(): array
     {
         return self::$openAPIFormats;
     }
@@ -135,7 +138,7 @@ class PackageDimensions implements ModelInterface, ArrayAccess, \JsonSerializabl
      *
      * @return array
      */
-    public static function attributeMap() : array
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -145,7 +148,7 @@ class PackageDimensions implements ModelInterface, ArrayAccess, \JsonSerializabl
      *
      * @return array
      */
-    public static function setters() : array
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -155,7 +158,7 @@ class PackageDimensions implements ModelInterface, ArrayAccess, \JsonSerializabl
      *
      * @return array
      */
-    public static function getters() : array
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -165,7 +168,7 @@ class PackageDimensions implements ModelInterface, ArrayAccess, \JsonSerializabl
      *
      * @return string
      */
-    public function getModelName() : string
+    public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
@@ -196,7 +199,7 @@ class PackageDimensions implements ModelInterface, ArrayAccess, \JsonSerializabl
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties() : array
+    public function listInvalidProperties(): array
     {
         $invalidProperties = [];
 
@@ -218,7 +221,7 @@ class PackageDimensions implements ModelInterface, ArrayAccess, \JsonSerializabl
      *
      * @return bool True if all properties are valid
      */
-    public function valid() : bool
+    public function valid(): bool
     {
         return count($this->listInvalidProperties()) === 0;
     }
@@ -241,7 +244,7 @@ class PackageDimensions implements ModelInterface, ArrayAccess, \JsonSerializabl
      *
      * @return self
      */
-    public function setLength($length) : self
+    public function setLength($length): self
     {
         $this->container['length'] = $length;
 
@@ -265,7 +268,7 @@ class PackageDimensions implements ModelInterface, ArrayAccess, \JsonSerializabl
      *
      * @return self
      */
-    public function setWidth($width) : self
+    public function setWidth($width): self
     {
         $this->container['width'] = $width;
 
@@ -289,7 +292,7 @@ class PackageDimensions implements ModelInterface, ArrayAccess, \JsonSerializabl
      *
      * @return self
      */
-    public function setHeight($height) : self
+    public function setHeight($height): self
     {
         $this->container['height'] = $height;
 
@@ -302,7 +305,7 @@ class PackageDimensions implements ModelInterface, ArrayAccess, \JsonSerializabl
      *
      * @return boolean
      */
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -327,7 +330,7 @@ class PackageDimensions implements ModelInterface, ArrayAccess, \JsonSerializabl
      *
      * @return void
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         if (is_null($offset)) {
             $this->container[] = $value;
@@ -343,7 +346,7 @@ class PackageDimensions implements ModelInterface, ArrayAccess, \JsonSerializabl
      *
      * @return void
      */
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -355,7 +358,7 @@ class PackageDimensions implements ModelInterface, ArrayAccess, \JsonSerializabl
      * @return mixed Returns data which can be serialized by json_encode(), which is a value
      * of any type other than a resource.
      */
-    public function jsonSerialize() : string
+    public function jsonSerialize(): string
     {
        return \json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }
@@ -365,7 +368,7 @@ class PackageDimensions implements ModelInterface, ArrayAccess, \JsonSerializabl
      *
      * @return string
      */
-    public function __toString() : string
+    public function __toString(): string
     {
         return (string) json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
@@ -378,7 +381,7 @@ class PackageDimensions implements ModelInterface, ArrayAccess, \JsonSerializabl
      *
      * @return string
      */
-    public function toHeaderValue() : string
+    public function toHeaderValue(): string
     {
         return json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }

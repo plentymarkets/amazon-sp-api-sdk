@@ -1,4 +1,7 @@
 <?php
+
+declare(strict_types=1);
+
 /**
  * Charge
  *
@@ -84,7 +87,7 @@ class Charge implements ModelInterface, ArrayAccess, \JsonSerializable, \Stringa
      *
      * @return array
      */
-    public static function openAPITypes() : array
+    public static function openAPITypes(): array
     {
         return self::$openAPITypes;
     }
@@ -94,7 +97,7 @@ class Charge implements ModelInterface, ArrayAccess, \JsonSerializable, \Stringa
      *
      * @return array
      */
-    public static function openAPIFormats() : array
+    public static function openAPIFormats(): array
     {
         return self::$openAPIFormats;
     }
@@ -145,7 +148,7 @@ class Charge implements ModelInterface, ArrayAccess, \JsonSerializable, \Stringa
      *
      * @return array
      */
-    public static function attributeMap() : array
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -155,7 +158,7 @@ class Charge implements ModelInterface, ArrayAccess, \JsonSerializable, \Stringa
      *
      * @return array
      */
-    public static function setters() : array
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -165,7 +168,7 @@ class Charge implements ModelInterface, ArrayAccess, \JsonSerializable, \Stringa
      *
      * @return array
      */
-    public static function getters() : array
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -175,7 +178,7 @@ class Charge implements ModelInterface, ArrayAccess, \JsonSerializable, \Stringa
      *
      * @return string
      */
-    public function getModelName() : string
+    public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
@@ -191,7 +194,7 @@ class Charge implements ModelInterface, ArrayAccess, \JsonSerializable, \Stringa
      *
      * @return string[]
      */
-    public function getChargeTypeAllowableValues() : array
+    public function getChargeTypeAllowableValues(): array
     {
         return [
             self::CHARGE_TYPE_PRODUCT,
@@ -229,7 +232,7 @@ class Charge implements ModelInterface, ArrayAccess, \JsonSerializable, \Stringa
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties() : array
+    public function listInvalidProperties(): array
     {
         $invalidProperties = [];
 
@@ -267,7 +270,7 @@ class Charge implements ModelInterface, ArrayAccess, \JsonSerializable, \Stringa
      *
      * @return bool True if all properties are valid
      */
-    public function valid() : bool
+    public function valid(): bool
     {
         return count($this->listInvalidProperties()) === 0;
     }
@@ -290,7 +293,7 @@ class Charge implements ModelInterface, ArrayAccess, \JsonSerializable, \Stringa
      *
      * @return self
      */
-    public function setBaseCharge($base_charge) : self
+    public function setBaseCharge($base_charge): self
     {
         $this->container['base_charge'] = $base_charge;
 
@@ -314,7 +317,7 @@ class Charge implements ModelInterface, ArrayAccess, \JsonSerializable, \Stringa
      *
      * @return self
      */
-    public function setTaxBreakup($tax_breakup) : self
+    public function setTaxBreakup($tax_breakup): self
     {
 
 
@@ -343,7 +346,7 @@ class Charge implements ModelInterface, ArrayAccess, \JsonSerializable, \Stringa
      *
      * @return self
      */
-    public function setChargeType($charge_type) : self
+    public function setChargeType($charge_type): self
     {
         $allowedValues = $this->getChargeTypeAllowableValues();
         if (!in_array($charge_type, $allowedValues, true)) {
@@ -377,7 +380,7 @@ class Charge implements ModelInterface, ArrayAccess, \JsonSerializable, \Stringa
      *
      * @return self
      */
-    public function setTotalCharge($total_charge) : self
+    public function setTotalCharge($total_charge): self
     {
         $this->container['total_charge'] = $total_charge;
 
@@ -401,7 +404,7 @@ class Charge implements ModelInterface, ArrayAccess, \JsonSerializable, \Stringa
      *
      * @return self
      */
-    public function setTotalTax($total_tax) : self
+    public function setTotalTax($total_tax): self
     {
         $this->container['total_tax'] = $total_tax;
 
@@ -414,7 +417,7 @@ class Charge implements ModelInterface, ArrayAccess, \JsonSerializable, \Stringa
      *
      * @return boolean
      */
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -439,7 +442,7 @@ class Charge implements ModelInterface, ArrayAccess, \JsonSerializable, \Stringa
      *
      * @return void
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         if (is_null($offset)) {
             $this->container[] = $value;
@@ -455,7 +458,7 @@ class Charge implements ModelInterface, ArrayAccess, \JsonSerializable, \Stringa
      *
      * @return void
      */
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -467,7 +470,7 @@ class Charge implements ModelInterface, ArrayAccess, \JsonSerializable, \Stringa
      * @return mixed Returns data which can be serialized by json_encode(), which is a value
      * of any type other than a resource.
      */
-    public function jsonSerialize() : string
+    public function jsonSerialize(): string
     {
        return \json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }
@@ -477,7 +480,7 @@ class Charge implements ModelInterface, ArrayAccess, \JsonSerializable, \Stringa
      *
      * @return string
      */
-    public function __toString() : string
+    public function __toString(): string
     {
         return (string) json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
@@ -490,7 +493,7 @@ class Charge implements ModelInterface, ArrayAccess, \JsonSerializable, \Stringa
      *
      * @return string
      */
-    public function toHeaderValue() : string
+    public function toHeaderValue(): string
     {
         return json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }

@@ -1,4 +1,7 @@
 <?php
+
+declare(strict_types=1);
+
 /**
  * Error
  *
@@ -80,7 +83,7 @@ class Error implements ModelInterface, ArrayAccess, \JsonSerializable, \Stringab
      *
      * @return array
      */
-    public static function openAPITypes() : array
+    public static function openAPITypes(): array
     {
         return self::$openAPITypes;
     }
@@ -90,7 +93,7 @@ class Error implements ModelInterface, ArrayAccess, \JsonSerializable, \Stringab
      *
      * @return array
      */
-    public static function openAPIFormats() : array
+    public static function openAPIFormats(): array
     {
         return self::$openAPIFormats;
     }
@@ -135,7 +138,7 @@ class Error implements ModelInterface, ArrayAccess, \JsonSerializable, \Stringab
      *
      * @return array
      */
-    public static function attributeMap() : array
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -145,7 +148,7 @@ class Error implements ModelInterface, ArrayAccess, \JsonSerializable, \Stringab
      *
      * @return array
      */
-    public static function setters() : array
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -155,7 +158,7 @@ class Error implements ModelInterface, ArrayAccess, \JsonSerializable, \Stringab
      *
      * @return array
      */
-    public static function getters() : array
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -165,7 +168,7 @@ class Error implements ModelInterface, ArrayAccess, \JsonSerializable, \Stringab
      *
      * @return string
      */
-    public function getModelName() : string
+    public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
@@ -196,7 +199,7 @@ class Error implements ModelInterface, ArrayAccess, \JsonSerializable, \Stringab
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties() : array
+    public function listInvalidProperties(): array
     {
         $invalidProperties = [];
 
@@ -215,7 +218,7 @@ class Error implements ModelInterface, ArrayAccess, \JsonSerializable, \Stringab
      *
      * @return bool True if all properties are valid
      */
-    public function valid() : bool
+    public function valid(): bool
     {
         return count($this->listInvalidProperties()) === 0;
     }
@@ -238,7 +241,7 @@ class Error implements ModelInterface, ArrayAccess, \JsonSerializable, \Stringab
      *
      * @return self
      */
-    public function setCode($code) : self
+    public function setCode($code): self
     {
         $this->container['code'] = $code;
 
@@ -262,7 +265,7 @@ class Error implements ModelInterface, ArrayAccess, \JsonSerializable, \Stringab
      *
      * @return self
      */
-    public function setMessage($message) : self
+    public function setMessage($message): self
     {
         $this->container['message'] = $message;
 
@@ -286,7 +289,7 @@ class Error implements ModelInterface, ArrayAccess, \JsonSerializable, \Stringab
      *
      * @return self
      */
-    public function setDetails($details) : self
+    public function setDetails($details): self
     {
         $this->container['details'] = $details;
 
@@ -299,7 +302,7 @@ class Error implements ModelInterface, ArrayAccess, \JsonSerializable, \Stringab
      *
      * @return boolean
      */
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -324,7 +327,7 @@ class Error implements ModelInterface, ArrayAccess, \JsonSerializable, \Stringab
      *
      * @return void
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         if (is_null($offset)) {
             $this->container[] = $value;
@@ -340,7 +343,7 @@ class Error implements ModelInterface, ArrayAccess, \JsonSerializable, \Stringab
      *
      * @return void
      */
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -352,7 +355,7 @@ class Error implements ModelInterface, ArrayAccess, \JsonSerializable, \Stringab
      * @return mixed Returns data which can be serialized by json_encode(), which is a value
      * of any type other than a resource.
      */
-    public function jsonSerialize() : string
+    public function jsonSerialize(): string
     {
        return \json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }
@@ -362,7 +365,7 @@ class Error implements ModelInterface, ArrayAccess, \JsonSerializable, \Stringab
      *
      * @return string
      */
-    public function __toString() : string
+    public function __toString(): string
     {
         return (string) json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
@@ -375,7 +378,7 @@ class Error implements ModelInterface, ArrayAccess, \JsonSerializable, \Stringab
      *
      * @return string
      */
-    public function toHeaderValue() : string
+    public function toHeaderValue(): string
     {
         return json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }
