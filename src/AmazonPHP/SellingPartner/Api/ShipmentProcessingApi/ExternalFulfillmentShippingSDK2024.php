@@ -364,7 +364,7 @@ final class ExternalFulfillmentShippingSDK2024
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            '\Plenty\AmazonPHP\SellingPartner\Model\ExternalFulfillmentShipping2024\InvoiceResponse',
+            \Plenty\AmazonPHP\SellingPartner\Model\ExternalFulfillmentShipping2024\InvoiceResponse::class,
             []
         );
     }
@@ -562,7 +562,7 @@ final class ExternalFulfillmentShippingSDK2024
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            '\Plenty\AmazonPHP\SellingPartner\Model\ExternalFulfillmentShipping2024\ShipLabelsResponse',
+            \Plenty\AmazonPHP\SellingPartner\Model\ExternalFulfillmentShipping2024\ShipLabelsResponse::class,
             []
         );
     }
@@ -1003,7 +1003,7 @@ final class ExternalFulfillmentShippingSDK2024
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            '\Plenty\AmazonPHP\SellingPartner\Model\ExternalFulfillmentShipping2024\InvoiceResponse',
+            \Plenty\AmazonPHP\SellingPartner\Model\ExternalFulfillmentShipping2024\InvoiceResponse::class,
             []
         );
     }
@@ -1199,7 +1199,7 @@ final class ExternalFulfillmentShippingSDK2024
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            '\Plenty\AmazonPHP\SellingPartner\Model\ExternalFulfillmentShipping2024\ShippingOptionsResponse',
+            \Plenty\AmazonPHP\SellingPartner\Model\ExternalFulfillmentShipping2024\ShippingOptionsResponse::class,
             []
         );
     }

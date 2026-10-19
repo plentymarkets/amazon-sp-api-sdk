@@ -140,7 +140,7 @@ final class ExternalFulfillmentShippingSDK2024
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            '\Plenty\AmazonPHP\SellingPartner\Model\ExternalFulfillmentShipping2024\Shipment',
+            \Plenty\AmazonPHP\SellingPartner\Model\ExternalFulfillmentShipping2024\Shipment::class,
             []
         );
     }
@@ -342,7 +342,7 @@ final class ExternalFulfillmentShippingSDK2024
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            '\Plenty\AmazonPHP\SellingPartner\Model\ExternalFulfillmentShipping2024\ShipmentsResponse',
+            \Plenty\AmazonPHP\SellingPartner\Model\ExternalFulfillmentShipping2024\ShipmentsResponse::class,
             []
         );
     }
