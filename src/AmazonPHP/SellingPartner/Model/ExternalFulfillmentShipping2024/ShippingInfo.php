@@ -180,8 +180,8 @@ class ShippingInfo implements ModelInterface, ArrayAccess, \JsonSerializable
         return self::$openAPIModelName;
     }
 
-    const SHIPPING_TYPE_MARKETPLACE = 'MARKETPLACE';
-    const SHIPPING_TYPE_SELF = 'SELF';
+    const SHIPPING_TYPE_MARKETPLACE = 'Marketplace';
+    const SHIPPING_TYPE_SELF = 'Self';
 
     /**
      * Gets allowable values of the enum
@@ -349,16 +349,12 @@ class ShippingInfo implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function setShippingType($shipping_type) : self
     {
-        $allowedValues = $this->getShippingTypeAllowableValues();
-        if (!is_null($shipping_type) && !in_array($shipping_type, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'shipping_type', must be one of '%s'",
-                    $shipping_type,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
+        // Deliberately not validated against getShippingTypeAllowableValues(): this setter runs
+        // during response deserialization (ObjectSerializer::deserialize()), and Amazon changed the
+        // casing of this enum (MARKETPLACE/SELF -> Marketplace/Self, selling-partner-api-models
+        // bad4c9b6). Throwing here would abort deserialization of the whole getShipment(s) response
+        // for one unrecognized value. listInvalidProperties()/valid() still flag unknown values for
+        // callers who want to check.
         $this->container['shipping_type'] = $shipping_type;
 
         return $this;
