@@ -1,4 +1,7 @@
 <?php
+
+declare(strict_types=1);
+
 /**
  * ShipmentAcknowledgementRequest
  *
@@ -40,7 +43,7 @@ use \Plenty\AmazonPHP\SellingPartner\ModelInterface;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class ShipmentAcknowledgementRequest implements ModelInterface, ArrayAccess, \JsonSerializable
+class ShipmentAcknowledgementRequest implements ModelInterface, ArrayAccess, \JsonSerializable, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -78,7 +81,7 @@ class ShipmentAcknowledgementRequest implements ModelInterface, ArrayAccess, \Js
      *
      * @return array
      */
-    public static function openAPITypes() : array
+    public static function openAPITypes(): array
     {
         return self::$openAPITypes;
     }
@@ -88,7 +91,7 @@ class ShipmentAcknowledgementRequest implements ModelInterface, ArrayAccess, \Js
      *
      * @return array
      */
-    public static function openAPIFormats() : array
+    public static function openAPIFormats(): array
     {
         return self::$openAPIFormats;
     }
@@ -130,7 +133,7 @@ class ShipmentAcknowledgementRequest implements ModelInterface, ArrayAccess, \Js
      *
      * @return array
      */
-    public static function attributeMap() : array
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -140,7 +143,7 @@ class ShipmentAcknowledgementRequest implements ModelInterface, ArrayAccess, \Js
      *
      * @return array
      */
-    public static function setters() : array
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -150,7 +153,7 @@ class ShipmentAcknowledgementRequest implements ModelInterface, ArrayAccess, \Js
      *
      * @return array
      */
-    public static function getters() : array
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -160,7 +163,7 @@ class ShipmentAcknowledgementRequest implements ModelInterface, ArrayAccess, \Js
      *
      * @return string
      */
-    public function getModelName() : string
+    public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
@@ -179,7 +182,7 @@ class ShipmentAcknowledgementRequest implements ModelInterface, ArrayAccess, \Js
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['reference_id'] = $data['reference_id'] ?? null;
         $this->container['line_items'] = $data['line_items'] ?? null;
@@ -190,7 +193,7 @@ class ShipmentAcknowledgementRequest implements ModelInterface, ArrayAccess, \Js
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties() : array
+    public function listInvalidProperties(): array
     {
         $invalidProperties = [];
 
@@ -210,7 +213,7 @@ class ShipmentAcknowledgementRequest implements ModelInterface, ArrayAccess, \Js
      *
      * @return bool True if all properties are valid
      */
-    public function valid() : bool
+    public function valid(): bool
     {
         return count($this->listInvalidProperties()) === 0;
     }
@@ -233,7 +236,7 @@ class ShipmentAcknowledgementRequest implements ModelInterface, ArrayAccess, \Js
      *
      * @return self
      */
-    public function setReferenceId($reference_id) : self
+    public function setReferenceId($reference_id): self
     {
         $this->container['reference_id'] = $reference_id;
 
@@ -257,7 +260,7 @@ class ShipmentAcknowledgementRequest implements ModelInterface, ArrayAccess, \Js
      *
      * @return self
      */
-    public function setLineItems($line_items) : self
+    public function setLineItems($line_items): self
     {
 
 
@@ -275,7 +278,7 @@ class ShipmentAcknowledgementRequest implements ModelInterface, ArrayAccess, \Js
      *
      * @return boolean
      */
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -287,7 +290,7 @@ class ShipmentAcknowledgementRequest implements ModelInterface, ArrayAccess, \Js
      *
      * @return mixed|null
      */
-    public function offsetGet($offset)
+    public function offsetGet($offset): mixed
     {
         return $this->container[$offset] ?? null;
     }
@@ -300,7 +303,7 @@ class ShipmentAcknowledgementRequest implements ModelInterface, ArrayAccess, \Js
      *
      * @return void
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         if (is_null($offset)) {
             $this->container[] = $value;
@@ -316,7 +319,7 @@ class ShipmentAcknowledgementRequest implements ModelInterface, ArrayAccess, \Js
      *
      * @return void
      */
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -328,7 +331,7 @@ class ShipmentAcknowledgementRequest implements ModelInterface, ArrayAccess, \Js
      * @return mixed Returns data which can be serialized by json_encode(), which is a value
      * of any type other than a resource.
      */
-    public function jsonSerialize() : string
+    public function jsonSerialize(): string
     {
        return \json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }
@@ -338,9 +341,9 @@ class ShipmentAcknowledgementRequest implements ModelInterface, ArrayAccess, \Js
      *
      * @return string
      */
-    public function __toString() : string
+    public function __toString(): string
     {
-        return json_encode(
+        return (string) json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );
@@ -351,7 +354,7 @@ class ShipmentAcknowledgementRequest implements ModelInterface, ArrayAccess, \Js
      *
      * @return string
      */
-    public function toHeaderValue() : string
+    public function toHeaderValue(): string
     {
         return json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }

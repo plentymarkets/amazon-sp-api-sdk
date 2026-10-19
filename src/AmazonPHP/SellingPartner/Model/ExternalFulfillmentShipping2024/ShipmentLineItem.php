@@ -1,4 +1,7 @@
 <?php
+
+declare(strict_types=1);
+
 /**
  * ShipmentLineItem
  *
@@ -40,7 +43,7 @@ use \Plenty\AmazonPHP\SellingPartner\ModelInterface;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class ShipmentLineItem implements ModelInterface, ArrayAccess, \JsonSerializable
+class ShipmentLineItem implements ModelInterface, ArrayAccess, \JsonSerializable, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -106,7 +109,7 @@ class ShipmentLineItem implements ModelInterface, ArrayAccess, \JsonSerializable
      *
      * @return array
      */
-    public static function openAPITypes() : array
+    public static function openAPITypes(): array
     {
         return self::$openAPITypes;
     }
@@ -116,7 +119,7 @@ class ShipmentLineItem implements ModelInterface, ArrayAccess, \JsonSerializable
      *
      * @return array
      */
-    public static function openAPIFormats() : array
+    public static function openAPIFormats(): array
     {
         return self::$openAPIFormats;
     }
@@ -200,7 +203,7 @@ class ShipmentLineItem implements ModelInterface, ArrayAccess, \JsonSerializable
      *
      * @return array
      */
-    public static function attributeMap() : array
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -210,7 +213,7 @@ class ShipmentLineItem implements ModelInterface, ArrayAccess, \JsonSerializable
      *
      * @return array
      */
-    public static function setters() : array
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -220,7 +223,7 @@ class ShipmentLineItem implements ModelInterface, ArrayAccess, \JsonSerializable
      *
      * @return array
      */
-    public static function getters() : array
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -230,7 +233,7 @@ class ShipmentLineItem implements ModelInterface, ArrayAccess, \JsonSerializable
      *
      * @return string
      */
-    public function getModelName() : string
+    public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
@@ -249,7 +252,7 @@ class ShipmentLineItem implements ModelInterface, ArrayAccess, \JsonSerializable
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['shipment_line_item_id'] = $data['shipment_line_item_id'] ?? null;
         $this->container['merchant_sku'] = $data['merchant_sku'] ?? null;
@@ -274,7 +277,7 @@ class ShipmentLineItem implements ModelInterface, ArrayAccess, \JsonSerializable
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties() : array
+    public function listInvalidProperties(): array
     {
         $invalidProperties = [];
 
@@ -322,7 +325,7 @@ class ShipmentLineItem implements ModelInterface, ArrayAccess, \JsonSerializable
      *
      * @return bool True if all properties are valid
      */
-    public function valid() : bool
+    public function valid(): bool
     {
         return count($this->listInvalidProperties()) === 0;
     }
@@ -345,7 +348,7 @@ class ShipmentLineItem implements ModelInterface, ArrayAccess, \JsonSerializable
      *
      * @return self
      */
-    public function setShipmentLineItemId($shipment_line_item_id) : self
+    public function setShipmentLineItemId($shipment_line_item_id): self
     {
         $this->container['shipment_line_item_id'] = $shipment_line_item_id;
 
@@ -369,7 +372,7 @@ class ShipmentLineItem implements ModelInterface, ArrayAccess, \JsonSerializable
      *
      * @return self
      */
-    public function setMerchantSku($merchant_sku) : self
+    public function setMerchantSku($merchant_sku): self
     {
         $this->container['merchant_sku'] = $merchant_sku;
 
@@ -393,7 +396,7 @@ class ShipmentLineItem implements ModelInterface, ArrayAccess, \JsonSerializable
      *
      * @return self
      */
-    public function setNumberOfUnits($number_of_units) : self
+    public function setNumberOfUnits($number_of_units): self
     {
 
         if (($number_of_units < 1)) {
@@ -422,7 +425,7 @@ class ShipmentLineItem implements ModelInterface, ArrayAccess, \JsonSerializable
      *
      * @return self
      */
-    public function setSerialNumbers($serial_numbers) : self
+    public function setSerialNumbers($serial_numbers): self
     {
 
 
@@ -451,7 +454,7 @@ class ShipmentLineItem implements ModelInterface, ArrayAccess, \JsonSerializable
      *
      * @return self
      */
-    public function setPieceType($piece_type) : self
+    public function setPieceType($piece_type): self
     {
         $this->container['piece_type'] = $piece_type;
 
@@ -475,7 +478,7 @@ class ShipmentLineItem implements ModelInterface, ArrayAccess, \JsonSerializable
      *
      * @return self
      */
-    public function setHazmatLabels($hazmat_labels) : self
+    public function setHazmatLabels($hazmat_labels): self
     {
 
 
@@ -504,7 +507,7 @@ class ShipmentLineItem implements ModelInterface, ArrayAccess, \JsonSerializable
      *
      * @return self
      */
-    public function setGiftAttributes($gift_attributes) : self
+    public function setGiftAttributes($gift_attributes): self
     {
         $this->container['gift_attributes'] = $gift_attributes;
 
@@ -528,7 +531,7 @@ class ShipmentLineItem implements ModelInterface, ArrayAccess, \JsonSerializable
      *
      * @return self
      */
-    public function setCharges($charges) : self
+    public function setCharges($charges): self
     {
 
 
@@ -557,7 +560,7 @@ class ShipmentLineItem implements ModelInterface, ArrayAccess, \JsonSerializable
      *
      * @return self
      */
-    public function setCancellations($cancellations) : self
+    public function setCancellations($cancellations): self
     {
 
 
@@ -586,7 +589,7 @@ class ShipmentLineItem implements ModelInterface, ArrayAccess, \JsonSerializable
      *
      * @return self
      */
-    public function setHsnCode($hsn_code) : self
+    public function setHsnCode($hsn_code): self
     {
         $this->container['hsn_code'] = $hsn_code;
 
@@ -610,7 +613,7 @@ class ShipmentLineItem implements ModelInterface, ArrayAccess, \JsonSerializable
      *
      * @return self
      */
-    public function setRecommendedCountryOfOrigin($recommended_country_of_origin) : self
+    public function setRecommendedCountryOfOrigin($recommended_country_of_origin): self
     {
         $this->container['recommended_country_of_origin'] = $recommended_country_of_origin;
 
@@ -634,7 +637,7 @@ class ShipmentLineItem implements ModelInterface, ArrayAccess, \JsonSerializable
      *
      * @return self
      */
-    public function setCountryOfOrigin($country_of_origin) : self
+    public function setCountryOfOrigin($country_of_origin): self
     {
         $this->container['country_of_origin'] = $country_of_origin;
 
@@ -658,7 +661,7 @@ class ShipmentLineItem implements ModelInterface, ArrayAccess, \JsonSerializable
      *
      * @return self
      */
-    public function setRecommendedCurrencyCode($recommended_currency_code) : self
+    public function setRecommendedCurrencyCode($recommended_currency_code): self
     {
         $this->container['recommended_currency_code'] = $recommended_currency_code;
 
@@ -682,7 +685,7 @@ class ShipmentLineItem implements ModelInterface, ArrayAccess, \JsonSerializable
      *
      * @return self
      */
-    public function setItemValue($item_value) : self
+    public function setItemValue($item_value): self
     {
         $this->container['item_value'] = $item_value;
 
@@ -706,7 +709,7 @@ class ShipmentLineItem implements ModelInterface, ArrayAccess, \JsonSerializable
      *
      * @return self
      */
-    public function setComplianceAttributes($compliance_attributes) : self
+    public function setComplianceAttributes($compliance_attributes): self
     {
         $this->container['compliance_attributes'] = $compliance_attributes;
 
@@ -730,7 +733,7 @@ class ShipmentLineItem implements ModelInterface, ArrayAccess, \JsonSerializable
      *
      * @return self
      */
-    public function setCustomAttributes($custom_attributes) : self
+    public function setCustomAttributes($custom_attributes): self
     {
         $this->container['custom_attributes'] = $custom_attributes;
 
@@ -743,7 +746,7 @@ class ShipmentLineItem implements ModelInterface, ArrayAccess, \JsonSerializable
      *
      * @return boolean
      */
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -755,7 +758,7 @@ class ShipmentLineItem implements ModelInterface, ArrayAccess, \JsonSerializable
      *
      * @return mixed|null
      */
-    public function offsetGet($offset)
+    public function offsetGet($offset): mixed
     {
         return $this->container[$offset] ?? null;
     }
@@ -768,7 +771,7 @@ class ShipmentLineItem implements ModelInterface, ArrayAccess, \JsonSerializable
      *
      * @return void
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         if (is_null($offset)) {
             $this->container[] = $value;
@@ -784,7 +787,7 @@ class ShipmentLineItem implements ModelInterface, ArrayAccess, \JsonSerializable
      *
      * @return void
      */
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -796,7 +799,7 @@ class ShipmentLineItem implements ModelInterface, ArrayAccess, \JsonSerializable
      * @return mixed Returns data which can be serialized by json_encode(), which is a value
      * of any type other than a resource.
      */
-    public function jsonSerialize() : string
+    public function jsonSerialize(): string
     {
        return \json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }
@@ -806,9 +809,9 @@ class ShipmentLineItem implements ModelInterface, ArrayAccess, \JsonSerializable
      *
      * @return string
      */
-    public function __toString() : string
+    public function __toString(): string
     {
-        return json_encode(
+        return (string) json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );
@@ -819,7 +822,7 @@ class ShipmentLineItem implements ModelInterface, ArrayAccess, \JsonSerializable
      *
      * @return string
      */
-    public function toHeaderValue() : string
+    public function toHeaderValue(): string
     {
         return json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }

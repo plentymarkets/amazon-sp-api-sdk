@@ -1,4 +1,7 @@
 <?php
+
+declare(strict_types=1);
+
 /**
  * TaxRegistrationInfo
  *
@@ -40,7 +43,7 @@ use \Plenty\AmazonPHP\SellingPartner\ModelInterface;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class TaxRegistrationInfo implements ModelInterface, ArrayAccess, \JsonSerializable
+class TaxRegistrationInfo implements ModelInterface, ArrayAccess, \JsonSerializable, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -82,7 +85,7 @@ class TaxRegistrationInfo implements ModelInterface, ArrayAccess, \JsonSerializa
      *
      * @return array
      */
-    public static function openAPITypes() : array
+    public static function openAPITypes(): array
     {
         return self::$openAPITypes;
     }
@@ -92,7 +95,7 @@ class TaxRegistrationInfo implements ModelInterface, ArrayAccess, \JsonSerializa
      *
      * @return array
      */
-    public static function openAPIFormats() : array
+    public static function openAPIFormats(): array
     {
         return self::$openAPIFormats;
     }
@@ -140,7 +143,7 @@ class TaxRegistrationInfo implements ModelInterface, ArrayAccess, \JsonSerializa
      *
      * @return array
      */
-    public static function attributeMap() : array
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -150,7 +153,7 @@ class TaxRegistrationInfo implements ModelInterface, ArrayAccess, \JsonSerializa
      *
      * @return array
      */
-    public static function setters() : array
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -160,7 +163,7 @@ class TaxRegistrationInfo implements ModelInterface, ArrayAccess, \JsonSerializa
      *
      * @return array
      */
-    public static function getters() : array
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -170,7 +173,7 @@ class TaxRegistrationInfo implements ModelInterface, ArrayAccess, \JsonSerializa
      *
      * @return string
      */
-    public function getModelName() : string
+    public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
@@ -183,7 +186,7 @@ class TaxRegistrationInfo implements ModelInterface, ArrayAccess, \JsonSerializa
      *
      * @return string[]
      */
-    public function getTypeAllowableValues() : array
+    public function getTypeAllowableValues(): array
     {
         return [
             self::TYPE_VAT,
@@ -204,7 +207,7 @@ class TaxRegistrationInfo implements ModelInterface, ArrayAccess, \JsonSerializa
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['type'] = $data['type'] ?? null;
         $this->container['number'] = $data['number'] ?? null;
@@ -217,7 +220,7 @@ class TaxRegistrationInfo implements ModelInterface, ArrayAccess, \JsonSerializa
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties() : array
+    public function listInvalidProperties(): array
     {
         $invalidProperties = [];
 
@@ -239,7 +242,7 @@ class TaxRegistrationInfo implements ModelInterface, ArrayAccess, \JsonSerializa
      *
      * @return bool True if all properties are valid
      */
-    public function valid() : bool
+    public function valid(): bool
     {
         return count($this->listInvalidProperties()) === 0;
     }
@@ -262,7 +265,7 @@ class TaxRegistrationInfo implements ModelInterface, ArrayAccess, \JsonSerializa
      *
      * @return self
      */
-    public function setType($type) : self
+    public function setType($type): self
     {
         $allowedValues = $this->getTypeAllowableValues();
         if (!is_null($type) && !in_array($type, $allowedValues, true)) {
@@ -296,7 +299,7 @@ class TaxRegistrationInfo implements ModelInterface, ArrayAccess, \JsonSerializa
      *
      * @return self
      */
-    public function setNumber($number) : self
+    public function setNumber($number): self
     {
         $this->container['number'] = $number;
 
@@ -320,7 +323,7 @@ class TaxRegistrationInfo implements ModelInterface, ArrayAccess, \JsonSerializa
      *
      * @return self
      */
-    public function setAddress($address) : self
+    public function setAddress($address): self
     {
         $this->container['address'] = $address;
 
@@ -344,7 +347,7 @@ class TaxRegistrationInfo implements ModelInterface, ArrayAccess, \JsonSerializa
      *
      * @return self
      */
-    public function setMessages($messages) : self
+    public function setMessages($messages): self
     {
         $this->container['messages'] = $messages;
 
@@ -357,7 +360,7 @@ class TaxRegistrationInfo implements ModelInterface, ArrayAccess, \JsonSerializa
      *
      * @return boolean
      */
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -369,7 +372,7 @@ class TaxRegistrationInfo implements ModelInterface, ArrayAccess, \JsonSerializa
      *
      * @return mixed|null
      */
-    public function offsetGet($offset)
+    public function offsetGet($offset): mixed
     {
         return $this->container[$offset] ?? null;
     }
@@ -382,7 +385,7 @@ class TaxRegistrationInfo implements ModelInterface, ArrayAccess, \JsonSerializa
      *
      * @return void
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         if (is_null($offset)) {
             $this->container[] = $value;
@@ -398,7 +401,7 @@ class TaxRegistrationInfo implements ModelInterface, ArrayAccess, \JsonSerializa
      *
      * @return void
      */
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -410,7 +413,7 @@ class TaxRegistrationInfo implements ModelInterface, ArrayAccess, \JsonSerializa
      * @return mixed Returns data which can be serialized by json_encode(), which is a value
      * of any type other than a resource.
      */
-    public function jsonSerialize() : string
+    public function jsonSerialize(): string
     {
        return \json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }
@@ -420,9 +423,9 @@ class TaxRegistrationInfo implements ModelInterface, ArrayAccess, \JsonSerializa
      *
      * @return string
      */
-    public function __toString() : string
+    public function __toString(): string
     {
-        return json_encode(
+        return (string) json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );
@@ -433,7 +436,7 @@ class TaxRegistrationInfo implements ModelInterface, ArrayAccess, \JsonSerializa
      *
      * @return string
      */
-    public function toHeaderValue() : string
+    public function toHeaderValue(): string
     {
         return json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }

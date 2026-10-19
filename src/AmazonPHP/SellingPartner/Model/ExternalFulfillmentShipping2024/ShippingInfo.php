@@ -1,4 +1,7 @@
 <?php
+
+declare(strict_types=1);
+
 /**
  * ShippingInfo
  *
@@ -40,7 +43,7 @@ use \Plenty\AmazonPHP\SellingPartner\ModelInterface;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class ShippingInfo implements ModelInterface, ArrayAccess, \JsonSerializable
+class ShippingInfo implements ModelInterface, ArrayAccess, \JsonSerializable, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -84,7 +87,7 @@ class ShippingInfo implements ModelInterface, ArrayAccess, \JsonSerializable
      *
      * @return array
      */
-    public static function openAPITypes() : array
+    public static function openAPITypes(): array
     {
         return self::$openAPITypes;
     }
@@ -94,7 +97,7 @@ class ShippingInfo implements ModelInterface, ArrayAccess, \JsonSerializable
      *
      * @return array
      */
-    public static function openAPIFormats() : array
+    public static function openAPIFormats(): array
     {
         return self::$openAPIFormats;
     }
@@ -145,7 +148,7 @@ class ShippingInfo implements ModelInterface, ArrayAccess, \JsonSerializable
      *
      * @return array
      */
-    public static function attributeMap() : array
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -155,7 +158,7 @@ class ShippingInfo implements ModelInterface, ArrayAccess, \JsonSerializable
      *
      * @return array
      */
-    public static function setters() : array
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -165,7 +168,7 @@ class ShippingInfo implements ModelInterface, ArrayAccess, \JsonSerializable
      *
      * @return array
      */
-    public static function getters() : array
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -175,20 +178,20 @@ class ShippingInfo implements ModelInterface, ArrayAccess, \JsonSerializable
      *
      * @return string
      */
-    public function getModelName() : string
+    public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
 
-    const SHIPPING_TYPE_MARKETPLACE = 'MARKETPLACE';
-    const SHIPPING_TYPE_SELF = 'SELF';
+    const SHIPPING_TYPE_MARKETPLACE = 'Marketplace';
+    const SHIPPING_TYPE_SELF = 'Self';
 
     /**
      * Gets allowable values of the enum
      *
      * @return string[]
      */
-    public function getShippingTypeAllowableValues() : array
+    public function getShippingTypeAllowableValues(): array
     {
         return [
             self::SHIPPING_TYPE_MARKETPLACE,
@@ -209,7 +212,7 @@ class ShippingInfo implements ModelInterface, ArrayAccess, \JsonSerializable
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['recommended_ship_method'] = $data['recommended_ship_method'] ?? null;
         $this->container['expected_shipping_date_time_in_utc'] = $data['expected_shipping_date_time_in_utc'] ?? null;
@@ -223,7 +226,7 @@ class ShippingInfo implements ModelInterface, ArrayAccess, \JsonSerializable
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties() : array
+    public function listInvalidProperties(): array
     {
         $invalidProperties = [];
 
@@ -252,7 +255,7 @@ class ShippingInfo implements ModelInterface, ArrayAccess, \JsonSerializable
      *
      * @return bool True if all properties are valid
      */
-    public function valid() : bool
+    public function valid(): bool
     {
         return count($this->listInvalidProperties()) === 0;
     }
@@ -275,7 +278,7 @@ class ShippingInfo implements ModelInterface, ArrayAccess, \JsonSerializable
      *
      * @return self
      */
-    public function setRecommendedShipMethod($recommended_ship_method) : self
+    public function setRecommendedShipMethod($recommended_ship_method): self
     {
         $this->container['recommended_ship_method'] = $recommended_ship_method;
 
@@ -299,7 +302,7 @@ class ShippingInfo implements ModelInterface, ArrayAccess, \JsonSerializable
      *
      * @return self
      */
-    public function setExpectedShippingDateTimeInUtc($expected_shipping_date_time_in_utc) : self
+    public function setExpectedShippingDateTimeInUtc($expected_shipping_date_time_in_utc): self
     {
         $this->container['expected_shipping_date_time_in_utc'] = $expected_shipping_date_time_in_utc;
 
@@ -323,7 +326,7 @@ class ShippingInfo implements ModelInterface, ArrayAccess, \JsonSerializable
      *
      * @return self
      */
-    public function setShipToAddress($ship_to_address) : self
+    public function setShipToAddress($ship_to_address): self
     {
         $this->container['ship_to_address'] = $ship_to_address;
 
@@ -347,18 +350,14 @@ class ShippingInfo implements ModelInterface, ArrayAccess, \JsonSerializable
      *
      * @return self
      */
-    public function setShippingType($shipping_type) : self
+    public function setShippingType($shipping_type): self
     {
-        $allowedValues = $this->getShippingTypeAllowableValues();
-        if (!is_null($shipping_type) && !in_array($shipping_type, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'shipping_type', must be one of '%s'",
-                    $shipping_type,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
+        // Deliberately not validated against getShippingTypeAllowableValues(): this setter runs
+        // during response deserialization (ObjectSerializer::deserialize()), and Amazon changed the
+        // casing of this enum (MARKETPLACE/SELF -> Marketplace/Self, selling-partner-api-models
+        // bad4c9b6). Throwing here would abort deserialization of the whole getShipment(s) response
+        // for one unrecognized value. listInvalidProperties()/valid() still flag unknown values for
+        // callers who want to check.
         $this->container['shipping_type'] = $shipping_type;
 
         return $this;
@@ -381,7 +380,7 @@ class ShippingInfo implements ModelInterface, ArrayAccess, \JsonSerializable
      *
      * @return self
      */
-    public function setRecommendedPackages($recommended_packages) : self
+    public function setRecommendedPackages($recommended_packages): self
     {
 
 
@@ -399,7 +398,7 @@ class ShippingInfo implements ModelInterface, ArrayAccess, \JsonSerializable
      *
      * @return boolean
      */
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -411,7 +410,7 @@ class ShippingInfo implements ModelInterface, ArrayAccess, \JsonSerializable
      *
      * @return mixed|null
      */
-    public function offsetGet($offset)
+    public function offsetGet($offset): mixed
     {
         return $this->container[$offset] ?? null;
     }
@@ -424,7 +423,7 @@ class ShippingInfo implements ModelInterface, ArrayAccess, \JsonSerializable
      *
      * @return void
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         if (is_null($offset)) {
             $this->container[] = $value;
@@ -440,7 +439,7 @@ class ShippingInfo implements ModelInterface, ArrayAccess, \JsonSerializable
      *
      * @return void
      */
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -452,7 +451,7 @@ class ShippingInfo implements ModelInterface, ArrayAccess, \JsonSerializable
      * @return mixed Returns data which can be serialized by json_encode(), which is a value
      * of any type other than a resource.
      */
-    public function jsonSerialize() : string
+    public function jsonSerialize(): string
     {
        return \json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }
@@ -462,9 +461,9 @@ class ShippingInfo implements ModelInterface, ArrayAccess, \JsonSerializable
      *
      * @return string
      */
-    public function __toString() : string
+    public function __toString(): string
     {
-        return json_encode(
+        return (string) json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );
@@ -475,7 +474,7 @@ class ShippingInfo implements ModelInterface, ArrayAccess, \JsonSerializable
      *
      * @return string
      */
-    public function toHeaderValue() : string
+    public function toHeaderValue(): string
     {
         return json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }

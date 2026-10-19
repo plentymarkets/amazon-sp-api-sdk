@@ -1,4 +1,7 @@
 <?php
+
+declare(strict_types=1);
+
 /**
  * ShippingOptions
  *
@@ -40,7 +43,7 @@ use \Plenty\AmazonPHP\SellingPartner\ModelInterface;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class ShippingOptions implements ModelInterface, ArrayAccess, \JsonSerializable
+class ShippingOptions implements ModelInterface, ArrayAccess, \JsonSerializable, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -86,7 +89,7 @@ class ShippingOptions implements ModelInterface, ArrayAccess, \JsonSerializable
      *
      * @return array
      */
-    public static function openAPITypes() : array
+    public static function openAPITypes(): array
     {
         return self::$openAPITypes;
     }
@@ -96,7 +99,7 @@ class ShippingOptions implements ModelInterface, ArrayAccess, \JsonSerializable
      *
      * @return array
      */
-    public static function openAPIFormats() : array
+    public static function openAPIFormats(): array
     {
         return self::$openAPIFormats;
     }
@@ -150,7 +153,7 @@ class ShippingOptions implements ModelInterface, ArrayAccess, \JsonSerializable
      *
      * @return array
      */
-    public static function attributeMap() : array
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -160,7 +163,7 @@ class ShippingOptions implements ModelInterface, ArrayAccess, \JsonSerializable
      *
      * @return array
      */
-    public static function setters() : array
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -170,7 +173,7 @@ class ShippingOptions implements ModelInterface, ArrayAccess, \JsonSerializable
      *
      * @return array
      */
-    public static function getters() : array
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -180,7 +183,7 @@ class ShippingOptions implements ModelInterface, ArrayAccess, \JsonSerializable
      *
      * @return string
      */
-    public function getModelName() : string
+    public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
@@ -195,7 +198,7 @@ class ShippingOptions implements ModelInterface, ArrayAccess, \JsonSerializable
      *
      * @return string[]
      */
-    public function getShipByAllowableValues() : array
+    public function getShipByAllowableValues(): array
     {
         return [
             self::SHIP_BY_MARKETPLACE,
@@ -218,7 +221,7 @@ class ShippingOptions implements ModelInterface, ArrayAccess, \JsonSerializable
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['shipping_option_id'] = $data['shipping_option_id'] ?? null;
         $this->container['ship_by'] = $data['ship_by'] ?? null;
@@ -233,7 +236,7 @@ class ShippingOptions implements ModelInterface, ArrayAccess, \JsonSerializable
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties() : array
+    public function listInvalidProperties(): array
     {
         $invalidProperties = [];
 
@@ -261,7 +264,7 @@ class ShippingOptions implements ModelInterface, ArrayAccess, \JsonSerializable
      *
      * @return bool True if all properties are valid
      */
-    public function valid() : bool
+    public function valid(): bool
     {
         return count($this->listInvalidProperties()) === 0;
     }
@@ -284,7 +287,7 @@ class ShippingOptions implements ModelInterface, ArrayAccess, \JsonSerializable
      *
      * @return self
      */
-    public function setShippingOptionId($shipping_option_id) : self
+    public function setShippingOptionId($shipping_option_id): self
     {
         $this->container['shipping_option_id'] = $shipping_option_id;
 
@@ -308,7 +311,7 @@ class ShippingOptions implements ModelInterface, ArrayAccess, \JsonSerializable
      *
      * @return self
      */
-    public function setShipBy($ship_by) : self
+    public function setShipBy($ship_by): self
     {
         $allowedValues = $this->getShipByAllowableValues();
         if (!in_array($ship_by, $allowedValues, true)) {
@@ -342,7 +345,7 @@ class ShippingOptions implements ModelInterface, ArrayAccess, \JsonSerializable
      *
      * @return self
      */
-    public function setCarrierName($carrier_name) : self
+    public function setCarrierName($carrier_name): self
     {
         $this->container['carrier_name'] = $carrier_name;
 
@@ -366,7 +369,7 @@ class ShippingOptions implements ModelInterface, ArrayAccess, \JsonSerializable
      *
      * @return self
      */
-    public function setPickupWindow($pickup_window) : self
+    public function setPickupWindow($pickup_window): self
     {
         $this->container['pickup_window'] = $pickup_window;
 
@@ -390,7 +393,7 @@ class ShippingOptions implements ModelInterface, ArrayAccess, \JsonSerializable
      *
      * @return self
      */
-    public function setTimeSlot($time_slot) : self
+    public function setTimeSlot($time_slot): self
     {
         $this->container['time_slot'] = $time_slot;
 
@@ -414,7 +417,7 @@ class ShippingOptions implements ModelInterface, ArrayAccess, \JsonSerializable
      *
      * @return self
      */
-    public function setHandoverLocation($handover_location) : self
+    public function setHandoverLocation($handover_location): self
     {
         $this->container['handover_location'] = $handover_location;
 
@@ -427,7 +430,7 @@ class ShippingOptions implements ModelInterface, ArrayAccess, \JsonSerializable
      *
      * @return boolean
      */
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -439,7 +442,7 @@ class ShippingOptions implements ModelInterface, ArrayAccess, \JsonSerializable
      *
      * @return mixed|null
      */
-    public function offsetGet($offset)
+    public function offsetGet($offset): mixed
     {
         return $this->container[$offset] ?? null;
     }
@@ -452,7 +455,7 @@ class ShippingOptions implements ModelInterface, ArrayAccess, \JsonSerializable
      *
      * @return void
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         if (is_null($offset)) {
             $this->container[] = $value;
@@ -468,7 +471,7 @@ class ShippingOptions implements ModelInterface, ArrayAccess, \JsonSerializable
      *
      * @return void
      */
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -480,7 +483,7 @@ class ShippingOptions implements ModelInterface, ArrayAccess, \JsonSerializable
      * @return mixed Returns data which can be serialized by json_encode(), which is a value
      * of any type other than a resource.
      */
-    public function jsonSerialize() : string
+    public function jsonSerialize(): string
     {
        return \json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }
@@ -490,9 +493,9 @@ class ShippingOptions implements ModelInterface, ArrayAccess, \JsonSerializable
      *
      * @return string
      */
-    public function __toString() : string
+    public function __toString(): string
     {
-        return json_encode(
+        return (string) json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );
@@ -503,7 +506,7 @@ class ShippingOptions implements ModelInterface, ArrayAccess, \JsonSerializable
      *
      * @return string
      */
-    public function toHeaderValue() : string
+    public function toHeaderValue(): string
     {
         return json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }

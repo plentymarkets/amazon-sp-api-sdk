@@ -1,4 +1,7 @@
 <?php
+
+declare(strict_types=1);
+
 /**
  * LineItemWithReason
  *
@@ -40,7 +43,7 @@ use \Plenty\AmazonPHP\SellingPartner\ModelInterface;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class LineItemWithReason implements ModelInterface, ArrayAccess, \JsonSerializable
+class LineItemWithReason implements ModelInterface, ArrayAccess, \JsonSerializable, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -78,7 +81,7 @@ class LineItemWithReason implements ModelInterface, ArrayAccess, \JsonSerializab
      *
      * @return array
      */
-    public static function openAPITypes() : array
+    public static function openAPITypes(): array
     {
         return self::$openAPITypes;
     }
@@ -88,7 +91,7 @@ class LineItemWithReason implements ModelInterface, ArrayAccess, \JsonSerializab
      *
      * @return array
      */
-    public static function openAPIFormats() : array
+    public static function openAPIFormats(): array
     {
         return self::$openAPIFormats;
     }
@@ -130,7 +133,7 @@ class LineItemWithReason implements ModelInterface, ArrayAccess, \JsonSerializab
      *
      * @return array
      */
-    public static function attributeMap() : array
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -140,7 +143,7 @@ class LineItemWithReason implements ModelInterface, ArrayAccess, \JsonSerializab
      *
      * @return array
      */
-    public static function setters() : array
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -150,7 +153,7 @@ class LineItemWithReason implements ModelInterface, ArrayAccess, \JsonSerializab
      *
      * @return array
      */
-    public static function getters() : array
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -160,7 +163,7 @@ class LineItemWithReason implements ModelInterface, ArrayAccess, \JsonSerializab
      *
      * @return string
      */
-    public function getModelName() : string
+    public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
@@ -173,7 +176,7 @@ class LineItemWithReason implements ModelInterface, ArrayAccess, \JsonSerializab
      *
      * @return string[]
      */
-    public function getReasonAllowableValues() : array
+    public function getReasonAllowableValues(): array
     {
         return [
             self::REASON_OUT_OF_STOCK,
@@ -194,7 +197,7 @@ class LineItemWithReason implements ModelInterface, ArrayAccess, \JsonSerializab
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['line_item'] = $data['line_item'] ?? null;
         $this->container['reason'] = $data['reason'] ?? null;
@@ -205,7 +208,7 @@ class LineItemWithReason implements ModelInterface, ArrayAccess, \JsonSerializab
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties() : array
+    public function listInvalidProperties(): array
     {
         $invalidProperties = [];
 
@@ -230,7 +233,7 @@ class LineItemWithReason implements ModelInterface, ArrayAccess, \JsonSerializab
      *
      * @return bool True if all properties are valid
      */
-    public function valid() : bool
+    public function valid(): bool
     {
         return count($this->listInvalidProperties()) === 0;
     }
@@ -253,7 +256,7 @@ class LineItemWithReason implements ModelInterface, ArrayAccess, \JsonSerializab
      *
      * @return self
      */
-    public function setLineItem($line_item) : self
+    public function setLineItem($line_item): self
     {
         $this->container['line_item'] = $line_item;
 
@@ -277,7 +280,7 @@ class LineItemWithReason implements ModelInterface, ArrayAccess, \JsonSerializab
      *
      * @return self
      */
-    public function setReason($reason) : self
+    public function setReason($reason): self
     {
         $allowedValues = $this->getReasonAllowableValues();
         if (!is_null($reason) && !in_array($reason, $allowedValues, true)) {
@@ -300,7 +303,7 @@ class LineItemWithReason implements ModelInterface, ArrayAccess, \JsonSerializab
      *
      * @return boolean
      */
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -312,7 +315,7 @@ class LineItemWithReason implements ModelInterface, ArrayAccess, \JsonSerializab
      *
      * @return mixed|null
      */
-    public function offsetGet($offset)
+    public function offsetGet($offset): mixed
     {
         return $this->container[$offset] ?? null;
     }
@@ -325,7 +328,7 @@ class LineItemWithReason implements ModelInterface, ArrayAccess, \JsonSerializab
      *
      * @return void
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         if (is_null($offset)) {
             $this->container[] = $value;
@@ -341,7 +344,7 @@ class LineItemWithReason implements ModelInterface, ArrayAccess, \JsonSerializab
      *
      * @return void
      */
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -353,7 +356,7 @@ class LineItemWithReason implements ModelInterface, ArrayAccess, \JsonSerializab
      * @return mixed Returns data which can be serialized by json_encode(), which is a value
      * of any type other than a resource.
      */
-    public function jsonSerialize() : string
+    public function jsonSerialize(): string
     {
        return \json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }
@@ -363,9 +366,9 @@ class LineItemWithReason implements ModelInterface, ArrayAccess, \JsonSerializab
      *
      * @return string
      */
-    public function __toString() : string
+    public function __toString(): string
     {
-        return json_encode(
+        return (string) json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );
@@ -376,7 +379,7 @@ class LineItemWithReason implements ModelInterface, ArrayAccess, \JsonSerializab
      *
      * @return string
      */
-    public function toHeaderValue() : string
+    public function toHeaderValue(): string
     {
         return json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }

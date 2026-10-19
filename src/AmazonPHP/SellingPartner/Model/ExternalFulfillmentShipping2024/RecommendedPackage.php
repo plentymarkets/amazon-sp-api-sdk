@@ -1,4 +1,7 @@
 <?php
+
+declare(strict_types=1);
+
 /**
  * RecommendedPackage
  *
@@ -40,7 +43,7 @@ use \Plenty\AmazonPHP\SellingPartner\ModelInterface;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class RecommendedPackage implements ModelInterface, ArrayAccess, \JsonSerializable
+class RecommendedPackage implements ModelInterface, ArrayAccess, \JsonSerializable, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -80,7 +83,7 @@ class RecommendedPackage implements ModelInterface, ArrayAccess, \JsonSerializab
      *
      * @return array
      */
-    public static function openAPITypes() : array
+    public static function openAPITypes(): array
     {
         return self::$openAPITypes;
     }
@@ -90,7 +93,7 @@ class RecommendedPackage implements ModelInterface, ArrayAccess, \JsonSerializab
      *
      * @return array
      */
-    public static function openAPIFormats() : array
+    public static function openAPIFormats(): array
     {
         return self::$openAPIFormats;
     }
@@ -135,7 +138,7 @@ class RecommendedPackage implements ModelInterface, ArrayAccess, \JsonSerializab
      *
      * @return array
      */
-    public static function attributeMap() : array
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -145,7 +148,7 @@ class RecommendedPackage implements ModelInterface, ArrayAccess, \JsonSerializab
      *
      * @return array
      */
-    public static function setters() : array
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -155,7 +158,7 @@ class RecommendedPackage implements ModelInterface, ArrayAccess, \JsonSerializab
      *
      * @return array
      */
-    public static function getters() : array
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -165,7 +168,7 @@ class RecommendedPackage implements ModelInterface, ArrayAccess, \JsonSerializab
      *
      * @return string
      */
-    public function getModelName() : string
+    public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
@@ -184,7 +187,7 @@ class RecommendedPackage implements ModelInterface, ArrayAccess, \JsonSerializab
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['dimensions'] = $data['dimensions'] ?? null;
         $this->container['weight'] = $data['weight'] ?? null;
@@ -196,7 +199,7 @@ class RecommendedPackage implements ModelInterface, ArrayAccess, \JsonSerializab
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties() : array
+    public function listInvalidProperties(): array
     {
         $invalidProperties = [];
 
@@ -222,7 +225,7 @@ class RecommendedPackage implements ModelInterface, ArrayAccess, \JsonSerializab
      *
      * @return bool True if all properties are valid
      */
-    public function valid() : bool
+    public function valid(): bool
     {
         return count($this->listInvalidProperties()) === 0;
     }
@@ -245,7 +248,7 @@ class RecommendedPackage implements ModelInterface, ArrayAccess, \JsonSerializab
      *
      * @return self
      */
-    public function setDimensions($dimensions) : self
+    public function setDimensions($dimensions): self
     {
         $this->container['dimensions'] = $dimensions;
 
@@ -269,7 +272,7 @@ class RecommendedPackage implements ModelInterface, ArrayAccess, \JsonSerializab
      *
      * @return self
      */
-    public function setWeight($weight) : self
+    public function setWeight($weight): self
     {
         $this->container['weight'] = $weight;
 
@@ -293,7 +296,7 @@ class RecommendedPackage implements ModelInterface, ArrayAccess, \JsonSerializab
      *
      * @return self
      */
-    public function setLineItems($line_items) : self
+    public function setLineItems($line_items): self
     {
 
         if ((count($line_items) > 50)) {
@@ -310,7 +313,7 @@ class RecommendedPackage implements ModelInterface, ArrayAccess, \JsonSerializab
      *
      * @return boolean
      */
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -322,7 +325,7 @@ class RecommendedPackage implements ModelInterface, ArrayAccess, \JsonSerializab
      *
      * @return mixed|null
      */
-    public function offsetGet($offset)
+    public function offsetGet($offset): mixed
     {
         return $this->container[$offset] ?? null;
     }
@@ -335,7 +338,7 @@ class RecommendedPackage implements ModelInterface, ArrayAccess, \JsonSerializab
      *
      * @return void
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         if (is_null($offset)) {
             $this->container[] = $value;
@@ -351,7 +354,7 @@ class RecommendedPackage implements ModelInterface, ArrayAccess, \JsonSerializab
      *
      * @return void
      */
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -363,7 +366,7 @@ class RecommendedPackage implements ModelInterface, ArrayAccess, \JsonSerializab
      * @return mixed Returns data which can be serialized by json_encode(), which is a value
      * of any type other than a resource.
      */
-    public function jsonSerialize() : string
+    public function jsonSerialize(): string
     {
        return \json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }
@@ -373,9 +376,9 @@ class RecommendedPackage implements ModelInterface, ArrayAccess, \JsonSerializab
      *
      * @return string
      */
-    public function __toString() : string
+    public function __toString(): string
     {
-        return json_encode(
+        return (string) json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );
@@ -386,7 +389,7 @@ class RecommendedPackage implements ModelInterface, ArrayAccess, \JsonSerializab
      *
      * @return string
      */
-    public function toHeaderValue() : string
+    public function toHeaderValue(): string
     {
         return json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }

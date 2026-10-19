@@ -1,4 +1,7 @@
 <?php
+
+declare(strict_types=1);
+
 /**
  * CourierSupportedAttributes
  *
@@ -40,7 +43,7 @@ use \Plenty\AmazonPHP\SellingPartner\ModelInterface;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class CourierSupportedAttributes implements ModelInterface, ArrayAccess, \JsonSerializable
+class CourierSupportedAttributes implements ModelInterface, ArrayAccess, \JsonSerializable, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -78,7 +81,7 @@ class CourierSupportedAttributes implements ModelInterface, ArrayAccess, \JsonSe
      *
      * @return array
      */
-    public static function openAPITypes() : array
+    public static function openAPITypes(): array
     {
         return self::$openAPITypes;
     }
@@ -88,7 +91,7 @@ class CourierSupportedAttributes implements ModelInterface, ArrayAccess, \JsonSe
      *
      * @return array
      */
-    public static function openAPIFormats() : array
+    public static function openAPIFormats(): array
     {
         return self::$openAPIFormats;
     }
@@ -130,7 +133,7 @@ class CourierSupportedAttributes implements ModelInterface, ArrayAccess, \JsonSe
      *
      * @return array
      */
-    public static function attributeMap() : array
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -140,7 +143,7 @@ class CourierSupportedAttributes implements ModelInterface, ArrayAccess, \JsonSe
      *
      * @return array
      */
-    public static function setters() : array
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -150,7 +153,7 @@ class CourierSupportedAttributes implements ModelInterface, ArrayAccess, \JsonSe
      *
      * @return array
      */
-    public static function getters() : array
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -160,7 +163,7 @@ class CourierSupportedAttributes implements ModelInterface, ArrayAccess, \JsonSe
      *
      * @return string
      */
-    public function getModelName() : string
+    public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
@@ -179,7 +182,7 @@ class CourierSupportedAttributes implements ModelInterface, ArrayAccess, \JsonSe
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['carrier_name'] = $data['carrier_name'] ?? null;
         $this->container['tracking_id'] = $data['tracking_id'] ?? null;
@@ -190,7 +193,7 @@ class CourierSupportedAttributes implements ModelInterface, ArrayAccess, \JsonSe
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties() : array
+    public function listInvalidProperties(): array
     {
         $invalidProperties = [];
 
@@ -209,7 +212,7 @@ class CourierSupportedAttributes implements ModelInterface, ArrayAccess, \JsonSe
      *
      * @return bool True if all properties are valid
      */
-    public function valid() : bool
+    public function valid(): bool
     {
         return count($this->listInvalidProperties()) === 0;
     }
@@ -232,7 +235,7 @@ class CourierSupportedAttributes implements ModelInterface, ArrayAccess, \JsonSe
      *
      * @return self
      */
-    public function setCarrierName($carrier_name) : self
+    public function setCarrierName($carrier_name): self
     {
         $this->container['carrier_name'] = $carrier_name;
 
@@ -256,7 +259,7 @@ class CourierSupportedAttributes implements ModelInterface, ArrayAccess, \JsonSe
      *
      * @return self
      */
-    public function setTrackingId($tracking_id) : self
+    public function setTrackingId($tracking_id): self
     {
         $this->container['tracking_id'] = $tracking_id;
 
@@ -269,7 +272,7 @@ class CourierSupportedAttributes implements ModelInterface, ArrayAccess, \JsonSe
      *
      * @return boolean
      */
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -281,7 +284,7 @@ class CourierSupportedAttributes implements ModelInterface, ArrayAccess, \JsonSe
      *
      * @return mixed|null
      */
-    public function offsetGet($offset)
+    public function offsetGet($offset): mixed
     {
         return $this->container[$offset] ?? null;
     }
@@ -294,7 +297,7 @@ class CourierSupportedAttributes implements ModelInterface, ArrayAccess, \JsonSe
      *
      * @return void
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         if (is_null($offset)) {
             $this->container[] = $value;
@@ -310,7 +313,7 @@ class CourierSupportedAttributes implements ModelInterface, ArrayAccess, \JsonSe
      *
      * @return void
      */
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -322,7 +325,7 @@ class CourierSupportedAttributes implements ModelInterface, ArrayAccess, \JsonSe
      * @return mixed Returns data which can be serialized by json_encode(), which is a value
      * of any type other than a resource.
      */
-    public function jsonSerialize() : string
+    public function jsonSerialize(): string
     {
        return \json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }
@@ -332,9 +335,9 @@ class CourierSupportedAttributes implements ModelInterface, ArrayAccess, \JsonSe
      *
      * @return string
      */
-    public function __toString() : string
+    public function __toString(): string
     {
-        return json_encode(
+        return (string) json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );
@@ -345,7 +348,7 @@ class CourierSupportedAttributes implements ModelInterface, ArrayAccess, \JsonSe
      *
      * @return string
      */
-    public function toHeaderValue() : string
+    public function toHeaderValue(): string
     {
         return json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }

@@ -1,4 +1,7 @@
 <?php
+
+declare(strict_types=1);
+
 /**
  * MarketplaceAttributes
  *
@@ -40,7 +43,7 @@ use \Plenty\AmazonPHP\SellingPartner\ModelInterface;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class MarketplaceAttributes implements ModelInterface, ArrayAccess, \JsonSerializable
+class MarketplaceAttributes implements ModelInterface, ArrayAccess, \JsonSerializable, \Stringable
 {
     public const DISCRIMINATOR = null;
 
@@ -82,7 +85,7 @@ class MarketplaceAttributes implements ModelInterface, ArrayAccess, \JsonSeriali
      *
      * @return array
      */
-    public static function openAPITypes() : array
+    public static function openAPITypes(): array
     {
         return self::$openAPITypes;
     }
@@ -92,7 +95,7 @@ class MarketplaceAttributes implements ModelInterface, ArrayAccess, \JsonSeriali
      *
      * @return array
      */
-    public static function openAPIFormats() : array
+    public static function openAPIFormats(): array
     {
         return self::$openAPIFormats;
     }
@@ -140,7 +143,7 @@ class MarketplaceAttributes implements ModelInterface, ArrayAccess, \JsonSeriali
      *
      * @return array
      */
-    public static function attributeMap() : array
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -150,7 +153,7 @@ class MarketplaceAttributes implements ModelInterface, ArrayAccess, \JsonSeriali
      *
      * @return array
      */
-    public static function setters() : array
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -160,7 +163,7 @@ class MarketplaceAttributes implements ModelInterface, ArrayAccess, \JsonSeriali
      *
      * @return array
      */
-    public static function getters() : array
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -170,7 +173,7 @@ class MarketplaceAttributes implements ModelInterface, ArrayAccess, \JsonSeriali
      *
      * @return string
      */
-    public function getModelName() : string
+    public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
@@ -183,7 +186,7 @@ class MarketplaceAttributes implements ModelInterface, ArrayAccess, \JsonSeriali
      *
      * @return string[]
      */
-    public function getCustomAttributesAllowableValues() : array
+    public function getCustomAttributesAllowableValues(): array
     {
         return [
             self::CUSTOM_ATTRIBUTES_PRIME,
@@ -204,7 +207,7 @@ class MarketplaceAttributes implements ModelInterface, ArrayAccess, \JsonSeriali
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['marketplace_id'] = $data['marketplace_id'] ?? null;
         $this->container['channel_name'] = $data['channel_name'] ?? null;
@@ -217,7 +220,7 @@ class MarketplaceAttributes implements ModelInterface, ArrayAccess, \JsonSeriali
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties() : array
+    public function listInvalidProperties(): array
     {
         $invalidProperties = [];
 
@@ -240,7 +243,7 @@ class MarketplaceAttributes implements ModelInterface, ArrayAccess, \JsonSeriali
      *
      * @return bool True if all properties are valid
      */
-    public function valid() : bool
+    public function valid(): bool
     {
         return count($this->listInvalidProperties()) === 0;
     }
@@ -263,7 +266,7 @@ class MarketplaceAttributes implements ModelInterface, ArrayAccess, \JsonSeriali
      *
      * @return self
      */
-    public function setMarketplaceId($marketplace_id) : self
+    public function setMarketplaceId($marketplace_id): self
     {
         $this->container['marketplace_id'] = $marketplace_id;
 
@@ -287,7 +290,7 @@ class MarketplaceAttributes implements ModelInterface, ArrayAccess, \JsonSeriali
      *
      * @return self
      */
-    public function setChannelName($channel_name) : self
+    public function setChannelName($channel_name): self
     {
         $this->container['channel_name'] = $channel_name;
 
@@ -311,7 +314,7 @@ class MarketplaceAttributes implements ModelInterface, ArrayAccess, \JsonSeriali
      *
      * @return self
      */
-    public function setMerchantId($merchant_id) : self
+    public function setMerchantId($merchant_id): self
     {
         $this->container['merchant_id'] = $merchant_id;
 
@@ -335,7 +338,7 @@ class MarketplaceAttributes implements ModelInterface, ArrayAccess, \JsonSeriali
      *
      * @return self
      */
-    public function setCustomAttributes($custom_attributes) : self
+    public function setCustomAttributes($custom_attributes): self
     {
         $allowedValues = $this->getCustomAttributesAllowableValues();
         if (!is_null($custom_attributes) && array_diff($custom_attributes, $allowedValues)) {
@@ -362,7 +365,7 @@ class MarketplaceAttributes implements ModelInterface, ArrayAccess, \JsonSeriali
      *
      * @return boolean
      */
-    public function offsetExists($offset) : bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -374,7 +377,7 @@ class MarketplaceAttributes implements ModelInterface, ArrayAccess, \JsonSeriali
      *
      * @return mixed|null
      */
-    public function offsetGet($offset)
+    public function offsetGet($offset): mixed
     {
         return $this->container[$offset] ?? null;
     }
@@ -387,7 +390,7 @@ class MarketplaceAttributes implements ModelInterface, ArrayAccess, \JsonSeriali
      *
      * @return void
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet($offset, $value): void
     {
         if (is_null($offset)) {
             $this->container[] = $value;
@@ -403,7 +406,7 @@ class MarketplaceAttributes implements ModelInterface, ArrayAccess, \JsonSeriali
      *
      * @return void
      */
-    public function offsetUnset($offset) : void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -415,7 +418,7 @@ class MarketplaceAttributes implements ModelInterface, ArrayAccess, \JsonSeriali
      * @return mixed Returns data which can be serialized by json_encode(), which is a value
      * of any type other than a resource.
      */
-    public function jsonSerialize() : string
+    public function jsonSerialize(): string
     {
        return \json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }
@@ -425,9 +428,9 @@ class MarketplaceAttributes implements ModelInterface, ArrayAccess, \JsonSeriali
      *
      * @return string
      */
-    public function __toString() : string
+    public function __toString(): string
     {
-        return json_encode(
+        return (string) json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );
@@ -438,7 +441,7 @@ class MarketplaceAttributes implements ModelInterface, ArrayAccess, \JsonSeriali
      *
      * @return string
      */
-    public function toHeaderValue() : string
+    public function toHeaderValue(): string
     {
         return json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }
