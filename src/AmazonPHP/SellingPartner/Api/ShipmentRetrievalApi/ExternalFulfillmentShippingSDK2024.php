@@ -9,6 +9,7 @@ use Plenty\AmazonPHP\SellingPartner\Exception\InvalidArgumentException;
 use Plenty\AmazonPHP\SellingPartner\HttpFactory;
 use Plenty\AmazonPHP\SellingPartner\HttpSignatureHeaders;
 use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
+use Plenty\Log\Traits\Loggable;
 use Psr\Http\Client\ClientExceptionInterface;
 use Psr\Http\Client\ClientInterface;
 use Psr\Http\Message\RequestInterface;
@@ -20,6 +21,8 @@ use Psr\Log\LoggerInterface;
  */
 final class ExternalFulfillmentShippingSDK2024
 {
+    use Loggable;
+
     public const API_NAME = 'ExternalFulfillmentShipping2024';
 
     public const OPERATION_GETSHIPMENT = 'getShipment';
@@ -28,6 +31,8 @@ final class ExternalFulfillmentShippingSDK2024
     public const OPERATION_GETSHIPMENTS = 'getShipments';
 
     public const OPERATION_GETSHIPMENTS_PATH = '/externalFulfillment/2024-09-11/shipments';
+
+    private const LOG_IDENTIFIER = 'EasyShip-module';
 
     private ClientInterface $client;
 
@@ -73,18 +78,19 @@ final class ExternalFulfillmentShippingSDK2024
                     $sanitizedRequest = $sanitizedRequest->withoutHeader($sensitiveHeader);
                 }
 
-                $this->logger->log(
-                    $this->configuration->logLevel('ExternalFulfillmentShipping2024', 'getShipment'),
-                    'Amazon Selling Partner API pre request',
-                    [
-                        'api' => 'ExternalFulfillmentShipping2024',
-                        'operation' => 'getShipment',
-                        'request_correlation_id' => $correlationId,
-                        'request_body' => (string) $sanitizedRequest->getBody(),
-                        'request_headers' => $sanitizedRequest->getHeaders(),
-                        'request_uri' => (string) $sanitizedRequest->getUri(),
-                    ]
-                );
+                $this->getLogger(self::LOG_IDENTIFIER)
+                    ->addReference('action', self::OPERATION_GETSHIPMENT)
+                    ->debug(
+                        'module_amazon::log/fbaInbound/debug.requestPayload',
+                        [
+                            'api' => 'ExternalFulfillmentShipping2024',
+                            'operation' => 'getShipment',
+                            'request_correlation_id' => $correlationId,
+                            'request_body' => (string) $sanitizedRequest->getBody(),
+                            'request_headers' => $sanitizedRequest->getHeaders(),
+                            'request_uri' => (string) $sanitizedRequest->getUri(),
+                        ]
+                    );
             }
 
             $response = $this->client->sendRequest($request);
@@ -99,22 +105,25 @@ final class ExternalFulfillmentShippingSDK2024
                     $sanitizedResponse = $sanitizedResponse->withoutHeader($sensitiveHeader);
                 }
 
-                $this->logger->log(
-                    $this->configuration->logLevel('ExternalFulfillmentShipping2024', 'getShipment'),
-                    'Amazon Selling Partner API post request',
-                    [
-                        'api' => 'ExternalFulfillmentShipping2024',
-                        'operation' => 'getShipment',
-                        'response_correlation_id' => $correlationId,
-                        'response_body' => (string) $sanitizedResponse->getBody(),
-                        'response_headers' => $sanitizedResponse->getHeaders(),
-                        'response_status_code' => $sanitizedResponse->getStatusCode(),
-                    ]
-                );
+                $this->getLogger(self::LOG_IDENTIFIER)
+                    ->addReference('action', self::OPERATION_GETSHIPMENT)
+                    ->debug(
+                        'module_amazon::log/fbaInbound/debug.requestPayload',
+                        [
+                            'api' => 'ExternalFulfillmentShipping2024',
+                            'operation' => 'getShipment',
+                            'response_correlation_id' => $correlationId,
+                            'response_body' => (string) $sanitizedResponse->getBody(),
+                            'response_headers' => $sanitizedResponse->getHeaders(),
+                            'response_status_code' => $sanitizedResponse->getStatusCode(),
+                            'request_uri' => (string) $sanitizedRequest->getUri(),
+                            'request_body' => (string) $sanitizedRequest->getBody(),
+                        ]
+                    );
             }
         } catch (ClientExceptionInterface $e) {
             throw new ApiException(
-                "[{$e->getCode()}] {$e->getMessage()}",
+                "[{$e->getCode()}] {$e->getResponse()->getBody()->getContents()}",
                 (int) $e->getCode(),
                 null,
                 null,
@@ -275,18 +284,19 @@ final class ExternalFulfillmentShippingSDK2024
                     $sanitizedRequest = $sanitizedRequest->withoutHeader($sensitiveHeader);
                 }
 
-                $this->logger->log(
-                    $this->configuration->logLevel('ExternalFulfillmentShipping2024', 'getShipments'),
-                    'Amazon Selling Partner API pre request',
-                    [
-                        'api' => 'ExternalFulfillmentShipping2024',
-                        'operation' => 'getShipments',
-                        'request_correlation_id' => $correlationId,
-                        'request_body' => (string) $sanitizedRequest->getBody(),
-                        'request_headers' => $sanitizedRequest->getHeaders(),
-                        'request_uri' => (string) $sanitizedRequest->getUri(),
-                    ]
-                );
+                $this->getLogger(self::LOG_IDENTIFIER)
+                    ->addReference('action', self::OPERATION_GETSHIPMENTS)
+                    ->debug(
+                        'module_amazon::log/fbaInbound/debug.requestPayload',
+                        [
+                            'api' => 'ExternalFulfillmentShipping2024',
+                            'operation' => 'getShipments',
+                            'request_correlation_id' => $correlationId,
+                            'request_body' => (string) $sanitizedRequest->getBody(),
+                            'request_headers' => $sanitizedRequest->getHeaders(),
+                            'request_uri' => (string) $sanitizedRequest->getUri(),
+                        ]
+                    );
             }
 
             $response = $this->client->sendRequest($request);
@@ -301,22 +311,25 @@ final class ExternalFulfillmentShippingSDK2024
                     $sanitizedResponse = $sanitizedResponse->withoutHeader($sensitiveHeader);
                 }
 
-                $this->logger->log(
-                    $this->configuration->logLevel('ExternalFulfillmentShipping2024', 'getShipments'),
-                    'Amazon Selling Partner API post request',
-                    [
-                        'api' => 'ExternalFulfillmentShipping2024',
-                        'operation' => 'getShipments',
-                        'response_correlation_id' => $correlationId,
-                        'response_body' => (string) $sanitizedResponse->getBody(),
-                        'response_headers' => $sanitizedResponse->getHeaders(),
-                        'response_status_code' => $sanitizedResponse->getStatusCode(),
-                    ]
-                );
+                $this->getLogger(self::LOG_IDENTIFIER)
+                    ->addReference('action', self::OPERATION_GETSHIPMENTS)
+                    ->debug(
+                        'module_amazon::log/fbaInbound/debug.requestPayload',
+                        [
+                            'api' => 'ExternalFulfillmentShipping2024',
+                            'operation' => 'getShipments',
+                            'response_correlation_id' => $correlationId,
+                            'response_body' => (string) $sanitizedResponse->getBody(),
+                            'response_headers' => $sanitizedResponse->getHeaders(),
+                            'response_status_code' => $sanitizedResponse->getStatusCode(),
+                            'request_uri' => (string) $sanitizedRequest->getUri(),
+                            'request_body' => (string) $sanitizedRequest->getBody(),
+                        ]
+                    );
             }
         } catch (ClientExceptionInterface $e) {
             throw new ApiException(
-                "[{$e->getCode()}] {$e->getMessage()}",
+                "[{$e->getCode()}] {$e->getResponse()->getBody()->getContents()}",
                 (int) $e->getCode(),
                 null,
                 null,
