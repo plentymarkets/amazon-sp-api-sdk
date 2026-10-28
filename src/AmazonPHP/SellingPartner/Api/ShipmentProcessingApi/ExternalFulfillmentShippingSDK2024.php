@@ -142,7 +142,7 @@ final class ExternalFulfillmentShippingSDK2024
             }
         } catch (ClientExceptionInterface $e) {
             throw new ApiException(
-                "[{$e->getCode()}] {$e->getMessage()}",
+                "[{$e->getCode()}] {$e->getResponse()->getBody()->getContents()}",
                 (int) $e->getCode(),
                 null,
                 null,
@@ -351,7 +351,7 @@ final class ExternalFulfillmentShippingSDK2024
             }
         } catch (ClientExceptionInterface $e) {
             throw new ApiException(
-                "[{$e->getCode()}] {$e->getMessage()}",
+                "[{$e->getCode()}] {$e->getResponse()->getBody()->getContents()}",
                 (int) $e->getCode(),
                 null,
                 null,
@@ -553,7 +553,7 @@ final class ExternalFulfillmentShippingSDK2024
             }
         } catch (ClientExceptionInterface $e) {
             throw new ApiException(
-                "[{$e->getCode()}] {$e->getMessage()}",
+                "[{$e->getCode()}] {$e->getResponse()->getBody()->getContents()}",
                 (int) $e->getCode(),
                 null,
                 null,
@@ -785,7 +785,7 @@ final class ExternalFulfillmentShippingSDK2024
             }
         } catch (ClientExceptionInterface $e) {
             throw new ApiException(
-                "[{$e->getCode()}] {$e->getMessage()}",
+                "[{$e->getCode()}] {$e->getResponse()->getBody()->getContents()}",
                 (int) $e->getCode(),
                 null,
                 null,
@@ -1002,7 +1002,7 @@ final class ExternalFulfillmentShippingSDK2024
             }
         } catch (ClientExceptionInterface $e) {
             throw new ApiException(
-                "[{$e->getCode()}] {$e->getMessage()}",
+                "[{$e->getCode()}] {$e->getResponse()->getBody()->getContents()}",
                 (int) $e->getCode(),
                 null,
                 null,
@@ -1202,7 +1202,7 @@ final class ExternalFulfillmentShippingSDK2024
             }
         } catch (ClientExceptionInterface $e) {
             throw new ApiException(
-                "[{$e->getCode()}] {$e->getMessage()}",
+                "[{$e->getCode()}] {$e->getResponse()->getBody()->getContents()}",
                 (int) $e->getCode(),
                 null,
                 null,
@@ -1417,7 +1417,7 @@ final class ExternalFulfillmentShippingSDK2024
             }
         } catch (ClientExceptionInterface $e) {
             throw new ApiException(
-                "[{$e->getCode()}] {$e->getMessage()}",
+                "[{$e->getCode()}] {$e->getResponse()->getBody()->getContents()}",
                 (int) $e->getCode(),
                 null,
                 null,
@@ -1644,7 +1644,7 @@ final class ExternalFulfillmentShippingSDK2024
             }
         } catch (ClientExceptionInterface $e) {
             throw new ApiException(
-                "[{$e->getCode()}] {$e->getMessage()}",
+                "[{$e->getCode()}] {$e->getResponse()->getBody()->getContents()}",
                 (int) $e->getCode(),
                 null,
                 null,
