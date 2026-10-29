@@ -9,6 +9,7 @@ use Plenty\AmazonPHP\SellingPartner\HttpSignatureHeaders;
 use Plenty\AmazonPHP\SellingPartner\ObjectSerializer;
 use Plenty\AmazonPHP\SellingPartner\Configuration;
 use Plenty\AmazonPHP\SellingPartner\HttpFactory;
+use Plenty\AmazonPHP\SellingPartner\Logging\LogsFailedResponses;
 use Plenty\Log\Traits\Loggable;
 use Psr\Http\Client\ClientExceptionInterface;
 use Psr\Http\Client\ClientInterface;
@@ -22,6 +23,7 @@ use Psr\Log\LoggerInterface;
 final class ExternalFulfillmentShippingSDK2024
 {
     use Loggable;
+    use LogsFailedResponses;
 
     public const API_NAME = 'ExternalFulfillmentShipping2024';
 
@@ -141,13 +143,11 @@ final class ExternalFulfillmentShippingSDK2024
                     );
             }
         } catch (ClientExceptionInterface $e) {
-            throw new ApiException(
-                "[{$e->getCode()}] {$e->getResponse()->getBody()->getContents()}",
-                (int) $e->getCode(),
-                null,
-                null,
-                $e
-            );
+            $apiException = ApiException::fromClientException($e);
+
+            $this->logFailedResponse(self::OPERATION_CREATEPACKAGES, $correlationId, $request, $apiException);
+
+            throw $apiException;
         }
 
         $statusCode = $response->getStatusCode();
@@ -350,13 +350,11 @@ final class ExternalFulfillmentShippingSDK2024
                     );
             }
         } catch (ClientExceptionInterface $e) {
-            throw new ApiException(
-                "[{$e->getCode()}] {$e->getResponse()->getBody()->getContents()}",
-                (int) $e->getCode(),
-                null,
-                null,
-                $e
-            );
+            $apiException = ApiException::fromClientException($e);
+
+            $this->logFailedResponse(self::OPERATION_GENERATEINVOICE, $correlationId, $request, $apiException);
+
+            throw $apiException;
         }
 
         $statusCode = $response->getStatusCode();
@@ -552,13 +550,11 @@ final class ExternalFulfillmentShippingSDK2024
                     );
             }
         } catch (ClientExceptionInterface $e) {
-            throw new ApiException(
-                "[{$e->getCode()}] {$e->getResponse()->getBody()->getContents()}",
-                (int) $e->getCode(),
-                null,
-                null,
-                $e
-            );
+            $apiException = ApiException::fromClientException($e);
+
+            $this->logFailedResponse(self::OPERATION_GENERATESHIPLABELS, $correlationId, $request, $apiException);
+
+            throw $apiException;
         }
 
         $statusCode = $response->getStatusCode();
@@ -784,13 +780,11 @@ final class ExternalFulfillmentShippingSDK2024
                     );
             }
         } catch (ClientExceptionInterface $e) {
-            throw new ApiException(
-                "[{$e->getCode()}] {$e->getResponse()->getBody()->getContents()}",
-                (int) $e->getCode(),
-                null,
-                null,
-                $e
-            );
+            $apiException = ApiException::fromClientException($e);
+
+            $this->logFailedResponse(self::OPERATION_PROCESSSHIPMENT, $correlationId, $request, $apiException);
+
+            throw $apiException;
         }
 
         $statusCode = $response->getStatusCode();
@@ -1001,13 +995,11 @@ final class ExternalFulfillmentShippingSDK2024
                     );
             }
         } catch (ClientExceptionInterface $e) {
-            throw new ApiException(
-                "[{$e->getCode()}] {$e->getResponse()->getBody()->getContents()}",
-                (int) $e->getCode(),
-                null,
-                null,
-                $e
-            );
+            $apiException = ApiException::fromClientException($e);
+
+            $this->logFailedResponse(self::OPERATION_RETRIEVEINVOICE, $correlationId, $request, $apiException);
+
+            throw $apiException;
         }
 
         $statusCode = $response->getStatusCode();
@@ -1201,13 +1193,11 @@ final class ExternalFulfillmentShippingSDK2024
                     );
             }
         } catch (ClientExceptionInterface $e) {
-            throw new ApiException(
-                "[{$e->getCode()}] {$e->getResponse()->getBody()->getContents()}",
-                (int) $e->getCode(),
-                null,
-                null,
-                $e
-            );
+            $apiException = ApiException::fromClientException($e);
+
+            $this->logFailedResponse(self::OPERATION_RETRIEVESHIPPINGOPTIONS, $correlationId, $request, $apiException);
+
+            throw $apiException;
         }
 
         $statusCode = $response->getStatusCode();
@@ -1416,13 +1406,11 @@ final class ExternalFulfillmentShippingSDK2024
                     );
             }
         } catch (ClientExceptionInterface $e) {
-            throw new ApiException(
-                "[{$e->getCode()}] {$e->getResponse()->getBody()->getContents()}",
-                (int) $e->getCode(),
-                null,
-                null,
-                $e
-            );
+            $apiException = ApiException::fromClientException($e);
+
+            $this->logFailedResponse(self::OPERATION_UPDATEPACKAGE, $correlationId, $request, $apiException);
+
+            throw $apiException;
         }
 
         $statusCode = $response->getStatusCode();
@@ -1643,13 +1631,11 @@ final class ExternalFulfillmentShippingSDK2024
                     );
             }
         } catch (ClientExceptionInterface $e) {
-            throw new ApiException(
-                "[{$e->getCode()}] {$e->getResponse()->getBody()->getContents()}",
-                (int) $e->getCode(),
-                null,
-                null,
-                $e
-            );
+            $apiException = ApiException::fromClientException($e);
+
+            $this->logFailedResponse(self::OPERATION_UPDATEPACKAGESTATUS, $correlationId, $request, $apiException);
+
+            throw $apiException;
         }
 
         $statusCode = $response->getStatusCode();
