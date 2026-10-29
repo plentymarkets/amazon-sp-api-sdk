@@ -4,6 +4,9 @@ declare(strict_types=1);
 
 namespace Plenty\AmazonPHP\SellingPartner\Exception;
 
+use Psr\Http\Client\ClientExceptionInterface;
+use Psr\Http\Message\ResponseInterface;
+
 final class ApiException extends Exception
 {
     /**
@@ -41,6 +44,41 @@ final class ApiException extends Exception
         parent::__construct($message, $code, $previousException);
         $this->responseHeaders = $responseHeaders;
         $this->responseBody = $responseBody;
+    }
+
+    /**
+     * Builds the exception for a failed HTTP call, keeping status, headers and body of Amazon's response.
+     *
+     * Only some PSR-18 exceptions carry the response (e.g. Guzzle's RequestException for 4xx/5xx);
+     * network errors (timeout, connection refused) have none, so headers and body stay null.
+     */
+    public static function fromClientException(ClientExceptionInterface $exception): self
+    {
+        $response = \method_exists($exception, 'getResponse') ? $exception->getResponse() : null;
+
+        if (!$response instanceof ResponseInterface) {
+            return new self("[{$exception->getCode()}] {$exception->getMessage()}", (int) $exception->getCode(), null, null, $exception);
+        }
+
+        $body = (string) $response->getBody();
+
+        return new self("[{$exception->getCode()}] {$body}", (int) $exception->getCode(), $response->getHeaders(), $body, $exception);
+    }
+
+    /**
+     * Amazon's request ID (x-amzn-RequestId response header), which Amazon support asks for.
+     */
+    public function getAmazonRequestId(): ?string
+    {
+        foreach ($this->responseHeaders ?? [] as $name => $values) {
+            if (\strtolower((string) $name) === 'x-amzn-requestid') {
+                $value = \is_array($values) ? \reset($values) : $values;
+
+                return $value === false || $value === null ? null : (string) $value;
+            }
+        }
+
+        return null;
     }
 
     /**
