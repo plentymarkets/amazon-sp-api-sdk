@@ -289,16 +289,13 @@ class Weight implements ModelInterface, ArrayAccess, \JsonSerializable, \Stringa
      */
     public function setWeightUnit($weight_unit): self
     {
-        $allowedValues = $this->getWeightUnitAllowableValues();
-        if (!in_array($weight_unit, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'weight_unit', must be one of '%s'",
-                    $weight_unit,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
+        // Response-side setter (runs in ObjectSerializer::deserialize()): Amazon's casing/values
+        // define validity, e.g. chargeType "shipping". Canonicalize case, never throw;
+        // listInvalidProperties()/valid() still flag unknown values.
+        $weight_unit = \Plenty\AmazonPHP\SellingPartner\ObjectSerializer::canonicalizeEnumValue(
+            $weight_unit,
+            $this->getWeightUnitAllowableValues()
+        );
         $this->container['weight_unit'] = $weight_unit;
 
         return $this;

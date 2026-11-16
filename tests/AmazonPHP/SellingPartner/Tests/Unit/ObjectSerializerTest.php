@@ -5,6 +5,11 @@ declare(strict_types=1);
 namespace Plenty\AmazonPHP\Test\AmazonPHP\SellingPartner\Tests\Unit;
 
 use Plenty\AmazonPHP\SellingPartner\Configuration;
+use Plenty\AmazonPHP\SellingPartner\CredentialsHandler;
+use Plenty\AmazonPHP\SellingPartner\Model\ExternalFulfillmentShipping2024\Charge;
+use Plenty\AmazonPHP\SellingPartner\Model\ExternalFulfillmentShipping2024\PackageShipLabel;
+use Plenty\AmazonPHP\SellingPartner\Model\ExternalFulfillmentShipping2024\Shipment;
+use Plenty\AmazonPHP\SellingPartner\Model\ExternalFulfillmentShipping2024\Status;
 use Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound\Dimensions;
 use Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound\PartneredSmallParcelDataInput;
 use Plenty\AmazonPHP\SellingPartner\Model\FulfillmentInbound\PartneredSmallParcelPackageInput;
@@ -78,12 +83,7 @@ JSON
             $jsonObject
         );
 
-        $config = Configuration::forIAMUser(
-            'clientId',
-            'clientSecret',
-            'accessKey',
-            'secretKey'
-        );
+        $config = $this->configuration();
         $this->assertEquals(
             $object,
             ObjectSerializer::deserialize($config, $jsonObject, PutTransportDetailsRequest::class)
@@ -101,12 +101,83 @@ JSON
 JSON;
 
         $object = ObjectSerializer::deserialize(
-            Configuration::forIAMUser('clientId', 'clientSecret', 'accessKey', 'secretKey'),
+            $this->configuration(),
             $response,
             ShippingServiceOptions::class
         );
 
         $this->assertInstanceOf(ShippingServiceOptions::class, $object);
         $this->assertNull($object->getLabelFormat());
+    }
+
+    public function test_canonicalize_enum_value(): void
+    {
+        $allowed = ['PRODUCT', 'SHIPPING', 'GIFT_WRAP'];
+
+        $this->assertSame('SHIPPING', ObjectSerializer::canonicalizeEnumValue('shipping', $allowed));
+        $this->assertSame('GIFT_WRAP', ObjectSerializer::canonicalizeEnumValue('Gift_Wrap', $allowed));
+        $this->assertSame('PRODUCT', ObjectSerializer::canonicalizeEnumValue('PRODUCT', $allowed));
+        $this->assertSame('UNKNOWN', ObjectSerializer::canonicalizeEnumValue('UNKNOWN', $allowed));
+        $this->assertNull(ObjectSerializer::canonicalizeEnumValue(null, $allowed));
+        $this->assertSame(
+            ['SHIPPING', 'PRODUCT', 'unknown'],
+            ObjectSerializer::canonicalizeEnumValue(['shipping', 'PRODUCT', 'unknown'], $allowed)
+        );
+    }
+
+    public function test_deserialize_external_fulfillment_shipment_with_lowercase_enums(): void
+    {
+        $response = <<<JSON
+{
+    "id": "shipment-1",
+    "status": "accepted",
+    "charges": [
+        {"chargeType": "shipping"},
+        {"chargeType": "Product"}
+    ]
+}
+JSON;
+
+        $shipment = ObjectSerializer::deserialize(
+            $this->configuration(),
+            $response,
+            Shipment::class
+        );
+
+        $this->assertInstanceOf(Shipment::class, $shipment);
+        $this->assertSame(Shipment::STATUS_ACCEPTED, $shipment->getStatus());
+        $this->assertSame(Charge::CHARGE_TYPE_SHIPPING, $shipment->getCharges()[0]->getChargeType());
+        $this->assertSame(Charge::CHARGE_TYPE_PRODUCT, $shipment->getCharges()[1]->getChargeType());
+    }
+
+    public function test_deserialize_external_fulfillment_unknown_enum_value_does_not_throw(): void
+    {
+        $charge = ObjectSerializer::deserialize(
+            $this->configuration(),
+            '{"chargeType": "NEW_AMAZON_CHARGE"}',
+            Charge::class
+        );
+
+        $this->assertSame('NEW_AMAZON_CHARGE', $charge->getChargeType());
+        $this->assertContains(
+            "invalid value 'NEW_AMAZON_CHARGE' for 'charge_type', must be one of 'PRODUCT', 'SHIPPING', 'GIFT_WRAP', 'TOTAL', 'OTHER'",
+            $charge->listInvalidProperties()
+        );
+    }
+
+    public function test_deserialize_enum_class_with_lowercase_value(): void
+    {
+        $label = ObjectSerializer::deserialize(
+            $this->configuration(),
+            '{"packageId": "pkg-1", "status": "success"}',
+            PackageShipLabel::class
+        );
+
+        $this->assertSame(Status::SUCCESS, $label->getStatus()->toString());
+    }
+
+    private function configuration(): Configuration
+    {
+        return new Configuration('clientId', 'clientSecret', $this->createMock(CredentialsHandler::class));
     }
 }

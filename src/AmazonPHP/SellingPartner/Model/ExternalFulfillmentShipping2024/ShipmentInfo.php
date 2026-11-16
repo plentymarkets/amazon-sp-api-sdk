@@ -367,16 +367,13 @@ class ShipmentInfo implements ModelInterface, ArrayAccess, \JsonSerializable, \S
      */
     public function setShipmentType($shipment_type): self
     {
-        $allowedValues = $this->getShipmentTypeAllowableValues();
-        if (!in_array($shipment_type, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'shipment_type', must be one of '%s'",
-                    $shipment_type,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
+        // Response-side setter (runs in ObjectSerializer::deserialize()): Amazon's casing/values
+        // define validity, e.g. chargeType "shipping". Canonicalize case, never throw;
+        // listInvalidProperties()/valid() still flag unknown values.
+        $shipment_type = \Plenty\AmazonPHP\SellingPartner\ObjectSerializer::canonicalizeEnumValue(
+            $shipment_type,
+            $this->getShipmentTypeAllowableValues()
+        );
         $this->container['shipment_type'] = $shipment_type;
 
         return $this;
@@ -555,16 +552,13 @@ class ShipmentInfo implements ModelInterface, ArrayAccess, \JsonSerializable, \S
      */
     public function setProcessingSource($processing_source): self
     {
-        $allowedValues = $this->getProcessingSourceAllowableValues();
-        if (!is_null($processing_source) && !in_array($processing_source, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'processing_source', must be one of '%s'",
-                    $processing_source,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
+        // Response-side setter (runs in ObjectSerializer::deserialize()): Amazon's casing/values
+        // define validity, e.g. chargeType "shipping". Canonicalize case, never throw;
+        // listInvalidProperties()/valid() still flag unknown values.
+        $processing_source = \Plenty\AmazonPHP\SellingPartner\ObjectSerializer::canonicalizeEnumValue(
+            $processing_source,
+            $this->getProcessingSourceAllowableValues()
+        );
         $this->container['processing_source'] = $processing_source;
 
         return $this;
@@ -589,16 +583,13 @@ class ShipmentInfo implements ModelInterface, ArrayAccess, \JsonSerializable, \S
      */
     public function setPaymentMethod($payment_method): self
     {
-        $allowedValues = $this->getPaymentMethodAllowableValues();
-        if (!is_null($payment_method) && !in_array($payment_method, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'payment_method', must be one of '%s'",
-                    $payment_method,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
+        // Response-side setter (runs in ObjectSerializer::deserialize()): Amazon's casing/values
+        // define validity, e.g. chargeType "shipping". Canonicalize case, never throw;
+        // listInvalidProperties()/valid() still flag unknown values.
+        $payment_method = \Plenty\AmazonPHP\SellingPartner\ObjectSerializer::canonicalizeEnumValue(
+            $payment_method,
+            $this->getPaymentMethodAllowableValues()
+        );
         $this->container['payment_method'] = $payment_method;
 
         return $this;

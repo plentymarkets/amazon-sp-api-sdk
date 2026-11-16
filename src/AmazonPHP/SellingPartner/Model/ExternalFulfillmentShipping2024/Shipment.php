@@ -651,16 +651,13 @@ class Shipment implements ModelInterface, ArrayAccess, \JsonSerializable, \Strin
      */
     public function setStatus($status): self
     {
-        $allowedValues = $this->getStatusAllowableValues();
-        if (!in_array($status, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'status', must be one of '%s'",
-                    $status,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
+        // Response-side setter (runs in ObjectSerializer::deserialize()): Amazon's casing/values
+        // define validity, e.g. chargeType "shipping". Canonicalize case, never throw;
+        // listInvalidProperties()/valid() still flag unknown values.
+        $status = \Plenty\AmazonPHP\SellingPartner\ObjectSerializer::canonicalizeEnumValue(
+            $status,
+            $this->getStatusAllowableValues()
+        );
         $this->container['status'] = $status;
 
         return $this;
@@ -685,16 +682,13 @@ class Shipment implements ModelInterface, ArrayAccess, \JsonSerializable, \Strin
      */
     public function setSubStatus($sub_status): self
     {
-        $allowedValues = $this->getSubStatusAllowableValues();
-        if (!is_null($sub_status) && !in_array($sub_status, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'sub_status', must be one of '%s'",
-                    $sub_status,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
+        // Response-side setter (runs in ObjectSerializer::deserialize()): Amazon's casing/values
+        // define validity, e.g. chargeType "shipping". Canonicalize case, never throw;
+        // listInvalidProperties()/valid() still flag unknown values.
+        $sub_status = \Plenty\AmazonPHP\SellingPartner\ObjectSerializer::canonicalizeEnumValue(
+            $sub_status,
+            $this->getSubStatusAllowableValues()
+        );
         $this->container['sub_status'] = $sub_status;
 
         return $this;

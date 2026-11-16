@@ -259,16 +259,13 @@ class Document implements ModelInterface, ArrayAccess, \JsonSerializable, \Strin
      */
     public function setFormat($format): self
     {
-        $allowedValues = $this->getFormatAllowableValues();
-        if (!is_null($format) && !in_array($format, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'format', must be one of '%s'",
-                    $format,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
+        // Response-side setter (runs in ObjectSerializer::deserialize()): Amazon's casing/values
+        // define validity, e.g. chargeType "shipping". Canonicalize case, never throw;
+        // listInvalidProperties()/valid() still flag unknown values.
+        $format = \Plenty\AmazonPHP\SellingPartner\ObjectSerializer::canonicalizeEnumValue(
+            $format,
+            $this->getFormatAllowableValues()
+        );
         $this->container['format'] = $format;
 
         return $this;

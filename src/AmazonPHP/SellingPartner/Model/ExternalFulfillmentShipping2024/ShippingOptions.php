@@ -313,16 +313,13 @@ class ShippingOptions implements ModelInterface, ArrayAccess, \JsonSerializable,
      */
     public function setShipBy($ship_by): self
     {
-        $allowedValues = $this->getShipByAllowableValues();
-        if (!in_array($ship_by, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'ship_by', must be one of '%s'",
-                    $ship_by,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
+        // Response-side setter (runs in ObjectSerializer::deserialize()): Amazon's casing/values
+        // define validity, e.g. chargeType "shipping". Canonicalize case, never throw;
+        // listInvalidProperties()/valid() still flag unknown values.
+        $ship_by = \Plenty\AmazonPHP\SellingPartner\ObjectSerializer::canonicalizeEnumValue(
+            $ship_by,
+            $this->getShipByAllowableValues()
+        );
         $this->container['ship_by'] = $ship_by;
 
         return $this;

@@ -315,16 +315,13 @@ class TimeWindow implements ModelInterface, ArrayAccess, \JsonSerializable, \Str
      */
     public function setHandoverMethod($handover_method): self
     {
-        $allowedValues = $this->getHandoverMethodAllowableValues();
-        if (!is_null($handover_method) && !in_array($handover_method, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'handover_method', must be one of '%s'",
-                    $handover_method,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
+        // Response-side setter (runs in ObjectSerializer::deserialize()): Amazon's casing/values
+        // define validity, e.g. chargeType "shipping". Canonicalize case, never throw;
+        // listInvalidProperties()/valid() still flag unknown values.
+        $handover_method = \Plenty\AmazonPHP\SellingPartner\ObjectSerializer::canonicalizeEnumValue(
+            $handover_method,
+            $this->getHandoverMethodAllowableValues()
+        );
         $this->container['handover_method'] = $handover_method;
 
         return $this;

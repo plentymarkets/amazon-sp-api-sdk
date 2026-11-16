@@ -348,16 +348,13 @@ class Charge implements ModelInterface, ArrayAccess, \JsonSerializable, \Stringa
      */
     public function setChargeType($charge_type): self
     {
-        $allowedValues = $this->getChargeTypeAllowableValues();
-        if (!in_array($charge_type, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'charge_type', must be one of '%s'",
-                    $charge_type,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
+        // Response-side setter (runs in ObjectSerializer::deserialize()): Amazon's casing/values
+        // define validity, e.g. chargeType "shipping". Canonicalize case, never throw;
+        // listInvalidProperties()/valid() still flag unknown values.
+        $charge_type = \Plenty\AmazonPHP\SellingPartner\ObjectSerializer::canonicalizeEnumValue(
+            $charge_type,
+            $this->getChargeTypeAllowableValues()
+        );
         $this->container['charge_type'] = $charge_type;
 
         return $this;
