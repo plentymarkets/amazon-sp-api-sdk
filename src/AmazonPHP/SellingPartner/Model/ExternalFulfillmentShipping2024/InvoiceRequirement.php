@@ -281,16 +281,13 @@ class InvoiceRequirement implements ModelInterface, ArrayAccess, \JsonSerializab
      */
     public function setRequirement($requirement): self
     {
-        $allowedValues = $this->getRequirementAllowableValues();
-        if (!is_null($requirement) && !in_array($requirement, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'requirement', must be one of '%s'",
-                    $requirement,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
+        // Response-side setter (runs in ObjectSerializer::deserialize()): Amazon's casing/values
+        // define validity, e.g. chargeType "shipping". Canonicalize case, never throw;
+        // listInvalidProperties()/valid() still flag unknown values.
+        $requirement = \Plenty\AmazonPHP\SellingPartner\ObjectSerializer::canonicalizeEnumValue(
+            $requirement,
+            $this->getRequirementAllowableValues()
+        );
         $this->container['requirement'] = $requirement;
 
         return $this;
@@ -315,16 +312,13 @@ class InvoiceRequirement implements ModelInterface, ArrayAccess, \JsonSerializab
      */
     public function setStatus($status): self
     {
-        $allowedValues = $this->getStatusAllowableValues();
-        if (!is_null($status) && !in_array($status, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'status', must be one of '%s'",
-                    $status,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
+        // Response-side setter (runs in ObjectSerializer::deserialize()): Amazon's casing/values
+        // define validity, e.g. chargeType "shipping". Canonicalize case, never throw;
+        // listInvalidProperties()/valid() still flag unknown values.
+        $status = \Plenty\AmazonPHP\SellingPartner\ObjectSerializer::canonicalizeEnumValue(
+            $status,
+            $this->getStatusAllowableValues()
+        );
         $this->container['status'] = $status;
 
         return $this;

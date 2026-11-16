@@ -282,16 +282,13 @@ class LineItemWithReason implements ModelInterface, ArrayAccess, \JsonSerializab
      */
     public function setReason($reason): self
     {
-        $allowedValues = $this->getReasonAllowableValues();
-        if (!is_null($reason) && !in_array($reason, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'reason', must be one of '%s'",
-                    $reason,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
+        // Response-side setter (runs in ObjectSerializer::deserialize()): Amazon's casing/values
+        // define validity, e.g. chargeType "shipping". Canonicalize case, never throw;
+        // listInvalidProperties()/valid() still flag unknown values.
+        $reason = \Plenty\AmazonPHP\SellingPartner\ObjectSerializer::canonicalizeEnumValue(
+            $reason,
+            $this->getReasonAllowableValues()
+        );
         $this->container['reason'] = $reason;
 
         return $this;

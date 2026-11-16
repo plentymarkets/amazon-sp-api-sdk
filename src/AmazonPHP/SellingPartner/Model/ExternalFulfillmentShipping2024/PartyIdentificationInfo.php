@@ -301,16 +301,13 @@ class PartyIdentificationInfo implements ModelInterface, ArrayAccess, \JsonSeria
      */
     public function setPartyType($party_type): self
     {
-        $allowedValues = $this->getPartyTypeAllowableValues();
-        if (!in_array($party_type, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'party_type', must be one of '%s'",
-                    $party_type,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
+        // Response-side setter (runs in ObjectSerializer::deserialize()): Amazon's casing/values
+        // define validity, e.g. chargeType "shipping". Canonicalize case, never throw;
+        // listInvalidProperties()/valid() still flag unknown values.
+        $party_type = \Plenty\AmazonPHP\SellingPartner\ObjectSerializer::canonicalizeEnumValue(
+            $party_type,
+            $this->getPartyTypeAllowableValues()
+        );
         $this->container['party_type'] = $party_type;
 
         return $this;

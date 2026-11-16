@@ -285,16 +285,13 @@ class Distance implements ModelInterface, ArrayAccess, \JsonSerializable, \Strin
      */
     public function setDistanceUnit($distance_unit): self
     {
-        $allowedValues = $this->getDistanceUnitAllowableValues();
-        if (!in_array($distance_unit, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'distance_unit', must be one of '%s'",
-                    $distance_unit,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
+        // Response-side setter (runs in ObjectSerializer::deserialize()): Amazon's casing/values
+        // define validity, e.g. chargeType "shipping". Canonicalize case, never throw;
+        // listInvalidProperties()/valid() still flag unknown values.
+        $distance_unit = \Plenty\AmazonPHP\SellingPartner\ObjectSerializer::canonicalizeEnumValue(
+            $distance_unit,
+            $this->getDistanceUnitAllowableValues()
+        );
         $this->container['distance_unit'] = $distance_unit;
 
         return $this;

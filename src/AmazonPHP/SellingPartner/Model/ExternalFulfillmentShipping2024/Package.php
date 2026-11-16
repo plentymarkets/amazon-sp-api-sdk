@@ -460,16 +460,13 @@ class Package implements ModelInterface, ArrayAccess, \JsonSerializable, \String
      */
     public function setStatus($status): self
     {
-        $allowedValues = $this->getStatusAllowableValues();
-        if (!is_null($status) && !in_array($status, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'status', must be one of '%s'",
-                    $status,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
+        // Response-side setter (runs in ObjectSerializer::deserialize()): Amazon's casing/values
+        // define validity, e.g. chargeType "shipping". Canonicalize case, never throw;
+        // listInvalidProperties()/valid() still flag unknown values.
+        $status = \Plenty\AmazonPHP\SellingPartner\ObjectSerializer::canonicalizeEnumValue(
+            $status,
+            $this->getStatusAllowableValues()
+        );
         $this->container['status'] = $status;
 
         return $this;
@@ -494,16 +491,13 @@ class Package implements ModelInterface, ArrayAccess, \JsonSerializable, \String
      */
     public function setPackageHandlingRequirements($package_handling_requirements): self
     {
-        $allowedValues = $this->getPackageHandlingRequirementsAllowableValues();
-        if (!is_null($package_handling_requirements) && !in_array($package_handling_requirements, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'package_handling_requirements', must be one of '%s'",
-                    $package_handling_requirements,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
+        // Response-side setter (runs in ObjectSerializer::deserialize()): Amazon's casing/values
+        // define validity, e.g. chargeType "shipping". Canonicalize case, never throw;
+        // listInvalidProperties()/valid() still flag unknown values.
+        $package_handling_requirements = \Plenty\AmazonPHP\SellingPartner\ObjectSerializer::canonicalizeEnumValue(
+            $package_handling_requirements,
+            $this->getPackageHandlingRequirementsAllowableValues()
+        );
         $this->container['package_handling_requirements'] = $package_handling_requirements;
 
         return $this;

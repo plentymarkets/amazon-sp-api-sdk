@@ -338,6 +338,8 @@ final class ObjectSerializer
         }
 
         if (\method_exists($class, 'getAllowableEnumValues')) {
+            $data = self::canonicalizeEnumValue($data, $class::getAllowableEnumValues());
+
             if (!\in_array($data, $class::getAllowableEnumValues(), true)) {
                 $imploded = \implode("', '", $class::getAllowableEnumValues());
 
@@ -380,6 +382,36 @@ final class ObjectSerializer
         }
 
         return $instance;
+    }
+
+    /**
+     * Maps an enum value to its canonical spelling from $allowedValues when the only
+     * difference is letter case (e.g. Amazon returning chargeType "shipping" for "SHIPPING").
+     * Arrays are canonicalized element by element. Unknown values are returned unchanged,
+     * never rejected: deciding whether to fail is up to the caller.
+     *
+     * @param mixed $value
+     * @param array<int, string> $allowedValues
+     *
+     * @return mixed
+     */
+    public static function canonicalizeEnumValue($value, array $allowedValues)
+    {
+        if (\is_array($value)) {
+            return \array_map(static fn ($item) => self::canonicalizeEnumValue($item, $allowedValues), $value);
+        }
+
+        if (!\is_string($value) || \in_array($value, $allowedValues, true)) {
+            return $value;
+        }
+
+        foreach ($allowedValues as $allowedValue) {
+            if (\is_string($allowedValue) && \strcasecmp($allowedValue, $value) === 0) {
+                return $allowedValue;
+            }
+        }
+
+        return $value;
     }
 
     /**

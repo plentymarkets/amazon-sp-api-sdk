@@ -340,15 +340,13 @@ class MarketplaceAttributes implements ModelInterface, ArrayAccess, \JsonSeriali
      */
     public function setCustomAttributes($custom_attributes): self
     {
-        $allowedValues = $this->getCustomAttributesAllowableValues();
-        if (!is_null($custom_attributes) && array_diff($custom_attributes, $allowedValues)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value for 'custom_attributes', must be one of '%s'",
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
+        // Response-side setter (runs in ObjectSerializer::deserialize()): Amazon's casing/values
+        // define validity, e.g. chargeType "shipping". Canonicalize case, never throw;
+        // listInvalidProperties()/valid() still flag unknown values.
+        $custom_attributes = \Plenty\AmazonPHP\SellingPartner\ObjectSerializer::canonicalizeEnumValue(
+            $custom_attributes,
+            $this->getCustomAttributesAllowableValues()
+        );
 
 
         if (!is_null($custom_attributes) && (count($custom_attributes) < 0)) {

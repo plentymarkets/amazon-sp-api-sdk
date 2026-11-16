@@ -287,16 +287,13 @@ class Dimension implements ModelInterface, ArrayAccess, \JsonSerializable, \Stri
      */
     public function setDimensionUnit($dimension_unit): self
     {
-        $allowedValues = $this->getDimensionUnitAllowableValues();
-        if (!in_array($dimension_unit, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'dimension_unit', must be one of '%s'",
-                    $dimension_unit,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
+        // Response-side setter (runs in ObjectSerializer::deserialize()): Amazon's casing/values
+        // define validity, e.g. chargeType "shipping". Canonicalize case, never throw;
+        // listInvalidProperties()/valid() still flag unknown values.
+        $dimension_unit = \Plenty\AmazonPHP\SellingPartner\ObjectSerializer::canonicalizeEnumValue(
+            $dimension_unit,
+            $this->getDimensionUnitAllowableValues()
+        );
         $this->container['dimension_unit'] = $dimension_unit;
 
         return $this;

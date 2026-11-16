@@ -335,16 +335,13 @@ class Cancellation implements ModelInterface, ArrayAccess, \JsonSerializable, \S
      */
     public function setCancellationType($cancellation_type): self
     {
-        $allowedValues = $this->getCancellationTypeAllowableValues();
-        if (!in_array($cancellation_type, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'cancellation_type', must be one of '%s'",
-                    $cancellation_type,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
+        // Response-side setter (runs in ObjectSerializer::deserialize()): Amazon's casing/values
+        // define validity, e.g. chargeType "shipping". Canonicalize case, never throw;
+        // listInvalidProperties()/valid() still flag unknown values.
+        $cancellation_type = \Plenty\AmazonPHP\SellingPartner\ObjectSerializer::canonicalizeEnumValue(
+            $cancellation_type,
+            $this->getCancellationTypeAllowableValues()
+        );
         $this->container['cancellation_type'] = $cancellation_type;
 
         return $this;
